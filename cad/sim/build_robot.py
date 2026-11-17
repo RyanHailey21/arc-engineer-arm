@@ -384,7 +384,7 @@ def gazebo_run(gz_urdf):
     if not os.path.exists(f):
         return dict(ok=False, status="MISSING", note="run cad/sim/gz_check.py in a gz-sim 8 environment")
     g = json.load(open(f, encoding="utf-8"))
-    fresh = g.get("model_urdf_sha256") == hashlib.sha256(open(gz_urdf, "rb").read()).hexdigest()
+    fresh = g.get("model_urdf_sha256") == hashlib.sha256(open(gz_urdf, "rb").read().replace(b"\r\n", b"\n")).hexdigest()   # EOL-neutral
     P = g.get("poses", [])
     return dict(ok=bool(g.get("ok")) and fresh, status="FRESH" if fresh else "STALE", gz_version=g.get("gz_version"),
                 world=g.get("world"), poses=len(P),

@@ -1,6 +1,6 @@
 {
  "variant": "fourbar",
- "model_urdf_sha256": "494d9128584a4227182566ee54d0012b8e63674bb5f0524c61f6922f444def3c",
+ "model_urdf_sha256": "e70e58ad88de1d574c680f6580eaf80b11d8782b62ed7c0f7dd2e51b5668240c",
  "gz_version": "8.10.0",
  "world": "sim/arc_arm_fourbar/worlds/arc_arm.sdf",
  "poses": [

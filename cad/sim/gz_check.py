@@ -104,7 +104,7 @@ def main():
     srv = subprocess.Popen(["gz", "sim", "-s", "-r", "-v", "2", world], env=ENV,
                            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     import hashlib
-    urdf_sha = hashlib.sha256(open(os.path.join(ROOT, "model.urdf"), "rb").read()).hexdigest()
+    urdf_sha = hashlib.sha256(open(os.path.join(ROOT, "model.urdf"), "rb").read().replace(b"\r\n", b"\n")).hexdigest()   # EOL-neutral
     res = dict(variant=VAR, model_urdf_sha256=urdf_sha, gz_version=gz("sim", "--versions").strip(), world="ground only" if EMPTY else os.path.relpath(WORLD, REPO), poses=[])
     try:
         t0 = time.time()
