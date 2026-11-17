@@ -65,6 +65,21 @@
   ],
   "plugins": 6,
   "ok": true,
-  "note": "structure only - not yet loaded in Gazebo (gz-sim not installed on this machine)"
+  "note": "structure only; the gz-sim run test is gazebo_run (cad/sim/gz_check.py)"
+ },
+ "gazebo_run": {
+  "ok": true,
+  "status": "FRESH",
+  "gz_version": "8.10.0",
+  "world": "sim/arc_arm_fourbar/worlds/arc_arm.sdf",
+  "poses": 7,
+  "max_track_err_deg": 0.005,
+  "max_mimic_err_deg": 0.4081,
+  "max_tcp_err_mm": 2.434,
+  "tolerances": {
+   "track_deg": 1.5,
+   "mimic_deg": 1.0,
+   "tcp_mm": 3.0
+  }
  }
 }

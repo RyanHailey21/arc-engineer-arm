@@ -356,7 +356,7 @@ def validate(urdf, mjcf, order, scene):
 
 
 def validate_gazebo(gz_urdf):
-    """Structural checks of the Gazebo package (Gazebo itself is not installed here): the model.urdf parses with
+    """Structural checks of the Gazebo package (the run test is cad/sim/gz_check.py, see gazebo_run): model.urdf parses with
     yourdfpy, every model:// mesh resolves to a file in the model dir, mimic joints and plugins are present, the
     world references the model and bullet-featherstone physics."""
     import yourdfpy
@@ -373,13 +373,42 @@ def validate_gazebo(gz_urdf):
     ok = not missing and not clash and mimics == 11 and plugins.count("gz-sim-joint-position-controller-system") == 5 and         ("model://%s" % model) in w and "bullet-featherstone" in w and len(u.actuated_joint_names) == 5
     return dict(parses=True, mesh_uris=len(uris), missing_meshes=missing[:5], name_clashes=clash, mimic_joints=mimics,
                 actuated=list(u.actuated_joint_names), plugins=len(plugins), ok=ok,
-                note="structure only - not yet loaded in Gazebo (gz-sim not installed on this machine)")
+                note="structure only; the gz-sim run test is gazebo_run (cad/sim/gz_check.py)")
+
+
+def gazebo_run(gz_urdf):
+    """Summary of the last gz-sim run test (cad/sim/gz_check.py -> gazebo_validation.json), FRESH only if it ran on
+    this exact model.urdf. Needs gz-sim 8, so it runs separately (WSL); a missing or stale result fails the build."""
+    import hashlib
+    f = os.path.join(ROOT, "gazebo_validation.json")
+    if not os.path.exists(f):
+        return dict(ok=False, status="MISSING", note="run cad/sim/gz_check.py in a gz-sim 8 environment")
+    g = json.load(open(f, encoding="utf-8"))
+    fresh = g.get("model_urdf_sha256") == hashlib.sha256(open(gz_urdf, "rb").read()).hexdigest()
+    P = g.get("poses", [])
+    return dict(ok=bool(g.get("ok")) and fresh, status="FRESH" if fresh else "STALE", gz_version=g.get("gz_version"),
+                world=g.get("world"), poses=len(P),
+                max_track_err_deg=max((max(abs(v) for v in p["track_err_deg"].values()) for p in P), default=None),
+                max_mimic_err_deg=max((p["max_mimic_err_deg"] for p in P), default=None),
+                max_tcp_err_mm=max((p["tcp_err_mm"] for p in P), default=None), tolerances=g.get("tolerances"))
 
 
 def trans(v):
     T = np.eye(4)
     T[:3, 3] = v
     return T
+
+
+def lump_crank_pin(r, mp=0.003, ip=1e-5):
+    """Give the massless crank_pin helper link 3 g and 1e-5 kg*m^2 (the crank-pin bolt + bearing; that hardware is
+    also in the crank's mass, so the Gazebo model double-counts ~0.1 % of the arm mass).
+    Why: crank_pin's joint and rod_ab's joint are coaxial at the same point, so with a ~0 inertia link between them
+    the crank_pin DOF has a near-singular mass matrix and bullet-featherstone's stiff mimic (gear) constraints jam:
+    the elbow stalled at ~0 deg whatever was commanded. (Taking the 3 g from the crank instead fails sdformat's
+    inertia triangle check.)"""
+    il = next(l for l in r.iter("link") if l.get("name") == "crank_pin").find("inertial")
+    il.find("mass").set("value", "%.6f" % mp)
+    il.find("inertia").attrib.update(ixx="%g" % ip, ixy="0", ixz="0", iyy="%g" % ip, iyz="0", izz="%g" % ip)
 
 
 def build_gazebo(urdf):
@@ -392,7 +421,10 @@ def build_gazebo(urdf):
     r = t.getroot()
     for mesh in r.iter("mesh"):
         mesh.set("filename", "model://%s/%s" % (model, mesh.get("filename")))
+    lump_crank_pin(r)
     sp = SPEC["spring"]
+    # NOTE: gz-physics 7 bullet-featherstone stores but does not apply joint spring/damping/friction, so this spring
+    # is inert in Gazebo Harmonic (it acts in MuJoCo). Kept so engines that honour it pick it up.
     g = ET.SubElement(r, "gazebo", reference="gripper")
     # sdformat's URDF parser copies unknown <gazebo reference="joint"> children into the SDF <joint>; these are SDF
     # joint-axis dynamics written in the URDF extension form that sdformat converts (springStiffness/springReference)
@@ -404,10 +436,12 @@ def build_gazebo(urdf):
         p = ET.SubElement(gz, "plugin", filename="gz-sim-joint-position-controller-system", name="gz::sim::systems::JointPositionController")
         ET.SubElement(p, "joint_name").text = j
         ET.SubElement(p, "topic").text = "/arc_arm/%s/cmd_pos" % j
-        ET.SubElement(p, "p_gain").text = "%g" % KP[j]
-        ET.SubElement(p, "d_gain").text = "%g" % (0.05 * KP[j])
-        ET.SubElement(p, "cmd_max").text = "%g" % SPEC["actuators"][j]["peak_Nm"]
-        ET.SubElement(p, "cmd_min").text = "%g" % -SPEC["actuators"][j]["peak_Nm"]
+        # velocity mode: the plugin writes a joint velocity command (-error/dt, capped at cmd_max = the joint speed);
+        # bullet-featherstone runs it through its implicit joint motor, whose impulse is limited by the URDF effort
+        # limit (= actuator peak torque). Force-mode PID with MuJoCo gains is unstable on the light gripper links.
+        ET.SubElement(p, "use_velocity_commands").text = "true"
+        ET.SubElement(p, "cmd_max").text = "%g" % VEL[j]
+        ET.SubElement(p, "cmd_min").text = "%g" % -VEL[j]
     ET.indent(r)
     t.write(os.path.join(ROOT, "model.urdf"), encoding="utf-8", xml_declaration=True)
     open(os.path.join(ROOT, "model.config"), "w", encoding="utf-8").write(
@@ -476,6 +510,7 @@ def main():
     gz_urdf = build_gazebo(urdf)
     res = validate(urdf, mjcf, order, scene)
     res["gazebo_package"] = validate_gazebo(gz_urdf)
+    res["gazebo_run"] = gazebo_run(gz_urdf)
     res["ok"] = all(v.get("ok", True) for v in res.values() if isinstance(v, dict))
     json.dump(res, open(os.path.join(ROOT, "validation.json"), "w"), indent=1)
     lines = ["# Validation - arc_arm_%s" % VAR, ""] + ["- **%s**: `%s`" % (k, json.dumps(v)) for k, v in res.items() if k != "variant"]

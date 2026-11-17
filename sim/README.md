@@ -74,13 +74,17 @@ They are joint-equality constraints in MuJoCo and `<mimic>` in URDF/Gazebo. The 
 | Contacts between the arm and the scene at all 7 keyframes | none |
 | Scene drop test (1 s) | donut and pipe settle, finite state |
 | URDF in MuJoCo's URDF importer | compiles (17 bodies) |
-| Gazebo package structure | `model.urdf` parses; all 106 `model://` meshes resolve; 11 mimic joints; 5 controllers |
+| Gazebo package structure | `model.urdf` parses; all 107 `model://` meshes resolve; 11 mimic joints; 5 controllers; no link/joint name clashes |
+| Gazebo run test (`gazebo_validation.json`, gz-sim 8.10, bullet-featherstone, full field world) | each of the 7 poses commanded over the `cmd_pos` topics: settles in ~7 s; actuated joints within 0.005°; all 11 mimic followers within 0.41°; gripper TCP within 2.4 mm of CAD |
 
 ## Limits of these models (read before relying on them)
 
-- **Gazebo is not run-tested.** Only the package structure was checked; gz-sim is not installed on the build machine.
-  - `<mimic>` needs Gazebo Harmonic or newer with the bullet-featherstone engine, which the world selects.
-  - On engines without mimic constraints, the passive links won't follow.
+- **Gazebo needs Harmonic (gz-sim 8) with bullet-featherstone**, which the world selects. DART in gz-physics 7 has no mimic constraints, so the passive links would not follow there.
+  - The Gazebo controllers run in **velocity mode** (`use_velocity_commands`): the joint motor's torque is capped at the actuator's peak torque (URDF `effort`), and its speed at `cmd_max`. Force-mode PID with the MuJoCo gains was unstable on the light gripper links.
+  - Bullet's mimic constraints are slightly soft under load (up to 0.4°), which puts the TCP up to ~2.4 mm off CAD. MuJoCo matches CAD exactly.
+  - The massless `crank_pin` helper link carries 3 g / 1e-5 kg·m² in `model.urdf` (the crank-pin hardware, counted twice: 0.1 % of the arm mass). With ~0 inertia, Bullet's constraint solve jams the elbow.
+  - The joints start at 0 and drive to the first command; there is no initial-pose setting in the URDF.
+  - The power-off release has not been run in Gazebo (the controller plugin has no off switch); it is checked in MuJoCo.
 - **No self-collision in MuJoCo.** Arm geoms collide with the world and objects (`contype 2 / conaffinity 1`) but not with each other. Self-interference is verified in CAD (`cad/check_interference.py`).
 - **Servo back-drive is a guess.** The gripper servo's unpowered back-drive is modelled as 0.05 N·m friction. The real value is not yet bench-measured, and the release time above depends on it.
 - **Estimated actuator dynamics.** Rotor armatures, joint damping and controller gains are estimates (`build_robot.py`: ARMATURE, KP).
@@ -95,4 +99,10 @@ From the repo root:
 
 ```bash
 python cad/sim/build_robot.py fourbar
+```
+
+3. Gazebo run test, in an environment with gz-sim 8 (here: WSL Ubuntu + a conda-forge env, `micromamba create -p ~/mm/gz -c conda-forge gz-sim8 ruby`). Then rerun step 2 so `validation.json` picks up the result; it is FRESH only if it ran on the current `model.urdf`:
+
+```bash
+micromamba run -p ~/mm/gz python cad/sim/gz_check.py fourbar
 ```

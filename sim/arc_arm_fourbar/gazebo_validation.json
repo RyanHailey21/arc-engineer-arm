@@ -1,0 +1,182 @@
+{
+ "variant": "fourbar",
+ "model_urdf_sha256": "494d9128584a4227182566ee54d0012b8e63674bb5f0524c61f6922f444def3c",
+ "gz_version": "8.10.0",
+ "world": "sim/arc_arm_fourbar/worlds/arc_arm.sdf",
+ "poses": [
+  {
+   "pose": "STOW",
+   "settle_s": 7.1,
+   "track_err_deg": {
+    "shoulder": 0.0,
+    "elbow": 0.0,
+    "wrist_pitch": -0.005,
+    "wrist_roll": -0.0,
+    "gripper": -0.002
+   },
+   "max_mimic_err_deg": 0.4032,
+   "worst_mimic": "crank_pin_joint",
+   "tcp_mm": [
+    16.27,
+    -0.0,
+    369.63
+   ],
+   "tcp_err_mm": 2.434,
+   "finite": true,
+   "ok": true
+  },
+  {
+   "pose": "DONUT_APPROACH",
+   "settle_s": 7.1,
+   "track_err_deg": {
+    "shoulder": -0.0,
+    "elbow": -0.0,
+    "wrist_pitch": 0.0,
+    "wrist_roll": 0.0,
+    "gripper": -0.0
+   },
+   "max_mimic_err_deg": 0.4081,
+   "worst_mimic": "level_joint",
+   "tcp_mm": [
+    129.44,
+    -0.0,
+    298.12
+   ],
+   "tcp_err_mm": 1.965,
+   "finite": true,
+   "ok": true
+  },
+  {
+   "pose": "DONUT_LIFT",
+   "settle_s": 7.2,
+   "track_err_deg": {
+    "shoulder": 0.0,
+    "elbow": -0.0,
+    "wrist_pitch": -0.0,
+    "wrist_roll": -0.0,
+    "gripper": -0.001
+   },
+   "max_mimic_err_deg": 0.3847,
+   "worst_mimic": "level_joint",
+   "tcp_mm": [
+    130.28,
+    0.0,
+    717.96
+   ],
+   "tcp_err_mm": 2.064,
+   "finite": true,
+   "ok": true
+  },
+  {
+   "pose": "DONUT_LIFT_ROLL+",
+   "settle_s": 7.0,
+   "track_err_deg": {
+    "shoulder": 0.0,
+    "elbow": -0.0,
+    "wrist_pitch": -0.0,
+    "wrist_roll": 0.0,
+    "gripper": 0.001
+   },
+   "max_mimic_err_deg": 0.3826,
+   "worst_mimic": "level_joint",
+   "tcp_mm": [
+    130.29,
+    6.34,
+    719.37
+   ],
+   "tcp_err_mm": 2.057,
+   "finite": true,
+   "ok": true
+  },
+  {
+   "pose": "PIPE_GRASP",
+   "settle_s": 7.1,
+   "track_err_deg": {
+    "shoulder": -0.0,
+    "elbow": 0.0,
+    "wrist_pitch": -0.004,
+    "wrist_roll": -0.0,
+    "gripper": -0.0
+   },
+   "max_mimic_err_deg": 0.3686,
+   "worst_mimic": "crank_pin_joint",
+   "tcp_mm": [
+    40.11,
+    -0.0,
+    452.61
+   ],
+   "tcp_err_mm": 2.395,
+   "finite": true,
+   "ok": true
+  },
+  {
+   "pose": "PIPE_CHUTE",
+   "settle_s": 7.1,
+   "track_err_deg": {
+    "shoulder": 0.0,
+    "elbow": 0.0,
+    "wrist_pitch": -0.001,
+    "wrist_roll": 0.0,
+    "gripper": -0.0
+   },
+   "max_mimic_err_deg": 0.2543,
+   "worst_mimic": "crank_pin_joint",
+   "tcp_mm": [
+    149.58,
+    0.0,
+    598.92
+   ],
+   "tcp_err_mm": 1.162,
+   "finite": true,
+   "ok": true
+  },
+  {
+   "pose": "PIPE_CHUTE_ROLL90",
+   "settle_s": 7.1,
+   "track_err_deg": {
+    "shoulder": 0.0,
+    "elbow": 0.0,
+    "wrist_pitch": -0.001,
+    "wrist_roll": -0.0,
+    "gripper": -0.0
+   },
+   "max_mimic_err_deg": 0.2547,
+   "worst_mimic": "crank_pin_joint",
+   "tcp_mm": [
+    134.56,
+    15.0,
+    598.91
+   ],
+   "tcp_err_mm": 1.179,
+   "finite": true,
+   "ok": true
+  }
+ ],
+ "load_s": 8.0,
+ "joints_reported": [
+  "crank_joint",
+  "crank_pin_joint",
+  "elbow",
+  "gripper",
+  "jaw_l_joint",
+  "jaw_r_joint",
+  "level_joint",
+  "lk_li_joint",
+  "lk_rd_joint",
+  "lk_ri_joint",
+  "rocker_joint",
+  "rod1_joint",
+  "rod_ab_joint",
+  "shoulder",
+  "world_to_base",
+  "wrist_pitch",
+  "wrist_roll"
+ ],
+ "missing_joints": [],
+ "ok": true,
+ "tolerances": {
+  "track_deg": 1.5,
+  "mimic_deg": 1.0,
+  "tcp_mm": 3.0
+ }
+}

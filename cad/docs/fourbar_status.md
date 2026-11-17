@@ -1,4 +1,4 @@
-# Four-bar gripper: design status (2026-11-16)
+# Four-bar gripper: design status (2026-11-17)
 
 The arm's gripper is now the **gear-synchronised parallel four-bar** (`GRIP=FOURBAR`, the default in `params/variant.toml`). It replaces the rev A lead-screw gripper (`GRIP=SCREW`), which remains the released rev A package.
 
@@ -42,6 +42,7 @@ Evidence for every claim below is in `cad/out/fourbar/`. Each `*.evidence.json` 
 | Grip budget (`tools/grip_budget.py`) | WARN: see below |
 | BOM (`tools/bom.py`) | 28 purchased line items, all with a source; 66 custom parts |
 | Simulation export | MuJoCo + Gazebo models in `sim/arc_arm_fourbar/`; forward kinematics within 0.0004 mm of CAD |
+| Gazebo run test (`cad/sim/gz_check.py`) | gz-sim 8.10: all 7 task poses commanded and reached; joints within 0.005°, mimic followers within 0.41°, TCP within 2.4 mm |
 
 ## Open items (in priority order)
 
@@ -57,7 +58,6 @@ Evidence for every claim below is in `cad/out/fourbar/`. Each `*.evidence.json` 
 3. **Drawings and renders.** The four-bar parts have no drawings or renders yet; these were dropped during the redesign.
    - The rev A drawing package covers the SCREW variant only.
    - Run the release generators once the four-bar is promoted: set `release = "FOURBAR"` in `params/variant.toml`.
-4. **Gazebo run test.** The Gazebo model is checked structurally but hasn't been loaded in gz-sim; it isn't installed on this machine.
-5. **Unchanged from rev A:**
+4. **Unchanged from rev A:**
    - drawing sign-off (Checked/Approved PENDING);
    - the J1 hub thread-engagement decision.
