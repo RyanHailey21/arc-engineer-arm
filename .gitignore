@@ -34,3 +34,7 @@ cad/fab/obsolete/
 # Throw-away test output
 cad/out/evidencetest/
 cad/out/*/evidence/*.inputs.json
+
+# Local backup copies
+*.bak
+*.bak[0-9]*

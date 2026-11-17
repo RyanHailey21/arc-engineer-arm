@@ -1,0 +1,13 @@
+# CAD / mesh / document formats: never convert line endings
+*.step -text
+*.stp -text
+*.STEP -text
+*.brep -text
+*.dxf -text
+*.stl -text
+*.obj -text
+*.FCStd binary
+*.pdf binary
+*.png binary
+*.jpg binary
+*.mp4 binary
