@@ -1,0 +1,5 @@
+pass 0: moved 2, leaders 2, dim segments 16
+pass 1: moved 2, leaders 2, dim segments 16
+pass 2: moved 2, leaders 2, dim segments 16
+order -x
+REMAINING 0

@@ -1,0 +1,11 @@
+Four-bar grip budget (params/gripper_fourbar.toml); servo rated 0.98 / stall 2.94 N*m; spring 9271K56, k 0.00565 N*m/deg, preload 22 deg at open
+
+case                      jaw   theta   spring need F/jaw   T_servo   % rated  % stall
+open (release)          112.0    35.8    0.124       0.0     0.124       13%       4%
+donut                   100.0    27.2    0.173       5.0     0.591       60%      20%
+pipe, wrist rolled 90    13.8   -27.4    0.481      11.0     1.399      143%      48%
+pipe, friction only      13.8   -27.4    0.481      25.0     2.568      262%      87%
+
+max clamp per jaw at the pipe grip: 6.0 N within rated torque, 29.5 N at stall
+opening torque at full open (must beat the unpowered servo back-drive, to be bench-measured): 0.124 N*m
+within rated torque: donut; above rated (short-duty, below stall): pipe, wrist rolled 90, pipe, friction only

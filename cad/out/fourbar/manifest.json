@@ -1,0 +1,74 @@
+{
+ "bom": {
+  "evidence": "bom.evidence.json",
+  "files": [
+   "BOM.csv",
+   "BOM.md"
+  ],
+  "inputs_hash": "b5775998f4d90bc2",
+  "note": "28 purchased items, unsourced: none",
+  "status": "PASS",
+  "time": "2026-11-16T23:51:34"
+ },
+ "engagement": {
+  "evidence": "engagement.evidence.json",
+  "files": [
+   "engagement_report.txt"
+  ],
+  "inputs_hash": "b5775998f4d90bc2",
+  "note": "Thread engagement: 21 tapped holes, 21 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
+  "status": "WARN",
+  "time": "2026-11-16T23:54:06"
+ },
+ "fea_fourbar": {
+  "evidence": "fea_fourbar.evidence.json",
+  "files": [
+   "fea/fea_report.md",
+   "fea/fea_results.json"
+  ],
+  "inputs_hash": "b5775998f4d90bc2",
+  "note": "6 cases, min SF 1.8",
+  "status": "PASS",
+  "time": "2026-11-16T23:57:03"
+ },
+ "grip_budget": {
+  "evidence": "grip_budget.evidence.json",
+  "files": [
+   "grip_budget.txt"
+  ],
+  "inputs_hash": "b5775998f4d90bc2",
+  "note": "pipe 143% of rated / 48% of stall; open spring 0.12 N*m",
+  "status": "WARN",
+  "time": "2026-11-16T23:53:24"
+ },
+ "holes": {
+  "evidence": "holes.evidence.json",
+  "files": [
+   "hole_report.txt"
+  ],
+  "inputs_hash": "b5775998f4d90bc2",
+  "note": "Hole edge-distance check (custom parts): 199 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 31 warn (wall < max(1.5 mm, 0.5 d))",
+  "status": "WARN",
+  "time": "2026-11-16T23:53:49"
+ },
+ "interference_full": {
+  "evidence": "interference_full.evidence.json",
+  "files": [
+   "interference_report.txt"
+  ],
+  "inputs_hash": "b5775998f4d90bc2",
+  "note": "static, 14 task poses, field clearance, donut lift",
+  "status": "PASS",
+  "time": "2026-11-17T00:01:29"
+ },
+ "quick": {
+  "evidence": "quick.evidence.json",
+  "files": [
+   "quick.json"
+  ],
+  "inputs_hash": "b5775998f4d90bc2",
+  "note": "envelopes 10 pose checks; interfaces 4 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 485 g (head 280 g); worst static J1 3.07 J2 2.54 J3 0.78 N*m; fingerprint MATCH",
+  "status": "PASS",
+  "time": "2026-11-17T00:02:19"
+ }
+}

@@ -1,0 +1,47 @@
+ARC Engineer arm - interference report
+threshold 0.5 mm^3, 5 steps per segment
+
+[1] static assembly @STOW (all part pairs): 0 overlaps
+
+[2] motion task poses (quick): 14 poses, 0 distinct overlapping pairs
+
+[3] field clearance at task poses
+  DONUT_APPROACH  q=( 115.7, -35.1,  0.0) jaw=112.0 : clear
+  DONUT_PICK      q=(  95.5, -60.6,  0.0) jaw=100.0 : clear
+  DONUT_LIFT      q=( 113.9,  37.7,  0.0) jaw=100.0 : clear
+  DONUT_LIFT_ROLL+ q=( 113.9,  37.7,  0.0) jaw=100.0 : clear
+  DONUT_LIFT_ROLL- q=( 113.9,  37.7,  0.0) jaw=100.0 : clear
+  DONUT_PLACE     q=(  39.1, -97.3,  0.0) jaw=100.0 : clear
+  PIPE_APPROACH   q=( 164.5,  28.8,  0.0) jaw= 50.0 : clear
+  PIPE_GRASP      q=( 148.8,  13.9,  0.0) jaw= 13.8 : clear
+  PIPE_GRASP_ROLL+ q=( 148.8,  13.9,  0.0) jaw= 13.8 : clear
+  PIPE_GRASP_ROLL- q=( 148.8,  13.9,  0.0) jaw= 13.8 : clear
+  PIPE_LIFT       q=( 115.9,  55.7,  0.0) jaw= 13.8 : clear
+  PIPE_CHUTE      q=(  97.5, -17.1, 90.0) jaw= 13.8 : clear
+  PIPE_CHUTE_ROLL90 q=(  97.5, -17.1, 90.0) jaw= 13.8 : clear
+
+[3b] donut lift along the pole: 25 samples (tcp z 228..720, strafe -51..49 mm): clear
+
+[4] static joint torques from modelled masses (N*m: shoulder J1, elbow J2, wrist pitch J3, roll J4)
+  STOW              payload   0 g : J1  -4.52  J2   3.94  J3   0.80  J4  -0.01
+  DONUT_APPROACH    payload   0 g : J1  -2.08  J2   3.27  J3   0.80  J4  -0.01
+  DONUT_PICK        payload   0 g : J1  -0.46  J2   1.97  J3   0.80  J4  -0.01
+  DONUT_LIFT        payload 300 g : J1  -2.35  J2   3.98  J3   1.24  J4  -0.01
+  DONUT_LIFT_ROLL+  payload 300 g : J1  -2.35  J2   3.98  J3   1.24  J4  -0.09
+  DONUT_LIFT_ROLL-  payload 300 g : J1  -2.35  J2   3.98  J3   1.24  J4   0.06
+  DONUT_PLACE       payload 300 g : J1   4.50  J2  -0.64  J3   1.24  J4  -0.01
+  PIPE_APPROACH     payload   0 g : J1  -4.63  J2   3.50  J3   0.80  J4  -0.01
+  PIPE_GRASP        payload   0 g : J1  -4.11  J2   3.88  J3   0.80  J4  -0.01
+  PIPE_GRASP_ROLL+  payload   0 g : J1  -4.11  J2   3.88  J3   0.80  J4  -0.13
+  PIPE_GRASP_ROLL-  payload   0 g : J1  -4.11  J2   3.88  J3   0.80  J4   0.10
+  PIPE_LIFT         payload 165 g : J1  -2.34  J2   2.57  J3   1.04  J4  -0.01
+  PIPE_CHUTE        payload 165 g : J1  -0.70  J2   4.36  J3   0.17  J4   0.00
+  PIPE_CHUTE_ROLL90 payload 165 g : J1  -0.70  J2   4.36  J3   0.06  J4   0.00
+
+Modelled arm mass incl. motors and gripper drive: 3423 g
+boolean cache: 6148 hits, 1091 computed
+elapsed 91 s
+FreeCAD 1.1.4, Libs: 1.1.4R20260928 (Git shallow)
+(C) 2001-2026 FreeCAD contributors
+FreeCAD is free and open-source software licensed under the terms of LGPL2+ license.
+

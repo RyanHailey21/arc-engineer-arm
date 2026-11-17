@@ -1,0 +1,183 @@
+# Purchased-part catalogue: description, mass (g, used for part masses and torques), source and what to
+# verify on receipt.  Keyed by the 'src' field of CAT parts.  Read by cad/arm/core.py as CAT.
+# Masses are vendor figures where a source is given, otherwise estimates (flagged in desc/verify).
+
+["DM-J4340-2EC"]
+desc = "Damiao DM-J4340-2EC joint motor, 24 V, 9/27 N*m, 40:1, CAN (vendor STEP)"
+mass = 330
+src = "github.com/dmBots/DM-J4340-2EC models/3d + drawings/2d"
+
+["M2006-P36"]
+desc = "DJI RoboMaster M2006 P36 gear motor, 1 N*m @ 416 rpm (vendor STEP) - gripper drive"
+mass = 90
+src = "robomaster.com product 1277 STEP"
+
+["C610"]
+desc = "DJI RoboMaster C610 ESC for M2006 (vendor STEP)"
+mass = 15
+src = "robomaster.com product 1277 STEP"
+
+["DS3225MG"]
+desc = "DSServo DS3225MG 25 kg*cm standard servo, 25T spline (J3 pitch + J4 roll)"
+mass = 60
+verify = "no vendor CAD; caliper-check ear hole grid 49.5 x 10"
+
+["6805ZZ"]
+desc = "Thin-section bearing 6805ZZ 25x37x7 (roll support)"
+mass = 18
+
+["HORN-25T"]
+desc = "25T aluminium disc servo horn D20, 4x M3 tapped PCD14 (Thingbits TH1144 type)"
+mass = 3
+
+["6700ZZ"]
+desc = "Deep-groove bearing 6700ZZ 10x15x4"
+mass = 2
+
+["6701ZZ"]
+desc = "Deep-groove bearing 6701ZZ 12x18x4"
+mass = 3
+
+["MR105ZZ"]
+desc = "Miniature bearing MR105ZZ 5x10x4"
+mass = 1.2
+
+["MR104ZZ"]
+desc = "Miniature bearing MR104ZZ 4x10x4"
+mass = 1.2
+
+["MGN9-RAIL"]
+desc = "HIWIN MGN9R rail, cut 83 mm (catalogue geometry)"
+mass = 27
+
+["MGN9H"]
+desc = "HIWIN MGN9H block (catalogue geometry)"
+mass = 26
+
+["SHAFT10"]
+desc = "D10 h6 ground shaft (e-clip grooves; wrist: D6x4 stepped end + 0.5 mm D-flat)"
+mass = 0
+
+["DOWEL"]
+desc = "ISO 8734 dowel pin"
+mass = 1
+
+["688ZZ"]
+desc = "Deep-groove bearing 688ZZ 8x16x5 (lead-screw supports)"
+mass = 4
+
+["TR8X8-BIDIR"]
+desc = "Tr8x8 (4-start) bidirectional lead screw (RH/LH halves), 235 mm, D8 journals both ends"
+mass = 88
+verify = "order with ends machined to D8 h7 x 16 and plain centre 68 mm"
+
+["NUT-T8"]
+desc = "Tr8x8 (P2, 4-start) RH brass flange nut D22, 4x M3 on PCD16 (Creality T8)"
+mass = 12
+
+["SPRING-MOTOR"]
+desc = "Constant-force strip spring 21.9 N x 610 mm, 15.9 wide, 301 SS (McMaster 9293K337); back-wound on a D20 drum = 0.22 N*m over ~9.7 turns - opens the jaws when unpowered (R52)"
+mass = 12
+verify = "size to >=2x the measured M2006 back-drive torque x 32/20; bench-test release < 1 s"
+
+["GEAR-M1-20T"]
+desc = "Spur gear m1 20T steel, bore 6 (M2006 shaft), M3 set screw + Loctite 638"
+mass = 6
+
+["GEAR-M1-32T"]
+desc = "Spur gear m1 32T 6061, bore 8, hub D14 + M3 set screw (on the lead screw)"
+mass = 10
+
+["COLLAR10"]
+desc = "One-piece clamp collar D10 x D24 x 9, steel, M3x10 clamp screw included (Stafford 1LM010)"
+mass = 25
+
+["COLLAR8"]
+desc = "Set-screw shaft collar D8 x D16 x 8 (Ruland MSC-8-F)"
+mass = 8
+
+["SETSCREW"]
+desc = "ISO 4026 M3 set screw"
+mass = 0.3
+
+["CLIP"]
+desc = "Adhesive cable-tie mount 10x10 + 2.5 mm cable tie"
+mass = 1
+
+["PCLIP"]
+desc = "Nylon-coated P-clip, 9 mm bundle, 7 mm wide, M3 hole"
+mass = 1
+
+["SB5"]
+desc = "ISO 7379 shoulder screw d5, M4 thread"
+mass = 4
+
+["SHCS"]
+desc = "ISO 4762 socket head cap screw"
+mass = 1
+
+["BHCS"]
+desc = "ISO 7380 button head screw"
+mass = 1
+
+["CSK"]
+desc = "ISO 10642 countersunk screw"
+mass = 1
+
+["NYLOC"]
+desc = "ISO 10511 nyloc nut"
+mass = 0.5
+
+["WASHER"]
+desc = "ISO 7089 washer / shim"
+mass = 0.3
+
+["ECLIP"]
+desc = "DIN 6799 retaining washer"
+mass = 0.3
+
+["INSERT"]
+desc = "M3 heat-set insert 4.0 x 4"
+mass = 0.3
+
+["STANDOFF"]
+desc = "Round aluminium standoff M3 female"
+mass = 1
+
+["HARNESS"]
+desc = "Cabling (CAN/power, servo, M2006 phase + hall) - routed, not interference-checked"
+mass = 0
+
+["STS3215"]
+desc = "Feetech STS3215 serial-bus servo, 12 V version: 10 kg*cm rated / 30 kg*cm stall at 12 V, 0.222 s/60 deg, magnetic encoder 360 deg, steel gears (four-bar gripper drive)"
+mass = 60
+src = "Amazon ASIN B0FKY4Z15R (Stemedu ST3215 12 V) / B0FMXVR77Y (Feetech 2-pack); Feetech STS3215 datasheet"
+verify = "weigh on receipt (sources list 55-69 g); confirm 12 V / 1:345 variant and 25T spline; bench-test unpowered back-drive torque"
+
+["PIN-D4x14"]
+desc = "Dowel pin D4 m6 x 14, 52100 steel, ISO 8734 (four-bar coupler and idler pivots)"
+mass = 1.4
+src = "McMaster 91595A158"
+verify = "pivot bores ream 4 H8 (running) in the links, press fit in one side"
+
+["PIN-D4x20"]
+desc = "Dowel pin D4 m6 x 20, 52100 steel, ISO 8734 (left drive pivot)"
+mass = 2.0
+src = "McMaster 91595A167"
+
+["PIN-D4x30"]
+desc = "Dowel pin D4 m6 x 30, 52100 steel, ISO 8734 (right drive pivot through the spring arbor)"
+mass = 3.0
+src = "McMaster 91595A179"
+
+["WASHER-D4"]
+desc = "D4 thrust washers either side of the palm ground layer"
+mass = 0.3
+src = "DIN 988 shim ring 4 x 8 x 0.5, stainless - standard part, any supplier"
+
+["9271K56"]
+desc = "Torsion spring 90 deg right-hand wound, 0.499 in OD, 0.059 in wire, 4.5 in*lbf max (0.508 N*m), 2 in legs (trim to fit), music wire - opens the four-bar jaws unpowered"
+mass = 3.5
+src = "McMaster 9271K56"
+verify = "bench-test against the STS3215 unpowered back-drive torque; alternate 9271K52 (3.509 in*lbf) if lighter preload suffices"
+

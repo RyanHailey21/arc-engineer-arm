@@ -1,0 +1,19 @@
+# Interface: Damiao DM-J4340-2EC joint motor (J1, J2) <-> motor tower (stator side) and output hub (rotor side)
+# Source: Damiao 2D drawing + vendor STEP (github.com/dmBots/DM-J4340-2EC).  Motor model frame, mm;
+# angles are atan2(z, x) in degrees.  Read by cad/arm/core.py as DM.  (No [pattern] table: not probed by
+# tools/check_interfaces.py yet; the motor_hub and tower code build from these values.)
+
+[interface]
+name = "dm_j4340__hub_tower"
+summary = "DM-J4340 stator bolts to the CF tower (6x M3 PCD50 + 2 dowels); output flange drives the hub (6x M3 PCD27 + 3x D4 dowels PCD24)"
+owner = "base (J1/J2 drives)"
+
+[DM]
+stator_pcd = 50.0
+stator_holes = [30, 90, 150, -30, -90, -150]
+stator_dowels = [75, -105]
+out_pcd = 27.0
+out_holes = [0, 60, 120, 180, -120, -60]
+out_dowel_pcd = 24.0
+out_dowels = [90, -30, -150]
+face = 51.5          # output face |y| from the motor centre plane

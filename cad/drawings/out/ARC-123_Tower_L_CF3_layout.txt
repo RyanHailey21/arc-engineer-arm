@@ -1,0 +1,6 @@
+pass 0: moved 5, leaders 4, dim segments 9
+pass 1: moved 4, leaders 4, dim segments 9
+pass 2: moved 4, leaders 4, dim segments 9
+order default
+repair: FCF_g2 slid 9.0 mm off the leader of Call_g2
+REMAINING 0

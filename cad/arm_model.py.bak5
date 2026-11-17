@@ -1,0 +1,1172 @@
+# -*- coding: utf-8 -*-
+"""
+arm_model.py (v2) - complete, buildable model of the ARC Season 2 Engineer arm
+adapted from Wang et al., Actuators 2025, 14, 71.
+
+Every part carries two shapes:  vis (detailed / vendor geometry, for the
+assembly and renders) and chk (simplified solid used by the interference sweep).
+Rigid bodies are built in local frames and placed by placements(); the same
+frames are used by build_assembly.py to create Assembly-workbench joints.
+
+Frame: X forward from chassis front bumper, Y left, Z up from Battlefield floor.
+
+Y stack (centre planes, 3 mm CF plates):
+    J1 DM-J4340 stator  -52.5 .. -105     |  J2 DM-J4340 stator +52.5 .. +105
+    tower L  -51.0  (motor bolts on PCD50)|  tower R  +51.0
+    J1 hub   -51.5 .. -47.0               |  J2 hub   +47.0 .. +51.5, journal D12
+    upper L  -45.5                        |  upper R  +45.5  (6701 on J2 journal)
+    rod 1    -42.0                        |
+    rocker / level member -37.5 (+GT2 30T pulley -36..-25.5, 9 mm belt -35.25..-26.25)
+                                          |  crank   +34.5
+                                          |  rod AB  +29.0
+    clevis L -23.5 (wrist)                |  clevis R +23.5
+    forearm L -18.0                       |  forearm R +18.0
+    servo (wrist, outboard)  -45 .. -86
+"""
+import math
+import os
+import FreeCAD as App
+import Part
+import hardware as H
+
+V = App.Vector
+
+# ----------------------------------------------------------------- kinematics
+K = dict(SX=-160.0, SZ=215.0, L1=80.0, L2=340.0, L3=350.0, GRIP=151.0, DROP=20.0,
+         V1_LEN=70.0, V1_ANG=192.0, DECK_Z=120.0)
+T = 3.0
+Y = dict(FL=-18.0, CL=-23.5, BELT=-30.75, ROCK=-37.5, ROD1=-42.0, UA=-45.5, TW=-51.0,
+         RAB=29.0, CRANK=34.5)
+# ---- gripper: curved jaws + Tr8x8 bidirectional lead-screw drive (head frame)
+PAD_R, NOTCH, WRAP = 50.0, 12.0, 22.0   # donut-OD arc radius, pipe V-notch depth (90 deg), arc half-angle
+PIPE_R = 26.7 / 2
+O_PIPE = PIPE_R * math.sqrt(2) - NOTCH  # pad-face half gap when the V-notches hold the pipe
+O_REF = O_PIPE         # jaw half-opening at which jaw bodies are modelled (pipe grip)
+PIPE_JAW = 2 * O_PIPE  # 'jaw' value = gap between the arc-bottom pad faces at the TCP
+LEAD = 8.0             # Tr8x8 4-start: free-running, so the spring motor can spin it open (R52)
+Z_SCREW_T, Z_MOTOR_T = 32, 20     # 1.6:1 reduction motor -> screw (35 mm/s per jaw, finer grip force)
+GT2_T = 30             # level-keeping pulleys: 30T so the D10.6 bore clears the tooth roots (20T left 0.1 mm)
+UA_HUB_SCREWS = (30.0, 150.0, 270.0)   # J1 hub -> UA-L: 3x M3 on PCD20, clear of the PCD27 counterbores + dowels
+HUB_R = 19.5           # J1/J2 output hub flange radius (counterbores on PCD27 need >= 2.5 mm wall)
+
+# motor interface (from Damiao drawing + vendor STEP, model frame, angles atan2(z,x))
+DM = dict(stator_pcd=50.0, stator_holes=(30, 90, 150, -30, -90, -150), stator_dowels=(75, -105),
+          out_pcd=27.0, out_holes=(0, 60, 120, 180, -120, -60), out_dowel_pcd=24.0, out_dowels=(90, -30, -150),
+          face=51.5)
+M2006_HOLES = dict(pcd=18.4, ang=(1, 121, 241))
+
+# ------------------------------------------------------- purchased-part data
+CAT = {
+    "DM-J4340-2EC": dict(desc="Damiao DM-J4340-2EC joint motor, 24 V, 9/27 N*m, 40:1, CAN (vendor STEP)", mass=330,
+                         src="github.com/dmBots/DM-J4340-2EC models/3d + drawings/2d"),
+    "M2006-P36": dict(desc="DJI RoboMaster M2006 P36 gear motor, 1 N*m @ 416 rpm (vendor STEP) - gripper drive", mass=90,
+                      src="robomaster.com product 1277 STEP"),
+    "C610": dict(desc="DJI RoboMaster C610 ESC for M2006 (vendor STEP)", mass=15, src="robomaster.com product 1277 STEP"),
+    "DS3225MG": dict(desc="DSServo DS3225MG 25 kg*cm standard servo, 25T spline (J3 pitch + J4 roll)", mass=60,
+                     verify="no vendor CAD; caliper-check ear hole grid 49.5 x 10"),
+    "6805ZZ": dict(desc="Thin-section bearing 6805ZZ 25x37x7 (roll support)", mass=18),
+    "HORN-25T": dict(desc="25T aluminium disc servo horn D20, 4x M3 tapped PCD14 (Thingbits TH1144 type)", mass=3),
+    "6700ZZ": dict(desc="Deep-groove bearing 6700ZZ 10x15x4", mass=2),
+    "6701ZZ": dict(desc="Deep-groove bearing 6701ZZ 12x18x4", mass=3),
+    "MR105ZZ": dict(desc="Miniature bearing MR105ZZ 5x10x4", mass=1.2),
+    "MR104ZZ": dict(desc="Miniature bearing MR104ZZ 4x10x4", mass=1.2),
+    "MGN9-RAIL": dict(desc="HIWIN MGN9R rail, cut 83 mm (catalogue geometry)", mass=27),
+    "MGN9H": dict(desc="HIWIN MGN9H block (catalogue geometry)", mass=26),
+    "SHAFT10": dict(desc="D10 h6 ground shaft (e-clip grooves; wrist: D6x4 stepped end + 0.5 mm D-flat)", mass=0),
+    "DOWEL": dict(desc="ISO 8734 dowel pin", mass=1),
+    "688ZZ": dict(desc="Deep-groove bearing 688ZZ 8x16x5 (lead-screw supports)", mass=4),
+    "TR8X8-BIDIR": dict(desc="Tr8x8 (4-start) bidirectional lead screw (RH/LH halves), 235 mm, D8 journals both ends",
+                        mass=88, verify="order with ends machined to D8 h7 x 16 and plain centre 68 mm"),
+    "NUT-T8": dict(desc="Tr8x8 (P2, 4-start) RH brass flange nut D22, 4x M3 on PCD16 (Creality T8)", mass=12),
+    "SPRING-MOTOR": dict(desc="Constant-force strip spring 21.9 N x 610 mm, 15.9 wide, 301 SS (McMaster 9293K337); back-wound on "
+                              "a D20 drum = 0.22 N*m over ~9.7 turns - opens the jaws when unpowered (R52)", mass=12,
+                         verify="size to >=2x the measured M2006 back-drive torque x 32/20; bench-test release < 1 s"),
+    "GEAR-M1-20T": dict(desc="Spur gear m1 20T steel, bore 6 (M2006 shaft), M3 set screw + Loctite 638", mass=6),
+    "GEAR-M1-32T": dict(desc="Spur gear m1 32T 6061, bore 8, hub D14 + M3 set screw (on the lead screw)", mass=10),
+    "COLLAR10": dict(desc="One-piece clamp collar D10 x D24 x 9, steel, M3x10 clamp screw included (Stafford 1LM010)", mass=25),
+    "COLLAR8": dict(desc="Set-screw shaft collar D8 x D16 x 8 (Ruland MSC-8-F)", mass=8),
+    "SETSCREW": dict(desc="ISO 4026 M3 set screw", mass=0.3),
+    "CLIP": dict(desc="Adhesive cable-tie mount 10x10 + 2.5 mm cable tie", mass=1),
+    "PCLIP": dict(desc="Nylon-coated P-clip, 9 mm bundle, 7 mm wide, M3 hole", mass=1),
+    "SB5": dict(desc="ISO 7379 shoulder screw d5, M4 thread", mass=4),
+    "SHCS": dict(desc="ISO 4762 socket head cap screw", mass=1),
+    "BHCS": dict(desc="ISO 7380 button head screw", mass=1),
+    "CSK": dict(desc="ISO 10642 countersunk screw", mass=1),
+    "NYLOC": dict(desc="ISO 10511 nyloc nut", mass=0.5),
+    "WASHER": dict(desc="ISO 7089 washer / shim", mass=0.3),
+    "ECLIP": dict(desc="DIN 6799 retaining washer", mass=0.3),
+    "INSERT": dict(desc="M3 heat-set insert 4.0 x 4", mass=0.3),
+    "STANDOFF": dict(desc="Round aluminium standoff M3 female", mass=1),
+    "HARNESS": dict(desc="Cabling (CAN/power, servo, M2006 phase + hall) - routed, not interference-checked", mass=0),
+}
+MAT = {"CF": 1.55, "PRINT": 0.75, "AL": 2.70, "STEEL": 7.85, "TPU": 0.9, "BRASS": 8.5, "SHIM": 7.9, "PTFE": 2.2}
+
+
+class Part_:
+    def __init__(self, name, vis, chk, kind, src, color, note="", sub=None, check=True):
+        self.name, self.vis, self.chk, self.kind, self.src, self.color = name, vis, chk, kind, src, color
+        self.note, self.sub, self.check = note, sub, check
+        self.shape = chk          # back-compat
+
+
+# ------------------------------------------------------------------ helpers
+def u(deg, length=1.0):
+    a = math.radians(deg)
+    return (length * math.cos(a), length * math.sin(a))
+
+
+def add(p, q, s=1.0):
+    return (p[0] + s * q[0], p[1] + s * q[1])
+
+
+def ycyl(x, z, y0, y1, r):
+    y0, y1 = sorted((y0, y1))
+    return Part.makeCylinder(r, y1 - y0, V(x, y0, z), V(0, 1, 0))
+
+
+def ring(x, z, y0, y1, ro, ri):
+    return ycyl(x, z, y0, y1, ro).cut(ycyl(x, z, min(y0, y1) - 1, max(y0, y1) + 1, ri))
+
+
+def box(x0, y0, z0, x1, y1, z1):
+    x0, x1 = sorted((x0, x1)); y0, y1 = sorted((y0, y1)); z0, z1 = sorted((z0, z1))
+    return Part.makeBox(x1 - x0, y1 - y0, z1 - z0, V(x0, y0, z0))
+
+
+def hexhole(af, x, z, y0, y1):
+    s = H._hexprism(af, min(y0, y1), max(y0, y1))
+    s.translate(V(x, 0, z))
+    return s
+
+
+def _hull2(x1, z1, r1, x2, z2, r2, y0, t):
+    dx, dz = x2 - x1, z2 - z1
+    L = math.hypot(dx, dz)
+    a = math.atan2(dz, dx)
+    phi = math.asin(max(-1.0, min(1.0, (r1 - r2) / L)))
+    # outer tangents: normal n with (c2 - c1).n = r1 - r2  ->  angle a +- (pi/2 - phi)
+    n1 = (math.cos(a + math.pi / 2 - phi), math.sin(a + math.pi / 2 - phi))
+    n2 = (math.cos(a - math.pi / 2 + phi), math.sin(a - math.pi / 2 + phi))
+    poly = [V(x1 + r1 * n1[0], y0, z1 + r1 * n1[1]), V(x2 + r2 * n1[0], y0, z2 + r2 * n1[1]),
+            V(x2 + r2 * n2[0], y0, z2 + r2 * n2[1]), V(x1 + r1 * n2[0], y0, z1 + r1 * n2[1])]
+    s = Part.Face(Part.makePolygon(poly + [poly[0]])).extrude(V(0, t, 0))
+    return s.fuse(ycyl(x1, z1, y0, y0 + t, r1)).fuse(ycyl(x2, z2, y0, y0 + t, r2))
+
+
+def _convex_hull(points):
+    pts = sorted(set(points))
+    if len(pts) < 3:
+        return pts
+    def cross(o, a, b):
+        return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+    lo, hi = [], []
+    for p in pts:
+        while len(lo) >= 2 and cross(lo[-2], lo[-1], p) <= 0:
+            lo.pop()
+        lo.append(p)
+    for p in reversed(pts):
+        while len(hi) >= 2 and cross(hi[-2], hi[-1], p) <= 0:
+            hi.pop()
+        hi.append(p)
+    return lo[:-1] + hi[:-1]
+
+
+def plate(points_r, yc, holes=(), t=T, pockets=()):
+    """Plate (normal Y) = true convex hull of circles [(x, z, r)], with holes
+    [(x, z, r)] and rounded-slot pockets [((x,z,r),(x,z,r))]."""
+    y0 = yc - t / 2
+    pts = list(points_r)
+    if len(pts) == 1:
+        x, z, r = pts[0]
+        s = ycyl(x, z, y0, y0 + t, r)
+    elif len(pts) == 2:
+        s = _hull2(*pts[0], *pts[1], y0, t)
+    else:
+        # sampled hull only decides WHICH circles are on the hull and in what (CCW) order; the outline
+        # itself uses exact outer-tangent points (as _hull2) so the fused arcs meet the straight sides
+        # tangentially - a polygon with vertices ON the circles leaves ~1e-5 mm sliver edges that
+        # break meshing (FEA negative Jacobians) and DXF export.
+        cloud, owner = [], {}
+        for ci, (x, z, r) in enumerate(pts):
+            for k in range(64):
+                a = 2 * math.pi * k / 64
+                q = (round(x + r * math.cos(a), 6), round(z + r * math.sin(a), 6))
+                cloud.append(q)
+                owner.setdefault(q, ci)
+        order = []
+        for q in _convex_hull(cloud):
+            ci = owner[q]
+            if not order or order[-1] != ci:
+                order.append(ci)
+        if len(order) > 1 and order[0] == order[-1]:
+            order.pop()
+        poly = []
+        for k in range(len(order)):
+            (x1, z1, r1), (x2, z2, r2) = pts[order[k]], pts[order[(k + 1) % len(order)]]
+            dx, dz = x2 - x1, z2 - z1
+            L = math.hypot(dx, dz)
+            a = math.atan2(dz, dx)
+            phi = math.asin(max(-1.0, min(1.0, (r1 - r2) / L)))
+            n = (math.cos(a - math.pi / 2 + phi), math.sin(a - math.pi / 2 + phi))   # outward for a CCW hull
+            poly += [V(x1 + r1 * n[0], y0, z1 + r1 * n[1]), V(x2 + r2 * n[0], y0, z2 + r2 * n[1])]
+        clean = [poly[0]]
+        for p_ in poly[1:]:
+            if (p_ - clean[-1]).Length > 1e-6:
+                clean.append(p_)
+        if (clean[0] - clean[-1]).Length < 1e-6:
+            clean.pop()
+        s = Part.Face(Part.makePolygon(clean + [clean[0]])).extrude(V(0, t, 0))
+        for (x, z, r) in pts:
+            s = s.fuse(ycyl(x, z, y0, y0 + t, r))
+    cuts = [ycyl(x, z, y0 - 1, y0 + t + 1, r) for (x, z, r) in holes]
+    for (a, b) in pockets:
+        cuts.append(_hull2(*a, *b, y0 - 1, t + 2))
+    for c in cuts:
+        s = s.cut(c)
+    return s.removeSplitter()
+
+
+def link_pockets(L, r0, r1, holes, web=6.0, min_r=3.0):
+    """Rounded-slot lightening pockets along a tapered link between holes [(x, r)]:
+    every pocket keeps 'web' to the plate edge and to each hole (or screw-head footprint)."""
+    out = []
+    hs = sorted(holes)
+    k = (r1 - r0) / L
+    rad = lambda x: r0 + k * x
+    for (a, ra_h), (b, rb_h) in zip(hs[:-1], hs[1:]):
+        xa = (a + ra_h + r0) / (1 - k)                 # xa - (rad(xa) - web) = a + ra_h + web
+        xb = (b - rb_h - r0) / (1 + k)                 # xb + (rad(xb) - web) = b - rb_h - web
+        if xb - xa < 12:
+            continue
+        ra, rb = rad(xa) - web, rad(xb) - web
+        if min(ra, rb) < min_r:
+            continue
+        out.append(((xa, 0, ra), (xb, 0, rb)))
+    return out
+
+
+def fillet_z(shape, r):
+    try:
+        es = [e for e in shape.Edges if e.Curve.TypeId == "Part::GeomLine"
+              and abs(abs(e.tangentAt(e.FirstParameter).z) - 1) < 1e-6]
+        return shape.makeFillet(r, es) if es else shape
+    except Exception:
+        return shape
+
+
+def fillet_y(shape, r):
+    try:
+        es = [e for e in shape.Edges if e.Curve.TypeId == "Part::GeomLine"
+              and abs(abs(e.tangentAt(e.FirstParameter).y) - 1) < 1e-6]
+        return shape.makeFillet(r, es) if es else shape
+    except Exception:
+        return shape
+
+
+def at(pair, x=0.0, z=0.0, y=0.0):
+    out = []
+    for s in pair[:2]:
+        s = s.copy()
+        s.translate(V(x, y, z))
+        out.append(s)
+    return out
+
+
+def to_z(pair, x, y, z):
+    """Move a Y-axis built fastener to a +Z axis at (x, y, z)."""
+    out = []
+    for s in pair[:2]:
+        s = s.copy()
+        s.rotate(V(0, 0, 0), V(1, 0, 0), 90)       # +Y -> +Z
+        s.translate(V(x, y, z))
+        out.append(s)
+    return out
+
+
+def to_x(pair, x, y, z):
+    """Move a Y-axis built item to the -X axis (Y -> -X) at (x, y, z)."""
+    out = []
+    for s in pair[:2]:
+        s = s.copy()
+        s.rotate(V(0, 0, 0), V(0, 0, 1), 90)
+        s.translate(V(x, y, z))
+        out.append(s)
+    return out
+
+
+def clip_at(x, z, y_face, sgn):
+    """Cable-tie mount stuck on a Y-normal face at (x, y_face, z), pointing sgn*Y."""
+    out = []
+    for s_ in H.cable_clip()[:2]:
+        s_ = s_.copy()
+        s_.rotate(V(0, 0, 0), V(1, 0, 0), -90 * sgn)
+        s_.translate(V(x, y_face, z))
+        out.append(s_)
+    return out
+
+
+def P(name, pair, kind, src, color, note="", sub=None, check=True):
+    return Part_(name, pair[0], pair[1], kind, src, color, note, sub, check)
+
+
+def csk(d, L, y_face, direction):
+    """ISO 10642 countersunk screw, head flush at y_face, shank in 'direction'."""
+    dk = 2 * d
+    k = (dk - d) / 2                         # 90 deg included head (ISO 10642); 0.6d gave 79.6 deg
+    ya, yb = sorted((y_face, y_face + direction * k))
+    r0, r1 = (dk / 2, d / 2) if direction > 0 else (d / 2, dk / 2)
+    head = Part.makeCone(r0, r1, k, V(0, ya, 0), V(0, 1, 0))
+    sa, sb = sorted((y_face, y_face + direction * L))
+    s = head.fuse(H._ycyl(0.41 * d, sa, sb))
+    return s, s
+
+
+# ====================================================================== bodies
+def body_ground():
+    S = (K["SX"], K["SZ"])
+    sx, sz, zb = S[0], S[1], K["DECK_Z"]
+    G1 = add(S, u(K["V1_ANG"], K["V1_LEN"]))
+    out = []
+    # --- base plate
+    base = fillet_z(box(sx - 275, -112, zb, sx + 70, 112, zb + 5), 10)
+    corners = [(sx - 262, -99), (sx - 262, 99), (sx + 57, -99), (sx + 57, 99)]
+    for (x, y) in corners:
+        base = base.cut(Part.makeCylinder(2.25, 7, V(x, y, zb - 1)))
+    tapped = [(bx, sg * 64.5) for bx in (sx - 45, sx + 45) for sg in (-1, 1)]
+    for (x, y) in tapped:
+        base = base.cut(Part.makeCylinder(1.25, 7, V(x, y, zb - 1)))
+    out.append(Part_("Base_Plate_AL5", base, base, "AL", "custom: 5 mm 6061, waterjet + tap", "alu",
+                     "4x M4 to chassis; M3 tapped for brackets / ESC / cable clips"))
+    for i, (x, y) in enumerate(corners):
+        out.append(P("SHCS_M4x12_base_%d" % i, to_z(H.screw("SHCS", 4, 12, 0, -1), x, y, zb + 5),
+                     "CAT", "SHCS", "steel", "M4x12 into chassis", check=False))
+    # --- towers + motors
+    for side, sgn in (("L", -1), ("R", 1)):
+        yc = sgn * 51.0
+        pts = [(sx - 60, zb + 8, 3), (sx + 60, zb + 8, 3), (sx, sz, 34)]
+        holes = [(sx, sz, HUB_R + 1.5)]
+        sh_ang = [(180 - a if sgn < 0 else a) for a in DM["stator_holes"]]
+        dw_ang = [(180 - a if sgn < 0 else a) for a in DM["stator_dowels"]]
+        for a in sh_ang:
+            p = add(S, u(a, 25.0)); holes.append((p[0], p[1], 1.65))
+        for a in dw_ang:
+            p = add(S, u(a, 25.0)); holes.append((p[0], p[1], 1.5))
+        for bx in (sx - 45, sx + 45):
+            holes.append((bx, zb + 17, 1.65))
+        if side == "L":
+            pts.append((G1[0], G1[1], 10))
+            holes.append((G1[0], G1[1], 2.1))
+        tw = plate(pts, yc, holes, pockets=[((sx - 30, zb + 22, 6), (sx + 30, zb + 22, 6))])
+        out.append(Part_("Tower_%s_CF3" % side, tw, tw, "CF", "custom: 3 mm CF plate (DXF)", "cf"))
+        # vendor motor stator (rotor parts live in UPPER / CRANK bodies)
+        st, _rot = dm_split()
+        pl = App.Placement(V(sx, sgn * DM["face"], sz), App.Rotation(V(0, 0, 1), 180 if sgn < 0 else 0))
+        st.Placement = pl.multiply(st.Placement)
+        chk = ring(sx, sz, sgn * 52.5, sgn * 58.5, 28.5, 18.0).fuse(ycyl(sx, sz, sgn * 58.5, sgn * 104.75, 28.5))
+        for a in sh_ang:
+            p = add(S, u(a, 25.0))
+            chk = chk.cut(ycyl(p[0], p[1], sgn * 52.4, sgn * 57.5, 1.25))
+        out.append(Part_("J%d_Motor_DM-J4340_stator" % (1 if sgn < 0 else 2), st, chk, "CAT", "DM-J4340-2EC", "motor"))
+        for i, a in enumerate(sh_ang):
+            p = add(S, u(a, 25.0))
+            out.append(P("BHCS_M3x8_motor%s_%d" % (side, i), at(H.screw("BHCS", 3, 8, sgn * 49.5, sgn), p[0], p[1]),
+                         "CAT", "BHCS", "steel"))
+        for i, a in enumerate(dw_ang):
+            p = add(S, u(a, 25.0))
+            out.append(P("Dowel_3x7_motor%s_%d" % (side, i),            # stock ISO 8734 3x7 (McMaster 91595A113)
+                         at(H.dowel(3, min(sgn * 49.5, sgn * 56.5), max(sgn * 49.5, sgn * 56.5)), p[0], p[1]),
+                         "CAT", "DOWEL", "steel", check=False))
+        # printed angle brackets (outboard) tower -> base
+        for j, bx in enumerate((sx - 45, sx + 45)):
+            yo0, yo1 = sgn * 52.5, sgn * 56.5
+            br = box(bx - 8, yo0, zb + 5, bx + 8, yo1, zb + 25).fuse(box(bx - 8, yo0, zb + 5, bx + 8, sgn * 72.5, zb + 9))
+            br = br.cut(ycyl(bx, zb + 17, yo0 - sgn, yo1 + sgn, 1.65))
+            br = br.cut(Part.makeCylinder(1.65, 6, V(bx, sgn * 64.5, zb + 4)))
+            br = fillet_z(br, 1.5)
+            out.append(Part_("Tower_Bracket_%s%d" % (side, j), br, br, "PRINT", "custom: PETG-CF print", "pla"))
+            out.append(P("BHCS_M3x10_bracket_%s%d" % (side, j), at(H.screw("BHCS", 3, 10, sgn * 49.5, sgn), bx, zb + 17),
+                         "CAT", "BHCS", "steel"))
+            out.append(P("Nyloc_M3_bracket_%s%d" % (side, j), at(H.nyloc(3, sgn * 56.5, sgn), bx, zb + 17),
+                         "CAT", "NYLOC", "steel"))
+            out.append(P("BHCS_M3x8_bracketbase_%s%d" % (side, j), to_z(H.screw("BHCS", 3, 8, 0, -1), bx, sgn * 64.5, zb + 9),
+                         "CAT", "BHCS", "steel"))
+    # --- G1 ground pivot (stage-1 level-keeping): spacer + shoulder screw + nyloc
+    out.append(P("Spacer_G1", at((ring(0, 0, -49.5, -43.5, 4.5, 2.6),) * 2, G1[0], G1[1]), "AL", "custom: D9/D5.2 x 6 alu", "alu"))
+    out.append(P("SB5x10_G1", at(H.shoulder(5, 10, 4, 8, -39.5, -1), G1[0], G1[1]), "CAT", "SB5", "steel"))
+    out.append(P("Nyloc_M4_G1", at(H.nyloc(4, -52.5, -1), G1[0], G1[1]), "CAT", "NYLOC", "steel"))
+    for i, (x, y) in enumerate(((sx - 70, -78), (sx - 170, -40), (sx - 230, 40))):
+        out.append(P("Cable_Clip_Base_%d" % i, at(H.cable_clip(), x, zb + 5, y), "CAT", "CLIP", "pad", "harness to C610 / PDB"))
+    # --- C610 ESC (vendor) on base plate under J1
+    esc = H.vendor("C610")
+    bb = esc.BoundBox
+    esc.translate(V(sx - 120 - bb.Center.x, -80 - bb.Center.y, zb + 6 - bb.ZMin))
+    out.append(Part_("ESC_C610", esc, Part.makeBox(bb.XLength, bb.YLength, bb.ZLength,
+                                                   V(sx - 120 - bb.XLength / 2, -80 - bb.YLength / 2, zb + 6)),
+                     "CAT", "C610", "motor", "on 1 mm VHB pad"))
+    return out
+
+
+_DM = {}
+
+
+def dm_split():
+    """DM-J4340 vendor model split into stator and output rotor (rotor = solids
+    entirely in front of the stator face y<1.05 within the D35 boss)."""
+    if "s" not in _DM:
+        m = H.vendor("DM4340")
+        rot = [s for s in m.Solids if s.BoundBox.YMax < 1.3 and max(abs(s.BoundBox.XMin), abs(s.BoundBox.XMax)) < 18.0]
+        st = [s for s in m.Solids if s not in rot]
+        _DM["s"] = Part.makeCompound(st)
+        _DM["r"] = Part.makeCompound(rot) if rot else Part.Shape()
+    return _DM["s"].copy(), _DM["r"].copy()
+
+
+def dm_rotor_part(name, sgn, hub_shape, local_y_face):
+    """Rotor of the DM motor in the driven body's local frame."""
+    _st, rot = dm_split()
+    pl = App.Placement(V(0, sgn * local_y_face, 0), App.Rotation(V(0, 0, 1), 180 if sgn < 0 else 0))
+    rot.Placement = pl.multiply(rot.Placement)
+    chk = ycyl(0, 0, sgn * 51.45, sgn * 52.45, 17.4)
+    return Part_(name, rot, chk, "CAT", "DM-J4340-2EC", "motor", "output rotor of vendor model", check=False)
+
+
+def motor_hub(sgn, journal=False):
+    """J1/J2 output hub (6061): D34 x 4.5 flange on the rotor face with 6x M3
+    counterbored on PCD27 + 3x D4 dowels on PCD24.  J1: 3x M3 tapped PCD20
+    for UA-L.  J2: D12 h6 journal through UA-R 6701 to the crank."""
+    y_face = sgn * 51.5
+    y_in = sgn * 47.0
+    h = ycyl(0, 0, y_face, y_in, HUB_R)
+    hang = [(180 - a if sgn < 0 else a) for a in DM["out_holes"]]
+    dang = [(180 - a if sgn < 0 else a) for a in DM["out_dowels"]]
+    for a in hang:
+        p = u(a, 13.5)
+        h = h.cut(ycyl(p[0], p[1], y_face, y_in, 1.65)).cut(ycyl(p[0], p[1], y_in, sgn * 50.0, 3.25))
+    for a in dang:
+        p = u(a, 12.0)
+        h = h.cut(ycyl(p[0], p[1], y_face, sgn * 49.0, 2.0))
+    parts = []
+    if not journal:
+        h = h.fuse(ycyl(0, 0, y_in, sgn * 44.5, 6.0))                     # pilot into UA-L
+        for a_ in UA_HUB_SCREWS:
+            p = u(a_, 10.0)
+            h = h.cut(ycyl(p[0], p[1], y_in, sgn * 51.0, 1.25))
+    else:
+        h = h.fuse(ycyl(0, 0, y_in, sgn * 33.0, 6.0))                      # D12 journal
+        fy = sorted((sgn * 32.5, sgn * 36.5))
+        h = h.cut(box(5.5, fy[0], -7, 7.0, fy[1], 7))                       # 0.5 mm drive flat under the crank
+        h = h.cut(ycyl(0, 0, sgn * 33.0, sgn * 41.5, 1.7))               # M4 tapped end
+    name = "J2_Output_Hub_Journal" if journal else "J1_Output_Hub"
+    parts.append(Part_(name, h, h, "AL", "custom: 6061 turned + drilled", "alu"))
+    for i, a in enumerate(hang):
+        p = u(a, 13.5)
+        parts.append(P("SHCS_M3x6_%s_%d" % (name, i), at(H.screw("SHCS", 3, 6, sgn * 50.0, sgn), p[0], p[1]),
+                       "CAT", "SHCS", "steel"))
+    for i, a in enumerate(dang):
+        p = u(a, 12.0)
+        parts.append(P("Dowel_4x5_%s_%d" % (name, i), at(H.dowel(4, sgn * 49.0, sgn * 54.0), p[0], p[1]),   # stock 4x5 (91595A123)
+                       "CAT", "DOWEL", "steel", check=False))
+    return parts
+
+
+UA_CLIP_X = (K["L2"] / 3, 2 * K["L2"] / 3)     # UA standoff stations (P-clips on the L side)
+UA_CLIP_YZ = (-47.0 - 5.3, 9.0)                # harness bundle centre in the UA frame (y, z)
+
+
+def body_upper():
+    L2 = K["L2"]
+    out = []
+    xs = [0, L2 / 3, 2 * L2 / 3, L2]
+    pk = link_pockets(L2, 22, 13, [(0.0, 12.0), (L2 / 3, 3.0), (2 * L2 / 3, 3.0), (L2, 7.5)])
+    for side, yc in (("L", Y["UA"]), ("R", -Y["UA"])):
+        holes = [(L2, 0, 7.5), (L2 / 3, 0, 1.65), (2 * L2 / 3, 0, 1.65)]
+        if side == "L":
+            holes += [(0, 0, 6.05)] + [(*u(a_, 10.0), 1.65) for a_ in UA_HUB_SCREWS]
+        else:
+            holes += [(0, 0, 9.0)]
+        pl = plate([(0, 0, 22), (L2, 0, 13)], yc, holes, pockets=pk)
+        out.append(Part_("Upper_Arm_%s_CF3" % side, pl, pl, "CF", "custom: 3 mm CF plate (DXF)", "cf"))
+    out.append(P("Brg_6700_Elbow_UA_L", at(H.bearing(10, 15, 4, -44.0, -1), L2, 0), "CAT", "6700ZZ", "alu"))
+    out.append(P("Brg_6700_Elbow_UA_R", at(H.bearing(10, 15, 4, 44.0, 1), L2, 0), "CAT", "6700ZZ", "alu"))
+    out.append(P("Brg_6701_Shoulder_UA_R", H.bearing(12, 18, 4, 47.0, -1), "CAT", "6701ZZ", "alu"))
+    out += motor_hub(-1)
+    out.append(dm_rotor_part("J1_Motor_DM-J4340_rotor", -1, None, DM["face"]))
+    for k, a_ in enumerate(UA_HUB_SCREWS):
+        p = u(a_, 10.0)
+        out.append(P("BHCS_M3x6_UA_hub_%d" % k, at(H.screw("BHCS", 3, 6, -44.0, -1), p[0], p[1]), "CAT", "BHCS", "steel"))
+    for i, x in enumerate(UA_CLIP_X):
+        out.append(P("UA_Standoff_D8_%d" % i, at(H.standoff_round(8, 88, -44.0, 1), x, 0), "AL", "custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)", "alu",
+                     "D8 x 88 M3 female"))
+        # harness P-clip clamped under the outboard standoff screw on UA-L (screw 2 mm longer)
+        pc = H.p_clip(-47.0, -1)
+        out.append(P("PClip_UA_%d" % i, at(pc[:2], x, 0), "CAT", "PCLIP", "steel", "harness: J3 servo + M2006 bundle"))
+        for sgn in (-1, 1):
+            y_head = -47.8 if sgn < 0 else 47.0
+            out.append(P("BHCS_M3x%d_UA_st_%d%s" % (8 if sgn < 0 else 6, i, "L" if sgn < 0 else "R"),
+                         at(H.screw("BHCS", 3, 8 if sgn < 0 else 6, y_head, -sgn), x, 0), "CAT", "BHCS", "steel"))
+    return out
+
+
+def body_crank():
+    L1 = K["L1"]
+    yc = Y["CRANK"]
+    out = []
+    cr = plate([(0, 0, 14), (L1, 0, 8)], yc, [(0, 0, 6.0), (L1, 0, 2.5)],
+               pockets=[((22, 0, 5), (L1 - 18, 0, 3.5))])
+    cr = cr.fuse(ycyl(0, 0, yc - T / 2, yc + T / 2, 6.0).common(box(5.5, yc - T / 2, -7, 7.0, yc + T / 2, 7)))   # D-bore
+    out.append(Part_("Crank_CF3", cr, cr, "CF", "custom: 3 mm CF plate (DXF), D-bore on journal flat", "cf"))
+    out += motor_hub(1, journal=True)
+    out.append(dm_rotor_part("J2_Motor_DM-J4340_rotor", 1, None, DM["face"]))
+    out.append(P("Washer_M4_crank", H.washer(4, 33.0, -1, od=12, t=0.8), "CAT", "WASHER", "steel"))
+    out.append(P("SHCS_M4x8_crank", H.screw("SHCS", 4, 8, 32.2, 1), "CAT", "SHCS", "steel", "axial retention"))
+    # pivot A
+    out.append(P("Shim_A", at((ring(0, 0, 31.5, 33.0, 4.0, 2.55),) * 2, L1, 0), "SHIM", "custom: 301 SS shim stock 1.5, laser cut", "steel"))
+    # stock 8 mm shoulder (Kipp K0705.05X08): step ends inside the crank's D5.1 hole, nyloc clamps bearing race + shim + crank
+    out.append(P("SB5x8_A", at(H.shoulder(5, 8.0, 4, 5, 27.5, 1), L1, 0), "CAT", "SB5", "steel"))   # McMaster 90265A577
+    out.append(P("Nyloc_M4_A", at(H.nyloc(4, 36.0, 1), L1, 0), "CAT", "NYLOC", "steel"))
+    return out
+
+
+def body_rod(name, L, yc):
+    pk = link_pockets(L, 8.5, 8.5, [(0, 5.0), (L / 3, 0), (2 * L / 3, 0), (L, 5.0)], web=4.0, min_r=3.0)
+    pk = [((a[0], a[1], 3.5), (b[0], b[1], 3.5)) for a, b in [((18, 0, 0), (L / 2 - 6, 0, 0)), ((L / 2 + 6, 0, 0), (L - 18, 0, 0))]]
+    pl = plate([(0, 0, 8.5), (L, 0, 8.5)], yc, [(0, 0, 5.0), (L, 0, 5.0)], pockets=pk)
+    out = [Part_(name + "_CF3", pl, pl, "CF", "custom: 3 mm CF plate (DXF)", "cf")]
+    for x in (0, L):
+        out.append(P("Brg_MR105_%s_%d" % (name, x), at(H.bearing(5, 10, 4, yc - T / 2, 1), x, 0), "CAT", "MR105ZZ", "alu"))
+    return out
+
+
+def gt2_level_pulley(name):
+    """Custom GT2 30T pulley keyed to its plate by a hex (af19), bearing inside."""
+    body, chk, pd = H.gt2_pulley(GT2_T, -36.0, -25.5, 10.6, flange_t=0.75)
+    hexk = H._hexprism(19, -39.0, -36.0)
+    pul = body.fuse(hexk).cut(ycyl(0, 0, -39.1, -35.0, 7.5)).cut(ycyl(0, 0, -43, -20, 5.3))
+    odr = (pd - 0.508) / 2
+    fr = odr + 1.5
+    chk = hexk.fuse(ycyl(0, 0, -36.0, -35.25, fr)).fuse(ycyl(0, 0, -35.25, -26.25, odr)).fuse(ycyl(0, 0, -26.25, -25.5, fr))
+    chk = chk.cut(ycyl(0, 0, -39.1, -35.0, 7.5)).cut(ycyl(0, 0, -43, -20, 5.3))
+    return [Part_(name, pul, chk, "AL", "custom: 6061 GT2 %dT hobbed, hex key af19" % GT2_T, "alu"),
+            P(name + "_Brg_6700", H.bearing(10, 15, 4, -39.0, 1), "CAT", "6700ZZ", "alu")], pd
+
+
+def body_forearm():
+    L1, L3 = K["L1"], K["L3"]
+    out = []
+    xs = [-L1, 0, L3 / 3, L3 / 2, 2 * L3 / 3, L3]
+    pd30 = GT2_T * 2.0 / math.pi
+    IZ = pd30 / 2 - 0.254 + 1.38 + 7.0                 # idler (r7) rides on the belt back
+    pk = [((22, 0, 6), (L3 / 3 - 15, 0, 6)), ((L3 / 3 + 15, 0, 6), (L3 / 2 - 15, 0, 6)),
+          ((L3 / 2 + 15, 0, 6), (2 * L3 / 3 - 15, 0, 6)), ((2 * L3 / 3 + 15, 0, 6), (L3 - 28, 0, 5))]
+    for side, yc in (("L", Y["FL"]), ("R", -Y["FL"])):
+        holes = [(0, 0, 5.0), (L3, 0, 7.5), (L3 / 3, 0, 1.65), (2 * L3 / 3, 0, 1.65), (-L1, 0, 2.1)]
+        lobes = [(-L1, 0, 9), (0, 0, 14), (L3, 0, 12)] + ([(L3 / 2, IZ, 6.5)] if side == "L" else [])
+        pl = plate(lobes, yc, holes, pockets=pk)
+        if side == "L":   # idler slot (tension adjust)
+            pl = pl.cut(_hull2(L3 / 2, IZ - 1.5, 2.1, L3 / 2, IZ + 1.5, 2.1, yc - T / 2 - 1, T + 2))
+        out.append(Part_("Forearm_%s_CF3" % side, pl, pl, "CF", "custom: 3 mm CF plate (DXF)", "cf"))
+    out.append(P("Brg_6700_Wrist_FA_L", at(H.bearing(10, 15, 4, -19.5, 1), L3, 0), "CAT", "6700ZZ", "alu"))
+    out.append(P("Brg_6700_Wrist_FA_R", at(H.bearing(10, 15, 4, 19.5, -1), L3, 0), "CAT", "6700ZZ", "alu"))
+    sh = ycyl(0, 0, -49.5, 49.5, 5.0)
+    for y0_ in (48.0, -48.94):                                            # e-clip grooves D7 x 0.94 (DIN 6799 size 7)
+        sh = sh.cut(ycyl(0, 0, y0_, y0_ + 0.94, 6.0).cut(ycyl(0, 0, y0_ - 0.1, y0_ + 1.04, 3.5)))
+    out.append(Part_("Elbow_Shaft_D10x99", sh, sh, "STEEL", "custom: cut from McMaster 6112K47 D10 h6 rod, ground e-clip grooves", "steel"))
+    for sgn in (-1, 1):
+        nmc = "L" if sgn < 0 else "R"
+        # Stafford 1LM010 one-piece clamp collar, 10 mm bore, OD 24 x 9, M3x10 clamp screw included;
+        # sits inboard against the forearm plate (y 7.5 .. 16.5)
+        col = ring(0, 0, sgn * 16.5, sgn * 7.5, 12.0, 5.0)
+        out.append(Part_("Elbow_Clamp_Collar_%s" % nmc, col, col, "CAT", "COLLAR10", "steel", "Stafford 1LM010 clamp collar"))
+        out.append(P("Eclip_D10_elbow_%s" % ("L" if sgn < 0 else "R"), H.eclip(10, sgn * 48.0, sgn), "CAT", "ECLIP", "steel"))
+    for i, x in enumerate((L3 / 3, 2 * L3 / 3)):
+        out.append(P("FA_Standoff_D8_%d" % i, at(H.standoff_round(8, 33, -16.5, 1), x, 0), "AL", "custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)", "alu"))
+        for sgn in (-1, 1):
+            out.append(P("BHCS_M3x6_FA_st_%d%s" % (i, "L" if sgn < 0 else "R"),
+                         at(H.screw("BHCS", 3, 6, sgn * 19.5, -sgn), x, 0), "CAT", "BHCS", "steel"))
+    # pivot B (rod AB): spacer, shoulder screw, nyloc in the forearm gap
+    out.append(P("Spacer_B", at((ring(0, 0, 19.5, 27.5, 4.5, 2.6),) * 2, -L1, 0), "AL", "custom: D9/D5.2 x 8 alu", "alu"))
+    out.append(P("SB5x12_B", at(H.shoulder(5, 12, 4, 8, 31.5, -1), -L1, 0), "CAT", "SB5", "steel"))
+    out.append(P("Nyloc_M4_B", at(H.nyloc(4, 16.5, -1), -L1, 0), "CAT", "NYLOC", "steel"))
+    # belt idler (tensioner) on forearm L, in the belt plane
+    ix, iz = L3 / 2, IZ
+    out.append(Part_("Belt_Idler_Roller", ring(ix, iz, -36, -26, 7.0, 5.0), ring(ix, iz, -36, -26, 7.0, 5.0),
+                     "PRINT", "custom: printed roller", "pla"))
+    out.append(P("Belt_Idler_Brg_MR104", at(H.bearing(4, 10, 4, -35.0, 1), ix, iz), "CAT", "MR104ZZ", "alu"))
+    out.append(P("Belt_Idler_Brg_MR104_b", at(H.bearing(4, 10, 4, -27.0, -1), ix, iz), "CAT", "MR104ZZ", "alu"))
+    out.append(P("Belt_Idler_Spacer", at((ring(0, 0, -26.0, -19.5, 4.0, 2.1),) * 2, ix, iz), "AL", "custom: D8/D4.2 x 6.5", "alu"))
+    out.append(P("SHCS_M4x30_idler", at(H.screw("SHCS", 4, 30.0, -36.0, 1), ix, iz), "CAT", "SHCS", "steel"))   # 91290A172
+    out.append(P("Nyloc_M4_idler", at(H.nyloc(4, -16.5, 1), ix, iz), "CAT", "NYLOC", "steel"))
+    # stage-2 belt (forearm frame: wraps E pulley at x=0 and D pulley at x=L3)
+    _b, _c, pd = H.gt2_pulley(GT2_T, -33.0, -25.5, 10.6)
+    belt, bchk = H.gt2_belt(L3, -35.25, -26.25, pd)
+    out.append(Part_("GT2_Belt_9mm_Stage2", belt, bchk, "CAT", "GT2-BELT", "motor", "GT2 9 mm (2GT-9), clamp-spliced, tensioned by idler"))
+    return out
+
+
+def body_rocker():
+    v1 = u(K["V1_ANG"], K["V1_LEN"])
+    yc = Y["ROCK"]
+    pl = plate([(0, 0, 15), (v1[0], v1[1], 8.5)], yc, [(v1[0], v1[1], 2.55)])   # D5.1: takes the stock 5 mm shoulder
+    pl = pl.cut(hexhole(19, 0, 0, yc - 2, yc + 2))
+    out = [Part_("Level_Rocker_CF3", pl, pl, "CF", "custom: 3 mm CF plate (DXF), hex af19", "cf")]
+    pul, _pd = gt2_level_pulley("GT2_Pulley_Elbow")
+    out += pul
+    out.append(P("Sleeve_E_outer", (ring(0, 0, -44.0, -39.0, 6.5, 5.05),) * 2,
+                 "AL", "custom: D13/D10 sleeve", "alu"))
+    out.append(P("Washer_PTFE_E", (ring(0, 0, -25.5, -19.5, 6.5, 5.05),) * 2, "PTFE", "custom: PTFE rod D13, turned thrust sleeve", "pad"))
+    out.append(P("Shim_Ev1", at((ring(0, 0, -39.5, -39.0, 4.0, 2.55),) * 2, *v1), "SHIM", "custom: 301 SS shim stock 0.5, laser cut", "steel"))
+    # stock 5 mm shoulder (SHLD050-005): step ends 0.5 mm inside the rocker's D5.1 hole, nyloc clamps the stack
+    out.append(P("SB5x4_Ev1", at(H.shoulder(5, 4.0, 4, 9, -43.5, 1), *v1), "CAT", "SB5", "steel"))   # McMaster 92981A747: step on the race face, nyloc clamps shim + rocker
+    out.append(P("Nyloc_M4_Ev1", at(H.nyloc(4, -36.0, 1), *v1), "CAT", "NYLOC", "steel"))
+    return out
+
+
+SERVO_ANG = 150.0
+
+
+def _servo_rot():
+    return App.Rotation(V(0, 1, 0), -SERVO_ANG)
+
+
+def body_level():
+    yc = Y["ROCK"]
+    R = _servo_rot()
+    sv, svc, hx, y_ear = H.servo_std(-45.0, -1)
+    st_pts = []
+    for x in hx:
+        for z in (-5.0, 5.0):
+            p = R.multVec(V(x, 0, z))
+            st_pts.append((p.x, p.z))
+    pts = [(0, 0, 14)] + [(x, z, 6) for (x, z) in st_pts]
+    pl = plate(pts, yc, [(x, z, 1.65) for (x, z) in st_pts])
+    pl = pl.cut(hexhole(19, 0, 0, yc - 2, yc + 2))
+    for (x, z) in st_pts:     # countersinks on the inboard face for ISO 10642
+        pl = pl.cut(Part.makeCone(3.0, 1.5, 1.5, V(x, yc + T / 2, z), V(0, -1, 0)))
+    out = [Part_("Wrist_Level_Member_CF3", pl, pl, "CF", "custom: 3 mm CF plate (DXF), hex af19", "cf")]
+    pul, _pd = gt2_level_pulley("GT2_Pulley_Wrist")
+    out += pul
+    sv.Placement = App.Placement(V(), R).multiply(sv.Placement)
+    svc.Placement = App.Placement(V(), R).multiply(svc.Placement)
+    out.append(Part_("J3_Wrist_Servo_DS3225", sv, svc, "CAT", "DS3225MG", "motor"))
+    for i, (x, z) in enumerate(st_pts):
+        out.append(P("Servo_Standoff_%d" % i, at(H.standoff_round(6, abs(y_ear - (yc - T / 2)), y_ear, 1), x, z),
+                     "AL", "custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)", "alu", "D6 x %.0f M3 female" % abs(y_ear - (yc - T / 2))))
+        out.append(P("CSK_M3x6_level_%d" % i, at(csk(3, 6, yc + T / 2, -1), x, z), "CAT", "CSK", "steel"))
+        out.append(P("BHCS_M3x6_servo_%d" % i, at(H.screw("BHCS", 3, 6, y_ear - 2.5, 1), x, z), "CAT", "BHCS", "steel"))
+    return out
+
+
+HX = 35.0          # head (palm + jaws) offset forward of the old palm datum for the roll stage
+ROLL_Z = -5.0      # roll axis height in the gripper frame (15 above the TCP so the roll stage stays above the finger plane)
+ROLL_XS = 47.0     # roll servo spline face (x)
+HXJ = HX + 6.0     # rails / jaws datum (clear of the hub flange)
+XR = 41.0 + HXJ    # rail centre line = lead-screw axis x
+ZS = 31.0          # lead-screw axis z
+ZM = ZS + 26.0     # M2006 axis z (m1 20T + 32T centre distance 26)
+ZTOP = 78.0        # end block top / bridge underside
+YEB = 103.0        # end block inner face |y|
+RAIL_END = 100.0
+MOT_FACE = 1.0     # M2006 gearbox front face y; the 16.5 mm D6 output shaft runs through the 20T gear towards -Y
+M2006_FRONT = 42.0  # vendor model: gearbox front face at model y=42, output shaft 42..58.5 (rear cap/stub at y<0)
+GEAR_Y0, GEAR_Y1 = -4.6, 0.4
+
+
+def _to_roll_axis(pair):
+    """Map a part built on the Y axis (servo/horn convention) onto the roll axis:
+    servo Y -> +X, servo X -> Z, servo Z -> Y, then drop to z = ROLL_Z."""
+    m = App.Matrix(0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1)
+    pl = App.Placement(V(0, 0, ROLL_Z), App.Rotation()).multiply(App.Placement(m))
+    out = []
+    for s_ in pair[:2]:
+        s_ = s_.copy()
+        s_.Placement = pl.multiply(s_.Placement)
+        out.append(s_)
+    return out
+
+
+def xcyl(x0, x1, r, y=0.0, z=ROLL_Z):
+    x0, x1 = sorted((x0, x1))
+    return Part.makeCylinder(r, x1 - x0, V(x0, y, z), V(1, 0, 0))
+
+
+def _xscrew(name, x_head, length, y, z, kind="BHCS", direction=1):
+    scr = H.screw(kind, 3, length, 0, direction)
+    s2 = []
+    for s_ in scr[:2]:
+        s_ = s_.copy()
+        s_.rotate(V(0, 0, 0), V(0, 0, 1), -90)        # +Y -> +X
+        s_.translate(V(x_head, y, z))
+        s2.append(s_)
+    return P(name, s2, "CAT", kind, "steel")
+
+
+def body_gripper():
+    """Pitch frame: wrist shaft + pitch horn/coupler, clevis plates, roll
+    housing with the J4 roll servo and the 6805 support bearing."""
+    out = []
+    # D10 shaft, stepped to D6 x 2 at the horn end so the coupler clears the commercial horn's PCD14 screws
+    sh = ycyl(0, 0, -39.0, 27.0, 5.0).fuse(ycyl(0, 0, -43.0, -39.0, 3.0))     # D6 step clears the M3 BHCS heads too
+    for y0_, y1_ in ((-25.5, -21.5), (21.5, 25.0)):
+        sh = sh.cut(box(4.5, y0_, -6, 6.0, y1_, 6))                       # 0.5 mm drive flats under the clevis plates
+    sh = sh.cut(box(2.5, -43.5, -4, 4.0, -39.0, 4))                        # 0.5 mm flat on the D6 step (coupler)
+    sh = sh.cut(ycyl(0, 0, 25.0, 25.94, 6.0).cut(ycyl(0, 0, 24.9, 26.0, 3.5)))   # e-clip groove D7 x 0.94
+    out.append(Part_("Wrist_Shaft_D10x70", sh, sh, "STEEL", "custom: cut from McMaster 6112K47 D10 h6 rod, D6x4 ground step, D-flats, e-clip groove", "steel"))
+    ec = H.eclip(10, 25.0, 1)
+    out.append(P("Eclip_D10_wrist", (ec[0], ycyl(0, 0, 25.0, 25.9, 8.5).cut(ycyl(0, 0, 24, 27, 3.5))), "CAT", "ECLIP", "steel"))
+    out.append(P("Servo_Horn_25T_pitch", H.servo_horn_disc(-45.0, 1), "CAT", "HORN-25T", "alu"))
+    cp = ring(0, 0, -43.0, -41.0, 12.0, 3.0)                 # D6 bore on the stepped shaft end
+    cp = cp.fuse(ycyl(0, 0, -43.0, -41.0, 3.0).common(box(2.5, -43.0, -4, 4.0, -41.0, 4)))   # D-bore on the step flat
+    for k in range(4):
+        p = u(45 + 90 * k, H.HORN_PCD / 2)
+        cp = cp.cut(ycyl(p[0], p[1], -44, -40, 1.65))
+    out.append(Part_("Wrist_Shaft_Coupler", cp, cp, "AL", "custom: 6061, D6 D-bore on the shaft step, 4x M3 clearance (horn)", "alu"))
+    for k in range(4):
+        p = u(45 + 90 * k, H.HORN_PCD / 2)
+        out.append(P("BHCS_M3x5_horn_%d" % k, at(H.screw("BHCS", 3, 5, -41.0, -1), p[0], p[1]), "CAT", "BHCS", "steel"))   # 92095A177
+    cl_holes = [(20, ROLL_Z - 15), (20, ROLL_Z + 30), (48, ROLL_Z - 15), (48, ROLL_Z + 30)]
+    for side, yc in (("L", -23.5), ("R", 23.5)):
+        cl = plate([(0, 0, 12), (8, ROLL_Z - 22, 4), (54, ROLL_Z - 22, 4), (54, ROLL_Z + 38, 4), (8, ROLL_Z + 38, 4)], yc,
+                   [(0, 0, 5.0)] + [(x, z, 1.65) for (x, z) in cl_holes],
+                   pockets=[((28, ROLL_Z + 8, 5), (40, ROLL_Z + 8, 5))])
+        cl = cl.fuse(ycyl(0, 0, yc - 1.5, yc + 1.5, 5.0).common(box(4.5, yc - 1.5, -6, 6.0, yc + 1.5, 6)))   # D-bore on the shaft flat
+        sgn = -1 if side == "L" else 1
+        if side == "L":     # belt side: flush countersunk screws (the GT2 belt passes 1.5 mm outboard)
+            for (x, z) in cl_holes:
+                cl = cl.cut(Part.makeCone(3.0, 1.5, 1.5, V(x, -25.0, z), V(0, 1, 0)))
+        out.append(Part_("Clevis_%s_CF3" % side, cl, cl, "CF", "custom: 3 mm CF plate (DXF), D-bore" +
+                         (", 4x csk" if side == "L" else ""), "cf"))
+        for j, (x, z) in enumerate(cl_holes):
+            if side == "L":
+                out.append(P("CSK_M3x5_clevis_%s%d" % (side, j), at(csk(3, 5, -25.0, 1), x, z), "CAT", "CSK", "steel"))
+            else:
+                out.append(P("BHCS_M3x5_clevis_%s%d" % (side, j), at(H.screw("BHCS", 3, 5, sgn * 25.0, -sgn), x, z),
+                             "CAT", "BHCS", "steel"))
+            out.append(P("Insert_M3_clevis_%s%d" % (side, j), at((ring(0, 0, sgn * 22.0, sgn * 20.0, 2.0, 1.25),) * 2, x, z),
+                         "CAT", "INSERT", "brass"))
+    # roll housing (PETG-CF): side walls, ear bulkhead, bearing front plate, floor
+    hz0, hz1 = ROLL_Z - 22.0, ROLL_Z + 40.0
+    hs = box(8, 20, hz0, 60, 22, hz1).fuse(box(8, -22, hz0, 60, -20, hz1))
+    hs = hs.fuse(box(34, -22, hz0, 37, 22, hz1)).fuse(box(53, -22, hz0, 60, 22, hz1))
+    hs = hs.fuse(box(8, -22, hz0, 60, 22, hz0 + 3))
+    hs = hs.cut(box(33, -10.3, ROLL_Z - 10.3, 38, 10.3, ROLL_Z + 30.3))                            # servo body through bulkhead
+    hs = hs.cut(xcyl(52, 61, 18.5))                                               # 6805 seat
+    ear_pts = [(y, z) for z in (ROLL_Z + 34.75, ROLL_Z - 14.75) for y in (-5.0, 5.0)]
+    for (y, z) in ear_pts:
+        hs = hs.cut(Part.makeCylinder(2.0, 4, V(33.5, y, z), V(1, 0, 0)))
+    for (x, z) in cl_holes:
+        for sg in (-1, 1):
+            hs = hs.cut(ycyl(x, z, sg * 22.5, sg * 19.5, 2.0))
+    out.append(Part_("Roll_Housing", hs, hs, "PRINT", "custom: PETG-CF print, M3 inserts", "pla"))
+    for i, (y, z) in enumerate(ear_pts):
+        ins = Part.makeCylinder(2.0, 3, V(34, y, z), V(1, 0, 0)).cut(Part.makeCylinder(1.25, 3, V(34, y, z), V(1, 0, 0)))
+        out.append(Part_("Insert_M3_rollear_%d" % i, ins, ins, "CAT", "INSERT", "brass"))
+    sv, svc, _hx, _ye = H.servo_std(ROLL_XS, -1)
+    sv, svc = _to_roll_axis((sv, svc))
+    out.append(Part_("J4_Roll_Servo_DS3225", sv, svc, "CAT", "DS3225MG", "motor"))
+    for i, (y, z) in enumerate(ear_pts):
+        out.append(_xscrew("BHCS_M3x6_rollservo_%d" % i, ROLL_XS - 15.5, 6.0, y, z))
+    brg = [b_.copy() for b_ in H.bearing(25, 37, 7, 0, 1)[:2]]
+    for b_ in brg:
+        b_.rotate(V(0, 0, 0), V(0, 0, 1), -90)
+        b_.translate(V(53.0, 0, ROLL_Z))
+    out.append(P("Brg_6805_Roll", brg, "CAT", "6805ZZ", "alu"))
+    return out
+
+
+def body_head():
+    """Roll head (rotates about the roll axis): hub, roll horn, palm, MGN9 rails and the
+    gripper linear drive frame - two 6061 end blocks with 688ZZ bearings for the Tr8x8
+    bidirectional lead screw, a CF bridge closing the frame, the M2006 gear motor clamped
+    under the bridge (drives the screw through a 20T/32T m1 reduction) and the constant-
+    torque spring motor on the R screw end that spins the jaws open when power is cut."""
+    Dp = K["DROP"]
+    out = []
+    out.append(P("Servo_Horn_25T_roll", _to_roll_axis(H.servo_horn_disc(ROLL_XS, 1)), "CAT", "HORN-25T", "alu"))
+    hub = xcyl(49, 52, 14).fuse(xcyl(52, 62, 12.5)).fuse(xcyl(62, 65, 18)).cut(xcyl(52, 66, 11))
+    hub = hub.cut(xcyl(48, 53, 3.0))
+    rear = [(H.HORN_PCD / 2 * math.cos(math.radians(45 + 90 * k)), ROLL_Z + H.HORN_PCD / 2 * math.sin(math.radians(45 + 90 * k))) for k in range(4)]
+    front = [(15.25 * math.cos(math.radians(a_)), ROLL_Z + 15.25 * math.sin(math.radians(a_))) for a_ in (0, 180, 225, 315)]
+    for (y, z) in rear:
+        hub = hub.cut(Part.makeCylinder(1.65, 5, V(48, y, z), V(1, 0, 0)))
+    for (y, z) in front:                       # tapped M3 in the front flange only
+        hub = hub.cut(Part.makeCylinder(1.25, 4, V(62, y, z), V(1, 0, 0)))
+    out.append(Part_("Roll_Hub", hub, hub, "AL", "custom: 6061 turned, D25 journal in 6805", "alu"))
+    for i, (y, z) in enumerate(rear):           # hub -> roll horn (horn holes are tapped)
+        out.append(_xscrew("BHCS_M3x5_rollhorn_%d" % i, 52.0, 5.0, y, z, direction=-1))
+    # ---- palm (PETG-CF print, hollow): carries rails + end blocks
+    PY = YEB + 9.0
+    palm = box(30 + HX, -PY, -Dp - 6, 61 + HX, PY, 4)
+    palm = fillet_y(palm, 4.0)
+    palm = palm.cut(box(32 + HX, -PY + 2, -Dp - 4, 59 + HX, PY - 2, 2))
+    for (y, z) in front:
+        palm = palm.fuse(Part.makeCylinder(4.0, 5, V(30 + HX, y, z), V(1, 0, 0))).cut(
+            Part.makeCylinder(1.65, 6, V(30 + HX - 0.5, y, z), V(1, 0, 0)))
+    rails_y = [(14.0, RAIL_END), (-RAIL_END, -14.0)]
+    holes = []
+    for (a_, b_) in rails_y:
+        r, rc, hy = H.mgn9_rail(a_, b_, XR, 4.0)
+        holes += hy
+        out.append(Part_("MGN9_Rail_%s" % ("L" if a_ > 0 else "R"), r, rc, "CAT", "MGN9-RAIL", "steel"))
+    for hy in holes:
+        palm = palm.fuse(Part.makeCylinder(4.0, 8, V(XR, hy, -4))).cut(Part.makeCylinder(2.0, 5, V(XR, hy, -1)))
+    eb_holes = [(XR + dx, sg * (YEB + 4.0)) for sg in (-1, 1) for dx in (-10.0, 10.0)]     # top: bridge screws
+    eb_bot = [(XR + dx, sg * (YEB + 4.0)) for sg in (-1, 1) for dx in (-6.0, 6.0)]        # bottom: palm through-bolts
+    for (x, y) in eb_bot:        # through-bolt tubes, counterbored from below
+        palm = palm.fuse(Part.makeCylinder(4.5, 30, V(x, y, -Dp - 6))).cut(Part.makeCylinder(1.65, 32, V(x, y, -Dp - 7))).cut(
+            Part.makeCylinder(2.9, 3.5, V(x, y, -Dp - 6.5)))
+    out.append(Part_("Gripper_Palm", palm, palm, "PRINT", "custom: PETG-CF print, M3 inserts", "pla"))
+    for i, (y, z) in enumerate(front):
+        out.append(_xscrew("BHCS_M3x8_palmhub_%d" % i, 35.0 + HX, 8.0, y, z, direction=-1))
+    for i, hy in enumerate(holes):
+        out.append(P("SHCS_M3x8_rail_%d" % i, to_z(H.screw("SHCS", 3, 8, 0, -1), XR, hy, 7.0), "CAT", "SHCS", "steel"))
+        out.append(P("Insert_M3_rail_%d" % i, to_z((ring(0, 0, 0, 4, 2.0, 1.25),) * 2, XR, hy, -1.0), "CAT", "INSERT", "brass"))
+    # ---- lead-screw end blocks (6061) + 688ZZ bearings
+    for sg, nm in ((1, "L"), (-1, "R")):
+        y_in, y_out = sg * YEB, sg * (YEB + 8.0)
+        eb = box(XR - 17.5, y_in, 4, XR + 17.5, y_out, ZTOP)
+        eb = eb.cut(ycyl(XR, ZS, sg * (YEB + 3.0), sg * (YEB + 9.0), 8.0))        # 688 seat (from outside)
+        eb = eb.cut(ycyl(XR, ZS, sg * (YEB - 1.0), sg * (YEB + 4.0), 5.0))        # screw clearance
+        eb = eb.cut(box(XR - 10, y_in - sg, ZS + 13, XR + 10, y_out + sg, ZTOP - 12))  # lightening window
+        for (x, y) in [h for h in eb_holes if h[1] * sg > 0]:
+            eb = eb.cut(Part.makeCylinder(1.25, 9, V(x, y, ZTOP - 8)))
+        for (x, y) in [h for h in eb_bot if h[1] * sg > 0]:
+            eb = eb.cut(Part.makeCylinder(1.25, 15, V(x, y, 3)))    # M3 tapped 15 deep for the stock M3x40 (91290A136)
+        if sg < 0:                                   # spring-motor cassette tabs (outer face)
+            for dx in (-13.5, 13.5):
+                eb = eb.cut(ycyl(XR + dx, ZS - 22.0, y_out - 1.0, y_out + 8.0, 1.25))
+        eb = fillet_y(eb, 0.0) if False else eb
+        out.append(Part_("Screw_End_Block_%s" % nm, eb, eb, "AL", "custom: 6061 machined, 688 seat, M3 tapped", "alu"))
+        out.append(P("Brg_688_Screw_%s" % nm, at(H.bearing(8, 16, 5, sg * (YEB + 8.0), -sg), XR, ZS), "CAT", "688ZZ", "alu"))
+    # two-drum constant-torque spring motor around a stock constant-force strip (opens the jaws unpowered, R52)
+    sm = H.ct_spring_motor(-(YEB + 8.5), -1, phi_deg=float(os.environ.get("CT_PHI", "90")), split=True)
+    tabs = sm["tabs"]
+    out.append(Part_("Spring_Housing", at((sm["housing"],) * 2, XR, ZS)[0], at((sm["housing"],) * 2, XR, ZS)[0], "PRINT",
+                     "custom: PETG-CF print, two-drum spring housing", "pad"))
+    out.append(Part_("Spring_Output_Drum", at((sm["drum"],) * 2, XR, ZS)[0], at((sm["drum"],) * 2, XR, ZS)[0], "AL",
+                     "custom: 6061 turned, D20 drum on the D8 screw journal, M3 set screw", "alu"))
+    out.append(P("Dowel_3x20_spring", at((sm["pin"],) * 2, XR, ZS), "CAT", "DOWEL", "steel", "storage-drum axle, stock 3x20 (91595A122)"))
+    out.append(P("SetScrew_M3x3_drum", to_z(H.set_screw(3, 3.5, 0, -1), XR, sm["hub_y"], ZS + 7.5), "CAT", "SETSCREW", "steel"))
+    out.append(P("Spring_Motor_Cassette", at((sm["strip"],) * 2, XR, ZS), "CAT", "SPRING-MOTOR", "steel",
+                 "constant-force strip 9293K337, back-wound onto the output drum: turns the screw towards OPEN"))
+    for i, (x, z) in enumerate(tabs):
+        out.append(P("BHCS_M3x8_cassette_%d" % i, at(H.screw("BHCS", 3, 8, -(YEB + 11.0), 1), XR + x, ZS + z),
+                     "CAT", "BHCS", "steel"))
+    for i, (x, y) in enumerate(eb_bot):
+        out.append(P("SHCS_M3x40_endblock_%d" % i, to_z(H.screw("SHCS", 3, 40, 0, 1), x, y, -Dp - 3.0), "CAT", "SHCS", "steel"))   # 91290A136
+    for i, (x, y) in enumerate(eb_holes):
+        out.append(P("BHCS_M3x8_bridge_%d" % i, to_z(H.screw("BHCS", 3, 8, 0, -1), x, y, ZTOP + 3.0), "CAT", "BHCS", "steel"))
+    # ---- bridge (3 mm CF, XY plane) closes the frame and carries the motor clamps
+    clamp_y = ((7.0, 15.0), (27.0, 35.0))
+    brd = box(XR - 16, -(YEB + 8.0), ZTOP, XR + 16, YEB + 8.0, ZTOP + 3.0)
+    for (x, y) in eb_holes:
+        brd = brd.cut(Part.makeCylinder(1.65, 5, V(x, y, ZTOP - 1)))
+    for (ya, yb) in clamp_y:
+        for dx in (-10.0, 10.0):
+            brd = brd.cut(Part.makeCylinder(1.65, 5, V(XR + dx, (ya + yb) / 2, ZTOP - 1)))
+    for (ya, yb) in ((42.0, YEB - 8.0), (-(YEB - 8.0), -6.0)):
+        brd = brd.cut(zslot(XR, ya, XR, yb, 7.0, ZTOP - 1, ZTOP + 4))
+    brd = fillet_z(brd, 3.0)
+    out.append(Part_("Gripper_Bridge_CF3", brd, brd, "CF", "custom: 3 mm CF plate (DXF, XY)", "cf"))
+    # ---- M2006 gear motor (vendor STEP): shaft tip at y=-3 inside the 32T gear
+    mot = H.vendor("M2006")
+    # flip 180 deg about Z (model +Y shaft -> world -Y) and put the gearbox face at MOT_FACE
+    mot.Placement = App.Placement(V(XR, MOT_FACE + M2006_FRONT, ZM), App.Rotation(V(0, 0, 1), 180)).multiply(mot.Placement)
+    y_rear = MOT_FACE + M2006_FRONT + 2.4                                  # rear cap face
+    mchk = ycyl(XR, ZM, MOT_FACE, y_rear - 2.4, 12.2).fuse(ycyl(XR, ZM, y_rear - 2.4, y_rear, 11.85)).fuse(
+        ycyl(XR, ZM, MOT_FACE - 16.5, GEAR_Y0, 2.9))                       # shaft beyond the gear
+    out.append(Part_("Grip_Motor_M2006", mot, mchk, "CAT", "M2006-P36", "motor", "output shaft through the 20T gear; drives the Tr8x8 screw through 20T/32T"))
+    for i, (ya, yb) in enumerate(clamp_y):
+        ym = (ya + yb) / 2
+        cl = box(XR - 16, ya, ZM - 19, XR + 16, yb, ZTOP).cut(ycyl(XR, ZM, ya - 1, yb + 1, 12.25))
+        cl = cl.cut(box(XR - 0.75, ya - 1, ZM - 20, XR + 0.75, yb + 1, ZM - 11))           # pinch slit
+        cl = cl.cut(Part.makeCylinder(1.65, 34, V(XR - 17, ym, ZM - 15.5), V(1, 0, 0)))
+        for dx in (-10.0, 10.0):
+            cl = cl.cut(Part.makeCylinder(2.0, 5, V(XR + dx, ym, ZTOP - 5)))
+        out.append(Part_("Motor_Clamp_%d" % i, cl, cl, "PRINT", "custom: PETG-CF print, M3 inserts, pinch slit", "pla"))
+        out.append(_xscrew("SHCS_M3x30_motorclamp_%d" % i, XR - 16.0, 30.0, ym, ZM - 15.5, kind="SHCS"))
+        for j, dx in enumerate((-10.0, 10.0)):
+            out.append(P("BHCS_M3x8_clamp_%d%d" % (i, j), to_z(H.screw("BHCS", 3, 8, 0, -1), XR + dx, ym, ZTOP + 3.0),
+                         "CAT", "BHCS", "steel"))
+            out.append(P("Insert_M3_clamp_%d%d" % (i, j), to_z((ring(0, 0, 0, 4, 2.0, 1.25),) * 2, XR + dx, ym, ZTOP - 4.0),
+                         "CAT", "INSERT", "brass"))
+    return out
+
+
+def zslot(x0, y0, x1, y1, r, z0, z1):
+    """Rounded slot (stadium) prism along Z between centres (x0,y0)-(x1,y1)."""
+    a = Part.makeCylinder(r, z1 - z0, V(x0, y0, z0)).fuse(Part.makeCylinder(r, z1 - z0, V(x1, y1, z0)))
+    if abs(x1 - x0) < 1e-9:
+        return a.fuse(box(x0 - r, min(y0, y1), z0, x0 + r, max(y0, y1), z1))
+    return a.fuse(box(min(x0, x1), y0 - r, z0, max(x0, x1), y0 + r, z1))
+
+
+def body_screw():
+    """Rotating lead-screw assembly: Tr8x8 bidirectional screw, 20T drive gear,
+    two set-screw collars + shims (axial location against the 688 inner races).
+    The R collar doubles as the clamp for the spring-motor arbor."""
+    out = []
+    span = YEB - 2.0
+    out.append(P("Leadscrew_Tr8x8_bidir", at(H.leadscrew(-(YEB + 14.5), YEB + 14.5,
+                                                          [(-span, -34.0, "LH"), (34.0, span, "RH")], 8.0, 2.0), XR, ZS),
+                 "CAT", "TR8X8-BIDIR", "steel"))
+    g, gc, _rp = H.spur_gear(1.0, Z_SCREW_T, GEAR_Y0, GEAR_Y1, 8.0, hub=(14.0, -6.0))
+    hole = Part.makeCylinder(1.4, 5, V(0, GEAR_Y0 - 3.0, 3.5))
+    g, gc = g.cut(hole), gc.cut(hole)
+    out.append(P("Screw_Gear_m1_%dT" % Z_SCREW_T, at((g, gc), XR, ZS), "CAT", "GEAR-M1-%dT" % Z_SCREW_T, "alu"))
+    out.append(P("SetScrew_M3x3_screwgear", to_z(H.set_screw(3, 3.0, 0, -1), XR, GEAR_Y0 - 3.0, ZS + 7.0), "CAT", "SETSCREW", "steel"))
+    for sg, nm in ((1, "L"), (-1, "R")):
+        yb = sg * (YEB + 8.0)
+        out.append(P("Shim_8x10_%s" % nm, at((ring(0, 0, yb, yb + sg * 0.5, 5.0, 4.05),) * 2, XR, ZS), "SHIM", "custom: 301 SS shim stock 0.5, laser cut", "steel"))
+        if nm == "R":
+            continue                         # right end: the spring motor's output drum hub retains the screw instead
+        out.append(P("Collar_D8_%s" % nm, at(H.shaft_collar(8.0, 16.0, 8.0, yb + sg * 0.5, sg), XR, ZS), "CAT", "COLLAR8", "steel"))
+        # the collar's own M4x5 set screw (supplied with Stafford 34LM008P2) - not a separate purchase line
+    return out
+
+
+def body_mgear():
+    """Motor gear (m1, Z_MOTOR_T) on the M2006 output shaft (rotates with the motor shaft)."""
+    g, gc, _rp = H.spur_gear(1.0, Z_MOTOR_T, GEAR_Y0, GEAR_Y1, 6.0, phase=180.0 / Z_MOTOR_T)
+    rr = Z_MOTOR_T / 2.0 - 1.25
+    hole = Part.makeCylinder(1.4, rr, V(0, (GEAR_Y0 + GEAR_Y1) / 2, 2.5))     # radial set screw through the web
+    g, gc = g.cut(hole), gc.cut(hole)
+    return [P("Motor_Gear_m1_%dT" % Z_MOTOR_T, at((g, gc), XR, ZM), "CAT", "GEAR-M1-%dT" % Z_MOTOR_T, "steel"),
+            P("SetScrew_M3_motorgear", to_z(H.set_screw(3, rr - 3.2, 0, -1), XR, (GEAR_Y0 + GEAR_Y1) / 2, ZM + rr - 0.2),
+              "CAT", "SETSCREW", "steel")]
+
+
+def _vprism(x, y_apex, z0, z1, depth=60.0):
+    """90 deg V-notch prism, apex at (x, y_apex), opening towards -Y."""
+    pts = [V(x, y_apex, z0), V(x + depth, y_apex - depth, z0), V(x - depth, y_apex - depth, z0)]
+    return Part.Face(Part.makePolygon(pts + [pts[0]])).extrude(V(0, 0, z1 - z0))
+
+
+def body_jaw(s):
+    """Jaw at reference half-opening O_REF (pipe grip).  s=+1 left (+y), -1 right
+    (built as the left jaw and mirrored).  6061 bracket on the MGN9H block, Tr8
+    flange nut on its upright, two 3 mm CF finger plates (XY) with the curved
+    edge, and a TPU pad between them: R50 arc wraps the donut OD, the central
+    90 deg V-notch self-centres the D26.7 pipe on 4 lines.  The pad is captured on two
+    D6 standoffs that also tie the finger plates (button heads only below the fingers)."""
+    XT = K["GRIP"]
+    o = O_REF
+    nm = "L" if s > 0 else "R"
+    out = []
+    blk, blkc, bh = H.mgn9h_block(o + 19.95, XR, 4.0)
+    out.append(Part_("MGN9H_Block_" + nm, blk, blkc, "CAT", "MGN9H", "steel"))
+    # 6061 bracket: top plate on the block, nut upright, gusset, finger root wall
+    yw0, yw1 = o + 35.9, o + 39.9
+    br = box(XR - 12, o + 1, 14, 108, o + 39.9, 18)
+    br = br.fuse(box(XR - 12, yw0, 18, XR + 12, yw1, 43))
+    br = br.fuse(box(XR + 12, yw0, 18, 100, yw1, 24))
+    br = br.fuse(box(100, o + 6, -26, 108, o + 38, 24))
+    br = br.cut(ycyl(XR, ZS, yw0 - 1, yw1 + 1, 5.3))
+    nut, nutc, nh = H.flange_nut_t8(yw1 + 3.5, -1)
+    for (x, z) in nh:
+        br = br.cut(ycyl(XR + x, ZS + z, yw0 - 1, yw1 + 1, 1.25))
+    for (hx, hy) in bh:
+        br = br.cut(Part.makeCylinder(1.65, 6, V(hx, hy, 13)))
+    fing = [(104.0, o + 12.0), (104.0, o + 32.0)]
+    for (x, y) in fing:
+        br = br.cut(Part.makeCylinder(1.25, 7, V(x, y, 18))).cut(Part.makeCylinder(1.25, 7, V(x, y, -27)))
+    out.append(Part_("Jaw_Bracket_" + nm, br, br, "AL", "custom: 6061 machined, M3 tapped", "alu"))
+    if s > 0:      # RH: stock Creality T8 4-start brass nut
+        out.append(P("Nut_Tr8x8_RH", at((nut, nutc), XR, ZS), "CAT", "NUT-T8", "brass"))
+    else:          # LH: no stock LH 8 mm-lead nut exists -> machined brass part (thread-milled Tr8x8(P2) LH)
+        nl = at((nut, nutc), XR, ZS)
+        out.append(Part_("Nut_Tr8x8_LH", nl[0], nl[1], "BRASS", "custom: CW614N brass, Tr8x8(P2) LH 4-start thread-milled", "brass"))
+    for i, (x, z) in enumerate(nh):
+        out.append(P("BHCS_M3x6_nut%s_%d" % (nm, i), at(H.screw("BHCS", 3, 6, yw1 + 3.5, -1), XR + x, ZS + z), "CAT", "BHCS", "steel"))
+    for i, (hx, hy) in enumerate(bh):
+        out.append(P("BHCS_M3x6_jaw%s_%d" % (nm, i), to_z(H.screw("BHCS", 3, 6, 0, -1), hx, hy, 18.0), "CAT", "BHCS", "steel"))
+    # CF finger plates (top z 24..27, bottom z -29..-26) with the curved gripping edge
+    pad_holes = [(XT - 12.0, o + 9.0), (XT + 12.0, o + 9.0)]
+    posts = [(150.0, o + 20.0), (125.0, o + 28.0)]
+    poly = [(100, o + 6), (XT - 26, o - 8), (XT + 26, o - 8), (XT + 26, o + 16), (150, o + 30), (100, o + 38)]
+    for lvl, (z0, z1) in (("top", (24.0, 27.0)), ("bot", (-29.0, -26.0))):
+        pp = [V(x, y, z0) for (x, y) in poly]
+        f = Part.Face(Part.makePolygon(pp + [pp[0]])).extrude(V(0, 0, z1 - z0))
+        f = f.cut(Part.makeCylinder(PAD_R + 2.0, 40, V(XT, o - PAD_R, z0 - 10)))
+        f = f.cut(_vprism(XT, o + NOTCH + 2.0 * math.sqrt(2), z0 - 1, z1 + 1))
+        for (x, y) in fing + pad_holes + posts:
+            f = f.cut(Part.makeCylinder(1.65, 10, V(x, y, z0 - 3)))
+        f = fillet_z(f, 1.5)
+        out.append(Part_("Finger_%s_%s_CF3" % (nm, lvl), f, f, "CF", "custom: 3 mm CF plate (DXF, XY)", "cf"))
+    # TPU pad: R50 arc (donut) +-WRAP deg, 90 deg V-notch (pipe), captured by 2 through-bolts
+    cen = V(XT, o - PAD_R, -26.0)
+    ann = Part.makeCylinder(PAD_R + 16.0, 50, cen).cut(Part.makeCylinder(PAD_R, 50, cen))
+    w = math.radians(WRAP)
+    L_ = 120.0
+    wp = [V(XT, o - PAD_R, -27), V(XT - L_ * math.sin(w), o - PAD_R + L_ * math.cos(w), -27),
+          V(XT + L_ * math.sin(w), o - PAD_R + L_ * math.cos(w), -27)]
+    wedge = Part.Face(Part.makePolygon(wp + [wp[0]])).extrude(V(0, 0, 52))
+    pad = ann.common(wedge).cut(_vprism(XT, o + NOTCH, -27, 25))
+    for (x, y) in pad_holes:
+        pad = pad.cut(Part.makeCylinder(3.1, 52, V(x, y, -27)))
+    out.append(Part_("Pad_%s_TPU" % nm, pad, pad, "TPU", "custom: TPU 95A print, R50 arc + 90 deg V, bolted", "pad"))
+    for i, (x, y) in enumerate(posts + pad_holes):
+        out.append(P("Finger_Standoff_D6x50_%s%d" % (nm, i), to_z(H.standoff_round(6, 50, 0, 1), x, y, -26.0),
+                     "AL", "custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)", "alu", "D6 x 50 M3 female"))
+    for i, (x, y) in enumerate(fing + posts + pad_holes):
+        out.append(P("BHCS_M3x8_fingtop%s_%d" % (nm, i), to_z(H.screw("BHCS", 3, 8 if i < 2 else 6, 0, -1), x, y, 27.0),
+                     "CAT", "BHCS", "steel"))
+        out.append(P("BHCS_M3x8_fingbot%s_%d" % (nm, i), to_z(H.screw("BHCS", 3, 8 if i < 2 else 6, 0, 1), x, y, -29.0),
+                     "CAT", "BHCS", "steel"))
+    if s < 0:
+        for p in out:
+            p.vis = p.vis.mirror(V(0, 0, 0), V(0, 1, 0))
+            p.chk = p.chk.mirror(V(0, 0, 0), V(0, 1, 0))
+            p.shape = p.chk
+    return out
+
+
+BODY_FUNCS = dict(GROUND=body_ground, UPPER=body_upper, CRANK=body_crank,
+                  ROD_AB=lambda: body_rod("Rod_AB", K["L2"], Y["RAB"]),
+                  ROD1=lambda: body_rod("Rod_1", K["L2"], Y["ROD1"]),
+                  FOREARM=body_forearm, ROCKER=body_rocker, LEVEL=body_level,
+                  GRIPPER=body_gripper, HEAD=body_head, SCREW=body_screw, MGEAR=body_mgear,
+                  JAW_L=lambda: body_jaw(1), JAW_R=lambda: body_jaw(-1))
+
+
+_BODIES = {}
+
+
+def build_bodies(jaw_open=None):
+    """Bodies are jaw-independent now (jaws move by placement)."""
+    if not _BODIES:
+        for k, f in BODY_FUNCS.items():
+            _BODIES[k] = f()
+    return _BODIES
+
+
+# ------------------------------------------------------------------ poses
+def joints(th1, th2):
+    S = (K["SX"], K["SZ"])
+    E = add(S, u(th1, K["L2"]))
+    D = add(E, u(th2, K["L3"]))
+    B = add(E, u(th2, -K["L1"]))
+    A = add(S, u(th2, -K["L1"]))
+    v1 = u(K["V1_ANG"], K["V1_LEN"])
+    return dict(S=S, E=E, D=D, A=A, B=B, G1=add(S, v1), v1=v1, Ev1=add(E, v1))
+
+
+def ik(tcp_x, tcp_z, pitch):
+    c, s = math.cos(math.radians(pitch)), math.sin(math.radians(pitch))
+    wx = tcp_x - K["GRIP"] * c - K["DROP"] * s
+    wz = tcp_z - K["GRIP"] * s + K["DROP"] * c
+    dx, dz = wx - K["SX"], wz - K["SZ"]
+    r = math.hypot(dx, dz)
+    L2, L3 = K["L2"], K["L3"]
+    if not abs(L2 - L3) <= r <= L2 + L3:
+        raise ValueError("unreachable r=%.0f" % r)
+    beta = math.acos((L2 ** 2 + r ** 2 - L3 ** 2) / (2 * L2 * r))
+    th1 = math.degrees(math.atan2(dz, dx) + beta)
+    E = add((K["SX"], K["SZ"]), u(th1, L2))
+    th2 = math.degrees(math.atan2(wz - E[1], wx - E[0]))
+    return th1, th2
+
+
+def _pl(origin, ang):
+    return App.Placement(V(origin[0], 0, origin[1]), App.Rotation(V(0, 1, 0), -ang))
+
+
+def placements(th1, th2, pitch, roll=0.0, jaw=2 * O_REF):
+    J = joints(th1, th2)
+    G = _pl(J["D"], pitch)
+    Hd = G.multiply(App.Placement(V(0, 0, 0), App.Rotation(V(1, 0, 0), roll), V(0, 0, ROLL_Z)))
+    d = jaw / 2.0 - O_REF
+    phi = 360.0 * d / LEAD
+    scr = App.Placement(V(0, 0, 0), App.Rotation(V(0, 1, 0), phi), V(XR, 0, ZS))
+    mg = App.Placement(V(0, 0, 0), App.Rotation(V(0, 1, 0), -phi * Z_SCREW_T / Z_MOTOR_T), V(XR, 0, ZM))
+    return dict(GROUND=App.Placement(), UPPER=_pl(J["S"], th1), CRANK=_pl(J["S"], th2 + 180),
+                ROD_AB=_pl(J["A"], th1), ROD1=_pl(J["G1"], th1), FOREARM=_pl(J["E"], th2),
+                ROCKER=_pl(J["E"], 0), LEVEL=_pl(J["D"], 0), GRIPPER=G, HEAD=Hd,
+                SCREW=Hd.multiply(scr), MGEAR=Hd.multiply(mg),
+                JAW_L=Hd.multiply(App.Placement(V(0, d, 0), App.Rotation())),
+                JAW_R=Hd.multiply(App.Placement(V(0, -d, 0), App.Rotation())))
+
+
+def placed(bodies, th1, th2, pitch, roll=0.0, jaw=2 * O_REF, which="chk"):
+    plc = placements(th1, th2, pitch, roll, jaw)
+    out = []
+    for bname, parts in bodies.items():
+        for p in parts:
+            src = p.chk if which == "chk" else p.vis
+            s_ = src.copy()
+            s_.Placement = plc[bname].multiply(src.Placement)
+            out.append((bname, p, s_))
+    return out
+
+
+def part_mass_g(p):
+    if p.kind == "CAT":
+        return CAT[p.src]["mass"] if p.src in CAT else 0
+    return p.chk.Volume / 1000.0 * MAT.get(p.kind, 1.0)
+
+
+def static_torques(bodies, th1, th2, pitch, roll=0.0, payload_g=300.0, payload_arm=None, jaw=2 * O_REF):
+    """Static torques J1..J4 (N*m) by virtual work on the modelled masses."""
+    coms = {}
+    for bn, parts in bodies.items():
+        for p in parts:
+            if p.kind == "CAT" and p.src == "DM-J4340-2EC" and "stator" in p.name:
+                continue
+            m = part_mass_g(p) / 1000.0
+            if m <= 0:
+                continue
+            try:
+                c = p.chk.CenterOfMass if hasattr(p.chk, "CenterOfMass") else p.chk.BoundBox.Center
+            except Exception:
+                c = p.chk.BoundBox.Center
+            coms.setdefault(bn, []).append((m, c))
+
+    def U(q):
+        plc = placements(*q, jaw=jaw)
+        tot = 0.0
+        for bn, lst in coms.items():
+            if bn == "GROUND":
+                continue
+            for m, cm in lst:
+                tot += m * 9.81 * plc[bn].multVec(cm).z / 1000.0
+        tcp = plc["HEAD"].multVec(V(K["GRIP"], 0, -K["DROP"] - (payload_arm or 0.0)))
+        return tot + payload_g / 1000.0 * 9.81 * tcp.z / 1000.0
+    q = [th1, th2, pitch, roll]
+    tau = []
+    for i in range(4):
+        qp, qm = list(q), list(q)
+        qp[i] += 0.05
+        qm[i] -= 0.05
+        tau.append((U(qp) - U(qm)) / math.radians(0.1))
+    return tau
+
+
+POSES = {
+    "STOW": dict(q=(160.0, 10.0, 0.0, 0.0), jaw=30.0),
+    "DONUT_APPROACH": dict(tcp=(130, 300, 0), jaw=112.0),
+    "DONUT_PICK": dict(tcp=(130, 228.5, 0), jaw=100.0),
+    "DONUT_LIFT": dict(tcp=(130, 720, 0), jaw=100.0),
+    "DONUT_LIFT_ROLL+": dict(tcp=(130, 720, 0), roll=25.0, jaw=100.0),
+    "DONUT_LIFT_ROLL-": dict(tcp=(130, 720, 0), roll=-25.0, jaw=100.0),
+    "DONUT_PLACE": dict(tcp=(210, 62.5, 0), jaw=100.0),
+    "PIPE_APPROACH": dict(tcp=(-30, 455, 0), jaw=50.0),
+    "PIPE_GRASP": dict(tcp=(40, 455, 0), jaw=PIPE_JAW),
+    "PIPE_GRASP_ROLL+": dict(tcp=(40, 455, 0), roll=30.0, jaw=PIPE_JAW),
+    "PIPE_GRASP_ROLL-": dict(tcp=(40, 455, 0), roll=-30.0, jaw=PIPE_JAW),
+    "PIPE_LIFT": dict(tcp=(40, 790, 0), jaw=PIPE_JAW),
+    "PIPE_CHUTE": dict(tcp=(150, 600, 90), jaw=PIPE_JAW),
+    "PIPE_CHUTE_ROLL90": dict(tcp=(150, 600, 90), roll=90.0, jaw=PIPE_JAW),
+}
+SEQUENCES = {
+    "donut": ["STOW", "DONUT_APPROACH", "DONUT_PICK", "DONUT_LIFT", "DONUT_LIFT_ROLL+", "DONUT_LIFT_ROLL-",
+              "DONUT_LIFT", "DONUT_PLACE", "STOW"],
+    "pipe": ["STOW", "PIPE_APPROACH", "PIPE_GRASP_ROLL-", "PIPE_GRASP_ROLL+", "PIPE_GRASP", "PIPE_LIFT",
+             "PIPE_CHUTE", "PIPE_CHUTE_ROLL90", "PIPE_CHUTE", "STOW"],
+}
+
+
+def pose_q(name):
+    p = POSES[name]
+    if "q" in p:
+        return p["q"], p["jaw"]
+    th1, th2 = ik(*p["tcp"])
+    return (th1, th2, p["tcp"][2], p.get("roll", 0.0)), p["jaw"]

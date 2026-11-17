@@ -1,0 +1,6 @@
+# Design variant selection.  The GRIP environment variable overrides this for one run (GRIP=SCREW ...).
+# Gripper modules live in cad/arm/grippers/ and are registered in cad/arm/bodies.py GRIPPERS.
+
+grip = "FOURBAR"     # "FOURBAR" (lightweight concept, under evaluation) | "SCREW" (rev A: drawings, FEA and fab exports)
+release = "SCREW"    # variant behind the released rev A package (fab/, drawings/out, fea/out, render/, tdp/);
+                     # release generators pin to it so another variant can't overwrite released outputs

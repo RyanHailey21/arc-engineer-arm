@@ -1,0 +1,36 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "grip_budget",
+  "status": "pass",
+  "reason": "WARN: pipe 143% of rated / 48% of stall; open spring 0.12 N*m",
+  "scope": "pipe 143% of rated / 48% of stall; open spring 0.12 N*m",
+  "versions": {
+   "python": "3.14.10",
+   "platform": "Windows"
+  },
+  "implementation_sha256": "193b08a10c14b03d451f61573c5f7e9f181342cb49f5105c1b870658b3091874",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/grip_budget.inputs.json",
+    "sha256": "b9eb96aa47c673d82edbb9e15dc0bab0a05fca25fc708fb259157acdcea39996"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "grip_budget.txt",
+    "path": "grip_budget.txt",
+    "sha256": "f44d8408d94f9d65c1fa57d054239721301321cad95718e4c661684069eb5e6e"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-16T23:53:24",
+   "inputs_hash": "b5775998f4d90bc2",
+   "external_copies": []
+  }
+ }
+}

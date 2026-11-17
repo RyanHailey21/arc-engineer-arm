@@ -1,0 +1,22 @@
+STOW             solve=0  max drift 0.0000 mm / 0.00000 rad
+STOW             solve=0  max drift 0.0000 mm / 0.00000 rad
+STOW             solve=0  max drift 0.0000 mm / 0.00000 rad
+simulation demo cycle: 677 frames
+STOW             solve=0  max drift 0.0000 mm / 0.00000 rad
+simulation demo cycle: 677 frames
+STOW             solve=0  max drift 0.0000 mm / 0.00000 rad
+simulation demo cycle: 29 frames
+GUI rebuild FAILED: Traceback (most recent call last):
+  File "<string>", line 12, in <module>
+  File "<string>", line 30
+    App.Console.PrintWarning("joint %s: %s
+                             ^
+SyntaxError: unterminated string literal (detected at line 30)
+
+simulation demo cycle: 1352 frames (dt 0.01)
+STOW             solve=0  max drift 0.0000 mm / 0.00000 rad
+simulation demo cycle: 1352 frames
+STOW             solve=0  max drift 0.0000 mm / 0.00000 rad
+simulation demo cycle: 1352 frames
+STOW             solve=0  max drift 0.0000 mm / 0.00000 rad
+simulation demo cycle: 1352 frames

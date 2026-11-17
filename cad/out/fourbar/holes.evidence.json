@@ -1,0 +1,37 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "holes",
+  "status": "pass",
+  "reason": "WARN: Hole edge-distance check (custom parts): 199 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 31 warn (wall < max(1.5 mm, 0.5 d))",
+  "scope": "Hole edge-distance check (custom parts): 199 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 31 warn (wall < max(1.5 mm, 0.5 d))",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "6aba0b4f093d3c1c2e9a932c14cfc333cd648a149d3c22b1c85e13bd76efd8ed",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/holes.inputs.json",
+    "sha256": "b9eb96aa47c673d82edbb9e15dc0bab0a05fca25fc708fb259157acdcea39996"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "hole_report.txt",
+    "path": "hole_report.txt",
+    "sha256": "60dba37e42ace24bdcb125b5e1e5e648ba257e4dd9e4e7a7c3523d60cf347b08"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-16T23:53:49",
+   "inputs_hash": "b5775998f4d90bc2",
+   "external_copies": []
+  }
+ }
+}

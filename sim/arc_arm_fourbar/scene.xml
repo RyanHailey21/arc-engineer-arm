@@ -1,0 +1,27 @@
+<mujoco model="arc_arm_fourbar_scene">
+  <include file="arc_arm.xml"/>
+  <statistic center="0 0 0.4" extent="1.0"/>
+  <visual><headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3"/><global azimuth="-120" elevation="-20"/></visual>
+  <asset>
+    <texture type="2d" name="grid" builtin="checker" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" width="300" height="300" mark="edge" markrgb="0.2 0.3 0.4"/>
+    <material name="grid" texture="grid" texrepeat="5 5" reflectance="0.1"/>
+    <mesh name="donut" file="meshes/objects/donut.stl" scale="1 1 1" inertia="shell"/>
+  </asset>
+  <default><default class="world"><geom contype="1" conaffinity="3"/></default></default>
+  <worldbody>
+    <light pos="0.5 -1 2" dir="-0.2 0.5 -1" directional="true"/>
+    <geom class="world" name="floor" type="plane" size="0 0 0.05" material="grid"/>
+    <!-- chassis deck placeholder (the chassis is not designed yet): top at DECK_Z = 120 mm under the arm base -->
+    <geom class="world" name="chassis_placeholder" type="box" pos="-0.29 0 0.08" size="0.29 0.24 0.04" rgba="0.15 0.16 0.17 1"/>
+    <!-- ARC lower tier: 210 mm high, front edge 30 mm ahead of the bumper (field.py) -->
+    <geom class="world" name="lower_tier" type="box" pos="0.53 0 0.105" size="0.5 0.5 0.105" rgba="0.55 0.45 0.33 1"/>
+    <!-- donut (OD 100 / ID 50 / 25), 300 g, resting on the tier at the donut-pick position -->
+    <body name="donut" pos="0.13 0 0.2235"><freejoint/>
+      <inertial pos="0 0 0" mass="0.3" diaginertia="2.40e-4 2.40e-4 4.57e-4"/>
+      <geom class="world" type="mesh" mesh="donut" mass="0.3" rgba="0.92 0.66 0.05 1" condim="4" friction="0.8 0.02 0.002"/></body>
+    <!-- pipe: 3/4 in Sch40 PVC, OD 26.7, 500 mm, 165 g, lying on the floor beside the robot -->
+    <body name="pipe" pos="0.1 0.62 0.0134" quat="0.7071 0 0.7071 0"><freejoint/>
+      <inertial pos="0 0 0" mass="0.165" diaginertia="3.45e-3 3.45e-3 2.37e-5"/>
+      <geom class="world" type="cylinder" size="0.01335 0.25" mass="0.165" rgba="0.8 0.15 0.15 1" condim="4" friction="0.8 0.02 0.002"/></body>
+  </worldbody>
+</mujoco>

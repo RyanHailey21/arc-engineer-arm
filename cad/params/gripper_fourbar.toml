@@ -1,0 +1,45 @@
+# Gripper variant FOURBAR (concept): gear-synchronised parallel four-bar.  Each jaw rides a drive link and an
+# idler link (two 3 mm CF layers, 10 mm apart) pivoting on the printed palm; m1 sector gears on the two drive
+# links mesh at y = 0 so the jaws stay symmetric and the pads parallel.  One STS3215 drives the left drive link
+# directly; a torsion spring on the right drive pivot biases the jaws OPEN (back-drives the servo unpowered).
+# Gripper frame (x along the roll axis, TCP at (151, 0, -20)), mm.  Read by cad/arm/grippers/fourbar.py as FB.
+
+[FB]
+XG = 82.0         # ground pivot x (servo body must clear the roll hub at x <= 65)
+YG = 38.5         # drive pivot |y| = sector pitch radius (m1 x TEETH / 2); mid-stroke between the pipe and donut
+                  # grips, so both grips sit at the same TCP x (no drift)
+L = 47.0          # link length: short for grip force; coupler pivots must stay behind XMAX
+S = 16.0          # idler pivot offset outboard of the drive pivot (|y|)
+E = 10.0          # coupler pivot set-back behind the pad face (keeps the pivots clear of the pad arc)
+TEETH = 77        # sector gear teeth (m1) -> pitch radius 38.5 = YG
+XMAX = 135.5      # nothing above the pads beyond this x: pole keep-out (envelopes/field.toml pole_above_fingers);
+                  # also keeps the jaw-block riser clear of the M3 head on the pad standoff at x 139
+PIN_R = 2.0       # D4 pivot pins
+ZL0 = [23.5, 26.5]    # lower link layer z
+ZL1 = [33.5, 36.5]    # upper link layer z
+ZG = [27.0, 33.0]     # palm ground-pivot layer z (between the link layers)
+ZSEC = [37.0, 42.0]   # sector gear layer z (above the upper links, clear of the roll housing)
+ZPAD = [-26.0, 20.0]  # TPU pad z
+ZFT = [20.0, 23.0]    # top finger (printed jaw block) z
+ZFB = [-29.0, -26.0]  # bottom CF finger z (>= -29: 3.5 mm over the pole base plate at the donut pick)
+
+[SERVO]               # Feetech STS3215, 12 V version (Amazon B0FKY4Z15R listing, Feetech data)
+rated_Nm = 0.98       # 10 kg*cm rated (continuous) at 12 V
+stall_Nm = 2.94       # 30 kg*cm peak stall at 12 V
+speed_s_per_60deg = 0.222   # no-load at 12 V
+
+[SPRING]              # opening torsion spring on the right drive pivot (McMaster 9271K56, right-hand, 90 deg)
+pn = "9271K56"
+od = 12.67            # 0.499 in
+wire = 1.50           # 0.059 in
+length = 8.64         # 0.34 in at maximum torque
+arbor_d = 7.5         # 0.296 in maximum shaft -> printed D7.5 arbor around the D4 pin
+max_torque_Nm = 0.508 # 4.5 in*lbf at 90 deg
+rate_Nm_per_deg = 0.005648
+preload_deg = 22.0    # wound 22 deg at full open (jaw 112): 0.12 N*m opening torque; 85 deg (0.48 N*m) at the pipe grip
+alt_pn = "9271K52"    # weaker alternate, same arbor (3.509 in*lbf at 90 deg): fit if the back-drive bench test allows
+
+[GRIP_REQ]            # required clamp force per jaw (N); see tools/grip_budget.py
+donut = 5.0           # 150 g donut at +-25 deg roll, TPU on plastic, x3 margin (research estimate, not measured)
+pipe = 11.0           # 0.5 N*m pipe moment carried as pad-end normal force over the 46 mm pad (wrist rolled 90 deg)
+pipe_friction_only = 25.0   # same moment carried by friction only (wrist not rolled)

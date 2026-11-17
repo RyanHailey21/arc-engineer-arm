@@ -1,0 +1,98 @@
+Only one material object, but this one has a reference shape. The reference shape will be ignored.
+Only one material object, but this one has a reference shape. The reference shape will be ignored.
+FreeCAD 1.1.4, Libs: 1.1.4R20260928 (Git shallow)
+(C) 2001-2026 FreeCAD contributors
+FreeCAD is free and open-source software licensed under the terms of LGPL2+ license.
+
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_9jtruhbn\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_9jtruhbn\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_9jtruhbn\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometry...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face14
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face15
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face28
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face27
+Getting mesh data time: 0.375 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_clevis\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 1.719 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								CalculiX finished without error.
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_clevis\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_clevis\Mesh.dat
+Recompute......
+						(8 %)							(16 %)							(25 %)							(33 %)							(41 %)							(50 %)							(58 %)							(66 %)							(75 %)							(83 %)							(91 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem__v_lzq_j\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem__v_lzq_j\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem__v_lzq_j\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometr[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'CF plate quasi-isotropic'}]
+[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'Aluminium-6061-T6'}]
+# FEA evidence - load-critical custom parts
+
+FreeCAD 1.1 FEM: gmsh 2nd-order tets + CalculiX linear static. Load factor 2.5 on worst static case. Required SF >= 1.5 on factored load.
+
+| Case | Part | Material | Load | Max von Mises (MPa) | Allowable (MPa) | SF | Max disp (mm) | Nodes | Verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| clevis | Clevis_L_CF3 | CF plate quasi-isotropic | head weight 12.3 N per plate at the roll-housing screws (1.0 kg x g x 2.5) | 4.0 | 200 | 49.8 | 0.004 | 48592 | PASS |
+| j2_hub | J2_Output_Hub_Journal | Aluminium-6061-T6 | crank reaction 62 N on the D12 journal (J2 10.0 N*m incl. x2.5) | 7.6 | 276 | 36.3 | 0.001 | 40273 | PASS |
+y...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face11
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face12
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face7
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face4
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face6
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face9
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face17
+Getting mesh data time: 6.547 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_j2_hub\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 1.375 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								CalculiX finished without error.
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_j2_hub\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_j2_hub\Mesh.dat
+Recompute......
+						(8 %)							(16 %)							(25 %)							(33 %)							(41 %)							(50 %)							(58 %)							(66 %)							(75 %)							(83 %)							(91 %)							(100 %)									

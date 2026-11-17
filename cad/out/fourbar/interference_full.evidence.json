@@ -1,0 +1,37 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "interference_full",
+  "status": "pass",
+  "reason": "PASS: static, 14 task poses, field clearance, donut lift",
+  "scope": "static, 14 task poses, field clearance, donut lift",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "bf6b3d503e2da1091d0ef10feabb73a30df3697c0ee340dbf0374518faf1c82b",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/interference_full.inputs.json",
+    "sha256": "b9eb96aa47c673d82edbb9e15dc0bab0a05fca25fc708fb259157acdcea39996"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "interference_report.txt",
+    "path": "interference_report.txt",
+    "sha256": "d11383ed9f8eadf1cab204c8095a628d562d787b37d114e4e009ec1cc3507885"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-17T00:01:29",
+   "inputs_hash": "b5775998f4d90bc2",
+   "external_copies": []
+  }
+ }
+}

@@ -1,0 +1,2097 @@
+Only one material object, but this one has a reference shape. The reference shape will be ignored.
+Only one material object, but this one has a reference shape. The reference shape will be ignored.
+FreeCAD 1.1.4, Libs: 1.1.4R20260928 (Git shallow)
+(C) 2001-2026 FreeCAD contributors
+FreeCAD is free and open-source software licensed under the terms of LGPL2+ license.
+
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_04hvj_1b\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_04hvj_1b\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_04hvj_1b\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometry...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face15
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face18
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face19
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face20
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face22
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face14
+Getting mesh data time: 1.172 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_upper_arm\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 0.5 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								CalculiX finished without error.
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_upper_arm\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_upper_arm\Mesh.dat
+Recompute......
+						(8 %)							(16 %)							(25 %)							(33 %)							(41 %)							(50 %)							(58 %)							(66 %)							(75 %)							(83 %)							(91 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_ymu7dtbp\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_ymu7dtbp\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_ymu7dtbp\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									ReCalculiX failed with exit code 201
+compute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometry...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face70
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face3
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face6
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face11
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face12
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face15
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face20
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face21
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face26
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face27
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face32
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face33
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face38
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face39
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face69
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face94
+Getting mesh data time: 0.453 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_forearm\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 0.734 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								--------start of stderr-------
+--------end of stderr---------
+--------start of stdout-------
+
+************************************************************
+
+CalculiX Version 2.22, Copyright(C) 1998-2024 Guido Dhondt
+CalculiX comes with ABSOLUTELY NO WARRANTY. This is free
+software, and you are welcome to redistribute it under
+certain conditions, see gpl.htm
+
+************************************************************
+
+You are using an executable made on Mon Aug  5 19:15:25 CEST 2024
+
+  The numbers below are estimated upper bounds
+
+  number of:
+
+   nodes:        62945
+   elements:        54041
+   one-dimensional elements:            0
+   two-dimensional elements:            0
+   integration points per element:            4
+   degrees of freedom per node:            3
+   layers per element:            1
+
+   distributed facial loads:            0
+   distributed volumetric loads:            0
+   concentrated loads:          244
+   single point constraints:         2364
+   multiple point constraints:            1
+   terms in all multiple point constraints:            1
+   tie constraints:            0
+   dependent nodes tied by cyclic constraints:            0
+   dependent nodes in pre-tension constraints:            0
+
+   sets:            5
+   terms in all sets:       222153
+
+   materials:            1
+   constants per material and temperature:            2
+   temperature points per material:            1
+   plastic data points per material:            0
+
+   orientations:            0
+   amplitudes:            2
+   data points in all amplitudes:            2
+   print requests:            1
+   transformations:            0
+   property cards:            0
+
+
+ STEP            1
+
+ Static analysis was selected
+
+ Decascading the MPC's
+
+ Determining the structure of the matrix:
+ Using up to 12 cpu(s) for setting up the structure of the matrix.
+ number of equations
+ 186471
+ number of nonzero lower triangular matrix elements
+ 6293106
+
+ Using up to 12 cpu(s) for the stress calculation.
+
+ Using up to 12 cpu(s) for the symmetric stiffness/mass contributions.
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       48788
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       48788
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51438
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51438
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51438
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51450
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51450
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       46629
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       46629
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       46629
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51692
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       49580
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51692
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       49580
+
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       49580
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       49581
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       49581
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       49581
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51786
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51786
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51786
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51786
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51793
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51793
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51793
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51793
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       49700
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       49700
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       49700
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       49701
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       49701
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       49701
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51836
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51836
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51836
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51836
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51856
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51856
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51856
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51886
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51886
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51886
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51886
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51887
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51887
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51887
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51887
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51888
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51888
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51888
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51888
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51889
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51889
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51889
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51889
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51890
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51890
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51890
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51890
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51891
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51891
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51891
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51891
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51892
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51892
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51892
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51892
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51893
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51893
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51893
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51893
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51894
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51894
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51894
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51894
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51895
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51895
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51895
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51895
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51896
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51896
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51896
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51896
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51897
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51897
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51897
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51897
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51898
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51898
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51898
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51898
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51899
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51899
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51899
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51899
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51900
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51900
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51900
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51900
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51909
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51909
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51909
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51911
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51911
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51911
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51911
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51916
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51916
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51916
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51916
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51917
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51917
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51917
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51917
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51918
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51918
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51918
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51918
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51919
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51919
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51919
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51919
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51920
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51920
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51920
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51920
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51921
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51921
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51921
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51921
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51922
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51922
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51922
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51922
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51923
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51923
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51923
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51923
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51924
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51924
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51924
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51924
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51925
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51925
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51925
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51925
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51926
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51926
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51926
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51926
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51927
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51927
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51927
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51927
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51928
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51928
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51928
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51928
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51929
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51929
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51929
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51929
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51930
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51930
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51935
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51935
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51935
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51935
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51936
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51936
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51936
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51936
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51937
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51937
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51938
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51938
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51938
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51938
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51939
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51939
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51940
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51940
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51940
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51940
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51941
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51941
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51941
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51941
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51943
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51943
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51943
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51944
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51944
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51944
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51947
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51947
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51947
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50004
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51948
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50004
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51948
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50004
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51948
+
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51955
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51955
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51955
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51958
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51958
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51958
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51958
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51966
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51966
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51966
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50098
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50098
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50098
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50098
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50099
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50099
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50099
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50463
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50463
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50463
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50602
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50602
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50603
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50603
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50603
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50603
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50895
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50895
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50895
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50895
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50906
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50906
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50906
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50988
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50988
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50988
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50988
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50989
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       50989
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       48695
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       48695
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       48708
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       48708
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       48708
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51174
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51174
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51174
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51194
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51194
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51194
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51254
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51254
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51254
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51254
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51294
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51294
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51294
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51294
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51322
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       51322
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53518
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53519
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53519
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53520
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53520
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53521
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53521
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53522
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53522
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53523
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53523
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53523
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53523
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53524
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53524
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53562
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53562
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53562
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53563
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53597
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53597
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53597
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53598
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53605
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53608
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53608
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53609
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53609
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53609
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53610
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53610
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53610
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53611
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53611
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53612
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53613
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53613
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53613
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53613
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53614
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53614
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53615
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53615
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53616
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53616
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53617
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53617
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53618
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53619
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53619
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53619
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53620
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53620
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53620
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53620
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53621
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53621
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53622
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53622
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53622
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53623
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53623
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53624
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53624
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53624
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53624
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53625
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53625
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53628
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53628
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53631
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53632
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53632
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53632
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53632
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53635
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53635
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53636
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53636
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53637
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53637
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53638
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53638
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53638
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53639
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53640
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53641
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53641
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53642
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53643
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53643
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53643
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53644
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53644
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53645
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53645
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53645
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53645
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53646
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53646
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53646
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53647
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53647
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53650
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53650
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53650
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53650
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53651
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53651
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53651
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53651
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53652
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53652
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53653
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53653
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53653
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53653
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53654
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53654
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53654
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53664
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53664
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53664
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53664
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53665
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53665
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53665
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53665
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53666
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53666
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53676
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53676
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53676
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53677
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53677
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53677
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53677
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53678
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53678
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53678
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53679
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53679
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53679
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53679
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53680
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53680
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53680
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53680
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53681
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53681
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53681
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53682
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53682
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53682
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53682
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53683
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53683
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53683
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53685
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53685
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53685
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53685
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53687
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53687
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53689
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53689
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53691
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53691
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53691
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53693
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53693
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53698
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53698
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53699
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53699
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53700
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53700
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53700
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53700
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53701
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53701
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53701
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53714
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53714
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53716
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53716
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53826
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53826
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53827
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53827
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53981
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53981
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53983
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53983
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53984
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53984
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53985
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53985
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53985
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53987
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53987
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53987
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53989
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53989
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       53989
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54001
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54001
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54002
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54002
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54003
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54003
+
+ *ERROR in e_c3d: nonpositive j
+
+CalculiX returned an error due to nonpositive jacobian elements.
+acobian
+        determinant in element       54005
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54008
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54008
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54008
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54009
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54009
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54009
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54011
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54011
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54011
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54011
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54013
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54013
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54015
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54015
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54015
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54020
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54020
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54021
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54023
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54025
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54028
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54028
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54029
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54029
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54029
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54030
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54032
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54032
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54034
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54034
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54034
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54034
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54037
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54037
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54040
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54040
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54040
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       54040
+
+
+--------end of stdout---------
+--------start problems---------
+nonpositive_jacobian_elements = [46629, 48695, 48708, 48788, 49580, 49581, 49700, 49701, 50004, 50098, 50099, 50463, 50602, 50603, 50895, 50906, 50988, 50989, 51174, 51194, 51254, 51294, 51322, 51438, 51450, 51692, 51786, 51793, 51836, 51856, 51886, 51887, 51888, 51889, 51890, 51891, 51892, 51893, 51894, 51895, 51896, 51897, 51898, 51899, 51900, 51909, 51911, 51916, 51917, 51918, 51919, 51920, 51921, 51922, 51923, 51924, 51925, 51926, 51927, 51928, 51929, 51930, 51935, 51936, 51937, 51938, 51939, 51940, 51941, 51943, 51944, 51947, 51948, 51955, 51958, 51966, 53518, 53519, 53520, 53521, 53522, 53523, 53524, 53562, 53563, 53597, 53598, 53605, 53608, 53609, 53610, 53611, 53612, 53613, 53614, 53615, 53616, 53617, 53618, 53619, 53620, 53621, 53622, 53623, 53624, 53625, 53628, 53631, 53632, 53635, 53636, 53637, 53638, 53639, 53640, 53641, 53642, 53643, 53644, 53645, 53646, 53647, 53650, 53651, 53652, 53653, 53654, 53664, 53665, 53666, 53676, 53677, 53678, 53679, 53680, 53681, 53682, 53683, 53685, 53687, 53689, 53691, 53693, 53698, 53699, 53700, 53701, 53714, 53716, 53826, 53827, 53981, 53983, 53984, 53985, 53987, 53989, 54001, 54002, 54003, 54005, 54008, 54009, 54011, 54013, 54015, 54020, 54021, 54023, 54025, 54028, 54029, 54030, 54032, 54034, 54037, 54040]
+nonpositive_jacobian_elenodes = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 22, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 31, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89, 89, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 96, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 107, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 108, 115, 115, 115, 115, 115, 115, 115, 115, 115, 115, 115, 115, 115, 115, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 116, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 117, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 118, 127, 127, 127, 127, 127, 127, 127, 127, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 175, 176, 176, 176, 176, 176, 176, 176, 176, 176, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 177, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1861, 1862, 1862, 1862, 1862, 1862, 1862, 1862, 1862, 1862, 1862, 1862, 1862, 1862, 1863, 1863, 1863, 1863, 1863, 1863, 1863, 1863, 1863, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3547, 3548, 3548, 3548, 3548, 3548, 3548, 3548, 3548, 3548, 3548, 3548, 3548, 3548, 3549, 3549, 3549, 3549, 3549, 3549, 3549, 3549, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3550, 3551, 3551, 3551, 3551, 3551, 3551, 3551, 3551, 3552, 3552, 3552, 3552, 3552, 3552, 3552, 3552, 3552, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3553, 3554, 3554, 3554, 3554, 3554, 3554, 3554, 3554, 3554, 3555, 3555, 3555, 3555, 3555, 3555, 3555, 3555, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3556, 3557, 3557, 3557, 3557, 3557, 3557, 3557, 3557, 3557, 3557, 3557, 3557, 3557, 3558, 3558, 3558, 3558, 3558, 3558, 3558, 3558, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3559, 3560, 3560, 3560, 3560, 3560, 3560, 3560, 3560, 3560, 3560, 3560, 3560, 3560, 3561, 3561, 3561, 3561, 3561, 3561, 3561, 3561, 3561, 3561, 3561, 3561, 3561, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3562, 3563, 3563, 3563, 3563, 3563, 3563, 3563, 3563, 3563, 3563, 3563, 3563, 3563, 3564, 3564, 3564, 3564, 3564, 3564, 3564, 3564, 3565, 3565, 3565, 3565, 3565, 3565, 3565, 3565, 3565, 3565, 3565, 3565, 3565, 3565, 3565, 3565, 3566, 3566, 3566, 3566, 3566, 3566, 3566, 3567, 3567, 3567, 3567, 3567, 3567, 3567, 3567, 3567, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3568, 3569, 3569, 3569, 3569, 3569, 3569, 3569, 3569, 3569, 3569, 3569, 3570, 3570, 3570, 3570, 3570, 3570, 3570, 3570, 3570, 3570, 3570, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3571, 3572, 3572, 3572, 3572, 3572, 3572, 3572, 3572, 3572, 3572, 3572, 3572, 3572, 3573, 3573, 3573, 3573, 3573, 3573, 3573, 3573, 3573, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3574, 3575, 3575, 3575, 3575, 3575, 3575, 3575, 3575, 3575, 3575, 3575, 3575, 3575, 3576, 3576, 3576, 3576, 3576, 3576, 3576, 3576, 3576, 3576, 3576, 3576, 3576, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3598, 3599, 3599, 3599, 3599, 3599, 3599, 3599, 3600, 3600, 3600, 3600, 3600, 3600, 3600, 4721, 4769, 5318, 5318, 5318, 5318, 5318, 5417, 5612, 5784, 5784, 5784, 5784, 5979, 6176, 6255, 6343, 6824, 6861, 6861, 6861, 6861, 6861, 7137, 7348, 7348, 7354, 7354, 7359, 7359, 7367, 7367, 7397, 7397, 7399, 7399, 7427, 7427, 7429, 7429, 7429, 7429, 7454, 7454, 7461, 7461, 7469, 7469, 7471, 7471, 7471, 7471, 7502, 7502, 7502, 20025, 20074, 20627, 20721, 20921, 21090, 21090, 21090, 21090, 21283, 21480, 21560, 21650, 21650, 22135, 22169, 22169, 22169, 22442, 22655, 22655, 22659, 22659, 22673, 22673, 22677, 22677, 22685, 22685, 22704, 22704, 22732, 22732, 22734, 22734, 22734, 22758, 22758, 22766, 22766, 22774, 22774, 22776, 22776, 22806, 22806, 40072, 40072, 40072, 40072, 40072, 40072, 40073, 40073, 40073, 40073, 40073, 40073, 40073, 40073, 40102, 40102, 40102, 40112, 40112, 40112, 40112, 40113, 40113, 40113, 40113, 40125, 40125, 40125, 40125, 40134, 40134, 40136, 40136, 40136, 40136, 40136, 40136, 40140, 40140, 40140, 40140, 40140, 40140, 40142, 40142, 40142, 40142, 40146, 40146, 40146, 40146, 40146, 40146, 40152, 40152, 40152, 40152, 40152, 40152, 40152, 40152, 40152, 40152, 40154, 40154, 40154, 40154, 40171, 40171, 40171, 40171, 40176, 40176, 40214, 40214, 40214, 40214, 40217, 40217, 40217, 40217, 40217, 40217, 40224, 40224, 40224, 40224, 40224, 40224, 40224, 40224, 40224, 40224, 40224, 40251, 40251, 40251, 40251, 40286, 40286, 40286, 40286, 40286, 40385, 40385, 40385, 40385, 40385, 40385, 40414, 40414, 40414, 40419, 40419, 40419, 40419, 40420, 40420, 40420, 40420, 40476, 40476, 40476, 40476, 40479, 40479, 40479, 40479, 40479, 40479, 40479, 40479, 40479, 40479, 40479, 40479, 40494, 40494, 40494, 40494, 40494, 40494, 40494, 40540, 40540, 40540, 40540, 40540, 40579, 40579, 40579, 40579, 40579, 40579, 40676, 40676, 40676, 40676, 40676, 40676, 40676, 40676, 40690, 40747, 41031, 41031, 42420, 42420, 42909, 44542, 44542, 44869, 45192, 45192, 45192, 45192, 45192, 45192, 45192, 45192, 45192, 45193, 45193, 45193, 45193, 45193, 45193, 45193, 45193, 45247, 45248, 45248, 46360, 46663, 46663, 46663, 46663, 46663, 46663, 46663, 46663, 46663, 46669, 46669, 47384, 47387, 47387, 47387, 47387, 48196, 50194, 50194, 51876, 51876, 51876, 51876, 51876, 52330, 52330, 52657, 53100, 53638, 53638, 54515, 55097, 56346, 56641, 57216, 57216, 57828, 57828, 57828, 57828, 57828, 57828, 57828, 57828, 57828, 57Nodes, but no results found in frd file. It means there only is a mesh but no results in frd file. Usually this happens for: 
+- if CalculiX returned no results (happens on nonpositive jacobian determinant in at least one element)
+- just no frd results where requestet in input file (neither 'node file' nor 'el file' in output section')
+829, 57829, 57829, 57829, 57829, 57829, 57829, 57829, 58179, 58179, 58334, 58334, 58334, 58334, 58334, 58334, 58334, 58334, 58381, 58381, 58381, 58381, 58381, 58381, 58537, 58563, 58563, 58563, 58563, 58563, 58563, 58828, 58828, 58828, 58828, 58828, 58828, 58875, 58875, 58892, 58892, 59534, 59534, 60033, 60033, 60033, 60033, 60033, 60033, 60033, 60033, 60033, 60033, 60079, 60244, 60319, 60351, 60352, 60352, 60352, 60352, 60352, 60694, 60694, 60694, 60694, 60694, 60695, 60695, 60823, 60823, 60823, 60823, 60823, 60823, 60823, 60823, 60823, 61064, 61064, 61152, 61182, 61182, 61182, 61182, 61182, 61182, 61182, 61244, 61244, 61244, 61244, 61244, 61244, 61264, 61264, 61776, 61776, 61776, 61776, 61776, 61776, 61776, 61776, 61819, 61819, 61819, 61819, 61819, 61819, 61819, 61819, 61820, 62028, 62028, 62028, 62028, 62028, 62028, 62105, 62105, 62105, 62105, 62105, 62105, 62105, 62105, 62105, 62106, 62106, 62106, 62106, 62106, 62106, 62118, 62118, 62118, 62118, 62118, 62118, 62118, 62118, 62121, 62121, 62121, 62121, 62121, 62121, 62121, 62121, 62121, 62124, 62170, 62170, 62170, 62170, 62170, 62170, 62170, 62170, 62170, 62171, 62171, 62171, 62171, 62171, 62171, 62171, 62188, 62195, 62242, 62242, 62242, 62242, 62242, 62242, 62292, 62373, 62381, 62381, 62381, 62381, 62381, 62381, 62381, 62381, 62381, 62381, 62382, 62382, 62382, 62382, 62382, 62382, 62382, 62382, 62382, 62382, 62382, 62383, 62383, 62383, 62383, 62383, 62410, 62477, 62477, 62477, 62477, 62477, 62477, 62477, 62477, 62477, 62477, 62477, 62478, 62478, 62478, 62478, 62525, 62525, 62525, 62525, 62525, 62525, 62525, 62525, 62525, 62541, 62541, 62541, 62541, 62541, 62541, 62541, 62541, 62541, 62541, 62549, 62567, 62567, 62567, 62567, 62567, 62567, 62567, 62567, 62585, 62585, 62585, 62585, 62585, 62592, 62592, 62592, 62592, 62593, 62596, 62596, 62596, 62596, 62596, 62596, 62596, 62596, 62596, 62598, 62598, 62598, 62598, 62598, 62598, 62608, 62608, 62608, 62621, 62621, 62621, 62621, 62621, 62621, 62621, 62621, 62621, 62621, 62621, 62664, 62664, 62664, 62664, 62664, 62664, 62664, 62664, 62665, 62665, 62675, 62675, 62675, 62675, 62675, 62675, 62702, 62702, 62702, 62702, 62703, 62703, 62703, 62703, 62703, 62703, 62703, 62724, 62724, 62724, 62724, 62724, 62724, 62724, 62724, 62726, 62726, 62726, 62726, 62726, 62726, 62726, 62726, 62732, 62732, 62732, 62732, 62732, 62732, 62732, 62735, 62735, 62735, 62735, 62735, 62735, 62735, 62735, 62752, 62752, 62752, 62752, 62752, 62752, 62752, 62752, 62752, 62752, 62753, 62753, 62753, 62753, 62753, 62753, 62753, 62753, 62753, 62753, 62753, 62754, 62754, 62754, 62754, 62754, 62754, 62754, 62754, 62754, 62754, 62755, 62755, 62755, 62755, 62755, 62755, 62875, 62878, 62879, 62879, 62879, 62879, 62879, 62881, 62881, 62882, 62883, 62883, 62883, 62883, 62884, 62884, 62884, 62884, 62884, 62884, 62885, 62885, 62885, 62885, 62885, 62885, 62889, 62941, 62941, 62941, 62941, 62941, 62942, 62942, 62943, 62944, 62944, 62945, 62945]
+
+Following some commands to copy. They highlight the nonpositive jacobians or to reset the highlighted nodes:
+Gui.ActiveDocument.Mesh.HighlightedNodes = nonpositive_jacobian_elenodes
+Gui.ActiveDocument.Mesh.HighlightedNodes = []
+
+
+--------end problems---------
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_forearm\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_forearm\Mesh.dat
+Recompute......
+						(9 %)							(18 %)							(27 %)							(36 %)							(45 %)							(54 %)							(63 %)							(72 %)							(81 %)							(90 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_3m_c0t93\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_3m_c0t93\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_3m_c0t93\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(Only one material object, but this one has a reference shape. The reference shape will be ignored.
+Only one material object, but this one has a reference shape. The reference shape will be ignored.
+50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometry...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face14
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face25
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face24
+Getting mesh data time: 0.125 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_clevis\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 0.609 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								CalculiX finished without error.
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_clevis\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_clevis\Mesh.dat
+Recompute......
+						(8 %)							(16 %)							(25 %)							(33 %)							(41 %)							(50 %)							(58 %)							(66 %)							(75 %)							(83 %)							(91 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_mglnggj6\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_mglnggj6\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_mglnggj6\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometry...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face11
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face12
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face7
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face4
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face6
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face9
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element Only one material object, but this one has a reference shape. The reference shape will be ignored.
+Only one material object, but this one has a reference shape. The reference shape will be ignored.
+name: Face17
+Getting mesh data time: 2.344 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_j2_hub\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 0.734 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								CalculiX finished without error.
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_j2_hub\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_j2_hub\Mesh.dat
+Recompute......
+						(8 %)							(16 %)							(25 %)							(33 %)							(41 %)							(50 %)							(58 %)							(66 %)							(75 %)							(83 %)							(91 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_are7y4_r\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_are7y4_r\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_are7y4_r\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometry...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face12
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face13
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face14
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face15
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face27
+Getting mesh data time: 1.719 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_jaw_bracket\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 4.188 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								CalculiX finished without error.
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_jaw_bracket\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_jaw_bracket\Mesh.dat
+Recompute......
+						(8 %)							(16 %)							(25 %)							(33 %)							(41 %)							(50 %)							(58 %)							(66 %)							(75 %)							(83 %)							(91 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_wbm1juof\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_wbm1juof\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_wbm1juof\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %CalculiX failed with exit code 201
+)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometry...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face14
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face15
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face17
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face18
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face8
+Getting mesh data time: 1.875 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_end_block\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 2.328 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								--------start of stderr-------
+--------end of stderr---------
+--------start of stdout-------
+
+************************************************************
+
+CalculiX Version 2.22, Copyright(C) 1998-2024 Guido Dhondt
+CalculiX comes with ABSOLUTELY NO WARRANTY. This is free
+software, and you are welcome to redistribute it under
+certain conditions, see gpl.htm
+
+************************************************************
+
+You are using an executable made on Mon Aug  5 19:15:25 CEST 2024
+
+  The numbers below are estimated upper bounds
+
+  number of:
+
+   nodes:        64749
+   elements:        52610
+   one-dimensional elements:            0
+   two-dimensional elements:            0
+   integration points per element:            4
+   degrees of freedom per node:            3
+   layers per element:            1
+
+   distributed facial loads:            0
+   distributed volumetric loads:            0
+   concentrated loads:          632
+   single point constraints:         9552
+   multiple point constraints:            1
+   terms in all multiple point constraints:            1
+   tie constraints:            0
+   dependent nodes tied by cyclic constraints:            0
+   dependent nodes in pre-tension constraints:            0
+
+   sets:            5
+   terms in all sets:       251686
+
+   materials:            1
+   constants per material and temperature:            2
+   temperature points per material:            1
+   plastic data points per material:            0
+
+   orientations:            0
+   amplitudes:            2
+   data points in all amplitudes:            2
+   print requests:            1
+   transformations:            0
+   property cards:            0
+
+
+ STEP            1
+
+ Static analysis was selected
+
+ Decascading the MPC's
+
+ Determining the structure of the matrix:
+ Using up to 12 cpu(s) for setting up the structure of the matrix.
+ number of equations
+ 184695
+ number of nonzero lower triangular matrix elements
+ 6903816
+
+ Using up to 12 cpu(s) for the stress calculation.
+
+ Using up to 12 cpu(s) for the symmetric stiffness/mass contributions.
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       46096
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       46096
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       46096
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       46096
+
+
+--------end of stdo
+
+CalculiX returned an error due to nonpositive jacobian elements.
+Nodes, but no results found in frd file. It means there only is a mesh but no results in frd file. Usually this happens for: 
+- if CalculiX returned no results (happens on nonpositive jacobian determinant in at least one element)
+- just no frd results where requestet in input file (neither 'node file' nor 'el file' in output section')
+Only one material object, but this one has a reference shape. The reference shape will be ignored.
+Only one material object, but this one has a reference shape. The reference shape will be ignored.
+ut---------
+--------start problems---------
+nonpositive_jacobian_elements = [46096]
+nonpositive_jacobian_elenodes = [1421, 1422, 1433, 21545, 21560, 21836, 21839, 21842, 21843, 51949]
+
+Following some commands to copy. They highlight the nonpositive jacobians or to reset the highlighted nodes:
+Gui.ActiveDocument.Mesh.HighlightedNodes = nonpositive_jacobian_elenodes
+Gui.ActiveDocument.Mesh.HighlightedNodes = []
+
+
+--------end problems---------
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_end_block\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_end_block\Mesh.dat
+Recompute......
+						(9 %)							(18 %)							(27 %)							(36 %)							(45 %)							(54 %)							(63 %)							(72 %)							(81 %)							(90 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_r4p_weqr\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_r4p_weqr\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_r4p_weqr\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometry...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face21
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face25
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face22
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face23
+Getting mesh data time: 0.484 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_finger\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 2.219 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								CalculiX finished without error.
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_finger\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_finger\Mesh.dat
+Recompute......
+						(8 %)							(16 %)							(25 %)							(33 %)							(41 %)							(50 %)							(58 %)							(66 %)							(75 %)							(83 %)							(91 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_ekfsq6t7\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_ekfsq6t7\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_ekfsq6t7\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)			[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'CF plate quasi-isotropic'}]
+[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'CF plate quasi-isotropic'}]
+[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'CF plate quasi-isotropic'}]
+[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'Aluminium-6061-T6'}]
+[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'Aluminium-6061-T6'}]
+[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'Aluminium-6061-T6'}]
+[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'CF plate quasi-isotropic'}]
+[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'PETG-CF (FDM)'}]
+# FEA evidence - load-critical custom parts
+
+FreeCAD 1.1 FEM: gmsh 2nd-order tets + CalculiX linear static. Load factor 2.5 on worst static case. Required SF >= 1.5 on factored load.
+
+| Case | Part | Material | Load | Max von Mises (MPa) | Allowable (MPa) | SF | Max disp (mm) | Nodes | Verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| upper_arm | Upper_Arm_L_CF3 | CF plate quasi-isotropic | elbow reaction 23.3 N per plate (1.9 kg distal mass x g x 2.5) | 27.8 | 200 | 7.2 | 0.977 | 45446 | PASS |
+| forearm | - | - | - | - | - | - | - | - | ERROR: Traceback (most recent call last):   File "C:\Users\ryanh\light_weight_arm\cad/fea\run_fea.py", line 239, in main     re |
+| clevis | Clevis_L_CF3 | CF plate quasi-isotropic | head weight 12.3 N per plate at the roll-housing screws (1.0 kg x g x 2.5) | 2.8 | 200 | 71.0 | 0.004 | 50981 | PASS |
+| j2_hub | J2_Output_Hub_Journal | Aluminium-6061-T6 | crank reaction 62 N on the D12 journal (J2 10.0 N*m incl. x2.5) | 7.7 | 276 | 35.8 | 0.002 | 39712 | PASS |
+| jaw_bracket | Jaw_Bracket_L | Aluminium-6061-T6 | grip/lead-screw reaction 100 N on the nut upright (M2006 current-limited grip) | 39.4 | 276 | 7.0 | 0.056 | 121066 | PASS |
+| end_block | - | - | - | - | - | - | - | - | ERROR: Traceback (most recent call last):   File "C:\Users\ryanh\light_weight_arm\cad/fea\run_fea.py", line 239, in main     co |
+| finger | Finger_L_top_CF3 | CF plate quasi-isotropic | grip reaction 50 N per finger plate (100 N jaw force over 2 plates) | 12.6 | 200 | 15.9 | 0.015 | 59843 | PASS |
+| roll_housing | Roll_Housing | PETG-CF (FDM) | head + payload 24.5 N through the 6805 seat (1.0 kg x g x 2.5) | 1.1 | 40 | 34.7 | 0.005 | 62502 | PASS |
+				(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometry...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face20
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face21
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face39
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face40
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face55
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face56
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face70
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face71
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face74
+Getting mesh data time: 2.688 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_roll_housing\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 2.719 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								CalculiX finished without error.
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_roll_housing\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_roll_housing\Mesh.dat
+Recompute......
+						(8 %)							(16 %)							(25 %)							(33 %)							(41 %)							(50 %)							(58 %)							(66 %)							(75 %)							(83 %)							(91 %)							(100 %)									

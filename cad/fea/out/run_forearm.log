@@ -1,0 +1,335 @@
+Only one material object, but this one has a reference shape. The reference shape will be ignored.
+CalculiX failed with exit code 201
+FreeCAD 1.1.4, Libs: 1.1.4R20260928 (Git shallow)
+(C) 2001-2026 FreeCAD contributors
+FreeCAD is free and open-source software licensed under the terms of LGPL2+ license.
+
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_k1oeo01i\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_k1oeo01i\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_k1oeo01i\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometry...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face14
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face2
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face13
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face38
+Getting mesh data time: 0.969 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_forearm\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 1.719 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								--------start of stderr-------
+--------end of stderr---------
+--------start of stdout-------
+
+************************************************************
+
+CalculiX Version 2.22, Copyright(C) 1998-2024 Guido Dhondt
+CalculiX comes with ABSOLUTELY NO WARRANTY. This is free
+software, and you are welcome to redistribute it under
+certain conditions, see gpl.htm
+
+************************************************************
+
+You are using an executable made on Mon Aug  5 19:15:25 CEST 2024
+
+  The numbers below are estimated upper bounds
+
+  number of:
+
+   nodes:        57092
+   elements:        48770
+   one-dimensional elements:            0
+   two-dimensional elements:            0
+   integration points per element:            4
+   degrees of freedom per node:            3
+   layers per element:            1
+
+   distributed facial loads:            0
+   distributed volumetric loads:            0
+   concentrated loads:          250
+   single point constraints:         1653
+   multiple point constraints:            1
+   terms in all multiple point constraints:            1
+   tie constraints:            0
+   dependent nodes tied by cyclic constraints:            0
+   dependent nodes in pre-tension constraints:            0
+
+   sets:            5
+   terms in all sets:       199407
+
+   materials:            1
+   constants per material and temperature:            2
+   temperature points per material:            1
+   plastic data points per material:            0
+
+   orientations:            0
+   amplitudes:            2
+   data points in all amplitudes:            2
+   print requests:            1
+   transformations:            0
+   property cards:            0
+
+
+ STEP            1
+
+ Static analysis was selected
+
+ Decascad
+
+CalculiX returned an error due to nonpositive jacobian elements.
+Nodes, but no results found in frd file. It means there only is a mesh but no results in frd file. Usually this happens for: 
+- if CalculiX returned no results (happens on nonpositive jacobian determinant in at least one element)
+- just no frd results where requestet in input file (neither 'node file' nor 'el file' in output section')
+Only one material object, but this one has a reference shape. The reference shape will be ignored.
+CalculiX failed with exit code 201
+ing the MPC's
+
+ Determining the structure of the matrix:
+ Using up to 12 cpu(s) for setting up the structure of the matrix.
+ number of equations
+ 169623
+ number of nonzero lower triangular matrix elements
+ 5691168
+
+ Using up to 12 cpu(s) for the stress calculation.
+
+ Using up to 12 cpu(s) for the symmetric stiffness/mass contributions.
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       34153
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       34153
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       29753
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       29753
+
+
+--------end of stdout---------
+--------start problems---------
+nonpositive_jacobian_elements = [29753, 34153]
+nonpositive_jacobian_elenodes = [4415, 6436, 6918, 6985, 13159, 15789, 18578, 20599, 21080, 21147, 27333, 29943, 42068, 46253, 46254, 46254, 47893, 48726, 50300, 50300]
+
+Following some commands to copy. They highlight the nonpositive jacobians or to reset the highlighted nodes:
+Gui.ActiveDocument.Mesh.HighlightedNodes = nonpositive_jacobian_elenodes
+Gui.ActiveDocument.Mesh.HighlightedNodes = []
+
+
+--------end problems---------
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_forearm\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_forearm\Mesh.dat
+Recompute......
+						(9 %)							(18 %)							(27 %)							(36 %)							(45 %)							(54 %)							(63 %)							(72 %)							(81 %)							(90 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_khdx52uv\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_khdx52uv\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_khdx52uv\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometry...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face14
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face2
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face13
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face38
+Getting mesh data time: 1.109 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_forearm\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 2.078 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								--------start of stderr-------
+--------end of stderr---------
+--------start of stdout-------
+
+************************************************************
+
+CalculiX Version 2.22, Copyright(C) 1998-2024 Guido Dhondt
+CalculiX comes with ABSOLUTELY NO WARRANTY. This is free
+software, and you are welcome to redistribute it under
+cert
+
+CalculiX returned an error due to nonpositive jacobian elements.
+Nodes, but no results found in frd file. It means there only is a mesh but no results in frd file. Usually this happens for: 
+- if CalculiX returned no results (happens on nonpositive jacobian determinant in at least one element)
+- just no frd results where requestet in input file (neither 'node file' nor 'el file' in output section')
+Only one material object, but this one has a reference shape. The reference shape will be ignored.
+ain conditions, see gpl.htm
+
+************************************************************
+
+You are using an executable made on Mon Aug  5 19:15:25 CEST 2024
+
+  The numbers below are estimated upper bounds
+
+  number of:
+
+   nodes:        57092
+   elements:        48770
+   one-dimensional elements:            0
+   two-dimensional elements:            0
+   integration points per element:            4
+   degrees of freedom per node:            3
+   layers per element:            1
+
+   distributed facial loads:            0
+   distributed volumetric loads:            0
+   concentrated loads:          250
+   single point constraints:         1653
+   multiple point constraints:            1
+   terms in all multiple point constraints:            1
+   tie constraints:            0
+   dependent nodes tied by cyclic constraints:            0
+   dependent nodes in pre-tension constraints:            0
+
+   sets:            5
+   terms in all sets:       199407
+
+   materials:            1
+   constants per material and temperature:            2
+   temperature points per material:            1
+   plastic data points per material:            0
+
+   orientations:            0
+   amplitudes:            2
+   data points in all amplitudes:            2
+   print requests:            1
+   transformations:            0
+   property cards:            0
+
+
+ STEP            1
+
+ Static analysis was selected
+
+ Decascading the MPC's
+
+ Determining the structure of the matrix:
+ Using up to 12 cpu(s) for setting up the structure of the matrix.
+ number of equations
+ 169623
+ number of nonzero lower triangular matrix elements
+ 5691168
+
+ Using up to 12 cpu(s) for the stress calculation.
+
+ Using up to 12 cpu(s) for the symmetric stiffness/mass contributions.
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       34153
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       34153
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       29753
+
+ *ERROR in e_c3d: nonpositive jacobian
+        determinant in element       29753
+
+
+--------end of stdout---------
+--------start problems---------
+nonpositive_jacobian_elements = [29753, 34153]
+nonpositive_jacobian_elenodes = [4415, 6436, 6918, 6985, 13159, 15789, 18578, 20599, 21080, 21147, 27333, 29943, 42068, 46253, 46254, 46254, 47893, 48726, 50300, 50300]
+
+Following some commands to copy. They highlight the nonpositive jacobians or to reset the highlighted nodes:
+Gui.ActiveDocument.Mesh.HighlightedNodes = nonpositive_jacobian_elenodes
+Gui.ActiveDocument.Mesh.HighlightedNodes = []
+
+
+--------end problems---------
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_forearm\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_forearm\Mesh.dat
+Recompute......
+						(9 %)							(18 %)							(27 %)							(36 %)							(45 %)							(54 %)							(63 %)							(72 %)							(81 %)							(90 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									  ElementDimension: 3
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_tbq8eqwp\Part_Geometry.brep
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_tbq8eqwp\Part_Mesh.unv
+  C:\Users\ryanh\AppData\Local\Temp\fcfem_tbq8eqwp\shape2mesh.geo
+  C:\Users\ryanh\AppData\Local\Programs\FreeCAD 1.1\bin\gmsh.EXE
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Check prerequisites...
+Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+			[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'CF plate quasi-isotropic'}]
+[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'CF plate quasi-isotropic'}]
+[{'ccx_elset': 'Evolumes', 'ccx_elset_name': 'MaterialSolid', 'mat_obj_name': 'Material', 'ccx_mat_name': 'CF plate quasi-isotropic'}]
+# FEA evidence - load-critical custom parts
+
+FreeCAD 1.1 FEM: gmsh 2nd-order tets + CalculiX linear static. Load factor 2.5 on worst static case. Required SF >= 1.5 on factored load.
+
+| Case | Part | Material | Load | Max von Mises (MPa) | Allowable (MPa) | SF | Max disp (mm) | Nodes | Verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| forearm | Forearm_L_CF3 | CF plate quasi-isotropic | wrist load 14.7 N per plate (1.2 kg head+payload x g x 2.5) | 21.1 | 200 | 9.5 | 0.810 | 63824 | PASS |
+			(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									Recompute......
+						(12 %)							(25 %)							(37 %)							(50 %)							(62 %)							(75 %)							(87 %)							(100 %)									
+Get mesh data for constraints, materials and element geometry...
+Fixed:
+    Type: Fem::ConstraintFixed, Name: Fixed
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face14
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face2
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face13
+Force0:
+    Type: Fem::ConstraintForce, Name: Force0
+    ReferenceShape ... Type: Face, Object name: Part, Object label: Part, Element name: Face38
+Getting mesh data time: 1.078 seconds.
+
+CalculiX solver input writing...
+Input file:C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_forearm\Mesh.inp
+One monster input file.
+Writing time CalculiX input file: 2.453 seconds.
+
+CalculiX solver run...
+Everything seems fine. CalculiX ccx will be executed ......
+								CalculiX finished without error.
+
+CalculiX read results...
+Read ccx results from frd file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_forearm\Mesh.frd
+Read ccx results from dat file: C:\Users\ryanh\light_weight_arm\cad\fea\out\ccx_forearm\Mesh.dat
+Recompute......
+						(8 %)							(16 %)							(25 %)							(33 %)							(41 %)							(50 %)							(58 %)							(66 %)							(75 %)							(83 %)							(91 %)							(100 %)									

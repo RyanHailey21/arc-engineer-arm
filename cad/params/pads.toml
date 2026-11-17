@@ -1,0 +1,8 @@
+# Jaw pads, shared by every gripper variant: an R50 arc wraps the donut OD and a central 90 deg V-notch
+# self-centres the pipe on four lines.  'jaw' (used everywhere) = gap between the two pad arcs at the TCP.
+# Read by cad/arm/core.py; derived there: PIPE_R, O_PIPE (pad half-gap holding the pipe), O_REF, PIPE_JAW.
+
+PAD_R = 50.0      # donut-OD arc radius (donut OD 100, ARC manual 3.2.4 Objective C)
+NOTCH = 12.0      # pipe V-notch depth (90 deg included)
+WRAP = 22.0       # arc half-angle each side of the notch (deg)
+PIPE_OD = 26.7    # 3/4" Sch40 PVC pipe OD (ARC manual 3.2.4 Objective B)

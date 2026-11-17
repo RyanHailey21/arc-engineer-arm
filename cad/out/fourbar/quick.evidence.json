@@ -1,0 +1,37 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "quick",
+  "status": "pass",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 4 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 485 g (head 280 g); worst static J1 3.07 J2 2.54 J3 0.78 N*m; fingerprint MATCH",
+  "scope": "envelopes 10 pose checks; interfaces 4 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 485 g (head 280 g); worst static J1 3.07 J2 2.54 J3 0.78 N*m; fingerprint MATCH",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "72a3f9b177f7abe1b86964077ab1a62b5bb774859c385e8503227b6245add375",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/quick.inputs.json",
+    "sha256": "b9eb96aa47c673d82edbb9e15dc0bab0a05fca25fc708fb259157acdcea39996"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "quick.json",
+    "path": "quick.json",
+    "sha256": "30831e5bc96ebadb6de91157f8bc6a822c2dfa02556c12ded9a272d2ccfb235a"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-17T00:02:19",
+   "inputs_hash": "b5775998f4d90bc2",
+   "external_copies": []
+  }
+ }
+}

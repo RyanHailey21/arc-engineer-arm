@@ -1,0 +1,11 @@
+# Effective densities (g/cm^3) used for part masses (cad/arm/kinematics.py part_mass_g).
+# PRINT is the effective density of a PETG-CF print at the planned walls/infill, not the solid resin.
+
+CF = 1.55
+PRINT = 0.75
+AL = 2.70
+STEEL = 7.85
+TPU = 0.9
+BRASS = 8.5
+SHIM = 7.9
+PTFE = 2.2

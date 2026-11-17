@@ -1,0 +1,37 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "engagement",
+  "status": "pass",
+  "reason": "WARN: Thread engagement: 21 tapped holes, 21 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
+  "scope": "Thread engagement: 21 tapped holes, 21 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "8649f5277b6ba2feec79c95a58e42a49c076f87600b5b73076d63770e6eca6de",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/engagement.inputs.json",
+    "sha256": "b9eb96aa47c673d82edbb9e15dc0bab0a05fca25fc708fb259157acdcea39996"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "engagement_report.txt",
+    "path": "engagement_report.txt",
+    "sha256": "6b1cef3fbd05086594220923a511afc3b530802eb676f658b208d8e3cdf7dc61"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-16T23:54:06",
+   "inputs_hash": "b5775998f4d90bc2",
+   "external_copies": []
+  }
+ }
+}

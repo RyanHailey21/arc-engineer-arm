@@ -1,0 +1,407 @@
+# -*- coding: utf-8 -*-
+"""
+Batch manufacturing drawings for every custom part (ASME Y14.5-2018, reduced-dimension
+model-based drawings: critical sizes, hole callouts with position FCFs, datum reference
+frame, all-around profile; undimensioned geometry is BASIC from the STEP model / DXF).
+Run inside the FreeCAD GUI after make_drawings.py has been exec'd into the same dict:
+    g = {}; exec(open(r"<repo>/cad/drawings/make_drawings.py", encoding="utf-8").read(), g)
+    exec(open(r"<repo>/cad/drawings/batch_drawings.py", encoding="utf-8").read(), g)
+    g["batch"](start=0, count=5)          # chunks keep each GUI call short
+Only native TechDraw objects: DrawProjGroup (third angle), DrawViewPart (iso),
+DrawViewDimension, DrawViewBalloon (datums, FCFs, hole callouts), DrawRichAnno (notes),
+and the project template ANSIB_Landscape_Y14.svg (title + tolerance block fields).
+"""
+import json
+import math
+import os
+import sys
+import time
+import traceback
+
+import FreeCAD as App
+import FreeCADGui as Gui
+import Part
+
+V = App.Vector
+SCALES = [5, 4, 3, 2, 1.5, 1, 0.75, 0.5, 0.4, 0.3, 0.25, 0.2]
+LOG = os.path.join(OUT, "batch_log.txt")
+DENS = {"AL": 2.70, "CF": 1.55, "PRINT": 1.30, "TPU": 1.20}
+PROCESS = {
+    "CF": dict(title2="3.0 mm CARBON FIBER PLATE", title3="CNC ROUTED / WATERJET FROM DXF",
+               pos="0.1", prof="0.2", tol={"TOL_LIN1": "TOLERANCES:  X.X  ±0.2", "TOL_LIN2": "X.XX ±0.1",
+                                            "TOL_FINISH": "EDGES: DEBURR, SEAL WITH CA"},
+               notes=["MATERIAL: 3.0 mm CARBON FIBER PLATE, 3K TWILL, QUASI-ISOTROPIC LAYUP.",
+                      "CUT PROFILE AND THRU HOLES FROM DXF {dxf} (1:1, mm).",
+                      "HOLE SIZES +0.1/-0. NO DELAMINATION OR FRAYING AT EDGES OR HOLES.",
+                      "COUNTERSINKS (WHERE SHOWN) 90°."]),
+    "AL": dict(title2="6061-T6 ALUMINUM", title3="CLEAR ANODIZE (MIL-A-8625 TYPE II)",
+               pos="0.05", prof="0.1", tol={},
+               notes=["MATERIAL: 6061-T6 ALUMINUM.",
+                      "FINISH: CLEAR ANODIZE PER MIL-A-8625 TYPE II CLASS 1; MASK BEARING SEATS AND REAMED HOLES.",
+                      "BREAK ALL SHARP EDGES 0.2-0.4.",
+                      "THREADS PER ASME B1.13M, CLASS 6H."]),
+    "PRINT": dict(title2="PETG-CF (FDM)", title3="0.2 mm LAYERS, 4 WALLS, 40% GYROID",
+                  pos="0.2", prof="0.3", tol={"TOL_LIN1": "TOLERANCES:  X.X  ±0.2", "TOL_LIN2": "X.XX ±0.15",
+                                               "TOL_FINISH": "SURFACE: AS PRINTED"},
+                  notes=["MATERIAL: PETG-CF, FDM. PRINT FROM STEP {step}.",
+                         "0.2 mm LAYERS, 4 PERIMETERS, 5 TOP/BOTTOM, 40% GYROID INFILL.",
+                         "⌀4.0 HOLES: M3 HEAT-SET INSERTS (⌀4.0 x 4 L), INSTALL AT 230 °C.",
+                         "ORIENT LARGEST FLAT FACE (DATUM A) ON THE BED."]),
+    "TPU": dict(title2="TPU 95A (FDM)", title3="GRIP PAD", pos="0.3", prof="0.4",
+                tol={"TOL_LIN1": "TOLERANCES:  X.X  ±0.3", "TOL_LIN2": "X.XX ±0.2", "TOL_FINISH": "SURFACE: AS PRINTED"},
+                notes=["MATERIAL: TPU 95A, FDM. PRINT FROM STEP {step}.",
+                       "0.2 mm LAYERS, 3 PERIMETERS, 30% INFILL.",
+                       "BOND TO FINGER PLATES AFTER ASSEMBLY ON STANDOFFS (OPTIONAL)."]),
+}
+
+
+def log(msg):
+    with open(LOG, "a", encoding="utf-8") as fh:
+        fh.write(msg + "\n")
+
+
+# ------------------------------------------------------------- part list / grouping
+def custom_parts():
+    import importlib
+    for m in ("hardware", "arm_model"):
+        if m in sys.modules:
+            importlib.reload(sys.modules[m])
+    import arm_model as M
+    M._BODIES.clear()
+    bodies = M.build_bodies()
+    groups = {}
+    for bname, parts in bodies.items():
+        for p in parts:
+            if p.kind == "CAT" or p.vis.isNull() or p.name == "J1_Output_Hub":
+                continue
+            s = p.vis
+            bb = s.BoundBox
+            key = (p.kind, round(s.Volume, 0), round(s.Area, 0), tuple(sorted(round(x, 1) for x in (bb.XLength, bb.YLength, bb.ZLength))))
+            groups.setdefault(key, []).append(p)
+    out = []
+    for key, ps in groups.items():
+        out.append(ps)
+    out.sort(key=lambda ps: (["AL", "CF", "PRINT", "TPU"].index(ps[0].kind) if ps[0].kind in DENS else 9, ps[0].name))
+    return out
+
+
+def _hole_axis_counts(shape):
+    cnt = [set(), set(), set()]
+    for f in shape.Faces:
+        srf = f.Surface
+        if srf.__class__.__name__ != "Cylinder" or not (0.9 <= srf.Radius <= 12.5):
+            continue
+        u0, u1, v0, v1 = f.ParameterRange
+        p_ = f.valueAt((u0 + u1) / 2, (v0 + v1) / 2)
+        n = f.normalAt((u0 + u1) / 2, (v0 + v1) / 2)
+        ax, c = V(srf.Axis), V(srf.Center)
+        radial = (p_ - c) - ax * ((p_ - c).dot(ax))
+        if radial.Length < 1e-9 or n.dot(radial) > 0:
+            continue
+        for i, comp in enumerate((ax.x, ax.y, ax.z)):
+            if abs(abs(comp) - 1) < 1e-3:
+                cnt[i].add((round(c.x, 1), round(c.y, 1), round(c.z, 1), round(srf.Radius, 2)))
+    return [len(c) for c in cnt]
+
+
+def oriented(shape):
+    """Copy re-axed for drawing: Z = the axis most holes run along (else the thinnest),
+    X = longest remaining extent; centred in XY, Z from 0."""
+    s = shape.copy()
+    bb = s.BoundBox
+    L = [bb.XLength, bb.YLength, bb.ZLength]
+    hc = _hole_axis_counts(s)
+    zax = max(range(3), key=lambda i: (hc[i], -L[i])) if max(hc) > 0 else min(range(3), key=lambda i: L[i])
+    rest = sorted([i for i in range(3) if i != zax], key=lambda i: -L[i])
+    order = [rest[0], rest[1], zax]
+    cols = [V(*[1.0 if k == i else 0.0 for k in range(3)]) for i in order]
+    m = App.Matrix(cols[0].x, cols[0].y, cols[0].z, 0, cols[1].x, cols[1].y, cols[1].z, 0,
+                   cols[2].x, cols[2].y, cols[2].z, 0, 0, 0, 0, 1)
+    if m.determinant() < 0:                       # keep right-handed: flip the view axis
+        m.A31, m.A32, m.A33 = -m.A31, -m.A32, -m.A33
+    s.transformShape(m)
+    c = s.BoundBox.Center
+    s.translate(V(-c.x, -c.y, -s.BoundBox.ZMin))
+    return s
+
+
+def hole_table(shape):
+    """Round holes from concave cylinders, grouped by (axis, diameter, depth/thru, cbore)."""
+    zmin, zmax = shape.BoundBox.ZMin, shape.BoundBox.ZMax
+    holes = {}
+    for f in shape.Faces:
+        srf = f.Surface
+        if srf.__class__.__name__ != "Cylinder" or not (0.9 <= srf.Radius <= 12.5):
+            continue
+        u0, u1, v0, v1 = f.ParameterRange
+        p = f.valueAt((u0 + u1) / 2, (v0 + v1) / 2)
+        n = f.normalAt((u0 + u1) / 2, (v0 + v1) / 2)
+        ax, c = V(srf.Axis), V(srf.Center)
+        radial = (p - c) - ax * ((p - c).dot(ax))
+        if radial.Length < 1e-9 or n.dot(radial) > 0:
+            continue
+        az = abs(ax.z) > 0.999
+        bb = f.BoundBox
+        zr = (round(bb.ZMin, 1), round(bb.ZMax, 1)) if az else (round(c.z, 2),)   # coaxial holes at different depths stay separate
+        key = (round(c.x, 2), round(c.y, 2), zr, az, round(srf.Radius, 2))
+        h = holes.setdefault(key, dict(r=srf.Radius, x=c.x, y=c.y, axial=az, z0=1e9, z1=-1e9, span=0.0))
+        h["z0"], h["z1"] = min(h["z0"], bb.ZMin), max(h["z1"], bb.ZMax)
+        h["span"] += math.degrees(u1 - u0)
+    full = [h for h in holes.values() if h["span"] >= 359.0]
+    # attach coaxial counterbores to their through hole
+    res = []
+    for h in sorted(full, key=lambda h: h["r"]):
+        h["thru"] = h["axial"] and h["z0"] <= zmin + 0.01 and h["z1"] >= zmax - 0.01
+        h["depth"] = h["z1"] - h["z0"]
+        res.append(h)
+    by_xy = {}
+    for h in res:
+        if h["axial"]:
+            by_xy.setdefault((round(h["x"], 1), round(h["y"], 1)), []).append(h)
+    final = []
+    for k, hs in by_xy.items():
+        hs.sort(key=lambda h: h["r"])
+        base = hs[0]
+        base["cbore"] = None
+        for big in hs[1:]:
+            if not big["thru"]:
+                base["cbore"] = (2 * big["r"], big["depth"])
+        final.append(base)
+    side = [h for h in res if not h["axial"]]
+    return final, side, zmax - zmin
+
+
+def hole_text(h, kind, t):
+    d = 2 * h["r"]
+    tapped = {1.25: "M3x0.5-6H", 1.7: "M4x0.7-6H", 2.1: "M5x0.8-6H"}
+    if kind == "AL" and round(h["r"], 2) in tapped:
+        if h["thru"]:
+            return "%s THRU" % tapped[round(h["r"], 2)]
+        return "%s %s%.1f" % (tapped[round(h["r"], 2)], DEPTH, max(h["depth"] - 0.5, 1.0))
+    s = DIA + "%.1f" % d
+    if kind == "PRINT" and abs(d - 4.0) < 0.05:
+        s += " INSERT"
+    s += " THRU" if h["thru"] else " %s%.1f" % (DEPTH, h["depth"])
+    if h.get("cbore"):
+        s += "  %s%s%.1f %s%.1f" % (CBORE, DIA, h["cbore"][0], DEPTH, h["cbore"][1])
+    return s
+
+
+def pick_scale(w, h, max_w=205.0, max_h=150.0):
+    for sc in SCALES:
+        if w * sc <= max_w and h * sc <= max_h:
+            return sc
+    return SCALES[-1]
+
+
+def scale_txt(sc):
+    from fractions import Fraction
+    f = Fraction(sc).limit_denominator(10)
+    return "%d:%d" % (f.numerator, f.denominator)
+
+
+# ------------------------------------------------------------- one drawing
+def part_drawing(ps, number):
+    p = ps[0]
+    kind = p.kind if p.kind in PROCESS else "PRINT"
+    proc = PROCESS[kind]
+    shape = oriented(p.vis)
+    bb = shape.BoundBox
+    Lx, Ly, Lz = bb.XLength, bb.YLength, bb.ZLength
+    mass = shape.Volume * DENS.get(kind, 1.3) / 1000.0
+    three = not (kind == "CF" or Lz < 0.15 * Ly)
+    sc = pick_scale(Lx + Lz + 70 + (60 if three else 0), Ly + (Lz + 35 if three else 0) + 45, 225.0, 160.0)
+    title1 = p.name.replace("_CF3", "").replace("_", " ").upper()
+    names = [q.name for q in ps]
+    qty = len(ps)
+    mirror = any(n.endswith(("_R", "R")) for n in names) and any(n.endswith(("_L", "L")) for n in names)
+    stem = "%s_%s" % (number, p.name)
+    doc, page = new_sheet("DWG_" + number.replace("-", "_"), title1[:28], proc["title2"], proc["title3"],
+                          number, scale_txt(sc), "%.1f g" % mass, tol=proc.get("tol"))
+    part = doc.addObject("Part::Feature", "Part")
+    part.Shape = shape
+    part.ViewObject.Visibility = False
+
+    pg = doc.addObject("TechDraw::DrawProjGroup", "ProjGroup")
+    page.addView(pg)
+    pg.Source = [part]
+    pg.ProjectionType = "Third angle"
+    front = pg.addProjection("Front")
+    pg.Anchor.Direction = V(0, 0, 1)
+    pg.Anchor.XDirection = V(1, 0, 0)
+    side = pg.addProjection("Right")
+    thin = Lz < 0.15 * Ly                                 # plate-like: top view would be a sliver
+    topv = None if (kind == "CF" or thin) else pg.addProjection("Top")
+    pg.ScaleType = "Custom"
+    pg.Scale = sc
+    for prop, val in (("AutoDistribute", True), ("spacingX", 35.0), ("spacingY", 35.0)):
+        if hasattr(pg, prop):
+            setattr(pg, prop, val)
+    pg.X, pg.Y = (150, 150) if three else (120, 165)   # 3-view: room left of the front view for callouts
+    for v in pg.Views:
+        v.HardHidden = kind != "CF"
+    iso = doc.addObject("TechDraw::DrawViewPart", "Iso")
+    iso.Source = [part]
+    iso.Direction = V(1, -1, 1.2)
+    isc = pick_scale(Lx, Ly, 70, 50)
+    add_view(page, iso, 372, 232, isc)
+    wait_views(doc, [front, side, iso] + ([topv] if topv else []))
+    # any projection-group view outside the frame -> next smaller standard scale
+    if os.path.join(HERE, 'drawings') not in sys.path:
+        sys.path.insert(0, os.path.join(HERE, 'drawings'))
+    import importlib, layout as _lay
+    importlib.reload(_lay)
+    for _ in range(4):
+        page.ViewObject.doubleClicked()
+        _lay._refresh(doc)
+        out = [k for k in _lay.views_outside_frame(doc, page) if not k.startswith("Iso")]
+        if not out or sc == SCALES[-1]:
+            break
+        sc = SCALES[SCALES.index(sc) + 1]
+        pg.Scale = sc
+        wait_views(doc, [front, side] + ([topv] if topv else []))
+    et = dict(page.Template.EditableTexts)
+    et["scale"] = scale_txt(sc)
+    page.Template.EditableTexts = et
+
+    # ---------------- overall size dims (front: X and Y extents, side: thickness)
+    def extreme(view, axis, lo):
+        best, bv = None, None
+        i = 0
+        while True:
+            try:
+                q = view.getVertexByIndex(i)
+            except Exception:
+                break
+            if q is None:
+                break
+            val = q.Point.x if axis == 0 else q.Point.y
+            if best is None or (val < best if lo else val > best):
+                best, bv = val, "Vertex%d" % i
+            i += 1
+        return bv, best
+    vxl, xl = extreme(front, 0, True)
+    vxh, xh = extreme(front, 0, False)
+    vyl, yl = extreme(front, 1, True)
+    vyh, yh = extreme(front, 1, False)
+    if vxl and vxh:
+        dimv(doc, page, front, [vxl, vxh], "DistanceX", "%.1f", at=(0, -(yh - yl) * sc / 2 - 14), name="Dim_L")
+    if vyl and vyh:
+        dimv(doc, page, front, [vyl, vyh], "DistanceY", "%.1f", at=(-(xh - xl) * sc / 2 - 14, 0), name="Dim_W")
+    sxl, sxlv = extreme(side, 0, True)
+    sxh, sxhv = extreme(side, 0, False)
+    if sxl and sxh:
+        dimv(doc, page, side, [sxl, sxh], "DistanceX", "%.1f", at=(0, -(yh - yl) * sc / 2 - 12), name="Dim_T")
+        datum(doc, page, side, "A", (sxhv, (yh - yl) * 0.25), (sxhv + 8 / sc, (yh - yl) * 0.25))
+
+    # ---------------- holes: callouts + position FCFs (DRF A|B|C)
+    holes, side_holes, t = hole_table(shape)
+    groups = {}
+    for h in holes:
+        groups.setdefault(hole_text(h, kind, t), []).append(h)
+    order = sorted(groups.items(), key=lambda kv: -kv[1][0]["r"])
+    circles = [(i, e.Curve) for i, e in _edges(front) if e.Curve.__class__.__name__ == "Circle"]
+    x_text = (xh - xl) / 2 + 22 / sc
+    y_text = (yh - yl) / 2 + 4 / sc
+    step = 24.0 / sc
+    letters = ["B", "C"]
+    # targets first (DRF role by size), then stack callouts in the vertical order of their
+    # targets so leaders do not cross; callout + FCF + datum share a group suffix "_g<i>"
+    # so the layout pass moves them as one unit
+    tg = []
+    for gi, (txt, hs) in enumerate(order[:7]):
+        r = hs[0]["r"]
+        cand = [c for (_i, c) in circles if abs(c.Radius - r) < 0.02]
+        if not cand:
+            continue
+        c = max(cand, key=lambda c: c.Center.x + 0.3 * c.Center.y)        # instance nearest the text column
+        tg.append((gi, txt, hs, r, c))
+    # Each callout block sits just above the view, over its own hole (short leader):
+    #   row 0: hole callout (leader down to the hole)  /  FCF above it  /  datum symbol left of FCF.
+    # Blocks that would overlap move to the next row up.  Units: model mm (x page/sc).
+    BW, BH = 56.0 / sc, 21.0 / sc
+    rows = []                                            # list of x-intervals per row
+    for (gi, txt, hs, r, c) in sorted(tg, key=lambda t: t[4].Center.x):
+        ox, oy = c.Center.x + r * 0.707, c.Center.y + r * 0.707
+        label = ("%dX " % len(hs) if len(hs) > 1 else "") + txt
+        if topv is None:                               # 2-view sheet: blocks above the front view
+            x = min(max(c.Center.x, xl + BW / 2 - 10 / sc), xh - BW / 2 + 10 / sc) if (xh - xl) > BW else (xl + xh) / 2
+            row = 0
+            while True:
+                if row >= len(rows):
+                    rows.append([])
+                if all(abs(x - q) >= BW for q in rows[row]):
+                    rows[row].append(x)
+                    break
+                row += 1
+            y0 = yh + 8.0 / sc + row * BH
+        else:                                          # 3-view sheet (top view above): blocks left of the front view
+            x = xl - BW / 2 - 12.0 / sc
+            y0 = yh - 4.0 / sc - len(rows) * BH
+            rows.append([x])
+        callout(doc, page, front, label, (ox, oy), (x, y0), name="Call_g%d" % gi)
+        if gi == 0:
+            cells = [SYM["perpendicularity"], DIA + proc["pos"], "A"]
+        elif gi == 1:
+            cells = [SYM["position"], DIA + proc["pos"], "A", "B"]
+        else:
+            cells = [SYM["position"], DIA + proc["pos"], "A", "B", "C"]
+        fcf(doc, page, front, cells, (x, y0 + 9.5 / sc), name="FCF_g%d" % gi)
+        if gi < 2:
+            dd = datum(doc, page, front, letters[gi], (x - 18.0 / sc, y0 + 9.5 / sc), (x - 31.0 / sc, y0 + 9.5 / sc))
+            dd.Label = "Datum_%s_g%d" % (letters[gi], gi)
+    ndrf = min(len(order), 2)
+    drf = ["A", "B", "C"][:1 + ndrf]
+    # all-around profile of the outline
+    prof = balloon(doc, page, front, "|".join([SYM["profile_surface"], proc["prof"]] + drf),
+                   (xl + 0.04 * (xh - xl), yh), (xl + 0.04 * (xh - xl) + 22 / sc, yh + 8 / sc), end="Filled arrow", name="FCF_profile")
+    # ---------------- notes
+    step_file = "fab/step/%s.step" % p.name
+    dxf_file = "fab/dxf/%s.dxf" % p.name
+    lines = ["NOTES:", "1. INTERPRET PER ASME Y14.5-2018. UNDIMENSIONED GEOMETRY IS BASIC, DEFINED BY",
+             "    STEP MODEL %s%s." % (step_file, (" AND DXF " + dxf_file) if kind == "CF" else ""),
+             "2. QTY %d PER ROBOT: %s." % (qty, ", ".join(names)) + (" L SHOWN, R IS MIRROR IMAGE." if mirror else "")]
+    n = 3
+    for s_ in proc["notes"]:
+        lines.append("%d. %s" % (n, s_.format(step=step_file, dxf=dxf_file)))
+        n += 1
+    if side_holes:
+        sg = {}
+        for h in side_holes:
+            sg.setdefault(hole_text(h, kind, t), 0)
+            sg[hole_text(h, kind, t)] += 1
+        lines.append("%d. SIDE HOLES (LOCATION PER MODEL, " % n + SYM["position"] + " " + DIA + "%s|A|B): " % proc["pos"] +
+                     "; ".join("%dX %s" % (k_, s_) for s_, k_ in sg.items()))
+        n += 1
+    lines.append("%d. MASS %.1f g (REF). MODEL SOURCE: arm_model.py (%s)." % (n, mass, p.src.replace("custom: ", "")))
+    rich(doc, page, html_lines(lines, 7), 112, 74, 162, name="Notes")
+    rich(doc, page, html_lines(["ISOMETRIC (REF)", "SCALE " + scale_txt(isc)], 8), 372, 196, 40, name="Cap_iso")
+    pdf = export(doc, page, stem)
+    App.closeDocument(doc.Name)
+    return pdf
+
+
+_CACHE = {}
+
+
+def batch(start=0, count=100, only=None):
+    if "groups" not in _CACHE:
+        _CACHE["groups"] = custom_parts()
+    groups = _CACHE["groups"]
+    if start == 0:
+        open(LOG, "w").close()
+        with open(os.path.join(OUT, "batch_index.json"), "w") as fh:
+            json.dump([[q.name for q in ps] for ps in groups], fh)
+    done = []
+    idx = only if only is not None else range(start, min(start + count, len(groups)))
+    for gi in idx:
+        ps = groups[gi]
+        number = "ARC-%03d" % (102 + gi)
+        t0 = time.time()
+        try:
+            pdf = part_drawing(ps, number)
+            log("OK   %s %-28s %5.1fs %s" % (number, ps[0].name, time.time() - t0, os.path.basename(pdf)))
+            done.append(pdf)
+        except Exception:
+            log("FAIL %s %-28s %s" % (number, ps[0].name, traceback.format_exc()[-400:].replace("\n", " | ")))
+    return len(groups), done

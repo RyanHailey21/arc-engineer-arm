@@ -1,0 +1,7 @@
+# Wrist: J3 pitch servo on the level member and the J4 roll stage.  Gripper frame, mm / deg.
+# Read by cad/arm/wrist.py.  The roll hub's bolt patterns are interfaces (cad/interfaces/roll_*.toml).
+
+SERVO_ANG = 150.0   # J3 pitch servo body angle on the level member (deg)
+HX = 35.0           # head (palm + jaws) offset forward of the old palm datum, to make room for the roll stage
+ROLL_Z = -5.0       # roll axis height (15 above the TCP, so the roll stage stays above the finger plane)
+ROLL_XS = 47.0      # J4 roll servo spline face (x)

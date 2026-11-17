@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cad/schemas/interface.schema.json",
+  "title": "Mating interface (cad/interfaces/*.toml)",
+  "description": "One mating interface read by both mating parts. A [pattern] table makes it probe-able by tools/check_interfaces.py; vendor data tables (e.g. [DM]) are allowed alongside.",
+  "type": "object",
+  "required": ["interface"],
+  "properties": {
+    "interface": {
+      "type": "object",
+      "required": ["name", "summary", "owner"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": "string", "pattern": "^[a-z0-9_]+__[a-z0-9_]+$", "description": "<side_a>__<side_b>, equal to the file name"},
+        "summary": {"type": "string", "minLength": 10},
+        "owner": {"type": "string", "minLength": 3}
+      }
+    },
+    "frame": {
+      "type": "object",
+      "required": ["origin", "normal"],
+      "additionalProperties": false,
+      "properties": {
+        "origin": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+        "normal": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3}
+      }
+    },
+    "flange": {"type": "object", "additionalProperties": {"type": "number"}},
+    "pattern": {
+      "type": "object",
+      "required": ["radius", "angles_deg"],
+      "additionalProperties": false,
+      "properties": {
+        "radius": {"type": "number", "exclusiveMinimum": 0},
+        "angles_deg": {"type": "array", "items": {"type": "number"}, "minItems": 1}
+      }
+    },
+    "side_a": {"$ref": "#/$defs/side"},
+    "side_b": {"$ref": "#/$defs/side"},
+    "fastener": {
+      "type": "object",
+      "required": ["kind", "size"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {"type": "string", "enum": ["BHCS", "SHCS", "CSK", "SET", "DOWEL", "PIN"]},
+        "size": {"type": "string", "pattern": "^M[0-9]+(\\.[0-9]+)?$"},
+        "length": {"type": "number", "exclusiveMinimum": 0},
+        "head_face_x": {"type": "number"}
+      }
+    }
+  },
+  "dependentRequired": {"pattern": ["frame", "side_a", "side_b"]},
+  "$defs": {
+    "side": {
+      "type": "object",
+      "required": ["body", "part", "hole"],
+      "additionalProperties": false,
+      "properties": {
+        "body": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$"},
+        "part": {"type": "string", "minLength": 1},
+        "hole": {"type": "string", "enum": ["tapped", "clearance"]},
+        "thread": {"type": "string", "pattern": "^M[0-9]+(\\.[0-9]+)?x[0-9.]+$"},
+        "drill_d": {"type": "number", "exclusiveMinimum": 0},
+        "drill_depth": {"type": "number", "exclusiveMinimum": 0},
+        "clearance_d": {"type": "number", "exclusiveMinimum": 0},
+        "depth": {"type": "number", "exclusiveMinimum": 0}
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cad/schemas/envelope.schema.json",
+  "title": "Field envelopes (cad/envelopes/*.toml)",
+  "description": "Keep-out boxes the arm must stay out of at given task poses. min < max on every axis and every pose must exist in the model's POSES (checked by tools/validate_data.py).",
+  "type": "object",
+  "required": ["keepout"],
+  "additionalProperties": false,
+  "properties": {
+    "keepout": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "why", "source", "frame", "poses", "bodies", "min", "max"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+          "why": {"type": "string", "minLength": 20},
+          "source": {"type": "string", "minLength": 5},
+          "frame": {"type": "string", "enum": ["world", "gripper"]},
+          "poses": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+          "jaw": {"type": "number", "minimum": 0},
+          "bodies": {"type": "string", "enum": ["arm", "gripper"]},
+          "min": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+          "max": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cad/schemas/catalogue.schema.json",
+  "title": "Purchased-part catalogue (cad/data/catalogue.toml)",
+  "description": "Keyed by the 'src' of CAT parts. mass (g) feeds part masses and joint torques.",
+  "type": "object",
+  "minProperties": 1,
+  "additionalProperties": {
+    "type": "object",
+    "required": ["desc", "mass"],
+    "additionalProperties": false,
+    "properties": {
+      "desc": {"type": "string", "minLength": 5},
+      "mass": {"type": "number", "minimum": 0},
+      "src": {"type": "string"},
+      "verify": {"type": "string"}
+    }
+  }
+}

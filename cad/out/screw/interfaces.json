@@ -1,0 +1,174 @@
+{
+ "variant": "screw",
+ "ok": true,
+ "report": [
+  {
+   "interface": "roll_horn__roll_hub",
+   "side": "side_a",
+   "part": "Servo_Horn_25T_roll",
+   "expected_r": null,
+   "status": "PASS",
+   "holes": [
+    {
+     "y": 4.95,
+     "z": -0.05,
+     "radii": [
+      1.25
+     ],
+     "ok": true
+    },
+    {
+     "y": -4.95,
+     "z": -0.05,
+     "radii": [
+      1.25
+     ],
+     "ok": true
+    },
+    {
+     "y": -4.95,
+     "z": -9.95,
+     "radii": [
+      1.25
+     ],
+     "ok": true
+    },
+    {
+     "y": 4.95,
+     "z": -9.95,
+     "radii": [
+      1.25
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "roll_horn__roll_hub",
+   "side": "side_b",
+   "part": "Roll_Hub",
+   "expected_r": 1.65,
+   "status": "PASS",
+   "holes": [
+    {
+     "y": 4.95,
+     "z": -0.05,
+     "radii": [
+      1.65
+     ],
+     "ok": true
+    },
+    {
+     "y": -4.95,
+     "z": -0.05,
+     "radii": [
+      1.65
+     ],
+     "ok": true
+    },
+    {
+     "y": -4.95,
+     "z": -9.95,
+     "radii": [
+      1.65
+     ],
+     "ok": true
+    },
+    {
+     "y": 4.95,
+     "z": -9.95,
+     "radii": [
+      1.65
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "roll_hub__gripper_palm",
+   "side": "side_a",
+   "part": "Roll_Hub",
+   "expected_r": 1.25,
+   "status": "PASS",
+   "holes": [
+    {
+     "y": 15.25,
+     "z": -5.0,
+     "radii": [
+      1.25
+     ],
+     "ok": true
+    },
+    {
+     "y": -15.25,
+     "z": -5.0,
+     "radii": [
+      1.25
+     ],
+     "ok": true
+    },
+    {
+     "y": -10.783,
+     "z": -15.783,
+     "radii": [
+      1.25
+     ],
+     "ok": true
+    },
+    {
+     "y": 10.783,
+     "z": -15.783,
+     "radii": [
+      1.25
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "roll_hub__gripper_palm",
+   "side": "side_b",
+   "part": "Gripper_Palm",
+   "expected_r": 1.65,
+   "status": "PASS",
+   "holes": [
+    {
+     "y": 15.25,
+     "z": -5.0,
+     "radii": [
+      1.65,
+      4.0
+     ],
+     "ok": true
+    },
+    {
+     "y": -15.25,
+     "z": -5.0,
+     "radii": [
+      1.65,
+      4.0
+     ],
+     "ok": true
+    },
+    {
+     "y": -10.783,
+     "z": -15.783,
+     "radii": [
+      1.65,
+      4.0
+     ],
+     "ok": true
+    },
+    {
+     "y": 10.783,
+     "z": -15.783,
+     "radii": [
+      1.65,
+      4.0
+     ],
+     "ok": true
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+[
+ {
+  "case": "forearm",
+  "verdict": "ERROR",
+  "note": "          ^^^^^^^^^^^\n  File \"C:\\Users\\ryanh\\light_weight_arm\\cad\\fea\\run_fea.py\", line 169, in run_case\n    vm = max(r.vonMises)\n         ^^^^^^^^^^^^^^^\nValueError: max() arg is an empty sequence\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"C:\\Users\\ryanh\\light_weight_arm\\cad\\fea\\run_fea.py\", line 270, in main\n    r_ = run_case(c)\n         ^^^^^^^^^^^\n  File \"C:\\Users\\ryanh\\light_weight_arm\\cad\\fea\\run_fea.py\", line 169, in run_case\n    vm = max(r.vonMises)\n         ^^^^^^^^^^^^^^^\nValueError: max() arg is an empty sequence\n"
+ },
+ {
+  "case": "end_block",
+  "part": "Screw_End_Block_R",
+  "material": "Aluminium-6061-T6",
+  "load": "lead-screw axial reaction 100 N on the 688 bearing seat",
+  "total_force_N": 100.0,
+  "max_von_mises_MPa": 6.78,
+  "max_disp_mm": 0.0013,
+  "allowable_MPa": 276.0,
+  "safety_factor": 40.68,
+  "nodes": 116718,
+  "mesh_h_mm": 1.125,
+  "verdict": "PASS",
+  "seconds": 300.8,
+  "note": "retry: SecondOrderLinear mesh"
+ }
+]

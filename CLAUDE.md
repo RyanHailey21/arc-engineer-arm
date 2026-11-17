@@ -1,0 +1,31 @@
+# ARC S2 Engineer arm — working conventions
+
+Code-CAD robot arm in FreeCAD 1.1 Python (`%LOCALAPPDATA%\Programs\FreeCAD 1.1\bin\freecadcmd.exe`; pin this version).
+Start with `cad/MAP.md` (generated). It lists every module, parameter file, interface, keep-out zone, and every part with the file:line that builds it.
+
+## Where things live
+- `cad/arm/`: the model, one module per subassembly. `arm_model.py` is a compatibility facade (`import arm_model as M`).
+- `cad/params/*.toml`: named design inputs, with units and reasons. **Edit these, not literals in code.** `variant.toml` sets the active gripper (`GRIP` env var overrides it) and the release variant.
+- `cad/interfaces/*.toml`: mating interfaces. Both mating parts build from the file (`cad/iface.py`), and `tools/check_interfaces.py` probes the geometry.
+- `cad/envelopes/*.toml`: field keep-out boxes per task pose, each with a reason and a source.
+- `cad/data/catalogue.toml`: purchased parts (mass, source, what to verify).
+- `cad/out/<variant>/`: check results plus `manifest.json`, which records each run's status and inputs hash.
+
+## Frames
+- World/robot frame: x forward from the bumper, y left, z up from the floor.
+- Gripper frame: x along the roll axis, TCP at (151, 0, −20), roll axis at z = −5.
+- `jaw` = gap between the pad arcs at the TCP: pipe 13.8, donut 100, open 112.
+
+## Workflow
+1. Change a TOML value or a builder.
+2. Run `tools/quick_check.py` (about 25–30 s). It covers envelopes, interfaces, gripper self-interference, mass/torque and the fingerprint, and shows FRESH/STALE evidence.
+3. Refactors: `tools/fingerprint.py` must report MATCH for **both** `GRIP=SCREW` and `GRIP=FOURBAR`. After an *intended* geometry change, re-record it (`FP_MODE=record`) and say which parts changed.
+4. Milestones: run `check_interference.py` (about 4 min, ground truth). FEA, drawings and renders only on request.
+5. New mates or limits go in `interfaces/` or `envelopes/` first, not as numbers buried in a builder.
+6. New gripper: add `arm/grippers/<name>.py` with `<name>_bodies()` and `<name>_placements(Hd, jaw)`, register it in `arm/bodies.py` GRIPPERS, and mount it on `interfaces/roll_hub__gripper_palm.toml`.
+
+## Guard rails
+- Release generators build the release variant only and refuse another `GRIP`: `export_fab.py`, `fea/run_fea.py`, `drawings/*`, `build_assembly.py`, `render/export_render.py`. The rev A package in `fab/`, `drawings/out`, `fea/out` and `render/` stays intact.
+- In a running FreeCAD GUI session, call `arm.reload_all()` to pick up edits. Don't drive the GUI from `execute_code_async`.
+- Run long jobs (full interference, FEA, renders) in the background.
+- Final deliverables go to the UT Arlington OneDrive folder (`OneDrive - UT Arlington\ARC_Engineer_Arm_TDP\`) with a README.

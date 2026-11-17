@@ -1,0 +1,42 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "fea_fourbar",
+  "status": "pass",
+  "reason": "PASS: 6 cases, min SF 1.8",
+  "scope": "6 cases, min SF 1.8",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "dc5a45e18de7e6af38edfa37a054afc06ab754faaa153cb0c9a6ca11a394dc0c",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/fea_fourbar.inputs.json",
+    "sha256": "b9eb96aa47c673d82edbb9e15dc0bab0a05fca25fc708fb259157acdcea39996"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "fea_report.md",
+    "path": "fea/fea_report.md",
+    "sha256": "7cee13d8dd93f9e51094dd4c79d5fb7535539b430accb85e97a910beed58033a"
+   },
+   {
+    "id": "fea_results.json",
+    "path": "fea/fea_results.json",
+    "sha256": "f68e2d06f98cd196f42429c8a1d57acb5f1c0b572e0d365733e3f26ea0511e69"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-16T23:57:03",
+   "inputs_hash": "b5775998f4d90bc2",
+   "external_copies": []
+  }
+ }
+}

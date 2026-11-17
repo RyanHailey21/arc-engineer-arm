@@ -1,0 +1,102 @@
+[
+ {
+  "case": "upper_arm",
+  "part": "Upper_Arm_L_CF3",
+  "material": "CF plate quasi-isotropic",
+  "load": "elbow reaction 23.3 N per plate (1.9 kg distal mass x g x 2.5)",
+  "total_force_N": 23.3,
+  "max_von_mises_MPa": 27.83,
+  "max_disp_mm": 0.9772,
+  "allowable_MPa": 200.0,
+  "safety_factor": 7.19,
+  "nodes": 45446,
+  "mesh_h_mm": 2.0,
+  "verdict": "PASS",
+  "seconds": 27.7
+ },
+ {
+  "case": "forearm",
+  "verdict": "ERROR",
+  "note": "Traceback (most recent call last):\n  File \"C:\\Users\\ryanh\\light_weight_arm\\cad/fea\\run_fea.py\", line 239, in main\n    results.append(run_case(c))\n                   ^^^^^^^^^^^\n  File \"C:\\Users\\ryanh\\light_weight_arm\\cad/fea\\run_fea.py\", line 145, in run_case\n    vm = max(r.vonMises)\n         ^^^^^^^^^^^^^^^\nValueError: max() arg is an empty sequence\n"
+ },
+ {
+  "case": "clevis",
+  "part": "Clevis_L_CF3",
+  "material": "CF plate quasi-isotropic",
+  "load": "head weight 12.3 N per plate at the roll-housing screws (1.0 kg x g x 2.5)",
+  "total_force_N": 12.3,
+  "max_von_mises_MPa": 2.82,
+  "max_disp_mm": 0.0035,
+  "allowable_MPa": 200.0,
+  "safety_factor": 71.04,
+  "nodes": 50981,
+  "mesh_h_mm": 1.5,
+  "verdict": "PASS",
+  "seconds": 54.8
+ },
+ {
+  "case": "j2_hub",
+  "part": "J2_Output_Hub_Journal",
+  "material": "Aluminium-6061-T6",
+  "load": "crank reaction 62 N on the D12 journal (J2 10.0 N*m incl. x2.5)",
+  "total_force_N": 62.5,
+  "max_von_mises_MPa": 7.72,
+  "max_disp_mm": 0.0015,
+  "allowable_MPa": 276.0,
+  "safety_factor": 35.75,
+  "nodes": 39712,
+  "mesh_h_mm": 1.2,
+  "verdict": "PASS",
+  "seconds": 61.7
+ },
+ {
+  "case": "jaw_bracket",
+  "part": "Jaw_Bracket_L",
+  "material": "Aluminium-6061-T6",
+  "load": "grip/lead-screw reaction 100 N on the nut upright (M2006 current-limited grip)",
+  "total_force_N": 100.0,
+  "max_von_mises_MPa": 39.39,
+  "max_disp_mm": 0.0561,
+  "allowable_MPa": 276.0,
+  "safety_factor": 7.01,
+  "nodes": 121066,
+  "mesh_h_mm": 1.2,
+  "verdict": "PASS",
+  "seconds": 301.5
+ },
+ {
+  "case": "end_block",
+  "verdict": "ERROR",
+  "note": "Traceback (most recent call last):\n  File \"C:\\Users\\ryanh\\light_weight_arm\\cad/fea\\run_fea.py\", line 239, in main\n    continue\n             \n  File \"C:\\Users\\ryanh\\light_weight_arm\\cad/fea\\run_fea.py\", line 145, in run_case\n    raise RuntimeError(\"no results (see %s)\" % wd)\n     ^^^^^^^^^^^^^^^\nValueError: max() arg is an empty sequence\n"
+ },
+ {
+  "case": "finger",
+  "part": "Finger_L_top_CF3",
+  "material": "CF plate quasi-isotropic",
+  "load": "grip reaction 50 N per finger plate (100 N jaw force over 2 plates)",
+  "total_force_N": 50.0,
+  "max_von_mises_MPa": 12.61,
+  "max_disp_mm": 0.0151,
+  "allowable_MPa": 200.0,
+  "safety_factor": 15.86,
+  "nodes": 59843,
+  "mesh_h_mm": 1.2,
+  "verdict": "PASS",
+  "seconds": 116.7
+ },
+ {
+  "case": "roll_housing",
+  "part": "Roll_Housing",
+  "material": "PETG-CF (FDM)",
+  "load": "head + payload 24.5 N through the 6805 seat (1.0 kg x g x 2.5)",
+  "total_force_N": 24.5,
+  "max_von_mises_MPa": 1.15,
+  "max_disp_mm": 0.0054,
+  "allowable_MPa": 40.0,
+  "safety_factor": 34.68,
+  "nodes": 62502,
+  "mesh_h_mm": 2.0,
+  "verdict": "PASS",
+  "seconds": 117.3
+ }
+]

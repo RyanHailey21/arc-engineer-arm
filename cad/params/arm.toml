@@ -1,0 +1,38 @@
+# Arm geometry: kinematic dimensions, plate layer stack and drive details.  mm, degrees.
+# Frame: X forward from the chassis front bumper, Y left, Z up from the Battlefield floor.
+# Read by cad/arm/core.py (K, Y, T, GT2_T, HUB_R, UA_HUB_SCREWS) and cad/arm/upper_arm.py (harness).
+
+T = 3.0                  # CF plate thickness (every plate in the layer stack)
+
+[K]                      # kinematics (paper's palletizer topology, links scaled ~2.4x)
+SX = -160.0              # shoulder axis x (J1/J2 coaxial)
+SZ = 215.0               # shoulder axis z
+L1 = 80.0                # crank / ground-lever length (parallelogram drive of the forearm)
+L2 = 340.0               # upper arm, shoulder S -> elbow E
+L3 = 350.0               # forearm, elbow E -> wrist pitch axis D
+GRIP = 151.0             # wrist pitch axis -> TCP, along the gripper x axis
+DROP = 20.0              # TCP below the wrist pitch axis (gripper frame z = -DROP)
+V1_LEN = 70.0            # level-keeping stage-1 ground lever length
+V1_ANG = 192.0           # level-keeping stage-1 ground lever angle (deg)
+DECK_Z = 120.0           # chassis deck top (placeholder chassis)
+
+[Y]                      # layer stack: centre planes of the plates (y, mm); see the arm_model.py docstring
+FL = -18.0               # forearm plate L (R is +18)
+CL = -23.5               # wrist clevis plate L (R is +23.5)
+BELT = -30.75            # GT2 level-keeping belt centre plane
+ROCK = -37.5             # rocker / level member
+ROD1 = -42.0             # level-keeping rod 1
+UA = -45.5               # upper-arm plate L (R is +45.5)
+TW = -51.0               # motor tower L (R is +51)
+RAB = 29.0               # rod AB (forearm drive rod)
+CRANK = 34.5             # crank (J2 side)
+
+[level_keeping]
+GT2_T = 30               # pulley teeth: 30T so the D10.6 bore clears the tooth roots (20T left 0.1 mm)
+
+[j1_hub]
+HUB_R = 19.5             # J1/J2 output hub flange radius (counterbores on PCD27 need >= 2.5 mm wall)
+UA_HUB_SCREWS = [30.0, 150.0, 270.0]   # J1 hub -> UA-L: 3x M3 on PCD20 (deg), clear of the PCD27 counterbores + dowels
+
+[harness]
+UA_CLIP_YZ = [-52.3, 9.0]              # harness bundle centre in the UA frame (y, z): 47 + 5.3 outboard of the UA plate

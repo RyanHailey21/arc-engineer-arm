@@ -1,0 +1,36 @@
+# Python / tool caches
+__pycache__/
+*.pyc
+.cache/
+cad/.cache/
+
+# FreeCAD automatic backups
+*.FCBak
+
+# Blender install (download it and check it against tools/blender-5.3.0.sha256; see README "Renders")
+tools/blender-*/
+
+# FEA solver working folders and result documents (regenerate: cad/fea/run_fea.py, cad/fea/run_fea_fourbar.py);
+# the reports, result JSON and stress/displacement images stay in the repo
+cad/fea/out/ccx_*/
+cad/fea/out/*.FCStd
+cad/fea/out/*.vtu
+cad/out/*/fea/ccx_*/
+cad/out/*/fea/*.FCStd
+cad/out/*/fea/*.vtu
+
+# Render intermediates (regenerate: cad/render/export_render.py, blender_render.py); final PNGs and the MP4 stay
+cad/render/meshes/
+cad/render/meshes_old/
+cad/render/preview/
+cad/render/out/*.blend
+cad/render/out/*.blend1
+cad/render/out/prev_*/
+cad/render/out_fc/
+
+# Superseded fabrication exports (kept locally, not part of the design record)
+cad/fab/obsolete/
+
+# Throw-away test output
+cad/out/evidencetest/
+cad/out/*/evidence/*.inputs.json

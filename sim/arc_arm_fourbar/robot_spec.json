@@ -1,0 +1,1768 @@
+{
+ "variant": "FOURBAR",
+ "units": "CAD mm / deg (generator converts to m / rad)",
+ "links": [
+  {
+   "name": "base_link",
+   "cad_body": "GROUND",
+   "parent": null,
+   "joint": null,
+   "axis": null,
+   "origin_xyz_mm": [
+    0,
+    0,
+    0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    0,
+    0,
+    0
+   ],
+   "mimic": null,
+   "visuals": [
+    {
+     "file": "meshes/visual/base_link__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 1452
+    },
+    {
+     "file": "meshes/visual/base_link__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 3732
+    },
+    {
+     "file": "meshes/visual/base_link__motor.stl",
+     "rgba": [
+      0.08,
+      0.08,
+      0.09,
+      1
+     ],
+     "facets": 266930
+    },
+    {
+     "file": "meshes/visual/base_link__pad.stl",
+     "rgba": [
+      0.12,
+      0.35,
+      0.85,
+      1
+     ],
+     "facets": 6108
+    },
+    {
+     "file": "meshes/visual/base_link__pla.stl",
+     "rgba": [
+      0.9,
+      0.32,
+      0.06,
+      1
+     ],
+     "facets": 2176
+    },
+    {
+     "file": "meshes/visual/base_link__steel.stl",
+     "rgba": [
+      0.3,
+      0.31,
+      0.33,
+      1
+     ],
+     "facets": 10852
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/base_link__Base_Plate_AL5.stl",
+     "part": "Base_Plate_AL5",
+     "facets": 1196
+    },
+    {
+     "file": "meshes/collision/base_link__Tower_L_CF3.stl",
+     "part": "Tower_L_CF3",
+     "facets": 1900
+    },
+    {
+     "file": "meshes/collision/base_link__J1_Motor_DM-J4340_stator.stl",
+     "part": "J1_Motor_DM-J4340_stator",
+     "facets": 1084
+    },
+    {
+     "file": "meshes/collision/base_link__Tower_R_CF3.stl",
+     "part": "Tower_R_CF3",
+     "facets": 1740
+    },
+    {
+     "file": "meshes/collision/base_link__J2_Motor_DM-J4340_stator.stl",
+     "part": "J2_Motor_DM-J4340_stator",
+     "facets": 1084
+    },
+    {
+     "file": "meshes/collision/base_link__SB5x10_G1.stl",
+     "part": "SB5x10_G1",
+     "facets": 380
+    },
+    {
+     "file": "meshes/collision/base_link__ESC_C610.stl",
+     "part": "ESC_C610",
+     "facets": 12
+    }
+   ],
+   "mass_kg": 1.6521515866528074,
+   "com_mm": [
+    -226.7933664028264,
+    -1.2326844919950557,
+    152.53989267889065
+   ],
+   "inertia_kgmm2": [
+    [
+     10941.452741263136,
+     -56.783839009557425,
+     -3234.1616888552544
+    ],
+    [
+     -56.783839009557425,
+     17653.61408744839,
+     1.2307836127017389
+    ],
+    [
+     -3234.1616888552544,
+     1.2307836127017389,
+     22439.50173966593
+    ]
+   ]
+  },
+  {
+   "name": "upper",
+   "cad_body": "UPPER",
+   "parent": "base_link",
+   "joint": "shoulder",
+   "axis": [
+    0,
+    -1,
+    0
+   ],
+   "origin_xyz_mm": [
+    -160.0,
+    0.0,
+    215.0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    0,
+    0,
+    0
+   ],
+   "mimic": null,
+   "visuals": [
+    {
+     "file": "meshes/visual/upper__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 5412
+    },
+    {
+     "file": "meshes/visual/upper__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 2760
+    },
+    {
+     "file": "meshes/visual/upper__steel.stl",
+     "rgba": [
+      0.3,
+      0.31,
+      0.33,
+      1
+     ],
+     "facets": 5744
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/upper__Upper_Arm_L_CF3.stl",
+     "part": "Upper_Arm_L_CF3",
+     "facets": 1560
+    },
+    {
+     "file": "meshes/collision/upper__Upper_Arm_R_CF3.stl",
+     "part": "Upper_Arm_R_CF3",
+     "facets": 1160
+    },
+    {
+     "file": "meshes/collision/upper__Brg_6701_Shoulder_UA_R.stl",
+     "part": "Brg_6701_Shoulder_UA_R",
+     "facets": 256
+    },
+    {
+     "file": "meshes/collision/upper__J1_Output_Hub.stl",
+     "part": "J1_Output_Hub",
+     "facets": 2580
+    },
+    {
+     "file": "meshes/collision/upper__UA_Standoff_D8_0.stl",
+     "part": "UA_Standoff_D8_0",
+     "facets": 256
+    },
+    {
+     "file": "meshes/collision/upper__UA_Standoff_D8_1.stl",
+     "part": "UA_Standoff_D8_1",
+     "facets": 256
+    }
+   ],
+   "mass_kg": 0.2204975061729256,
+   "com_mm": [
+    68.06904805796371,
+    -28.853700019241252,
+    0.07073418978246998
+   ],
+   "inertia_kgmm2": [
+    [
+     335.06673956050093,
+     -415.50787966910605,
+     -1.5897877470109123
+    ],
+    [
+     -415.50787966910605,
+     2426.849614036776,
+     0.36466149912952467
+    ],
+    [
+     -1.5897877470109123,
+     0.36466149912952467,
+     2720.9643514310333
+    ]
+   ]
+  },
+  {
+   "name": "rod1",
+   "cad_body": "ROD1",
+   "parent": "base_link",
+   "joint": "rod1",
+   "axis": [
+    0,
+    -1,
+    0
+   ],
+   "origin_xyz_mm": [
+    -228.47033205136637,
+    0.0,
+    200.44618164275684
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    0,
+    0,
+    0
+   ],
+   "mimic": [
+    "shoulder",
+    1.0
+   ],
+   "visuals": [
+    {
+     "file": "meshes/visual/rod1__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 1536
+    },
+    {
+     "file": "meshes/visual/rod1__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 676
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/rod1__Rod_1_CF3.stl",
+     "part": "Rod_1_CF3",
+     "facets": 676
+    }
+   ],
+   "mass_kg": 0.019739531086861807,
+   "com_mm": [
+    170.00000000000006,
+    -41.939208282369066,
+    -6.356373342658219e-17
+   ],
+   "inertia_kgmm2": [
+    [
+     0.6573619823550718,
+     -4.614364446098307e-14,
+     -8.60319469210936e-16
+    ],
+    [
+     -4.614364446098307e-14,
+     259.21588987174226,
+     -3.190136511183783e-16
+    ],
+    [
+     -8.60319469210936e-16,
+     -3.190136511183783e-16,
+     258.5919912858949
+    ]
+   ]
+  },
+  {
+   "name": "rocker",
+   "cad_body": "ROCKER",
+   "parent": "rod1",
+   "joint": "rocker",
+   "axis": [
+    0,
+    -1,
+    0
+   ],
+   "origin_xyz_mm": [
+    340.0,
+    0,
+    0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    -68.47033205136638,
+    0,
+    -14.553818357243166
+   ],
+   "mimic": [
+    "shoulder",
+    -1.0
+   ],
+   "visuals": [
+    {
+     "file": "meshes/visual/rocker__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 3810
+    },
+    {
+     "file": "meshes/visual/rocker__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 304
+    },
+    {
+     "file": "meshes/visual/rocker__pad.stl",
+     "rgba": [
+      0.12,
+      0.35,
+      0.85,
+      1
+     ],
+     "facets": 256
+    },
+    {
+     "file": "meshes/visual/rocker__steel.stl",
+     "rgba": [
+      0.3,
+      0.31,
+      0.33,
+      1
+     ],
+     "facets": 812
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/rocker__Level_Rocker_CF3.stl",
+     "part": "Level_Rocker_CF3",
+     "facets": 304
+    },
+    {
+     "file": "meshes/collision/rocker__GT2_Pulley_Elbow.stl",
+     "part": "GT2_Pulley_Elbow",
+     "facets": 702
+    },
+    {
+     "file": "meshes/collision/rocker__SB5x4_Ev1.stl",
+     "part": "SB5x4_Ev1",
+     "facets": 380
+    }
+   ],
+   "mass_kg": 0.02276641175869358,
+   "com_mm": [
+    -25.309693145837777,
+    -36.27341715464963,
+    -5.379741352002609
+   ],
+   "inertia_kgmm2": [
+    [
+     2.245497070687787,
+     -1.9268059230709542,
+     -4.108252965534661
+    ],
+    [
+     -1.9268059230709542,
+     21.674237174365896,
+     -0.4095552420133971
+    ],
+    [
+     -4.108252965534661,
+     -0.4095552420133971,
+     20.70007154487156
+    ]
+   ]
+  },
+  {
+   "name": "forearm",
+   "cad_body": "FOREARM",
+   "parent": "rocker",
+   "joint": "elbow",
+   "axis": [
+    0,
+    -1,
+    0
+   ],
+   "origin_xyz_mm": [
+    68.47033205136638,
+    0,
+    14.553818357243166
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    0,
+    0,
+    0
+   ],
+   "mimic": null,
+   "visuals": [
+    {
+     "file": "meshes/visual/forearm__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 4096
+    },
+    {
+     "file": "meshes/visual/forearm__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 3012
+    },
+    {
+     "file": "meshes/visual/forearm__motor.stl",
+     "rgba": [
+      0.08,
+      0.08,
+      0.09,
+      1
+     ],
+     "facets": 320
+    },
+    {
+     "file": "meshes/visual/forearm__pla.stl",
+     "rgba": [
+      0.9,
+      0.32,
+      0.06,
+      1
+     ],
+     "facets": 256
+    },
+    {
+     "file": "meshes/visual/forearm__steel.stl",
+     "rgba": [
+      0.3,
+      0.31,
+      0.33,
+      1
+     ],
+     "facets": 4230
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/forearm__Forearm_L_CF3.stl",
+     "part": "Forearm_L_CF3",
+     "facets": 1584
+    },
+    {
+     "file": "meshes/collision/forearm__Forearm_R_CF3.stl",
+     "part": "Forearm_R_CF3",
+     "facets": 1428
+    },
+    {
+     "file": "meshes/collision/forearm__Elbow_Shaft_D10x101.stl",
+     "part": "Elbow_Shaft_D10x101",
+     "facets": 636
+    },
+    {
+     "file": "meshes/collision/forearm__FA_Standoff_D8_0.stl",
+     "part": "FA_Standoff_D8_0",
+     "facets": 256
+    },
+    {
+     "file": "meshes/collision/forearm__FA_Standoff_D8_1.stl",
+     "part": "FA_Standoff_D8_1",
+     "facets": 256
+    },
+    {
+     "file": "meshes/collision/forearm__SB5x12_B.stl",
+     "part": "SB5x12_B",
+     "facets": 380
+    }
+   ],
+   "mass_kg": 0.22346000663191562,
+   "com_mm": [
+    66.7547227400357,
+    -0.7359035076423184,
+    1.0772345724009738
+   ],
+   "inertia_kgmm2": [
+    [
+     111.17286301858455,
+     53.12355259117563,
+     -25.79540916199789
+    ],
+    [
+     53.12355259117563,
+     2861.6189547433805,
+     5.022055255112676
+    ],
+    [
+     -25.79540916199789,
+     5.022055255112676,
+     2948.8498635757114
+    ]
+   ]
+  },
+  {
+   "name": "crank",
+   "cad_body": "CRANK",
+   "parent": "base_link",
+   "joint": "crank",
+   "axis": [
+    0,
+    -1,
+    0
+   ],
+   "origin_xyz_mm": [
+    -160.0,
+    0.0,
+    215.0
+   ],
+   "origin_rot_y_deg": 180,
+   "frame_in_cad_mm": [
+    0,
+    0,
+    0
+   ],
+   "mimic": [
+    "elbow",
+    1.0
+   ],
+   "visuals": [
+    {
+     "file": "meshes/visual/crank__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 2346
+    },
+    {
+     "file": "meshes/visual/crank__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 576
+    },
+    {
+     "file": "meshes/visual/crank__steel.stl",
+     "rgba": [
+      0.3,
+      0.31,
+      0.33,
+      1
+     ],
+     "facets": 3430
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/crank__Crank_CF3.stl",
+     "part": "Crank_CF3",
+     "facets": 576
+    },
+    {
+     "file": "meshes/collision/crank__J2_Output_Hub_Journal.stl",
+     "part": "J2_Output_Hub_Journal",
+     "facets": 2330
+    },
+    {
+     "file": "meshes/collision/crank__SB5x8_A.stl",
+     "part": "SB5x8_A",
+     "facets": 380
+    }
+   ],
+   "mass_kg": 0.1382482881983516,
+   "com_mm": [
+    4.600126735599343,
+    49.3556847606305,
+    4.867832034793494e-16
+   ],
+   "inertia_kgmm2": [
+    [
+     15.057273345533105,
+     11.073906269456709,
+     1.5826172077773219e-15
+    ],
+    [
+     11.073906269456709,
+     62.17194937622871,
+     1.0966361079805243e-15
+    ],
+    [
+     1.5826172077773219e-15,
+     1.0966361079805243e-15,
+     57.35205891047372
+    ]
+   ]
+  },
+  {
+   "name": "crank_pin",
+   "cad_body": null,
+   "parent": "crank",
+   "joint": "crank_pin",
+   "axis": [
+    0,
+    -1,
+    0
+   ],
+   "origin_xyz_mm": [
+    80.0,
+    0,
+    0
+   ],
+   "origin_rot_y_deg": -180,
+   "frame_in_cad_mm": [
+    0,
+    0,
+    0
+   ],
+   "mimic": [
+    "elbow",
+    -1.0
+   ],
+   "visuals": [],
+   "collisions": [],
+   "mass_kg": 0.0,
+   "com_mm": [
+    0,
+    0,
+    0
+   ],
+   "inertia_kgmm2": [
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ]
+  },
+  {
+   "name": "rod_ab",
+   "cad_body": "ROD_AB",
+   "parent": "crank_pin",
+   "joint": "rod_ab",
+   "axis": [
+    0,
+    -1,
+    0
+   ],
+   "origin_xyz_mm": [
+    0,
+    0,
+    0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    0,
+    0,
+    0
+   ],
+   "mimic": [
+    "shoulder",
+    1.0
+   ],
+   "visuals": [
+    {
+     "file": "meshes/visual/rod_ab__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 1536
+    },
+    {
+     "file": "meshes/visual/rod_ab__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 676
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/rod_ab__Rod_AB_CF3.stl",
+     "part": "Rod_AB_CF3",
+     "facets": 676
+    }
+   ],
+   "mass_kg": 0.019739531086861807,
+   "com_mm": [
+    170.00000000000006,
+    29.060791717630963,
+    -6.356373342658219e-17
+   ],
+   "inertia_kgmm2": [
+    [
+     0.6573619823550917,
+     8.049116928532385e-16,
+     -8.60319469210936e-16
+    ],
+    [
+     8.049116928532385e-16,
+     259.21588987174226,
+     -2.6167886314631303e-17
+    ],
+    [
+     -8.60319469210936e-16,
+     -2.6167886314631303e-17,
+     258.59199128589506
+    ]
+   ]
+  },
+  {
+   "name": "level",
+   "cad_body": "LEVEL",
+   "parent": "forearm",
+   "joint": "level",
+   "axis": [
+    0,
+    -1,
+    0
+   ],
+   "origin_xyz_mm": [
+    350.0,
+    0,
+    0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    0,
+    0,
+    0
+   ],
+   "mimic": [
+    "elbow",
+    -1.0
+   ],
+   "visuals": [
+    {
+     "file": "meshes/visual/level__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 4578
+    },
+    {
+     "file": "meshes/visual/level__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 1112
+    },
+    {
+     "file": "meshes/visual/level__motor.stl",
+     "rgba": [
+      0.08,
+      0.08,
+      0.09,
+      1
+     ],
+     "facets": 924
+    },
+    {
+     "file": "meshes/visual/level__steel.stl",
+     "rgba": [
+      0.3,
+      0.31,
+      0.33,
+      1
+     ],
+     "facets": 2944
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/level__Wrist_Level_Member_CF3.stl",
+     "part": "Wrist_Level_Member_CF3",
+     "facets": 1112
+    },
+    {
+     "file": "meshes/collision/level__GT2_Pulley_Wrist.stl",
+     "part": "GT2_Pulley_Wrist",
+     "facets": 702
+    },
+    {
+     "file": "meshes/collision/level__J3_Wrist_Servo_DS3225.stl",
+     "part": "J3_Wrist_Servo_DS3225",
+     "facets": 732
+    }
+   ],
+   "mass_kg": 0.0863933813324799,
+   "com_mm": [
+    -7.9108724918400615,
+    -59.39905340405807,
+    4.567344362688661
+   ],
+   "inertia_kgmm2": [
+    [
+     28.567422676821316,
+     -1.7304849007882996,
+     6.953969013906626
+    ],
+    [
+     -1.7304849007882996,
+     21.836862824289557,
+     0.9990959232986972
+    ],
+    [
+     6.953969013906626,
+     0.9990959232986972,
+     36.59717444105168
+    ]
+   ]
+  },
+  {
+   "name": "gripper_frame",
+   "cad_body": "GRIPPER",
+   "parent": "level",
+   "joint": "wrist_pitch",
+   "axis": [
+    0,
+    -1,
+    0
+   ],
+   "origin_xyz_mm": [
+    0,
+    0,
+    0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    0,
+    0,
+    0
+   ],
+   "mimic": null,
+   "visuals": [
+    {
+     "file": "meshes/visual/gripper_frame__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 2368
+    },
+    {
+     "file": "meshes/visual/gripper_frame__brass.stl",
+     "rgba": [
+      0.85,
+      0.65,
+      0.3,
+      1
+     ],
+     "facets": 3072
+    },
+    {
+     "file": "meshes/visual/gripper_frame__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 2288
+    },
+    {
+     "file": "meshes/visual/gripper_frame__motor.stl",
+     "rgba": [
+      0.08,
+      0.08,
+      0.09,
+      1
+     ],
+     "facets": 924
+    },
+    {
+     "file": "meshes/visual/gripper_frame__pla.stl",
+     "rgba": [
+      0.9,
+      0.32,
+      0.06,
+      1
+     ],
+     "facets": 2888
+    },
+    {
+     "file": "meshes/visual/gripper_frame__steel.stl",
+     "rgba": [
+      0.3,
+      0.31,
+      0.33,
+      1
+     ],
+     "facets": 6820
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/gripper_frame__Wrist_Shaft_D10x70.stl",
+     "part": "Wrist_Shaft_D10x70",
+     "facets": 540
+    },
+    {
+     "file": "meshes/collision/gripper_frame__Clevis_L_CF3.stl",
+     "part": "Clevis_L_CF3",
+     "facets": 1336
+    },
+    {
+     "file": "meshes/collision/gripper_frame__Clevis_R_CF3.stl",
+     "part": "Clevis_R_CF3",
+     "facets": 952
+    },
+    {
+     "file": "meshes/collision/gripper_frame__Roll_Housing.stl",
+     "part": "Roll_Housing",
+     "facets": 2876
+    },
+    {
+     "file": "meshes/collision/gripper_frame__J4_Roll_Servo_DS3225.stl",
+     "part": "J4_Roll_Servo_DS3225",
+     "facets": 732
+    },
+    {
+     "file": "meshes/collision/gripper_frame__Brg_6805_Roll.stl",
+     "part": "Brg_6805_Roll",
+     "facets": 256
+    }
+   ],
+   "mass_kg": 0.20489763728866361,
+   "com_mm": [
+    24.46752769767908,
+    -3.2090108586678623,
+    1.9501441744773376
+   ],
+   "inertia_kgmm2": [
+    [
+     114.52265290817468,
+     -16.353597227814138,
+     -1.1820700200439624
+    ],
+    [
+     -16.353597227814138,
+     130.1145773076513,
+     -1.300188562279322
+    ],
+    [
+     -1.1820700200439624,
+     -1.300188562279322,
+     152.54483377572
+    ]
+   ]
+  },
+  {
+   "name": "head",
+   "cad_body": "HEAD",
+   "parent": "gripper_frame",
+   "joint": "wrist_roll",
+   "axis": [
+    1,
+    0,
+    0
+   ],
+   "origin_xyz_mm": [
+    0,
+    0,
+    -5.0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    0,
+    0,
+    -5.0
+   ],
+   "mimic": null,
+   "visuals": [
+    {
+     "file": "meshes/visual/head__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 2364
+    },
+    {
+     "file": "meshes/visual/head__motor.stl",
+     "rgba": [
+      0.08,
+      0.08,
+      0.09,
+      1
+     ],
+     "facets": 140
+    },
+    {
+     "file": "meshes/visual/head__pla.stl",
+     "rgba": [
+      0.9,
+      0.32,
+      0.06,
+      1
+     ],
+     "facets": 1410
+    },
+    {
+     "file": "meshes/visual/head__steel.stl",
+     "rgba": [
+      0.3,
+      0.31,
+      0.33,
+      1
+     ],
+     "facets": 3732
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/head__Roll_Hub.stl",
+     "part": "Roll_Hub",
+     "facets": 1568
+    },
+    {
+     "file": "meshes/collision/head__Grip_Servo_STS3215.stl",
+     "part": "Grip_Servo_STS3215",
+     "facets": 12
+    },
+    {
+     "file": "meshes/collision/head__Gripper_Palm.stl",
+     "part": "Gripper_Palm",
+     "facets": 1410
+    },
+    {
+     "file": "meshes/collision/head__Torsion_Spring_Open.stl",
+     "part": "Torsion_Spring_Open",
+     "facets": 256
+    }
+   ],
+   "mass_kg": 0.14988472415242482,
+   "com_mm": [
+    76.7142753305166,
+    23.268461362909896,
+    5.17239007506432
+   ],
+   "inertia_kgmm2": [
+    [
+     211.48748037649855,
+     -16.163715182118825,
+     -6.012305960110257
+    ],
+    [
+     -16.163715182118825,
+     55.607379307503294,
+     20.40606052043745
+    ],
+    [
+     -6.012305960110257,
+     20.40606052043745,
+     198.90886268356834
+    ]
+   ]
+  },
+  {
+   "name": "lk_ld",
+   "cad_body": "LK_LD",
+   "parent": "head",
+   "joint": "gripper",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "origin_xyz_mm": [
+    82.0,
+    38.5,
+    5.0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    82.0,
+    38.5,
+    0
+   ],
+   "mimic": null,
+   "visuals": [
+    {
+     "file": "meshes/visual/lk_ld__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 256
+    },
+    {
+     "file": "meshes/visual/lk_ld__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 816
+    },
+    {
+     "file": "meshes/visual/lk_ld__pom.stl",
+     "rgba": [
+      0.92,
+      0.91,
+      0.86,
+      1
+     ],
+     "facets": 1708
+    },
+    {
+     "file": "meshes/visual/lk_ld__steel.stl",
+     "rgba": [
+      0.3,
+      0.31,
+      0.33,
+      1
+     ],
+     "facets": 636
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/lk_ld__Sector_m1_77T_L.stl",
+     "part": "Sector_m1_77T_L",
+     "facets": 584
+    }
+   ],
+   "mass_kg": 0.013600617934686735,
+   "com_mm": [
+    86.77877388120558,
+    30.29851863587481,
+    30.89887584778176
+   ],
+   "inertia_kgmm2": [
+    [
+     2.1672130346647895,
+     0.32323745027391737,
+     0.4035387034352445
+    ],
+    [
+     0.32323745027391737,
+     4.258674407949617,
+     0.46073667405736746
+    ],
+    [
+     0.4035387034352445,
+     0.46073667405736746,
+     4.955084414919888
+    ]
+   ]
+  },
+  {
+   "name": "jaw_l",
+   "cad_body": "JAW_L",
+   "parent": "lk_ld",
+   "joint": "jaw_l",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "origin_xyz_mm": [
+    41.73206004587057,
+    -21.62024894231918,
+    0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    123.73206004587057,
+    16.87975105768082,
+    0
+   ],
+   "mimic": [
+    "gripper",
+    -1.0
+   ],
+   "visuals": [
+    {
+     "file": "meshes/visual/jaw_l__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 768
+    },
+    {
+     "file": "meshes/visual/jaw_l__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 652
+    },
+    {
+     "file": "meshes/visual/jaw_l__pad.stl",
+     "rgba": [
+      0.12,
+      0.35,
+      0.85,
+      1
+     ],
+     "facets": 336
+    },
+    {
+     "file": "meshes/visual/jaw_l__pla.stl",
+     "rgba": [
+      0.9,
+      0.32,
+      0.06,
+      1
+     ],
+     "facets": 944
+    },
+    {
+     "file": "meshes/visual/jaw_l__steel.stl",
+     "rgba": [
+      0.3,
+      0.31,
+      0.33,
+      1
+     ],
+     "facets": 2576
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/jaw_l__Jaw_Block_L.stl",
+     "part": "Jaw_Block_L",
+     "facets": 944
+    },
+    {
+     "file": "meshes/collision/jaw_l__Finger_L_bot_CF3.stl",
+     "part": "Finger_L_bot_CF3",
+     "facets": 652
+    },
+    {
+     "file": "meshes/collision/jaw_l__Pad_L_TPU.stl",
+     "part": "Pad_L_TPU",
+     "facets": 320
+    }
+   ],
+   "mass_kg": 0.049216790103683475,
+   "com_mm": [
+    148.94983152994885,
+    18.347840057691766,
+    -0.7769073551230039
+   ],
+   "inertia_kgmm2": [
+    [
+     22.304150789228693,
+     0.7795067422818747,
+     4.276717390098564
+    ],
+    [
+     0.7795067422818747,
+     31.96267545753955,
+     -0.9222138759127272
+    ],
+    [
+     4.276717390098564,
+     -0.9222138759127272,
+     14.440592019348621
+    ]
+   ]
+  },
+  {
+   "name": "lk_li",
+   "cad_body": "LK_LI",
+   "parent": "head",
+   "joint": "lk_li",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "origin_xyz_mm": [
+    82.0,
+    54.5,
+    5.0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    82.0,
+    54.5,
+    0
+   ],
+   "mimic": [
+    "gripper",
+    1.0
+   ],
+   "visuals": [
+    {
+     "file": "meshes/visual/lk_li__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 816
+    }
+   ],
+   "collisions": [],
+   "mass_kg": 0.004855852989802801,
+   "com_mm": [
+    102.86603002293529,
+    43.68987552884042,
+    30.0
+   ],
+   "inertia_kgmm2": [
+    [
+     0.40040064250948254,
+     0.4528905198393306,
+     1.616064544045159e-15
+    ],
+    [
+     0.4528905198393306,
+     1.0399533554397797,
+     2.2515822626765717e-15
+    ],
+    [
+     1.616064544045159e-15,
+     2.2515822626765717e-15,
+     1.1902775689744254
+    ]
+   ]
+  },
+  {
+   "name": "lk_rd",
+   "cad_body": "LK_RD",
+   "parent": "head",
+   "joint": "lk_rd",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "origin_xyz_mm": [
+    82.0,
+    -38.5,
+    5.0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    82.0,
+    -38.5,
+    0
+   ],
+   "mimic": [
+    "gripper",
+    -1.0
+   ],
+   "visuals": [
+    {
+     "file": "meshes/visual/lk_rd__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 816
+    },
+    {
+     "file": "meshes/visual/lk_rd__pom.stl",
+     "rgba": [
+      0.92,
+      0.91,
+      0.86,
+      1
+     ],
+     "facets": 1700
+    },
+    {
+     "file": "meshes/visual/lk_rd__steel.stl",
+     "rgba": [
+      0.3,
+      0.31,
+      0.33,
+      1
+     ],
+     "facets": 512
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/lk_rd__Sector_m1_77T_R.stl",
+     "part": "Sector_m1_77T_R",
+     "facets": 560
+    }
+   ],
+   "mass_kg": 0.008600617934686729,
+   "com_mm": [
+    89.55693117030717,
+    -25.53055810884792,
+    33.80499020243821
+   ],
+   "inertia_kgmm2": [
+    [
+     1.1398528651315827,
+     -0.013347299457653877,
+     0.5924195069882202
+    ],
+    [
+     -0.013347299457653877,
+     3.582593091789744,
+     -0.13657352491292207
+    ],
+    [
+     0.5924195069882202,
+     -0.13657352491292207,
+     4.078536908559329
+    ]
+   ]
+  },
+  {
+   "name": "lk_ri",
+   "cad_body": "LK_RI",
+   "parent": "head",
+   "joint": "lk_ri",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "origin_xyz_mm": [
+    82.0,
+    -54.5,
+    5.0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    82.0,
+    -54.5,
+    0
+   ],
+   "mimic": [
+    "gripper",
+    -1.0
+   ],
+   "visuals": [
+    {
+     "file": "meshes/visual/lk_ri__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 816
+    }
+   ],
+   "collisions": [],
+   "mass_kg": 0.004855852989802797,
+   "com_mm": [
+    102.86603002293529,
+    -43.6898755288404,
+    30.0
+   ],
+   "inertia_kgmm2": [
+    [
+     0.4004006425094877,
+     -0.4528905198393248,
+     1.2710354372628247e-15
+    ],
+    [
+     -0.4528905198393248,
+     1.0399533554397973,
+     -6.355177186314123e-16
+    ],
+    [
+     1.2710354372628247e-15,
+     -6.355177186314123e-16,
+     1.190277568974437
+    ]
+   ]
+  },
+  {
+   "name": "jaw_r",
+   "cad_body": "JAW_R",
+   "parent": "lk_rd",
+   "joint": "jaw_r",
+   "axis": [
+    0,
+    0,
+    1
+   ],
+   "origin_xyz_mm": [
+    41.73206004587057,
+    21.62024894231918,
+    0
+   ],
+   "origin_rot_y_deg": 0,
+   "frame_in_cad_mm": [
+    123.73206004587057,
+    -16.87975105768082,
+    0
+   ],
+   "mimic": [
+    "gripper",
+    1.0
+   ],
+   "visuals": [
+    {
+     "file": "meshes/visual/jaw_r__alu.stl",
+     "rgba": [
+      0.8,
+      0.81,
+      0.84,
+      1
+     ],
+     "facets": 768
+    },
+    {
+     "file": "meshes/visual/jaw_r__cf.stl",
+     "rgba": [
+      0.12,
+      0.12,
+      0.13,
+      1
+     ],
+     "facets": 652
+    },
+    {
+     "file": "meshes/visual/jaw_r__pad.stl",
+     "rgba": [
+      0.12,
+      0.35,
+      0.85,
+      1
+     ],
+     "facets": 336
+    },
+    {
+     "file": "meshes/visual/jaw_r__pla.stl",
+     "rgba": [
+      0.9,
+      0.32,
+      0.06,
+      1
+     ],
+     "facets": 944
+    },
+    {
+     "file": "meshes/visual/jaw_r__steel.stl",
+     "rgba": [
+      0.3,
+      0.31,
+      0.33,
+      1
+     ],
+     "facets": 2576
+    }
+   ],
+   "collisions": [
+    {
+     "file": "meshes/collision/jaw_r__Jaw_Block_R.stl",
+     "part": "Jaw_Block_R",
+     "facets": 944
+    },
+    {
+     "file": "meshes/collision/jaw_r__Finger_R_bot_CF3.stl",
+     "part": "Finger_R_bot_CF3",
+     "facets": 652
+    },
+    {
+     "file": "meshes/collision/jaw_r__Pad_R_TPU.stl",
+     "part": "Pad_R_TPU",
+     "facets": 320
+    }
+   ],
+   "mass_kg": 0.049216790103683496,
+   "com_mm": [
+    148.94983152994882,
+    -18.347840057691762,
+    -0.7769073551230026
+   ],
+   "inertia_kgmm2": [
+    [
+     22.304150789228707,
+     -0.7795067422818508,
+     4.276717390098568
+    ],
+    [
+     -0.7795067422818508,
+     31.962675457539838,
+     0.9222138759127267
+    ],
+    [
+     4.276717390098568,
+     0.9222138759127267,
+     14.440592019348903
+    ]
+   ]
+  }
+ ],
+ "actuators": {
+  "shoulder": {
+   "source": "DM-J4340-2EC (J1)",
+   "peak_Nm": 27.0,
+   "rated_Nm": 9.0
+  },
+  "elbow": {
+   "source": "DM-J4340-2EC (J2, via crank + rod AB)",
+   "peak_Nm": 27.0,
+   "rated_Nm": 9.0
+  },
+  "wrist_pitch": {
+   "source": "DS3225MG (J3)",
+   "peak_Nm": 2.4,
+   "rated_Nm": 1.2
+  },
+  "wrist_roll": {
+   "source": "DS3225MG (J4)",
+   "peak_Nm": 2.4,
+   "rated_Nm": 1.2
+  },
+  "gripper": {
+   "source": "STS3215 12 V (four-bar drive)",
+   "peak_Nm": 2.94,
+   "rated_Nm": 0.98
+  }
+ },
+ "limits_deg": {
+  "shoulder": [
+   0.0,
+   180.0
+  ],
+  "elbow": [
+   -110.0,
+   70.0
+  ],
+  "wrist_pitch": [
+   -30.0,
+   120.0
+  ],
+  "wrist_roll": [
+   -95.0,
+   95.0
+  ],
+  "gripper": [
+   0.0,
+   63.1979551223405
+  ]
+ },
+ "spring": {
+  "joint": "gripper",
+  "k_Nm_per_rad": 0.32360656268988897,
+  "free_angle_deg": 85.1979551223405,
+  "part": "9271K56"
+ },
+ "theta_ref_deg": -27.387449285977706,
+ "tcp_in_gripper_frame_mm": [
+  151.0,
+  0,
+  -20.0
+ ],
+ "jaw_of_gripper_deg": "jaw = 2*(YG + L*sin(theta_ref + d) - E)",
+ "fb": {
+  "YG": 38.5,
+  "L": 47.0,
+  "E": 10.0
+ }
+}

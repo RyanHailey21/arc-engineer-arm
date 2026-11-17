@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cad/schemas/params.schema.json",
+  "title": "Parameter file (cad/params/*.toml)",
+  "description": "Named design inputs. A value is a number, string, boolean or array of numbers (unit and reason in a trailing comment), or a fact table {value, unit, source[, status]} matching the mechanical-workflow-template facts convention; params.load() unwraps fact tables to their value. Tables nest at most two levels.",
+  "type": "object",
+  "minProperties": 1,
+  "additionalProperties": {"$ref": "#/$defs/entry"},
+  "$defs": {
+    "scalar": {"type": ["number", "string", "boolean"]},
+    "vector": {"type": "array", "items": {"type": ["number", "string"]}, "minItems": 1},
+    "fact": {
+      "type": "object",
+      "required": ["value", "unit", "source"],
+      "additionalProperties": false,
+      "properties": {
+        "value": {"anyOf": [{"$ref": "#/$defs/scalar"}, {"$ref": "#/$defs/vector"}]},
+        "unit": {"type": "string", "minLength": 1},
+        "source": {"type": "string", "minLength": 5},
+        "status": {"type": "string", "enum": ["documented", "measured", "assumed", "estimated", "verified"]}
+      }
+    },
+    "leaf": {"anyOf": [{"$ref": "#/$defs/scalar"}, {"$ref": "#/$defs/vector"}, {"$ref": "#/$defs/fact"}]},
+    "table": {"type": "object", "minProperties": 1, "additionalProperties": {"$ref": "#/$defs/leaf"},
+              "not": {"type": "object", "required": ["value"],
+                      "description": "a table with a 'value' key is a fact table and needs value, unit and source"}},
+    "entry": {"anyOf": [{"$ref": "#/$defs/leaf"}, {"$ref": "#/$defs/table"}]}
+  }
+}

@@ -1,0 +1,78 @@
+# Field envelopes: keep-out volumes the arm must stay out of at specific task poses.
+# The quick check (cad/tools/quick_check.py) intersects every arm part's check solid with each box; the full
+# interference check (cad/check_interference.py) remains the ground truth against the real field solids.
+#
+# frame = "world"   : robot frame (x forward from the front bumper, z up from the floor), mm
+# frame = "gripper" : gripper frame at roll 0 (x along the roll axis, TCP at (151, 0, -20)), mm
+# bodies = "arm" (every moving body) or "gripper" (GRIPPER, HEAD, jaws, links, screw, gear)
+# A box bound of 1e4 means "unbounded".  Each entry says where the number comes from.
+
+[[keepout]]
+name = "donut_plate_floor"
+why = "Donut pick: the pole's 250 mm square base plate tops out at z 216 (tier 210 + 6 mm plate); the bottom finger needs clearance over it (rev A: 3.5 mm)."
+source = "field.py zigzag_pole(): base box z0..z0+6, centred on the pole at x 130; ARC manual 3.2.4 (pole details TBA - placeholder)"
+frame = "world"
+poses = ["DONUT_APPROACH", "DONUT_PICK"]
+bodies = "arm"
+min = [5.0, -125.0, -1e4]
+max = [255.0, 125.0, 216.0]
+
+[[keepout]]
+name = "lower_tier"
+why = "Lower tier (Side High Ground) top surface at z 210, starting 30 mm in front of the bumper."
+source = "field.py scene_items(): Side_High_Ground_Lower_Tier box(edge=30 .. 1030, |y| 500, z 0..210)"
+frame = "world"
+poses = ["DONUT_APPROACH", "DONUT_PICK", "DONUT_LIFT"]
+bodies = "arm"
+min = [30.0, -500.0, -1e4]
+max = [1030.0, 500.0, 210.0]
+
+[[keepout]]
+name = "pole_above_fingers"
+why = """During the donut lift the pole runs through the donut along the gripper's z axis at the TCP x (tube r 12),
+and the lift planner only keeps it inside the finger gap between gripper z -32.5 and +30 (donut band + 50 mm).
+Above that band the pole's lateral offset is unbounded, so nothing may sit within 12 mm (+2 margin) of the TCP x.
+The first four-bar head broke this (links + jaw blocks at z 27..42)."""
+source = "field.py _path_slack() window -12 <= dz <= 50 about the TCP; zigzag_pole() tube r 12; TCP x = K['GRIP'] = 151"
+frame = "gripper"
+poses = ["DONUT_LIFT"]
+jaw = 100.0
+bodies = "gripper"
+min = [137.0, -1e4, 30.0]
+max = [165.0, 1e4, 1e4]
+
+[[keepout]]
+name = "pole_below_donut"
+why = "Below the donut (gripper z < -32.5) the pole continues down to its base plate at any lateral offset."
+source = "as pole_above_fingers; donut bottom = TCP z -20 - tube r 12.5"
+frame = "gripper"
+poses = ["DONUT_LIFT"]
+jaw = 100.0
+bodies = "gripper"
+min = [137.0, -1e4, -1e4]
+max = [165.0, 1e4, -32.5]
+
+[[keepout]]
+name = "perimeter_wall_at_chute"
+why = "Pipe insertion: the chassis drives the pipe 300 mm into the chute; the arm must stay in front of the wall face."
+source = "field.py scene_items(): Perimeter_Wall face x = 150 + 453 - 300 = 303, z 0..500; chute block z 500..700"
+frame = "world"
+poses = ["PIPE_CHUTE", "PIPE_CHUTE_ROLL90"]
+bodies = "arm"
+min = [303.0, -600.0, 0.0]
+max = [1e4, 600.0, 700.0]
+
+[[keepout]]
+name = "scoring_platform"
+why = "Donut place: the 300 x 300 x 50 scoring area platform; the donut is set down flat on it."
+source = "field.py scene_items(): Scoring_Area_Platform box(60.8 .. 360.8, |y| 150, z 0..50); ARC manual 3.2.4"
+frame = "world"
+poses = ["DONUT_PLACE"]
+bodies = "arm"
+min = [60.8, -150.0, -1e4]
+max = [360.8, 150.0, 50.0]
+
+# Documented, not boxed (covered by the full interference check):
+# - finger gap during the lift: between gripper z -32.5 and +30 the planner keeps the pole centre within |y| <= 39
+#   (52 - 13 in field._path_slack), so non-pad parts there should stay at |y| >= 52.
+# - pipe bucket (r 100, rim z 250) and the leaning spare pipes at PIPE_APPROACH / PIPE_GRASP.

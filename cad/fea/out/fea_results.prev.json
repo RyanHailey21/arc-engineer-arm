@@ -1,0 +1,32 @@
+[
+ {
+  "case": "clevis",
+  "part": "Clevis_L_CF3",
+  "material": "CF plate quasi-isotropic",
+  "load": "head weight 12.3 N per plate at the roll-housing screws (1.0 kg x g x 2.5)",
+  "total_force_N": 12.3,
+  "max_von_mises_MPa": 4.01,
+  "max_disp_mm": 0.0036,
+  "allowable_MPa": 200.0,
+  "safety_factor": 49.83,
+  "nodes": 48592,
+  "mesh_h_mm": 1.5,
+  "verdict": "PASS",
+  "seconds": 70.9
+ },
+ {
+  "case": "j2_hub",
+  "part": "J2_Output_Hub_Journal",
+  "material": "Aluminium-6061-T6",
+  "load": "crank reaction 62 N on the D12 journal (J2 10.0 N*m incl. x2.5)",
+  "total_force_N": 62.5,
+  "max_von_mises_MPa": 7.61,
+  "max_disp_mm": 0.0014,
+  "allowable_MPa": 276.0,
+  "safety_factor": 36.27,
+  "nodes": 40273,
+  "mesh_h_mm": 1.2,
+  "verdict": "PASS",
+  "seconds": 68.1
+ }
+]

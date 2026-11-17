@@ -1,0 +1,83 @@
+[
+ {
+  "case": "fb_drive_link",
+  "part": "Link_LD_lo_CF3",
+  "material": "CF plate quasi-isotropic",
+  "load": "servo stall 2.94 N*m reacted at the coupler pin: 63 N x 1.25 = 78 N",
+  "total_force_N": 78.2,
+  "max_von_mises_MPa": 111.23,
+  "max_disp_mm": 0.2941,
+  "allowable_MPa": 200.0,
+  "safety_factor": 1.8,
+  "nodes": 28015,
+  "mesh_h_mm": 0.8,
+  "verdict": "PASS",
+  "seconds": 17.1,
+  "method": "FEA (gmsh 2nd-order tets + CalculiX)"
+ },
+ {
+  "case": "fb_jaw_block",
+  "part": "Jaw_Block_L",
+  "material": "PETG-CF (FDM)",
+  "load": "stall clamp reaction 29.5 N x 1.25 = 37 N on the pad standoffs (all on the top finger)",
+  "total_force_N": 36.8,
+  "max_von_mises_MPa": 9.71,
+  "max_disp_mm": 0.1569,
+  "allowable_MPa": 40.0,
+  "safety_factor": 4.12,
+  "nodes": 52016,
+  "mesh_h_mm": 1.2,
+  "verdict": "PASS",
+  "seconds": 33.8,
+  "method": "FEA (gmsh 2nd-order tets + CalculiX)"
+ },
+ {
+  "case": "fb_palm",
+  "part": "Gripper_Palm",
+  "material": "PETG-CF (FDM)",
+  "load": "head 0.28 kg + 165 g pipe + 0.5 N*m pipe moment: 0.76 N*m x 2.5 at the mount -> 112 N on the pivot bores",
+  "total_force_N": 112.2,
+  "max_von_mises_MPa": 19.59,
+  "max_disp_mm": 0.9077,
+  "allowable_MPa": 40.0,
+  "safety_factor": 2.04,
+  "nodes": 134209,
+  "mesh_h_mm": 2.0,
+  "verdict": "PASS",
+  "seconds": 109.2,
+  "method": "FEA (gmsh 2nd-order tets + CalculiX)"
+ },
+ {
+  "case": "fb_sector_tooth",
+  "part": "Sector_m1_77T",
+  "material": "Acetal (POM)",
+  "method": "Lewis bending (hand calc)",
+  "load": "half stall torque through the mesh: Ft 38.2 N x 1.25",
+  "max_stress_MPa": 22.0,
+  "allowable_MPa": 60.0,
+  "safety_factor": 2.73,
+  "verdict": "PASS"
+ },
+ {
+  "case": "fb_pivot_pin",
+  "part": "Dowel D4 (91595A158/167/179)",
+  "material": "52100 steel, HRC 52+",
+  "method": "single shear (hand calc)",
+  "load": "coupler/ground pin force 63 N x 1.25",
+  "max_stress_MPa": 6.2,
+  "allowable_MPa": 1000.0,
+  "safety_factor": 160.7,
+  "verdict": "PASS"
+ },
+ {
+  "case": "fb_link_bearing",
+  "part": "Link CF3 pivot bore",
+  "material": "CF plate (bearing allowable 200 MPa)",
+  "method": "projected-area bearing (hand calc)",
+  "load": "78 N on a 4 x 3 mm bore",
+  "max_stress_MPa": 6.5,
+  "allowable_MPa": 200.0,
+  "safety_factor": 30.7,
+  "verdict": "PASS"
+ }
+]

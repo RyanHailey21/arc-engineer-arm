@@ -1,0 +1,43 @@
+# Interface: roll hub front flange <-> gripper palm (every gripper variant mounts here)
+# Frame: gripper frame at roll 0 (x forward along the roll axis, y left, z up; origin on the wrist pitch axis). mm.
+# Both mating parts build their holes from this file (cad/iface.py); cad/tools/check_interfaces.py
+# probes the built geometry to confirm each side really has them.
+
+[interface]
+name = "roll_hub__gripper_palm"
+summary = "Gripper palm bolts to the front face of the roll hub flange with 4x M3"
+owner = "roll stage (wrist)"           # changes here move every gripper variant
+
+[frame]
+origin = [65.0, 0.0, -5.0]             # flange front face on the roll axis (roll axis z = ROLL_Z)
+normal = [1.0, 0.0, 0.0]               # points from the hub into the palm
+
+[flange]
+od = 36.0                              # hub flange OD (r18)
+thickness = 3.0                        # x 62..65
+journal_od = 25.0                      # runs in the 6805 bearing behind the flange
+
+[pattern]
+radius = 15.25                         # bolt circle radius about the roll axis
+angles_deg = [0.0, 180.0, 225.0, 315.0]   # in the y-z plane, from +y towards +z; uneven so the palm can only go on one way
+
+[side_a]                               # roll hub (6061 turned)
+body = "HEAD"
+part = "Roll_Hub"
+hole = "tapped"
+thread = "M3x0.5"
+drill_d = 2.5
+drill_depth = 4.0                      # from the front face, into the flange (x 62..66)
+
+[side_b]                               # gripper palm (PETG-CF print)
+body = "HEAD"
+part = "Gripper_Palm"
+hole = "clearance"
+clearance_d = 3.3
+# grip length (mount-plate thickness) and screw length are set by each gripper variant:
+#   SCREW (rev A):  palm boss face x = 70, BHCS M3x8
+#   FOURBAR:        mount plate face x = 69, BHCS M3x6
+
+[fastener]
+kind = "BHCS"
+size = "M3"
