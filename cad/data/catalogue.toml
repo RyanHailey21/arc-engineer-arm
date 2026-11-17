@@ -181,3 +181,9 @@ mass = 3.5
 src = "McMaster 9271K56"
 verify = "bench-test against the STS3215 unpowered back-drive torque; alternate 9271K52 (3.509 in*lbf) if lighter preload suffices"
 
+["GT2-BELT"]
+desc = "GT2 (2 mm pitch) timing belt, 9 mm wide, ~0.8 m open length clamp-spliced (level-keeping stage 2: rocker pulley at E to wrist pulley at D, 350 mm centres)"
+mass = 5.5
+src = "3D Printing Canada GT2-9mm Timing Belt (1 m) [VERIFIED, cad/fab/procurement.csv]"
+verify = "mass is an estimate (~6.8 g/m for 9 mm GT2 x 0.8 m): weigh the cut belt"
+

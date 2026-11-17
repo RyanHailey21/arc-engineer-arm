@@ -1553,7 +1553,7 @@
 "vol": 9473.224
 },
 "kind": "CAT",
-"mass_g": 0.0,
+"mass_g": 5.5,
 "src": "GT2-BELT",
 "vis": {
 "bb": [
@@ -11776,7 +11776,7 @@
 }
 },
 "totals": {
-"mass_g": 2868.13,
+"mass_g": 2873.63,
 "n_parts": 242
 },
 "variant": "fourbar"

@@ -55,6 +55,7 @@
     <mesh name="forearm__FA_Standoff_D8_0" file="meshes/collision/forearm__FA_Standoff_D8_0.stl" />
     <mesh name="forearm__FA_Standoff_D8_1" file="meshes/collision/forearm__FA_Standoff_D8_1.stl" />
     <mesh name="forearm__SB5x12_B" file="meshes/collision/forearm__SB5x12_B.stl" />
+    <mesh name="forearm__GT2_Belt_9mm_Stage2" file="meshes/collision/forearm__GT2_Belt_9mm_Stage2.stl" />
     <mesh name="crank__alu" file="meshes/visual/crank__alu.stl" />
     <mesh name="crank__cf" file="meshes/visual/crank__cf.stl" />
     <mesh name="crank__steel" file="meshes/visual/crank__steel.stl" />
@@ -169,7 +170,7 @@
           <geom class="collision" mesh="rocker__GT2_Pulley_Elbow" pos="0.06847 0 0.014554" />
           <geom class="collision" mesh="rocker__SB5x4_Ev1" pos="0.06847 0 0.014554" />
           <body name="forearm" pos="0.06847 0 0.014554">
-            <inertial pos="0.066755 -0.000736 0.001077" mass="0.223460" fullinertia="1.1117e-04 2.8616e-03 2.9488e-03 5.3124e-05 -2.5795e-05 5.0221e-06" />
+            <inertial pos="0.069355 -0.001457 0.001051" mass="0.228960" fullinertia="1.1658e-04 2.9915e-03 3.0830e-03 7.0563e-05 -2.5169e-05 4.8485e-06" />
             <joint name="elbow" type="hinge" axis="0 -1 0" range="-1.91986 1.22173" armature="0.016" />
             <site name="forearm_cad" pos="0 0 0" size="0.004" group="5" />
             <geom class="visual" mesh="forearm__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
@@ -183,6 +184,7 @@
             <geom class="collision" mesh="forearm__FA_Standoff_D8_0" pos="0 0 0" />
             <geom class="collision" mesh="forearm__FA_Standoff_D8_1" pos="0 0 0" />
             <geom class="collision" mesh="forearm__SB5x12_B" pos="0 0 0" />
+            <geom class="collision" mesh="forearm__GT2_Belt_9mm_Stage2" pos="0 0 0" />
             <body name="level" pos="0.35 0 0">
               <inertial pos="-0.007911 -0.059399 0.004567" mass="0.086393" fullinertia="2.8567e-05 2.1837e-05 3.6597e-05 -1.7305e-06 6.9540e-06 9.9910e-07" />
               <joint name="level" type="hinge" axis="0 -1 0" />

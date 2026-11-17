@@ -12,7 +12,7 @@ purchased,DM-J4340-2EC,2,660.0,"Damiao DM-J4340-2EC joint motor, 24 V, 9/27 N*m,
 purchased,DOWEL,10,10.0,ISO 8734 dowel pin,"McMaster-Carr 91595A122 [VERIFIED] (+2 sizes, see fab/procurement.csv)",,CRANK GROUND UPPER
 purchased,DS3225MG,2,120.0,"DSServo DS3225MG 25 kg*cm standard servo, 25T spline (J3 pitch + J4 roll)",DSServo (dsservo.com) / resellers DS3225MG [VERIFIED],no vendor CAD; caliper-check ear hole grid 49.5 x 10,GRIPPER LEVEL
 purchased,ECLIP,3,0.9,DIN 6799 retaining washer,Wurth / Fabory 0490100 / 36200.070.001 [VERIFIED],,FOREARM GRIPPER
-purchased,GT2-BELT,1,0.0,,3D Printing Canada GT2-9mm Timing Belt (1 m) [VERIFIED],,FOREARM
+purchased,GT2-BELT,1,5.5,"GT2 (2 mm pitch) timing belt, 9 mm wide, ~0.8 m open length clamp-spliced (level-keeping stage 2: rocker pulley at E to wrist pulley at D, 350 mm centres)","3D Printing Canada GT2-9mm Timing Belt (1 m) [VERIFIED, cad/fab/procurement.csv]",mass is an estimate (~6.8 g/m for 9 mm GT2 x 0.8 m): weigh the cut belt,FOREARM
 purchased,HORN-25T,3,9.0,"25T aluminium disc servo horn D20, 4x M3 tapped PCD14 (Thingbits TH1144 type)",Thingbits / Handsontec TH1144 [VERIFIED],,GRIPPER HEAD LK_LD
 purchased,INSERT,12,3.6,M3 heat-set insert 4.0 x 4,McMaster-Carr 94180A331 [VERIFIED],,GRIPPER
 purchased,MR104ZZ,2,2.4,Miniature bearing MR104ZZ 4x10x4,VXB MR104ZZ 10-pack [VERIFIED],,FOREARM

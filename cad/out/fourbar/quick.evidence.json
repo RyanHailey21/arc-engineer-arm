@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
   "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 4 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 485 g (head 280 g); worst static J1 3.07 J2 2.54 J3 0.78 N*m; fingerprint MATCH",
-  "scope": "envelopes 10 pose checks; interfaces 4 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 485 g (head 280 g); worst static J1 3.07 J2 2.54 J3 0.78 N*m; fingerprint MATCH",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 4 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 485 g (head 280 g); worst static J1 3.08 J2 2.55 J3 0.78 N*m; fingerprint MATCH",
+  "scope": "envelopes 10 pose checks; interfaces 4 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 485 g (head 280 g); worst static J1 3.08 J2 2.55 J3 0.78 N*m; fingerprint MATCH",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -17,20 +17,20 @@
    {
     "id": "design-inputs",
     "path": "evidence/quick.inputs.json",
-    "sha256": "b9eb96aa47c673d82edbb9e15dc0bab0a05fca25fc708fb259157acdcea39996"
+    "sha256": "4a1422d6ac01d346fc976a663ac781d8fb2848860c50546ff9d181b4ff3ff925"
    }
   ],
   "artifacts": [
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "30831e5bc96ebadb6de91157f8bc6a822c2dfa02556c12ded9a272d2ccfb235a"
+    "sha256": "ff69d48819ed15cfb92a61b51ec5ce9c2a7e029fb48d4d89df66760b7f159d16"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-17T00:02:19",
-   "inputs_hash": "b5775998f4d90bc2",
+   "time": "2026-11-17T00:26:26",
+   "inputs_hash": "48b9b3450fe5cb0a",
    "external_copies": []
   }
  }

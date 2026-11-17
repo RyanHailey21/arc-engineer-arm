@@ -17,7 +17,7 @@
    {
     "id": "design-inputs",
     "path": "evidence/engagement.inputs.json",
-    "sha256": "b9eb96aa47c673d82edbb9e15dc0bab0a05fca25fc708fb259157acdcea39996"
+    "sha256": "4a1422d6ac01d346fc976a663ac781d8fb2848860c50546ff9d181b4ff3ff925"
    }
   ],
   "artifacts": [
@@ -29,8 +29,8 @@
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-16T23:54:06",
-   "inputs_hash": "b5775998f4d90bc2",
+   "time": "2026-11-17T00:16:06",
+   "inputs_hash": "48b9b3450fe5cb0a",
    "external_copies": []
   }
  }

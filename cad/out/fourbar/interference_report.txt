@@ -23,21 +23,21 @@ threshold 0.5 mm^3, 5 steps per segment
 [3b] donut lift along the pole: 25 samples (tcp z 228..720, strafe -51..49 mm): clear
 
 [4] static joint torques from modelled masses (N*m: shoulder J1, elbow J2, wrist pitch J3, roll J4)
-  STOW              payload   0 g : J1  -2.78  J2   2.06  J3   0.34  J4   0.03
-  DONUT_APPROACH    payload   0 g : J1  -1.28  J2   1.71  J3   0.33  J4   0.03
+  STOW              payload   0 g : J1  -2.79  J2   2.07  J3   0.34  J4   0.03
+  DONUT_APPROACH    payload   0 g : J1  -1.29  J2   1.72  J3   0.33  J4   0.03
   DONUT_PICK        payload   0 g : J1  -0.29  J2   1.03  J3   0.34  J4   0.03
-  DONUT_LIFT        payload 300 g : J1  -1.60  J2   2.47  J3   0.78  J4   0.03
-  DONUT_LIFT_ROLL+  payload 300 g : J1  -1.60  J2   2.47  J3   0.78  J4   0.04
-  DONUT_LIFT_ROLL-  payload 300 g : J1  -1.60  J2   2.47  J3   0.78  J4   0.02
-  DONUT_PLACE       payload 300 g : J1   3.07  J2  -0.40  J3   0.78  J4   0.03
-  PIPE_APPROACH     payload   0 g : J1  -2.85  J2   1.83  J3   0.34  J4   0.03
-  PIPE_GRASP        payload   0 g : J1  -2.53  J2   2.03  J3   0.34  J4   0.03
-  PIPE_GRASP_ROLL+  payload   0 g : J1  -2.53  J2   2.03  J3   0.34  J4   0.01
-  PIPE_GRASP_ROLL-  payload   0 g : J1  -2.53  J2   2.03  J3   0.34  J4   0.04
-  PIPE_LIFT         payload 165 g : J1  -1.53  J2   1.50  J3   0.58  J4   0.03
-  PIPE_CHUTE        payload 165 g : J1  -0.46  J2   2.54  J3   0.34  J4   0.00
-  PIPE_CHUTE_ROLL90 payload 165 g : J1  -0.46  J2   2.54  J3  -0.02  J4   0.00
+  DONUT_LIFT        payload 300 g : J1  -1.61  J2   2.48  J3   0.78  J4   0.03
+  DONUT_LIFT_ROLL+  payload 300 g : J1  -1.61  J2   2.48  J3   0.78  J4   0.04
+  DONUT_LIFT_ROLL-  payload 300 g : J1  -1.61  J2   2.48  J3   0.78  J4   0.02
+  DONUT_PLACE       payload 300 g : J1   3.08  J2  -0.40  J3   0.78  J4   0.03
+  PIPE_APPROACH     payload   0 g : J1  -2.86  J2   1.84  J3   0.34  J4   0.03
+  PIPE_GRASP        payload   0 g : J1  -2.54  J2   2.04  J3   0.34  J4   0.03
+  PIPE_GRASP_ROLL+  payload   0 g : J1  -2.54  J2   2.04  J3   0.34  J4   0.01
+  PIPE_GRASP_ROLL-  payload   0 g : J1  -2.54  J2   2.04  J3   0.34  J4   0.04
+  PIPE_LIFT         payload 165 g : J1  -1.54  J2   1.50  J3   0.58  J4   0.03
+  PIPE_CHUTE        payload 165 g : J1  -0.46  J2   2.55  J3   0.34  J4   0.00
+  PIPE_CHUTE_ROLL90 payload 165 g : J1  -0.46  J2   2.55  J3  -0.02  J4   0.00
 
-Modelled arm mass incl. motors and gripper drive: 2868 g
+Modelled arm mass incl. motors and gripper drive: 2874 g
 boolean cache: 0 hits, 5125 computed
-elapsed 265 s
+elapsed 338 s

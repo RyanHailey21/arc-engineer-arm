@@ -294,9 +294,9 @@
   </joint>
   <link name="forearm">
     <inertial>
-      <origin xyz="0.066755 -0.000736 0.001077" rpy="0 0 0" />
-      <mass value="0.223460" />
-      <inertia ixx="1.1117e-04" ixy="5.3124e-05" ixz="-2.5795e-05" iyy="2.8616e-03" iyz="5.0221e-06" izz="2.9488e-03" />
+      <origin xyz="0.069355 -0.001457 0.001051" rpy="0 0 0" />
+      <mass value="0.228960" />
+      <inertia ixx="1.1658e-04" ixy="7.0563e-05" ixz="-2.5169e-05" iyy="2.9915e-03" iyz="4.8485e-06" izz="3.0830e-03" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -377,6 +377,12 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <mesh filename="meshes/collision/forearm__SB5x12_B.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/collision/forearm__GT2_Belt_9mm_Stage2.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
   </link>

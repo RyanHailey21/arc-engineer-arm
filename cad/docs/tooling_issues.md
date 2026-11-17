@@ -21,6 +21,7 @@ against its `tool_use` (142 errors in 19,040 lines up to 2026-11-17 04:30Z).
 | TI-012 | 2026-11-16 | Eval graders needing plugin tools scored in the no-plugin arm (no Bash there): inflated Δ | fixed (`arm: with-only`) |
 | TI-013 | 2026-11-16 | Quick-check mock contradicted the fingerprint mock (CHANGED vs MATCH) on the refactor case | fixed |
 | TI-014 | 2026-11-16 | Ceiling cases (drawings, stale) pass in both arms: they test the fixture's CLAUDE.md, not the plugin | open: plan |
+| TI-015 | 2026-11-17 | No check compares purchased-part mass with the catalogue (DM-J4340 counted twice; GT2 belt weighs 0 g) | fixed: test; belt entry is the main session's |
 
 ---
 
@@ -242,3 +243,30 @@ They stay as guard cases (a regression would show). They say nothing about the p
 **Plan (WP6, with the skills in WP4):** add a `fixture_bare` variant of each case. Same project with the
 conventions section of `CLAUDE.md` removed, so the conventions can only come from the plugin's skills and hooks.
 For the drawings case, add a mocked generator tool, so a real overwrite becomes possible and gradable.
+
+## TI-015: no purchased-part mass check against the catalogue  (fixed: test added; one defect handed over)
+
+**What happened** (main-session report, 2026-11-17).
+- Each DM-J4340 is modelled as a stator part plus a rotor part, and `part_mass_g` counted the full 330 g for both.
+- No check caught it; it surfaced while building the BOM. The main session fixed it with a 70/30 split
+  (`ROTOR_SHARE` in `arm/kinematics.py`) and re-recorded both baselines.
+
+**Root cause.** Mass and torque checks compare totals with ratings. Nothing compares the modelled mass of each
+purchased item with its catalogue figure. Also, a CAT part whose `src` isn't a catalogue key silently weighs 0 g
+(`CAT[p.src]["mass"] if p.src in CAT else 0`).
+
+**Fix.** `cad/tests/test_catalogue_mass.py` checks, per variant:
+1. every CAT `src` is a catalogue key;
+2. summed `part_mass_g` per key = units × catalogue mass (within 0.5 %), with units counted by the BOM's
+   split-motor rule (a name containing "rotor" is the same unit);
+3. every rotor part has a stator sibling.
+
+Run with `freecadcmd -c "exec(open(r'cad/tests/test_catalogue_mass.py').read())"` under `GRIP=SCREW` and
+`GRIP=FOURBAR`.
+- Negative check: with the pre-fix `part_mass_g` restored, it FAILs with "DM-J4340-2EC: modelled 1320.0 g over 4
+  parts, expected 2 unit(s) x 330 g = 660.0 g".
+- Current result, both variants: FAIL on one real defect. `FOREARM/GT2_Belt_9mm_Stage2` (`arm/forearm.py:72`)
+  has `src = "GT2-BELT"`, which isn't in `data/catalogue.toml`, so the belt weighs 0 g in mass and torques.
+  Everything else matches (SCREW 32 keys / 241 units, FOURBAR 27 / 173).
+- The catalogue is a design input, so the entry is the main session's to add. **Plan:** once it's added, run this
+  test as a `catalogue` line in `quick_check.py`. It needs no extra build, about 0.1 s.

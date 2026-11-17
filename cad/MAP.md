@@ -2,7 +2,7 @@
 
 Regenerate with `cad/tools/make_map.py` (once per variant).  Search here first: every part links to the
 file:line that builds it; parameters, interfaces and keep-outs are data files.  Active variant comes from
-`params/variant.toml` (override with GRIP).  Inputs hash at generation: `b5775998f4d90bc2`.
+`params/variant.toml` (override with GRIP).  Inputs hash at generation: `48b9b3450fe5cb0a`.
 
 ## Model modules (`cad/arm/`)
 
@@ -28,7 +28,7 @@ file:line that builds it; parameters, interfaces and keep-outs are data files.  
 - [variant.toml](params/variant.toml): `grip`; `release`
 - [wrist.toml](params/wrist.toml): `SERVO_ANG`; `HX`; `ROLL_Z`; `ROLL_XS`
 
-- [catalogue.toml](data/catalogue.toml): purchased parts (41 entries) - desc, mass, source, verify
+- [catalogue.toml](data/catalogue.toml): purchased parts (42 entries) - desc, mass, source, verify
 
 ## Interfaces (`cad/interfaces/`)
 
@@ -119,7 +119,7 @@ file:line that builds it; parameters, interfaces and keep-outs are data files.  
 | FOREARM | Belt_Idler_Brg_MR104_b | CAT | MR104ZZ | 1.2 | [arm/forearm.py:65](arm/forearm.py#L65) body_forearm |
 | FOREARM | SHCS_M4x30_idler | CAT | SHCS | 1.0 | [arm/forearm.py:67](arm/forearm.py#L67) body_forearm |
 | FOREARM | Nyloc_M4_idler | CAT | NYLOC | 0.5 | [arm/forearm.py:68](arm/forearm.py#L68) body_forearm |
-| FOREARM | GT2_Belt_9mm_Stage2 | CAT | GT2-BELT | 0.0 | [arm/forearm.py:72](arm/forearm.py#L72) body_forearm |
+| FOREARM | GT2_Belt_9mm_Stage2 | CAT | GT2-BELT | 5.5 | [arm/forearm.py:72](arm/forearm.py#L72) body_forearm |
 | ROCKER | Level_Rocker_CF3 | CF | custom: 3 mm CF plate (DXF), hex af19 | 8.3 | [arm/forearm.py:81](arm/forearm.py#L81) body_rocker |
 | ROCKER | GT2_Pulley_Elbow | AL | custom: 6061 GT2 30T hobbed, hex key af19 | 6.4 | [arm/forearm.py:19](arm/forearm.py#L19) gt2_level_pulley |
 | ROCKER | Sleeve_E_outer | AL | custom: D13/D10 sleeve | 0.7 | [arm/forearm.py:84](arm/forearm.py#L84) body_rocker |
@@ -264,7 +264,7 @@ file:line that builds it; parameters, interfaces and keep-outs are data files.  
 | FOREARM | Belt_Idler_Brg_MR104_b | CAT | MR104ZZ | 1.2 | [arm/forearm.py:65](arm/forearm.py#L65) body_forearm |
 | FOREARM | SHCS_M4x30_idler | CAT | SHCS | 1.0 | [arm/forearm.py:67](arm/forearm.py#L67) body_forearm |
 | FOREARM | Nyloc_M4_idler | CAT | NYLOC | 0.5 | [arm/forearm.py:68](arm/forearm.py#L68) body_forearm |
-| FOREARM | GT2_Belt_9mm_Stage2 | CAT | GT2-BELT | 0.0 | [arm/forearm.py:72](arm/forearm.py#L72) body_forearm |
+| FOREARM | GT2_Belt_9mm_Stage2 | CAT | GT2-BELT | 5.5 | [arm/forearm.py:72](arm/forearm.py#L72) body_forearm |
 | ROCKER | Level_Rocker_CF3 | CF | custom: 3 mm CF plate (DXF), hex af19 | 8.3 | [arm/forearm.py:81](arm/forearm.py#L81) body_rocker |
 | ROCKER | GT2_Pulley_Elbow | AL | custom: 6061 GT2 30T hobbed, hex key af19 | 6.4 | [arm/forearm.py:19](arm/forearm.py#L19) gt2_level_pulley |
 | ROCKER | Sleeve_E_outer | AL | custom: D13/D10 sleeve | 0.7 | [arm/forearm.py:84](arm/forearm.py#L84) body_rocker |
