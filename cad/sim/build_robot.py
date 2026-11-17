@@ -390,7 +390,9 @@ def gazebo_run(gz_urdf):
                 world=g.get("world"), poses=len(P),
                 max_track_err_deg=max((max(abs(v) for v in p["track_err_deg"].values()) for p in P), default=None),
                 max_mimic_err_deg=max((p["max_mimic_err_deg"] for p in P), default=None),
-                max_tcp_err_mm=max((p["tcp_err_mm"] for p in P), default=None), tolerances=g.get("tolerances"))
+                max_tcp_err_mm=max((p["tcp_err_mm"] for p in P), default=None), tolerances=g.get("tolerances"),
+                power_off_release={k: (g.get("power_off_release") or {}).get(k) for k in
+                                   ("t_open_10mm_s", "t_90pct_open_s", "end_gap_mm", "ok")})
 
 
 def trans(v):
@@ -423,8 +425,8 @@ def build_gazebo(urdf):
         mesh.set("filename", "model://%s/%s" % (model, mesh.get("filename")))
     lump_crank_pin(r)
     sp = SPEC["spring"]
-    # NOTE: gz-physics 7 bullet-featherstone stores but does not apply joint spring/damping/friction, so this spring
-    # is inert in Gazebo Harmonic (it acts in MuJoCo). Kept so engines that honour it pick it up.
+    # gz-physics 7 bullet-featherstone applies joint spring + viscous damping each step (not joint friction): the
+    # power-off release run in cad/sim/gz_check.py shows this spring opening the jaws in Gazebo.
     g = ET.SubElement(r, "gazebo", reference="gripper")
     # sdformat's URDF parser copies unknown <gazebo reference="joint"> children into the SDF <joint>; these are SDF
     # joint-axis dynamics written in the URDF extension form that sdformat converts (springStiffness/springReference)

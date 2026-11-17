@@ -75,11 +75,17 @@
   "poses": 7,
   "max_track_err_deg": 0.005,
   "max_mimic_err_deg": 0.4081,
-  "max_tcp_err_mm": 2.434,
+  "max_tcp_err_mm": 2.433,
   "tolerances": {
    "track_deg": 1.5,
    "mimic_deg": 1.0,
    "tcp_mm": 3.0
+  },
+  "power_off_release": {
+   "t_open_10mm_s": 0.12,
+   "t_90pct_open_s": 1.669,
+   "end_gap_mm": 112.0,
+   "ok": true
   }
  }
 }

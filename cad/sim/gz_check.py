@@ -3,7 +3,8 @@ through the JointPositionController topics, read /joint_state back and check
   - each actuated joint reaches its command (tracking),
   - each passive joint follows its <mimic> leader (multiplier * leader),
   - the gripper TCP (from the head link pose) matches the CAD forward kinematics (fk_reference.json),
-  - no NaN / runaway state.
+  - no NaN / runaway state,
+  - power-off release: with the gripper controller removed, the spring opens the jaws (release_test).
 Writes sim/arc_arm_<variant>/gazebo_validation.json.
 
 Runs inside an environment that has gz-sim 8 (here: WSL + micromamba conda-forge env ~/mm/gz):
@@ -44,8 +45,13 @@ def gz(*args, timeout=20):
 def joint_state():
     """-> {joint: position rad} from one /joint_state message (protobuf text format)."""
     txt = gz("topic", "-e", "-n", "1", "-t", JS_TOPIC)
-    out = {}
     txt = txt.split("\nheader {")[0] if txt.count("header {") > 1 else txt   # gz may print >1 message
+    return parse_js(txt)
+
+
+def parse_js(txt):
+    """-> {joint: position rad} from the text of ONE joint_state message."""
+    out = {}
     for blk in re.split(r"\njoint \{", "\n" + txt)[1:]:
         name = re.search(r'name: "([^"]+)"', blk)
         a = blk.find("axis1 {")   # axis1 holds nested xyz {...}, so search for position after it, not within [^}]
@@ -80,6 +86,85 @@ def qrot(q, v):
 def command(q_deg):
     for j in ACT:
         gz("topic", "-t", "/arc_arm/%s/cmd_pos" % j, "-m", "gz.msgs.Double", "-p", "data: %.6f" % math.radians(q_deg[j]))
+
+
+def release_test(spec):
+    """Power-off release in Gazebo: a temporary copy of the model WITHOUT the gripper position controller (the servo
+    unpowered), jaws starting at the pipe grip (gripper q = 0). The world starts paused; joint_state is streamed with
+    sim-time stamps while it runs, and the torsion spring alone must open the jaws.
+    Caveat: bullet-featherstone applies joint spring and (viscous) damping but not joint friction or rotor armature,
+    so here the unpowered servo's back-drive is the URDF damping 0.05 N*m*s/rad; MuJoCo uses 0.05 N*m Coulomb
+    friction + 0.002 kg*m^2 armature. Both are estimates until the servo is bench-measured."""
+    import shutil
+    import tempfile
+    fb, th_ref = spec["fb"], math.radians(spec["theta_ref_deg"])
+    q_open = math.radians(spec["limits_deg"]["gripper"][1])
+
+    def gap(q):                                  # pad-arc gap (mm) for a gripper joint value (as build_robot.py)
+        return 2 * (fb["YG"] + fb["L"] * math.sin(th_ref + q) - fb["E"])
+    tmp = tempfile.mkdtemp(prefix="gzrel_")
+    md = os.path.join(tmp, MODEL)
+    os.makedirs(md)
+    os.symlink(os.path.join(ROOT, "meshes"), os.path.join(md, "meshes"))
+    shutil.copy(os.path.join(ROOT, "model.config"), md)
+    t = ET.parse(os.path.join(ROOT, "model.urdf"))
+    removed = 0
+    for g in t.getroot().iter("gazebo"):
+        for p in list(g.findall("plugin")):
+            jn = p.find("joint_name")
+            if jn is not None and jn.text == "gripper":
+                g.remove(p)
+                removed += 1
+    assert removed == 1, "gripper controller not found"
+    t.write(os.path.join(md, "model.urdf"), encoding="utf-8", xml_declaration=True)
+    env = dict(ENV, GZ_SIM_RESOURCE_PATH=tmp)
+    srv = subprocess.Popen(["gz", "sim", "-s", "-v", "2", WORLD], env=env,          # no -r: starts paused
+                           stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+    try:
+        t0 = time.time()
+        while JS_TOPIC not in gz("topic", "-l"):
+            if time.time() - t0 > 60 or srv.poll() is not None:
+                raise RuntimeError("release test: joint_state topic never appeared")
+            time.sleep(0.5)
+        echo = subprocess.Popen(["gz", "topic", "-e", "-t", JS_TOPIC, "-n", "4000"], env=env,
+                                stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
+        time.sleep(1.0)
+        gz("service", "-s", "/world/arc_arm/control", "--reqtype", "gz.msgs.WorldControl", "--reptype",
+           "gz.msgs.Boolean", "--timeout", "3000", "--req", "pause: false")
+        out, _ = echo.communicate(timeout=180)
+    finally:
+        srv.terminate()
+        try:
+            srv.wait(10)
+        except subprocess.TimeoutExpired:
+            srv.kill()
+        shutil.rmtree(tmp, ignore_errors=True)
+    series = []
+    for msg in re.split(r"(?m)^header \{", out)[1:]:
+        st = re.search(r"stamp \{([^}]*)\}", msg)
+        sec = re.search(r"(?:^|\s)sec: (\d+)", st.group(1)) if st else None   # not the tail of "nsec:"
+        nsec = re.search(r"nsec: (\d+)", st.group(1)) if st else None
+        ts = (int(sec.group(1)) if sec else 0) + (int(nsec.group(1)) if nsec else 0) * 1e-9
+        series.append((ts, parse_js(msg).get("gripper", 0.0)))
+    series.sort()
+    if not series:
+        return dict(ok=False, note="no joint_state messages captured")
+    ts0, q0 = series[0]
+    t10 = next((ts - ts0 for ts, q in series if gap(q) >= gap(q0) + 10.0), None)
+    t90 = next((ts - ts0 for ts, q in series if q - q0 >= 0.9 * (q_open - q0)), None)
+    curve, nxt = [], 0.0                        # pad gap every 0.25 s of sim time
+    for ts, q in series:
+        if ts - ts0 >= nxt:
+            curve.append((round(ts - ts0, 2), round(gap(q), 1)))
+            nxt += 0.25
+    return dict(start_gap_mm=round(gap(q0), 1), end_gap_mm=round(gap(series[-1][1]), 1),
+                full_open_gap_mm=round(gap(q_open), 1), sim_span_s=round(series[-1][0] - ts0, 3), samples=len(series),
+                t_open_10mm_s=None if t10 is None else round(t10, 3), t_90pct_open_s=None if t90 is None else round(t90, 3),
+                gap_curve_s_mm=curve,
+                ok=t10 is not None and t10 < 1.0,   # same criterion as MuJoCo's power-off release (ARC: within 1 s)
+                note="gripper controller removed (servo unpowered); torsion spring against the URDF joint damping "
+                     "(0.05 N*m*s/rad, viscous). MuJoCo models the same unmeasured servo back-drive as 0.05 N*m "
+                     "Coulomb friction + rotor armature instead; neither is bench-measured. ARC rule: release within 1 s.")
 
 
 def main():
@@ -154,7 +239,11 @@ def main():
             srv.wait(10)
         except subprocess.TimeoutExpired:
             srv.kill()
-    res["ok"] = bool(res["poses"]) and not res["missing_joints"] and all(p["ok"] for p in res["poses"])
+    res["power_off_release"] = rel = release_test(spec)
+    print("power-off release: start gap %s mm, open 10 mm in %s s, 90%% open in %s s, end gap %s mm  %s" % (
+        rel.get("start_gap_mm"), rel.get("t_open_10mm_s"), rel.get("t_90pct_open_s"), rel.get("end_gap_mm"),
+        "ok" if rel["ok"] else "FAIL"))
+    res["ok"] = bool(res["poses"]) and not res["missing_joints"] and all(p["ok"] for p in res["poses"]) and rel["ok"]
     res["tolerances"] = dict(track_deg=TRACK_TOL_DEG, mimic_deg=MIMIC_TOL_DEG, tcp_mm=TCP_TOL_MM)
     json.dump(res, open(os.path.join(ROOT, "gazebo_validation%s.json" % ("_empty" if EMPTY else "")), "w", encoding="utf-8"), indent=1)
     print("GZ_CHECK %s: %s" % (VAR, "PASS" if res["ok"] else "FAIL"))

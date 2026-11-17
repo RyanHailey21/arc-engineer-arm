@@ -8,4 +8,4 @@
 - **urdf_in_mujoco**: `{"compiles": true, "nbody": 17, "note": "MuJoCo's URDF importer ignores <mimic>"}`
 - **ok**: `true`
 - **gazebo_package**: `{"parses": true, "mesh_uris": 107, "missing_meshes": [], "name_clashes": [], "mimic_joints": 11, "actuated": ["shoulder", "elbow", "wrist_pitch", "wrist_roll", "gripper"], "plugins": 6, "ok": true, "note": "structure only; the gz-sim run test is gazebo_run (cad/sim/gz_check.py)"}`
-- **gazebo_run**: `{"ok": true, "status": "FRESH", "gz_version": "8.10.0", "world": "sim/arc_arm_fourbar/worlds/arc_arm.sdf", "poses": 7, "max_track_err_deg": 0.005, "max_mimic_err_deg": 0.4081, "max_tcp_err_mm": 2.434, "tolerances": {"track_deg": 1.5, "mimic_deg": 1.0, "tcp_mm": 3.0}}`
+- **gazebo_run**: `{"ok": true, "status": "FRESH", "gz_version": "8.10.0", "world": "sim/arc_arm_fourbar/worlds/arc_arm.sdf", "poses": 7, "max_track_err_deg": 0.005, "max_mimic_err_deg": 0.4081, "max_tcp_err_mm": 2.433, "tolerances": {"track_deg": 1.5, "mimic_deg": 1.0, "tcp_mm": 3.0}, "power_off_release": {"t_open_10mm_s": 0.12, "t_90pct_open_s": 1.669, "end_gap_mm": 112.0, "ok": true}}`

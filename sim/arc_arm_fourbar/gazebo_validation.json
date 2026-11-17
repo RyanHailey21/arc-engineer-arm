@@ -6,7 +6,7 @@
  "poses": [
   {
    "pose": "STOW",
-   "settle_s": 7.1,
+   "settle_s": 7.0,
    "track_err_deg": {
     "shoulder": 0.0,
     "elbow": 0.0,
@@ -21,13 +21,13 @@
     -0.0,
     369.63
    ],
-   "tcp_err_mm": 2.434,
+   "tcp_err_mm": 2.433,
    "finite": true,
    "ok": true
   },
   {
    "pose": "DONUT_APPROACH",
-   "settle_s": 7.1,
+   "settle_s": 7.0,
    "track_err_deg": {
     "shoulder": -0.0,
     "elbow": -0.0,
@@ -42,13 +42,13 @@
     -0.0,
     298.12
    ],
-   "tcp_err_mm": 1.965,
+   "tcp_err_mm": 1.964,
    "finite": true,
    "ok": true
   },
   {
    "pose": "DONUT_LIFT",
-   "settle_s": 7.2,
+   "settle_s": 7.0,
    "track_err_deg": {
     "shoulder": 0.0,
     "elbow": -0.0,
@@ -63,7 +63,7 @@
     0.0,
     717.96
    ],
-   "tcp_err_mm": 2.064,
+   "tcp_err_mm": 2.063,
    "finite": true,
    "ok": true
   },
@@ -90,7 +90,7 @@
   },
   {
    "pose": "PIPE_GRASP",
-   "settle_s": 7.1,
+   "settle_s": 7.0,
    "track_err_deg": {
     "shoulder": -0.0,
     "elbow": 0.0,
@@ -111,7 +111,7 @@
   },
   {
    "pose": "PIPE_CHUTE",
-   "settle_s": 7.1,
+   "settle_s": 7.0,
    "track_err_deg": {
     "shoulder": 0.0,
     "elbow": 0.0,
@@ -132,7 +132,7 @@
   },
   {
    "pose": "PIPE_CHUTE_ROLL90",
-   "settle_s": 7.1,
+   "settle_s": 7.0,
    "track_err_deg": {
     "shoulder": 0.0,
     "elbow": 0.0,
@@ -173,6 +173,67 @@
   "wrist_roll"
  ],
  "missing_joints": [],
+ "power_off_release": {
+  "start_gap_mm": 13.8,
+  "end_gap_mm": 112.0,
+  "full_open_gap_mm": 112.0,
+  "sim_span_s": 2.989,
+  "samples": 4000,
+  "t_open_10mm_s": 0.12,
+  "t_90pct_open_s": 1.669,
+  "gap_curve_s_mm": [
+   [
+    0.0,
+    13.8
+   ],
+   [
+    0.25,
+    33.9
+   ],
+   [
+    0.5,
+    47.4
+   ],
+   [
+    0.75,
+    57.0
+   ],
+   [
+    1.0,
+    65.7
+   ],
+   [
+    1.25,
+    76.1
+   ],
+   [
+    1.5,
+    90.4
+   ],
+   [
+    1.75,
+    110.6
+   ],
+   [
+    2.0,
+    112.0
+   ],
+   [
+    2.25,
+    112.0
+   ],
+   [
+    2.5,
+    112.0
+   ],
+   [
+    2.75,
+    112.0
+   ]
+  ],
+  "ok": true,
+  "note": "gripper controller removed (servo unpowered); torsion spring against the URDF joint damping (0.05 N*m*s/rad, viscous). MuJoCo models the same unmeasured servo back-drive as 0.05 N*m Coulomb friction + rotor armature instead; neither is bench-measured. ARC rule: release within 1 s."
+ },
  "ok": true,
  "tolerances": {
   "track_deg": 1.5,
