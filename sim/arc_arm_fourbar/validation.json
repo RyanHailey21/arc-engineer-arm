@@ -54,6 +54,7 @@
   "parses": true,
   "mesh_uris": 107,
   "missing_meshes": [],
+  "name_clashes": [],
   "mimic_joints": 11,
   "actuated": [
    "shoulder",

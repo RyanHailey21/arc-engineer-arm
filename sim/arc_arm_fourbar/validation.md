@@ -7,4 +7,4 @@
 - **scene**: `{"compiles": true, "nbody": 20, "ngeom": 112}`
 - **urdf_in_mujoco**: `{"compiles": true, "nbody": 17, "note": "MuJoCo's URDF importer ignores <mimic>"}`
 - **ok**: `true`
-- **gazebo_package**: `{"parses": true, "mesh_uris": 107, "missing_meshes": [], "mimic_joints": 11, "actuated": ["shoulder", "elbow", "wrist_pitch", "wrist_roll", "gripper"], "plugins": 6, "ok": true, "note": "structure only - not yet loaded in Gazebo (gz-sim not installed on this machine)"}`
+- **gazebo_package**: `{"parses": true, "mesh_uris": 107, "missing_meshes": [], "name_clashes": [], "mimic_joints": 11, "actuated": ["shoulder", "elbow", "wrist_pitch", "wrist_roll", "gripper"], "plugins": 6, "ok": true, "note": "structure only - not yet loaded in Gazebo (gz-sim not installed on this machine)"}`

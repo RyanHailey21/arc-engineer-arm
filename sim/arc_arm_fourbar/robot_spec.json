@@ -257,7 +257,7 @@
    "name": "rod1",
    "cad_body": "ROD1",
    "parent": "base_link",
-   "joint": "rod1",
+   "joint": "rod1_joint",
    "axis": [
     0,
     -1,
@@ -335,7 +335,7 @@
    "name": "rocker",
    "cad_body": "ROCKER",
    "parent": "rod1",
-   "joint": "rocker",
+   "joint": "rocker_joint",
    "axis": [
     0,
     -1,
@@ -578,7 +578,7 @@
    "name": "crank",
    "cad_body": "CRANK",
    "parent": "base_link",
-   "joint": "crank",
+   "joint": "crank_joint",
    "axis": [
     0,
     -1,
@@ -676,7 +676,7 @@
    "name": "crank_pin",
    "cad_body": null,
    "parent": "crank",
-   "joint": "crank_pin",
+   "joint": "crank_pin_joint",
    "axis": [
     0,
     -1,
@@ -727,7 +727,7 @@
    "name": "rod_ab",
    "cad_body": "ROD_AB",
    "parent": "crank_pin",
-   "joint": "rod_ab",
+   "joint": "rod_ab_joint",
    "axis": [
     0,
     -1,
@@ -805,7 +805,7 @@
    "name": "level",
    "cad_body": "LEVEL",
    "parent": "forearm",
-   "joint": "level",
+   "joint": "level_joint",
    "axis": [
     0,
     -1,
@@ -1258,7 +1258,7 @@
    "name": "jaw_l",
    "cad_body": "JAW_L",
    "parent": "lk_ld",
-   "joint": "jaw_l",
+   "joint": "jaw_l_joint",
    "axis": [
     0,
     0,
@@ -1376,7 +1376,7 @@
    "name": "lk_li",
    "cad_body": "LK_LI",
    "parent": "head",
-   "joint": "lk_li",
+   "joint": "lk_li_joint",
    "axis": [
     0,
     0,
@@ -1438,7 +1438,7 @@
    "name": "lk_rd",
    "cad_body": "LK_RD",
    "parent": "head",
-   "joint": "lk_rd",
+   "joint": "lk_rd_joint",
    "axis": [
     0,
     0,
@@ -1526,7 +1526,7 @@
    "name": "lk_ri",
    "cad_body": "LK_RI",
    "parent": "head",
-   "joint": "lk_ri",
+   "joint": "lk_ri_joint",
    "axis": [
     0,
     0,
@@ -1588,7 +1588,7 @@
    "name": "jaw_r",
    "cad_body": "JAW_R",
    "parent": "lk_rd",
-   "joint": "jaw_r",
+   "joint": "jaw_r_joint",
    "axis": [
     0,
     0,

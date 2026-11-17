@@ -61,24 +61,25 @@ def tree():
     Z = (0, 0, 1)
     # name, CAD body, parent, joint, axis, origin xyz in parent link frame (mm), origin rot about y (deg),
     # F = link-frame origin in the CAD body frame (mm), mimic (leader, multiplier) or None
+    # passive joints are named <link>_joint: SDF (Gazebo) puts links and joints in one frame namespace
     return [
         ("base_link", "GROUND", None, None, None, (0, 0, 0), 0, (0, 0, 0), None),
         ("upper", "UPPER", "base_link", "shoulder", Ym, S, 0, (0, 0, 0), None),
-        ("rod1", "ROD1", "base_link", "rod1", Ym, G1, 0, (0, 0, 0), ("shoulder", 1.0)),
-        ("rocker", "ROCKER", "rod1", "rocker", Ym, (K["L2"], 0, 0), 0, (v1[0], 0, v1[1]), ("shoulder", -1.0)),
+        ("rod1", "ROD1", "base_link", "rod1_joint", Ym, G1, 0, (0, 0, 0), ("shoulder", 1.0)),
+        ("rocker", "ROCKER", "rod1", "rocker_joint", Ym, (K["L2"], 0, 0), 0, (v1[0], 0, v1[1]), ("shoulder", -1.0)),
         ("forearm", "FOREARM", "rocker", "elbow", Ym, (-v1[0], 0, -v1[1]), 0, (0, 0, 0), None),
-        ("crank", "CRANK", "base_link", "crank", Ym, S, 180, (0, 0, 0), ("elbow", 1.0)),
-        ("crank_pin", None, "crank", "crank_pin", Ym, (K["L1"], 0, 0), -180, (0, 0, 0), ("elbow", -1.0)),
-        ("rod_ab", "ROD_AB", "crank_pin", "rod_ab", Ym, (0, 0, 0), 0, (0, 0, 0), ("shoulder", 1.0)),
-        ("level", "LEVEL", "forearm", "level", Ym, (K["L3"], 0, 0), 0, (0, 0, 0), ("elbow", -1.0)),
+        ("crank", "CRANK", "base_link", "crank_joint", Ym, S, 180, (0, 0, 0), ("elbow", 1.0)),
+        ("crank_pin", None, "crank", "crank_pin_joint", Ym, (K["L1"], 0, 0), -180, (0, 0, 0), ("elbow", -1.0)),
+        ("rod_ab", "ROD_AB", "crank_pin", "rod_ab_joint", Ym, (0, 0, 0), 0, (0, 0, 0), ("shoulder", 1.0)),
+        ("level", "LEVEL", "forearm", "level_joint", Ym, (K["L3"], 0, 0), 0, (0, 0, 0), ("elbow", -1.0)),
         ("gripper_frame", "GRIPPER", "level", "wrist_pitch", Ym, (0, 0, 0), 0, (0, 0, 0), None),
         ("head", "HEAD", "gripper_frame", "wrist_roll", (1, 0, 0), (0, 0, rz), 0, (0, 0, rz), None),
         ("lk_ld", "LK_LD", "head", "gripper", Z, (gd[0], gd[1], -rz), 0, (gd[0], gd[1], 0), None),
-        ("jaw_l", "JAW_L", "lk_ld", "jaw_l", Z, (cd[0] - gd[0], cd[1] - gd[1], 0), 0, (cd[0], cd[1], 0), ("gripper", -1.0)),
-        ("lk_li", "LK_LI", "head", "lk_li", Z, (gi[0], gi[1], -rz), 0, (gi[0], gi[1], 0), ("gripper", 1.0)),
-        ("lk_rd", "LK_RD", "head", "lk_rd", Z, (gr[0], gr[1], -rz), 0, (gr[0], gr[1], 0), ("gripper", -1.0)),
-        ("lk_ri", "LK_RI", "head", "lk_ri", Z, (gri[0], gri[1], -rz), 0, (gri[0], gri[1], 0), ("gripper", -1.0)),
-        ("jaw_r", "JAW_R", "lk_rd", "jaw_r", Z, (cr[0] - gr[0], cr[1] - gr[1], 0), 0, (cr[0], cr[1], 0), ("gripper", 1.0)),
+        ("jaw_l", "JAW_L", "lk_ld", "jaw_l_joint", Z, (cd[0] - gd[0], cd[1] - gd[1], 0), 0, (cd[0], cd[1], 0), ("gripper", -1.0)),
+        ("lk_li", "LK_LI", "head", "lk_li_joint", Z, (gi[0], gi[1], -rz), 0, (gi[0], gi[1], 0), ("gripper", 1.0)),
+        ("lk_rd", "LK_RD", "head", "lk_rd_joint", Z, (gr[0], gr[1], -rz), 0, (gr[0], gr[1], 0), ("gripper", -1.0)),
+        ("lk_ri", "LK_RI", "head", "lk_ri_joint", Z, (gri[0], gri[1], -rz), 0, (gri[0], gri[1], 0), ("gripper", -1.0)),
+        ("jaw_r", "JAW_R", "lk_rd", "jaw_r_joint", Z, (cr[0] - gr[0], cr[1] - gr[1], 0), 0, (cr[0], cr[1], 0), ("gripper", 1.0)),
     ]
 
 

@@ -217,7 +217,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="rod1" type="continuous">
+  <joint name="rod1_joint" type="continuous">
     <parent link="base_link" />
     <child link="rod1" />
     <origin xyz="-0.22847 0 0.200446" rpy="0 0 0" />
@@ -285,7 +285,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="rocker" type="continuous">
+  <joint name="rocker_joint" type="continuous">
     <parent link="rod1" />
     <child link="rocker" />
     <origin xyz="0.34 0 0" rpy="0 0 0" />
@@ -446,7 +446,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="crank" type="continuous">
+  <joint name="crank_joint" type="continuous">
     <parent link="base_link" />
     <child link="crank" />
     <origin xyz="-0.16 0 0.215" rpy="0 -3.141593 0" />
@@ -460,7 +460,7 @@
       <inertia ixx="1.0000e-08" ixy="0.0000e+00" ixz="0.0000e+00" iyy="1.0000e-08" iyz="0.0000e+00" izz="1.0000e-08" />
     </inertial>
   </link>
-  <joint name="crank_pin" type="continuous">
+  <joint name="crank_pin_joint" type="continuous">
     <parent link="crank" />
     <child link="crank_pin" />
     <origin xyz="0.08 0 0" rpy="0 3.141593 0" />
@@ -498,7 +498,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="rod_ab" type="continuous">
+  <joint name="rod_ab_joint" type="continuous">
     <parent link="crank_pin" />
     <child link="rod_ab" />
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -566,7 +566,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="level" type="continuous">
+  <joint name="level_joint" type="continuous">
     <parent link="forearm" />
     <child link="level" />
     <origin xyz="0.35 0 0" rpy="0 0 0" />
@@ -880,7 +880,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="jaw_l" type="continuous">
+  <joint name="jaw_l_joint" type="continuous">
     <parent link="lk_ld" />
     <child link="jaw_l" />
     <origin xyz="0.041732 -0.02162 0" rpy="0 0 0" />
@@ -903,7 +903,7 @@
       </material>
     </visual>
   </link>
-  <joint name="lk_li" type="continuous">
+  <joint name="lk_li_joint" type="continuous">
     <parent link="head" />
     <child link="lk_li" />
     <origin xyz="0.082 0.0545 0.005" rpy="0 0 0" />
@@ -950,7 +950,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="lk_rd" type="continuous">
+  <joint name="lk_rd_joint" type="continuous">
     <parent link="head" />
     <child link="lk_rd" />
     <origin xyz="0.082 -0.0385 0.005" rpy="0 0 0" />
@@ -973,7 +973,7 @@
       </material>
     </visual>
   </link>
-  <joint name="lk_ri" type="continuous">
+  <joint name="lk_ri_joint" type="continuous">
     <parent link="head" />
     <child link="lk_ri" />
     <origin xyz="0.082 -0.0545 0.005" rpy="0 0 0" />
@@ -1050,7 +1050,7 @@
       </geometry>
     </collision>
   </link>
-  <joint name="jaw_r" type="continuous">
+  <joint name="jaw_r_joint" type="continuous">
     <parent link="lk_rd" />
     <child link="jaw_r" />
     <origin xyz="0.041732 0.02162 0" rpy="0 0 0" />

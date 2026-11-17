@@ -367,9 +367,11 @@ def validate_gazebo(gz_urdf):
     missing = [x for x in uris if not os.path.exists(os.path.join(ROOT, x.replace("model://%s/" % model, "")))]
     mimics = len(list(r.iter("mimic")))
     plugins = [p.get("filename") for p in r.iter("plugin")]
+    # SDF puts links and joints in one frame namespace: a joint named like a link makes gz-sim reject the model
+    clash = sorted({l.get("name") for l in r.iter("link")} & {j.get("name") for j in r.iter("joint")})
     w = open(os.path.join(ROOT, "worlds", "arc_arm.sdf"), encoding="utf-8").read()
-    ok = not missing and mimics == 11 and plugins.count("gz-sim-joint-position-controller-system") == 5 and         ("model://%s" % model) in w and "bullet-featherstone" in w and len(u.actuated_joint_names) == 5
-    return dict(parses=True, mesh_uris=len(uris), missing_meshes=missing[:5], mimic_joints=mimics,
+    ok = not missing and not clash and mimics == 11 and plugins.count("gz-sim-joint-position-controller-system") == 5 and         ("model://%s" % model) in w and "bullet-featherstone" in w and len(u.actuated_joint_names) == 5
+    return dict(parses=True, mesh_uris=len(uris), missing_meshes=missing[:5], name_clashes=clash, mimic_joints=mimics,
                 actuated=list(u.actuated_joint_names), plugins=len(plugins), ok=ok,
                 note="structure only - not yet loaded in Gazebo (gz-sim not installed on this machine)")
 

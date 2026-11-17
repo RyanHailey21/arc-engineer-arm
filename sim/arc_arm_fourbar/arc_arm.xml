@@ -153,14 +153,14 @@
       </body>
       <body name="rod1" pos="-0.22847 0 0.200446">
         <inertial pos="0.17 -0.041939 0" mass="0.019740" fullinertia="6.5736e-07 2.5922e-04 2.5859e-04 -4.6144e-20 -8.6032e-22 -3.1901e-22" />
-        <joint name="rod1" type="hinge" axis="0 -1 0" />
+        <joint name="rod1_joint" type="hinge" axis="0 -1 0" />
         <site name="rod1_cad" pos="0 0 0" size="0.004" group="5" />
         <geom class="visual" mesh="rod1__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
         <geom class="visual" mesh="rod1__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
         <geom class="collision" mesh="rod1__Rod_1_CF3" pos="0 0 0" />
         <body name="rocker" pos="0.34 0 0">
           <inertial pos="0.043161 -0.036273 0.009174" mass="0.022766" fullinertia="2.2455e-06 2.1674e-05 2.0700e-05 -1.9268e-06 -4.1083e-06 -4.0956e-07" />
-          <joint name="rocker" type="hinge" axis="0 -1 0" />
+          <joint name="rocker_joint" type="hinge" axis="0 -1 0" />
           <site name="rocker_cad" pos="0.06847 0 0.014554" size="0.004" group="5" />
           <geom class="visual" mesh="rocker__alu" pos="0.06847 0 0.014554" rgba="0.8 0.81 0.84 1" />
           <geom class="visual" mesh="rocker__cf" pos="0.06847 0 0.014554" rgba="0.12 0.12 0.13 1" />
@@ -187,7 +187,7 @@
             <geom class="collision" mesh="forearm__GT2_Belt_9mm_Stage2" pos="0 0 0" />
             <body name="level" pos="0.35 0 0">
               <inertial pos="-0.007911 -0.059399 0.004567" mass="0.086393" fullinertia="2.8567e-05 2.1837e-05 3.6597e-05 -1.7305e-06 6.9540e-06 9.9910e-07" />
-              <joint name="level" type="hinge" axis="0 -1 0" />
+              <joint name="level_joint" type="hinge" axis="0 -1 0" />
               <site name="level_cad" pos="0 0 0" size="0.004" group="5" />
               <geom class="visual" mesh="level__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
               <geom class="visual" mesh="level__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
@@ -236,7 +236,7 @@
                     <geom class="collision" mesh="lk_ld__Sector_m1_77T_L" pos="-0.082 -0.0385 0" />
                     <body name="jaw_l" pos="0.041732 -0.02162 0">
                       <inertial pos="0.025218 0.001468 -0.000777" mass="0.049217" fullinertia="2.2304e-05 3.1963e-05 1.4441e-05 7.7951e-07 4.2767e-06 -9.2221e-07" />
-                      <joint name="jaw_l" type="hinge" axis="0 0 1" />
+                      <joint name="jaw_l_joint" type="hinge" axis="0 0 1" />
                       <site name="jaw_l_cad" pos="-0.123732 -0.01688 0" size="0.004" group="5" />
                       <geom class="visual" mesh="jaw_l__alu" pos="-0.123732 -0.01688 0" rgba="0.8 0.81 0.84 1" />
                       <geom class="visual" mesh="jaw_l__cf" pos="-0.123732 -0.01688 0" rgba="0.12 0.12 0.13 1" />
@@ -250,13 +250,13 @@
                   </body>
                   <body name="lk_li" pos="0.082 0.0545 0.005">
                     <inertial pos="0.020866 -0.01081 0.03" mass="0.004856" fullinertia="4.0040e-07 1.0400e-06 1.1903e-06 4.5289e-07 1.6161e-21 2.2516e-21" />
-                    <joint name="lk_li" type="hinge" axis="0 0 1" />
+                    <joint name="lk_li_joint" type="hinge" axis="0 0 1" />
                     <site name="lk_li_cad" pos="-0.082 -0.0545 0" size="0.004" group="5" />
                     <geom class="visual" mesh="lk_li__cf" pos="-0.082 -0.0545 0" rgba="0.12 0.12 0.13 1" />
                   </body>
                   <body name="lk_rd" pos="0.082 -0.0385 0.005">
                     <inertial pos="0.007557 0.012969 0.033805" mass="0.008601" fullinertia="1.1399e-06 3.5826e-06 4.0785e-06 -1.3347e-08 5.9242e-07 -1.3657e-07" />
-                    <joint name="lk_rd" type="hinge" axis="0 0 1" />
+                    <joint name="lk_rd_joint" type="hinge" axis="0 0 1" />
                     <site name="lk_rd_cad" pos="-0.082 0.0385 0" size="0.004" group="5" />
                     <geom class="visual" mesh="lk_rd__cf" pos="-0.082 0.0385 0" rgba="0.12 0.12 0.13 1" />
                     <geom class="visual" mesh="lk_rd__pom" pos="-0.082 0.0385 0" rgba="0.92 0.91 0.86 1" />
@@ -264,7 +264,7 @@
                     <geom class="collision" mesh="lk_rd__Sector_m1_77T_R" pos="-0.082 0.0385 0" />
                     <body name="jaw_r" pos="0.041732 0.02162 0">
                       <inertial pos="0.025218 -0.001468 -0.000777" mass="0.049217" fullinertia="2.2304e-05 3.1963e-05 1.4441e-05 -7.7951e-07 4.2767e-06 9.2221e-07" />
-                      <joint name="jaw_r" type="hinge" axis="0 0 1" />
+                      <joint name="jaw_r_joint" type="hinge" axis="0 0 1" />
                       <site name="jaw_r_cad" pos="-0.123732 0.01688 0" size="0.004" group="5" />
                       <geom class="visual" mesh="jaw_r__alu" pos="-0.123732 0.01688 0" rgba="0.8 0.81 0.84 1" />
                       <geom class="visual" mesh="jaw_r__cf" pos="-0.123732 0.01688 0" rgba="0.12 0.12 0.13 1" />
@@ -278,7 +278,7 @@
                   </body>
                   <body name="lk_ri" pos="0.082 -0.0545 0.005">
                     <inertial pos="0.020866 0.01081 0.03" mass="0.004856" fullinertia="4.0040e-07 1.0400e-06 1.1903e-06 -4.5289e-07 1.2710e-21 -6.3552e-22" />
-                    <joint name="lk_ri" type="hinge" axis="0 0 1" />
+                    <joint name="lk_ri_joint" type="hinge" axis="0 0 1" />
                     <site name="lk_ri_cad" pos="-0.082 0.0545 0" size="0.004" group="5" />
                     <geom class="visual" mesh="lk_ri__cf" pos="-0.082 0.0545 0" rgba="0.12 0.12 0.13 1" />
                   </body>
@@ -290,7 +290,7 @@
       </body>
       <body name="crank" pos="-0.16 0 0.215" quat="0 0 -1 0">
         <inertial pos="0.0046 0.049356 0" mass="0.138248" fullinertia="1.5057e-05 6.2172e-05 5.7352e-05 1.1074e-05 1.5826e-21 1.0966e-21" />
-        <joint name="crank" type="hinge" axis="0 -1 0" />
+        <joint name="crank_joint" type="hinge" axis="0 -1 0" />
         <site name="crank_cad" pos="0 0 0" size="0.004" group="5" />
         <geom class="visual" mesh="crank__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
         <geom class="visual" mesh="crank__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
@@ -300,11 +300,11 @@
         <geom class="collision" mesh="crank__SB5x8_A" pos="0 0 0" />
         <body name="crank_pin" pos="0.08 0 0" quat="0 0 1 0">
           <inertial pos="0 0 0" mass="0.000100" fullinertia="1.0000e-08 1.0000e-08 1.0000e-08 0.0000e+00 0.0000e+00 0.0000e+00" />
-          <joint name="crank_pin" type="hinge" axis="0 -1 0" />
+          <joint name="crank_pin_joint" type="hinge" axis="0 -1 0" />
           <site name="crank_pin_cad" pos="0 0 0" size="0.004" group="5" />
           <body name="rod_ab" pos="0 0 0">
             <inertial pos="0.17 0.029061 0" mass="0.019740" fullinertia="6.5736e-07 2.5922e-04 2.5859e-04 8.0491e-22 -8.6032e-22 -2.6168e-23" />
-            <joint name="rod_ab" type="hinge" axis="0 -1 0" />
+            <joint name="rod_ab_joint" type="hinge" axis="0 -1 0" />
             <site name="rod_ab_cad" pos="0 0 0" size="0.004" group="5" />
             <geom class="visual" mesh="rod_ab__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
             <geom class="visual" mesh="rod_ab__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
@@ -315,17 +315,17 @@
     </body>
   </worldbody>
   <equality>
-    <joint joint1="rod1" joint2="shoulder" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
-    <joint joint1="rocker" joint2="shoulder" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
-    <joint joint1="crank" joint2="elbow" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
-    <joint joint1="crank_pin" joint2="elbow" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
-    <joint joint1="rod_ab" joint2="shoulder" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
-    <joint joint1="level" joint2="elbow" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
-    <joint joint1="jaw_l" joint2="gripper" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
-    <joint joint1="lk_li" joint2="gripper" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
-    <joint joint1="lk_rd" joint2="gripper" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
-    <joint joint1="lk_ri" joint2="gripper" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
-    <joint joint1="jaw_r" joint2="gripper" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
+    <joint joint1="rod1_joint" joint2="shoulder" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
+    <joint joint1="rocker_joint" joint2="shoulder" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
+    <joint joint1="crank_joint" joint2="elbow" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
+    <joint joint1="crank_pin_joint" joint2="elbow" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
+    <joint joint1="rod_ab_joint" joint2="shoulder" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
+    <joint joint1="level_joint" joint2="elbow" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
+    <joint joint1="jaw_l_joint" joint2="gripper" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
+    <joint joint1="lk_li_joint" joint2="gripper" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
+    <joint joint1="lk_rd_joint" joint2="gripper" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
+    <joint joint1="lk_ri_joint" joint2="gripper" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
+    <joint joint1="jaw_r_joint" joint2="gripper" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
   </equality>
   <actuator>
     <position name="shoulder" joint="shoulder" kp="800" kv="40" ctrlrange="0.00000 3.14159" forcerange="-27 27" />
