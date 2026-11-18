@@ -97,6 +97,67 @@ class GazeboCommander(Commander):
         time.sleep(0.1)
 
 
+class MujocoCommander(Commander):
+    """Runs the MuJoCo model in real time in a background thread with the native viewer; send() sets the position
+    actuator targets (same kp/kv as the MJCF actuators: the DM-J4340 MIT-mode law, tau = kp*e + kd*de).
+    scene="free": scene.xml without the donut-pick station (lower tier + donut), for whole task sequences;
+    scene="pick": scene.xml as generated (pick station)."""
+
+    def __init__(self, variant="fourbar", scene="free", viewer=True):
+        import mujoco
+        import mujoco.viewer  # noqa: F401  (submodule; not imported by "import mujoco")
+        self.mj = mujoco
+        self.limits = load_limits(variant)
+        root = os.path.join(REPO, "sim", "arc_arm_%s" % variant)
+        spec = mujoco.MjSpec.from_file(os.path.join(root, "scene.xml"))
+        if scene == "free":
+            spec.delete(spec.geom("lower_tier"))
+            spec.delete(spec.body("donut"))
+        self.model = spec.compile()
+        self.data = mujoco.MjData(self.model)
+        k = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_KEY, "stow")
+        mujoco.mj_resetDataKeyframe(self.model, self.data, k)
+        mujoco.mj_forward(self.model, self.data)
+        self._act = {j: mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_ACTUATOR, j) for j in ACT}
+        self._qadr = {j: self.model.jnt_qposadr[mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_JOINT, j)] for j in ACT}
+        self._lock = threading.Lock()
+        self._run = True
+        self.viewer = mujoco.viewer.launch_passive(self.model, self.data) if viewer else None
+        self._thread = threading.Thread(target=self._loop, daemon=True)
+        self._thread.start()
+
+    def _loop(self):
+        dt = self.model.opt.timestep
+        t0, n = time.perf_counter(), 0
+        while self._run and (self.viewer is None or self.viewer.is_running()):
+            with self._lock:
+                for _ in range(max(1, int(0.005 / dt))):          # 5 ms of physics per viewer frame
+                    self.mj.mj_step(self.model, self.data)
+                    n += 1
+            if self.viewer is not None:
+                self.viewer.sync()
+            time.sleep(max(0.0, t0 + n * dt - time.perf_counter()))  # lock to real time
+
+    def running(self):
+        return self._run and (self.viewer is None or self.viewer.is_running())
+
+    def send(self, q_deg):
+        q = self.clamp(q_deg)
+        with self._lock:
+            for j in ACT:
+                self.data.ctrl[self._act[j]] = math.radians(q[j])
+
+    def state_deg(self):
+        with self._lock:
+            return {j: math.degrees(float(self.data.qpos[self._qadr[j]])) for j in ACT}
+
+    def close(self):
+        self._run = False
+        self._thread.join(timeout=2)
+        if self.viewer is not None:
+            self.viewer.close()
+
+
 def min_jerk(s):
     """Minimum-jerk blend 0 -> 1 for s in [0, 1] (zero velocity and acceleration at both ends)."""
     s = min(max(s, 0.0), 1.0)

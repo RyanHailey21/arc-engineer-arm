@@ -32,6 +32,14 @@ python -m mujoco.viewer --mjcf=sim/arc_arm_fourbar/scene.xml
 
 In the viewer, pick a keyframe (`stow`, `donut_approach`, `donut_lift`, `pipe_grasp`, `pipe_chute`, …) and drive the five position actuators.
 
+To play the task sequences in MuJoCo (native on Windows; the viewer stays open at the end):
+
+```bash
+python cad/sim/demo.py --backend mujoco --seq both
+```
+
+`--scene free` (the default) removes the donut-pick station (lower tier and donut), so whole sequences run; `--scene pick` keeps it. Measured here: 20 moves in 25 s at 100 Hz. Poses settle 0.3–0.6° off target. That's the finite-stiffness motor law sagging under gravity (kp/kv as in DM-J4340 MIT mode), which Gazebo's ideal velocity motors don't show.
+
 Gazebo Harmonic (gz-sim 8):
 
 ```bash
@@ -62,7 +70,7 @@ The demo needs the gz-transport Python bindings (`gz-transport13-python`, `gz-ms
 
 **Control stack** (`cad/sim/joint_command.py`), shaped like the real arm's:
 - **Host side:** task poses (`task_poses.json`, 14 poses and the `donut` / `pipe` sequences, exported from CAD) → a minimum-jerk move between poses, timed so no joint exceeds `--speed` × its speed limit → position setpoints streamed at a fixed rate, clamped to the joint limits.
-- **Backend:** `GazeboCommander` publishes on `/arc_arm/<joint>/cmd_pos` and reads `/joint_state`. A hardware backend (DM-J4340 MIT mode over CAN, servo bus for the wrist and gripper) would implement the same `send()` / `state_deg()`, with no change to the planning code.
+- **Backend:** `MujocoCommander` sets the MuJoCo position-actuator targets, running the physics in real time with the viewer. `GazeboCommander` publishes on `/arc_arm/<joint>/cmd_pos` and reads `/joint_state`. `cad/sim/demo.py --backend mujoco|gazebo` runs the same sequence on either. A hardware backend (DM-J4340 MIT mode over CAN, servo bus for the wrist and gripper) would implement the same `send()` / `state_deg()`, with no change to the planning code.
 - **Not included:** path planning, collision avoidance beyond the CAD-checked poses, grasping (the Gazebo worlds have no donut or pipe; MuJoCo's `scene.xml` does).
 - **Discovery:** run only one command source at a time. Gazebo's discovery takes about 1 s, and a second publisher on the same topics will fight the first.
 
