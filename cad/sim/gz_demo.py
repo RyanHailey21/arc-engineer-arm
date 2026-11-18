@@ -1,32 +1,25 @@
-"""Demo driver for the Gazebo model: plays the CAD task sequences (sim/arc_arm_<variant>/task_poses.json) by
-streaming joint targets to the JointPositionController topics /arc_arm/<joint>/cmd_pos.
+"""Demo driver for the Gazebo model: plays the CAD task sequences (sim/arc_arm_<variant>/task_poses.json).
 
-This is the whole "control policy" today: a scripted pose sequence, linearly interpolated in joint space, on top of
-per-joint position controllers (velocity mode: motor torque capped at each actuator's peak). No planner, no
-collision avoidance beyond the CAD-verified task poses, no grasp logic (the Gazebo world has no donut/pipe).
+Control stack (cad/sim/joint_command.py), the same shape as on the real arm:
+  host: task pose sequence -> minimum-jerk move per pose pair, timed by the joint speed limits
+        -> setpoints streamed at a fixed rate (default 100 Hz), clamped to the joint limits
+  sim:  per-joint JointPositionControllers (velocity mode, torque capped at each actuator's peak)
+No planner beyond the CAD-verified task poses, no collision avoidance, no grasping (the Gazebo world has no donut
+or pipe). After each move it prints the tracking error read back from /joint_state.
 
 Start Gazebo first (GUI):
     GZ_SIM_RESOURCE_PATH=<repo>/sim gz sim -r <repo>/sim/arc_arm_fourbar/worlds/arc_arm.sdf
-then, in the same gz-sim environment:
-    python cad/sim/gz_demo.py [variant] [--seq donut|pipe|both] [--loops N] [--step-deg 6]
+then, in the same gz-sim environment (needs gz-transport13-python + gz-msgs10-python):
+    python cad/sim/gz_demo.py [variant] [--seq donut|pipe|both] [--loops N] [--rate 100] [--speed 0.5]
 """
 import argparse
 import json
 import os
-import subprocess
+import sys
 import time
 
-REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-ACT = ("shoulder", "elbow", "wrist_pitch", "wrist_roll", "gripper")
-
-
-def publish(q_deg):
-    """Send all five targets at once (one gz CLI process per joint, in parallel)."""
-    ps = [subprocess.Popen(["gz", "topic", "-t", "/arc_arm/%s/cmd_pos" % j, "-m", "gz.msgs.Double",
-                            "-p", "data: %.6f" % (q_deg[j] * 3.141592653589793 / 180.0)],
-                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) for j in ACT]
-    for p in ps:
-        p.wait()
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from joint_command import ACT, REPO, GazeboCommander, stream_move  # noqa: E402
 
 
 def main():
@@ -34,27 +27,32 @@ def main():
     ap.add_argument("variant", nargs="?", default="fourbar")
     ap.add_argument("--seq", default="both", choices=("donut", "pipe", "both"))
     ap.add_argument("--loops", type=int, default=1)
-    ap.add_argument("--step-deg", type=float, default=6.0, help="largest joint change per interpolation step")
-    ap.add_argument("--hold-s", type=float, default=1.0, help="pause at each task pose")
+    ap.add_argument("--rate", type=float, default=100.0, help="setpoint streaming rate (Hz)")
+    ap.add_argument("--speed", type=float, default=0.5, help="fraction of each joint's speed limit")
+    ap.add_argument("--hold-s", type=float, default=0.5, help="pause at each task pose")
     a = ap.parse_args()
     tp = json.load(open(os.path.join(REPO, "sim", "arc_arm_%s" % a.variant, "task_poses.json"), encoding="utf-8"))
+    cmd = GazeboCommander(a.variant)
+    t_wait = time.time()
+    while len(cmd.state_deg()) < len(ACT):
+        if time.time() - t_wait > 10:
+            sys.exit("no joint_state from Gazebo - is the world running?")
+        time.sleep(0.1)
+    cur = cmd.state_deg()
     seqs = ["donut", "pipe"] if a.seq == "both" else [a.seq]
-    cur = dict(tp["poses"]["STOW"]["joints_deg"])
-    print("moving to STOW")
-    publish(cur)
-    time.sleep(3.0)
-    for _ in range(a.loops):
-        for s in seqs:
-            print("== sequence", s)
-            for name in tp["sequences"][s]:
-                tgt = tp["poses"][name]["joints_deg"]
-                n = max(1, int(max(abs(tgt[j] - cur[j]) for j in ACT) / a.step_deg + 0.999))
-                print("  %-18s jaw %5.1f mm  (%d steps)" % (name, tp["poses"][name]["jaw_mm"], n))
-                for k in range(1, n + 1):
-                    publish({j: cur[j] + (tgt[j] - cur[j]) * k / n for j in ACT})
-                cur = dict(tgt)
-                time.sleep(a.hold_s)
-    print("done")
+    plan = ["STOW"] + [p for _ in range(a.loops) for s in seqs for p in tp["sequences"][s]]
+    t_all = time.perf_counter()
+    for name in plan:
+        tgt = tp["poses"][name]["joints_deg"]
+        T, hz = stream_move(cmd, cur, tgt, rate_hz=a.rate, speed_frac=a.speed)
+        time.sleep(a.hold_s)
+        q = cmd.state_deg()
+        err = max(abs(q[j] - cmd.clamp(tgt)[j]) for j in ACT)
+        print("%-18s jaw %5.1f mm  move %4.2f s at %5.1f Hz  max tracking error after hold %.2f deg"
+              % (name, tp["poses"][name]["jaw_mm"], T, hz, err), flush=True)
+        cur = dict(tgt)
+    print("done: %d moves in %.1f s" % (len(plan), time.perf_counter() - t_all))
+    cmd.close()
 
 
 if __name__ == "__main__":

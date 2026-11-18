@@ -12,7 +12,9 @@ The geometry, masses and inertias come straight from `cad/` (the `arm_model` pac
 | `scene.xml` | MuJoCo scene: robot + floor + chassis-deck placeholder + ARC lower tier + donut + pipe |
 | `arc_arm.urdf` | Plain URDF (relative mesh paths): ROS tools, MuJoCo's URDF importer, yourdfpy, Isaac, … |
 | `model.config`, `model.urdf` | Gazebo model (`model://` mesh URIs, gz-sim joint position controllers + joint state publisher) |
-| `worlds/arc_arm.sdf` | Gazebo world: ground, chassis-deck placeholder, lower tier, the arm; bullet-featherstone physics |
+| `worlds/arc_arm.sdf` | Gazebo world, donut-pick station: ground, chassis-deck placeholder, lower tier, the arm; bullet-featherstone physics |
+| `worlds/arc_arm_free.sdf` | Gazebo world without field items, for playing whole task sequences |
+| `task_poses.json` | the 14 CAD task poses (joint targets) and the donut and pipe sequences |
 | `meshes/visual/*.stl` | Per-link, per-material visual meshes (mm, scaled 0.001 in the models) |
 | `meshes/collision/*.stl` | Per-part collision meshes (the simulators take their convex hulls) |
 | `robot_spec.json` | Link frames, masses, inertias, joints, limits, actuators, spring (input to the generator) |
@@ -42,13 +44,27 @@ To command a joint:
 gz topic -t /arc_arm/shoulder/cmd_pos -m gz.msgs.Double -p "data: 1.2"
 ```
 
-To play the CAD task sequences (donut, then pipe), with Gazebo running:
+Two worlds, same topics:
+- `worlds/arc_arm.sdf`: the **donut-pick station** (lower tier in front of the arm).
+- `worlds/arc_arm_free.sdf`: floor and chassis only, for **whole task sequences**. The field is per station: the robot drives to the scoring platform for DONUT_PLACE and to the bucket and chute for the pipe moves, so DONUT_PLACE would hit the lower tier in the pick-station world.
+
+To play the CAD task sequences (donut, then pipe) in the free world:
 
 ```bash
-python cad/sim/gz_demo.py fourbar --seq both --loops 1
+GZ_SIM_RESOURCE_PATH=$PWD/sim gz sim -r sim/arc_arm_fourbar/worlds/arc_arm_free.sdf
 ```
 
-The demo reads `arc_arm_fourbar/task_poses.json`: all 14 task poses (joint targets in degrees) and the `donut` and `pipe` sequences, exported from the CAD kinematics. It interpolates in joint space and sends the five targets. That's the whole control stack today: no planner, no collision avoidance beyond the CAD-checked poses, no grasping (the Gazebo world has no donut or pipe; MuJoCo's `scene.xml` does).
+```bash
+python cad/sim/gz_demo.py fourbar --seq both --rate 100 --speed 0.5
+```
+
+The demo needs the gz-transport Python bindings (`gz-transport13-python`, `gz-msgs10-python`). Measured here: 20 moves in 27 s, setpoints at 100 Hz, every pose reached within 0.01°.
+
+**Control stack** (`cad/sim/joint_command.py`), shaped like the real arm's:
+- **Host side:** task poses (`task_poses.json`, 14 poses and the `donut` / `pipe` sequences, exported from CAD) → a minimum-jerk move between poses, timed so no joint exceeds `--speed` × its speed limit → position setpoints streamed at a fixed rate, clamped to the joint limits.
+- **Backend:** `GazeboCommander` publishes on `/arc_arm/<joint>/cmd_pos` and reads `/joint_state`. A hardware backend (DM-J4340 MIT mode over CAN, servo bus for the wrist and gripper) would implement the same `send()` / `state_deg()`, with no change to the planning code.
+- **Not included:** path planning, collision avoidance beyond the CAD-checked poses, grasping (the Gazebo worlds have no donut or pipe; MuJoCo's `scene.xml` does).
+- **Discovery:** run only one command source at a time. Gazebo's discovery takes about 1 s, and a second publisher on the same topics will fight the first.
 
 On Windows under WSL, if the Gazebo window opens blank, check that WSL windows show at all. If they don't, run `wsl --shutdown` and relaunch. If only Gazebo is blank, set `LIBGL_ALWAYS_SOFTWARE=1` (the docs' software-rendering fallback).
 

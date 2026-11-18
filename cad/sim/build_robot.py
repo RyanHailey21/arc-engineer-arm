@@ -470,7 +470,9 @@ def build_gazebo(urdf):
       <collision name="c"><geometry><box><size>0.58 0.48 0.08</size></box></geometry></collision>
       <visual name="v"><geometry><box><size>0.58 0.48 0.08</size></box></geometry><material><diffuse>0.15 0.16 0.17 1</diffuse></material></visual>
     </link></model>
-    <!-- ARC lower tier, 210 mm high, front edge 30 mm ahead of the bumper (cad/field.py) -->
+    <!-- DONUT PICK STATION: ARC lower tier, 210 mm high, front edge 30 mm ahead of the bumper (cad/field.py).
+         The field is per station: the robot drives to the scoring platform (DONUT_PLACE) and to the bucket and
+         chute (pipe poses), where this tier is not in front of it. Use arc_arm_free.sdf to play whole sequences. -->
     <model name="lower_tier"><static>true</static><pose>0.53 0 0.105 0 0 0</pose><link name="link">
       <collision name="c"><geometry><box><size>1.0 1.0 0.21</size></box></geometry></collision>
       <visual name="v"><geometry><box><size>1.0 1.0 0.21</size></box></geometry><material><diffuse>0.55 0.45 0.33 1</diffuse></material></visual>
@@ -480,6 +482,12 @@ def build_gazebo(urdf):
 </sdf>
 """ % (model, model)
     open(os.path.join(ROOT, "worlds", "arc_arm.sdf"), "w", encoding="utf-8").write(world)
+    # free-space world (floor + chassis deck only) for whole task sequences across stations; same world name, so the
+    # topics are identical
+    start = world.index("    <!-- DONUT PICK STATION")
+    free = world[:start] + world[world.index("</model>", world.index('<model name="lower_tier"')) + len("</model>\n"):]
+    assert "lower_tier" not in free and "chassis_placeholder" in free
+    open(os.path.join(ROOT, "worlds", "arc_arm_free.sdf"), "w", encoding="utf-8").write(free)
     return os.path.join(ROOT, "model.urdf")
 
 
