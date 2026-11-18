@@ -38,6 +38,18 @@ class Interface(dict):
         return [(y0 + pat["radius"] * math.cos(math.radians(a)), z0 + pat["radius"] * math.sin(math.radians(a)))
                 for a in pat["angles_deg"]]
 
+    def stations_x(self):
+        """[stations] interface: station x positions (for a y-normal row of holes along a link)."""
+        return [p[0] for p in self["stations"]["points_xz"]]
+
+    def points(self):
+        """Every hole centre as (x, y, z) in the interface's body frame: a [pattern] bolt circle (x-normal, at frame_x)
+        or a [stations] row (y-normal, points_xz at the frame origin's y)."""
+        if "pattern" in self:
+            return [(self.frame_x, y, z) for (y, z) in self.points_yz()]
+        y0 = self["frame"]["origin"][1]
+        return [(x, y0, z) for (x, z) in self["stations"]["points_xz"]]
+
 
 def load(name):
     if name not in _CACHE:

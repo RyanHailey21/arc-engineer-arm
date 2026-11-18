@@ -1,0 +1,33 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "working_doc",
+  "status": "pass",
+  "reason": "PASS: ARC_Arm_Fourbar.FCStd: 244 parts in 17 body groups at STOW, coloured (12.5 MB)",
+  "scope": "ARC_Arm_Fourbar.FCStd: 244 parts in 17 body groups at STOW, coloured (12.5 MB)",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "unknown",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/working_doc.inputs.json",
+    "sha256": "562b1b237d6cc19a6a98bcb86f42461062680e6105c94439a3ac98f5166b2df2"
+   }
+  ],
+  "artifacts": [],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-17T21:51:30",
+   "inputs_hash": "8cde22ae93768790",
+   "external_copies": [
+    "../../../../Windows/System32/ARC_Arm_Fourbar.FCStd"
+   ]
+  }
+ }
+}

@@ -16,7 +16,7 @@
    {
     "id": "design-inputs",
     "path": "evidence/grip_budget.inputs.json",
-    "sha256": "4a1422d6ac01d346fc976a663ac781d8fb2848860c50546ff9d181b4ff3ff925"
+    "sha256": "562b1b237d6cc19a6a98bcb86f42461062680e6105c94439a3ac98f5166b2df2"
    }
   ],
   "artifacts": [
@@ -28,8 +28,8 @@
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-17T00:15:06",
-   "inputs_hash": "48b9b3450fe5cb0a",
+   "time": "2026-11-17T21:45:22",
+   "inputs_hash": "8cde22ae93768790",
    "external_copies": []
   }
  }

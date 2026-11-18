@@ -5,17 +5,20 @@ from arm.core import *  # noqa: F401,F403
 from arm.base import *  # noqa: F401,F403
 
 
-UA_CLIP_X = (K["L2"] / 3, 2 * K["L2"] / 3)     # UA standoff stations (P-clips on the L side)
+IF_UA_ST = iface.load("ua_plate__ua_standoff")   # plates <-> standoffs (interfaces/ua_plate__ua_standoff.toml)
+UA_CLIP_X = tuple(IF_UA_ST.stations_x())          # UA standoff stations (P-clips on the L side)
 UA_CLIP_YZ = params.load("arm")["harness"]["UA_CLIP_YZ"]   # harness bundle centre in the UA frame (y, z)
 
 
 def body_upper():
     L2 = K["L2"]
     out = []
-    xs = [0, L2 / 3, 2 * L2 / 3, L2]
-    pk = link_pockets(L2, 22, 13, [(0.0, 12.0), (L2 / 3, 3.0), (2 * L2 / 3, 3.0), (L2, 7.5)])
+    # holes and the lightening-pocket layout both come from the standoff stations (the interface file), so the plates
+    # and the standoffs cannot drift apart
+    st_r = IF_UA_ST["side_a"]["clearance_d"] / 2.0
+    pk = link_pockets(L2, 22, 13, [(0.0, 12.0)] + [(x, 3.0) for x in UA_CLIP_X] + [(L2, 7.5)])
     for side, yc in (("L", Y["UA"]), ("R", -Y["UA"])):
-        holes = [(L2, 0, 7.5), (L2 / 3, 0, 1.65), (2 * L2 / 3, 0, 1.65)]
+        holes = [(L2, 0, 7.5)] + [(x, 0, st_r) for x in UA_CLIP_X]
         if side == "L":
             holes += [(0, 0, 6.05)] + [(*u(a_, 10.0), 1.65) for a_ in UA_HUB_SCREWS]
         else:

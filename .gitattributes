@@ -6,8 +6,10 @@
 *.dxf -text
 *.stl -text
 *.obj -text
-*.FCStd binary
 *.pdf binary
 *.png binary
 *.jpg binary
 *.mp4 binary
+
+# FreeCAD documents in Git LFS (the maintained working documents are ~12 MB and regenerate with the design)
+*.FCStd filter=lfs diff=lfs merge=lfs -text

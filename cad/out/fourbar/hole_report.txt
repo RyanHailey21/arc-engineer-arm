@@ -1,6 +1,4 @@
-Hole edge-distance check (custom parts): 199 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 31 warn (wall < max(1.5 mm, 0.5 d))
-WARN   GT2_Pulley_Elbow             D10.6 at (0.0, -37.0, 0.0)  wall 3.50 mm
-WARN   GT2_Pulley_Wrist             D10.6 at (0.0, -37.0, 0.0)  wall 3.50 mm
+Hole edge-distance check (custom parts): 205 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 33 warn (wall < max(1.5 mm, 0.5 d))
 WARN   J1_Output_Hub                D4.0 at (-10.4, -51.5, -6.0)  wall 1.51 mm
 WARN   J1_Output_Hub                D4.0 at (0.0, -51.5, 12.0)  wall 1.51 mm
 WARN   J1_Output_Hub                D4.0 at (10.4, -51.5, -6.0)  wall 1.51 mm
@@ -19,12 +17,16 @@ WARN   J2_Output_Hub_Journal        D6.5 at (-6.7, 47.0, 11.7)  wall 1.51 mm
 WARN   J2_Output_Hub_Journal        D6.5 at (13.5, 47.0, 0.0)  wall 1.51 mm
 WARN   J2_Output_Hub_Journal        D6.5 at (6.8, 47.0, -11.7)  wall 1.51 mm
 WARN   J2_Output_Hub_Journal        D6.5 at (6.8, 47.0, 11.7)  wall 1.51 mm
+WARN   Level_Hub_Elbow              D10.6 at (0.0, -43.0, 0.0)  wall 4.32 mm
+WARN   Level_Hub_Wrist              D10.6 at (0.0, -43.0, 0.0)  wall 4.32 mm
 WARN   Pad_L_TPU                    D6.2 at (139.0, 15.9, -40.0)  wall 2.69 mm
 WARN   Pad_L_TPU                    D6.2 at (163.0, 15.9, -40.0)  wall 2.69 mm
 WARN   Pad_R_TPU                    D6.2 at (139.0, -15.9, -40.0)  wall 2.69 mm
 WARN   Pad_R_TPU                    D6.2 at (163.0, -15.9, -40.0)  wall 2.69 mm
 WARN   Rod_1_CF3                    D10.0 at (0.0, -44.5, 0.0)  wall 3.50 mm
 WARN   Rod_1_CF3                    D10.0 at (340.0, -44.5, 0.0)  wall 3.50 mm
+WARN   Rod_2_CF4                    D10.0 at (0.0, -36.0, 0.0)  wall 3.00 mm
+WARN   Rod_2_CF4                    D10.0 at (350.0, -36.0, 0.0)  wall 3.00 mm
 WARN   Rod_AB_CF3                   D10.0 at (0.0, 26.5, 0.0)  wall 3.50 mm
 WARN   Rod_AB_CF3                   D10.0 at (340.0, 26.5, 0.0)  wall 3.50 mm
 WARN   Roll_Hub                     D2.5 at (62.0, -10.8, -15.8)  wall 1.50 mm

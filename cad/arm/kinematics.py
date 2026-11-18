@@ -46,7 +46,8 @@ def placements(th1, th2, pitch, roll=0.0, jaw=2 * O_REF):
     Hd = G.multiply(App.Placement(V(0, 0, 0), App.Rotation(V(1, 0, 0), roll), V(0, 0, ROLL_Z)))
     out = dict(GROUND=App.Placement(), UPPER=_pl(J["S"], th1), CRANK=_pl(J["S"], th2 + 180),
                ROD_AB=_pl(J["A"], th1), ROD1=_pl(J["G1"], th1), FOREARM=_pl(J["E"], th2),
-               ROCKER=_pl(J["E"], 0), LEVEL=_pl(J["D"], 0), GRIPPER=G, HEAD=Hd)
+               ROCKER=_pl(J["E"], 0), ROD2=_pl(add(J["E"], u(K["V2_ANG"], K["V2_LEN"])), th2),
+               LEVEL=_pl(J["D"], 0), GRIPPER=G, HEAD=Hd)
     out.update(GRIPPERS[GRIP]["placements"](Hd, jaw))
     return out
 
@@ -118,12 +119,12 @@ POSES = {
     "DONUT_LIFT": dict(tcp=(130, 720, 0), jaw=100.0),
     "DONUT_LIFT_ROLL+": dict(tcp=(130, 720, 0), roll=25.0, jaw=100.0),
     "DONUT_LIFT_ROLL-": dict(tcp=(130, 720, 0), roll=-25.0, jaw=100.0),
-    "DONUT_PLACE": dict(tcp=(210, 62.5, 0), jaw=100.0),
+    "DONUT_PLACE": dict(tcp=(300, 62.5, 0), jaw=100.0),   # x 300 (was 210): keeps the elbow >= -82.6 deg for the stage-2 parallelogram
     "PIPE_APPROACH": dict(tcp=(-30, 455, 0), jaw=50.0),
     "PIPE_GRASP": dict(tcp=(40, 455, 0), jaw=PIPE_JAW),
     "PIPE_GRASP_ROLL+": dict(tcp=(40, 455, 0), roll=30.0, jaw=PIPE_JAW),
     "PIPE_GRASP_ROLL-": dict(tcp=(40, 455, 0), roll=-30.0, jaw=PIPE_JAW),
-    "PIPE_LIFT": dict(tcp=(40, 790, 0), jaw=PIPE_JAW),
+    "PIPE_LIFT": dict(tcp=(40, 740, 0), jaw=PIPE_JAW),    # z 740 (was 790): elbow <= 48 deg; pipe bottom still 37 mm over the bucket rim
     "PIPE_CHUTE": dict(tcp=(150, 600, 90), jaw=PIPE_JAW),
     "PIPE_CHUTE_ROLL90": dict(tcp=(150, 600, 90), roll=90.0, jaw=PIPE_JAW),
 }

@@ -370,7 +370,8 @@ def validate_gazebo(gz_urdf):
     # SDF puts links and joints in one frame namespace: a joint named like a link makes gz-sim reject the model
     clash = sorted({l.get("name") for l in r.iter("link")} & {j.get("name") for j in r.iter("joint")})
     w = open(os.path.join(ROOT, "worlds", "arc_arm.sdf"), encoding="utf-8").read()
-    ok = not missing and not clash and mimics == 11 and plugins.count("gz-sim-joint-position-controller-system") == 5 and         ("model://%s" % model) in w and "bullet-featherstone" in w and len(u.actuated_joint_names) == 5
+    n_mimic = sum(1 for l in SPEC["links"] if l.get("mimic"))
+    ok = not missing and not clash and mimics == n_mimic and plugins.count("gz-sim-joint-position-controller-system") == 5 and         ("model://%s" % model) in w and "bullet-featherstone" in w and len(u.actuated_joint_names) == 5
     return dict(parses=True, mesh_uris=len(uris), missing_meshes=missing[:5], name_clashes=clash, mimic_joints=mimics,
                 actuated=list(u.actuated_joint_names), plugins=len(plugins), ok=ok,
                 note="structure only; the gz-sim run test is gazebo_run (cad/sim/gz_check.py)")

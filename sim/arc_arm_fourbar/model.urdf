@@ -110,9 +110,9 @@
   </link>
   <link name="upper">
     <inertial>
-      <origin xyz="0.068069 -0.028854 0.000071" rpy="0 0 0" />
-      <mass value="0.220498" />
-      <inertia ixx="3.3507e-04" ixy="-4.1551e-04" ixz="-1.5898e-06" iyy="2.4268e-03" iyz="3.6466e-07" izz="2.7210e-03" />
+      <origin xyz="0.059859 -0.028665 0.00007" rpy="0 0 0" />
+      <mass value="0.221946" />
+      <inertia ixx="3.3948e-04" ixy="-3.6870e-04" ixz="-8.9900e-07" iyy="2.0569e-03" iyz="3.6760e-07" izz="2.3550e-03" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -226,9 +226,9 @@
   </joint>
   <link name="rocker">
     <inertial>
-      <origin xyz="0.043161 -0.036273 0.009174" rpy="0 0 0" />
-      <mass value="0.022766" />
-      <inertia ixx="2.2455e-06" ixy="-1.9268e-06" ixz="-4.1083e-06" iyy="2.1674e-05" iyz="-4.0956e-07" izz="2.0700e-05" />
+      <origin xyz="0.04981 -0.036813 0.022104" rpy="0 0 0" />
+      <mass value="0.031758" />
+      <inertia ixx="1.3774e-05" ixy="-1.8609e-06" ixz="-1.3882e-05" iyy="4.1726e-05" iyz="-8.4470e-07" izz="2.9266e-05" />
     </inertial>
     <visual>
       <origin xyz="0.06847 0 0.014554" rpy="0 0 0" />
@@ -275,7 +275,13 @@
     <collision>
       <origin xyz="0.06847 0 0.014554" rpy="0 0 0" />
       <geometry>
-        <mesh filename="model://arc_arm_fourbar/meshes/collision/rocker__GT2_Pulley_Elbow.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="model://arc_arm_fourbar/meshes/collision/rocker__Level_Hub_Elbow.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0.06847 0 0.014554" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="model://arc_arm_fourbar/meshes/collision/rocker__SB5x8_Ev2.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
     <collision>
@@ -294,9 +300,9 @@
   </joint>
   <link name="forearm">
     <inertial>
-      <origin xyz="0.069355 -0.001457 0.001051" rpy="0 0 0" />
-      <mass value="0.228960" />
-      <inertia ixx="1.1658e-04" ixy="7.0563e-05" ixz="-2.5169e-05" iyy="2.9915e-03" iyz="4.8485e-06" izz="3.0830e-03" />
+      <origin xyz="0.059459 0.000662 0" rpy="0 0 0" />
+      <mass value="0.209353" />
+      <inertia ixx="1.0016e-04" ixy="1.9315e-05" ixz="-5.0281e-21" iyy="2.6343e-03" iyz="-3.7765e-23" izz="2.7184e-03" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -314,24 +320,6 @@
       </geometry>
       <material name="mat1">
         <color rgba="0.12 0.12 0.13 1" />
-      </material>
-    </visual>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="model://arc_arm_fourbar/meshes/visual/forearm__motor.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="mat2">
-        <color rgba="0.08 0.08 0.09 1" />
-      </material>
-    </visual>
-    <visual>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="model://arc_arm_fourbar/meshes/visual/forearm__pla.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-      <material name="mat4">
-        <color rgba="0.9 0.32 0.06 1" />
       </material>
     </visual>
     <visual>
@@ -379,19 +367,13 @@
         <mesh filename="model://arc_arm_fourbar/meshes/collision/forearm__SB5x12_B.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="model://arc_arm_fourbar/meshes/collision/forearm__GT2_Belt_9mm_Stage2.stl" scale="0.001 0.001 0.001" />
-      </geometry>
-    </collision>
   </link>
   <joint name="elbow" type="revolute">
     <parent link="rocker" />
     <child link="forearm" />
     <origin xyz="0.06847 0 0.014554" rpy="0 0 0" />
     <axis xyz="0 -1 0" />
-    <limit lower="-1.91986" upper="1.22173" effort="27.000" velocity="4.00" />
+    <limit lower="-1.50098" upper="0.89012" effort="27.000" velocity="4.00" />
     <dynamics damping="0.05" friction="0.0" />
   </joint>
   <link name="crank">
@@ -507,9 +489,9 @@
   </joint>
   <link name="level">
     <inertial>
-      <origin xyz="-0.007911 -0.059399 0.004567" rpy="0 0 0" />
-      <mass value="0.086393" />
-      <inertia ixx="2.8567e-05" ixy="-1.7305e-06" ixz="6.9540e-06" iyy="2.1837e-05" iyz="9.9910e-07" izz="3.6597e-05" />
+      <origin xyz="-0.006412 -0.05785 0.007955" rpy="0 0 0" />
+      <mass value="0.093269" />
+      <inertia ixx="3.9972e-05" ixy="-4.7611e-06" ixz="2.2438e-06" iyy="3.3537e-05" iyz="-6.2096e-06" izz="4.2506e-05" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -541,6 +523,15 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
+        <mesh filename="model://arc_arm_fourbar/meshes/visual/level__pad.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="mat3">
+        <color rgba="0.12 0.35 0.85 1" />
+      </material>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
         <mesh filename="model://arc_arm_fourbar/meshes/visual/level__steel.stl" scale="0.001 0.001 0.001" />
       </geometry>
       <material name="mat5">
@@ -556,7 +547,13 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="model://arc_arm_fourbar/meshes/collision/level__GT2_Pulley_Wrist.stl" scale="0.001 0.001 0.001" />
+        <mesh filename="model://arc_arm_fourbar/meshes/collision/level__Level_Hub_Wrist.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="model://arc_arm_fourbar/meshes/collision/level__SB5x8_Dv2.stl" scale="0.001 0.001 0.001" />
       </geometry>
     </collision>
     <collision>
@@ -572,6 +569,44 @@
     <origin xyz="0.35 0 0" rpy="0 0 0" />
     <axis xyz="0 -1 0" />
     <mimic joint="elbow" multiplier="-1" offset="0" />
+  </joint>
+  <link name="rod2">
+    <inertial>
+      <origin xyz="0.169096 -0.033 -0.000203" rpy="0 0 0" />
+      <mass value="0.035488" />
+      <inertia ixx="7.7970e-07" ixy="-4.9390e-20" ixz="8.3493e-07" iyy="4.1405e-04" iyz="8.2086e-23" izz="4.1337e-04" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="model://arc_arm_fourbar/meshes/visual/rod2__alu.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="mat0">
+        <color rgba="0.8 0.81 0.84 1" />
+      </material>
+    </visual>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="model://arc_arm_fourbar/meshes/visual/rod2__cf.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="mat1">
+        <color rgba="0.12 0.12 0.13 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="model://arc_arm_fourbar/meshes/collision/rod2__Rod_2_CF4.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rod2_joint" type="continuous">
+    <parent link="rocker" />
+    <child link="rod2" />
+    <origin xyz="0.081257 0 0.055609" rpy="0 0 0" />
+    <axis xyz="0 -1 0" />
+    <mimic joint="elbow" multiplier="1" offset="0" />
   </joint>
   <link name="gripper_frame">
     <inertial>
@@ -680,9 +715,9 @@
   </joint>
   <link name="head">
     <inertial>
-      <origin xyz="0.076714 0.023268 0.010172" rpy="0 0 0" />
-      <mass value="0.149885" />
-      <inertia ixx="2.1149e-04" ixy="-1.6164e-05" ixz="-6.0123e-06" iyy="5.5607e-05" iyz="2.0406e-05" izz="1.9891e-04" />
+      <origin xyz="0.076782 0.023194 0.010017" rpy="0 0 0" />
+      <mass value="0.148853" />
+      <inertia ixx="2.0868e-04" ixy="-1.6272e-05" ixz="-6.2380e-06" iyy="5.4978e-05" iyz="2.0654e-05" izz="1.9653e-04" />
     </inertial>
     <visual>
       <origin xyz="0 0 0.005" rpy="0 0 0" />

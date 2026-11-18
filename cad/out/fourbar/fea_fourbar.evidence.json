@@ -17,25 +17,25 @@
    {
     "id": "design-inputs",
     "path": "evidence/fea_fourbar.inputs.json",
-    "sha256": "4a1422d6ac01d346fc976a663ac781d8fb2848860c50546ff9d181b4ff3ff925"
+    "sha256": "562b1b237d6cc19a6a98bcb86f42461062680e6105c94439a3ac98f5166b2df2"
    }
   ],
   "artifacts": [
    {
     "id": "fea_report.md",
     "path": "fea/fea_report.md",
-    "sha256": "7cee13d8dd93f9e51094dd4c79d5fb7535539b430accb85e97a910beed58033a"
+    "sha256": "eed7c012e0da3c840c84ff3b9dbb5acf3e02ad7adcf21da7158e79bd3dc9bf94"
    },
    {
     "id": "fea_results.json",
     "path": "fea/fea_results.json",
-    "sha256": "fd69323482fff2ccf6c6ba8417c60768cab14706f76e9233bac4d43b2f518ef4"
+    "sha256": "14f9bb5eb21b3bba7ec8cb5c3ed1551de181614622d13d7b47d7a973bb6bfce9"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-17T00:19:54",
-   "inputs_hash": "48b9b3450fe5cb0a",
+   "time": "2026-11-17T21:39:20",
+   "inputs_hash": "8cde22ae93768790",
    "external_copies": []
   }
  }

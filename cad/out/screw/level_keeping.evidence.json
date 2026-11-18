@@ -1,0 +1,33 @@
+{
+ "status": "fail",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "level_keeping",
+  "status": "fail",
+  "reason": "FAIL: LEVEL_KEEPING screw: FAIL (233 s)",
+  "scope": "LEVEL_KEEPING screw: FAIL (233 s)",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "789067bf4012b41699cb2cedd0aabd7a3688183a574ff00171d0dc24801deab6",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/level_keeping.inputs.json",
+    "sha256": "490e78e62268c6336974eea8e184b722364ba4e172ea0352368eabe8ff329a34"
+   }
+  ],
+  "artifacts": [],
+  "extensions": {
+   "variant": "SCREW",
+   "time": "2026-11-17T20:48:15",
+   "inputs_hash": "02e67dc34e89bc24",
+   "external_copies": [
+    "level_keeping.txt"
+   ]
+  }
+ }
+}

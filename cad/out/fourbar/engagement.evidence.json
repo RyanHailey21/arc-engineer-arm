@@ -5,32 +5,32 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "engagement",
   "status": "pass",
-  "reason": "WARN: Thread engagement: 21 tapped holes, 21 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
-  "scope": "Thread engagement: 21 tapped holes, 21 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
+  "reason": "WARN: Thread engagement: 20 tapped holes, 20 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
+  "scope": "Thread engagement: 20 tapped holes, 20 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "8649f5277b6ba2feec79c95a58e42a49c076f87600b5b73076d63770e6eca6de",
+  "implementation_sha256": "c8877889db35cac31cd99c560747559c66dbf17e4709ee9996dd5e31539bb12e",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/engagement.inputs.json",
-    "sha256": "4a1422d6ac01d346fc976a663ac781d8fb2848860c50546ff9d181b4ff3ff925"
+    "sha256": "562b1b237d6cc19a6a98bcb86f42461062680e6105c94439a3ac98f5166b2df2"
    }
   ],
   "artifacts": [
    {
     "id": "engagement_report.txt",
     "path": "engagement_report.txt",
-    "sha256": "6b1cef3fbd05086594220923a511afc3b530802eb676f658b208d8e3cdf7dc61"
+    "sha256": "3e354212bb93a33d3bf3645c63b4bacf101a9a726e1b3eeee200ef457a22f97b"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-17T00:16:06",
-   "inputs_hash": "48b9b3450fe5cb0a",
+   "time": "2026-11-17T21:43:20",
+   "inputs_hash": "8cde22ae93768790",
    "external_copies": []
   }
  }

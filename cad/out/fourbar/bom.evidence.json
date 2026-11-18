@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "bom",
   "status": "pass",
-  "reason": "PASS: 28 purchased items, unsourced: none",
-  "scope": "28 purchased items, unsourced: none",
+  "reason": "PASS: 26 purchased items, unsourced: none",
+  "scope": "26 purchased items, unsourced: none",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -17,25 +17,25 @@
    {
     "id": "design-inputs",
     "path": "evidence/bom.inputs.json",
-    "sha256": "4a1422d6ac01d346fc976a663ac781d8fb2848860c50546ff9d181b4ff3ff925"
+    "sha256": "562b1b237d6cc19a6a98bcb86f42461062680e6105c94439a3ac98f5166b2df2"
    }
   ],
   "artifacts": [
    {
     "id": "BOM.csv",
     "path": "BOM.csv",
-    "sha256": "578c4435d318ad92d3dc812ee90d24e57107cebda4e60f80a3bdeeab5c8ff7dc"
+    "sha256": "21e228f37bb1630aa3b80f8d84d57de187db90374fc48912321946ccce19212b"
    },
    {
     "id": "BOM.md",
     "path": "BOM.md",
-    "sha256": "f4e445489f989d10bb253362838be1eae43f044a1cff100ea71235ca96440c5a"
+    "sha256": "bd363afee2aab3959023e477649f046edcb99422833e292be2c05576ae466785"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-17T00:14:02",
-   "inputs_hash": "48b9b3450fe5cb0a",
+   "time": "2026-11-17T21:43:35",
+   "inputs_hash": "8cde22ae93768790",
    "external_copies": []
   }
  }

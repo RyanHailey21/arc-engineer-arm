@@ -10,6 +10,7 @@
    "status": "PASS",
    "holes": [
     {
+     "x": 49.0,
      "y": 4.95,
      "z": -0.05,
      "radii": [
@@ -18,6 +19,7 @@
      "ok": true
     },
     {
+     "x": 49.0,
      "y": -4.95,
      "z": -0.05,
      "radii": [
@@ -26,6 +28,7 @@
      "ok": true
     },
     {
+     "x": 49.0,
      "y": -4.95,
      "z": -9.95,
      "radii": [
@@ -34,6 +37,7 @@
      "ok": true
     },
     {
+     "x": 49.0,
      "y": 4.95,
      "z": -9.95,
      "radii": [
@@ -51,6 +55,7 @@
    "status": "PASS",
    "holes": [
     {
+     "x": 49.0,
      "y": 4.95,
      "z": -0.05,
      "radii": [
@@ -59,6 +64,7 @@
      "ok": true
     },
     {
+     "x": 49.0,
      "y": -4.95,
      "z": -0.05,
      "radii": [
@@ -67,6 +73,7 @@
      "ok": true
     },
     {
+     "x": 49.0,
      "y": -4.95,
      "z": -9.95,
      "radii": [
@@ -75,6 +82,7 @@
      "ok": true
     },
     {
+     "x": 49.0,
      "y": 4.95,
      "z": -9.95,
      "radii": [
@@ -92,6 +100,7 @@
    "status": "PASS",
    "holes": [
     {
+     "x": 65.0,
      "y": 15.25,
      "z": -5.0,
      "radii": [
@@ -100,6 +109,7 @@
      "ok": true
     },
     {
+     "x": 65.0,
      "y": -15.25,
      "z": -5.0,
      "radii": [
@@ -108,6 +118,7 @@
      "ok": true
     },
     {
+     "x": 65.0,
      "y": -10.783,
      "z": -15.783,
      "radii": [
@@ -116,6 +127,7 @@
      "ok": true
     },
     {
+     "x": 65.0,
      "y": 10.783,
      "z": -15.783,
      "radii": [
@@ -133,6 +145,7 @@
    "status": "PASS",
    "holes": [
     {
+     "x": 65.0,
      "y": 15.25,
      "z": -5.0,
      "radii": [
@@ -141,6 +154,7 @@
      "ok": true
     },
     {
+     "x": 65.0,
      "y": -15.25,
      "z": -5.0,
      "radii": [
@@ -149,6 +163,7 @@
      "ok": true
     },
     {
+     "x": 65.0,
      "y": -10.783,
      "z": -15.783,
      "radii": [
@@ -157,10 +172,103 @@
      "ok": true
     },
     {
+     "x": 65.0,
      "y": 10.783,
      "z": -15.783,
      "radii": [
       1.65
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "ua_plate__ua_standoff",
+   "side": "side_a",
+   "part": "Upper_Arm_L_CF3",
+   "expected_r": 1.65,
+   "status": "PASS",
+   "holes": [
+    {
+     "x": 85.0,
+     "y": 0.0,
+     "z": 0.0,
+     "radii": [
+      1.65
+     ],
+     "ok": true
+    },
+    {
+     "x": 150.0,
+     "y": 0.0,
+     "z": 0.0,
+     "radii": [
+      1.65
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "ua_plate__ua_standoff",
+   "side": "side_b",
+   "part": "Upper_Arm_R_CF3",
+   "expected_r": 1.65,
+   "status": "PASS",
+   "holes": [
+    {
+     "x": 85.0,
+     "y": 0.0,
+     "z": 0.0,
+     "radii": [
+      1.65
+     ],
+     "ok": true
+    },
+    {
+     "x": 150.0,
+     "y": 0.0,
+     "z": 0.0,
+     "radii": [
+      1.65
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "ua_plate__ua_standoff",
+   "side": "spacer",
+   "part": "UA_Standoff_D8_0",
+   "expected_r": 1.27,
+   "status": "PASS",
+   "holes": [
+    {
+     "x": 85.0,
+     "y": 0.0,
+     "z": 0.0,
+     "radii": [
+      4.0,
+      1.27
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "ua_plate__ua_standoff",
+   "side": "spacer",
+   "part": "UA_Standoff_D8_1",
+   "expected_r": 1.27,
+   "status": "PASS",
+   "holes": [
+    {
+     "x": 150.0,
+     "y": 0.0,
+     "z": 0.0,
+     "radii": [
+      4.0,
+      1.27
      ],
      "ok": true
     }

@@ -1,0 +1,11 @@
+closure: worst 2.6e-13 mm over 47 poses/lift samples  PASS
+dead-point margin: min 24.7 deg at DONUT_PLACE (need >= 20)  PASS
+dead-point margin at elbow limits (-86.0, 51.0): 21.3 deg (need >= 5)  PASS
+elbow sweep: 115 poses (elbow (-86.0, 51.0), elbow-shoulder (-160.0, -50.0)), moved bodies ('ROD2', 'ROCKER', 'LEVEL') vs all parts: 0 overlapping pairs  PASS
+pitch sweep STOW         (elbow   10.0): clash-free -30.0 .. 120.0 deg, needs  -10 ..   10  PASS
+pitch sweep DONUT_PLACE  (elbow  -82.6): clash-free -30.0 ..  44.5 deg, needs  -10 ..   10  PASS  (first contact: ROD2/Rod_2_CF4 x LK_RD/Sector_m1_77T_R near pitch 48.0)
+pitch sweep DONUT_LIFT   (elbow   37.7): clash-free -30.0 .. 120.0 deg, needs  -10 ..   10  PASS
+pitch sweep PIPE_LIFT    (elbow   48.0): clash-free -30.0 .. 120.0 deg, needs  -10 ..   10  PASS
+pitch sweep PIPE_CHUTE   (elbow  -17.1): clash-free -30.0 ..  96.2 deg, needs  -10 ..   93  PASS  (first contact: ROD2/Rod_2_CF4 x LK_RD/Sector_m1_77T_R near pitch 97.0)
+pitch sweep PIPE_CHUTE_ROLL90 (elbow  -17.1): clash-free -30.0 ..  95.0 deg, needs  -10 ..   93  PASS  (first contact: ROD2/Rod_2_CF4 x HEAD/Gripper_Palm near pitch 96.0)
+LEVEL_KEEPING fourbar: PASS (337 s)

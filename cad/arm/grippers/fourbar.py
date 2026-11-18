@@ -88,6 +88,21 @@ def body_fb_palm():
         palm = palm.cut(Part.makeCylinder(IF_PALM["side_b"]["clearance_d"] / 2, 6, V(IF_PALM.frame_x - 1.0, y, z), V(1, 0, 0)))
     for p in fb_pivots(1)[:2] + fb_pivots(-1)[:2]:
         palm = palm.cut(zc(p[0], p[1], 10, g1 + 1, FB["PIN_R"] + 0.05))
+    # reliefs in the mount plate's top (z > 22; a slot at y -38..-28 and the corner y > 54), mount plate only (x < 69, the
+    # ground-pivot layer starts at 69): level-keeping rod 2 passes there at PIPE_CHUTE (wrist pitch 90) and at
+    # PIPE_CHUTE_ROLL90 (head rolled 90 brings the +y corner round). Hub-flange screws and the cradle (z <= 19) are clear;
+    # the -y side is only a slot so the ground-layer joint keeps its outer part (palm FEA: SF 1.5 with a full corner cut).
+    # 2 mm rounds on the cutters' bottom edges (along x) give rounded inside corners: printed, so free to make. (A fillet
+    # on the palm itself after the cuts produced an invalid solid; rounding the simple cutter boxes is robust.)
+    def _rounded_cutter(y0, y1, round_y):
+        # round only the bottom edges at y in round_y: rounding the outer edge of the corner cutter (beyond the palm's
+        # side at y 75.5) left a thin sliver at the palm edge (check_holes flagged it as a broken-out D4 'hole')
+        c = box(64.0, y0, 22.0, 69.0, y1, g1 + 1.0)
+        return c.makeFillet(2.0, [e for e in c.Edges if e.BoundBox.YLength < 1e-6 and e.BoundBox.ZLength < 1e-6
+                                  and abs(e.BoundBox.ZMin - 22.0) < 1e-6
+                                  and any(abs(e.BoundBox.YMin - y) < 1e-6 for y in round_y)])
+    palm = palm.cut(_rounded_cutter(-38.0, -28.0, (-38.0, -28.0)))   # slot over rod 2's plane only (y -35..-31)
+    palm = palm.cut(_rounded_cutter(54.0, YG + 38.0, (54.0,)))
     out.append(Part_("Gripper_Palm", palm, palm, "PRINT", "custom: PETG-CF print (concept)", "pla"))
     for i, (y, z) in enumerate(front):
         # M3x8 (stock ISO 7380): 4 mm mount plate + full 3 mm of the hub flange thread; tip 1 mm clear of the roll housing

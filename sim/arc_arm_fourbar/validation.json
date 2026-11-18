@@ -12,20 +12,20 @@
   "max_rot_err_deg": 0.0,
   "max_equality_residual": 0.0,
   "ok": true,
-  "nq": 16,
+  "nq": 17,
   "nu": 5,
-  "neq": 11,
-  "ngeom": 107
+  "neq": 12,
+  "ngeom": 110
  },
  "mjcf_hold_stow": {
   "seconds": 3.0,
   "nan": false,
-  "max_equality_drift": 0.000115,
+  "max_equality_drift": 0.000118,
   "max_track_err_deg": 0.479,
   "actuator_torque_Nm": {
-   "shoulder": -2.784,
-   "elbow": 2.065,
-   "wrist_pitch": 0.339,
+   "shoulder": -2.865,
+   "elbow": 2.11,
+   "wrist_pitch": 0.338,
    "wrist_roll": 0.036,
    "gripper": -0.418
   },
@@ -41,21 +41,21 @@
  },
  "scene": {
   "compiles": true,
-  "nbody": 20,
-  "ngeom": 112
+  "nbody": 21,
+  "ngeom": 115
  },
  "urdf_in_mujoco": {
   "compiles": true,
-  "nbody": 17,
+  "nbody": 18,
   "note": "MuJoCo's URDF importer ignores <mimic>"
  },
  "ok": true,
  "gazebo_package": {
   "parses": true,
-  "mesh_uris": 107,
+  "mesh_uris": 110,
   "missing_meshes": [],
   "name_clashes": [],
-  "mimic_joints": 11,
+  "mimic_joints": 12,
   "actuated": [
    "shoulder",
    "elbow",
@@ -73,18 +73,18 @@
   "gz_version": "8.10.0",
   "world": "sim/arc_arm_fourbar/worlds/arc_arm.sdf",
   "poses": 7,
-  "max_track_err_deg": 0.005,
-  "max_mimic_err_deg": 0.4081,
-  "max_tcp_err_mm": 2.433,
+  "max_track_err_deg": 0.003,
+  "max_mimic_err_deg": 0.3285,
+  "max_tcp_err_mm": 1.977,
   "tolerances": {
    "track_deg": 1.5,
    "mimic_deg": 1.0,
    "tcp_mm": 3.0
   },
   "power_off_release": {
-   "t_open_10mm_s": 0.12,
-   "t_90pct_open_s": 1.669,
-   "end_gap_mm": 112.0,
+   "t_open_10mm_s": 0.585,
+   "t_90pct_open_s": 2.629,
+   "end_gap_mm": 105.1,
    "ok": true
   }
  }

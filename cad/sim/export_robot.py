@@ -53,6 +53,7 @@ def tree():
     K, Y = M.K, M.Y
     S = (K["SX"], 0.0, K["SZ"])
     v1 = M.u(K["V1_ANG"], K["V1_LEN"])
+    v2 = M.u(K["V2_ANG"], K["V2_LEN"])
     G1 = (S[0] + v1[0], 0.0, S[2] + v1[1])
     gd, gi, cd, ci = M.fb_pivots(1)
     gr, gri, cr, cri = M.fb_pivots(-1)
@@ -72,6 +73,9 @@ def tree():
         ("crank_pin", None, "crank", "crank_pin_joint", Ym, (K["L1"], 0, 0), -180, (0, 0, 0), ("elbow", -1.0)),
         ("rod_ab", "ROD_AB", "crank_pin", "rod_ab_joint", Ym, (0, 0, 0), 0, (0, 0, 0), ("shoulder", 1.0)),
         ("level", "LEVEL", "forearm", "level_joint", Ym, (K["L3"], 0, 0), 0, (0, 0, 0), ("elbow", -1.0)),
+        # level-keeping stage 2 (replaced the belt): rod 2 hangs off the rocker at its lever pin E+v2 and stays
+        # parallel to the forearm (rocker absolute angle is constant, so its joint angle = th2 = elbow)
+        ("rod2", "ROD2", "rocker", "rod2_joint", Ym, (v2[0] - v1[0], 0, v2[1] - v1[1]), 0, (0, 0, 0), ("elbow", 1.0)),
         ("gripper_frame", "GRIPPER", "level", "wrist_pitch", Ym, (0, 0, 0), 0, (0, 0, 0), None),
         ("head", "HEAD", "gripper_frame", "wrist_roll", (1, 0, 0), (0, 0, rz), 0, (0, 0, rz), None),
         ("lk_ld", "LK_LD", "head", "gripper", Z, (gd[0], gd[1], -rz), 0, (gd[0], gd[1], 0), None),
@@ -180,7 +184,7 @@ def main():
         wrist_pitch=dict(source="DS3225MG (J3)", peak_Nm=2.4, rated_Nm=1.2),
         wrist_roll=dict(source="DS3225MG (J4)", peak_Nm=2.4, rated_Nm=1.2),
         gripper=dict(source="STS3215 12 V (four-bar drive)", peak_Nm=M.SERVO["stall_Nm"], rated_Nm=M.SERVO["rated_Nm"]))
-    limits = dict(shoulder=(0.0, 180.0), elbow=(-110.0, 70.0), wrist_pitch=(-30.0, 120.0), wrist_roll=(-95.0, 95.0),
+    limits = dict(shoulder=(0.0, 180.0), elbow=(-86.0, 51.0), wrist_pitch=(-30.0, 120.0), wrist_roll=(-95.0, 95.0),
                   gripper=(0.0, M.fb_theta(112.0) - th_ref))
     spring = dict(joint="gripper", k_Nm_per_rad=M.SPRING["rate_Nm_per_deg"] * 180 / math.pi,
                   free_angle_deg=(M.fb_theta(112.0) - th_ref) + M.SPRING["preload_deg"], part=M.SPRING["pn"])
@@ -213,8 +217,10 @@ def write_task_poses():
     for pose in M.POSES:
         q, jaw = M.pose_q(pose)
         th1, th2, pitch, roll = q
-        poses[pose] = dict(jaw_mm=jaw, joints_deg=dict(shoulder=th1, elbow=th2, wrist_pitch=pitch, wrist_roll=roll,
-                                                       gripper=M.fb_theta(jaw) - th_ref))
+        tcp = M.POSES[pose].get("tcp")
+        poses[pose] = dict(jaw_mm=jaw, tcp_mm=list(tcp) if tcp else None,   # (x, z, pitch) in the robot frame
+                           joints_deg=dict(shoulder=th1, elbow=th2, wrist_pitch=pitch, wrist_roll=roll,
+                                           gripper=M.fb_theta(jaw) - th_ref))
     json.dump(dict(units="deg; jaw_mm = pad gap at the TCP", poses=poses, sequences=M.SEQUENCES),
               open(os.path.join(ROOT, "task_poses.json"), "w"), indent=1)
     print("task poses: %d poses, sequences %s" % (len(poses), list(M.SEQUENCES)))

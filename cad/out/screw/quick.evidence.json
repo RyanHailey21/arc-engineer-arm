@@ -1,0 +1,37 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "quick",
+  "status": "pass",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; fingerprint MATCH",
+  "scope": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; fingerprint MATCH",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "3356bbebd7b654738975b680f8ad9bd2713b1d1ac86a6fbfc35b71db44119ffb",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/quick.inputs.json",
+    "sha256": "2640d878d19ff4088696f9ee2ab7dee859a7d6ba73226e13b15ef448a345bc69"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "quick.json",
+    "path": "quick.json",
+    "sha256": "649d60322c51df67a4f2a5005af2724bc5add364b1c0c3777121cf3793de1b36"
+   }
+  ],
+  "extensions": {
+   "variant": "SCREW",
+   "time": "2026-11-17T21:32:29",
+   "inputs_hash": "dd014ea3239d86fc",
+   "external_copies": []
+  }
+ }
+}

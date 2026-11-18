@@ -123,14 +123,15 @@ Joint values are the CAD model's own angles. The CAD convention is **radians in 
 | Joint | Actuator | Limits (deg) | Meaning |
 |---|---|---|---|
 | `shoulder` | DM-J4340-2EC, 27 N·m peak | 0 … 180 | upper-arm angle th1 |
-| `elbow` | DM-J4340-2EC, 27 N·m peak | −110 … 70 | **absolute** forearm angle th2 (J2 drives it through the crank and rod AB) |
+| `elbow` | DM-J4340-2EC, 27 N·m peak | −86 … 51 | **absolute** forearm angle th2 (J2 drives it through the crank and rod AB). The limits keep the level-keeping parallelogram ≥ 21° from its dead points |
 | `wrist_pitch` | DS3225, 2.4 N·m | −30 … 120 | gripper pitch (absolute: the level member stays level) |
 | `wrist_roll` | DS3225, 2.4 N·m | −95 … 95 | roll about the gripper axis |
 | `gripper` | STS3215, 2.94 N·m stall | 0 … 63.2 | drive-link angle from the pipe grip (0 = 13.8 mm pad gap, 54.6 = donut 100 mm, 63.2 = fully open 112 mm) |
 
-The 11 passive joints each follow one actuated joint exactly:
+The 12 passive joints each follow one actuated joint exactly:
 - rods, rocker and crank;
-- level member (GT2 belt);
+- level-keeping rod 2 (replaced the forearm belt; parallel to the forearm);
+- level member (rod-2 parallelogram);
 - idler links and sector-gear mirror;
 - parallel jaws.
 
@@ -149,7 +150,7 @@ They are joint-equality constraints in MuJoCo and `<mimic>` in URDF/Gazebo. The 
 | Scene drop test (1 s) | donut and pipe settle, finite state |
 | URDF in MuJoCo's URDF importer | compiles (17 bodies) |
 | Gazebo package structure | `model.urdf` parses; all 107 `model://` meshes resolve; 11 mimic joints; 5 controllers; no link/joint name clashes |
-| Gazebo run test (`gazebo_validation.json`, gz-sim 8.10, bullet-featherstone, full field world) | each of the 7 poses commanded over the `cmd_pos` topics: settles in ~7 s; actuated joints within 0.005°; all 11 mimic followers within 0.41°; gripper TCP within 2.4 mm of CAD. Power-off release (gripper controller removed): open 10 mm in 0.12 s, fully open by 2.0 s |
+| Gazebo run test (`gazebo_validation.json`, gz-sim 8.10, bullet-featherstone, full field world) | each of the 7 poses commanded over the `cmd_pos` topics: settles in ~8 s; actuated joints within 0.003°; all 12 mimic followers within 0.33°; gripper TCP within 2.0 mm of CAD. Power-off release (gripper controller removed, free world): open 10 mm in 0.59 s, 90 % open in 2.6 s |
 
 ## Limits of these models (read before relying on them)
 
@@ -158,7 +159,7 @@ They are joint-equality constraints in MuJoCo and `<mimic>` in URDF/Gazebo. The 
   - Bullet's mimic constraints are slightly soft under load (up to 0.4°), which puts the TCP up to ~2.4 mm off CAD. MuJoCo matches CAD exactly.
   - The massless `crank_pin` helper link carries 3 g / 1e-5 kg·m² in `model.urdf` (the crank-pin hardware, counted twice: 0.1 % of the arm mass). With ~0 inertia, Bullet's constraint solve jams the elbow.
   - The joints start at 0 and drive to the first command; there is no initial-pose setting in the URDF.
-  - Power-off release in Gazebo: run on a copy of the model without the gripper controller (servo unpowered). The jaws open 10 mm in 0.12 s and fully (112 mm) by 2.0 s. It's slower than MuJoCo because the two engines stand in for the unmeasured servo back-drive differently: Gazebo uses viscous joint damping (0.05 N·m·s/rad; Bullet has no joint friction), MuJoCo uses 0.05 N·m friction plus rotor inertia. Both meet the 1 s release rule.
+  - Power-off release in Gazebo: run on a copy of the model without the gripper controller (servo unpowered), in the free world. The jaws open 10 mm in 0.59 s and 90 % in 2.6 s. An earlier figure of 0.12 s came from the field world, where the stretched-out start pose can rest the jaws on the lower tier, so it isn't trustworthy. It's slower than MuJoCo because the two engines stand in for the unmeasured servo back-drive differently: Gazebo uses viscous joint damping (0.05 N·m·s/rad; Bullet has no joint friction), MuJoCo uses 0.05 N·m friction plus rotor inertia. Both meet the 1 s release rule, Gazebo with less margin; the bench test of the servo back-drive settles the real figure.
 - **No self-collision in MuJoCo.** Arm geoms collide with the world and objects (`contype 2 / conaffinity 1`) but not with each other. Self-interference is verified in CAD (`cad/check_interference.py`).
 - **Servo back-drive is a guess.** The gripper servo's unpowered back-drive is modelled as 0.05 N·m friction. The real value is not yet bench-measured, and the release time above depends on it.
 - **Estimated actuator dynamics.** Rotor armatures, joint damping and controller gains are estimates (`build_robot.py`: ARMATURE, KP).

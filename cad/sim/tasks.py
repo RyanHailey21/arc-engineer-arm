@@ -341,24 +341,25 @@ def donut_task(sim, kin, tp, F):
     sim.begin("drive to the scoring platform")
     sim.drive(y=LANES["place"])
     sim.end()
+    px, pz = tp["poses"]["DONUT_PLACE"]["tcp_mm"][:2]          # CAD pose (arm.kinematics.POSES)
     sim.begin("move above the platform")
-    sim.joints(kin.q(210, 140, jaw=100))
+    sim.joints(kin.q(px, pz + 77.5, jaw=100))
     sim.end()
     sim.begin("lower to DONUT_PLACE")
-    sim.line(kin, (210, 140), (210, 62.5), jaw=100)
+    sim.line(kin, (px, pz + 77.5), (px, pz), jaw=100)
     sim.end()
     sim.begin("open jaws (release)")
     sim.detach("donut")
-    sim.joints(kin.q(210, 62.5, jaw=112))
+    sim.joints(kin.q(px, pz, jaw=112))
     sim.end()
     sim.begin("retreat up")
-    sim.line(kin, (210, 62.5), (210, 160), jaw=112)
+    sim.line(kin, (px, pz), (px, pz + 97.5), jaw=112)
     sim.end()
     sim.begin("STOW")
     sim.joints(P("STOW"))
     sim.end()
     d = sim.data.xpos[sim.obj["donut"]]
-    on = abs(d[1] - LANES["place"]) < 0.15 and 0.0608 < d[0] < 0.3608 and abs(d[2] - 0.0625) < 0.005
+    on = abs(d[1] - LANES["place"]) < 0.15 and 0.0608 + 0.05 < d[0] < 0.3608 - 0.05 and abs(d[2] - 0.0625) < 0.005
     return dict(donut_final_mm=[round(1000 * float(v), 1) for v in (d[0], d[1] - LANES["place"], d[2])], donut_on_platform=bool(on))
 
 
@@ -377,8 +378,9 @@ def pipe_task(sim, kin, tp, F):
     sim.joints(P("PIPE_GRASP"))
     err = sim.attach("pipe")
     sim.end(grasp_err_mm=err)
+    lx, lz = tp["poses"]["PIPE_LIFT"]["tcp_mm"][:2]
     sim.begin("lift straight out (PIPE_LIFT)")
-    sim.line(kin, (40, 455), (40, 790), jaw=13.8)
+    sim.line(kin, (40, 455), (lx, lz), jaw=13.8)
     sim.end()
     sim.begin("back away from the bucket")
     sim.drive(x=-0.45)

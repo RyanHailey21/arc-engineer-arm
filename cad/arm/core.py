@@ -27,7 +27,9 @@ PIPE_R = _PADS["PIPE_OD"] / 2
 O_PIPE = PIPE_R * math.sqrt(2) - NOTCH  # pad-face half gap when the V-notches hold the pipe
 O_REF = O_PIPE         # jaw half-opening at which jaw bodies are modelled (pipe grip)
 PIPE_JAW = 2 * O_PIPE  # 'jaw' value = gap between the arc-bottom pad faces at the TCP
-GT2_T = _ARM["level_keeping"]["GT2_T"]
+GT2_T = _ARM["level_keeping"]["GT2_T"]          # rev A belt drive only (build_assembly.py)
+ROD2_T = _ARM["level_keeping"]["ROD2_T"]
+ROD2_W = _ARM["level_keeping"]["ROD2_W"]
 UA_HUB_SCREWS = _ARM["j1_hub"]["UA_HUB_SCREWS"]
 HUB_R = _ARM["j1_hub"]["HUB_R"]
 

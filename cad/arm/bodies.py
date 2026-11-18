@@ -23,7 +23,7 @@ GRIPPERS = {
 ARM_BODY_FUNCS = dict(GROUND=body_ground, UPPER=body_upper, CRANK=body_crank,
                       ROD_AB=lambda: body_rod("Rod_AB", K["L2"], Y["RAB"]),
                       ROD1=lambda: body_rod("Rod_1", K["L2"], Y["ROD1"]),
-                      FOREARM=body_forearm, ROCKER=body_rocker, LEVEL=body_level,
+                      FOREARM=body_forearm, ROCKER=body_rocker, ROD2=body_rod2, LEVEL=body_level,
                       GRIPPER=body_gripper)
 BODY_FUNCS = dict(ARM_BODY_FUNCS)
 BODY_FUNCS.update(GRIPPERS[GRIP]["bodies"]())

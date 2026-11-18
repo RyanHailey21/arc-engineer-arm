@@ -1,0 +1,43 @@
+# Interface: upper-arm plates L/R <-> the D8 standoffs that tie them (and carry the harness P-clips on the L side).
+# Frame: UPPER body frame (x from the shoulder axis S along the upper arm towards E, y across the arm, z up). mm.
+# Both mating parts build from this file (cad/iface.py): the plates' clearance holes AND their lightening-pocket layout
+# (cad/arm/upper_arm.py), and the standoffs + screws at each station; cad/tools/check_interfaces.py probes all three.
+
+[interface]
+name = "ua_plate__ua_standoff"
+summary = "Upper-arm plates L/R tied by D8 standoffs: M3 clearance holes in both plates, M3-tapped standoff ends, BHCS from outboard"
+owner = "upper arm"
+
+[frame]
+origin = [0.0, 0.0, 0.0]               # S, in the UPPER frame
+normal = [0.0, 1.0, 0.0]               # holes run across the arm (y)
+
+[stations]
+# x from S. Were L2/3, 2L2/3 (113.3, 226.7) until 2026-11-17: level-keeping rod 2 (below the forearm, y -35..-31) sweeps
+# x ~170..280 when the arm folds (elbow - shoulder <= -150: STOW, DONUT_PICK); at x <= 150 it stays >= 4 mm clear down
+# to -160 (tools/check_level_keeping.py elbow sweep).
+points_xz = [[85.0, 0.0], [150.0, 0.0]]
+
+[side_a]                               # upper-arm plate L (3 mm CF)
+body = "UPPER"
+part = "Upper_Arm_L_CF3"
+hole = "clearance"
+clearance_d = 3.3
+
+[side_b]                               # upper-arm plate R (3 mm CF)
+body = "UPPER"
+part = "Upper_Arm_R_CF3"
+hole = "clearance"
+clearance_d = 3.3
+
+[spacer]                               # one standoff per station, named <part_prefix><station index>
+body = "UPPER"
+part_prefix = "UA_Standoff_D8_"
+hole = "tapped"
+thread = "M3x0.5"
+drill_d = 2.54                         # M3 tapped both ends; modelled tap radius 1.27 (hardware.standoff_round,
+                                       # the project M3 tap convention used by tools/check_engagement.py)
+
+[fastener]
+kind = "BHCS"
+size = "M3"

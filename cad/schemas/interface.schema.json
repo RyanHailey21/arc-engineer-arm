@@ -2,68 +2,249 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "cad/schemas/interface.schema.json",
   "title": "Mating interface (cad/interfaces/*.toml)",
-  "description": "One mating interface read by both mating parts. A [pattern] table makes it probe-able by tools/check_interfaces.py; vendor data tables (e.g. [DM]) are allowed alongside.",
+  "description": "One mating interface read by both mating parts. A [pattern] (bolt circle) or [stations] (row of holes) table makes it probe-able by tools/check_interfaces.py; vendor data tables (e.g. [DM]) are allowed alongside.",
   "type": "object",
-  "required": ["interface"],
+  "required": [
+    "interface"
+  ],
   "properties": {
     "interface": {
       "type": "object",
-      "required": ["name", "summary", "owner"],
+      "required": [
+        "name",
+        "summary",
+        "owner"
+      ],
       "additionalProperties": false,
       "properties": {
-        "name": {"type": "string", "pattern": "^[a-z0-9_]+__[a-z0-9_]+$", "description": "<side_a>__<side_b>, equal to the file name"},
-        "summary": {"type": "string", "minLength": 10},
-        "owner": {"type": "string", "minLength": 3}
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+__[a-z0-9_]+$",
+          "description": "<side_a>__<side_b>, equal to the file name"
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 10
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 3
+        }
       }
     },
     "frame": {
       "type": "object",
-      "required": ["origin", "normal"],
+      "required": [
+        "origin",
+        "normal"
+      ],
       "additionalProperties": false,
       "properties": {
-        "origin": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
-        "normal": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3}
+        "origin": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "normal": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 3,
+          "maxItems": 3
+        }
       }
     },
-    "flange": {"type": "object", "additionalProperties": {"type": "number"}},
+    "flange": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
     "pattern": {
       "type": "object",
-      "required": ["radius", "angles_deg"],
+      "required": [
+        "radius",
+        "angles_deg"
+      ],
       "additionalProperties": false,
       "properties": {
-        "radius": {"type": "number", "exclusiveMinimum": 0},
-        "angles_deg": {"type": "array", "items": {"type": "number"}, "minItems": 1}
+        "radius": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "angles_deg": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1
+        }
       }
     },
-    "side_a": {"$ref": "#/$defs/side"},
-    "side_b": {"$ref": "#/$defs/side"},
+    "side_a": {
+      "$ref": "#/$defs/side"
+    },
+    "side_b": {
+      "$ref": "#/$defs/side"
+    },
     "fastener": {
       "type": "object",
-      "required": ["kind", "size"],
+      "required": [
+        "kind",
+        "size"
+      ],
       "additionalProperties": false,
       "properties": {
-        "kind": {"type": "string", "enum": ["BHCS", "SHCS", "CSK", "SET", "DOWEL", "PIN"]},
-        "size": {"type": "string", "pattern": "^M[0-9]+(\\.[0-9]+)?$"},
-        "length": {"type": "number", "exclusiveMinimum": 0},
-        "head_face_x": {"type": "number"}
+        "kind": {
+          "type": "string",
+          "enum": [
+            "BHCS",
+            "SHCS",
+            "CSK",
+            "SET",
+            "DOWEL",
+            "PIN"
+          ]
+        },
+        "size": {
+          "type": "string",
+          "pattern": "^M[0-9]+(\\.[0-9]+)?$"
+        },
+        "length": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "head_face_x": {
+          "type": "number"
+        }
+      }
+    },
+    "stations": {
+      "type": "object",
+      "required": [
+        "points_xz"
+      ],
+      "additionalProperties": false,
+      "description": "A row of hole stations on a y-normal interface (e.g. standoffs along a link), in the body frame.",
+      "properties": {
+        "points_xz": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        }
+      }
+    },
+    "spacer": {
+      "type": "object",
+      "required": [
+        "body",
+        "part_prefix",
+        "hole"
+      ],
+      "additionalProperties": false,
+      "description": "One spacer/standoff per station, named <part_prefix><station index>; probed at its own station.",
+      "properties": {
+        "body": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        },
+        "part_prefix": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hole": {
+          "type": "string",
+          "enum": [
+            "tapped",
+            "clearance"
+          ]
+        },
+        "thread": {
+          "type": "string",
+          "pattern": "^M[0-9]+(\\.[0-9]+)?x[0-9.]+$"
+        },
+        "drill_d": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "clearance_d": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
       }
     }
   },
-  "dependentRequired": {"pattern": ["frame", "side_a", "side_b"]},
+  "dependentRequired": {
+    "pattern": [
+      "frame",
+      "side_a",
+      "side_b"
+    ],
+    "stations": [
+      "frame",
+      "side_a",
+      "side_b"
+    ],
+    "spacer": [
+      "stations"
+    ]
+  },
   "$defs": {
     "side": {
       "type": "object",
-      "required": ["body", "part", "hole"],
+      "required": [
+        "body",
+        "part",
+        "hole"
+      ],
       "additionalProperties": false,
       "properties": {
-        "body": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]*$"},
-        "part": {"type": "string", "minLength": 1},
-        "hole": {"type": "string", "enum": ["tapped", "clearance"]},
-        "thread": {"type": "string", "pattern": "^M[0-9]+(\\.[0-9]+)?x[0-9.]+$"},
-        "drill_d": {"type": "number", "exclusiveMinimum": 0},
-        "drill_depth": {"type": "number", "exclusiveMinimum": 0},
-        "clearance_d": {"type": "number", "exclusiveMinimum": 0},
-        "depth": {"type": "number", "exclusiveMinimum": 0}
+        "body": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        },
+        "part": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hole": {
+          "type": "string",
+          "enum": [
+            "tapped",
+            "clearance"
+          ]
+        },
+        "thread": {
+          "type": "string",
+          "pattern": "^M[0-9]+(\\.[0-9]+)?x[0-9.]+$"
+        },
+        "drill_d": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "drill_depth": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "clearance_d": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "depth": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
       }
     }
   }

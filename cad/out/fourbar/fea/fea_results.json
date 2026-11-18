@@ -12,7 +12,7 @@
   "nodes": 28015,
   "mesh_h_mm": 0.8,
   "verdict": "PASS",
-  "seconds": 24.2,
+  "seconds": 20.1,
   "method": "FEA (gmsh 2nd-order tets + CalculiX)"
  },
  {
@@ -28,7 +28,7 @@
   "nodes": 52016,
   "mesh_h_mm": 1.2,
   "verdict": "PASS",
-  "seconds": 38.9,
+  "seconds": 41.4,
   "method": "FEA (gmsh 2nd-order tets + CalculiX)"
  },
  {
@@ -36,15 +36,15 @@
   "part": "Gripper_Palm",
   "material": "PETG-CF (FDM)",
   "load": "head 0.28 kg + 165 g pipe + 0.5 N*m pipe moment: 0.76 N*m x 2.5 at the mount -> 112 N on the pivot bores",
-  "total_force_N": 112.2,
-  "max_von_mises_MPa": 19.59,
-  "max_disp_mm": 0.9077,
+  "total_force_N": 112.1,
+  "max_von_mises_MPa": 19.69,
+  "max_disp_mm": 0.9157,
   "allowable_MPa": 40.0,
-  "safety_factor": 2.04,
-  "nodes": 134209,
+  "safety_factor": 2.03,
+  "nodes": 141385,
   "mesh_h_mm": 2.0,
   "verdict": "PASS",
-  "seconds": 140.8,
+  "seconds": 181.4,
   "method": "FEA (gmsh 2nd-order tets + CalculiX)"
  },
  {

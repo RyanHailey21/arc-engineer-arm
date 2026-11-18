@@ -23,7 +23,14 @@ import params  # noqa: E402
 V = App.Vector
 TAP = {1.25: 3, 1.27: 3, 1.4: 3, 1.7: 4, 2.1: 5}     # modelled radius -> M size
 RUNOUT = 1.5
-SCREWS = ("SHCS", "BHCS", "CSK", "SETSCREW", "SB5", "SB")
+SCREWS = ("SHCS", "BHCS", "CSK", "SETSCREW", "SB5")     # data/catalogue.toml keys of screw types
+
+
+def is_screw(p):
+    """A screw is a CAT part whose catalogue key is a screw type.  Name matching missed parts twice (TI-017):
+    an exact first token never saw SB5x6_... shoulder screws, and a prefix still missed SetScrew_... (case).
+    Regression test: tests/test_engagement_screws.py."""
+    return p.kind == "CAT" and p.src in SCREWS
 
 
 def holes(shape):
@@ -50,7 +57,7 @@ def main():
     bodies = M.build_bodies()
     q, jaw = M.pose_q("STOW")
     placed = list(M.placed(bodies, *q, jaw=jaw, which="vis"))
-    screws = [(p, s) for (_b, p, s) in placed if p.kind == "CAT" and p.name.split("_")[0] in SCREWS]
+    screws = [(p, s) for (_b, p, s) in placed if is_screw(p)]
     rows, nf, nw, n = [], 0, 0, 0
     for (_b, p, s) in placed:
         if p.kind not in ("AL", "BRASS") or s.isNull():
@@ -98,4 +105,5 @@ def main():
     params.record("engagement", "FAIL" if nf else ("WARN" if nw else "PASS"), outs, head)
 
 
-main()
+if not os.environ.get("QC_IMPORT"):          # tests import is_screw / holes without running the check
+    main()

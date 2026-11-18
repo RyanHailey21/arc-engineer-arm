@@ -29,14 +29,15 @@ def body_level():
         for z in (-5.0, 5.0):
             p = R.multVec(V(x, 0, z))
             st_pts.append((p.x, p.z))
-    pts = [(0, 0, 14)] + [(x, z, 6) for (x, z) in st_pts]
-    pl = plate(pts, yc, [(x, z, 1.65) for (x, z) in st_pts])
+    v2 = u(K["V2_ANG"], K["V2_LEN"])         # stage-2 lever (same as the rocker's: the parallelogram's far end)
+    pts = [(0, 0, 14), (v2[0], v2[1], 8.5)] + [(x, z, 6) for (x, z) in st_pts]
+    pl = plate(pts, yc, [(x, z, 1.65) for (x, z) in st_pts] + [(v2[0], v2[1], 2.55)])
     pl = pl.cut(hexhole(19, 0, 0, yc - 2, yc + 2))
     for (x, z) in st_pts:     # countersinks on the inboard face for ISO 10642
         pl = pl.cut(Part.makeCone(3.0, 1.5, 1.5, V(x, yc + T / 2, z), V(0, -1, 0)))
     out = [Part_("Wrist_Level_Member_CF3", pl, pl, "CF", "custom: 3 mm CF plate (DXF), hex af19", "cf")]
-    pul, _pd = gt2_level_pulley("GT2_Pulley_Wrist")
-    out += pul
+    out += level_hub("Level_Hub_Wrist")
+    out += v2_pin("Dv2", *v2)
     sv.Placement = App.Placement(V(), R).multiply(sv.Placement)
     svc.Placement = App.Placement(V(), R).multiply(svc.Placement)
     out.append(Part_("J3_Wrist_Servo_DS3225", sv, svc, "CAT", "DS3225MG", "motor"))

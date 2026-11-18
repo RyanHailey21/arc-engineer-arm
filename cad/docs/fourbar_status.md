@@ -17,30 +17,60 @@ Evidence for every claim below is in `cad/out/fourbar/`. Each `*.evidence.json` 
 
 | | Rev A | Four-bar |
 |---|---|---|
-| Past the wrist | 1,040 g | 485 g |
-| Jaw head | 836 g | 280 g |
-| Arm total | 3.42 kg | 2.87 kg |
+| Past the wrist | 1,040 g | 484 g |
+| Jaw head | 836 g | 279 g |
+| Arm total | 3.42 kg | 2.92 kg (2.87 with the belt) |
 
 - **Peak static joint torque:**
 
 | Joint | Rev A (N·m) | Four-bar (N·m) |
 |---|---|---|
-| J1 | 4.63 | 3.07 |
-| J2 | 4.36 | 2.54 |
+| J1 | 4.63 | 3.18 |
+| J2 | 4.36 | 2.60 |
 | J3 | 1.24 | 0.78 |
+
+## Level keeping: linkage instead of the belt (2026-11-17)
+
+The forearm's GT2 belt (stage 2 of level keeping, elbow to wrist) is replaced by a **parallelogram linkage**, for stiffness (no belt stretch at the wrist) and reliability (no tension, idler or tooth skip).
+
+- **Parts:**
+  - **Rod 2:** 4 × 16 mm CF plate rod, pins 350 mm apart, MR105 in each eye, in the plane the belt used (y −35…−31).
+  - **Levers:** 43 mm at 72.7°, on the CF rocker and on the CF level member. Both pins are SB5×8 shoulder screws with a nyloc on the plate's outboard face.
+  - **Hubs:** two turned hubs replace the pulleys, with the same axial stack.
+  - **Removed:** the belt, both pulleys and the idler.
+- **Why one rod, not two:** a double parallelogram would need one rod to pass a pivot axis, but the elbow shaft fills every layer and the J3 servo sits outboard at the wrist.
+- **Dead points:** at elbow +72.7° and −107.3°. The task elbow range is −82.6…+48.0°, so the margin is 24.7° or more, and rod force is at most 2.4× its mid-range value.
+- **Pose changes this required:**
+
+  | Pose | Was | Now | Elbow angle (was → now) |
+  |---|---|---|---|
+  | DONUT_PLACE | TCP x 210 | TCP x 300 | −97.3° → −82.6° |
+  | PIPE_LIFT | TCP z 790 | TCP z 740 (pipe still 37 mm over the bucket rim) | 55.7° → 48.0° |
+
+  Elbow limits become −86…+51° (was −110…+70°).
+- **Lever direction:** up, not down. Down levers put the level member into the scoring platform at DONUT_PLACE.
+- **Clearing the gripper at PIPE_CHUTE (wrist pitch 90°):**
+  - a 43 mm lever (not 50);
+  - a notch in rod 2's top edge near the wrist;
+  - two 2 mm-rounded reliefs in the palm mount plate's top. The −y side is a narrow slot, to keep the palm FEA at SF 2.0; a full corner cut dropped it to 1.5.
+- **Upper-arm standoffs:** moved from x 113/227 to 85/150 mm, because rod 2 sweeps the old 227 mm station when the arm folds (STOW, DONUT_PICK).
+- **Rod 2 strength:** buckling 344 N for the plain rod and **313 N with the notch** (finite-difference column, E 50 GPa, pinned-pinned). Worst load is 134 N (J3 stall 2.4 N·m through a 43 mm lever at 24.7° from the dead point): **SF 2.35**. Shear-out at the eyes is about 2.4 kN.
+- **Check:** `tools/check_level_keeping.py` verifies parallelogram closure, the dead-point margins (task poses, lift path, joint limits), an elbow sweep at reachable shoulder angles, and the wrist-pitch range each task pose needs.
+- **SCREW (rev A) gripper:** its `Gripper_Bridge_CF3` hits rod 2 at PIPE_CHUTE. Rev A is frozen, so this is left as a known limit of the SCREW variant with the linkage.
 
 ## Verification
 
 | Check | Result |
 |---|---|
-| Full interference (`check_interference.py`) | 0 overlaps at STOW and across 14 task poses; field clearance clear; donut lift up the pole clear |
+| Full interference (`check_interference.py`) | 0 overlaps at STOW, across the 14 task poses and the moves between them; field clearance clear; donut lift up the pole clear |
+| Level keeping (`tools/check_level_keeping.py`) | closure exact; dead-point margin ≥ 24.7° (21.3° at the joint limits); elbow sweep clean; wrist pitch clear to 96° / 95° at PIPE_CHUTE / PIPE_CHUTE_ROLL90 |
 | Quick check | envelopes, interfaces, self-interference over the jaw stroke at roll 0/90°, mass/torque, fingerprint: PASS |
-| Hole edge distance | 0 broken out, 0 fail; no warnings on any four-bar part |
+| Hole edge distance | 0 broken out, 0 fail; new WARNs (below the 0.5d plate rule): rod-2 eyes (3 mm wall; shear-out about 2.4 kN against 134 N) and the turned level hubs |
 | Thread engagement | 0 FAIL; the only WARNs are the three known J1 hub screws from rev A |
 | FEA (`fea/run_fea_fourbar.py`) | drive link SF 1.8; jaw block 4.1; palm 2.0 (after adding the central web; it was 1.3 before) |
 | Hand checks (in the same report) | sector tooth (Lewis) 2.7; pivot pins 161; link bore bearing 31 |
 | Grip budget (`tools/grip_budget.py`) | WARN: see below |
-| BOM (`tools/bom.py`) | 28 purchased line items, all with a source; 66 custom parts |
+| BOM (`tools/bom.py`) | 26 purchased line items, all with a source; 69 custom parts |
 | Simulation export | MuJoCo + Gazebo models in `sim/arc_arm_fourbar/`; forward kinematics within 0.0004 mm of CAD |
 | Gazebo run test (`cad/sim/gz_check.py`) | gz-sim 8.10: all 7 task poses commanded and reached; joints within 0.005°, mimic followers within 0.41°, TCP within 2.4 mm |
 

@@ -5,32 +5,32 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
   "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 4 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 485 g (head 280 g); worst static J1 3.08 J2 2.55 J3 0.78 N*m; fingerprint MATCH",
-  "scope": "envelopes 10 pose checks; interfaces 4 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 485 g (head 280 g); worst static J1 3.08 J2 2.55 J3 0.78 N*m; fingerprint MATCH",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 484 g (head 279 g); worst static J1 3.15 J2 2.60 J3 0.78 N*m; catalogue 26 keys, 175 purchased units match catalogue mass; fingerprint MATCH",
+  "scope": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 484 g (head 279 g); worst static J1 3.15 J2 2.60 J3 0.78 N*m; catalogue 26 keys, 175 purchased units match catalogue mass; fingerprint MATCH",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "72a3f9b177f7abe1b86964077ab1a62b5bb774859c385e8503227b6245add375",
+  "implementation_sha256": "3356bbebd7b654738975b680f8ad9bd2713b1d1ac86a6fbfc35b71db44119ffb",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/quick.inputs.json",
-    "sha256": "4a1422d6ac01d346fc976a663ac781d8fb2848860c50546ff9d181b4ff3ff925"
+    "sha256": "562b1b237d6cc19a6a98bcb86f42461062680e6105c94439a3ac98f5166b2df2"
    }
   ],
   "artifacts": [
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "ff69d48819ed15cfb92a61b51ec5ce9c2a7e029fb48d4d89df66760b7f159d16"
+    "sha256": "3f135df9f0cd47a938a5f4cd23ee1832bd6156e1eb89bd935e0cf7143866743c"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-17T00:26:26",
-   "inputs_hash": "48b9b3450fe5cb0a",
+   "time": "2026-11-17T21:46:57",
+   "inputs_hash": "8cde22ae93768790",
    "external_copies": []
   }
  }

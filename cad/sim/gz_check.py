@@ -89,8 +89,8 @@ def command(q_deg):
 
 
 def release_test(spec):
-    """Power-off release in Gazebo: a temporary copy of the model WITHOUT the gripper position controller (the servo
-    unpowered), jaws starting at the pipe grip (gripper q = 0). The world starts paused; joint_state is streamed with
+    """Power-off release in Gazebo (free world): a temporary copy of the model WITHOUT the gripper position controller
+    (the servo unpowered), jaws starting at the pipe grip (gripper q = 0). The world starts paused; joint_state is streamed with
     sim-time stamps while it runs, and the torsion spring alone must open the jaws.
     Caveat: bullet-featherstone applies joint spring and (viscous) damping but not joint friction or rotor armature,
     so here the unpowered servo's back-drive is the URDF damping 0.05 N*m*s/rad; MuJoCo uses 0.05 N*m Coulomb
@@ -118,7 +118,10 @@ def release_test(spec):
     assert removed == 1, "gripper controller not found"
     t.write(os.path.join(md, "model.urdf"), encoding="utf-8", xml_declaration=True)
     env = dict(ENV, GZ_SIM_RESOURCE_PATH=tmp)
-    srv = subprocess.Popen(["gz", "sim", "-s", "-v", "2", WORLD], env=env,          # no -r: starts paused
+    # free world (no field): the joints start at 0, which leaves the arm stretched forward with the TCP at z 195 -
+    # below the lower tier's top (210) in the pick-station world, so the jaws would open against the tier
+    free = os.path.join(ROOT, "worlds", "arc_arm_free.sdf")
+    srv = subprocess.Popen(["gz", "sim", "-s", "-v", "2", free], env=env,           # no -r: starts paused
                            stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
     try:
         t0 = time.time()

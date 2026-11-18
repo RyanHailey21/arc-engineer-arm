@@ -74,6 +74,7 @@
     "status": "PASS",
     "holes": [
      {
+      "x": 49.0,
       "y": 4.95,
       "z": -0.05,
       "radii": [
@@ -82,6 +83,7 @@
       "ok": true
      },
      {
+      "x": 49.0,
       "y": -4.95,
       "z": -0.05,
       "radii": [
@@ -90,6 +92,7 @@
       "ok": true
      },
      {
+      "x": 49.0,
       "y": -4.95,
       "z": -9.95,
       "radii": [
@@ -98,6 +101,7 @@
       "ok": true
      },
      {
+      "x": 49.0,
       "y": 4.95,
       "z": -9.95,
       "radii": [
@@ -115,6 +119,7 @@
     "status": "PASS",
     "holes": [
      {
+      "x": 49.0,
       "y": 4.95,
       "z": -0.05,
       "radii": [
@@ -123,6 +128,7 @@
       "ok": true
      },
      {
+      "x": 49.0,
       "y": -4.95,
       "z": -0.05,
       "radii": [
@@ -131,6 +137,7 @@
       "ok": true
      },
      {
+      "x": 49.0,
       "y": -4.95,
       "z": -9.95,
       "radii": [
@@ -139,6 +146,7 @@
       "ok": true
      },
      {
+      "x": 49.0,
       "y": 4.95,
       "z": -9.95,
       "radii": [
@@ -156,6 +164,7 @@
     "status": "PASS",
     "holes": [
      {
+      "x": 65.0,
       "y": 15.25,
       "z": -5.0,
       "radii": [
@@ -164,6 +173,7 @@
       "ok": true
      },
      {
+      "x": 65.0,
       "y": -15.25,
       "z": -5.0,
       "radii": [
@@ -172,6 +182,7 @@
       "ok": true
      },
      {
+      "x": 65.0,
       "y": -10.783,
       "z": -15.783,
       "radii": [
@@ -180,6 +191,7 @@
       "ok": true
      },
      {
+      "x": 65.0,
       "y": 10.783,
       "z": -15.783,
       "radii": [
@@ -197,6 +209,7 @@
     "status": "PASS",
     "holes": [
      {
+      "x": 65.0,
       "y": 15.25,
       "z": -5.0,
       "radii": [
@@ -206,6 +219,7 @@
       "ok": true
      },
      {
+      "x": 65.0,
       "y": -15.25,
       "z": -5.0,
       "radii": [
@@ -215,6 +229,7 @@
       "ok": true
      },
      {
+      "x": 65.0,
       "y": -10.783,
       "z": -15.783,
       "radii": [
@@ -224,6 +239,7 @@
       "ok": true
      },
      {
+      "x": 65.0,
       "y": 10.783,
       "z": -15.783,
       "radii": [
@@ -233,23 +249,115 @@
       "ok": true
      }
     ]
+   },
+   {
+    "interface": "ua_plate__ua_standoff",
+    "side": "side_a",
+    "part": "Upper_Arm_L_CF3",
+    "expected_r": 1.65,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 85.0,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": 150.0,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "ua_plate__ua_standoff",
+    "side": "side_b",
+    "part": "Upper_Arm_R_CF3",
+    "expected_r": 1.65,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 85.0,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": 150.0,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "ua_plate__ua_standoff",
+    "side": "spacer",
+    "part": "UA_Standoff_D8_0",
+    "expected_r": 1.27,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 85.0,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       4.0,
+       1.27
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "ua_plate__ua_standoff",
+    "side": "spacer",
+    "part": "UA_Standoff_D8_1",
+    "expected_r": 1.27,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 150.0,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       4.0,
+       1.27
+      ],
+      "ok": true
+     }
+    ]
    }
   ]
  },
  "self_hit": [],
  "mass_torque": {
-  "arm_g": 2233.3,
+  "arm_g": 1810.0,
   "past_wrist_g": 1040.4,
   "head_g": 835.5,
   "worst_static_Nm": {
-   "J1": 4.63,
-   "J2": 4.36,
+   "J1": 4.74,
+   "J2": 4.42,
    "J3": 1.24,
    "J4": 0.13
   },
   "rated_utilisation": {
-   "J1": 0.514,
-   "J2": 0.485,
+   "J1": 0.526,
+   "J2": 0.492,
    "J3": 0.518,
    "J4": 0.053
   },
@@ -258,8 +366,8 @@
     "pose": "STOW",
     "payload_g": 0.0,
     "tau": [
-     -4.52,
-     3.94,
+     -4.62,
+     4.0,
      0.8,
      -0.01
     ]
@@ -268,8 +376,8 @@
     "pose": "DONUT_APPROACH",
     "payload_g": 0.0,
     "tau": [
-     -2.08,
-     3.27,
+     -2.13,
+     3.32,
      0.8,
      -0.01
     ]
@@ -278,8 +386,8 @@
     "pose": "DONUT_PICK",
     "payload_g": 0.0,
     "tau": [
-     -0.46,
-     1.97,
+     -0.48,
+     1.99,
      0.8,
      -0.01
     ]
@@ -288,8 +396,8 @@
     "pose": "DONUT_LIFT",
     "payload_g": 300.0,
     "tau": [
-     -2.35,
-     3.98,
+     -2.4,
+     4.03,
      1.24,
      -0.01
     ]
@@ -298,8 +406,8 @@
     "pose": "DONUT_LIFT_ROLL+",
     "payload_g": 300.0,
     "tau": [
-     -2.35,
-     3.98,
+     -2.4,
+     4.03,
      1.24,
      -0.09
     ]
@@ -308,8 +416,8 @@
     "pose": "DONUT_LIFT_ROLL-",
     "payload_g": 300.0,
     "tau": [
-     -2.35,
-     3.98,
+     -2.4,
+     4.03,
      1.24,
      0.06
     ]
@@ -318,8 +426,8 @@
     "pose": "DONUT_PLACE",
     "payload_g": 300.0,
     "tau": [
-     4.5,
-     -0.64,
+     4.59,
+     0.66,
      1.24,
      -0.01
     ]
@@ -328,8 +436,8 @@
     "pose": "PIPE_APPROACH",
     "payload_g": 0.0,
     "tau": [
-     -4.63,
-     3.5,
+     -4.74,
+     3.56,
      0.8,
      -0.01
     ]
@@ -338,8 +446,8 @@
     "pose": "PIPE_GRASP",
     "payload_g": 0.0,
     "tau": [
-     -4.11,
-     3.88,
+     -4.21,
+     3.94,
      0.8,
      -0.01
     ]
@@ -348,8 +456,8 @@
     "pose": "PIPE_GRASP_ROLL+",
     "payload_g": 0.0,
     "tau": [
-     -4.11,
-     3.88,
+     -4.21,
+     3.94,
      0.8,
      -0.13
     ]
@@ -358,8 +466,8 @@
     "pose": "PIPE_GRASP_ROLL-",
     "payload_g": 0.0,
     "tau": [
-     -4.11,
-     3.88,
+     -4.21,
+     3.94,
      0.8,
      0.1
     ]
@@ -368,8 +476,8 @@
     "pose": "PIPE_LIFT",
     "payload_g": 165.0,
     "tau": [
-     -2.34,
-     2.57,
+     -2.98,
+     3.1,
      1.04,
      -0.01
     ]
@@ -378,8 +486,8 @@
     "pose": "PIPE_CHUTE",
     "payload_g": 165.0,
     "tau": [
-     -0.7,
-     4.36,
+     -0.72,
+     4.42,
      -0.16,
      0.0
     ]
@@ -388,13 +496,21 @@
     "pose": "PIPE_CHUTE_ROLL90",
     "payload_g": 165.0,
     "tau": [
-     -0.7,
-     4.36,
+     -0.72,
+     4.42,
      0.06,
      0.0
     ]
    }
   ]
+ },
+ "catalogue": {
+  "keys": 31,
+  "units": 243,
+  "split": {
+   "DM-J4340-2EC": "4 parts = 2 units"
+  },
+  "fails": []
  },
  "summary": [
   {
@@ -406,27 +522,33 @@
   {
    "check": "interfaces",
    "ok": true,
-   "note": "4 sides",
-   "s": 0.0
+   "note": "8 sides",
+   "s": 0.1
   },
   {
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 6.1
+   "s": 6.3
   },
   {
    "check": "mass/torque",
    "ok": true,
-   "note": "past wrist 1040 g (head 836 g); worst static J1 4.63 J2 4.36 J3 1.24 N*m",
+   "note": "past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m",
    "s": 1.5
+  },
+  {
+   "check": "catalogue",
+   "ok": true,
+   "note": "31 keys, 243 purchased units match catalogue mass",
+   "s": 0.0
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 5.9
+   "s": 29.8
   }
  ],
- "elapsed_s": 31.2
+ "elapsed_s": 55.2
 }

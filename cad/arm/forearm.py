@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Forearm: FOREARM, ROCKER and the GT2 level-keeping pulley.
+"""Forearm: FOREARM, ROCKER, ROD2 and the level-keeping hubs.
+
+Level keeping stage 2 (elbow E -> wrist D) is a parallelogram: lever on the rocker at E and on the level member at D
+(both V2_LEN at V2_ANG, constant orientation) joined by ROD2 (length L3, parallel to the forearm). It replaced the
+GT2 belt (stiffer, no tension/skip). Dead points at th2 = V2_ANG and V2_ANG - 180 lie outside the task elbow range.
 """
 from arm.core import *  # noqa: F401,F403
 from arm.base import *  # noqa: F401,F403
@@ -7,33 +11,59 @@ from arm.upper_arm import *  # noqa: F401,F403
 
 from arm.core import _hull2  # noqa: F401
 
-def gt2_level_pulley(name):
-    """Custom GT2 30T pulley keyed to its plate by a hex (af19), bearing inside."""
-    body, chk, pd = H.gt2_pulley(GT2_T, -36.0, -25.5, 10.6, flange_t=0.75)
+
+def level_hub(name):
+    """Aluminium hub keyed to its plate by a hex (af19), 6700 bearing inside: the old GT2 pulley's axial stack
+    (y -39 .. -25.5) without the teeth, slimmed to D14 where rod 2 sweeps past (y -35 .. -31)."""
     hexk = H._hexprism(19, -39.0, -36.0)
-    pul = body.fuse(hexk).cut(ycyl(0, 0, -39.1, -35.0, 7.5)).cut(ycyl(0, 0, -43, -20, 5.3))
-    odr = (pd - 0.508) / 2
-    fr = odr + 1.5
-    chk = hexk.fuse(ycyl(0, 0, -36.0, -35.25, fr)).fuse(ycyl(0, 0, -35.25, -26.25, odr)).fuse(ycyl(0, 0, -26.25, -25.5, fr))
-    chk = chk.cut(ycyl(0, 0, -39.1, -35.0, 7.5)).cut(ycyl(0, 0, -43, -20, 5.3))
-    return [Part_(name, pul, chk, "AL", "custom: 6061 GT2 %dT hobbed, hex key af19" % GT2_T, "alu"),
-            P(name + "_Brg_6700", H.bearing(10, 15, 4, -39.0, 1), "CAT", "6700ZZ", "alu")], pd
+    hub = hexk.fuse(ycyl(0, 0, -36.0, -35.0, 9.5)).fuse(ycyl(0, 0, -35.0, -25.5, 7.0))
+    hub = hub.cut(ycyl(0, 0, -39.1, -35.0, 7.5)).cut(ycyl(0, 0, -43, -20, 5.3))
+    return [Part_(name, hub, hub, "AL", "custom: 6061 turned hub, hex key af19, 6700 seat", "alu"),
+            P(name + "_Brg_6700", H.bearing(10, 15, 4, -39.0, 1), "CAT", "6700ZZ", "alu")]
+
+
+def v2_pin(name, x, z, tapped=False):
+    """Stage-2 pin on a lever (rocker or level member, plate y -39..-36). From the inboard side: shoulder screw
+    head (y -30.5..-27), 0.5 washer (D7: inner race only), rod-2 MR105 inner race (-35..-31), 1 mm PTFE washer, the
+    plate. Nut version (CF level member): SB5x8, step 0.5 inside the plate, nyloc on the outboard face clamps the
+    stack. Tapped version (6061 rocker): SB5x6, step sits in a 0.5 counterbore, M4 thread engages the plate's own
+    3 mm, tip flush outboard - nothing in rod 1's layer (y -43.5..-40.5), which sweeps over this pin near th1 150."""
+    out = [P("Washer_" + name + "_head", at((ring(0, 0, -31.0, -30.5, 3.5, 2.6),) * 2, x, z), "SHIM",
+             "custom: 301 SS shim stock 0.5, laser cut", "steel"),
+           P("Washer_PTFE_" + name, at((ring(0, 0, -36.0, -35.0, 4.5, 2.6),) * 2, x, z), "PTFE",
+             "custom: PTFE sheet 1.0, laser cut", "pad")]
+    if tapped:
+        out.append(P("SB5x6_" + name, at(H.shoulder(5, 6.0, 4, 2.5, -30.5, -1), x, z), "CAT", "SB5", "steel",
+                     "M4 into the tapped 6061 rocker, threadlocker"))
+    else:
+        out.append(P("SB5x8_" + name, at(H.shoulder(5, 8.0, 4, 7.0, -30.5, -1), x, z), "CAT", "SB5", "steel"))
+        out.append(P("Nyloc_M4_" + name, at(H.nyloc(4, -39.0, -1), x, z), "CAT", "NYLOC", "steel"))
+    return out
+
+
+def body_rod2():
+    """Rod 2: CF plate ROD2_T x ROD2_W, pins L3 apart, MR105 in each eye, along +x from the rocker pin."""
+    L, yc, t, w = K["L3"], Y["ROD2"], ROD2_T, ROD2_W
+    # no lightening pockets: a 6 mm slot would drop the buckling load from ~340 N to ~210 N (SF < 2 at servo stall)
+    pl = plate([(0, 0, w / 2), (L, 0, w / 2)], yc, [(0, 0, 5.0), (L, 0, 5.0)], t=t)
+    # notch on the +z (upper) edge near the wrist: the four-bar's right sector gear passes there at PIPE_CHUTE (pitch 90).
+    # The hubs only ever come at the rod from -z, so this edge is free; the section there is 7 x 4 mm.
+    pl = pl.cut(_hull2(275.0, w / 2, 9.0, 295.0, w / 2, 9.0, yc - t / 2 - 1, t + 2))
+    out = [Part_("Rod_2_CF%d" % t, pl, pl, "CF", "custom: %g mm CF plate (DXF)" % t, "cf")]
+    for x in (0, L):
+        out.append(P("Brg_MR105_Rod_2_%d" % x, at(H.bearing(5, 10, 4, yc - t / 2, 1), x, 0), "CAT", "MR105ZZ", "alu"))
+    return out
 
 
 def body_forearm():
     L1, L3 = K["L1"], K["L3"]
     out = []
-    xs = [-L1, 0, L3 / 3, L3 / 2, 2 * L3 / 3, L3]
-    pd30 = GT2_T * 2.0 / math.pi
-    IZ = pd30 / 2 - 0.254 + 1.38 + 7.0                 # idler (r7) rides on the belt back
     pk = [((22, 0, 6), (L3 / 3 - 15, 0, 6)), ((L3 / 3 + 15, 0, 6), (L3 / 2 - 15, 0, 6)),
           ((L3 / 2 + 15, 0, 6), (2 * L3 / 3 - 15, 0, 6)), ((2 * L3 / 3 + 15, 0, 6), (L3 - 28, 0, 5))]
     for side, yc in (("L", Y["FL"]), ("R", -Y["FL"])):
         holes = [(0, 0, 5.0), (L3, 0, 7.5), (L3 / 3, 0, 1.65), (2 * L3 / 3, 0, 1.65), (-L1, 0, 2.1)]
-        lobes = [(-L1, 0, 9), (0, 0, 14), (L3, 0, 12)] + ([(L3 / 2, IZ, 6.5)] if side == "L" else [])
+        lobes = [(-L1, 0, 9), (0, 0, 14), (L3, 0, 12)]
         pl = plate(lobes, yc, holes, pockets=pk)
-        if side == "L":   # idler slot (tension adjust)
-            pl = pl.cut(_hull2(L3 / 2, IZ - 1.5, 2.1, L3 / 2, IZ + 1.5, 2.1, yc - T / 2 - 1, T + 2))
         out.append(Part_("Forearm_%s_CF3" % side, pl, pl, "CF", "custom: 3 mm CF plate (DXF)", "cf"))
     out.append(P("Brg_6700_Wrist_FA_L", at(H.bearing(10, 15, 4, -19.5, 1), L3, 0), "CAT", "6700ZZ", "alu"))
     out.append(P("Brg_6700_Wrist_FA_R", at(H.bearing(10, 15, 4, 19.5, -1), L3, 0), "CAT", "6700ZZ", "alu"))
@@ -57,30 +87,21 @@ def body_forearm():
     out.append(P("Spacer_B", at((ring(0, 0, 19.5, 27.5, 4.5, 2.6),) * 2, -L1, 0), "AL", "custom: D9/D5.2 x 8 alu", "alu"))
     out.append(P("SB5x12_B", at(H.shoulder(5, 12, 4, 8, 31.5, -1), -L1, 0), "CAT", "SB5", "steel"))
     out.append(P("Nyloc_M4_B", at(H.nyloc(4, 16.5, -1), -L1, 0), "CAT", "NYLOC", "steel"))
-    # belt idler (tensioner) on forearm L, in the belt plane
-    ix, iz = L3 / 2, IZ
-    out.append(Part_("Belt_Idler_Roller", ring(ix, iz, -36, -26, 7.0, 5.0), ring(ix, iz, -36, -26, 7.0, 5.0),
-                     "PRINT", "custom: printed roller", "pla"))
-    out.append(P("Belt_Idler_Brg_MR104", at(H.bearing(4, 10, 4, -35.0, 1), ix, iz), "CAT", "MR104ZZ", "alu"))
-    out.append(P("Belt_Idler_Brg_MR104_b", at(H.bearing(4, 10, 4, -27.0, -1), ix, iz), "CAT", "MR104ZZ", "alu"))
-    out.append(P("Belt_Idler_Spacer", at((ring(0, 0, -26.0, -19.5, 4.0, 2.1),) * 2, ix, iz), "AL", "custom: D8/D4.2 x 6.5", "alu"))
-    out.append(P("SHCS_M4x30_idler", at(H.screw("SHCS", 4, 30.0, -36.0, 1), ix, iz), "CAT", "SHCS", "steel"))   # 91290A172
-    out.append(P("Nyloc_M4_idler", at(H.nyloc(4, -16.5, 1), ix, iz), "CAT", "NYLOC", "steel"))
-    # stage-2 belt (forearm frame: wraps E pulley at x=0 and D pulley at x=L3)
-    _b, _c, pd = H.gt2_pulley(GT2_T, -33.0, -25.5, 10.6)
-    belt, bchk = H.gt2_belt(L3, -35.25, -26.25, pd)
-    out.append(Part_("GT2_Belt_9mm_Stage2", belt, bchk, "CAT", "GT2-BELT", "motor", "GT2 9 mm (2GT-9), clamp-spliced, tensioned by idler"))
     return out
 
 
 def body_rocker():
     v1 = u(K["V1_ANG"], K["V1_LEN"])
+    v2 = u(K["V2_ANG"], K["V2_LEN"])
     yc = Y["ROCK"]
-    pl = plate([(0, 0, 15), (v1[0], v1[1], 8.5)], yc, [(v1[0], v1[1], 2.55)])   # D5.1: takes the stock 5 mm shoulder
+    # Ev2 is a nut-clamped pin like Dv2: with the levers up (V2_ANG 72.7) rod 1 never comes near its outboard nut.
+    # (A tapped 6061 rocker with a flush pin was needed only while the levers pointed down.)
+    pl = plate([(0, 0, 15), (v1[0], v1[1], 8.5), (v2[0], v2[1], 8.5)], yc,
+               [(v1[0], v1[1], 2.55), (v2[0], v2[1], 2.55)])   # D5.1: takes the stock 5 mm shoulders
     pl = pl.cut(hexhole(19, 0, 0, yc - 2, yc + 2))
     out = [Part_("Level_Rocker_CF3", pl, pl, "CF", "custom: 3 mm CF plate (DXF), hex af19", "cf")]
-    pul, _pd = gt2_level_pulley("GT2_Pulley_Elbow")
-    out += pul
+    out += level_hub("Level_Hub_Elbow")
+    out += v2_pin("Ev2", *v2)
     out.append(P("Sleeve_E_outer", (ring(0, 0, -44.0, -39.0, 6.5, 5.05),) * 2,
                  "AL", "custom: D13/D10 sleeve", "alu"))
     out.append(P("Washer_PTFE_E", (ring(0, 0, -25.5, -19.5, 6.5, 5.05),) * 2, "PTFE", "custom: PTFE rod D13, turned thrust sleeve", "pad"))

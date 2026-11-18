@@ -48,28 +48,33 @@ def main():
     bodies = M.build_bodies()
     parts = {(bn, p.name): p for bn, ps in bodies.items() for p in ps}
     report, ok_all = [], True
+    def probe(I, sk, side, part_name, pts, n):
+        p = parts.get((side["body"], part_name))
+        if p is None:
+            report.append(dict(interface=I.name, side=sk, part=part_name, status="MISSING"))
+            print("INTERFACE %-24s %-6s %-22s MISSING" % (I.name, sk, part_name))
+            return False
+        r_exp = expected_r(side)
+        res = []
+        for (x, y, z) in pts:
+            got = holes_on_axis(p.chk, App.Vector(x, y, z), n, r_exp)
+            good = bool(got) and (r_exp is None and min(got) <= 1.7 or r_exp is not None and any(abs(g - r_exp) < 0.01 for g in got))
+            res.append(dict(x=round(x, 3), y=round(y, 3), z=round(z, 3), radii=got, ok=good))
+        st = "PASS" if all(h["ok"] for h in res) else "FAIL"
+        report.append(dict(interface=I.name, side=sk, part=part_name, expected_r=r_exp, status=st, holes=res))
+        print("INTERFACE %-24s %-6s %-22s %s" % (I.name, sk, part_name, st))
+        return st == "PASS"
+
     for I in iface.all_interfaces():
-        if "pattern" not in I:
-            continue
+        if "pattern" not in I and "stations" not in I:
+            continue                               # data-only interface (e.g. vendor tables): not probe-able
         n = App.Vector(*I["frame"]["normal"])
-        x0 = I.frame_x
+        pts = I.points()
         for sk in ("side_a", "side_b"):
-            side = I[sk]
-            p = parts.get((side["body"], side["part"]))
-            if p is None:
-                report.append(dict(interface=I.name, side=sk, part=side["part"], status="MISSING"))
-                ok_all = False
-                continue
-            r_exp = expected_r(side)
-            res = []
-            for (y, z) in I.points_yz():
-                got = holes_on_axis(p.chk, App.Vector(x0, y, z), n, r_exp)
-                good = bool(got) and (r_exp is None and min(got) <= 1.7 or r_exp is not None and any(abs(g - r_exp) < 0.01 for g in got))
-                res.append(dict(y=round(y, 3), z=round(z, 3), radii=got, ok=good))
-            st = "PASS" if all(h["ok"] for h in res) else "FAIL"
-            ok_all &= st == "PASS"
-            report.append(dict(interface=I.name, side=sk, part=side["part"], expected_r=r_exp, status=st, holes=res))
-            print("INTERFACE %-24s %-6s %-22s %s" % (I.name, sk, side["part"], st))
+            ok_all &= probe(I, sk, I[sk], I[sk]["part"], pts, n)
+        if "spacer" in I:                          # one spacer per station, each probed at its own station
+            for i, pt in enumerate(pts):
+                ok_all &= probe(I, "spacer", I["spacer"], "%s%d" % (I["spacer"]["part_prefix"], i), [pt], n)
     out = os.path.join(CAD, "out", VARIANT)
     os.makedirs(out, exist_ok=True)
     json.dump(dict(variant=VARIANT, ok=ok_all, report=report), open(os.path.join(out, "interfaces.json"), "w"), indent=1)

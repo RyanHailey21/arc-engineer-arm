@@ -42,12 +42,11 @@
     <mesh name="rocker__pad" file="meshes/visual/rocker__pad.stl" />
     <mesh name="rocker__steel" file="meshes/visual/rocker__steel.stl" />
     <mesh name="rocker__Level_Rocker_CF3" file="meshes/collision/rocker__Level_Rocker_CF3.stl" />
-    <mesh name="rocker__GT2_Pulley_Elbow" file="meshes/collision/rocker__GT2_Pulley_Elbow.stl" />
+    <mesh name="rocker__Level_Hub_Elbow" file="meshes/collision/rocker__Level_Hub_Elbow.stl" />
+    <mesh name="rocker__SB5x8_Ev2" file="meshes/collision/rocker__SB5x8_Ev2.stl" />
     <mesh name="rocker__SB5x4_Ev1" file="meshes/collision/rocker__SB5x4_Ev1.stl" />
     <mesh name="forearm__alu" file="meshes/visual/forearm__alu.stl" />
     <mesh name="forearm__cf" file="meshes/visual/forearm__cf.stl" />
-    <mesh name="forearm__motor" file="meshes/visual/forearm__motor.stl" />
-    <mesh name="forearm__pla" file="meshes/visual/forearm__pla.stl" />
     <mesh name="forearm__steel" file="meshes/visual/forearm__steel.stl" />
     <mesh name="forearm__Forearm_L_CF3" file="meshes/collision/forearm__Forearm_L_CF3.stl" />
     <mesh name="forearm__Forearm_R_CF3" file="meshes/collision/forearm__Forearm_R_CF3.stl" />
@@ -55,7 +54,6 @@
     <mesh name="forearm__FA_Standoff_D8_0" file="meshes/collision/forearm__FA_Standoff_D8_0.stl" />
     <mesh name="forearm__FA_Standoff_D8_1" file="meshes/collision/forearm__FA_Standoff_D8_1.stl" />
     <mesh name="forearm__SB5x12_B" file="meshes/collision/forearm__SB5x12_B.stl" />
-    <mesh name="forearm__GT2_Belt_9mm_Stage2" file="meshes/collision/forearm__GT2_Belt_9mm_Stage2.stl" />
     <mesh name="crank__alu" file="meshes/visual/crank__alu.stl" />
     <mesh name="crank__cf" file="meshes/visual/crank__cf.stl" />
     <mesh name="crank__steel" file="meshes/visual/crank__steel.stl" />
@@ -68,10 +66,15 @@
     <mesh name="level__alu" file="meshes/visual/level__alu.stl" />
     <mesh name="level__cf" file="meshes/visual/level__cf.stl" />
     <mesh name="level__motor" file="meshes/visual/level__motor.stl" />
+    <mesh name="level__pad" file="meshes/visual/level__pad.stl" />
     <mesh name="level__steel" file="meshes/visual/level__steel.stl" />
     <mesh name="level__Wrist_Level_Member_CF3" file="meshes/collision/level__Wrist_Level_Member_CF3.stl" />
-    <mesh name="level__GT2_Pulley_Wrist" file="meshes/collision/level__GT2_Pulley_Wrist.stl" />
+    <mesh name="level__Level_Hub_Wrist" file="meshes/collision/level__Level_Hub_Wrist.stl" />
+    <mesh name="level__SB5x8_Dv2" file="meshes/collision/level__SB5x8_Dv2.stl" />
     <mesh name="level__J3_Wrist_Servo_DS3225" file="meshes/collision/level__J3_Wrist_Servo_DS3225.stl" />
+    <mesh name="rod2__alu" file="meshes/visual/rod2__alu.stl" />
+    <mesh name="rod2__cf" file="meshes/visual/rod2__cf.stl" />
+    <mesh name="rod2__Rod_2_CF4" file="meshes/collision/rod2__Rod_2_CF4.stl" />
     <mesh name="gripper_frame__alu" file="meshes/visual/gripper_frame__alu.stl" />
     <mesh name="gripper_frame__brass" file="meshes/visual/gripper_frame__brass.stl" />
     <mesh name="gripper_frame__cf" file="meshes/visual/gripper_frame__cf.stl" />
@@ -138,7 +141,7 @@
       <geom class="collision" mesh="base_link__SB5x10_G1" pos="0 0 0" />
       <geom class="collision" mesh="base_link__ESC_C610" pos="0 0 0" />
       <body name="upper" pos="-0.16 0 0.215">
-        <inertial pos="0.068069 -0.028854 0.000071" mass="0.220498" fullinertia="3.3507e-04 2.4268e-03 2.7210e-03 -4.1551e-04 -1.5898e-06 3.6466e-07" />
+        <inertial pos="0.059859 -0.028665 0.00007" mass="0.221946" fullinertia="3.3948e-04 2.0569e-03 2.3550e-03 -3.6870e-04 -8.9900e-07 3.6760e-07" />
         <joint name="shoulder" type="hinge" axis="0 -1 0" range="0.00000 3.14159" armature="0.016" />
         <site name="upper_cad" pos="0 0 0" size="0.004" group="5" />
         <geom class="visual" mesh="upper__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
@@ -159,7 +162,7 @@
         <geom class="visual" mesh="rod1__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
         <geom class="collision" mesh="rod1__Rod_1_CF3" pos="0 0 0" />
         <body name="rocker" pos="0.34 0 0">
-          <inertial pos="0.043161 -0.036273 0.009174" mass="0.022766" fullinertia="2.2455e-06 2.1674e-05 2.0700e-05 -1.9268e-06 -4.1083e-06 -4.0956e-07" />
+          <inertial pos="0.04981 -0.036813 0.022104" mass="0.031758" fullinertia="1.3774e-05 4.1726e-05 2.9266e-05 -1.8609e-06 -1.3882e-05 -8.4470e-07" />
           <joint name="rocker_joint" type="hinge" axis="0 -1 0" />
           <site name="rocker_cad" pos="0.06847 0 0.014554" size="0.004" group="5" />
           <geom class="visual" mesh="rocker__alu" pos="0.06847 0 0.014554" rgba="0.8 0.81 0.84 1" />
@@ -167,16 +170,15 @@
           <geom class="visual" mesh="rocker__pad" pos="0.06847 0 0.014554" rgba="0.12 0.35 0.85 1" />
           <geom class="visual" mesh="rocker__steel" pos="0.06847 0 0.014554" rgba="0.3 0.31 0.33 1" />
           <geom class="collision" mesh="rocker__Level_Rocker_CF3" pos="0.06847 0 0.014554" />
-          <geom class="collision" mesh="rocker__GT2_Pulley_Elbow" pos="0.06847 0 0.014554" />
+          <geom class="collision" mesh="rocker__Level_Hub_Elbow" pos="0.06847 0 0.014554" />
+          <geom class="collision" mesh="rocker__SB5x8_Ev2" pos="0.06847 0 0.014554" />
           <geom class="collision" mesh="rocker__SB5x4_Ev1" pos="0.06847 0 0.014554" />
           <body name="forearm" pos="0.06847 0 0.014554">
-            <inertial pos="0.069355 -0.001457 0.001051" mass="0.228960" fullinertia="1.1658e-04 2.9915e-03 3.0830e-03 7.0563e-05 -2.5169e-05 4.8485e-06" />
-            <joint name="elbow" type="hinge" axis="0 -1 0" range="-1.91986 1.22173" armature="0.016" />
+            <inertial pos="0.059459 0.000662 0" mass="0.209353" fullinertia="1.0016e-04 2.6343e-03 2.7184e-03 1.9315e-05 -5.0281e-21 -3.7765e-23" />
+            <joint name="elbow" type="hinge" axis="0 -1 0" range="-1.50098 0.89012" armature="0.016" />
             <site name="forearm_cad" pos="0 0 0" size="0.004" group="5" />
             <geom class="visual" mesh="forearm__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
             <geom class="visual" mesh="forearm__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
-            <geom class="visual" mesh="forearm__motor" pos="0 0 0" rgba="0.08 0.08 0.09 1" />
-            <geom class="visual" mesh="forearm__pla" pos="0 0 0" rgba="0.9 0.32 0.06 1" />
             <geom class="visual" mesh="forearm__steel" pos="0 0 0" rgba="0.3 0.31 0.33 1" />
             <geom class="collision" mesh="forearm__Forearm_L_CF3" pos="0 0 0" />
             <geom class="collision" mesh="forearm__Forearm_R_CF3" pos="0 0 0" />
@@ -184,17 +186,18 @@
             <geom class="collision" mesh="forearm__FA_Standoff_D8_0" pos="0 0 0" />
             <geom class="collision" mesh="forearm__FA_Standoff_D8_1" pos="0 0 0" />
             <geom class="collision" mesh="forearm__SB5x12_B" pos="0 0 0" />
-            <geom class="collision" mesh="forearm__GT2_Belt_9mm_Stage2" pos="0 0 0" />
             <body name="level" pos="0.35 0 0">
-              <inertial pos="-0.007911 -0.059399 0.004567" mass="0.086393" fullinertia="2.8567e-05 2.1837e-05 3.6597e-05 -1.7305e-06 6.9540e-06 9.9910e-07" />
+              <inertial pos="-0.006412 -0.05785 0.007955" mass="0.093269" fullinertia="3.9972e-05 3.3537e-05 4.2506e-05 -4.7611e-06 2.2438e-06 -6.2096e-06" />
               <joint name="level_joint" type="hinge" axis="0 -1 0" />
               <site name="level_cad" pos="0 0 0" size="0.004" group="5" />
               <geom class="visual" mesh="level__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
               <geom class="visual" mesh="level__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
               <geom class="visual" mesh="level__motor" pos="0 0 0" rgba="0.08 0.08 0.09 1" />
+              <geom class="visual" mesh="level__pad" pos="0 0 0" rgba="0.12 0.35 0.85 1" />
               <geom class="visual" mesh="level__steel" pos="0 0 0" rgba="0.3 0.31 0.33 1" />
               <geom class="collision" mesh="level__Wrist_Level_Member_CF3" pos="0 0 0" />
-              <geom class="collision" mesh="level__GT2_Pulley_Wrist" pos="0 0 0" />
+              <geom class="collision" mesh="level__Level_Hub_Wrist" pos="0 0 0" />
+              <geom class="collision" mesh="level__SB5x8_Dv2" pos="0 0 0" />
               <geom class="collision" mesh="level__J3_Wrist_Servo_DS3225" pos="0 0 0" />
               <body name="gripper_frame" pos="0 0 0">
                 <inertial pos="0.024468 -0.003209 0.00195" mass="0.204898" fullinertia="1.1452e-04 1.3011e-04 1.5254e-04 -1.6354e-05 -1.1821e-06 -1.3002e-06" />
@@ -213,7 +216,7 @@
                 <geom class="collision" mesh="gripper_frame__J4_Roll_Servo_DS3225" pos="0 0 0" />
                 <geom class="collision" mesh="gripper_frame__Brg_6805_Roll" pos="0 0 0" />
                 <body name="head" pos="0 0 -0.005">
-                  <inertial pos="0.076714 0.023268 0.010172" mass="0.149885" fullinertia="2.1149e-04 5.5607e-05 1.9891e-04 -1.6164e-05 -6.0123e-06 2.0406e-05" />
+                  <inertial pos="0.076782 0.023194 0.010017" mass="0.148853" fullinertia="2.0868e-04 5.4978e-05 1.9653e-04 -1.6272e-05 -6.2380e-06 2.0654e-05" />
                   <joint name="wrist_roll" type="hinge" axis="1 0 0" range="-1.65806 1.65806" armature="0.002" />
                   <site name="head_cad" pos="0 0 0.005" size="0.004" group="5" />
                   <geom class="visual" mesh="head__alu" pos="0 0 0.005" rgba="0.8 0.81 0.84 1" />
@@ -286,6 +289,14 @@
               </body>
             </body>
           </body>
+          <body name="rod2" pos="0.081257 0 0.055609">
+            <inertial pos="0.169096 -0.033 -0.000203" mass="0.035488" fullinertia="7.7970e-07 4.1405e-04 4.1337e-04 -4.9390e-20 8.3493e-07 8.2086e-23" />
+            <joint name="rod2_joint" type="hinge" axis="0 -1 0" />
+            <site name="rod2_cad" pos="0 0 0" size="0.004" group="5" />
+            <geom class="visual" mesh="rod2__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
+            <geom class="visual" mesh="rod2__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
+            <geom class="collision" mesh="rod2__Rod_2_CF4" pos="0 0 0" />
+          </body>
         </body>
       </body>
       <body name="crank" pos="-0.16 0 0.215" quat="0 0 -1 0">
@@ -321,6 +332,7 @@
     <joint joint1="crank_pin_joint" joint2="elbow" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
     <joint joint1="rod_ab_joint" joint2="shoulder" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
     <joint joint1="level_joint" joint2="elbow" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
+    <joint joint1="rod2_joint" joint2="elbow" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
     <joint joint1="jaw_l_joint" joint2="gripper" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
     <joint joint1="lk_li_joint" joint2="gripper" polycoef="0 1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
     <joint joint1="lk_rd_joint" joint2="gripper" polycoef="0 -1 0 0 0" solref="0.002 1" solimp="0.99 0.999 0.0005" />
@@ -329,19 +341,19 @@
   </equality>
   <actuator>
     <position name="shoulder" joint="shoulder" kp="800" kv="40" ctrlrange="0.00000 3.14159" forcerange="-27 27" />
-    <position name="elbow" joint="elbow" kp="800" kv="40" ctrlrange="-1.91986 1.22173" forcerange="-27 27" />
+    <position name="elbow" joint="elbow" kp="800" kv="40" ctrlrange="-1.50098 0.89012" forcerange="-27 27" />
     <position name="wrist_pitch" joint="wrist_pitch" kp="60" kv="3" ctrlrange="-0.52360 2.09440" forcerange="-2.4 2.4" />
     <position name="wrist_roll" joint="wrist_roll" kp="30" kv="1.5" ctrlrange="-1.65806 1.65806" forcerange="-2.4 2.4" />
     <position name="gripper" joint="gripper" kp="50" kv="2.5" ctrlrange="0.00000 1.10301" forcerange="-2.94 2.94" />
   </actuator>
   <sensor />
   <keyframe>
-    <key name="stow" qpos="2.792527 2.792527 -2.792527 0.174533 -0.174533 0 0 0.186663 -0.186663 0.186663 -0.186663 0.186663 -0.186663 0.174533 -0.174533 2.792527" ctrl="2.792527 0.174533 0 0 0.186663" />
-    <key name="donut_approach" qpos="2.018497 2.018497 -2.018497 -0.613447 0.613447 0 0 1.103012 -1.103012 1.103012 -1.103012 1.103012 -1.103012 -0.613447 0.613447 2.018497" ctrl="2.018497 -0.613447 0 0 1.103012" />
-    <key name="donut_lift" qpos="1.988141 1.988141 -1.988141 0.658524 -0.658524 0 0 0.953123 -0.953123 0.953123 -0.953123 0.953123 -0.953123 0.658524 -0.658524 1.988141" ctrl="1.988141 0.658524 0 0 0.953123" />
-    <key name="donut_lift_roll_pos" qpos="1.988141 1.988141 -1.988141 0.658524 -0.658524 0 0.436332 0.953123 -0.953123 0.953123 -0.953123 0.953123 -0.953123 0.658524 -0.658524 1.988141" ctrl="1.988141 0.658524 0 0.436332 0.953123" />
-    <key name="pipe_grasp" qpos="2.596963 2.596963 -2.596963 0.241912 -0.241912 0 0 0 0 0 0 0 0 0.241912 -0.241912 2.596963" ctrl="2.596963 0.241912 0 0 0" />
-    <key name="pipe_chute" qpos="1.701987 1.701987 -1.701987 -0.298942 0.298942 1.570796 0 0 0 0 0 0 0 -0.298942 0.298942 1.701987" ctrl="1.701987 -0.298942 1.570796 0 0" />
-    <key name="pipe_chute_roll90" qpos="1.701987 1.701987 -1.701987 -0.298942 0.298942 1.570796 1.570796 0 0 0 0 0 0 -0.298942 0.298942 1.701987" ctrl="1.701987 -0.298942 1.570796 1.570796 0" />
+    <key name="stow" qpos="2.792527 2.792527 -2.792527 0.174533 -0.174533 0 0 0.186663 -0.186663 0.186663 -0.186663 0.186663 -0.186663 0.174533 0.174533 -0.174533 2.792527" ctrl="2.792527 0.174533 0 0 0.186663" />
+    <key name="donut_approach" qpos="2.018497 2.018497 -2.018497 -0.613447 0.613447 0 0 1.103012 -1.103012 1.103012 -1.103012 1.103012 -1.103012 -0.613447 -0.613447 0.613447 2.018497" ctrl="2.018497 -0.613447 0 0 1.103012" />
+    <key name="donut_lift" qpos="1.988141 1.988141 -1.988141 0.658524 -0.658524 0 0 0.953123 -0.953123 0.953123 -0.953123 0.953123 -0.953123 0.658524 0.658524 -0.658524 1.988141" ctrl="1.988141 0.658524 0 0 0.953123" />
+    <key name="donut_lift_roll_pos" qpos="1.988141 1.988141 -1.988141 0.658524 -0.658524 0 0.436332 0.953123 -0.953123 0.953123 -0.953123 0.953123 -0.953123 0.658524 0.658524 -0.658524 1.988141" ctrl="1.988141 0.658524 0 0.436332 0.953123" />
+    <key name="pipe_grasp" qpos="2.596963 2.596963 -2.596963 0.241912 -0.241912 0 0 0 0 0 0 0 0 0.241912 0.241912 -0.241912 2.596963" ctrl="2.596963 0.241912 0 0 0" />
+    <key name="pipe_chute" qpos="1.701987 1.701987 -1.701987 -0.298942 0.298942 1.570796 0 0 0 0 0 0 0 -0.298942 -0.298942 0.298942 1.701987" ctrl="1.701987 -0.298942 1.570796 0 0" />
+    <key name="pipe_chute_roll90" qpos="1.701987 1.701987 -1.701987 -0.298942 0.298942 1.570796 1.570796 0 0 0 0 0 0 -0.298942 -0.298942 0.298942 1.701987" ctrl="1.701987 -0.298942 1.570796 1.570796 0" />
   </keyframe>
 </mujoco>
