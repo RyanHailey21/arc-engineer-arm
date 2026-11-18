@@ -125,6 +125,49 @@ class TaskSim:
             self.viewer = mujoco.viewer.launch_passive(m, d)
         self.report, self.phase = [], None
         self.t_wall = time.perf_counter()
+        self.video, self.task_label = None, ""
+
+    def record(self, path, w=1280, h=720, fps=30, crf=26):
+        """Offscreen H.264 video (imageio-ffmpeg): camera follows the chassis, phase captions, drives at 2x."""
+        import imageio_ffmpeg
+        mj, m = self.mj, self.model
+        m.vis.global_.offwidth, m.vis.global_.offheight = max(w, m.vis.global_.offwidth), max(h, m.vis.global_.offheight)
+        self.renderer = mj.Renderer(m, h, w)
+        self.cam = mj.MjvCamera()
+        self.cam.type = mj.mjtCamera.mjCAMERA_FREE
+        self.cam.distance, self.cam.azimuth, self.cam.elevation = 1.55, 140.0, -20.0
+        self.chassis_id = mj.mj_name2id(m, mj.mjtObj.mjOBJ_BODY, "chassis")
+        self.fps, self.next_frame, self.frames = fps, 0.0, 0
+        self.video = imageio_ffmpeg.write_frames(path, (w, h), fps=fps, codec="libx264", pix_fmt_out="yuv420p",
+                                                 output_params=["-crf", str(crf), "-preset", "slow", "-movflags", "+faststart"])
+        self.video.send(None)
+        from PIL import ImageFont
+        try:
+            self.font = ImageFont.truetype("arialbd.ttf", 30)
+            self.font_s = ImageFont.truetype("arial.ttf", 22)
+        except OSError:
+            self.font = self.font_s = ImageFont.load_default()
+
+    def _frame(self):
+        from PIL import Image, ImageDraw
+        d = self.data
+        self.cam.lookat[:] = d.xpos[self.chassis_id] + np.array([0.08, 0.0, 0.33])
+        self.renderer.update_scene(d, camera=self.cam)
+        img = Image.fromarray(self.renderer.render())
+        dr = ImageDraw.Draw(img, "RGBA")
+        name = self.phase["phase"] if self.phase else ""
+        fast = name.startswith("drive")
+        dr.rectangle([0, 0, img.width, 92], fill=(0, 0, 0, 150))
+        dr.text((24, 12), "%s%s" % (self.task_label, name), font=self.font, fill=(255, 255, 255, 255))
+        dr.text((24, 54), "ARC S2 Engineer arm, four-bar gripper  |  MuJoCo  |  t = %.1f s%s"
+                % (d.time, "   (2x)" if fast else ""), font=self.font_s, fill=(210, 210, 210, 255))
+        self.video.send(np.ascontiguousarray(np.asarray(img)))
+        self.frames += 1
+
+    def finish_video(self):
+        if self.video is not None:
+            self.video.close()
+            self.video = None
 
     # ---------------------------------------------------------------- low level
     def _apply(self):
@@ -149,6 +192,10 @@ class TaskSim:
                         continue
                     k = "%s:%s / %s" % (a[0], a[1], b[1])
                     self.phase["contacts"][k] = max(self.phase["contacts"].get(k, 0.0), -1000.0 * c.dist)
+        if self.video is not None and self.data.time >= self.next_frame:
+            self._frame()
+            fast = self.phase is not None and self.phase["phase"].startswith("drive")
+            self.next_frame = self.data.time + (2.0 if fast else 1.0) / self.fps
         if self.viewer is not None:
             self.viewer.sync()
             lag = self.data.time - (time.perf_counter() - self.t_wall)
@@ -371,6 +418,7 @@ def main():
     ap.add_argument("--task", default="both", choices=("donut", "pipe", "both"))
     ap.add_argument("--no-viewer", action="store_true", help="run headless, faster than real time")
     ap.add_argument("--speed", type=float, default=0.5, help="fraction of each joint's speed limit")
+    ap.add_argument("--video", help="write an MP4 (1280x720, 30 fps, drives at 2x); needs imageio-ffmpeg")
     a = ap.parse_args()
     root = os.path.join(REPO, "sim", "arc_arm_%s" % a.variant)
     tp = json.load(open(os.path.join(root, "task_poses.json"), encoding="utf-8"))
@@ -386,18 +434,28 @@ def main():
     if worst > 1e-6:
         sys.exit("IK/jaw copy disagrees with CAD by %.2g deg" % worst)
     sim = TaskSim(a.variant, viewer=not a.no_viewer, speed=a.speed)
+    if a.video:
+        sim.record(a.video)
     sim.begin("settle at STOW (start)")
     sim.settle(0.5)
     sim.end()
     result = dict(variant=a.variant, ik_vs_cad_max_deg=worst)
     try:
         if a.task in ("donut", "both"):
+            sim.task_label = "Donut: "
             result["donut"] = donut_task(sim, kin, tp, F)
             print("donut:", result["donut"])
         if a.task in ("pipe", "both"):
+            sim.task_label = "Pipe: "
             result["pipe"] = pipe_task(sim, kin, tp, F)
             print("pipe:", result["pipe"])
+        if a.video:
+            sim.task_label = ""
+            sim.begin("done: donut on the platform, pipe in the chute")
+            sim.settle(2.0)
+            sim.end()
     finally:
+        sim.finish_video()
         result["phases"] = sim.report
         result["sim_time_s"] = round(sim.data.time, 2)
         json.dump(result, open(os.path.join(root, "task_run.json"), "w", encoding="utf-8"), indent=1)

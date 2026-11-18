@@ -291,7 +291,17 @@
    },
    "t1": 74.32,
    "max_track_err_deg": 0.48
+  },
+  {
+   "phase": "done: donut on the platform, pipe in the chute",
+   "t0": 74.32,
+   "contacts": {
+    "donut:donut / scoring_platform": 0.004780040938640734,
+    "pipe:pipe / chute_below": 0.11955986481215763
+   },
+   "t1": 76.32,
+   "max_track_err_deg": 0.48
   }
  ],
- "sim_time_s": 74.32
+ "sim_time_s": 76.32
 }

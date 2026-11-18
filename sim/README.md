@@ -40,6 +40,8 @@ python cad/sim/tasks.py --task both
 
 Add `--no-viewer` to run headless, faster than real time. The run writes `arc_arm_fourbar/task_run.json`.
 
+Add `--video sim/media/arc_arm_tasks.mp4` to render the run: 1280×720, 30 fps, H.264, captions per phase, drives at 2×. It needs `imageio-ffmpeg`. A rendered copy is in [`media/arc_arm_tasks.mp4`](media/arc_arm_tasks.mp4) (51 s, 3.1 MB).
+
 - **Scene** (`tasks.xml`, built by `cad/sim/build_tasks.py` from `task_field.json`):
   - The arm rides on a chassis with x/y slide joints, an abstraction of the drivetrain.
   - The four CAD field stations sit side by side: donut pick (lower tier, zigzag pole, donut), scoring platform, pipe bucket, and wall with chute. All are built from primitives, so contacts are exact.
