@@ -1,7 +1,1 @@
-Fastener seating (FOURBAR, STOW): 116 screws/pins, 134 seat points -> 6 FAIL
-FAIL Dowel_4x5_J1_Output_Hub_0        end A      at (-164.1, -53.0, 203.7)  inside solid J1_Motor_DM-J4340_stator, no coaxial hole
-FAIL Dowel_4x5_J1_Output_Hub_1        end A      at (-148.2, -53.0, 217.1)  inside solid J1_Motor_DM-J4340_stator, no coaxial hole
-FAIL Dowel_4x5_J1_Output_Hub_2        end A      at (-167.7, -53.0, 224.2)  inside solid J1_Motor_DM-J4340_stator, no coaxial hole
-FAIL Dowel_4x5_J2_Output_Hub_Journal_0 end B      at (-157.9, 53.0, 203.2)  no coaxial hole and no material (pocket, gap or off-axis hole)
-FAIL Dowel_4x5_J2_Output_Hub_Journal_1 end B      at (-171.3, 53.0, 219.1)  no coaxial hole and no material (pocket, gap or off-axis hole)
-FAIL Dowel_4x5_J2_Output_Hub_Journal_2 end B      at (-150.8, 53.0, 222.7)  no coaxial hole and no material (pocket, gap or off-axis hole)
+Fastener seating (FOURBAR, STOW): 116 screws/pins, 134 seat points -> 0 FAIL

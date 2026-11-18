@@ -22,7 +22,7 @@ against its `tool_use` (142 errors in 19,040 lines up to 2026-11-17 04:30Z).
 | TI-013 | 2026-11-16 | Quick-check mock contradicted the fingerprint mock (CHANGED vs MATCH) on the refactor case | fixed |
 | TI-014 | 2026-11-16 | Ceiling cases (drawings, stale) pass in both arms: they test the fixture's CLAUDE.md, not the plugin | open: plan |
 | TI-015 | 2026-11-17 | No check compares purchased-part mass with the catalogue (DM-J4340 counted twice; GT2 belt weighs 0 g) | fixed: quick_check `catalogue` line + test |
-| TI-016 | 2026-11-17 | Moved standoffs left their plate holes behind; interference passed (pocket), no check caught it | fixed: tools/check_seated.py; 6 dowel findings to triage |
+| TI-016 | 2026-11-17 | Moved standoffs left their plate holes behind; interference passed (pocket), no check caught it | fixed: tools/check_seated.py; 6 dowel findings triaged 2026-11-18 (DM rotor split) |
 | TI-017 | 2026-11-17 | check_engagement skipped SB5 shoulder screws (exact name match), then SetScrew_* (case) | fixed: match by catalogue key + test |
 | TI-018 | 2026-11-17 | freecadcmd swallows tracebacks (exit 1, no output) and prints nothing for short scripts | fixed: tools/run.py |
 | TI-019 | 2026-11-17 | quick_check doesn't run the new level-keeping linkage check | open: plan |
@@ -278,7 +278,7 @@ Run with `freecadcmd -c "exec(open(r'cad/tests/test_catalogue_mass.py').read())"
   still reported. Results: SCREW 33 keys / 242 units PASS, FOURBAR 28 / 174 PASS. quick_check PASSes and both
   fingerprints MATCH.
 
-## TI-016: a moved standoff left its plate holes behind and no check caught it  (fixed: new check; findings to triage)
+## TI-016: a moved standoff left its plate holes behind and no check caught it  (fixed: new check; findings triaged)
 
 **What happened** (main session, 2026-11-17).
 - The upper-arm standoffs were moved through `UA_CLIP_X`, but the UA plate holes and pocket layout stayed
@@ -310,6 +310,26 @@ into `interfaces/` are probed for holes, so a mate nobody formalised isn't check
 Either the dowel positions are off, or the vendor motor model lacks its dowel holes (and the J2 journal side has a
 gap). If they are intended, the check needs a reviewed exemption list in data, with a reason per entry, not a
 silent skip.
+
+**Triage (2026-11-18): modelling gap, fixed; no checker exemption.**
+- Not a checker limitation and not a dowel position error. The vendor STEP (`DM-J4340-2EC-V1.1.stp`) does have
+  all three D4 dowel holes at PCD24, at 90°, −30° and −150°, matching `interfaces/dm_j4340__hub_tower.toml`.
+  They run 1–6 mm behind the output face.
+- Cause: the STEP fuses the output flange into the housing solid (one solid, y −0.05…42.45, `isValid()` False).
+  `dm_split()` looked for whole solids in front of the face, found none, and returned an empty rotor. The
+  flange, with its dowel and M3 holes, stayed on the stator in GROUND. The hubs turn with UPPER and CRANK, so at
+  STOW their dowels were ~50° away from the holes. J1's probe landed in housing material; J2's landed in the
+  1 mm face recess, hence the two different messages.
+- Fix: `dm_split()` cuts the rotor out of the solid that carries the output face, the D35 boss (`DM.rotor_r`
+  17.45) down to the dowel-hole bottom (`DM.rotor_depth` 6.0). Both values are in the interface file. The
+  J1/J2 rotor parts now carry the holes, and check_seated reports 0 FAIL on FOURBAR and SCREW.
+- Geometry change: vis shapes of `J1/J2_Motor_DM-J4340_stator` and `..._rotor` only. chk shapes, mass
+  (catalogue × `ROTOR_SHARE`) and the hubs are unchanged. Fingerprints re-recorded for both variants.
+
+**Open design note (not changed; rev A BOM).** The output face is recessed 1 mm between R6.5 and R16.5. The
+4×5 dowel (hub hole 2.5 deep) crosses that 1 mm gap and engages only 1.5 mm of the 5 mm motor hole, less than
+1×D. A 4×8 dowel (ISO 8734) in the same hub hole would engage 4.5 mm. That changes the released rev A
+purchased-parts list, so it is the user's call; if taken, the dowel length should come from the interface file.
 
 **Plan.** After triage, run it as a quick_check line. It reuses the built bodies but needs the vis placement, about
 5–8 s. That brings quick_check back over its 30 s target, so the plan is to cache the vis placement shared with

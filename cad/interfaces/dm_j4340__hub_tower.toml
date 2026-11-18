@@ -17,3 +17,8 @@ out_holes = [0, 60, 120, 180, -120, -60]
 out_dowel_pcd = 24.0
 out_dowels = [90, -30, -150]
 face = 51.5          # output face |y| from the motor centre plane
+# Rotor/stator split of the vendor model (arm/base.py dm_split).  The STEP fuses the output flange into the
+# housing solid; the rotor is cut out as the D35 output boss (circle R17.5 on the face, R17.45 to stay inside it)
+# down to the bottom of its D4 dowel holes (y 1..6 in the STEP), so the dowel and M3 holes turn with the hub.
+rotor_r = 17.45
+rotor_depth = 6.0

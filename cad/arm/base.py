@@ -92,12 +92,23 @@ _DM = {}
 
 
 def dm_split():
-    """DM-J4340 vendor model split into stator and output rotor (rotor = solids
-    entirely in front of the stator face y<1.05 within the D35 boss)."""
+    """DM-J4340 vendor model split into stator and output rotor.
+
+    The vendor STEP fuses the output flange into the housing solid (one solid from the output face y=0 to
+    y=42.45), so no whole solid is the rotor.  The rotor is cut out of the solids that reach the output face:
+    the D35 output boss (radius DM.rotor_r) down to the depth of its D4 dowel holes (DM.rotor_depth).  That puts
+    the dowel holes and PCD27 tapped holes on the rotor, which turns with the J1/J2 hub; left on the stator
+    they sat ~50 deg away from the hub dowels at STOW (check_seated, TI-016)."""
     if "s" not in _DM:
         m = H.vendor("DM4340")
-        rot = [s for s in m.Solids if s.BoundBox.YMax < 1.3 and max(abs(s.BoundBox.XMin), abs(s.BoundBox.XMax)) < 18.0]
-        st = [s for s in m.Solids if s not in rot]
+        cut = Part.makeCylinder(DM["rotor_r"], DM["rotor_depth"] + 0.2, V(0, -0.2, 0), V(0, 1, 0))
+        st, rot = [], []
+        for s in m.Solids:
+            if s.BoundBox.YMin < 0.5:                      # carries the output face
+                rot += s.common(cut).Solids
+                st += s.cut(cut).Solids
+            else:
+                st.append(s)
         _DM["s"] = Part.makeCompound(st)
         _DM["r"] = Part.makeCompound(rot) if rot else Part.Shape()
     return _DM["s"].copy(), _DM["r"].copy()
