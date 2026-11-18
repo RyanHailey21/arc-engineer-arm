@@ -1,0 +1,37 @@
+{
+ "status": "fail",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "seated",
+  "status": "fail",
+  "reason": "FAIL: Fastener seating (FOURBAR, STOW): 116 screws/pins, 134 seat points -> 6 FAIL",
+  "scope": "Fastener seating (FOURBAR, STOW): 116 screws/pins, 134 seat points -> 6 FAIL",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "bd0792e8db26354fe25a94365dfe9c20b23ae0d3e539008c5b2a9eb47e63048c",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/seated.inputs.json",
+    "sha256": "562b1b237d6cc19a6a98bcb86f42461062680e6105c94439a3ac98f5166b2df2"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "seated_report.txt",
+    "path": "seated_report.txt",
+    "sha256": "0a7175b9f91359de9cd859abf6f8c40bce08c849f1e44cccf23eebf246702a84"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-17T21:44:58",
+   "inputs_hash": "8cde22ae93768790",
+   "external_copies": []
+  }
+ }
+}

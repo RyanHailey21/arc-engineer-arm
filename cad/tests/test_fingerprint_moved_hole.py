@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Negative test (TI-009): the fingerprint must report a hole moved inside a filleted plate.
 makeFillet returns a generic Shape with no CenterOfMass; the old bounding-box fallback hid the move
-(Finger_*_bot_CF3 rear standoff hole, 2026-11-16).  Prints TEST PASS / TEST FAIL.  Run (TI-010: a short
-script passed to freecadcmd by path printed nothing on this machine, so exec it):
-    freecadcmd -c "exec(open(r'cad/tests/test_fingerprint_moved_hole.py').read())"   """
+(Finger_*_bot_CF3 rear standoff hole, 2026-11-16).  Prints TEST PASS / TEST FAIL, exits 1 on FAIL.
+    python -I cad/tools/run.py cad/tests/test_fingerprint_moved_hole.py      (TI-010/TI-018: not freecadcmd by path)
+"""
 import os
 import sys
 CAD = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) if "__file__" in globals() else \
@@ -43,3 +43,5 @@ if not hasattr(a, "CenterOfMass") and (c - a.BoundBox.Center).Length < 1e-6:
     fails.append("centre of mass still falls back to the bounding-box centre")
 print("TEST %s: %s" % ("FAIL" if fails else "PASS", "; ".join(fails) or "moved hole reported (%s)" % "; ".join(d)))
 sys.stdout.flush()
+if fails:
+    sys.exit(1)

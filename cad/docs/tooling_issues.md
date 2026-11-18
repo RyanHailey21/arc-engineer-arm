@@ -16,12 +16,16 @@ against its `tool_use` (142 errors in 19,040 lines up to 2026-11-17 04:30Z).
 | TI-007 | 2026-11-16 | Eval case YAML frontmatter colon bug | open: needs a check in the plugin |
 | TI-008 | 2026-11-16 | `claude` CLI too old for `plugin eval` | fixed (2.1.326) |
 | TI-009 | 2026-11-16 | Fingerprint misses a hole moved inside a generic-Shape part (bbox-centre "com") | fixed; baselines re-recorded |
-| TI-010 | 2026-11-16 | freecadcmd given a short script by path printed nothing (test "passed" silently) | open: workaround in use |
+| TI-010 | 2026-11-16 | freecadcmd given a short script by path printed nothing (test "passed" silently) | fixed with TI-018 (tools/run.py) |
 | TI-011 | 2026-11-16 | Eval graders regex the tool *listing* in `trace`: false FAIL (readme) and false PASS (pole clash) | fixed; verification run |
 | TI-012 | 2026-11-16 | Eval graders needing plugin tools scored in the no-plugin arm (no Bash there): inflated Δ | fixed (`arm: with-only`) |
 | TI-013 | 2026-11-16 | Quick-check mock contradicted the fingerprint mock (CHANGED vs MATCH) on the refactor case | fixed |
 | TI-014 | 2026-11-16 | Ceiling cases (drawings, stale) pass in both arms: they test the fixture's CLAUDE.md, not the plugin | open: plan |
-| TI-015 | 2026-11-17 | No check compares purchased-part mass with the catalogue (DM-J4340 counted twice; GT2 belt weighs 0 g) | fixed: test; belt entry is the main session's |
+| TI-015 | 2026-11-17 | No check compares purchased-part mass with the catalogue (DM-J4340 counted twice; GT2 belt weighs 0 g) | fixed: quick_check `catalogue` line + test |
+| TI-016 | 2026-11-17 | Moved standoffs left their plate holes behind; interference passed (pocket), no check caught it | fixed: tools/check_seated.py; 6 dowel findings to triage |
+| TI-017 | 2026-11-17 | check_engagement skipped SB5 shoulder screws (exact name match), then SetScrew_* (case) | fixed: match by catalogue key + test |
+| TI-018 | 2026-11-17 | freecadcmd swallows tracebacks (exit 1, no output) and prints nothing for short scripts | fixed: tools/run.py |
+| TI-019 | 2026-11-17 | quick_check doesn't run the new level-keeping linkage check | open: plan |
 
 ---
 
@@ -268,5 +272,89 @@ Run with `freecadcmd -c "exec(open(r'cad/tests/test_catalogue_mass.py').read())"
 - Current result, both variants: FAIL on one real defect. `FOREARM/GT2_Belt_9mm_Stage2` (`arm/forearm.py:72`)
   has `src = "GT2-BELT"`, which isn't in `data/catalogue.toml`, so the belt weighs 0 g in mass and torques.
   Everything else matches (SCREW 32 keys / 241 units, FOURBAR 27 / 173).
-- The catalogue is a design input, so the entry is the main session's to add. **Plan:** once it's added, run this
-  test as a `catalogue` line in `quick_check.py`. It needs no extra build, about 0.1 s.
+- The catalogue is a design input, so the main session added the `GT2-BELT` entry (5.5 g, commit f7b35f2).
+- **Done 2026-11-17:** the check lives in `cad/tools/catalogue_mass.py`. `quick_check.py` runs it as check 5,
+  `catalogue` (under 0.1 s). The test calls the same function and also asserts that the old double count is
+  still reported. Results: SCREW 33 keys / 242 units PASS, FOURBAR 28 / 174 PASS. quick_check PASSes and both
+  fingerprints MATCH.
+
+## TI-016: a moved standoff left its plate holes behind and no check caught it  (fixed: new check; findings to triage)
+
+**What happened** (main session, 2026-11-17).
+- The upper-arm standoffs were moved through `UA_CLIP_X`, but the UA plate holes and pocket layout stayed
+  hard-coded at L2/3 and 2L2/3 in `arm/upper_arm.py`.
+- The standoffs sat over lightening pockets and the old holes were empty. The user caught it.
+- `check_interference` passed: zero overlap, because there was no material.
+- The main session fixed it by formalising `interfaces/ua_plate__ua_standoff.toml` (new `[stations]` row pattern
+  and optional `[spacer]` side).
+
+**Root cause.** Every check looks for overlap, which a fastener over a pocket doesn't have. Only mates written
+into `interfaces/` are probed for holes, so a mate nobody formalised isn't checked at all.
+
+**Fix: `cad/tools/check_seated.py`.** At STOW, on the vis shapes:
+- For every SHCS/BHCS/CSK/SB5 screw, the point 0.5 mm past the head bearing face must lie in a coaxial hole of
+  another part.
+- For every pin or dowel, both points 1 mm in from its ends must.
+- "Coaxial hole": a concave cylinder, axis parallel within 1° and within 0.3 mm of the fastener axis, radius at
+  least the local fastener radius − 0.15 mm, the point inside its axial extent.
+- Tips are not judged. Tips stick out of through-tapped holes and nuts, and vendor models lack tapped bores
+  (the first draft flagged 52 tips); `check_engagement` covers tapped holes.
+- Writes `out/<variant>/seated_report.txt` and a `seated` evidence record. About 20 s.
+- Negative test `cad/tests/test_seated_moved_screw.py`: moves the 4 UA standoff screws 6 mm sideways in memory.
+  All 4 are flagged, and nothing else changes. PASS.
+
+**Findings (same on both variants; for the main session to triage).**
+- `Dowel_4x5_J1_Output_Hub_0..2`: end A is inside the J1 DM-J4340 stator solid, with no hole.
+- `Dowel_4x5_J2_Output_Hub_Journal_0..2`: end B finds no hole and no material.
+
+Either the dowel positions are off, or the vendor motor model lacks its dowel holes (and the J2 journal side has a
+gap). If they are intended, the check needs a reviewed exemption list in data, with a reason per entry, not a
+silent skip.
+
+**Plan.** After triage, run it as a quick_check line. It reuses the built bodies but needs the vis placement, about
+5–8 s. That brings quick_check back over its 30 s target, so the plan is to cache the vis placement shared with
+the envelope check.
+
+## TI-017: check_engagement skipped screws by name  (fixed)
+
+**What happened.** Screws were matched by `name.split('_')[0] in SCREWS`, so `SB5x6_…` and `SB5x12_…` shoulder
+screws were never checked. The main session changed it to `startswith`. The new regression test then found that
+`SetScrew_M3x3_drum`, `SetScrew_M3x3_screwgear` and `SetScrew_M3_motorgear` (SCREW variant) were still missed:
+the prefix is `SETSCREW`, the names are mixed case.
+
+**Fix.**
+- `check_engagement.is_screw(p)` now matches by catalogue key (`p.src in SHCS/BHCS/CSK/SETSCREW/SB5`), not by name.
+- `main()` is guarded by `QC_IMPORT`, so it can be imported.
+- Test `cad/tests/test_engagement_screws.py` cross-checks it against the names in any case, and requires an SB5
+  part. PASS on both variants: SCREW 153 screws (SB5 6, SETSCREW 3), FOURBAR 98.
+
+**Not re-run here:** `check_engagement.py` on SCREW. For the release variant it also writes
+`cad/fab/engagement_report.txt`, a release output. The 3 set screws are now judged there, so the main session
+should re-run it. FOURBAR has no set screws, so its result is unchanged.
+
+## TI-018: freecadcmd swallows tracebacks and short-script output  (fixed)
+
+**What happened.** The main session saw a script that raised exit 1 with no output, and used a runpy wrapper to
+see the traceback. Same family as TI-010, where short scripts printed nothing.
+
+**Fix: `cad/tools/run.py`**, a plain-Python launcher: `python -I cad/tools/run.py [--grip G] [--timeout S]
+SCRIPT [args]`.
+- It starts freecadcmd with `-c` code that runs the script through runpy, with a real `__file__` and `sys.argv`.
+- It prints any traceback, flushes, and exits with the script's own code (124 on timeout).
+- It drops the FreeCAD banner and ends with `RUN <script>: OK|FAIL (exit N) in S s`.
+- Test `cad/tests/test_run.py` (5/5): short print shown, traceback shown with exit 1, exit code kept, `__file__`
+  and GRIP set, FreeCAD imports work.
+- The FreeCAD tests in `cad/tests/` now exit 1 on FAIL, so run.py reports FAIL rather than OK.
+- **Proposed CLAUDE.md line (needs the user's OK):** "Run FreeCAD scripts with `python -I cad/tools/run.py
+  [--grip G] SCRIPT`, not `freecadcmd SCRIPT`."
+
+## TI-019: quick_check doesn't run the level-keeping check  (open: plan)
+
+`tools/check_level_keeping.py` (closure, dead-point margins, elbow and wrist sweeps) takes about 4 minutes and
+has a single `main()`. **Plan:**
+1. Split it into `closure()`, `margins()` and `sweep()`.
+2. quick_check calls `closure()` + `margins()`. They are kinematic only (placements and pin positions, no
+   booleans), well under 1 s.
+3. Its evidence line shows the full sweep's FRESH/STALE, like `interference_full`.
+
+Do it once the main session has finished changing that file (it is new as of today).

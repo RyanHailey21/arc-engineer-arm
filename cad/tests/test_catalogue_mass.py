@@ -4,10 +4,9 @@ units x catalogue mass.  Nothing caught it on 2026-11-16 when each DM-J4340 (sta
 twice in part_mass_g; it was found only while building the BOM.  The check itself is tools/catalogue_mass.py
 (also run by quick_check); this test runs it on the real model and on a restored copy of the old bug.
 
-Prints TEST PASS / TEST FAIL.  Run for the variant in GRIP (both).  TI-010: exec it, because a short script
-passed to freecadcmd by path printed nothing:
-    set GRIP=SCREW   (then FOURBAR)
-    freecadcmd -c "exec(open(r'cad/tests/test_catalogue_mass.py').read())"
+Prints TEST PASS / TEST FAIL and exits 1 on FAIL.  Run for both variants through tools/run.py (TI-010/TI-018:
+freecadcmd by path printed nothing for short scripts and swallowed tracebacks):
+    python -I cad/tools/run.py --grip SCREW cad/tests/test_catalogue_mass.py      (then --grip FOURBAR)
 """
 import os
 import sys
@@ -40,3 +39,5 @@ print("TEST %s: catalogue mass %s, %d keys, %d purchased units%s%s" % (
     "; split: " + ", ".join("%s %s" % kv for kv in d["split"].items()) if d["split"] else "",
     "".join("\n  " + f for f in fails)))
 sys.stdout.flush()
+if fails:
+    sys.exit(1)

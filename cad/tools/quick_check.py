@@ -11,7 +11,9 @@ Checks, in fail-fast order of usefulness:
   2. interfaces  - both sides of every cad/interfaces/*.toml really have the specified holes
   3. self-hit    - gripper bodies against each other over the jaw stroke, roll 0 and 90
   4. mass/torque - gripper and arm mass, static joint torques at every task pose vs actuator ratings
-  5. fingerprint - geometry vs cad/tests/fingerprints/<variant>.json (CHANGED is expected after a real edit)
+  5. catalogue   - purchased-part mass per catalogue key == units x catalogue mass; every src is a key
+                   (tools/catalogue_mass.py; a missing key weighs 0 g, a split motor counted twice doubles)
+  6. fingerprint - geometry vs cad/tests/fingerprints/<variant>.json (CHANGED is expected after a real edit)
 -> cad/out/<variant>/quick.json, a manifest entry, one summary line per check, and the FRESH/STALE status of
    every recorded check (full interference, holes, engagement ...) against the current design inputs.
 """
@@ -30,6 +32,7 @@ os.environ["QC_IMPORT"] = "1"
 import FreeCAD as App      # noqa: E402
 import Part                # noqa: E402
 import arm_model as M      # noqa: E402
+import catalogue_mass      # noqa: E402
 import check_interfaces    # noqa: E402
 import fingerprint         # noqa: E402
 import params              # noqa: E402
@@ -168,6 +171,13 @@ def main():
     summary.append(("mass/torque", ok, "past wrist %.0f g (head %.0f g); worst static J1 %.2f J2 %.2f J3 %.2f N*m" %
                     (mt["past_wrist_g"], mt["head_g"], mt["worst_static_Nm"]["J1"], mt["worst_static_Nm"]["J2"],
                      mt["worst_static_Nm"]["J3"]), time.time() - t))
+    t = time.time()
+    ok, data["catalogue"] = catalogue_mass.check(bodies, M.CAT, M.part_mass_g)
+    cm = data["catalogue"]
+    for f in cm["fails"][:8]:
+        print("  CATALOGUE %s" % f)
+    summary.append(("catalogue", ok, "%d keys, %d purchased units match catalogue mass" % (cm["keys"], cm["units"])
+                    if ok else "%d problem(s); first: %s" % (len(cm["fails"]), cm["fails"][0]), time.time() - t))
     t = time.time()
     fp = fingerprint.build()
     base = fingerprint.BASE

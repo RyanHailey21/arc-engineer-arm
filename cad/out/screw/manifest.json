@@ -1,0 +1,32 @@
+{
+ "level_keeping": {
+  "evidence": "level_keeping.evidence.json",
+  "files": [
+   "level_keeping.txt"
+  ],
+  "inputs_hash": "02e67dc34e89bc24",
+  "note": "LEVEL_KEEPING screw: FAIL (233 s)",
+  "status": "FAIL",
+  "time": "2026-11-17T20:48:15"
+ },
+ "quick": {
+  "evidence": "quick.evidence.json",
+  "files": [
+   "quick.json"
+  ],
+  "inputs_hash": "dd014ea3239d86fc",
+  "note": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; fingerprint MATCH",
+  "status": "PASS",
+  "time": "2026-11-17T21:32:29"
+ },
+ "seated": {
+  "evidence": "seated.evidence.json",
+  "files": [
+   "seated_report.txt"
+  ],
+  "inputs_hash": "8cde22ae93768790",
+  "note": "Fastener seating (SCREW, STOW): 161 screws/pins, 172 seat points -> 6 FAIL",
+  "status": "FAIL",
+  "time": "2026-11-17T21:45:37"
+ }
+}
