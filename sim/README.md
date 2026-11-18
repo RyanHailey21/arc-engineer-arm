@@ -42,6 +42,16 @@ To command a joint:
 gz topic -t /arc_arm/shoulder/cmd_pos -m gz.msgs.Double -p "data: 1.2"
 ```
 
+To play the CAD task sequences (donut, then pipe), with Gazebo running:
+
+```bash
+python cad/sim/gz_demo.py fourbar --seq both --loops 1
+```
+
+The demo reads `arc_arm_fourbar/task_poses.json`: all 14 task poses (joint targets in degrees) and the `donut` and `pipe` sequences, exported from the CAD kinematics. It interpolates in joint space and sends the five targets. That's the whole control stack today: no planner, no collision avoidance beyond the CAD-checked poses, no grasping (the Gazebo world has no donut or pipe; MuJoCo's `scene.xml` does).
+
+On Windows under WSL, if the Gazebo window opens blank, check that WSL windows show at all. If they don't, run `wsl --shutdown` and relaunch. If only Gazebo is blank, set `LIBGL_ALWAYS_SOFTWARE=1` (the docs' software-rendering fallback).
+
 ## Joints
 
 Joint values are the CAD model's own angles. The CAD convention is **radians in the simulators and degrees in `cad/`**.

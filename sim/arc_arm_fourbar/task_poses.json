@@ -1,0 +1,170 @@
+{
+ "units": "deg; jaw_mm = pad gap at the TCP",
+ "poses": {
+  "STOW": {
+   "jaw_mm": 30.0,
+   "joints_deg": {
+    "shoulder": 160.0,
+    "elbow": 10.0,
+    "wrist_pitch": 0.0,
+    "wrist_roll": 0.0,
+    "gripper": 10.695014854566843
+   }
+  },
+  "DONUT_APPROACH": {
+   "jaw_mm": 112.0,
+   "joints_deg": {
+    "shoulder": 115.65137127270918,
+    "elbow": -35.147911053899435,
+    "wrist_pitch": 0,
+    "wrist_roll": 0.0,
+    "gripper": 63.1979551223405
+   }
+  },
+  "DONUT_PICK": {
+   "jaw_mm": 100.0,
+   "joints_deg": {
+    "shoulder": 95.54316815191189,
+    "elbow": -60.59507339814313,
+    "wrist_pitch": 0,
+    "wrist_roll": 0.0,
+    "gripper": 54.60992632950651
+   }
+  },
+  "DONUT_LIFT": {
+   "jaw_mm": 100.0,
+   "joints_deg": {
+    "shoulder": 113.91206984862828,
+    "elbow": 37.730671852706365,
+    "wrist_pitch": 0,
+    "wrist_roll": 0.0,
+    "gripper": 54.60992632950651
+   }
+  },
+  "DONUT_LIFT_ROLL+": {
+   "jaw_mm": 100.0,
+   "joints_deg": {
+    "shoulder": 113.91206984862828,
+    "elbow": 37.730671852706365,
+    "wrist_pitch": 0,
+    "wrist_roll": 25.0,
+    "gripper": 54.60992632950651
+   }
+  },
+  "DONUT_LIFT_ROLL-": {
+   "jaw_mm": 100.0,
+   "joints_deg": {
+    "shoulder": 113.91206984862828,
+    "elbow": 37.730671852706365,
+    "wrist_pitch": 0,
+    "wrist_roll": -25.0,
+    "gripper": 54.60992632950651
+   }
+  },
+  "DONUT_PLACE": {
+   "jaw_mm": 100.0,
+   "joints_deg": {
+    "shoulder": 39.14464737672414,
+    "elbow": -97.33564877590914,
+    "wrist_pitch": 0,
+    "wrist_roll": 0.0,
+    "gripper": 54.60992632950651
+   }
+  },
+  "PIPE_APPROACH": {
+   "jaw_mm": 50.0,
+   "joints_deg": {
+    "shoulder": 164.4543736906049,
+    "elbow": 28.849383568426266,
+    "wrist_pitch": 0,
+    "wrist_roll": 0.0,
+    "gripper": 23.116788926581222
+   }
+  },
+  "PIPE_GRASP": {
+   "jaw_mm": 13.759502115361641,
+   "joints_deg": {
+    "shoulder": 148.79504805586126,
+    "elbow": 13.860519089948847,
+    "wrist_pitch": 0,
+    "wrist_roll": 0.0,
+    "gripper": 0.0
+   }
+  },
+  "PIPE_GRASP_ROLL+": {
+   "jaw_mm": 13.759502115361641,
+   "joints_deg": {
+    "shoulder": 148.79504805586126,
+    "elbow": 13.860519089948847,
+    "wrist_pitch": 0,
+    "wrist_roll": 30.0,
+    "gripper": 0.0
+   }
+  },
+  "PIPE_GRASP_ROLL-": {
+   "jaw_mm": 13.759502115361641,
+   "joints_deg": {
+    "shoulder": 148.79504805586126,
+    "elbow": 13.860519089948847,
+    "wrist_pitch": 0,
+    "wrist_roll": -30.0,
+    "gripper": 0.0
+   }
+  },
+  "PIPE_LIFT": {
+   "jaw_mm": 13.759502115361641,
+   "joints_deg": {
+    "shoulder": 115.86695459453573,
+    "elbow": 55.6797716276424,
+    "wrist_pitch": 0,
+    "wrist_roll": 0.0,
+    "gripper": 0.0
+   }
+  },
+  "PIPE_CHUTE": {
+   "jaw_mm": 13.759502115361641,
+   "joints_deg": {
+    "shoulder": 97.51667241262248,
+    "elbow": -17.128127156579527,
+    "wrist_pitch": 90,
+    "wrist_roll": 0.0,
+    "gripper": 0.0
+   }
+  },
+  "PIPE_CHUTE_ROLL90": {
+   "jaw_mm": 13.759502115361641,
+   "joints_deg": {
+    "shoulder": 97.51667241262248,
+    "elbow": -17.128127156579527,
+    "wrist_pitch": 90,
+    "wrist_roll": 90.0,
+    "gripper": 0.0
+   }
+  }
+ },
+ "sequences": {
+  "donut": [
+   "STOW",
+   "DONUT_APPROACH",
+   "DONUT_PICK",
+   "DONUT_LIFT",
+   "DONUT_LIFT_ROLL+",
+   "DONUT_LIFT_ROLL-",
+   "DONUT_LIFT",
+   "DONUT_PLACE",
+   "STOW"
+  ],
+  "pipe": [
+   "STOW",
+   "PIPE_APPROACH",
+   "PIPE_GRASP_ROLL-",
+   "PIPE_GRASP_ROLL+",
+   "PIPE_GRASP",
+   "PIPE_LIFT",
+   "PIPE_CHUTE",
+   "PIPE_CHUTE_ROLL90",
+   "PIPE_CHUTE",
+   "STOW"
+  ]
+ }
+}

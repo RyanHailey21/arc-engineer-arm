@@ -200,7 +200,26 @@ def main():
                         bodies={k: plc_matrix(v) for k, v in plc.items()},
                         tcp_mm=list(plc["HEAD"].multVec(V(M.K["GRIP"], 0, -M.K["DROP"])))))
     json.dump(ref, open(os.path.join(ROOT, "fk_reference.json"), "w"), indent=1)
+    write_task_poses()
     print("EXPORT %s: %d links, total %.3f kg -> %s" % (M.GRIP, len(links), sum(l["mass_kg"] for l in links), ROOT))
 
 
-main()
+def write_task_poses():
+    """task_poses.json: joint targets (deg, simulator joint convention) for every CAD task pose (arm.kinematics.POSES)
+    and the task SEQUENCES - what a controller or demo driver commands."""
+    th_ref = M.FB_TREF
+    poses = {}
+    for pose in M.POSES:
+        q, jaw = M.pose_q(pose)
+        th1, th2, pitch, roll = q
+        poses[pose] = dict(jaw_mm=jaw, joints_deg=dict(shoulder=th1, elbow=th2, wrist_pitch=pitch, wrist_roll=roll,
+                                                       gripper=M.fb_theta(jaw) - th_ref))
+    json.dump(dict(units="deg; jaw_mm = pad gap at the TCP", poses=poses, sequences=M.SEQUENCES),
+              open(os.path.join(ROOT, "task_poses.json"), "w"), indent=1)
+    print("task poses: %d poses, sequences %s" % (len(poses), list(M.SEQUENCES)))
+
+
+if os.environ.get("EXPORT_ONLY") == "poses":   # just task_poses.json (no meshes / mass properties)
+    write_task_poses()
+else:
+    main()
