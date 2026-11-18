@@ -201,6 +201,7 @@ def main():
                         tcp_mm=list(plc["HEAD"].multVec(V(M.K["GRIP"], 0, -M.K["DROP"])))))
     json.dump(ref, open(os.path.join(ROOT, "fk_reference.json"), "w"), indent=1)
     write_task_poses()
+    write_task_field()
     print("EXPORT %s: %d links, total %.3f kg -> %s" % (M.GRIP, len(links), sum(l["mass_kg"] for l in links), ROOT))
 
 
@@ -219,7 +220,47 @@ def write_task_poses():
     print("task poses: %d poses, sequences %s" % (len(poses), list(M.SEQUENCES)))
 
 
-if os.environ.get("EXPORT_ONLY") == "poses":   # just task_poses.json (no meshes / mass properties)
+def write_task_field():
+    """task_field.json: the per-station field items (cad/field.py scene_items, as primitives) and the CAD donut-lift
+    path with arm joints, for the MuJoCo task simulation (cad/sim/build_tasks.py). mm / deg, robot frame at each
+    station (X forward from the bumper, Z up from the floor)."""
+    import field as Fd
+    th_ref = M.FB_TREF
+    lift = []
+    for z_u, cy, roll in Fd.donut_lift_path():
+        th1, th2 = M.ik(Fd.POLE_X, z_u, 0.0)
+        lift.append(dict(tcp_z=z_u, chassis_y=cy, roll_deg=roll,
+                         joints_deg=dict(shoulder=th1, elbow=th2, wrist_pitch=0.0, wrist_roll=roll,
+                                         gripper=M.fb_theta(100.0) - th_ref)))
+    face = 150 + 453 - 300                                     # as field.scene_items(): pipe 300 mm into the chute
+    cx = 110.0                                                 # bucket centre, rim 10 mm off the bumper
+    lean = []
+    for ang in (-100, -60, -20, 20, 60, 100):
+        a = math.radians(ang)
+        lean.append(dict(p=[cx + 62 * math.cos(a), 62 * math.sin(a), 2.0],
+                         d=[0.12 * math.cos(a), 0.12 * math.sin(a), 1.0]))
+    out = dict(
+        units="mm, deg; robot frame at each station",
+        source="cad/field.py (scene_items, zigzag_pole, donut_lift_path); arm.kinematics.ik",
+        donut=dict(R=Fd.DONUT_R, r=Fd.DONUT_r, start=[Fd.POLE_X, 0.0, Fd.POLE_Z0 + 6.0 + Fd.DONUT_r], mass_g=300.0),
+        pipe=dict(r=Fd.PIPE_R, ri=Fd.PIPE_RI, L=500.0, mass_g=165.0),
+        stations=dict(
+            pick=dict(boxes=[dict(name="lower_tier", lo=[30, -500, 0], hi=[1030, 500, Fd.POLE_Z0]),
+                             dict(name="pole_base", lo=[Fd.POLE_X - 125, -125, Fd.POLE_Z0], hi=[Fd.POLE_X + 125, 125, Fd.POLE_Z0 + 6])],
+                      pole=dict(r=12.0, centreline=[[Fd.POLE_X, Fd.pole_lat(h), Fd.POLE_Z0 + 6 + h]
+                                                    for h in (Fd.POLE_H * i / 60 for i in range(61))])),
+            place=dict(boxes=[dict(name="scoring_platform", lo=[60.8, -150, 0], hi=[360.8, 150, 50])]),
+            bucket=dict(bucket=dict(c=[cx, 0.0], R=100.0, wall=2.0, h=250.0), target_pipe=dict(p=[40.0, 0.0, 2.0], d=[0, 0, 1]),
+                        leaning_pipes=lean),
+            chute=dict(boxes=[dict(name="perimeter_wall", lo=[face, -600, 0], hi=[face + 40, 600, 500])],
+                       chute=dict(lo=[face, -100, 500], hi=[face + 60, 100, 700], hole_r=26.25, hole_z=600.0, insert_mm=300.0))),
+        donut_lift=lift)
+    json.dump(out, open(os.path.join(ROOT, "task_field.json"), "w"), indent=1)
+    print("task field: %d lift samples, stations %s" % (len(lift), list(out["stations"])))
+
+
+if os.environ.get("EXPORT_ONLY") == "poses":   # just task_poses.json + task_field.json (no meshes / mass properties)
     write_task_poses()
+    write_task_field()
 else:
     main()

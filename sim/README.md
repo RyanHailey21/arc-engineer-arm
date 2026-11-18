@@ -32,6 +32,44 @@ python -m mujoco.viewer --mjcf=sim/arc_arm_fourbar/scene.xml
 
 In the viewer, pick a keyframe (`stow`, `donut_approach`, `donut_lift`, `pipe_grasp`, `pipe_chute`, …) and drive the five position actuators.
 
+### Full tasks in MuJoCo (`tasks.xml`, `cad/sim/tasks.py`)
+
+```bash
+python cad/sim/tasks.py --task both
+```
+
+Add `--no-viewer` to run headless, faster than real time. The run writes `arc_arm_fourbar/task_run.json`.
+
+- **Scene** (`tasks.xml`, built by `cad/sim/build_tasks.py` from `task_field.json`):
+  - The arm rides on a chassis with x/y slide joints, an abstraction of the drivetrain.
+  - The four CAD field stations sit side by side: donut pick (lower tier, zigzag pole, donut), scoring platform, pipe bucket, and wall with chute. All are built from primitives, so contacts are exact.
+- **Donut task:**
+  1. Approach from behind the pole and slide in, jaws open.
+  2. Descend and close the jaws.
+  3. Lift up and off the zigzag pole along the CAD lift path (chassis strafe up to ±44 mm, wrist roll up to 47°).
+  4. Drive to the scoring platform, lower, release, retreat, stow.
+- **Pipe task:**
+  1. Reach in and grip the pipe.
+  2. Lift it straight out of the bucket.
+  3. Back away and swing to the chute pose.
+  4. Drive to the chute and push the pipe 300 mm in.
+  5. Release, back off, stow.
+- **Kinematic grasp:** when the jaws close at a grasp pose and the object is within 8 mm of the TCP, a weld locks it to the head. Opening the jaws releases it. Held objects don't collide with the arm, but they do collide with the field and the chassis.
+- **Result:**
+
+  | | |
+  |---|---|
+  | Run time | 74 s simulated |
+  | Grasp error | donut 1.3 mm, pipe 0.5 mm |
+  | Robot-to-field contacts | none |
+  | Donut-to-pole contacts during the lift | none (the CAD lift planner holds up under physics) |
+  | End state | donut on the platform; pipe 298 mm past the wall face |
+
+- **Found by this sim:** a straight joint-space move from STOW to DONUT_APPROACH sweeps the left jaw about 11 mm through the pole, measured on the real mesh. CAD checks the task poses, not the moves between them. The task uses the slide-in approach instead. The pose-playback demos below don't have the pole, so they don't show this.
+- **Not modelled:** grip friction and slip (the grasp is kinematic); the real drivetrain (the slides are ideal position servos, with no yaw); the zigzag pole is the CAD placeholder (the manual's pole details are TBA).
+
+### Pose playback (no field)
+
 To play the task sequences in MuJoCo (native on Windows; the viewer stays open at the end):
 
 ```bash
@@ -128,11 +166,15 @@ They are joint-equality constraints in MuJoCo and `<mimic>` in URDF/Gazebo. The 
 ## Regenerate
 
 From the repo root:
-1. CAD export: `freecadcmd cad/sim/export_robot.py`, with `GRIP=FOURBAR`.
-2. Build URDF/MJCF/Gazebo files and validate. This needs a Python with `mujoco`, `yourdfpy`, `trimesh` and `fast_simplification`:
+1. CAD export: `freecadcmd cad/sim/export_robot.py`, with `GRIP=FOURBAR`. It also writes `task_poses.json` and `task_field.json`. Set `EXPORT_ONLY=poses` to write just those two, without meshes.
+2. Build URDF/MJCF/Gazebo files and validate, then build the MuJoCo task scene. This needs a Python with `mujoco`, `yourdfpy`, `trimesh` and `fast_simplification`:
 
 ```bash
 python cad/sim/build_robot.py fourbar
+```
+
+```bash
+python cad/sim/build_tasks.py fourbar
 ```
 
 3. Gazebo run test, in an environment with gz-sim 8 (here: WSL Ubuntu + a conda-forge env, `micromamba create -p ~/mm/gz -c conda-forge gz-sim8 ruby`). Then rerun step 2 so `validation.json` picks up the result; it is FRESH only if it ran on the current `model.urdf`:
