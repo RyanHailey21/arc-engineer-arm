@@ -131,8 +131,8 @@
    "ARC_Arm_Fourbar.FCStd"
   ],
   "inputs_hash": "a6274db4e832ec4b",
-  "note": "ARC_Arm_Fourbar.FCStd: 264 parts in 17 body groups at STOW, uncoloured (headless) (12.5 MB)",
+  "note": "ARC_Arm_Fourbar.FCStd: 264 parts in 17 body groups at STOW, coloured (12.6 MB)",
   "status": "PASS",
-  "time": "2026-11-19T04:48:34"
+  "time": "2026-11-19T17:07:55"
  }
 }
