@@ -25,7 +25,7 @@ against its `tool_use` (142 errors in 19,040 lines up to 2026-11-17 04:30Z).
 | TI-016 | 2026-11-17 | Moved standoffs left their plate holes behind; interference passed (pocket), no check caught it | fixed: tools/check_seated.py; 6 dowel findings triaged 2026-11-18 (DM rotor split) |
 | TI-017 | 2026-11-17 | check_engagement skipped SB5 shoulder screws (exact name match), then SetScrew_* (case) | fixed: match by catalogue key + test |
 | TI-018 | 2026-11-17 | freecadcmd swallows tracebacks (exit 1, no output) and prints nothing for short scripts | fixed: tools/run.py |
-| TI-019 | 2026-11-17 | quick_check doesn't run the new level-keeping linkage check | open: plan |
+| TI-019 | 2026-11-17 | quick_check doesn't run the new level-keeping linkage check | fixed 2026-11-18 |
 
 ---
 
@@ -368,13 +368,16 @@ SCRIPT [args]`.
 - **Proposed CLAUDE.md line (needs the user's OK):** "Run FreeCAD scripts with `python -I cad/tools/run.py
   [--grip G] SCRIPT`, not `freecadcmd SCRIPT`."
 
-## TI-019: quick_check doesn't run the level-keeping check  (open: plan)
+## TI-019: quick_check doesn't run the level-keeping check  (fixed 2026-11-18)
 
 `tools/check_level_keeping.py` (closure, dead-point margins, elbow and wrist sweeps) takes about 4 minutes and
-has a single `main()`. **Plan:**
-1. Split it into `closure()`, `margins()` and `sweep()`.
-2. quick_check calls `closure()` + `margins()`. They are kinematic only (placements and pin positions, no
-   booleans), well under 1 s.
-3. Its evidence line shows the full sweep's FRESH/STALE, like `interference_full`.
+had a single `main()`.
 
-Do it once the main session has finished changing that file (it is new as of today).
+**Fix** (after the main session said the file was final):
+- Checks 1 + 2 moved into `closure_margins() -> (ok, lines, summary)`. They are kinematic only (placements and
+  pin positions, no booleans) and take well under 1 s. `main()` calls it first, then runs the sweep as before;
+  the standalone output and the `level_keeping` evidence record are unchanged.
+- `main()` runs only when `QC_IMPORT` is unset, like the other checks quick_check imports.
+- quick_check check 6 `level-keep` prints closure, the worst dead-point margin and where, and the margin at the
+  elbow limits, with any FAIL line. The sweep's FRESH/STALE shows in the evidence list as `level_keeping`.
+- One function, not separate `closure()` and `margins()` as planned: both walk the same sample list.

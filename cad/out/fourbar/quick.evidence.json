@@ -5,32 +5,32 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
   "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 484 g (head 279 g); worst static J1 3.15 J2 2.60 J3 0.78 N*m; catalogue 26 keys, 175 purchased units match catalogue mass; fingerprint MATCH",
-  "scope": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 484 g (head 279 g); worst static J1 3.15 J2 2.60 J3 0.78 N*m; catalogue 26 keys, 175 purchased units match catalogue mass; fingerprint MATCH",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 484 g (head 279 g); worst static J1 3.15 J2 2.60 J3 0.78 N*m; catalogue 26 keys, 175 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; fingerprint MATCH",
+  "scope": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 484 g (head 279 g); worst static J1 3.15 J2 2.60 J3 0.78 N*m; catalogue 26 keys, 175 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; fingerprint MATCH",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "3356bbebd7b654738975b680f8ad9bd2713b1d1ac86a6fbfc35b71db44119ffb",
+  "implementation_sha256": "7351489b31b7bebdd5fc3d08418e6a3e4b35a2099a22ffefbc6bdca6095fbb58",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/quick.inputs.json",
-    "sha256": "562b1b237d6cc19a6a98bcb86f42461062680e6105c94439a3ac98f5166b2df2"
+    "sha256": "c0983bbdfa1c64433d4de423a6db9d8253f177bcb526733003aaa24283c71f5c"
    }
   ],
   "artifacts": [
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "3f135df9f0cd47a938a5f4cd23ee1832bd6156e1eb89bd935e0cf7143866743c"
+    "sha256": "650d703cf53742ede36cce9357b463fe9bb63ff42b9582a57abd18daea70267f"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-17T21:46:57",
-   "inputs_hash": "8cde22ae93768790",
+   "time": "2026-11-18T20:29:33",
+   "inputs_hash": "d7e43ee0e386a980",
    "external_copies": []
   }
  }

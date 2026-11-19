@@ -64,32 +64,32 @@
  "level_keeping": {
   "evidence": "level_keeping.evidence.json",
   "files": [
-   "level_keeping.txt"
+   "../level_keeping.txt"
   ],
   "inputs_hash": "8cde22ae93768790",
-  "note": "LEVEL_KEEPING fourbar: PASS (337 s)",
+  "note": "LEVEL_KEEPING fourbar: PASS (230 s)",
   "status": "PASS",
-  "time": "2026-11-17T21:41:29"
+  "time": "2026-11-18T04:46:15"
  },
  "quick": {
   "evidence": "quick.evidence.json",
   "files": [
    "quick.json"
   ],
-  "inputs_hash": "8cde22ae93768790",
-  "note": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 484 g (head 279 g); worst static J1 3.15 J2 2.60 J3 0.78 N*m; catalogue 26 keys, 175 purchased units match catalogue mass; fingerprint MATCH",
+  "inputs_hash": "d7e43ee0e386a980",
+  "note": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 484 g (head 279 g); worst static J1 3.15 J2 2.60 J3 0.78 N*m; catalogue 26 keys, 175 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; fingerprint MATCH",
   "status": "PASS",
-  "time": "2026-11-17T21:46:57"
+  "time": "2026-11-18T20:29:33"
  },
  "seated": {
   "evidence": "seated.evidence.json",
   "files": [
    "seated_report.txt"
   ],
-  "inputs_hash": "8cde22ae93768790",
-  "note": "Fastener seating (FOURBAR, STOW): 116 screws/pins, 134 seat points -> 6 FAIL",
-  "status": "FAIL",
-  "time": "2026-11-17T21:44:58"
+  "inputs_hash": "d7e43ee0e386a980",
+  "note": "Fastener seating (FOURBAR, STOW): 116 screws/pins, 134 seat points -> 0 FAIL",
+  "status": "PASS",
+  "time": "2026-11-18T04:57:19"
  },
  "working_doc": {
   "evidence": "working_doc.evidence.json",

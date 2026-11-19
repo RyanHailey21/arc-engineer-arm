@@ -13,7 +13,10 @@ Checks, in fail-fast order of usefulness:
   4. mass/torque - gripper and arm mass, static joint torques at every task pose vs actuator ratings
   5. catalogue   - purchased-part mass per catalogue key == units x catalogue mass; every src is a key
                    (tools/catalogue_mass.py; a missing key weighs 0 g, a split motor counted twice doubles)
-  6. fingerprint - geometry vs cad/tests/fingerprints/<variant>.json (CHANGED is expected after a real edit)
+  6. level-keep  - parallelogram stage 2 closes at every task pose / lift sample and stays clear of its dead
+                   points there and at the elbow limits (tools/check_level_keeping.py checks 1+2; its sweep
+                   clearance, check 3, is a milestone check)
+  7. fingerprint - geometry vs cad/tests/fingerprints/<variant>.json (CHANGED is expected after a real edit)
 -> cad/out/<variant>/quick.json, a manifest entry, one summary line per check, and the FRESH/STALE status of
    every recorded check (full interference, holes, engagement ...) against the current design inputs.
 """
@@ -34,7 +37,8 @@ import Part                # noqa: E402
 import arm_model as M      # noqa: E402
 import catalogue_mass      # noqa: E402
 import check_interfaces    # noqa: E402
-import fingerprint         # noqa: E402
+import check_level_keeping  # noqa: E402
+import fingerprint        # noqa: E402
 import params              # noqa: E402
 
 V = App.Vector
@@ -178,6 +182,15 @@ def main():
         print("  CATALOGUE %s" % f)
     summary.append(("catalogue", ok, "%d keys, %d purchased units match catalogue mass" % (cm["keys"], cm["units"])
                     if ok else "%d problem(s); first: %s" % (len(cm["fails"]), cm["fails"][0]), time.time() - t))
+    t = time.time()
+    ok, lk_lines, data["level_keeping"] = check_level_keeping.closure_margins()
+    lk = data["level_keeping"]
+    for ln in lk_lines:
+        if ln.endswith("FAIL"):
+            print("  LEVEL-KEEP %s" % ln)
+    summary.append(("level-keep", ok, "closure %.0e mm over %d samples; dead-point margin %.1f deg (%s), %.1f at elbow limits"
+                    % (lk["closure_mm"], lk["samples"], lk["margin_deg"], lk["margin_at"], lk["limit_margin_deg"]),
+                    time.time() - t))
     t = time.time()
     fp = fingerprint.build()
     base = fingerprint.BASE

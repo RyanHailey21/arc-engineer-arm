@@ -5,14 +5,14 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "level_keeping",
   "status": "pass",
-  "reason": "PASS: LEVEL_KEEPING fourbar: PASS (337 s)",
-  "scope": "LEVEL_KEEPING fourbar: PASS (337 s)",
+  "reason": "PASS: LEVEL_KEEPING fourbar: PASS (230 s)",
+  "scope": "LEVEL_KEEPING fourbar: PASS (230 s)",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "8fec0b2f45f6cd1d6e9ce35f047137137b244eb2c60e5b7fc440e8e37667a09b",
+  "implementation_sha256": "56a227760c7a6a7de599c8c9042d597b10c9e0da31a4f04fbc5467b549566110",
   "inputs": [
    {
     "id": "design-inputs",
@@ -23,10 +23,10 @@
   "artifacts": [],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-17T21:41:29",
+   "time": "2026-11-18T04:46:15",
    "inputs_hash": "8cde22ae93768790",
    "external_copies": [
-    "level_keeping.txt"
+    "../level_keeping.txt"
    ]
   }
  }

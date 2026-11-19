@@ -512,6 +512,13 @@
   },
   "fails": []
  },
+ "level_keeping": {
+  "closure_mm": 2.5915335619454374e-13,
+  "samples": 47,
+  "margin_deg": 24.7,
+  "margin_at": "DONUT_PLACE",
+  "limit_margin_deg": 21.3
+ },
  "summary": [
   {
    "check": "envelopes",
@@ -529,13 +536,13 @@
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 6.3
+   "s": 6.0
   },
   {
    "check": "mass/torque",
    "ok": true,
    "note": "past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m",
-   "s": 1.5
+   "s": 1.6
   },
   {
    "check": "catalogue",
@@ -544,11 +551,17 @@
    "s": 0.0
   },
   {
+   "check": "level-keep",
+   "ok": true,
+   "note": "closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits",
+   "s": 0.2
+  },
+  {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 29.8
+   "s": 31.0
   }
  ],
- "elapsed_s": 55.2
+ "elapsed_s": 54.9
 }

@@ -7,7 +7,9 @@
      the elbow range at reachable shoulder angles, and the wrist-pitch range at the task poses. CAD's interference check tests task
      poses only; this covers the motion between them for the parts that moved.
 
-Writes out/<variant>/level_keeping.txt and a cad-evidence record.   GRIP=FOURBAR freecadcmd tools/check_level_keeping.py
+quick_check.py runs 1 + 2 (closure_margins(), < 1 s); 3 is the slow part and runs only here.
+Writes out/<variant>/level_keeping.txt and a cad-evidence record.
+    python -I cad/tools/run.py --grip FOURBAR cad/tools/check_level_keeping.py
 """
 import math
 import os
@@ -39,13 +41,11 @@ def margin(th2):
     return min(r, 180.0 - r)
 
 
-def main():
-    t0 = time.time()
-    lines, ok = [], True
-    B = M.build_bodies()
+def closure_margins():
+    """Checks 1 + 2 (pure kinematics, < 1 s, no shape booleans): (ok, report lines, summary dict).
+    quick_check.py runs this; the sweep (check 3) stays a milestone check."""
+    lines = []
     v2 = M.u(M.K["V2_ANG"], M.K["V2_LEN"])
-
-    # 1 + 2: closure and margins at the task poses and lift samples
     samples = [(n,) + tuple(M.pose_q(n)[0]) for n in M.POSES]
     samples += [("lift z%.0f" % z, *M.ik(Fd.POLE_X, z, 0.0), 0.0, r) for z, _y, r in Fd.donut_lift_path()]
     worst_c, worst_m, worst_n = 0.0, 180.0, ""
@@ -57,11 +57,18 @@ def main():
             worst_m, worst_n = margin(th2), name
     lim_m = min(margin(t) for t in ELBOW_LIMITS)
     ok_c, ok_m, ok_l = worst_c < 1e-6, worst_m >= MARGIN_MIN, lim_m >= LIMIT_MARGIN_MIN
-    ok = ok and ok_c and ok_m and ok_l
     lines.append("closure: worst %.1e mm over %d poses/lift samples  %s" % (worst_c, len(samples), "PASS" if ok_c else "FAIL"))
     lines.append("dead-point margin: min %.1f deg at %s (need >= %.0f)  %s" % (worst_m, worst_n, MARGIN_MIN, "PASS" if ok_m else "FAIL"))
     lines.append("dead-point margin at elbow limits %s: %.1f deg (need >= %.0f)  %s"
                  % (ELBOW_LIMITS, lim_m, LIMIT_MARGIN_MIN, "PASS" if ok_l else "FAIL"))
+    return ok_c and ok_m and ok_l, lines, dict(closure_mm=worst_c, samples=len(samples), margin_deg=round(worst_m, 1),
+                                               margin_at=worst_n, limit_margin_deg=round(lim_m, 1))
+
+
+def main():
+    t0 = time.time()
+    ok, lines, _d = closure_margins()
+    B = M.build_bodies()
 
     # 3: sweep clearance of the moved bodies against every other body
     def placed_chk(plc, names):
@@ -160,4 +167,5 @@ def main():
     return 0 if ok else 1
 
 
-sys.exit(main())
+if not os.environ.get("QC_IMPORT"):        # quick_check.py imports closure_margins() only
+    sys.exit(main())

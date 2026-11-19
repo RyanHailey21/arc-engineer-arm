@@ -5,32 +5,32 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
   "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; fingerprint MATCH",
-  "scope": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; fingerprint MATCH",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; fingerprint MATCH",
+  "scope": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; fingerprint MATCH",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "3356bbebd7b654738975b680f8ad9bd2713b1d1ac86a6fbfc35b71db44119ffb",
+  "implementation_sha256": "7351489b31b7bebdd5fc3d08418e6a3e4b35a2099a22ffefbc6bdca6095fbb58",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/quick.inputs.json",
-    "sha256": "2640d878d19ff4088696f9ee2ab7dee859a7d6ba73226e13b15ef448a345bc69"
+    "sha256": "c0983bbdfa1c64433d4de423a6db9d8253f177bcb526733003aaa24283c71f5c"
    }
   ],
   "artifacts": [
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "649d60322c51df67a4f2a5005af2724bc5add364b1c0c3777121cf3793de1b36"
+    "sha256": "ef75fdff13c1fb6f9b914695ebbfb2102cbed3578a367ca9335c42221b4384f1"
    }
   ],
   "extensions": {
    "variant": "SCREW",
-   "time": "2026-11-17T21:32:29",
-   "inputs_hash": "dd014ea3239d86fc",
+   "time": "2026-11-18T20:30:29",
+   "inputs_hash": "d7e43ee0e386a980",
    "external_copies": []
   }
  }
