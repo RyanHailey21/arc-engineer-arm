@@ -5,10 +5,10 @@
    "out/bloat_report.md",
    "out/bloat_report.json"
   ],
-  "inputs_hash": "d7e43ee0e386a980",
-  "note": "BLOAT 32 findings (unused-import 1, dead-def 6, duplicate 4, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 12), 73 kept",
+  "inputs_hash": "7b6e4caeecba02a4",
+  "note": "BLOAT 35 findings (unused-import 1, dead-def 6, duplicate 6, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 13), 74 kept",
   "status": "WARN",
-  "time": "2026-11-18T20:55:41"
+  "time": "2026-11-18T23:49:43"
  },
  "bom": {
   "evidence": "bom.evidence.json",
@@ -16,20 +16,20 @@
    "BOM.csv",
    "BOM.md"
   ],
-  "inputs_hash": "8cde22ae93768790",
-  "note": "26 purchased items, unsourced: none",
+  "inputs_hash": "7b6e4caeecba02a4",
+  "note": "27 purchased items, unsourced: none",
   "status": "PASS",
-  "time": "2026-11-17T21:43:35"
+  "time": "2026-11-18T23:49:40"
  },
  "engagement": {
   "evidence": "engagement.evidence.json",
   "files": [
    "engagement_report.txt"
   ],
-  "inputs_hash": "8cde22ae93768790",
+  "inputs_hash": "7b6e4caeecba02a4",
   "note": "Thread engagement: 20 tapped holes, 20 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
   "status": "WARN",
-  "time": "2026-11-17T21:43:20"
+  "time": "2026-11-18T23:49:18"
  },
  "fea_fourbar": {
   "evidence": "fea_fourbar.evidence.json",
@@ -37,79 +37,102 @@
    "fea/fea_report.md",
    "fea/fea_results.json"
   ],
-  "inputs_hash": "8cde22ae93768790",
+  "inputs_hash": "7b6e4caeecba02a4",
   "note": "6 cases, min SF 1.8",
   "status": "PASS",
-  "time": "2026-11-17T21:39:20"
+  "time": "2026-11-18T23:43:25"
+ },
+ "fea_jaw": {
+  "evidence": "fea_jaw.evidence.json",
+  "files": [
+   "fea/jaw_stiffness_final.json",
+   "fea/jaw_stiffness_final.md"
+  ],
+  "inputs_hash": "7b6e4caeecba02a4",
+  "note": "final: bottom rel top -0.001 mm, tilt -0.00 deg",
+  "status": "PASS",
+  "time": "2026-11-18T23:36:59"
  },
  "grip_budget": {
   "evidence": "grip_budget.evidence.json",
   "files": [
    "grip_budget.txt"
   ],
-  "inputs_hash": "8cde22ae93768790",
+  "inputs_hash": "7b6e4caeecba02a4",
   "note": "pipe 143% of rated / 48% of stall; open spring 0.12 N*m",
   "status": "WARN",
-  "time": "2026-11-17T21:45:22"
+  "time": "2026-11-18T23:44:35"
+ },
+ "grip_hold": {
+  "evidence": "grip_hold.evidence.json",
+  "files": [
+   "grip_hold.txt",
+   "grip_hold.json",
+   "../sim/arc_arm_fourbar/task_run.json"
+  ],
+  "inputs_hash": "7b6e4caeecba02a4",
+  "note": "donut SF 1.6 rated / 5.6 stall; pipe SF 1.1 rated / 5.5 stall (MU 0.50)",
+  "status": "WARN",
+  "time": "2026-11-18T23:49:41"
  },
  "holes": {
   "evidence": "holes.evidence.json",
   "files": [
    "hole_report.txt"
   ],
-  "inputs_hash": "8cde22ae93768790",
-  "note": "Hole edge-distance check (custom parts): 205 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 33 warn (wall < max(1.5 mm, 0.5 d))",
+  "inputs_hash": "7b6e4caeecba02a4",
+  "note": "Hole edge-distance check (custom parts): 227 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 35 warn (wall < max(1.5 mm, 0.5 d))",
   "status": "WARN",
-  "time": "2026-11-17T21:43:03"
+  "time": "2026-11-18T23:48:27"
  },
  "interference_full": {
   "evidence": "interference_full.evidence.json",
   "files": [
    "interference_report.txt"
   ],
-  "inputs_hash": "8cde22ae93768790",
+  "inputs_hash": "7b6e4caeecba02a4",
   "note": "static, 14 task poses, field clearance, donut lift",
   "status": "PASS",
-  "time": "2026-11-17T21:42:34"
+  "time": "2026-11-18T23:26:03"
  },
  "level_keeping": {
   "evidence": "level_keeping.evidence.json",
   "files": [
-   "../level_keeping.txt"
+   "level_keeping.txt"
   ],
-  "inputs_hash": "8cde22ae93768790",
-  "note": "LEVEL_KEEPING fourbar: PASS (230 s)",
+  "inputs_hash": "7b6e4caeecba02a4",
+  "note": "LEVEL_KEEPING fourbar: PASS (358 s)",
   "status": "PASS",
-  "time": "2026-11-18T04:46:15"
+  "time": "2026-11-18T23:32:01"
  },
  "quick": {
   "evidence": "quick.evidence.json",
   "files": [
    "quick.json"
   ],
-  "inputs_hash": "d7e43ee0e386a980",
-  "note": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 484 g (head 279 g); worst static J1 3.15 J2 2.60 J3 0.78 N*m; catalogue 26 keys, 175 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 32 findings (unused-import 1, dead-def 6, duplicate 4, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 12), 73 kept; fingerprint MATCH",
+  "inputs_hash": "7b6e4caeecba02a4",
+  "note": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 558 g (head 353 g); worst static J1 3.34 J2 2.84 J3 0.87 N*m; catalogue 27 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 35 findings (unused-import 1, dead-def 6, duplicate 6, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 13), 74 kept; fingerprint MATCH",
   "status": "PASS",
-  "time": "2026-11-18T20:56:36"
+  "time": "2026-11-18T23:50:47"
  },
  "seated": {
   "evidence": "seated.evidence.json",
   "files": [
    "seated_report.txt"
   ],
-  "inputs_hash": "d7e43ee0e386a980",
-  "note": "Fastener seating (FOURBAR, STOW): 116 screws/pins, 134 seat points -> 0 FAIL",
+  "inputs_hash": "7b6e4caeecba02a4",
+  "note": "Fastener seating (FOURBAR, STOW): 126 screws/pins, 152 seat points -> 0 FAIL",
   "status": "PASS",
-  "time": "2026-11-18T04:57:19"
+  "time": "2026-11-18T23:48:54"
  },
  "working_doc": {
   "evidence": "working_doc.evidence.json",
   "files": [
-   "../../../../Windows/System32/ARC_Arm_Fourbar.FCStd"
+   "ARC_Arm_Fourbar.FCStd"
   ],
-  "inputs_hash": "8cde22ae93768790",
-  "note": "ARC_Arm_Fourbar.FCStd: 244 parts in 17 body groups at STOW, coloured (12.5 MB)",
+  "inputs_hash": "7b6e4caeecba02a4",
+  "note": "ARC_Arm_Fourbar.FCStd: 264 parts in 17 body groups at STOW, coloured (12.6 MB)",
   "status": "PASS",
-  "time": "2026-11-17T21:51:30"
+  "time": "2026-11-18T23:44:34"
  }
 }

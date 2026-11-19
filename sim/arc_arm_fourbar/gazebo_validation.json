@@ -1,54 +1,54 @@
 {
  "variant": "fourbar",
- "model_urdf_sha256": "158b2e55efbbdf49de2cb0f0aae605e5ac8d57f2f61d7b70f32618981fb081dc",
+ "model_urdf_sha256": "c2f8f7452bf57855f9467d37ad4c3df9e810c3879f6ae604c4ca0dd4db40c304",
  "gz_version": "8.10.0",
  "world": "sim/arc_arm_fourbar/worlds/arc_arm.sdf",
  "poses": [
   {
    "pose": "STOW",
-   "settle_s": 7.9,
+   "settle_s": 11.7,
    "track_err_deg": {
     "shoulder": 0.0,
     "elbow": 0.0,
-    "wrist_pitch": -0.003,
+    "wrist_pitch": -0.004,
     "wrist_roll": -0.0,
     "gripper": -0.001
    },
-   "max_mimic_err_deg": 0.3285,
+   "max_mimic_err_deg": 0.342,
    "worst_mimic": "crank_pin_joint",
    "tcp_mm": [
-    16.25,
+    16.24,
     -0.0,
-    370.09
+    369.83
    ],
-   "tcp_err_mm": 1.976,
+   "tcp_err_mm": 2.238,
    "finite": true,
    "ok": true
   },
   {
    "pose": "DONUT_APPROACH",
-   "settle_s": 7.6,
+   "settle_s": 12.5,
    "track_err_deg": {
     "shoulder": -0.0,
     "elbow": -0.0,
     "wrist_pitch": -0.0,
-    "wrist_roll": -0.0,
+    "wrist_roll": 0.0,
     "gripper": -0.0
    },
-   "max_mimic_err_deg": 0.2418,
+   "max_mimic_err_deg": 0.3007,
    "worst_mimic": "level_joint",
    "tcp_mm": [
-    129.49,
-    0.0,
-    298.56
+    129.43,
+    -0.0,
+    298.34
    ],
-   "tcp_err_mm": 1.528,
+   "tcp_err_mm": 1.753,
    "finite": true,
    "ok": true
   },
   {
    "pose": "DONUT_LIFT",
-   "settle_s": 7.5,
+   "settle_s": 10.6,
    "track_err_deg": {
     "shoulder": 0.0,
     "elbow": -0.0,
@@ -56,20 +56,20 @@
     "wrist_roll": -0.0,
     "gripper": -0.001
    },
-   "max_mimic_err_deg": 0.2545,
+   "max_mimic_err_deg": 0.3122,
    "worst_mimic": "level_joint",
    "tcp_mm": [
-    130.28,
-    -0.0,
-    718.36
+    130.29,
+    0.0,
+    718.13
    ],
-   "tcp_err_mm": 1.662,
+   "tcp_err_mm": 1.893,
    "finite": true,
    "ok": true
   },
   {
    "pose": "DONUT_LIFT_ROLL+",
-   "settle_s": 7.3,
+   "settle_s": 11.9,
    "track_err_deg": {
     "shoulder": 0.0,
     "elbow": -0.0,
@@ -77,41 +77,41 @@
     "wrist_roll": -0.0,
     "gripper": -0.001
    },
-   "max_mimic_err_deg": 0.2541,
+   "max_mimic_err_deg": 0.3118,
    "worst_mimic": "level_joint",
    "tcp_mm": [
-    130.29,
+    130.3,
     6.34,
-    719.77
+    719.54
    ],
-   "tcp_err_mm": 1.66,
+   "tcp_err_mm": 1.891,
    "finite": true,
    "ok": true
   },
   {
    "pose": "PIPE_GRASP",
-   "settle_s": 7.3,
+   "settle_s": 10.8,
    "track_err_deg": {
     "shoulder": -0.0,
     "elbow": 0.0,
     "wrist_pitch": -0.003,
     "wrist_roll": -0.0,
-    "gripper": -0.001
+    "gripper": -0.0
    },
-   "max_mimic_err_deg": 0.3078,
+   "max_mimic_err_deg": 0.3215,
    "worst_mimic": "crank_pin_joint",
    "tcp_mm": [
-    40.08,
+    40.07,
     -0.0,
-    453.02
+    452.76
    ],
-   "tcp_err_mm": 1.977,
+   "tcp_err_mm": 2.237,
    "finite": true,
    "ok": true
   },
   {
    "pose": "PIPE_CHUTE",
-   "settle_s": 7.4,
+   "settle_s": 10.9,
    "track_err_deg": {
     "shoulder": 0.0,
     "elbow": 0.0,
@@ -119,20 +119,20 @@
     "wrist_roll": 0.0,
     "gripper": -0.0
    },
-   "max_mimic_err_deg": 0.2232,
+   "max_mimic_err_deg": 0.2385,
    "worst_mimic": "crank_pin_joint",
    "tcp_mm": [
-    149.68,
+    149.67,
     0.0,
-    598.99
+    598.91
    ],
-   "tcp_err_mm": 1.063,
+   "tcp_err_mm": 1.142,
    "finite": true,
    "ok": true
   },
   {
    "pose": "PIPE_CHUTE_ROLL90",
-   "settle_s": 7.3,
+   "settle_s": 10.2,
    "track_err_deg": {
     "shoulder": 0.0,
     "elbow": 0.0,
@@ -140,19 +140,19 @@
     "wrist_roll": -0.0,
     "gripper": -0.0
    },
-   "max_mimic_err_deg": 0.2233,
+   "max_mimic_err_deg": 0.2387,
    "worst_mimic": "crank_pin_joint",
    "tcp_mm": [
-    134.67,
+    134.66,
     15.0,
-    598.98
+    598.91
    ],
-   "tcp_err_mm": 1.069,
+   "tcp_err_mm": 1.147,
    "finite": true,
    "ok": true
   }
  ],
- "load_s": 8.0,
+ "load_s": 17.4,
  "joints_reported": [
   "crank_joint",
   "crank_pin_joint",
@@ -176,12 +176,12 @@
  "missing_joints": [],
  "power_off_release": {
   "start_gap_mm": 13.8,
-  "end_gap_mm": 105.1,
+  "end_gap_mm": 82.8,
   "full_open_gap_mm": 112.0,
-  "sim_span_s": 2.892,
+  "sim_span_s": 3.541,
   "samples": 4000,
-  "t_open_10mm_s": 0.585,
-  "t_90pct_open_s": 2.629,
+  "t_open_10mm_s": 0.545,
+  "t_90pct_open_s": 2.517,
   "gap_curve_s_mm": [
    [
     0.0,
@@ -189,47 +189,59 @@
    ],
    [
     0.25,
-    16.0
+    16.2
    ],
    [
     0.5,
-    21.4
+    22.3
    ],
    [
     0.75,
-    29.3
+    31.6
    ],
    [
     1.0,
-    39.6
+    43.4
    ],
    [
     1.25,
-    51.5
+    56.7
    ],
    [
     1.5,
-    64.1
+    70.3
    ],
    [
     1.75,
-    76.2
+    82.6
    ],
    [
     2.0,
-    86.9
+    92.6
    ],
    [
     2.25,
-    95.4
+    99.5
    ],
    [
     2.5,
-    101.3
+    103.2
    ],
    [
     2.75,
-    104.5
+    103.5
+   ],
+   [
+    3.0,
+    100.4
+   ],
+   [
+    3.25,
+    94.1
+   ],
+   [
+    3.5,
+    84.6
    ]
   ],
   "ok": true,

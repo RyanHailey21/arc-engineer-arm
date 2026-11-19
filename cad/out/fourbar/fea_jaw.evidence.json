@@ -1,0 +1,42 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "fea_jaw",
+  "status": "pass",
+  "reason": "PASS: final: bottom rel top -0.001 mm, tilt -0.00 deg",
+  "scope": "final: bottom rel top -0.001 mm, tilt -0.00 deg",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "a4f79d63e97811abfcdec24373ba51b30ab17d8e8fc56bbd3c6ac099d3c81c28",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/fea_jaw.inputs.json",
+    "sha256": "4eccfecc40d5af6fae831d41cc4c39bf441d1da98ba5901b8aa06893a97282e0"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "jaw_stiffness_final.json",
+    "path": "fea/jaw_stiffness_final.json",
+    "sha256": "b837749015b9733794e869c9dc1eeb45c94756f8b6506c66e4c4c36ea442dcfd"
+   },
+   {
+    "id": "jaw_stiffness_final.md",
+    "path": "fea/jaw_stiffness_final.md",
+    "sha256": "9203d8a58aeea5160fc4277c83530d17d9bc160f91e550fa392c3f6067283ecb"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-18T23:36:59",
+   "inputs_hash": "7b6e4caeecba02a4",
+   "external_copies": []
+  }
+ }
+}

@@ -34,6 +34,7 @@ from joint_command import ACT, REPO, load_limits, min_jerk  # noqa: E402
 
 LANES = dict(pick=0.0, place=1.6, bucket=-1.6, chute=-3.2)       # must match build_tasks.py
 CTRL_DT = 0.01                                                  # host setpoint period (100 Hz)
+GRIP_SETTLE_S = 0.25                                           # ignore the weld-attach transient in grasp loads
 V_CART = 150.0                                                  # mm/s for Cartesian lines
 V_LIFT = 100.0                                                  # mm/s up the pole
 V_BASE = 0.4                                                    # m/s chassis
@@ -171,17 +172,116 @@ class TaskSim:
 
     # ---------------------------------------------------------------- low level
     def _apply(self):
+        """MIT-mode style control (as the DM-J4340s run): tau = kp*(q_des - q) + kd*(v_des - v). MuJoCo's position
+        actuator gives kp*(ctrl - q) - kd*v, so the velocity feed-forward goes in as ctrl = q_des + (kd/kp)*v_des.
+        Without it the damping term fights every commanded motion and the effort overstates what the drive needs."""
+        vff = getattr(self, "v_des", {})
         for j in ACT:
             lo, hi, _ = self.limits[j]
-            self.data.ctrl[self.act[j]] = math.radians(min(max(self.q[j], lo), hi))
+            a = self.act[j]
+            kp = float(self.model.actuator_gainprm[a, 0])
+            kd = -float(self.model.actuator_biasprm[a, 2])
+            q = math.radians(min(max(self.q[j], lo), hi))
+            self.data.ctrl[a] = q + (kd / kp) * math.radians(vff.get(j, 0.0)) if kp > 0 else q
         self.data.ctrl[self.act["base_x"]], self.data.ctrl[self.act["base_y"]] = self.base
 
+    def _stats_init(self):
+        """Actuation statistics for the compliance report: per arm joint peak |torque|, RMS torque (thermal, vs the
+        continuous rating), peak |speed|; per held object the force and moment the grasp must carry (the weld's
+        constraint force: gravity + inertia, i.e. what the jaws have to supply)."""
+        mj, m = self.mj, self.model
+        self.dof = {j: m.jnt_dofadr[mj.mj_name2id(m, mj.mjtObj.mjOBJ_JOINT, j)] for j in ACT}
+        self.stats = {j: dict(tau_max=0.0, tau_sq=0.0, vel_max=0.0, n=0, tau_at="", vel_at="") for j in ACT}
+        self.hold = {o: dict(F_max=0.0, M_max=0.0, steps=0) for o in self.obj}
+
+    def _stats_step(self):
+        d = self.data
+        for j in ACT:
+            s = self.stats[j]
+            t = float(d.actuator_force[self.act[j]])
+            ph = self.phase["phase"] if self.phase else ""
+            if abs(t) > s["tau_max"]:
+                s["tau_max"], s["tau_at"] = abs(t), ph
+            s["tau_sq"] += t * t
+            s["n"] += 1
+            v = abs(float(d.qvel[self.dof[j]]))
+            if v > s["vel_max"]:
+                s["vel_max"], s["vel_at"] = v, ph
+        eqc = self.mj.mjtConstraint.mjCNSTR_EQUALITY
+        for o, e in self.weld.items():
+            if not d.eq_active[e]:
+                continue
+            rows = [i for i in range(d.nefc) if d.efc_type[i] == eqc and d.efc_id[i] == e]
+            if len(rows) >= 6:
+                f = np.array([d.efc_force[i] for i in rows[:3]])
+                mmt = np.array([d.efc_force[i] for i in rows[3:6]])
+                h = self.hold[o]
+                h["F_max"] = max(h["F_max"], float(np.linalg.norm(f)))
+                h["M_max"] = max(h["M_max"], float(np.linalg.norm(mmt)))
+                h["steps"] += 1
+                # the weld anchors at the object origin: move the wrench to the TCP, then into the gripper frame
+                # (head axes = gripper axes: x roll axis, y across the jaws, z up), so the grip check can split
+                # pad-normal force from shear and see the moment the jaws carry. Skip the attach transient.
+                if h["steps"] * self.model.opt.timestep < GRIP_SETTLE_S:
+                    continue
+                R = np.array(d.xmat[self.head]).reshape(3, 3)
+                m_tcp = mmt + np.cross(np.array(d.xpos[self.obj[o]]) - self.tcp_world(), f)
+                fh, mh = R.T @ f, R.T @ m_tcp
+                touch = any({self.cat[c.geom1][0], self.cat[c.geom2][0]} == {o, "field"} for c in d.contact[:d.ncon])
+                h.setdefault("w", []).append(np.concatenate((fh, mh)))
+                h.setdefault("ph", []).append(self.phase["phase"] if self.phase else "")
+                h.setdefault("touch", []).append(touch)
+
+    def actuation_summary(self):
+        out = {}
+        for j, s in self.stats.items():
+            out[j] = dict(tau_peak_Nm=round(s["tau_max"], 3), tau_peak_in=s["tau_at"],
+                          tau_rms_Nm=round(math.sqrt(s["tau_sq"] / max(1, s["n"])), 3),
+                          speed_peak_rad_s=round(s["vel_max"], 3), speed_peak_in=s["vel_at"])
+        hold = {}
+        for o, h in self.hold.items():
+            hold[o] = dict(force_peak_N=round(h["F_max"], 2), moment_peak_Nm=round(h["M_max"], 3),
+                           held_s=round(h["steps"] * self.model.opt.timestep, 2), settle_s=GRIP_SETTLE_S)
+            if not h.get("w"):
+                continue
+            w_all, ph_all, touch = np.abs(np.array(h["w"])), h["ph"], np.array(h["touch"])
+            names = ("Fx", "Fy", "Fz", "Mx", "My", "Mz")
+            # TCP wrench in the gripper frame, per component Fx Fy Fz (N) Mx My Mz (N*m), while the object is CARRIED
+            # (no contact with the field: lift-off, touchdown and the release in the chute are contact events, not
+            # holding cases): peak (and its phase), 99th percentile and median (the quasi-static hold)
+            free = ~touch
+            w, ph = w_all[free], [p for p, f in zip(ph_all, free) if f]
+            hold[o]["carried_s"] = round(float(free.sum()) * self.model.opt.timestep, 2)
+            hold[o]["tcp_wrench"] = {k: dict(peak=round(float(w[:, i].max()), 3), peak_in=ph[int(w[:, i].argmax())],
+                                             p99=round(float(np.percentile(w[:, i], 99)), 3),
+                                             median=round(float(np.median(w[:, i])), 3))
+                                     for i, k in enumerate(names)}
+            per = {}                                   # per phase peak, to see which motion sets the demand
+            for row, p in zip(w, ph):
+                per[p] = np.maximum(per.get(p, np.zeros(6)), row)
+            hold[o]["tcp_wrench_by_phase"] = {p: [round(float(v), 3) for v in a] for p, a in per.items()}
+            if touch.any():                            # the contact events, reported apart
+                wc = w_all[touch]
+                hold[o]["tcp_wrench_in_contact_peak"] = {k: round(float(wc[:, i].max()), 3) for i, k in enumerate(names)}
+        return dict(joints=out, grasp_loads=hold)
+
     def tick(self):
-        """One 10 ms control period: apply the setpoint, step the physics, log contacts, sync the viewer."""
+        """One 10 ms control period: apply the setpoint, step the physics, log contacts, sync the viewer.
+        The setpoint is ramped linearly across the physics substeps (first-order hold, as a drive interpolating its
+        host stream): a 10 ms zero-order-hold step kicks the stiff joint PDs at 100 Hz, which showed up as a
+        sign-alternating chatter in the grasp wrench (pipe moment 1.15 vs 0.5 N*m averaged) and in the torque peaks."""
+        prev = np.array(self.data.ctrl)
         self._apply()
+        new = np.array(self.data.ctrl)
+        if not getattr(self, "_ctrl_started", False):          # first tick: no previous setpoint to ramp from
+            prev, self._ctrl_started = new, True
         n = int(round(CTRL_DT / self.model.opt.timestep))
-        for _ in range(n):
+        if not hasattr(self, "stats"):
+            self._stats_init()
+        for i in range(n):
+            self.data.ctrl[:] = prev + (new - prev) * (i + 1) / n
             self.mj.mj_step(self.model, self.data)
+            self._stats_step()
             for c in self.data.contact[:self.data.ncon]:
                 a, b = self.cat[c.geom1], self.cat[c.geom2]
                 kinds = {a[0], b[0]}
@@ -225,15 +325,19 @@ class TaskSim:
         steps = max(1, int(math.ceil(T / CTRL_DT)))
         for k in range(1, steps + 1):
             q, base = fn(min_jerk(k / steps))
+            # desired joint speed (deg/s) for the velocity feed-forward: the setpoint's own rate of change
+            self.v_des = {j: (q[j] - self.q[j]) / CTRL_DT for j in ACT}
             self.q, self.base = dict(q), list(base)
             self.tick()
             if not self.running():
                 raise SystemExit("viewer closed")
+        self.v_des = {}
 
-    def joints(self, q_to, hold=0.3):
-        """Joint-space min-jerk move, timed by the joint speed limits."""
+    def joints(self, q_to, hold=0.3, speed=None):
+        """Joint-space min-jerk move, timed by the joint speed limits (speed: fraction of them; default self.speed)."""
         q0, b = dict(self.q), list(self.base)
-        T = max([0.3] + [1.875 * abs(q_to[j] - q0[j]) / (self.speed * self.limits[j][2]) for j in ACT])
+        sp = speed or self.speed
+        T = max([0.3] + [1.875 * abs(q_to[j] - q0[j]) / (sp * self.limits[j][2]) for j in ACT])
         self._stream(lambda s: ({j: q0[j] + (q_to[j] - q0[j]) * s for j in ACT}, b), T)
         self.settle(hold)
 
@@ -386,7 +490,9 @@ def pipe_task(sim, kin, tp, F):
     sim.drive(x=-0.45)
     sim.end()
     sim.begin("swing to PIPE_CHUTE (pitch 90)")
-    sim.joints(P("PIPE_CHUTE"))
+    # slow swing: the 500 mm pipe's inertia dominates the J3 torque (at the default 0.5 speed the DS3225 needed
+    # ~2.1 N*m, ~85 % of its stall); a quarter of the speed limit roughly halves the inertial part
+    sim.joints(P("PIPE_CHUTE"), speed=0.25)
     sim.end()
     ins = F["stations"]["chute"]["chute"]["insert_mm"] / 1000.0
     sim.begin("drive to the chute (pipe at the face)")
@@ -458,6 +564,7 @@ def main():
             sim.end()
     finally:
         sim.finish_video()
+        result["actuation"] = sim.actuation_summary()
         result["phases"] = sim.report
         result["sim_time_s"] = round(sim.data.time, 2)
         json.dump(result, open(os.path.join(root, "task_run.json"), "w", encoding="utf-8"), indent=1)

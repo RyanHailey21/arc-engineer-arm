@@ -3,11 +3,12 @@
 Adapted from Wang et al., *Lightweight Robotic Arm Based on a Load-Adaptive Hoisting Mechanism*, Actuators 2025, 14, 71.
 Task requirements come from the ARC Championship Events Manual S2 v1.0, §3.2.4 (Objectives B and C) and §3.2.4.5 (Controlling Objectives).
 
-## Current state (2026-11-16)
+## Current state (2026-11-18)
 
-- **Gripper.** The design gripper is the lightweight **gear-synchronised parallel four-bar** (`GRIP=FOURBAR`). Head: 280 g vs 836 g for rev A. Arm: 2.87 kg vs 3.42 kg.
+- **Gripper.** The design gripper is the lightweight **gear-synchronised parallel four-bar** (`GRIP=FOURBAR`). Head: 353 g (C-frame jaws held by the linkage at top and bottom) vs 836 g for rev A.
   - All checks pass: interference, hole walls, thread engagement, FEA, envelopes, BOM.
   - Open items: the servo back-drive bench test and the pipe-holding servo duty.
+  - **Compliance report** (gripper holds the objects, motors hold the arm, the arm actuates): [cad/docs/compliance_report.md](cad/docs/compliance_report.md).
   - Status and evidence: [cad/docs/fourbar_status.md](cad/docs/fourbar_status.md).
 - **Rev A.** The **released rev A package** (TDP, 46 drawings, fab STEP/DXF, FEA) documents the lead-screw gripper (`GRIP=SCREW`).
 - **Simulation models.** MuJoCo (MJCF) and Gazebo (URDF with `<mimic>`) models of the four-bar arm are in [sim/](sim/README.md). Both are generated from the CAD and validated against it.
@@ -18,14 +19,14 @@ Task requirements come from the ARC Championship Events Manual S2 v1.0, §3.2.4 
 | Task | Requirement (manual) | How the arm does it |
 |---|---|---|
 | **Donut** (Obj C) | Ø100/Ø50×25 ring sits around the base of a 456 mm zig-zag pole on the 210 mm lower tier. Score it lying flat on the 300×300×50 Scoring Area. | Jaws close on the 100 mm OD with the fingers forward. Lift it up the pole by following the zig-zag (arm Z plus chassis strafe for Y) until it clears the pole top at 666 mm. Then place it flat. |
-| **Pipe** (Obj B) | 500 mm × Ø26.7 PVC pipe in a Ø200×250 bucket. Turn it in through a Ø52.5 chute 600 mm up. | Grip the pipe nearest the robot by its top end (fingers forward) and lift it clear of the rim (TCP at 790). Pitch the wrist 90° so the pipe points forward. The chassis then drives it ~300 mm into the chute. |
+| **Pipe** (Obj B) | 500 mm × Ø26.7 PVC pipe in a Ø200×250 bucket. Turn it in through a Ø52.5 chute 600 mm up. | Grip the pipe nearest the robot by its top end (fingers forward) and lift it clear of the rim (TCP at 740). Pitch the wrist 90° so the pipe points forward. The chassis then drives it ~300 mm into the chute. |
 | **Fail-safe** (§3.2.4.5) | Within 1 s of being defeated, stop controlling objectives; a defeated Engineer's mechanisms are powered off, so the claw must release on its own. | A constant-torque spiral spring on the lead screw always turns it towards OPEN. The Tr8x8 screw is free-running, so with the M2006 unpowered the spring spins the screw (and back-drives the gearbox) and the jaws open. **Bench-test the release time** (see risks). |
 
 ## Kept from the paper vs changed
 
 - **Kept:**
   - Palletizer topology: shoulder and elbow motors coaxial at the base, forearm driven through a crank/rod parallelogram.
-  - Level-keeping, so the wrist stays level. Stage 1 keeps the paper's parallelogram (ground lever → rod → rocker). Stage 2 is now a 1:1 GT2 belt from the rocker to the wrist; a linkage offset there was singular for some forearm angles and collided with either the palm sweep or the field.
+  - Level-keeping, so the wrist stays level. Stage 1 keeps the paper's parallelogram (ground lever → rod → rocker). Stage 2 (rocker to wrist) is a parallelogram linkage (rod 2, 43 mm levers at 72.7°) since 2026-11-17; the rev A package used a 1:1 GT2 belt there. See [cad/docs/fourbar_status.md](cad/docs/fourbar_status.md).
   - The paper's 1 N·m / 416 rpm gripper motor class: a DJI M2006 P36 (with C610 ESC, CAN, current control = grip-force control).
 - **Changed:**
   - Links scaled about 2.4×: l1/l2/l3 go from 60/140/205 to 80/340/350 mm.
@@ -304,8 +305,8 @@ Leaders attach to whichever instance of a hole pattern, and whichever rim point,
 4. **M2006 gear retention.** The 20T gear sits on the Ø6 × 16.5 mm output shaft with a set screw on the flat (add Loctite 638); check the shaft flat orientation on a real motor before drilling the set-screw hole.
 5. **DS3225 envelope.** There's no vendor CAD for this servo. Caliper-check the ear-hole grid (49.5 × 10) before cutting the level member.
 6. **The arm falls when the robot is defeated** (motors unpowered). This is allowed by the rules, but add a soft landing stop or gas spring so it doesn't slam.
-7. **Stage-2 belt load.** The J3 servo's reaction torque (up to about 1.2 N·m) runs through the belt: about 125 N on the 30T pulleys, so the belt is now 9 mm GT2 (rocker/level plates, rod 1 and the J3 servo stack moved 3 mm outboard to fit it). Use a fibreglass- or steel-cord 2GT-9 belt and set the idler tension to at least the expected load.
-8. **GT2 pulleys are custom parts** (30T, hex-keyed into the rocker and level member, with a 6700 bearing inside). Hob them in 6061, or buy 30T bore-10 pulleys and machine the hex. The belt is clamp-spliced and tensioned by the idler on the forearm.
+7. **(Rev A only) Stage-2 belt load.** The J3 servo's reaction torque (up to about 1.2 N·m) runs through the belt: about 125 N on the 30T pulleys, so the belt is now 9 mm GT2 (rocker/level plates, rod 1 and the J3 servo stack moved 3 mm outboard to fit it). Use a fibreglass- or steel-cord 2GT-9 belt and set the idler tension to at least the expected load.
+8. **(Rev A only) GT2 pulleys are custom parts** (30T, hex-keyed into the rocker and level member, with a 6700 bearing inside). Hob them in 6061, or buy 30T bore-10 pulleys and machine the hex. The belt is clamp-spliced and tensioned by the idler on the forearm.
 9. **The chassis isn't designed.** Assumptions: deck at 120 mm, shoulder 160 mm behind the bumper.
 
 ## Next steps

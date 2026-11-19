@@ -379,7 +379,7 @@ def validate_gazebo(gz_urdf):
 
 def gazebo_run(gz_urdf):
     """Summary of the last gz-sim run test (cad/sim/gz_check.py -> gazebo_validation.json), FRESH only if it ran on
-    this exact model.urdf. Needs gz-sim 8, so it runs separately (WSL); a missing or stale result fails the build."""
+    this exact model.urdf. Needs gz-sim 8, so it runs separately (WSL). Informational only: it no longer gates the build."""
     import hashlib
     f = os.path.join(ROOT, "gazebo_validation.json")
     if not os.path.exists(f):
@@ -522,7 +522,10 @@ def main():
     res = validate(urdf, mjcf, order, scene)
     res["gazebo_package"] = validate_gazebo(gz_urdf)
     res["gazebo_run"] = gazebo_run(gz_urdf)
-    res["ok"] = all(v.get("ok", True) for v in res.values() if isinstance(v, dict))
+    # Gazebo is informational (dropped as a requirement 2026-11-18): MuJoCo is the validated backend, so the gz package
+    # and its run test are reported but do not gate the build
+    INFO = ("gazebo_package", "gazebo_run")
+    res["ok"] = all(v.get("ok", True) for k, v in res.items() if isinstance(v, dict) and k not in INFO)
     json.dump(res, open(os.path.join(ROOT, "validation.json"), "w"), indent=1)
     lines = ["# Validation - arc_arm_%s" % VAR, ""] + ["- **%s**: `%s`" % (k, json.dumps(v)) for k, v in res.items() if k != "variant"]
     open(os.path.join(ROOT, "validation.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")

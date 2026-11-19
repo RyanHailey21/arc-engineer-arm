@@ -488,7 +488,7 @@
     "tau": [
      -0.72,
      4.42,
-     -0.16,
+     0.17,
      0.0
     ]
    },
@@ -523,32 +523,32 @@
   "unused-import": 1,
   "unused-variable": 0,
   "dead-def": 6,
-  "duplicate": 4,
+  "duplicate": 6,
   "orphan-param": 6,
   "orphan-catalogue": 1,
   "orphan-interface": 0,
   "orphan-envelope": 0,
   "out-unindexed": 2,
-  "scratch": 12
+  "scratch": 13
  },
  "summary": [
   {
    "check": "envelopes",
    "ok": true,
    "note": "10 pose checks",
-   "s": 0.9
+   "s": 1.0
   },
   {
    "check": "interfaces",
    "ok": true,
    "note": "8 sides",
-   "s": 0.0
+   "s": 0.1
   },
   {
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 5.9
+   "s": 6.8
   },
   {
    "check": "mass/torque",
@@ -571,15 +571,15 @@
   {
    "check": "bloat",
    "ok": null,
-   "note": "32 findings (unused-import 1, dead-def 6, duplicate 4, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 12), 73 kept",
-   "s": 1.8
+   "note": "35 findings (unused-import 1, dead-def 6, duplicate 6, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 13), 74 kept",
+   "s": 2.1
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 30.4
+   "s": 30.3
   }
  ],
- "elapsed_s": 56.3
+ "elapsed_s": 66.1
 }

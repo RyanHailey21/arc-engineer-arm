@@ -1,0 +1,22 @@
+{
+ "case": "jaw_stiffness_final",
+ "grip_N": 36.8,
+ "nodes": 88917,
+ "load_faces": 2,
+ "shared_faces": 10,
+ "fixed_faces": 6,
+ "disp_top_mm": 0.0021,
+ "disp_bottom_mm": 0.0015,
+ "bottom_rel_top_mm": -0.0006,
+ "tilt_deg": -0.001,
+ "max_disp_mm": 0.0062,
+ "vm_max_MPa": {
+  "CF_QI": 5.53,
+  "AL6061": 3.96
+ },
+ "safety_factor": {
+  "CF_QI": 36.16,
+  "AL6061": 69.69
+ },
+ "ok": true
+}

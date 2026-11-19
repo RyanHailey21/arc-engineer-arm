@@ -36,6 +36,7 @@ CAD = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) if "__file__" 
 sys.path.insert(0, CAD)
 import FreeCAD as App  # noqa: E402
 import MeshPart        # noqa: E402
+import Part            # noqa: E402
 import arm_model as M  # noqa: E402
 
 V = App.Vector
@@ -172,9 +173,19 @@ def main():
                 continue
             if M.part_mass_g(p) < 3.0 or p.chk.isNull() or not getattr(p, "check", True):
                 continue
-            fn = "%s__%s.stl" % (name, p.name)
-            n = write_mesh(p.chk, os.path.join(MESH, "collision", fn), 0.5)
-            L["collisions"].append(dict(file="meshes/collision/" + fn, part=p.name, facets=n))
+            # simulators collide each mesh as its CONVEX HULL. A strongly concave part gets split into pieces whose
+            # hulls stay inside it: the four-bar jaw block steps back above the top finger (the pole keep-out at
+            # XMAX), and one hull over the whole block filled that step and grazed the pole during the donut lift
+            pieces = [p.chk]
+            if p.name.startswith("Jaw_Block_") and hasattr(M, "FB"):
+                zc_ = M.FB["ZFT"][1]
+                pieces = [p.chk.common(Part.makeBox(1000, 1000, 500, App.Vector(-500, -500, zc_ - 500))),
+                          p.chk.common(Part.makeBox(1000, 1000, 500, App.Vector(-500, -500, zc_)))]
+                pieces = [s for s in pieces if not s.isNull() and s.Volume > 1.0]
+            for k, sh in enumerate(pieces):
+                fn = "%s__%s%s.stl" % (name, p.name, "" if len(pieces) == 1 else "_%d" % k)
+                n = write_mesh(sh, os.path.join(MESH, "collision", fn), 0.5)
+                L["collisions"].append(dict(file="meshes/collision/" + fn, part=p.name, facets=n))
         links.append(L)
         print("link %-14s %-8s %6.3f kg  %d visual, %d collision meshes" % (name, body, m, len(L["visuals"]), len(L["collisions"])))
     th_ref = M.FB_TREF

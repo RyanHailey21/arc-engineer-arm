@@ -9,6 +9,9 @@ from arm_model import K, box
 V = App.Vector
 PIPE_R, PIPE_RI = 13.35, 10.45          # 3/4" Sch40 PVC: OD 26.7, ID ~20.9
 DONUT_R, DONUT_r = 37.5, 12.5           # OD 100 / ID 50 / thickness 25
+PIPE_L = 500.0                          # Objective B pipe length
+PIPE_TOP_ABOVE_TCP = 47.0               # held pipe: its top end flush with the pad top
+PIPE_COM_BELOW_TCP = PIPE_L / 2 - PIPE_TOP_ABOVE_TCP   # 203 mm along -z of the gripper frame
 
 
 def tube(p, d, L):
@@ -128,6 +131,6 @@ def held_object(scene):
     if scene.startswith(("DONUT_LIFT", "DONUT_PLACE")):
         return ("Objective_C_Donut_Held", Part.makeTorus(DONUT_R, DONUT_r, V(G, 0, -Dp), V(0, 0, 1)), "donut")
     if scene.startswith(("PIPE_LIFT", "PIPE_CHUTE")):
-        top = -Dp + 47.0                             # pipe top flush with pad top
-        return ("Objective_B_Pipe_Held", tube(V(G, 0, top - 500), V(0, 0, 1), 500), "red")
+        top = -Dp + PIPE_TOP_ABOVE_TCP               # pipe top flush with pad top
+        return ("Objective_B_Pipe_Held", tube(V(G, 0, top - PIPE_L), V(0, 0, 1), PIPE_L), "red")
     return None

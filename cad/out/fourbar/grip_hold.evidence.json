@@ -1,0 +1,43 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "grip_hold",
+  "status": "pass",
+  "reason": "WARN: donut SF 1.6 rated / 5.6 stall; pipe SF 1.1 rated / 5.5 stall (MU 0.50)",
+  "scope": "donut SF 1.6 rated / 5.6 stall; pipe SF 1.1 rated / 5.5 stall (MU 0.50)",
+  "versions": {
+   "python": "3.14.10",
+   "platform": "Windows"
+  },
+  "implementation_sha256": "52602199543e99b3dc9017342a0a092cda9ddf4212e2429096180e30d560349f",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/grip_hold.inputs.json",
+    "sha256": "4eccfecc40d5af6fae831d41cc4c39bf441d1da98ba5901b8aa06893a97282e0"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "grip_hold.txt",
+    "path": "grip_hold.txt",
+    "sha256": "a63d22d4551a120115b69a3d4110e735ce20e98d06f66c3ae8c6d9fc2746fb97"
+   },
+   {
+    "id": "grip_hold.json",
+    "path": "grip_hold.json",
+    "sha256": "bc56af7800b1acfa04cab6c5230f8dc39e9f37dedacea57753f75e61e412d6d4"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-18T23:49:41",
+   "inputs_hash": "7b6e4caeecba02a4",
+   "external_copies": [
+    "../sim/arc_arm_fourbar/task_run.json"
+   ]
+  }
+ }
+}

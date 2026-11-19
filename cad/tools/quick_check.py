@@ -40,6 +40,7 @@ import arm_model as M      # noqa: E402
 import catalogue_mass      # noqa: E402
 import check_interfaces    # noqa: E402
 import check_level_keeping  # noqa: E402
+import field               # noqa: E402
 import fingerprint        # noqa: E402
 import params              # noqa: E402
 
@@ -146,7 +147,10 @@ def mass_torque(bodies):
     for pose in M.POSES:
         q, jaw = M.pose_q(pose)
         pay = 300.0 if pose.startswith(("DONUT_LIFT", "DONUT_PLACE")) else (165.0 if pose.startswith(("PIPE_LIFT", "PIPE_CHUTE")) else 0.0)
-        tau = M.static_torques(bodies, *q, payload_g=pay, jaw=jaw)
+        # the donut's centre is at the TCP; the 500 mm pipe hangs from it, so put its mass at its COM (203 mm down
+        # the gripper z): that is what loads the wrist pitch once the pipe is swung horizontal for the chute
+        arm = field.PIPE_COM_BELOW_TCP if pose.startswith(("PIPE_LIFT", "PIPE_CHUTE")) else None
+        tau = M.static_torques(bodies, *q, payload_g=pay, payload_arm=arm, jaw=jaw)
         rows.append(dict(pose=pose, payload_g=pay, tau=[round(t, 2) for t in tau]))
         for j, t in zip(("J1", "J2", "J3", "J4"), tau):
             worst[j] = max(worst.get(j, 0.0), abs(t))

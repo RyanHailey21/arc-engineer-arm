@@ -1,0 +1,21 @@
+{
+ "case": "jaw_stiffness_baseline",
+ "grip_N": 36.8,
+ "nodes": 59490,
+ "load_faces": 3,
+ "shared_faces": 9,
+ "disp_top_mm": 0.0092,
+ "disp_bottom_mm": 1.3571,
+ "bottom_rel_top_mm": 1.3479,
+ "tilt_deg": 1.678,
+ "max_disp_mm": 1.6393,
+ "vm_max_MPa": {
+  "AL6061": 127.43,
+  "PETG_CF": 75.25
+ },
+ "safety_factor": {
+  "AL6061": 2.17,
+  "PETG_CF": 0.53
+ },
+ "ok": false
+}

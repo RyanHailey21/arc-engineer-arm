@@ -22,6 +22,23 @@ ZSEC = [37.0, 42.0]   # sector gear layer z (above the upper links, clear of the
 ZPAD = [-26.0, 20.0]  # TPU pad z
 ZFT = [20.0, 23.0]    # top finger (printed jaw block) z
 ZFB = [-29.0, -26.0]  # bottom CF finger z (>= -29: 3.5 mm over the pole base plate at the donut pick)
+# C-frame jaw (2026-11-18): a printed rear wall, integral with the jaw block, fills the finger outline behind the pad
+# from the top finger down to the bottom finger, so the pad is held at top AND bottom. Without it the three D6 posts
+# cantilever from the 3 mm printed top finger: the stall grip low on the pad moved the pad bottom 1.35 mm vs its top
+# (tilt 1.7 deg) and overstressed the top finger (SF 0.53), fea/run_fea_jaw.py.
+WALL_GAP = 1.0        # radial gap from the pad's back arc (R PAD_R + 16) to the wall
+WALL_INSERTS = [[-14.0, 25.0], [2.0, 25.0], [10.0, 23.0]]   # M3 heat-set inserts in the wall base (x from the TCP, y
+                      # from the pad face): the bottom finger screws to the wall (the third replaces the old rear post)
+# Bottom link layer (2026-11-18): each drive and idler link gets a third CF plate low down, so the linkage holds the
+# jaw at the bottom as well as the top and a grip load low on the pad is not carried as a bending moment up the jaw.
+# Below the pad there is no room (pole base plate 3.5 mm under the bottom finger), so the bottom links run in the
+# free band behind the pad, just above the bottom finger, in a clevis slot of the jaw block. The jaw block is one
+# extrusion of the jaw outline (finger + pin ears) with the pad, slots and keep-outs cut from it; the CF bottom
+# finger has the same outline. The lower coupler pin is in double shear between the block (bore to ZLUG top) and
+# the bottom finger. Palm side: a lower ground layer (ZGB); its D4x8 pins stop short of the servo body.
+ZLB = [-25.0, -22.0]    # bottom link layer z
+ZGB = [-21.5, -16.3]    # palm lower ground-pivot layer z (top = servo cradle floor top; servo body from -16)
+ZLUG = [-21.5, -14.5]   # jaw block above the bottom link: lower coupler-pin bore z (D4x14 pin, z -28.9 .. -14.9)
 
 [SERVO]               # Feetech STS3215, 12 V version (Amazon B0FKY4Z15R listing, Feetech data)
 rated_Nm = 0.98       # 10 kg*cm rated (continuous) at 12 V
@@ -39,7 +56,8 @@ rate_Nm_per_deg = 0.005648
 preload_deg = 22.0    # wound 22 deg at full open (jaw 112): 0.12 N*m opening torque; 85 deg (0.48 N*m) at the pipe grip
 alt_pn = "9271K52"    # weaker alternate, same arbor (3.509 in*lbf at 90 deg): fit if the back-drive bench test allows
 
-[GRIP_REQ]            # required clamp force per jaw (N); see tools/grip_budget.py
+[GRIP_REQ]            # hand-estimated clamp per jaw (N) for tools/grip_budget.py; the sim-based check that supersedes
+                      # these (donut 300 g, the full task's carried loads) is tools/grip_hold.py
 donut = 5.0           # 150 g donut at +-25 deg roll, TPU on plastic, x3 margin (research estimate, not measured)
 pipe = 11.0           # 0.5 N*m pipe moment carried as pad-end normal force over the 46 mm pad (wrist rolled 90 deg)
 pipe_friction_only = 25.0   # same moment carried by friction only (wrist not rolled)

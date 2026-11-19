@@ -160,6 +160,12 @@ mass = 1.4
 src = "McMaster 91595A158"
 verify = "pivot bores ream 4 H8 (running) in the links, press fit in one side"
 
+["PIN-D4x8"]
+desc = "Dowel pin D4 m6 x 8, 52100 steel, ISO 8734 (four-bar bottom-link ground pivots)"
+mass = 0.8
+src = "McMaster 91595A series (ISO 8734 4 x 8)"
+verify = "confirm the McMaster part number for 4 x 8 mm; press fit in the palm's lower ground layer"
+
 ["PIN-D4x20"]
 desc = "Dowel pin D4 m6 x 20, 52100 steel, ISO 8734 (left drive pivot)"
 mass = 2.0

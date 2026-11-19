@@ -342,29 +342,29 @@
  },
  "self_hit": [],
  "mass_torque": {
-  "arm_g": 1253.6,
-  "past_wrist_g": 484.1,
-  "head_g": 279.2,
+  "arm_g": 1327.6,
+  "past_wrist_g": 558.1,
+  "head_g": 353.2,
   "worst_static_Nm": {
-   "J1": 3.15,
-   "J2": 2.6,
-   "J3": 0.78,
+   "J1": 3.34,
+   "J2": 2.84,
+   "J3": 0.87,
    "J4": 0.04
   },
   "rated_utilisation": {
-   "J1": 0.35,
-   "J2": 0.289,
-   "J3": 0.325,
-   "J4": 0.018
+   "J1": 0.371,
+   "J2": 0.316,
+   "J3": 0.364,
+   "J4": 0.017
   },
   "poses": [
    {
     "pose": "STOW",
     "payload_g": 0.0,
     "tau": [
-     -2.88,
-     2.12,
-     0.34,
+     -3.11,
+     2.37,
+     0.43,
      0.03
     ]
    },
@@ -372,9 +372,9 @@
     "pose": "DONUT_APPROACH",
     "payload_g": 0.0,
     "tau": [
-     -1.33,
-     1.76,
-     0.33,
+     -1.43,
+     1.97,
+     0.42,
      0.03
     ]
    },
@@ -382,9 +382,9 @@
     "pose": "DONUT_PICK",
     "payload_g": 0.0,
     "tau": [
-     -0.3,
-     1.06,
-     0.34,
+     -0.32,
+     1.18,
+     0.43,
      0.03
     ]
    },
@@ -392,9 +392,9 @@
     "pose": "DONUT_LIFT",
     "payload_g": 300.0,
     "tau": [
-     -1.65,
-     2.52,
-     0.78,
+     -1.75,
+     2.72,
+     0.87,
      0.03
     ]
    },
@@ -402,9 +402,9 @@
     "pose": "DONUT_LIFT_ROLL+",
     "payload_g": 300.0,
     "tau": [
-     -1.65,
-     2.52,
-     0.78,
+     -1.75,
+     2.72,
+     0.87,
      0.04
     ]
    },
@@ -412,9 +412,9 @@
     "pose": "DONUT_LIFT_ROLL-",
     "payload_g": 300.0,
     "tau": [
-     -1.65,
-     2.52,
-     0.78,
+     -1.75,
+     2.72,
+     0.87,
      0.02
     ]
    },
@@ -422,9 +422,9 @@
     "pose": "DONUT_PLACE",
     "payload_g": 300.0,
     "tau": [
-     3.15,
-     0.41,
-     0.78,
+     3.34,
+     0.44,
+     0.87,
      0.03
     ]
    },
@@ -432,9 +432,9 @@
     "pose": "PIPE_APPROACH",
     "payload_g": 0.0,
     "tau": [
-     -2.95,
-     1.89,
-     0.34,
+     -3.19,
+     2.11,
+     0.44,
      0.03
     ]
    },
@@ -442,9 +442,9 @@
     "pose": "PIPE_GRASP",
     "payload_g": 0.0,
     "tau": [
-     -2.62,
-     2.09,
-     0.33,
+     -2.83,
+     2.34,
+     0.43,
      0.03
     ]
    },
@@ -452,19 +452,19 @@
     "pose": "PIPE_GRASP_ROLL+",
     "payload_g": 0.0,
     "tau": [
-     -2.62,
-     2.09,
-     0.33,
-     0.01
+     -2.83,
+     2.34,
+     0.43,
+     0.02
     ]
    },
    {
     "pose": "PIPE_GRASP_ROLL-",
     "payload_g": 0.0,
     "tau": [
-     -2.62,
-     2.09,
-     0.33,
+     -2.83,
+     2.34,
+     0.43,
      0.04
     ]
    },
@@ -472,9 +472,9 @@
     "pose": "PIPE_LIFT",
     "payload_g": 165.0,
     "tau": [
-     -1.97,
-     1.82,
-     0.58,
+     -2.1,
+     1.99,
+     0.67,
      0.03
     ]
    },
@@ -482,9 +482,9 @@
     "pose": "PIPE_CHUTE",
     "payload_g": 165.0,
     "tau": [
-     -0.47,
-     2.6,
-     0.01,
+     -0.5,
+     2.84,
+     0.35,
      0.0
     ]
    },
@@ -492,17 +492,17 @@
     "pose": "PIPE_CHUTE_ROLL90",
     "payload_g": 165.0,
     "tau": [
-     -0.47,
-     2.6,
-     -0.02,
+     -0.5,
+     2.84,
+     -0.01,
      0.0
     ]
    }
   ]
  },
  "catalogue": {
-  "keys": 26,
-  "units": 175,
+  "keys": 27,
+  "units": 191,
   "split": {
    "DM-J4340-2EC": "4 parts = 2 units"
   },
@@ -519,43 +519,43 @@
   "unused-import": 1,
   "unused-variable": 0,
   "dead-def": 6,
-  "duplicate": 4,
+  "duplicate": 6,
   "orphan-param": 6,
   "orphan-catalogue": 1,
   "orphan-interface": 0,
   "orphan-envelope": 0,
   "out-unindexed": 2,
-  "scratch": 12
+  "scratch": 13
  },
  "summary": [
   {
    "check": "envelopes",
    "ok": true,
    "note": "10 pose checks",
-   "s": 0.7
+   "s": 0.8
   },
   {
    "check": "interfaces",
    "ok": true,
    "note": "8 sides",
-   "s": 0.0
+   "s": 0.1
   },
   {
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 3.1
+   "s": 6.1
   },
   {
    "check": "mass/torque",
    "ok": true,
-   "note": "past wrist 484 g (head 279 g); worst static J1 3.15 J2 2.60 J3 0.78 N*m",
-   "s": 1.3
+   "note": "past wrist 558 g (head 353 g); worst static J1 3.34 J2 2.84 J3 0.87 N*m",
+   "s": 1.5
   },
   {
    "check": "catalogue",
    "ok": true,
-   "note": "26 keys, 175 purchased units match catalogue mass",
+   "note": "27 keys, 191 purchased units match catalogue mass",
    "s": 0.0
   },
   {
@@ -567,15 +567,15 @@
   {
    "check": "bloat",
    "ok": null,
-   "note": "32 findings (unused-import 1, dead-def 6, duplicate 4, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 12), 73 kept",
+   "note": "35 findings (unused-import 1, dead-def 6, duplicate 6, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 13), 74 kept",
    "s": 1.9
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 25.6
+   "s": 31.1
   }
  ],
- "elapsed_s": 46.8
+ "elapsed_s": 63.1
 }

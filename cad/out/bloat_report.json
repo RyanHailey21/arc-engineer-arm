@@ -77,11 +77,29 @@
   {
    "kind": "duplicate",
    "path": "cad/arm/grippers/fourbar.py",
-   "line": 218,
+   "line": 43,
+   "name": "81f2b47712",
+   "detail": "6 identical lines also at cad/arm/grippers/fourbar.py:60",
+   "id": "duplicate:cad/arm/grippers/fourbar.py:81f2b47712",
+   "other": "cad/arm/grippers/fourbar.py"
+  },
+  {
+   "kind": "duplicate",
+   "path": "cad/arm/grippers/fourbar.py",
+   "line": 318,
    "name": "dddc6b3a57",
    "detail": "6 identical lines also at cad/arm/grippers/screw.py:251",
    "id": "duplicate:cad/arm/grippers/fourbar.py:dddc6b3a57",
    "other": "cad/arm/grippers/screw.py"
+  },
+  {
+   "kind": "duplicate",
+   "path": "cad/fea/run_fea_fourbar.py",
+   "line": 20,
+   "name": "ef88d93b96",
+   "detail": "7 identical lines also at cad/fea/run_fea_jaw.py:26",
+   "id": "duplicate:cad/fea/run_fea_fourbar.py:ef88d93b96",
+   "other": "cad/fea/run_fea_jaw.py"
   },
   {
    "kind": "duplicate",
@@ -111,7 +129,7 @@
   {
    "kind": "orphan-param",
    "path": "cad/params/gripper_fourbar.toml",
-   "line": 29,
+   "line": 46,
    "name": "SERVO.speed_s_per_60deg",
    "detail": "params/gripper_fourbar.toml key `SERVO.speed_s_per_60deg` is read by no code",
    "id": "orphan-param:cad/params/gripper_fourbar.toml:SERVO.speed_s_per_60deg"
@@ -119,7 +137,7 @@
   {
    "kind": "orphan-param",
    "path": "cad/params/gripper_fourbar.toml",
-   "line": 40,
+   "line": 57,
    "name": "SPRING.alt_pn",
    "detail": "params/gripper_fourbar.toml key `SPRING.alt_pn` is read by no code",
    "id": "orphan-param:cad/params/gripper_fourbar.toml:SPRING.alt_pn"
@@ -230,35 +248,43 @@
   },
   {
    "kind": "scratch",
-   "path": "cad/out/fourbar/ARC_Arm_Fourbar.20261117-213148.FCBak",
+   "path": "cad/out/fourbar/ARC_Arm_Fourbar.20261118-231306.FCBak",
    "line": 1,
-   "name": "cad/out/fourbar/ARC_Arm_Fourbar.20261117-213148.FCBak",
-   "detail": "local leftover (12226 kB)",
-   "id": "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261117-213148.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261117-213148.FCBak"
+   "name": "cad/out/fourbar/ARC_Arm_Fourbar.20261118-231306.FCBak",
+   "detail": "local leftover (12341 kB)",
+   "id": "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261118-231306.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261118-231306.FCBak"
   },
   {
    "kind": "scratch",
-   "path": "cad/out/fourbar/fea/FEA_fb_drive_link.20261117-212241.FCBak",
+   "path": "cad/out/fourbar/fea/FEA_fb_drive_link.20261117-213537.FCBak",
    "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_fb_drive_link.20261117-212241.FCBak",
+   "name": "cad/out/fourbar/fea/FEA_fb_drive_link.20261117-213537.FCBak",
    "detail": "local leftover (11326 kB)",
-   "id": "scratch:cad/out/fourbar/fea/FEA_fb_drive_link.20261117-212241.FCBak:cad/out/fourbar/fea/FEA_fb_drive_link.20261117-212241.FCBak"
+   "id": "scratch:cad/out/fourbar/fea/FEA_fb_drive_link.20261117-213537.FCBak:cad/out/fourbar/fea/FEA_fb_drive_link.20261117-213537.FCBak"
   },
   {
    "kind": "scratch",
-   "path": "cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-212339.FCBak",
+   "path": "cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-213618.FCBak",
    "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-212339.FCBak",
-   "detail": "local leftover (21397 kB)",
-   "id": "scratch:cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-212339.FCBak:cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-212339.FCBak"
+   "name": "cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-213618.FCBak",
+   "detail": "local leftover (21396 kB)",
+   "id": "scratch:cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-213618.FCBak:cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-213618.FCBak"
   },
   {
    "kind": "scratch",
-   "path": "cad/out/fourbar/fea/FEA_fb_palm.20261117-212553.FCBak",
+   "path": "cad/out/fourbar/fea/FEA_fb_palm.20261117-213919.FCBak",
    "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_fb_palm.20261117-212553.FCBak",
-   "detail": "local leftover (58749 kB)",
-   "id": "scratch:cad/out/fourbar/fea/FEA_fb_palm.20261117-212553.FCBak:cad/out/fourbar/fea/FEA_fb_palm.20261117-212553.FCBak"
+   "name": "cad/out/fourbar/fea/FEA_fb_palm.20261117-213919.FCBak",
+   "detail": "local leftover (58654 kB)",
+   "id": "scratch:cad/out/fourbar/fea/FEA_fb_palm.20261117-213919.FCBak:cad/out/fourbar/fea/FEA_fb_palm.20261117-213919.FCBak"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/out/fourbar/fea/FEA_jaw_stiffness_debug.20261118-214319.FCBak",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_jaw_stiffness_debug.20261118-214319.FCBak",
+   "detail": "local leftover (23658 kB)",
+   "id": "scratch:cad/out/fourbar/fea/FEA_jaw_stiffness_debug.20261118-214319.FCBak:cad/out/fourbar/fea/FEA_jaw_stiffness_debug.20261118-214319.FCBak"
   }
  ],
  "kept": [
@@ -364,7 +390,7 @@
   {
    "kind": "dead-def",
    "path": "cad/params.py",
-   "line": 164,
+   "line": 178,
    "name": "use_release_variant",
    "detail": "function `use_release_variant` is never referenced",
    "id": "dead-def:cad/params.py:use_release_variant",
@@ -373,7 +399,7 @@
   {
    "kind": "orphan-catalogue",
    "path": "cad/data/catalogue.toml",
-   "line": 184,
+   "line": 190,
    "name": "GT2-BELT",
    "detail": "catalogue key `GT2-BELT`: no part uses it as its src",
    "id": "orphan-catalogue:cad/data/catalogue.toml:GT2-BELT",
@@ -431,6 +457,15 @@
    "name": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
    "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
    "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_palm.FCStd:cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
    "kept": "git-ignored solver/tool output (regenerable, never committed)"
   },
   {
@@ -924,18 +959,31 @@
   "unused-import": 1,
   "unused-variable": 0,
   "dead-def": 6,
-  "duplicate": 4,
+  "duplicate": 6,
   "orphan-param": 6,
   "orphan-catalogue": 1,
   "orphan-interface": 0,
   "orphan-envelope": 0,
   "out-unindexed": 2,
-  "scratch": 12
+  "scratch": 13
  },
- "scanned": 75,
+ "scanned": 79,
  "stale_keep": [],
  "notes": [],
- "new": [],
- "resolved": [],
+ "new": [
+  "duplicate:cad/arm/grippers/fourbar.py:81f2b47712",
+  "duplicate:cad/fea/run_fea_fourbar.py:ef88d93b96",
+  "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261118-231306.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261118-231306.FCBak",
+  "scratch:cad/out/fourbar/fea/FEA_fb_drive_link.20261117-213537.FCBak:cad/out/fourbar/fea/FEA_fb_drive_link.20261117-213537.FCBak",
+  "scratch:cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-213618.FCBak:cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-213618.FCBak",
+  "scratch:cad/out/fourbar/fea/FEA_fb_palm.20261117-213919.FCBak:cad/out/fourbar/fea/FEA_fb_palm.20261117-213919.FCBak",
+  "scratch:cad/out/fourbar/fea/FEA_jaw_stiffness_debug.20261118-214319.FCBak:cad/out/fourbar/fea/FEA_jaw_stiffness_debug.20261118-214319.FCBak"
+ ],
+ "resolved": [
+  "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261117-213148.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261117-213148.FCBak",
+  "scratch:cad/out/fourbar/fea/FEA_fb_drive_link.20261117-212241.FCBak:cad/out/fourbar/fea/FEA_fb_drive_link.20261117-212241.FCBak",
+  "scratch:cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-212339.FCBak:cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-212339.FCBak",
+  "scratch:cad/out/fourbar/fea/FEA_fb_palm.20261117-212553.FCBak:cad/out/fourbar/fea/FEA_fb_palm.20261117-212553.FCBak"
+ ],
  "keep_file": "cad/tools/bloat_keep.toml"
 }

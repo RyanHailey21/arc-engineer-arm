@@ -2,7 +2,7 @@
 
 Regenerate with `cad/tools/make_map.py` (once per variant).  Search here first: every part links to the
 file:line that builds it; parameters, interfaces and keep-outs are data files.  Active variant comes from
-`params/variant.toml` (override with GRIP).  Inputs hash at generation: `d7e43ee0e386a980`.
+`params/variant.toml` (override with GRIP).  Inputs hash at generation: `7b6e4caeecba02a4`.
 
 ## Model modules (`cad/arm/`)
 
@@ -12,7 +12,7 @@ file:line that builds it; parameters, interfaces and keep-outs are data files.  
 | [arm/bodies.py](arm/bodies.py) | Body registry: the arm bodies plus the active gripper variant's bodies (GRIPPERS[GRIP]), and build_bodies(). | `build_bodies` :34 |
 | [arm/core.py](arm/core.py) | Shared core of the arm model: frames and global parameters (K, Y, T), jaw/pad geometry shared by every gripper, motor interface (DM), purchased-part catalogue (CAT), materials (MAT), the Part_ record and the geometry helpers (box, ycyl, plate, at, to_z, ...). Every other arm module star-imports this one. | `u` :67, `add` :72, `ycyl` :76, `ring` :81, `box` :85, `hexhole` :90, `plate` :128, `link_pockets` :183, `fillet_z` :202, `fillet_y` :211, `at` :220, `to_z` :229, `to_x` :240, `clip_at` :251, `P` :262, `csk` :266 |
 | [arm/forearm.py](arm/forearm.py) | Forearm: FOREARM, ROCKER, ROD2 and the level-keeping hubs. | `level_hub` :15, `v2_pin` :25, `body_rod2` :44, `body_forearm` :58, `body_rocker` :93 |
-| [arm/grippers/fourbar.py](arm/grippers/fourbar.py) | Gripper variant FOURBAR (concept): gear-synchronised parallel four-bar, STS3215 direct drive, torsion-spring release. API: fourbar_bodies(), fb_placements(Hd, jaw). Parameters in FB. | `fb_theta` :22, `zc` :31, `zprism` :36, `zlink` :41, `fb_pivots` :54, `body_fb_palm` :62, `body_fb_link` :124, `body_fb_jaw` :172, `fb_placements` :227, `fourbar_bodies` :246 |
+| [arm/grippers/fourbar.py](arm/grippers/fourbar.py) | Gripper variant FOURBAR (concept): gear-synchronised parallel four-bar, STS3215 direct drive, torsion-spring release. API: fourbar_bodies(), fb_placements(Hd, jaw). Parameters in FB. | `fb_theta` :22, `zc` :31, `zprism` :36, `zlink` :41, `stadium` :54, `fb_pivots` :69, `body_fb_palm` :77, `body_fb_link` :149, `body_fb_jaw` :208, `fb_placements` :327, `fourbar_bodies` :346 |
 | [arm/grippers/screw.py](arm/grippers/screw.py) | Gripper variant SCREW (rev A): Tr8x8 bidirectional lead screw, M2006 via 20T/32T, MGN9 rails, 6061 jaw brackets, constant-torque spring-motor release. API: screw_bodies(), screw_placements(Hd, jaw). | `body_head` :28, `zslot` :137, `body_screw` :145, `body_mgear` :169, `body_jaw` :180, `screw_bodies` :262, `screw_placements` :267 |
 | [arm/kinematics.py](arm/kinematics.py) | Kinematics and poses: joints, ik, placements (arm + active gripper), placed, part_mass_g, static_torques, POSES / SEQUENCES / pose_q. | `joints` :11, `ik` :21, `placements` :41, `placed` :55, `part_mass_g` :70, `static_torques` :79, `pose_q` :139 |
 | [arm/upper_arm.py](arm/upper_arm.py) | Upper arm: UPPER (J1-driven upper-arm plates), CRANK (J2-driven crank) and the parallel rods (body_rod). | `body_upper` :13, `body_crank` :49, `body_rod` :69 |
@@ -21,14 +21,14 @@ file:line that builds it; parameters, interfaces and keep-outs are data files.  
 ## Parameters (`cad/params/`)
 
 - [arm.toml](params/arm.toml): `T`; `K` (SX, SZ, L1, L2, L3, GRIP, DROP, V1_LEN, V1_ANG, V2_LEN, V2_ANG, DECK_Z); `Y` (FL, CL, ROD2, ROCK, ROD1, UA, TW, RAB, CRANK); `level_keeping` (ROD2_T, ROD2_W, GT2_T); `j1_hub` (HUB_R, UA_HUB_SCREWS); `harness` (UA_CLIP_YZ)
-- [gripper_fourbar.toml](params/gripper_fourbar.toml): `FB` (XG, YG, L, S, E, TEETH, XMAX, PIN_R, ZL0, ZL1, ZG, ZSEC, ZPAD, ZFT, ZFB); `SERVO` (rated_Nm, stall_Nm, speed_s_per_60deg); `SPRING` (pn, od, wire, length, arbor_d, max_torque_Nm, rate_Nm_per_deg, preload_deg, alt_pn); `GRIP_REQ` (donut, pipe, pipe_friction_only)
+- [gripper_fourbar.toml](params/gripper_fourbar.toml): `FB` (XG, YG, L, S, E, TEETH, XMAX, PIN_R, ZL0, ZL1, ZG, ZSEC, ZPAD, ZFT, ZFB, WALL_GAP, WALL_INSERTS, ZLB, ZGB, ZLUG); `SERVO` (rated_Nm, stall_Nm, speed_s_per_60deg); `SPRING` (pn, od, wire, length, arbor_d, max_torque_Nm, rate_Nm_per_deg, preload_deg, alt_pn); `GRIP_REQ` (donut, pipe, pipe_friction_only)
 - [gripper_screw.toml](params/gripper_screw.toml): `LEAD`; `Z_SCREW_T`; `Z_MOTOR_T`; `HXJ_OFF`; `XR_OFF`; `ZS`; `ZM_OFF`; `ZTOP`; `YEB`; `RAIL_END`; `MOT_FACE`; `M2006_FRONT`; `GEAR_Y0`; `GEAR_Y1`; `M2006_HOLES` (pcd, ang)
 - [materials.toml](params/materials.toml): `CF`; `PRINT`; `AL`; `STEEL`; `TPU`; `BRASS`; `SHIM`; `PTFE`
 - [pads.toml](params/pads.toml): `PAD_R`; `NOTCH`; `WRAP`; `PIPE_OD`
 - [variant.toml](params/variant.toml): `grip`; `release`
 - [wrist.toml](params/wrist.toml): `SERVO_ANG`; `HX`; `ROLL_Z`; `ROLL_XS`
 
-- [catalogue.toml](data/catalogue.toml): purchased parts (42 entries) - desc, mass, source, verify
+- [catalogue.toml](data/catalogue.toml): purchased parts (43 entries) - desc, mass, source, verify
 
 ## Interfaces (`cad/interfaces/`)
 
@@ -50,7 +50,7 @@ file:line that builds it; parameters, interfaces and keep-outs are data files.  
 
 ## Parts by variant
 
-### Parts - variant FOURBAR (246 parts)
+### Parts - variant FOURBAR (264 parts)
 
 | Body | Part | Kind | Source / note | Mass g | Built at |
 |---|---|---|---|---|---|
@@ -158,45 +158,54 @@ file:line that builds it; parameters, interfaces and keep-outs are data files.  
 | GRIPPER | BHCS_M3x6_rollservo (x4) | CAT | BHCS | 4.0 | [arm/wrist.py:78](arm/wrist.py#L78) _xscrew |
 | GRIPPER | Brg_6805_Roll | CAT | 6805ZZ | 18.0 | [arm/wrist.py:175](arm/wrist.py#L175) body_gripper |
 | HEAD | Roll_Hub | AL | custom: 6061 turned, D25 journal in 6805 | 11.5 | [arm/wrist.py:98](arm/wrist.py#L98) roll_hub_parts |
-| HEAD | Gripper_Palm | PRINT | custom: PETG-CF print (concept) | 57.1 | [arm/grippers/fourbar.py:106](arm/grippers/fourbar.py#L106) body_fb_palm |
+| HEAD | Gripper_Palm | PRINT | custom: PETG-CF print (concept) | 63.5 | [arm/grippers/fourbar.py:127](arm/grippers/fourbar.py#L127) body_fb_palm |
 | HEAD | Servo_Horn_25T_roll | CAT | HORN-25T | 3.0 | [arm/wrist.py:88](arm/wrist.py#L88) roll_hub_parts |
 | HEAD | BHCS_M3x5_rollhorn (x8) | CAT | BHCS | 8.0 | [arm/wrist.py:78](arm/wrist.py#L78) _xscrew |
-| HEAD | Grip_Servo_STS3215 | CAT | STS3215 | 60.0 | [arm/grippers/fourbar.py:73](arm/grippers/fourbar.py#L73) body_fb_palm |
-| HEAD | Pin_D4x14_ground_LI (x2) | CAT | PIN-D4x14 | 2.8 | [arm/grippers/fourbar.py:116](arm/grippers/fourbar.py#L116) body_fb_palm |
-| HEAD | Pin_D4x30_ground_RD | CAT | PIN-D4x30 | 3.0 | [arm/grippers/fourbar.py:116](arm/grippers/fourbar.py#L116) body_fb_palm |
-| HEAD | Torsion_Spring_Open | CAT | 9271K56 | 3.5 | [arm/grippers/fourbar.py:119](arm/grippers/fourbar.py#L119) body_fb_palm |
-| JAW_L | Jaw_Block_L | PRINT | custom: PETG-CF print (concept) | 5.5 | [arm/grippers/fourbar.py:201](arm/grippers/fourbar.py#L201) body_fb_jaw |
-| JAW_L | Finger_L_bot_CF3 | CF | custom: 3 mm CF plate (concept) | 5.8 | [arm/grippers/fourbar.py:203](arm/grippers/fourbar.py#L203) body_fb_jaw |
-| JAW_L | Pad_L_TPU | TPU | custom: TPU 95A print, R50 arc + 90 deg V | 20.4 | [arm/grippers/fourbar.py:207](arm/grippers/fourbar.py#L207) body_fb_jaw |
-| JAW_L | Standoff_D6_L0 | AL | custom: 6061 D6 standoff, M3 both ends | 2.9 | [arm/grippers/fourbar.py:210](arm/grippers/fourbar.py#L210) body_fb_jaw |
-| JAW_L | Standoff_D6_L1 | AL | custom: 6061 D6 standoff, M3 both ends | 2.9 | [arm/grippers/fourbar.py:210](arm/grippers/fourbar.py#L210) body_fb_jaw |
-| JAW_L | Standoff_D6_L2 | AL | custom: 6061 D6 standoff, M3 both ends | 2.9 | [arm/grippers/fourbar.py:210](arm/grippers/fourbar.py#L210) body_fb_jaw |
-| JAW_L | BHCS_M3x6_fingtopL (x3) | CAT | BHCS | 3.0 | [arm/grippers/fourbar.py:212](arm/grippers/fourbar.py#L212) body_fb_jaw |
-| JAW_L | BHCS_M3x6_fingbotL (x3) | CAT | BHCS | 3.0 | [arm/grippers/fourbar.py:213](arm/grippers/fourbar.py#L213) body_fb_jaw |
-| JAW_L | Pin_D4x14_coupler_L (x2) | CAT | PIN-D4x14 | 2.8 | [arm/grippers/fourbar.py:217](arm/grippers/fourbar.py#L217) body_fb_jaw |
-| JAW_R | Jaw_Block_R | PRINT | custom: PETG-CF print (concept) | 5.5 | [arm/grippers/fourbar.py:201](arm/grippers/fourbar.py#L201) body_fb_jaw |
-| JAW_R | Finger_R_bot_CF3 | CF | custom: 3 mm CF plate (concept) | 5.8 | [arm/grippers/fourbar.py:203](arm/grippers/fourbar.py#L203) body_fb_jaw |
-| JAW_R | Pad_R_TPU | TPU | custom: TPU 95A print, R50 arc + 90 deg V | 20.4 | [arm/grippers/fourbar.py:207](arm/grippers/fourbar.py#L207) body_fb_jaw |
-| JAW_R | Standoff_D6_R0 | AL | custom: 6061 D6 standoff, M3 both ends | 2.9 | [arm/grippers/fourbar.py:210](arm/grippers/fourbar.py#L210) body_fb_jaw |
-| JAW_R | Standoff_D6_R1 | AL | custom: 6061 D6 standoff, M3 both ends | 2.9 | [arm/grippers/fourbar.py:210](arm/grippers/fourbar.py#L210) body_fb_jaw |
-| JAW_R | Standoff_D6_R2 | AL | custom: 6061 D6 standoff, M3 both ends | 2.9 | [arm/grippers/fourbar.py:210](arm/grippers/fourbar.py#L210) body_fb_jaw |
-| JAW_R | BHCS_M3x6_fingtopR (x3) | CAT | BHCS | 3.0 | [arm/grippers/fourbar.py:212](arm/grippers/fourbar.py#L212) body_fb_jaw |
-| JAW_R | BHCS_M3x6_fingbotR (x3) | CAT | BHCS | 3.0 | [arm/grippers/fourbar.py:213](arm/grippers/fourbar.py#L213) body_fb_jaw |
-| JAW_R | Pin_D4x14_coupler_R (x2) | CAT | PIN-D4x14 | 2.8 | [arm/grippers/fourbar.py:217](arm/grippers/fourbar.py#L217) body_fb_jaw |
-| LK_LD | Link_LD_lo_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:133](arm/grippers/fourbar.py#L133) body_fb_link |
-| LK_LD | Link_LD_hi_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:133](arm/grippers/fourbar.py#L133) body_fb_link |
-| LK_LD | Sector_m1_77T_L | PRINT | custom: POM/PA12 sector gear m1 77T, 5 thick (concept) | 3.4 | [arm/grippers/fourbar.py:150](arm/grippers/fourbar.py#L150) body_fb_link |
-| LK_LD | Washer_LD | CAT | WASHER-D4 | 0.3 | [arm/grippers/fourbar.py:153](arm/grippers/fourbar.py#L153) body_fb_link |
-| LK_LD | Servo_Horn_STS_disc | CAT | HORN-25T | 3.0 | [arm/grippers/fourbar.py:156](arm/grippers/fourbar.py#L156) body_fb_link |
-| LK_LD | Pin_D4x20_ground_LD | CAT | PIN-D4x20 | 2.0 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
-| LK_LI | Link_LI_lo_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:133](arm/grippers/fourbar.py#L133) body_fb_link |
-| LK_LI | Link_LI_hi_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:133](arm/grippers/fourbar.py#L133) body_fb_link |
-| LK_RD | Link_RD_lo_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:133](arm/grippers/fourbar.py#L133) body_fb_link |
-| LK_RD | Link_RD_hi_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:133](arm/grippers/fourbar.py#L133) body_fb_link |
-| LK_RD | Sector_m1_77T_R | PRINT | custom: POM/PA12 sector gear m1 77T, 5 thick (concept) | 3.4 | [arm/grippers/fourbar.py:150](arm/grippers/fourbar.py#L150) body_fb_link |
-| LK_RD | Washer_RD | CAT | WASHER-D4 | 0.3 | [arm/grippers/fourbar.py:153](arm/grippers/fourbar.py#L153) body_fb_link |
-| LK_RI | Link_RI_lo_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:133](arm/grippers/fourbar.py#L133) body_fb_link |
-| LK_RI | Link_RI_hi_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:133](arm/grippers/fourbar.py#L133) body_fb_link |
+| HEAD | Grip_Servo_STS3215 | CAT | STS3215 | 60.0 | [arm/grippers/fourbar.py:88](arm/grippers/fourbar.py#L88) body_fb_palm |
+| HEAD | Pin_D4x14_ground_LI (x2) | CAT | PIN-D4x14 | 2.8 | [arm/grippers/fourbar.py:137](arm/grippers/fourbar.py#L137) body_fb_palm |
+| HEAD | Pin_D4x30_ground_RD | CAT | PIN-D4x30 | 3.0 | [arm/grippers/fourbar.py:137](arm/grippers/fourbar.py#L137) body_fb_palm |
+| HEAD | Pin_D4x8_ground_bot_LD (x4) | CAT | PIN-D4x8 | 3.2 | [arm/grippers/fourbar.py:141](arm/grippers/fourbar.py#L141) body_fb_palm |
+| HEAD | Torsion_Spring_Open | CAT | 9271K56 | 3.5 | [arm/grippers/fourbar.py:144](arm/grippers/fourbar.py#L144) body_fb_palm |
+| JAW_L | Jaw_Block_L | PRINT | custom: PETG-CF print (concept) | 30.7 | [arm/grippers/fourbar.py:287](arm/grippers/fourbar.py#L287) body_fb_jaw |
+| JAW_L | Finger_L_bot_CF3 | CF | custom: 3 mm CF plate (concept) | 6.9 | [arm/grippers/fourbar.py:295](arm/grippers/fourbar.py#L295) body_fb_jaw |
+| JAW_L | Pad_L_TPU | TPU | custom: TPU 95A print, R50 arc + 90 deg V | 19.6 | [arm/grippers/fourbar.py:304](arm/grippers/fourbar.py#L304) body_fb_jaw |
+| JAW_L | Standoff_D6_L0 | AL | custom: 6061 D6 standoff, M3 both ends | 2.9 | [arm/grippers/fourbar.py:307](arm/grippers/fourbar.py#L307) body_fb_jaw |
+| JAW_L | Standoff_D6_L1 | AL | custom: 6061 D6 standoff, M3 both ends | 2.9 | [arm/grippers/fourbar.py:307](arm/grippers/fourbar.py#L307) body_fb_jaw |
+| JAW_L | Insert_M3_wall_L (x3) | CAT | INSERT | 0.9 | [arm/grippers/fourbar.py:297](arm/grippers/fourbar.py#L297) body_fb_jaw |
+| JAW_L | BHCS_M3x6_wall_L (x3) | CAT | BHCS | 3.0 | [arm/grippers/fourbar.py:299](arm/grippers/fourbar.py#L299) body_fb_jaw |
+| JAW_L | BHCS_M3x6_fingtopL (x2) | CAT | BHCS | 2.0 | [arm/grippers/fourbar.py:309](arm/grippers/fourbar.py#L309) body_fb_jaw |
+| JAW_L | BHCS_M3x6_fingbotL (x2) | CAT | BHCS | 2.0 | [arm/grippers/fourbar.py:310](arm/grippers/fourbar.py#L310) body_fb_jaw |
+| JAW_L | Pin_D4x14_coupler_L (x2) | CAT | PIN-D4x14 | 2.8 | [arm/grippers/fourbar.py:314](arm/grippers/fourbar.py#L314) body_fb_jaw |
+| JAW_L | Pin_D4x14_coupler_bot_L (x2) | CAT | PIN-D4x14 | 2.8 | [arm/grippers/fourbar.py:317](arm/grippers/fourbar.py#L317) body_fb_jaw |
+| JAW_R | Jaw_Block_R | PRINT | custom: PETG-CF print (concept) | 30.7 | [arm/grippers/fourbar.py:287](arm/grippers/fourbar.py#L287) body_fb_jaw |
+| JAW_R | Finger_R_bot_CF3 | CF | custom: 3 mm CF plate (concept) | 6.9 | [arm/grippers/fourbar.py:295](arm/grippers/fourbar.py#L295) body_fb_jaw |
+| JAW_R | Pad_R_TPU | TPU | custom: TPU 95A print, R50 arc + 90 deg V | 19.6 | [arm/grippers/fourbar.py:304](arm/grippers/fourbar.py#L304) body_fb_jaw |
+| JAW_R | Standoff_D6_R0 | AL | custom: 6061 D6 standoff, M3 both ends | 2.9 | [arm/grippers/fourbar.py:307](arm/grippers/fourbar.py#L307) body_fb_jaw |
+| JAW_R | Standoff_D6_R1 | AL | custom: 6061 D6 standoff, M3 both ends | 2.9 | [arm/grippers/fourbar.py:307](arm/grippers/fourbar.py#L307) body_fb_jaw |
+| JAW_R | Insert_M3_wall_R (x3) | CAT | INSERT | 0.9 | [arm/grippers/fourbar.py:297](arm/grippers/fourbar.py#L297) body_fb_jaw |
+| JAW_R | BHCS_M3x6_wall_R (x3) | CAT | BHCS | 3.0 | [arm/grippers/fourbar.py:299](arm/grippers/fourbar.py#L299) body_fb_jaw |
+| JAW_R | BHCS_M3x6_fingtopR (x2) | CAT | BHCS | 2.0 | [arm/grippers/fourbar.py:309](arm/grippers/fourbar.py#L309) body_fb_jaw |
+| JAW_R | BHCS_M3x6_fingbotR (x2) | CAT | BHCS | 2.0 | [arm/grippers/fourbar.py:310](arm/grippers/fourbar.py#L310) body_fb_jaw |
+| JAW_R | Pin_D4x14_coupler_R (x2) | CAT | PIN-D4x14 | 2.8 | [arm/grippers/fourbar.py:314](arm/grippers/fourbar.py#L314) body_fb_jaw |
+| JAW_R | Pin_D4x14_coupler_bot_R (x2) | CAT | PIN-D4x14 | 2.8 | [arm/grippers/fourbar.py:317](arm/grippers/fourbar.py#L317) body_fb_jaw |
+| LK_LD | Link_LD_lo_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
+| LK_LD | Link_LD_hi_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
+| LK_LD | Link_LD_bot_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
+| LK_LD | Sector_m1_77T_L | PRINT | custom: POM/PA12 sector gear m1 77T, 5 thick (concept) | 3.4 | [arm/grippers/fourbar.py:175](arm/grippers/fourbar.py#L175) body_fb_link |
+| LK_LD | Washer_LD | CAT | WASHER-D4 | 0.3 | [arm/grippers/fourbar.py:178](arm/grippers/fourbar.py#L178) body_fb_link |
+| LK_LD | Servo_Horn_STS_disc | CAT | HORN-25T | 3.0 | [arm/grippers/fourbar.py:181](arm/grippers/fourbar.py#L181) body_fb_link |
+| LK_LD | Pin_D4x20_ground_LD | CAT | PIN-D4x20 | 2.0 | [arm/grippers/fourbar.py:183](arm/grippers/fourbar.py#L183) body_fb_link |
+| LK_LI | Link_LI_lo_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
+| LK_LI | Link_LI_hi_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
+| LK_LI | Link_LI_bot_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
+| LK_RD | Link_RD_lo_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
+| LK_RD | Link_RD_hi_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
+| LK_RD | Link_RD_bot_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
+| LK_RD | Sector_m1_77T_R | PRINT | custom: POM/PA12 sector gear m1 77T, 5 thick (concept) | 3.4 | [arm/grippers/fourbar.py:175](arm/grippers/fourbar.py#L175) body_fb_link |
+| LK_RD | Washer_RD | CAT | WASHER-D4 | 0.3 | [arm/grippers/fourbar.py:178](arm/grippers/fourbar.py#L178) body_fb_link |
+| LK_RI | Link_RI_lo_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
+| LK_RI | Link_RI_hi_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
+| LK_RI | Link_RI_bot_CF3 | CF | custom: 3 mm CF plate (concept) | 2.4 | [arm/grippers/fourbar.py:158](arm/grippers/fourbar.py#L158) body_fb_link |
 
 ### Parts - variant SCREW (318 parts)
 

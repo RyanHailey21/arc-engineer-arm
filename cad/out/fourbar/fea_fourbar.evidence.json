@@ -12,30 +12,30 @@
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "dc5a45e18de7e6af38edfa37a054afc06ab754faaa153cb0c9a6ca11a394dc0c",
+  "implementation_sha256": "7bd1a17733b1a9cefaab27f4be54fac3ea112c5ff49afefba86e5d1686439c42",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/fea_fourbar.inputs.json",
-    "sha256": "562b1b237d6cc19a6a98bcb86f42461062680e6105c94439a3ac98f5166b2df2"
+    "sha256": "4eccfecc40d5af6fae831d41cc4c39bf441d1da98ba5901b8aa06893a97282e0"
    }
   ],
   "artifacts": [
    {
     "id": "fea_report.md",
     "path": "fea/fea_report.md",
-    "sha256": "eed7c012e0da3c840c84ff3b9dbb5acf3e02ad7adcf21da7158e79bd3dc9bf94"
+    "sha256": "ac360272d112687cfd781ce9944afc687851487b868542b1b04bb6af2a305178"
    },
    {
     "id": "fea_results.json",
     "path": "fea/fea_results.json",
-    "sha256": "14f9bb5eb21b3bba7ec8cb5c3ed1551de181614622d13d7b47d7a973bb6bfce9"
+    "sha256": "59e5b9edc7c16fc6f18c1ca714fadd286038f6736781e8387af1967f8ddfa200"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-17T21:39:20",
-   "inputs_hash": "8cde22ae93768790",
+   "time": "2026-11-18T23:43:25",
+   "inputs_hash": "7b6e4caeecba02a4",
    "external_copies": []
   }
  }

@@ -68,6 +68,9 @@ Add `--video sim/media/arc_arm_tasks.mp4` to render the run: 1280×720, 30 fps, 
   | End state | donut on the platform; pipe 298 mm past the wall face |
 
 - **Found by this sim:** a straight joint-space move from STOW to DONUT_APPROACH sweeps the left jaw about 11 mm through the pole, measured on the real mesh. CAD checks the task poses, not the moves between them. The task uses the slide-in approach instead. The pose-playback demos below don't have the pole, so they don't show this.
+- **Actuation and grasp loads** (written to `task_run.json` → `actuation`, used by `cad/docs/compliance_report.md`): per joint the peak torque (and the phase it is in), RMS torque and peak speed; per object the weld's wrench at the TCP in the gripper frame while the object is carried free (contact events reported apart). `cad/tools/grip_hold.py` turns these into the clamp the gripper needs.
+  - The joints run MIT-style (position + velocity feed-forward), and each 10 ms setpoint is ramped across the physics substeps, as a drive interpolates its command stream. Stepping the setpoint instead kicked the stiff servos at 100 Hz and tripled the torque and grasp-load peaks.
+  - Each mesh collides as its convex hull, so the jaw block's collision mesh is split at the top-finger plane: one hull over the whole block filled its stepped pole keep-out and grazed the pole during the lift.
 - **Not modelled:** grip friction and slip (the grasp is kinematic); the real drivetrain (the slides are ideal position servos, with no yaw); the zigzag pole is the CAD placeholder (the manual's pole details are TBA).
 
 ### Pose playback (no field)
@@ -150,7 +153,7 @@ They are joint-equality constraints in MuJoCo and `<mimic>` in URDF/Gazebo. The 
 | Scene drop test (1 s) | donut and pipe settle, finite state |
 | URDF in MuJoCo's URDF importer | compiles (17 bodies) |
 | Gazebo package structure | `model.urdf` parses; all 107 `model://` meshes resolve; 11 mimic joints; 5 controllers; no link/joint name clashes |
-| Gazebo run test (`gazebo_validation.json`, gz-sim 8.10, bullet-featherstone, full field world) | each of the 7 poses commanded over the `cmd_pos` topics: settles in ~8 s; actuated joints within 0.003°; all 12 mimic followers within 0.33°; gripper TCP within 2.0 mm of CAD. Power-off release (gripper controller removed, free world): open 10 mm in 0.59 s, 90 % open in 2.6 s |
+| Gazebo run test (`gazebo_validation.json`, gz-sim 8.10, bullet-featherstone, full field world). **Informational since 2026-11-18** (Gazebo dropped as a requirement; it no longer gates `build_robot.py`) | each of the 7 poses commanded over the `cmd_pos` topics: settles in ~8 s; actuated joints within 0.003°; all 12 mimic followers within 0.33°; gripper TCP within 2.0 mm of CAD. Power-off release (gripper controller removed, free world): open 10 mm in 0.59 s, 90 % open in 2.6 s |
 
 ## Limits of these models (read before relying on them)
 

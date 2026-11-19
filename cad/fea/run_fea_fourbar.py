@@ -59,18 +59,19 @@ def cases():
                   loads=[(RF.cyl_faces(s, (0, 0, 1), (cd[0], cd[1], 0), r=FB["PIN_R"] + 0.05),
                           (-math.sin(ang) * Fl, math.cos(ang) * Fl, 0.0))],
                   desc="servo stall %.2f N*m reacted at the coupler pin: %.0f N x %.2f = %.0f N" % (T_STALL, link_force(), DF_ACT, Fl)))
-    # ---- jaw block (PETG-CF): fixed at the coupler pin bores, stall grip reaction on the pad-standoff screw holes
+    # ---- jaw block (PETG-CF): fixed at the coupler pin bores (top and lower), stall grip reaction on the pad-standoff
+    # screw holes in the top finger (local check of the finger; the whole jaw's stiffness is fea/run_fea_jaw.py)
     s = RF.part_shape("Jaw_Block_L")
     Fg = grip_stall() * DF_ACT
     XT, o = M.K["GRIP"], M.O_REF
     holes = []
-    for (x, y) in [(XT - 12.0, o + 9.0), (XT + 12.0, o + 9.0), (XT + 12.0, o + 18.0)]:
+    for (x, y) in [(XT - 12.0, o + 9.0), (XT + 12.0, o + 9.0)]:            # the two pad posts (rear post removed)
         holes += RF.cyl_faces(s, (0, 0, 1), (x, y, 0), r=1.65)
     C.append(dict(name="fb_jaw_block", part="Jaw_Block_L", mat="PETG_CF", shape=s, h=1.2,
                   fixed=RF.cyl_faces(s, (0, 0, 1), (cd[0], cd[1], 0), r=FB["PIN_R"] + 0.05) +
                   RF.cyl_faces(s, (0, 0, 1), (ci[0], ci[1], 0), r=FB["PIN_R"] + 0.05),
                   loads=[(holes, (0.0, Fg, 0.0))],
-                  desc="stall clamp reaction %.1f N x %.2f = %.0f N on the pad standoffs (all on the top finger)" % (grip_stall(), DF_ACT, Fg)))
+                  desc="stall clamp reaction %.1f N x %.2f = %.0f N on the pad standoffs (all on the top finger; jaw held at top and bottom pin bores)" % (grip_stall(), DF_ACT, Fg)))
     # ---- palm (PETG-CF): fixed at the hub-flange screw holes; head + payload + pipe moment as a vertical load on the
     # ground-pivot bores giving the same bending moment at the mount plate (lever 82 - 65 = 17 mm)
     s = RF.part_shape("Gripper_Palm")

@@ -51,6 +51,21 @@ def zlink(p0, p1, r, z0, z1, hole):
     return a.removeSplitter()
 
 
+def stadium(p0, p1, r, z0, z1):
+    """Solid stadium (true arcs) round two pin centres p0, p1, extruded z0..z1: rounded lugs and tabs."""
+    return _stadium(p0, p1, r, z0, z1)
+
+
+def _stadium(p0, p1, r, z0, z1):
+    a = zc(p0[0], p0[1], z0, z1, r).fuse(zc(p1[0], p1[1], z0, z1, r))
+    dx, dy = p1[0] - p0[0], p1[1] - p0[1]
+    n = math.hypot(dx, dy)
+    nx, ny = -dy / n * r, dx / n * r
+    a = a.fuse(zprism([(p0[0] + nx, p0[1] + ny), (p1[0] + nx, p1[1] + ny), (p1[0] - nx, p1[1] - ny),
+                       (p0[0] - nx, p0[1] - ny)], z0, z1))
+    return a.removeSplitter()
+
+
 def fb_pivots(s=1):
     """Ground and coupler pivots (s=+1 left, -1 right) at the reference (pipe) angle."""
     XG, YG, L, S = FB["XG"], FB["YG"], FB["L"], FB["S"]
@@ -84,10 +99,16 @@ def body_fb_palm():
     # central web tying the ground-pivot layer down to the mount plate (FEA: the cantilevered 6 mm layer with
     # lightening windows reached SF 1.3; links/servo/horn/spring all sit at |y| > 25 here, so the web is free space)
     palm = palm.fuse(box(69, -6.0, -19.0, XG + 15.0, 6.0, g0))      # |y| <= 6: the M3 heads at y +-10.8 keep 2 mm
+    # lower ground-pivot layer (bottom links, params ZGB): the servo cradle's floor thickened on the left; on the right
+    # a plate flush with the top ground-pivot layer above it (same y extent), both off the mount plate, corners R3
+    b0, b1 = FB["ZGB"]
+    palm = palm.fuse(fillet_z(box(69, YG - 14.0, b0, XG + 15.0, YG + 37.0, b1), 3.0))
+    palm = palm.fuse(fillet_z(box(69, -(YG + S + 6.0), b0, XG + 15.0, -(YG - 14.0), b1), 3.0))
     for (y, z) in front:
         palm = palm.cut(Part.makeCylinder(IF_PALM["side_b"]["clearance_d"] / 2, 6, V(IF_PALM.frame_x - 1.0, y, z), V(1, 0, 0)))
     for p in fb_pivots(1)[:2] + fb_pivots(-1)[:2]:
         palm = palm.cut(zc(p[0], p[1], 10, g1 + 1, FB["PIN_R"] + 0.05))
+        palm = palm.cut(zc(p[0], p[1], FB["ZGB"][0] - 1, FB["ZGB"][0] + 4.5, FB["PIN_R"]))   # D4x8 press-fit bores (nominal; ream for press)
     # reliefs in the mount plate's top (z > 22; a slot at y -38..-28 and the corner y > 54), mount plate only (x < 69, the
     # ground-pivot layer starts at 69): level-keeping rod 2 passes there at PIPE_CHUTE (wrist pitch 90) and at
     # PIPE_CHUTE_ROLL90 (head rolled 90 brings the +y corner round). Hub-flange screws and the cradle (z <= 19) are clear;
@@ -114,6 +135,10 @@ def body_fb_palm():
                               ("RD", gr, FB["ZSEC"][1] - 30.0, 30.0, "PIN-D4x30")):
         pin = zc(p[0], p[1], z0, z0 + L_, FB["PIN_R"])
         out.append(Part_("Pin_D4x%d_ground_%s" % (L_, nm), pin, pin, "CAT", pn, "steel"))
+    for nm, p in (("LD", gl), ("LI", gli), ("RD", gr), ("RI", gri)):                 # bottom-link ground pins
+        z0 = FB["ZLB"][0] - 0.3
+        pin = zc(p[0], p[1], z0, z0 + 8.0, FB["PIN_R"])
+        out.append(Part_("Pin_D4x8_ground_bot_%s" % nm, pin, pin, "CAT", "PIN-D4x8", "steel"))
     # torsion spring coil around the arbor (legs not modelled: one hooks the boss, one bears on the lower drive link)
     spr = zc(gr[0], gr[1], z_sp0, z_sp1, SP["od"] / 2).cut(zc(gr[0], gr[1], z_sp0 - 1, z_sp1 + 1, SP["od"] / 2 - SP["wire"]))
     out.append(Part_("Torsion_Spring_Open", spr, spr, "CAT", SP["pn"], "steel",
@@ -128,7 +153,7 @@ def body_fb_link(s, drive):
     g, c = (gd, cd) if drive else (gi, ci)
     nm = ("L" if s > 0 else "R") + ("D" if drive else "I")
     out = []
-    for lv, (z0, z1) in (("lo", FB["ZL0"]), ("hi", FB["ZL1"])):
+    for lv, (z0, z1) in (("lo", FB["ZL0"]), ("hi", FB["ZL1"]), ("bot", FB["ZLB"])):
         lk = zlink(g, c, 5.0, z0, z1, FB["PIN_R"] + 0.05)
         out.append(Part_("Link_%s_%s_CF3" % (nm, lv), lk, lk, "CF", "custom: 3 mm CF plate (concept)", "cf"))
     if drive:
@@ -169,6 +194,17 @@ def _pad_shape(o, z0, z1):
     return ann.common(zprism(wp, z0 - 1, z1 + 1)).cut(_vprism(XT, o + NOTCH, z0 - 1, z1 + 1))
 
 
+def _pad_zone(o, z0, z1, gap):
+    """The pad's footprint grown by 'gap' (annulus to R PAD_R+16+gap inside the wrap wedge + gap): keep-out for
+    printed jaw features beside the pad."""
+    XT = K["GRIP"]
+    R = PAD_R + 16.0 + gap
+    w = math.radians(WRAP) + gap / R
+    L_ = 120.0
+    wp = [(XT, o - PAD_R), (XT - L_ * math.sin(w), o - PAD_R + L_ * math.cos(w)), (XT + L_ * math.sin(w), o - PAD_R + L_ * math.cos(w))]
+    return Part.makeCylinder(R, z1 - z0, V(XT, o - PAD_R, z0)).common(zprism(wp, z0, z1))
+
+
 def body_fb_jaw(s):
     """Jaw (left built, mirrored for s=-1) at the pipe grip: printed jaw block (coupler-pin layer between the
     link layers, riser beyond the link ends, top finger), CF bottom finger, TPU pad (R50 arc + 90 deg V),
@@ -179,29 +215,90 @@ def body_fb_jaw(s):
     _gd, _gi, cd, ci = fb_pivots(1)
     out = []
     g0, g1 = FB["ZG"]
-    poly = [(XT - 26, o - 8), (XT + 26, o - 8), (XT + 26, o + 16), (XT + 8, o + 30), (XT - 26, o + 30)]
+    r_ear = 6.0                                   # pin ears round the coupler pivots (bore wall 3.95)
+    top_y = ci[1] + r_ear                         # the outline's outer edge runs straight into the ears' tangent
+    k = (top_y - (o + 16)) / 14.0
+    poly = [(XT - 26, o - 8), (XT + 26, o - 8), (XT + 26, o + 16), (XT + 26 - 18 * k, top_y), (XT - 26, top_y)]
     pad_holes = [(XT - 12.0, o + 9.0), (XT + 12.0, o + 9.0)]
-    post = [(XT + 12.0, o + 18.0)]                # rear post: 5.4 mm to the angled finger edge (was 1.33 at XT+16, o+20)
+    post = []          # the rear D6 post is gone: the C-frame wall holds the pad's back (wall inserts replace it)
+    ins = [(XT + dx, o + dy) for dx, dy in FB["WALL_INSERTS"]]
 
-    def finger(z0, z1):
-        f = zprism(poly, z0, z1)
-        f = f.cut(Part.makeCylinder(PAD_R + 2.0, 60, V(XT, o - PAD_R, z0 - 10)))
+    def outline(z0, z1):
+        """The jaw's one plan outline, shared by the printed block and the CF bottom finger: the finger plate,
+        pin ears round both coupler pivots, and a tangent flank from the lower ear to the finger's rear corner
+        (a convex, continuous outline: no steps between the ears and the finger)."""
+        f = zprism(poly, z0, z1).fuse(stadium(cd, ci, r_ear, z0, z1))
+        ax, ay = poly[0]
+        dx, dy = ax - cd[0], ay - cd[1]
+        d = math.hypot(dx, dy)
+        a = math.acos(r_ear / d)
+        b = math.atan2(dy, dx)
+        tps = [(cd[0] + r_ear * math.cos(b + sg * a), cd[1] + r_ear * math.sin(b + sg * a)) for sg in (1, -1)]
+        t = min(tps, key=lambda q: q[0])
+        f = f.fuse(zprism([(ax, ay), t, cd, (ax, cd[1])], z0, z1))
+        f = f.removeSplitter()
+        f = f.cut(Part.makeCylinder(PAD_R + 2.0, 200, V(XT, o - PAD_R, z0 - 100)))        # object space (R52)
         f = f.cut(_vprism(XT, o + NOTCH + 2.0 * math.sqrt(2), z0 - 1, z1 + 1))
-        for (x, y) in pad_holes + post:
-            f = f.cut(zc(x, y, z0 - 1, z1 + 1, 1.65))
-        return fillet_z(f, 1.5)
-    xb0, xb1 = cd[0] - 7.0, FB["XMAX"]
-    blk = box(xb0, cd[1] - 6.0, g0, xb1, ci[1] + 6.0, g1)                              # coupler-pin layer
-    blk = blk.fuse(box(cd[0] + 5.6, cd[1] - 6.0, FB["ZFT"][1], xb1, ci[1] + 6.0, g0))    # riser beyond the link bosses
-    blk = blk.fuse(finger(*FB["ZFT"]))
+        return fillet_z(f.removeSplitter(), 1.5)
+
+    def rounded_cutter(x0, x1, z0, z1, edges_at, r=1.5):
+        """Box cutter whose edges along y at the given (x, z) corners are rounded ((x, z) uses r, (x, z, r_) its
+        own radius): the cut leaves concave blends instead of sharp internal corners."""
+        c = box(x0, -200, z0, x1, 200, z1)
+        for ea in edges_at:
+            x, z, r_ = (ea + (r,))[:3]
+            es = [e for e in c.Edges if e.BoundBox.XLength < 1e-6 and e.BoundBox.ZLength < 1e-6
+                  and abs(e.BoundBox.XMin - x) < 1e-6 and abs(e.BoundBox.ZMin - z) < 1e-6]
+            if es:
+                c = c.makeFillet(r_, es)
+        return c
+
+    # Printed jaw block = ONE extrusion of the outline over the jaw's whole height (bottom-finger top .. coupler-layer
+    # top), with every feature cut from it:
+    #   the pad's footprint (+ WALL_GAP) over the pad height -> the C-frame wall behind the pad, the top finger above it
+    #     (the drive-side pin ear stays: it sits at the pad's back corner, and the pad's corner is notched round it);
+    #   above the top finger nothing beyond XMAX (pole keep-out; params) -> a stepped-back coupler layer, blended R0.5;
+    #   clevis slots where the bottom links run, and the back cut-out above the lower pin plate for the top-lower links
+    #     (the links' bosses turn about the coupler pins, so both reach to the pin + 5.6); the top-upper links ride
+    #     above the block;
+    #   pipe clearance, pin bores, heat-set insert bores.
+    zb0, zb1 = FB["ZFB"][1], g1
+    blk = outline(zb0, zb1)
+    pz = _pad_zone(o, zb0 - 1, FB["ZPAD"][1], FB["WALL_GAP"]).cut(zc(cd[0], cd[1], zb0 - 2, zb1 + 2, r_ear))
+    blk = blk.cut(pz)
+    ft1 = FB["ZFT"][1]
+    # R0.5 only: the M3 button heads on the top finger at x 139 seat 0.75 mm beyond XMAX
+    blk = blk.cut(rounded_cutter(FB["XMAX"], 300, ft1, zb1 + 10, [(FB["XMAX"], ft1)], r=0.5))
+    xs = cd[0] + 5.6
+    # behind the wall, between the lower pin plate and the top coupler layer, the block is cut back to the wall (no
+    # added mass): one opening for the top-lower links, its inside corners blended (R4 into the lower pin plate)
+    z_lp, z_tl = FB["ZLUG"][1], FB["ZL0"][1] + 0.5
+    blk = blk.cut(rounded_cutter(0, xs, z_lp, z_tl, [(xs, z_lp, 4.0), (xs, z_tl, 1.5)]))
+    blk = blk.cut(rounded_cutter(0, xs, zb0 - 1, FB["ZLB"][1] + 0.5, [(xs, FB["ZLB"][1] + 0.5)]))
     blk = blk.cut(zc(XT, 0.0, -60, 60, PIPE_R + 1.5))                                    # pipe clearance
     for p in (cd, ci):
         blk = blk.cut(zc(p[0], p[1], g0 - 1, g1 + 1, FB["PIN_R"] + 0.05))
+        blk = blk.cut(zc(p[0], p[1], FB["ZLB"][1], FB["ZLUG"][1] + 0.5, FB["PIN_R"] + 0.05))
+    for (x, y) in pad_holes:
+        blk = blk.cut(zc(x, y, FB["ZFT"][0] - 1, FB["ZFT"][1] + 1, 1.65))
+    for (x, y) in ins:
+        blk = blk.cut(zc(x, y, zb0 - 1, zb0 + 4.0, 2.0))                                  # heat-set insert bores
     blk = blk.removeSplitter()
     out.append(Part_("Jaw_Block_" + nm, blk, blk, "PRINT", "custom: PETG-CF print (concept)", "pla"))
-    fb = finger(*FB["ZFB"])
+    # CF bottom finger: the same outline, so the plate and the block above it line up edge for edge; the lower
+    # coupler pins press in here (double shear with the block above the bottom link)
+    fb = outline(*FB["ZFB"])
+    for p in (cd, ci):
+        fb = fb.cut(zc(p[0], p[1], FB["ZFB"][0] - 1, FB["ZFB"][1] + 1, FB["PIN_R"]))      # press fit (nominal bore)
+    for (x, y) in ins + pad_holes:
+        fb = fb.cut(zc(x, y, FB["ZFB"][0] - 1, FB["ZFB"][1] + 1, 1.65))
     out.append(Part_("Finger_%s_bot_CF3" % nm, fb, fb, "CF", "custom: 3 mm CF plate (concept)", "cf"))
+    for i, (x, y) in enumerate(ins):
+        out.append(P("Insert_M3_wall_%s%d" % (nm, i), to_z((ring(0, 0, 0, 4, 2.0, 1.25),) * 2, x, y, FB["ZFB"][1]),
+                     "CAT", "INSERT", "brass"))
+        out.append(P("BHCS_M3x6_wall_%s%d" % (nm, i), to_z(H.screw("BHCS", 3, 6, 0, 1), x, y, FB["ZFB"][0]), "CAT", "BHCS", "steel"))
     pad = _pad_shape(o, *FB["ZPAD"])
+    pad = pad.cut(zc(cd[0], cd[1], -60, 60, r_ear + FB["WALL_GAP"]))       # back-corner notch round the drive-pin ear
     for (x, y) in pad_holes:
         pad = pad.cut(zc(x, y, -40, 40, 3.1))
     out.append(Part_("Pad_%s_TPU" % nm, pad, pad, "TPU", "custom: TPU 95A print, R50 arc + 90 deg V", "pad"))
@@ -215,6 +312,9 @@ def body_fb_jaw(s):
         z0 = FB["ZL0"][0] - 0.1                     # stock 4 x 14 dowel, 0.4 mm above the top finger
         pin = zc(p[0], p[1], z0, z0 + 14.0, FB["PIN_R"])
         out.append(Part_("Pin_D4x14_coupler_%s%d" % (nm, i), pin, pin, "CAT", "PIN-D4x14", "steel"))
+        z0 = FB["ZFB"][0] + 0.1                     # bottom link: finger tab .. lug
+        pin = zc(p[0], p[1], z0, z0 + 14.0, FB["PIN_R"])
+        out.append(Part_("Pin_D4x14_coupler_bot_%s%d" % (nm, i), pin, pin, "CAT", "PIN-D4x14", "steel"))
     if s < 0:
         for p in out:
             p.vis = p.vis.mirror(V(0, 0, 0), V(0, 1, 0))
