@@ -75,12 +75,26 @@ def inputs_hash():
         for f in sorted(glob.glob(os.path.join(CAD, g))):
             if os.path.isfile(f):
                 h.update(os.path.relpath(f, CAD).replace("\\", "/").encode())
-                with open(f, "rb") as fh:
-                    h.update(hashlib.sha256(fh.read()).digest())
+                h.update(bytes.fromhex(input_sha(f)))
     return h.hexdigest()[:16]
 
 
+TEXT_INPUTS = (".py", ".toml", ".json", ".md")   # hashed EOL-neutral, like cad/sim/gz_check.py's urdf sha
+
+
+def input_sha(path):
+    """SHA-256 of a design input.  Text inputs hash with CRLF -> LF, so a checkout with core.autocrlf=true (a git
+    worktree, a fresh clone) gets the same inputs hash as one whose files were written LF (TI-024).  Other inputs
+    (vendor STEP/STL) hash raw."""
+    with open(path, "rb") as fh:
+        data = fh.read()
+    if path.lower().endswith(TEXT_INPUTS):
+        data = data.replace(b"\r\n", b"\n")
+    return hashlib.sha256(data).hexdigest()
+
+
 def _sha(path):
+    """Raw-byte SHA-256 for evidence artifacts and the input snapshot (verify_report re-hashes those files as-is)."""
     with open(path, "rb") as fh:
         return hashlib.sha256(fh.read()).hexdigest()
 
@@ -111,7 +125,7 @@ def record(check, status, files=(), note="", implementation=None):
     snap = os.path.join(job, *snap_rel.split("/"))
     os.makedirs(os.path.dirname(snap), exist_ok=True)
     cur = inputs_hash()
-    json.dump(dict(inputs_hash=cur, files=[dict(path=os.path.relpath(f, CAD).replace("\\", "/"), sha256=_sha(f)) for f in ins]),
+    json.dump(dict(inputs_hash=cur, files=[dict(path=os.path.relpath(f, CAD).replace("\\", "/"), sha256=input_sha(f)) for f in ins]),
               open(snap, "w"), indent=0)
     arts, ext = [], []
     for f in files:

@@ -30,7 +30,7 @@ against its `tool_use` (142 errors in 19,040 lines up to 2026-11-17 04:30Z).
 | TI-021 | 2026-11-18 | manifest.json `files` for level_keeping and working_doc point outside the job folder (paths relative to the cwd) | fixed: absolute paths |
 | TI-022 | 2026-11-18 | Tests and quick_static hard-code the main checkout path: from a worktree they test and write the user's checkout | fixed: `__file__` + test; worktrees git-ignored, skipped by bloat_report |
 | TI-023 | 2026-11-18 | test_validate_data `param_typo_type` hard-codes TOML line 17; ZL0 is on line 18, so it FAILs on main | fixed: line found from the file |
-| TI-024 | 2026-11-18 | `params.inputs_hash` hashes raw bytes: a CRLF checkout (worktree, `core.autocrlf=true`) gets another hash, all evidence STALE | open: fix proposed (stales evidence once) |
+| TI-024 | 2026-11-18 | `params.inputs_hash` hashes raw bytes: a CRLF checkout (worktree, `core.autocrlf=true`) gets another hash, all evidence STALE | fixed: EOL-neutral input digests + test (staled evidence once) |
 
 ---
 
@@ -462,7 +462,7 @@ Found by the TI-022 gate: `param_typo_type` expected `:17: FB.ZL0: …`, but `ZL
 the test finds the `ZL0 = [23.5, 26.5]` line in the file and asserts that both of its anchors still exist, so a
 silent `str.replace` miss (TI-002) can't pass either. 12/12 PASS.
 
-## TI-024: inputs hash depends on line endings  (open: fix proposed)
+## TI-024: inputs hash depends on line endings  (fixed 2026-11-18)
 
 **What happened.** At the same commit (d45ee2e), the main checkout's inputs hash is `d7e43ee0e386a980` and the
 observer worktree's is `60fe32915db51fb3`, so every evidence record from one checkout reads STALE in the other.
@@ -470,8 +470,18 @@ observer worktree's is `60fe32915db51fb3`, so every evidence record from one che
 checkout's files were written LF by the tools. `params.inputs_hash()` hashes raw bytes, and all 22 `.py`/`.toml`
 inputs differ only in CRLF vs LF; the vendor files match. The same thing happens in the main checkout whenever
 git re-writes a file (checkout, merge, pull).
-**Proposed fix.** Hash `.py`/`.toml` with `\r\n` turned into `\n`; leave vendor files as raw bytes. LF files keep
-their digest, so the main checkout's hash would not change from the normalisation itself. But the fix edits
-`params.py`, which is itself a hashed input, so every recorded check goes STALE once. Same for the per-file SHAs
-in `evidence/<check>.inputs.json` (`params._sha`). Alternative: a `.gitattributes` with `* text=auto eol=lf` for
-`*.py`/`*.toml`, which is a repo-wide line-ending change. The main session or the user decides.
+**Fix (fix A, chosen by the main session).**
+- `params.input_sha(path)` hashes `.py`/`.toml`/`.json`/`.md` with `\r\n` → `\n`, the same convention as the urdf
+  sha in `cad/sim/gz_check.py` and `build_robot.py`. Vendor inputs (`.brep`, STEP) stay raw.
+- `inputs_hash()` and the per-file list in `evidence/<check>.inputs.json` use it.
+- `_sha` stays raw for evidence artifacts, the implementation and the snapshot file, because the
+  template's `verify_report` re-hashes those files byte for byte.
+- `params.py` is itself a hashed input, so every recorded check went STALE once (new hash `25e790bf621fca4f` at
+  this commit). It is the same in an LF and a CRLF checkout.
+- Test `tests/test_inputs_hash_eol.py` (plain Python):
+  - CRLF and LF copies of each text type hash the same, a content change is still seen, and a `.brep` with
+    CRLF bytes is not normalised;
+  - the real 32 inputs, copied all-LF and all-CRLF, give one `inputs_hash`;
+  - negative: the old raw-byte hash gives two different values on those trees;
+  - `record()`'s snapshot uses `input_sha`.
+Not done: a `.gitattributes` `eol=lf` (fix B), which is a repo-wide line-ending change and not needed for the hash.
