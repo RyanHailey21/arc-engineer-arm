@@ -39,9 +39,12 @@ def real_files_valid():
 
 @case
 def param_typo_type():
-    t = read("params/gripper_fourbar.toml").replace("L = 47.0", 'L = "forty-seven"')
-    t = t.replace("ZL0 = [23.5, 26.5]", "ZL0 = {a = {b = 1}}")
-    errs = expect("params", "gripper_fourbar", t, r":17: FB\.ZL0: expected a fact table .* found a table with keys a")
+    src = read("params/gripper_fourbar.toml")
+    assert "L = 47.0" in src and "ZL0 = [23.5, 26.5]" in src, "test anchors gone from gripper_fourbar.toml"
+    line = next(i for i, s in enumerate(src.splitlines(), 1) if s.startswith("ZL0 = [23.5, 26.5]"))  # TI-023
+    t = src.replace("L = 47.0", 'L = "forty-seven"').replace("ZL0 = [23.5, 26.5]", "ZL0 = {a = {b = 1}}")
+    errs = expect("params", "gripper_fourbar", t,
+                  r":%d: FB\.ZL0: expected a fact table .* found a table with keys a" % line)
     assert len(errs) == 1, errs          # reported once, at the leaf - not as "FB is not a number"
 
 

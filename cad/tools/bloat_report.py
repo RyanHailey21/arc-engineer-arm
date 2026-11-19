@@ -51,8 +51,10 @@ DUP_MIN = 6                       # identical significant lines before a block c
 NEAR_MIN = 8                      # lines identical after renaming (names -> N, numbers -> 0, strings -> S)
 WORD = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
 SCRATCH = ("*.bak", "*.bak[0-9]*", "*.FCBak", "*.orig", "*.tmp", "*~")
-SKIP_DIRS = {"__pycache__", ".git", ".cache", "node_modules", ".venv"}
-SKIP_PREFIX = ("tools/blender-",)                 # the downloaded Blender install
+# .claude/ holds Claude Code settings and other sessions' git worktrees (.claude/worktrees/<name>/, full copies of
+# the repo): scanning them would report every file twice and their scratch as ours (TI-022).
+SKIP_DIRS = {"__pycache__", ".git", ".cache", "node_modules", ".venv", ".claude"}
+SKIP_PREFIX = ("tools/blender-", ".claude/")      # the downloaded Blender install; Claude Code worktrees
 SELF = {"cad/tools/bloat_report.py", "cad/tests/test_bloat_report.py"}   # name findings in strings: not uses
 KINDS = ("unused-import", "unused-variable", "dead-def", "duplicate", "orphan-param", "orphan-catalogue",
          "orphan-interface", "orphan-envelope", "out-unindexed", "scratch")

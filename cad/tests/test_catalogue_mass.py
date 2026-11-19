@@ -10,7 +10,7 @@ freecadcmd by path printed nothing for short scripts and swallowed tracebacks):
 """
 import os
 import sys
-CAD = r"C:\Users\ryanh\light_weight_arm\cad"
+CAD = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # this checkout or worktree (TI-022)
 sys.path.insert(0, CAD)
 sys.path.insert(0, os.path.join(CAD, "tools"))
 import arm_model as M          # noqa: E402

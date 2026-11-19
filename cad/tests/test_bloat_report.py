@@ -7,9 +7,11 @@
 2. The same dead function under a keep-list item is "kept" with its reason, not a finding.
 3. The real keep-list: nothing in the rev A package (fab/, drawings/out, fea/out, render/) or a release generator
    is a finding; the GT2 belt hardware and the GT2-BELT catalogue entry are never findings.
+4. Nothing under .claude/ (Claude Code worktrees of this repo) is scanned for code or scratch (TI-022).
 """
 import fnmatch
 import os
+import shutil
 import sys
 import tempfile
 
@@ -75,6 +77,29 @@ for f in res3["findings"]:
     if f["name"] in ("GT2-BELT", "GT2_T") or f["name"].startswith("gt2_"):
         fails.append("3: rev A belt item flagged: %s" % f["id"])
 
-print("TEST %s: bloat_report planted bloat found, keep-list respected (%s)%s" % (
+# 4 (TI-022): nothing under .claude/ is scanned. Other sessions' git worktrees live in .claude/worktrees/<name>/
+# (whole copies of the repo); a planted .py and .bak there must be invisible, and visible without the skip.
+probe = os.path.join(B.ROOT, ".claude", "_ti022_probe_xq")
+probe_py, probe_bak = ".claude/_ti022_probe_xq/probe_dead_xq.py", ".claude/_ti022_probe_xq/probe_xq.bak"
+os.makedirs(probe, exist_ok=True)
+try:
+    for p in (probe_py, probe_bak):
+        with open(os.path.join(B.ROOT, p), "w") as fh:
+            fh.write("def probe_dead_xq():\n    return 1\n")
+    seen_py = probe_py in B.py_files()
+    seen_bak = any(o[1] == probe_bak for o in B.scratch())
+    if seen_py or seen_bak:
+        fails.append("4: .claude/ scanned (py %s, scratch %s)" % (seen_py, seen_bak))
+    keep_dirs, keep_prefix = set(B.SKIP_DIRS), B.SKIP_PREFIX       # negative: the probe is real without the skip
+    B.SKIP_DIRS, B.SKIP_PREFIX = keep_dirs - {".claude"}, tuple(x for x in keep_prefix if x != ".claude/")
+    try:
+        if probe_py not in B.py_files() or not any(o[1] == probe_bak for o in B.scratch()):
+            fails.append("4: probe not found even without the .claude skip (test is not testing anything)")
+    finally:
+        B.SKIP_DIRS, B.SKIP_PREFIX = keep_dirs, keep_prefix
+finally:
+    shutil.rmtree(probe, ignore_errors=True)
+
+print("TEST %s: bloat_report planted bloat found, keep-list respected, .claude/ skipped (%s)%s" % (
     "FAIL" if fails else "PASS", B.counts_line(res3), "".join("\n  " + f for f in fails)))
 sys.exit(1 if fails else 0)

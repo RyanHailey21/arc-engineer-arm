@@ -3,7 +3,7 @@
 (jaw blocks reaching x 165 above the pads).  Run with freecadcmd; prints TEST PASS / TEST FAIL."""
 import os
 import sys
-CAD = r"C:\Users\ryanh\light_weight_arm\cad"
+CAD = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # this checkout or worktree (TI-022)
 sys.path.insert(0, CAD)
 sys.path.insert(0, os.path.join(CAD, "tools"))
 os.environ["GRIP"] = "FOURBAR"

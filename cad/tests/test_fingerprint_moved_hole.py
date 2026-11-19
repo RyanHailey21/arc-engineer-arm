@@ -6,8 +6,7 @@ makeFillet returns a generic Shape with no CenterOfMass; the old bounding-box fa
 """
 import os
 import sys
-CAD = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) if "__file__" in globals() else \
-    r"C:\Users\ryanh\light_weight_arm\cad"
+CAD = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # this checkout or worktree (TI-022)
 sys.path.insert(0, CAD)
 sys.path.insert(0, os.path.join(CAD, "tools"))
 os.environ["QC_IMPORT"] = "1"              # fingerprint.py: functions only

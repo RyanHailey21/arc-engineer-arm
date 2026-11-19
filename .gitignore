@@ -1,3 +1,6 @@
+# Claude Code worktrees of this repo (other sessions' checkouts; TI-022)
+.claude/worktrees/
+
 # Python / tool caches
 __pycache__/
 *.pyc

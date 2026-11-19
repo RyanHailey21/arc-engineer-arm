@@ -4,7 +4,7 @@ the loader (as if the TOML were edited back to the first head's 165) and expects
 also checks the default variant comes from params/variant.toml.  Run with freecadcmd; prints TEST PASS / FAIL."""
 import os
 import sys
-CAD = r"C:\Users\ryanh\light_weight_arm\cad"
+CAD = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # this checkout or worktree (TI-022)
 sys.path.insert(0, CAD)
 sys.path.insert(0, os.path.join(CAD, "tools"))
 os.environ.pop("GRIP", None)
