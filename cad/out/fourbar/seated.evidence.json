@@ -17,7 +17,7 @@
    {
     "id": "design-inputs",
     "path": "evidence/seated.inputs.json",
-    "sha256": "4eccfecc40d5af6fae831d41cc4c39bf441d1da98ba5901b8aa06893a97282e0"
+    "sha256": "d3f99699d44faf643b5aec68316a285379c5ad581c3d818c69df5925ca611e21"
    }
   ],
   "artifacts": [
@@ -29,8 +29,8 @@
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-18T23:48:54",
-   "inputs_hash": "7b6e4caeecba02a4",
+   "time": "2026-11-19T04:47:35",
+   "inputs_hash": "a6274db4e832ec4b",
    "external_copies": []
   }
  }

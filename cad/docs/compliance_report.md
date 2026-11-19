@@ -12,11 +12,17 @@ Every number below comes from a check in this repository; the evidence files are
 | R3 | Jaws stay stiff under the grip (pad parallel) | **PASS** | pad bottom moves 0.0006 mm relative to its top (was 1.35 mm); tilt 0.001°; lowest SF 36 |
 | R4 | Motors hold the arm at every task pose | **PASS** | worst static torque 37 % of rated (J1), 36 % of the J3 servo's stall |
 | R5 | Arm actuates effectively through the full task sequence | **PASS** | both tasks complete in MuJoCo; peak torque ≤ 56 % of rated, RMS ≤ 27 %; peak speed ≤ 54 % of rated |
-| R6 | Parts are strong enough (SF ≥ 1.5 on factored loads) | **PASS** | lowest gripper SF 1.8 (CF drive link at servo stall × 1.25); palm 2.0; arm structure ≥ 7 |
+| R6 | Parts are strong enough (SF ≥ 1.5 on factored loads) | **PASS** | lowest gripper SF 1.8 (CF drive link at servo stall × 1.25); palm 2.1; arm structure ≥ 7 |
 | R7 | No collisions; field keep-outs respected; wrist stays level | **PASS** | full interference clear at all poses, moves and the donut lift; level-keeping closure exact |
 | R8 | Claw releases within 1 s of power loss (§3.2.4.5) | **OPEN: bench test** | MuJoCo 0.04 s to open 10 mm; depends on the servo's unmeasured back-drive torque |
 
 R2 and R8 are the two items a bench test has to close (see *Open items*).
+
+| Donut carried up the zig-zag pole (wrist rolled 50°) | Pipe driven 300 mm into the chute |
+|---|---|
+| ![Donut on the pole](figures/sim_donut_roll.png) | ![Pipe in the chute](figures/sim_pipe_chute.png) |
+
+*MuJoCo, full task run (`cad/sim/tasks.py`); the arm's meshes are the CAD parts.*
 
 ## Requirements and how they are checked
 
@@ -59,7 +65,12 @@ The final model fixes the jaw at all six coupler-pin bores (top bores, lower bor
 - **Bottom finger.** Same outline as the block. The lower coupler pins (D4×14) press into it and run in the block above the bottom link: double shear.
 - **Pad support.** The rear D6 post is gone; the wall holds the pad's back, and the bottom finger screws to the wall through three M3 heat-set inserts. The pad's back corner has a small notch round the drive-side pin ear (not a grip face).
 - **Palm.** A lower ground-pivot layer for the bottom links: the servo cradle's floor is thicker on one side, a matching plate on the other is flush with the top layer above it. Its D4×8 pins stop short of the servo body.
-- **Cost.** Head 353 g (was 279 g with top-only jaws). Static torques rise by 2–7 % (section 3).
+- **Palm.** The bottom-link ground pins press into bores that go through the lower plates (pressed in from below, drifted out from above; no thin skin over a blind bore). Each block that runs out from the mount plate has the same R3 on its free vertical corners, so blocks that share a footprint stay flush; corners on the mount plate stay sharp so no round leaves a groove at the joint. The mount plate's bottom is flush with the lower plates, and its corner relief runs down to the servo cradle's top (no ledges).
+- **Cost.** Head 352 g (was 279 g with top-only jaws). Static torques rise by 2–7 % (section 3).
+
+![Gripper head before and after: the bottom link layer and the C-frame jaw](figures/gripper_before_after.png)
+
+*Gripper head at the donut grip (jaw 100 mm), gripper frame. Black: 3 mm CF links and fingers; orange: PETG-CF prints; blue: TPU pads; white: acetal sector gears.*
 
 Checks on the new geometry: no self-interference over the jaw stroke; envelopes clear at every task pose; hole walls pass (0 broken out, 0 below 1 mm; one 1.35 mm wall warning beside the keep-out step); every screw and pin seated; thread engagement unchanged.
 
@@ -78,12 +89,18 @@ Carried loads (peak, gripper frame at the TCP):
 | Donut (300 g) | 0.46 N | 2.28 N | 3.32 N | 0.04 N·m | sideways: gravity at the 50° roll on the pole; vertical: weight + lift acceleration |
 | Pipe (165 g) | 1.62 N | 0.03 N | 1.65 N | 0.33 N·m | horizontal pipe: its weight 203 mm from the TCP |
 
+![Grasp loads while carried](figures/plot_grasp_loads.png)
+
+*The donut's sideways load peaks while the wrist rolls on the pole; the pipe's tilt moment rises to its static 0.32 N·m as it swings horizontal.*
+
 Result, friction 0.5 (TPU on PVC/PLA, dry; published 0.5–0.8):
 
 | Object | Clamp needed per jaw | Available at rated torque | Available at stall | Margin rated / stall |
 |---|---|---|---|---|
 | Donut | 5.9 N | 9.7 N | 33.1 N | **1.65 / 5.6** |
 | Pipe | 5.3 N | 6.0 N | 29.5 N | **1.13 / 5.6** |
+
+![Grip margins](figures/plot_grip_margin.png)
 
 At friction 0.3 (a dusty or oily pad): donut 1.08 / 3.7, pipe 0.71 / 3.5. Both still hold at stall with margin, so even then the servo can hold them by running above its continuous rating for the ~20 s carry.
 
@@ -113,6 +130,8 @@ Static joint torques from the modelled masses (`check_interference.py` §4), wit
 | J3 wrist pitch | DS3225MG | stall 2.4 N·m | 0.87 N·m | DONUT_LIFT | 36 % of stall |
 | J4 wrist roll | DS3225MG | stall 2.4 N·m | 0.04 N·m | — | 2 % of stall |
 
+![Static holding torque at every task pose](figures/plot_static_torque.png)
+
 The static model used to put the pipe's mass at the TCP. That hid its 0.33 N·m moment on the wrist pitch once the pipe is swung horizontal (PIPE_CHUTE showed 0.01 N·m; it is 0.35). The check now uses the pipe's centre of mass.
 
 ## 3. The arm actuates effectively (R5)
@@ -126,6 +145,14 @@ MuJoCo runs both full tasks (`cad/sim/tasks.py`, actuators as position servos wi
 | Wrist pitch | 0.99 N·m | 41 % of 2.4 stall | 0.61 N·m | 25 % of stall | 2.88 rad/s | 36 % of 8.1 |
 | Wrist roll | 0.40 N·m | 17 % of 2.4 stall | 0.04 N·m | 2 % | 4.09 rad/s | 51 % of 8.1 |
 | Gripper | 0.55 N·m | 19 % of 2.94 stall | 0.35 N·m | 35 % of 0.98 | 2.35 rad/s | 50 % of 4.7 |
+
+![Actuator torque through both tasks](figures/plot_sim_torque.png)
+
+*Torque at every joint through both tasks against the actuator ratings (dashed: continuous rating, or 50 % of stall for the hobby servos; dotted: peak rating or stall). The gripper's trace is the jaw motion only (the grasp is a weld in the sim).*
+
+| Donut gripped on the pole base | Donut placed on the platform | Pipe lifted out of the bucket |
+|---|---|---|
+| ![](figures/sim_donut_pick.png) | ![](figures/sim_donut_place.png) | ![](figures/sim_pipe_lift.png) |
 
 Rated speeds: DM-J4340-2EC 36 rpm at 24 V (3.8 rad/s); DS3225MG 0.13 s/60° at 6.8 V (8.1 rad/s); STS3215 0.222 s/60° at 12 V (4.7 rad/s).
 
@@ -143,7 +170,7 @@ Gripper (`fea/run_fea_fourbar.py`, actuator loads × 1.25, external loads × 2.5
 |---|---|---|---|---|
 | Drive link (CF 3 mm) | CF quasi-isotropic, 200 MPa | servo stall reacted at the coupler pin, 78 N | 111 MPa | 1.8 |
 | Jaw block | PETG-CF, 40 MPa | stall grip 37 N on the top finger's posts, jaw held at top and bottom | 2.5 MPa | 16 (was 4.1 before the bottom links) |
-| Palm | PETG-CF, 40 MPa | head 0.35 kg + pipe + 0.5 N·m moment × 2.5 = 117 N at the pivots | 19.7 MPa | 2.0 |
+| Palm | PETG-CF, 40 MPa | head 0.35 kg + pipe + 0.5 N·m moment × 2.5 = 117 N at the pivots | 18.7 MPa | 2.1 |
 | Sector gear tooth | acetal, 60 MPa | half stall torque through the mesh (Lewis) | 22 MPa | 2.7 |
 | Pivot pins D4 | 52100 steel | 78 N single shear | 6 MPa | 161 |
 | Link bore bearing | CF | 78 N on a 4 × 3 mm bore | 6.5 MPa | 31 |
@@ -184,4 +211,13 @@ python -I cad/tools/run.py --grip FOURBAR cad/sim/export_robot.py
 <sim python> cad/sim/build_robot.py fourbar ; <sim python> cad/sim/build_tasks.py fourbar
 <sim python> cad/sim/tasks.py --task both --no-viewer
 python -I cad/tools/grip_hold.py ; python -I cad/tools/grip_budget.py
+```
+
+Figures (`cad/docs/figures/`):
+
+```
+<sim python> cad/sim/tasks.py --task both --no-viewer --log sim/arc_arm_fourbar/task_log.npz --snap cad/docs/figures
+"<FreeCAD 1.1>/bin/python.exe" -I cad/docs/make_plots.py                                   (plot_*.png)
+python -I cad/tools/run.py --grip FOURBAR cad/tools/report_figures.py <dir>/head_new.FCStd  (and in a checkout of 28ad21e: head_old)
+FreeCAD GUI: exec(open("cad/tools/report_figures.py").read()); render(...) per head; compose(<dir>, "cad/docs/figures/gripper_before_after.png")
 ```

@@ -733,9 +733,9 @@
   </joint>
   <link name="head">
     <inertial>
-      <origin xyz="0.077139 0.021584 0.008498" rpy="0 0 0" />
-      <mass value="0.158447" />
-      <inertia ixx="2.4209e-04" ixy="-1.4847e-05" ixz="-4.9075e-06" iyy="6.1430e-05" iyz="1.4858e-05" izz="2.2498e-04" />
+      <origin xyz="0.077134 0.021557 0.008506" rpy="0 0 0" />
+      <mass value="0.157718" />
+      <inertia ixx="2.4057e-04" ixy="-1.4916e-05" ixz="-4.8957e-06" iyy="6.1036e-05" iyz="1.4986e-05" izz="2.2355e-04" />
     </inertial>
     <visual>
       <origin xyz="0 0 0.005" rpy="0 0 0" />

@@ -223,7 +223,7 @@
                 <geom class="collision" mesh="gripper_frame__J4_Roll_Servo_DS3225" pos="0 0 0" />
                 <geom class="collision" mesh="gripper_frame__Brg_6805_Roll" pos="0 0 0" />
                 <body name="head" pos="0 0 -0.005">
-                  <inertial pos="0.077139 0.021584 0.008498" mass="0.158447" fullinertia="2.4209e-04 6.1430e-05 2.2498e-04 -1.4847e-05 -4.9075e-06 1.4858e-05" />
+                  <inertial pos="0.077134 0.021557 0.008506" mass="0.157718" fullinertia="2.4057e-04 6.1036e-05 2.2355e-04 -1.4916e-05 -4.8957e-06 1.4986e-05" />
                   <joint name="wrist_roll" type="hinge" axis="1 0 0" range="-1.65806 1.65806" armature="0.002" />
                   <site name="head_cad" pos="0 0 0.005" size="0.004" group="5" />
                   <geom class="visual" mesh="head__alu" pos="0 0 0.005" rgba="0.8 0.81 0.84 1" />

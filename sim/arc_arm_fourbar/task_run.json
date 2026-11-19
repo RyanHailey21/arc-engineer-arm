@@ -21,28 +21,28 @@
  "actuation": {
   "joints": {
    "shoulder": {
-    "tau_peak_Nm": 3.981,
+    "tau_peak_Nm": 3.979,
     "tau_peak_in": "STOW",
-    "tau_rms_Nm": 2.253,
+    "tau_rms_Nm": 2.251,
     "speed_peak_rad_s": 2.003,
     "speed_peak_in": "STOW"
    },
    "elbow": {
-    "tau_peak_Nm": 5.072,
+    "tau_peak_Nm": 5.068,
     "tau_peak_in": "PIPE_APPROACH (jaws 50)",
-    "tau_rms_Nm": 2.457,
+    "tau_rms_Nm": 2.455,
     "speed_peak_rad_s": 2.061,
     "speed_peak_in": "PIPE_APPROACH (jaws 50)"
    },
    "wrist_pitch": {
-    "tau_peak_Nm": 0.988,
+    "tau_peak_Nm": 0.987,
     "tau_peak_in": "move above the platform",
     "tau_rms_Nm": 0.607,
     "speed_peak_rad_s": 2.884,
     "speed_peak_in": "STOW"
    },
    "wrist_roll": {
-    "tau_peak_Nm": 0.396,
+    "tau_peak_Nm": 0.395,
     "tau_peak_in": "lift up the pole (strafe + roll)",
     "tau_rms_Nm": 0.036,
     "speed_peak_rad_s": 4.09,
@@ -71,7 +71,7 @@
       "median": 0.043
      },
      "Fy": {
-      "peak": 2.284,
+      "peak": 2.285,
       "peak_in": "lift up the pole (strafe + roll)",
       "p99": 2.214,
       "median": 0.029
@@ -104,7 +104,7 @@
     "tcp_wrench_by_phase": {
      "lift up the pole (strafe + roll)": [
       0.124,
-      2.284,
+      2.285,
       2.974,
       0.037,
       0.006,
@@ -162,8 +162,8 @@
     "tcp_wrench_in_contact_peak": {
      "Fx": 0.868,
      "Fy": 0.043,
-     "Fz": 3.103,
-     "Mx": 0.005,
+     "Fz": 3.102,
+     "Mx": 0.004,
      "My": 0.384,
      "Mz": 0.001
     }
@@ -286,7 +286,7 @@
     "pipe:pipe / bucket_floor": 0.04570475867030393
    },
    "t1": 2.54,
-   "max_track_err_deg": 0.41
+   "max_track_err_deg": 0.4
   },
   {
    "phase": "slide in to DONUT_APPROACH",
@@ -296,7 +296,7 @@
     "pipe:pipe / bucket_floor": 0.04439379154679823
    },
    "t1": 4.22,
-   "max_track_err_deg": 0.41
+   "max_track_err_deg": 0.4
   },
   {
    "phase": "descend onto the donut",
@@ -306,7 +306,7 @@
     "pipe:pipe / bucket_floor": 0.04460322743071611
    },
    "t1": 5.42,
-   "max_track_err_deg": 0.41
+   "max_track_err_deg": 0.4
   },
   {
    "phase": "close jaws (donut grip 100)",
@@ -323,7 +323,7 @@
    "phase": "lift up the pole (strafe + roll)",
    "t0": 6.02,
    "contacts": {
-    "donut:donut / pole_base": 0.013855739055171346,
+    "donut:donut / pole_base": 0.013855651239888522,
     "pipe:pipe / bucket_floor": 0.04567582661281392
    },
    "t1": 15.54,
@@ -379,7 +379,7 @@
    "t0": 27.54,
    "contacts": {
     "pipe:pipe / bucket_floor": 0.044161472577004264,
-    "donut:donut / scoring_platform": 0.2982858335015791
+    "donut:donut / scoring_platform": 0.29792861812593174
    },
    "t1": 28.81,
    "max_track_err_deg": 0.26
@@ -388,27 +388,27 @@
    "phase": "open jaws (release)",
    "t0": 28.81,
    "contacts": {
-    "donut:donut / scoring_platform": 0.07891550429640556,
+    "donut:donut / scoring_platform": 0.07897665658957234,
     "pipe:pipe / bucket_floor": 0.04371664688368983
    },
    "t1": 29.41,
-   "max_track_err_deg": 0.41
+   "max_track_err_deg": 0.4
   },
   {
    "phase": "retreat up",
    "t0": 29.41,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780041281227804,
+    "donut:donut / scoring_platform": 0.004780041281276376,
     "pipe:pipe / bucket_floor": 0.04496142711239443
    },
    "t1": 30.93,
-   "max_track_err_deg": 0.41
+   "max_track_err_deg": 0.4
   },
   {
    "phase": "STOW",
    "t0": 30.93,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780040938293789,
+    "donut:donut / scoring_platform": 0.004780040938758695,
     "pipe:pipe / bucket_floor": 0.04469342728124821
    },
    "t1": 32.9,
@@ -418,7 +418,7 @@
    "phase": "drive to the bucket",
    "t0": 32.9,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780040939022373,
+    "donut:donut / scoring_platform": 0.004780040939154212,
     "pipe:pipe / bucket_floor": 0.04509519226145989
    },
    "t1": 48.4,
@@ -428,7 +428,7 @@
    "phase": "PIPE_APPROACH (jaws 50)",
    "t0": 48.4,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780040932048785,
+    "donut:donut / scoring_platform": 0.004780040936725599,
     "pipe:pipe / bucket_floor": 0.04380692460752612
    },
    "t1": 49.01,
@@ -438,7 +438,7 @@
    "phase": "reach in to the pipe",
    "t0": 49.01,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780040938481139,
+    "donut:donut / scoring_platform": 0.004780040938724001,
     "pipe:pipe / bucket_floor": 0.044731917428852186
    },
    "t1": 50.19,
@@ -448,7 +448,7 @@
    "phase": "close jaws (pipe grip 13.8)",
    "t0": 50.19,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780040936774171,
+    "donut:donut / scoring_platform": 0.004780040936461921,
     "pipe:pipe / bucket_floor": 0.0448099198512272
    },
    "grasp_err_mm": 0.57,
@@ -459,8 +459,8 @@
    "phase": "lift straight out (PIPE_LIFT)",
    "t0": 50.82,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780040938328484,
-    "pipe:pipe / bucket_floor": 0.044808891736583104
+    "donut:donut / scoring_platform": 0.004780040938703184,
+    "pipe:pipe / bucket_floor": 0.044801588050649585
    },
    "t1": 54.69,
    "max_track_err_deg": 0.64
@@ -469,7 +469,7 @@
    "phase": "back away from the bucket",
    "t0": 54.69,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780040938876656
+    "donut:donut / scoring_platform": 0.0047800409385991005
    },
    "t1": 57.3,
    "max_track_err_deg": 0.64
@@ -478,7 +478,7 @@
    "phase": "swing to PIPE_CHUTE (pitch 90)",
    "t0": 57.3,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780040938800328
+    "donut:donut / scoring_platform": 0.004780040938231339
    },
    "t1": 59.74,
    "max_track_err_deg": 0.51
@@ -487,7 +487,7 @@
    "phase": "drive to the chute (pipe at the face)",
    "t0": 59.74,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780040938703184
+    "donut:donut / scoring_platform": 0.0047800409386684894
    },
    "t1": 67.78,
    "max_track_err_deg": 0.51
@@ -496,7 +496,7 @@
    "phase": "drive in: pipe 300 mm into the chute",
    "t0": 67.78,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780040938932167
+    "donut:donut / scoring_platform": 0.004780040938612978
    },
    "t1": 69.69,
    "max_track_err_deg": 0.51
@@ -505,8 +505,8 @@
    "phase": "open jaws (release)",
    "t0": 69.69,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780040938619917,
-    "pipe:pipe / chute_below": 3.3512875429676514
+    "donut:donut / scoring_platform": 0.004780040938495017,
+    "pipe:pipe / chute_below": 3.3518991604576387
    },
    "t1": 70.32,
    "max_track_err_deg": 0.4
@@ -515,8 +515,8 @@
    "phase": "back off",
    "t0": 70.32,
    "contacts": {
-    "donut:donut / scoring_platform": 0.0047800409382035836,
-    "pipe:pipe / chute_below": 0.11839342731856384
+    "donut:donut / scoring_platform": 0.00478004093816195,
+    "pipe:pipe / chute_below": 0.11840214951819306
    },
    "t1": 72.23,
    "max_track_err_deg": 0.39
@@ -525,8 +525,8 @@
    "phase": "STOW",
    "t0": 72.23,
    "contacts": {
-    "donut:donut / scoring_platform": 0.004780040938023172,
-    "pipe:pipe / chute_below": 0.11839341483710353
+    "donut:donut / scoring_platform": 0.004780040938266034,
+    "pipe:pipe / chute_below": 0.11840213706360014
    },
    "t1": 74.56,
    "max_track_err_deg": 0.48

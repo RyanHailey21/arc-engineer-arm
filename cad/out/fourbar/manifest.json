@@ -5,10 +5,10 @@
    "out/bloat_report.md",
    "out/bloat_report.json"
   ],
-  "inputs_hash": "7b6e4caeecba02a4",
-  "note": "BLOAT 35 findings (unused-import 1, dead-def 6, duplicate 6, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 13), 74 kept",
+  "inputs_hash": "a6274db4e832ec4b",
+  "note": "BLOAT 35 findings (unused-import 1, dead-def 6, duplicate 6, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 13), 75 kept",
   "status": "WARN",
-  "time": "2026-11-18T23:49:43"
+  "time": "2026-11-19T05:09:55"
  },
  "bom": {
   "evidence": "bom.evidence.json",
@@ -16,20 +16,20 @@
    "BOM.csv",
    "BOM.md"
   ],
-  "inputs_hash": "7b6e4caeecba02a4",
+  "inputs_hash": "a6274db4e832ec4b",
   "note": "27 purchased items, unsourced: none",
   "status": "PASS",
-  "time": "2026-11-18T23:49:40"
+  "time": "2026-11-19T04:48:51"
  },
  "engagement": {
   "evidence": "engagement.evidence.json",
   "files": [
    "engagement_report.txt"
   ],
-  "inputs_hash": "7b6e4caeecba02a4",
+  "inputs_hash": "a6274db4e832ec4b",
   "note": "Thread engagement: 20 tapped holes, 20 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
   "status": "WARN",
-  "time": "2026-11-18T23:49:18"
+  "time": "2026-11-19T04:48:10"
  },
  "fea_fourbar": {
   "evidence": "fea_fourbar.evidence.json",
@@ -37,10 +37,10 @@
    "fea/fea_report.md",
    "fea/fea_results.json"
   ],
-  "inputs_hash": "7b6e4caeecba02a4",
+  "inputs_hash": "a6274db4e832ec4b",
   "note": "6 cases, min SF 1.8",
   "status": "PASS",
-  "time": "2026-11-18T23:43:25"
+  "time": "2026-11-19T05:08:26"
  },
  "fea_jaw": {
   "evidence": "fea_jaw.evidence.json",
@@ -58,10 +58,10 @@
   "files": [
    "grip_budget.txt"
   ],
-  "inputs_hash": "7b6e4caeecba02a4",
+  "inputs_hash": "a6274db4e832ec4b",
   "note": "pipe 143% of rated / 48% of stall; open spring 0.12 N*m",
   "status": "WARN",
-  "time": "2026-11-18T23:44:35"
+  "time": "2026-11-19T05:08:45"
  },
  "grip_hold": {
   "evidence": "grip_hold.evidence.json",
@@ -70,69 +70,69 @@
    "grip_hold.json",
    "../sim/arc_arm_fourbar/task_run.json"
   ],
-  "inputs_hash": "7b6e4caeecba02a4",
+  "inputs_hash": "a6274db4e832ec4b",
   "note": "donut SF 1.6 rated / 5.6 stall; pipe SF 1.1 rated / 5.5 stall (MU 0.50)",
   "status": "WARN",
-  "time": "2026-11-18T23:49:41"
+  "time": "2026-11-19T05:08:45"
  },
  "holes": {
   "evidence": "holes.evidence.json",
   "files": [
    "hole_report.txt"
   ],
-  "inputs_hash": "7b6e4caeecba02a4",
+  "inputs_hash": "a6274db4e832ec4b",
   "note": "Hole edge-distance check (custom parts): 227 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 35 warn (wall < max(1.5 mm, 0.5 d))",
   "status": "WARN",
-  "time": "2026-11-18T23:48:27"
+  "time": "2026-11-19T04:47:16"
  },
  "interference_full": {
   "evidence": "interference_full.evidence.json",
   "files": [
    "interference_report.txt"
   ],
-  "inputs_hash": "7b6e4caeecba02a4",
+  "inputs_hash": "a6274db4e832ec4b",
   "note": "static, 14 task poses, field clearance, donut lift",
   "status": "PASS",
-  "time": "2026-11-18T23:26:03"
+  "time": "2026-11-19T04:49:57"
  },
  "level_keeping": {
   "evidence": "level_keeping.evidence.json",
   "files": [
    "level_keeping.txt"
   ],
-  "inputs_hash": "7b6e4caeecba02a4",
-  "note": "LEVEL_KEEPING fourbar: PASS (358 s)",
+  "inputs_hash": "a6274db4e832ec4b",
+  "note": "LEVEL_KEEPING fourbar: PASS (310 s)",
   "status": "PASS",
-  "time": "2026-11-18T23:32:01"
+  "time": "2026-11-19T04:55:08"
  },
  "quick": {
   "evidence": "quick.evidence.json",
   "files": [
    "quick.json"
   ],
-  "inputs_hash": "7b6e4caeecba02a4",
-  "note": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 558 g (head 353 g); worst static J1 3.34 J2 2.84 J3 0.87 N*m; catalogue 27 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 35 findings (unused-import 1, dead-def 6, duplicate 6, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 13), 74 kept; fingerprint MATCH",
+  "inputs_hash": "a6274db4e832ec4b",
+  "note": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 557 g (head 352 g); worst static J1 3.34 J2 2.84 J3 0.87 N*m; catalogue 27 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 35 findings (unused-import 1, dead-def 6, duplicate 6, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 13), 75 kept; fingerprint MATCH",
   "status": "PASS",
-  "time": "2026-11-18T23:50:47"
+  "time": "2026-11-19T05:10:45"
  },
  "seated": {
   "evidence": "seated.evidence.json",
   "files": [
    "seated_report.txt"
   ],
-  "inputs_hash": "7b6e4caeecba02a4",
+  "inputs_hash": "a6274db4e832ec4b",
   "note": "Fastener seating (FOURBAR, STOW): 126 screws/pins, 152 seat points -> 0 FAIL",
   "status": "PASS",
-  "time": "2026-11-18T23:48:54"
+  "time": "2026-11-19T04:47:35"
  },
  "working_doc": {
   "evidence": "working_doc.evidence.json",
   "files": [
    "ARC_Arm_Fourbar.FCStd"
   ],
-  "inputs_hash": "7b6e4caeecba02a4",
-  "note": "ARC_Arm_Fourbar.FCStd: 264 parts in 17 body groups at STOW, coloured (12.6 MB)",
+  "inputs_hash": "a6274db4e832ec4b",
+  "note": "ARC_Arm_Fourbar.FCStd: 264 parts in 17 body groups at STOW, uncoloured (headless) (12.5 MB)",
   "status": "PASS",
-  "time": "2026-11-18T23:44:34"
+  "time": "2026-11-19T04:48:34"
  }
 }

@@ -87,43 +87,61 @@ def body_fb_palm():
     svv = sv.fuse(zc(XG, YG, 19.0, 19.5, 3.0))
     out.append(Part_("Grip_Servo_STS3215", svv, sv, "CAT", "STS3215", "motor", "direct drive on the left drive link (disc horn)"))
     # palm: mount plate on the hub flange, servo cradle, ground layer, spring boss
-    palm = box(65, -(YG + 9), -22, 69, YG + 37.0, g1)                                   # mount plate on the hub flange
-    palm = palm.fuse(box(69, YG - 14.0, -19.0, XG + 15.0, YG + 37.0, 19.0).cut(
+    # corners: every block that runs out from the mount plate ends at x = XG + 15; its two free vertical corners there
+    # get the same R3 (blocks sharing a footprint stay flush), while its corners on the mount plate (x = 69) stay
+    # sharp so no round leaves a groove at the joint. The mount plate's own outer corners (x = 65) get R2.
+    XE = XG + 15.0
+
+    def _round_end(shape, r=3.0, x=XE):
+        # also the back corners (x = 69) that stand past the mount plate's ends (y -47.5 .. 75.5): free there too
+        def free(e):
+            b = e.BoundBox
+            if abs(b.XMin - x) < 1e-6:
+                return True
+            return x == XE and abs(b.XMin - 69.0) < 1e-6 and not (-(YG + 9) - 1e-6 <= b.YMin <= YG + 37.0 + 1e-6)
+        es = [e for e in shape.Edges if e.Curve.TypeId == "Part::GeomLine" and e.BoundBox.ZLength > 1e-6
+              and e.BoundBox.XLength < 1e-6 and e.BoundBox.YLength < 1e-6 and free(e)]
+        return shape.makeFillet(r, es) if es else shape
+    palm = _round_end(box(65, -(YG + 9), FB["ZGB"][0], 69, YG + 37.0, g1), 2.0, 65.0)   # mount plate (bottom flush with the lower plates)
+    palm = palm.fuse(_round_end(box(69, YG - 14.0, -19.0, XE, YG + 37.0, 19.0)).cut(
         box(XG - 12.65, YG - 11.3, -16.3, XG + 12.65, YG - 11.0 + 45.5, 20.0)))         # cradle (open top)
-    palm = palm.fuse(box(69, -(YG + S + 6), g0, XG + 15.0, YG + S + 6, g1))              # ground-pivot layer
+    palm = palm.fuse(_round_end(box(69, -(YG + S + 6), g0, XE, YG + S + 6, g1)))         # ground-pivot layer
     SP = SPRING
     z_sp1 = FB["ZL0"][0] - 0.3                                                             # spring top, under the lower link
     z_sp0 = z_sp1 - SP["length"]
-    palm = palm.fuse(box(69, -(YG + 9), z_sp0 - 3.0, XG + 15.0, -(YG - 9), z_sp0))        # spring boss (right drive pivot)
+    palm = palm.fuse(_round_end(box(69, -(YG + 9), z_sp0 - 3.0, XE, -(YG - 9), z_sp0)))        # spring boss (right drive pivot)
     palm = palm.fuse(zc(XG, -YG, z_sp0 - 0.1, z_sp1, SP["arbor_d"] / 2))                   # printed arbor inside the coil
     # central web tying the ground-pivot layer down to the mount plate (FEA: the cantilevered 6 mm layer with
     # lightening windows reached SF 1.3; links/servo/horn/spring all sit at |y| > 25 here, so the web is free space)
-    palm = palm.fuse(box(69, -6.0, -19.0, XG + 15.0, 6.0, g0))      # |y| <= 6: the M3 heads at y +-10.8 keep 2 mm
+    palm = palm.fuse(_round_end(box(69, -6.0, -19.0, XE, 6.0, g0)))      # |y| <= 6: the M3 heads at y +-10.8 keep 2 mm
     # lower ground-pivot layer (bottom links, params ZGB): the servo cradle's floor thickened on the left; on the right
-    # a plate flush with the top ground-pivot layer above it (same y extent), both off the mount plate, corners R3
+    # a plate flush with the top ground-pivot layer above it (same y extent), both off the mount plate, free corners R3
     b0, b1 = FB["ZGB"]
-    palm = palm.fuse(fillet_z(box(69, YG - 14.0, b0, XG + 15.0, YG + 37.0, b1), 3.0))
-    palm = palm.fuse(fillet_z(box(69, -(YG + S + 6.0), b0, XG + 15.0, -(YG - 14.0), b1), 3.0))
+    palm = palm.fuse(_round_end(box(69, YG - 14.0, b0, XE, YG + 37.0, b1)))
+    palm = palm.fuse(_round_end(box(69, -(YG + S + 6.0), b0, XE, -(YG - 14.0), b1)))
+    palm = palm.removeSplitter()                  # flush blocks share one face: no seam lines where they meet
     for (y, z) in front:
         palm = palm.cut(Part.makeCylinder(IF_PALM["side_b"]["clearance_d"] / 2, 6, V(IF_PALM.frame_x - 1.0, y, z), V(1, 0, 0)))
     for p in fb_pivots(1)[:2] + fb_pivots(-1)[:2]:
         palm = palm.cut(zc(p[0], p[1], 10, g1 + 1, FB["PIN_R"] + 0.05))
-        palm = palm.cut(zc(p[0], p[1], FB["ZGB"][0] - 1, FB["ZGB"][0] + 4.5, FB["PIN_R"]))   # D4x8 press-fit bores (nominal; ream for press)
+        # D4x8 press-fit bores (nominal; ream for press), THROUGH the lower plate so the pin presses in from below and
+        # drifts out from above, with no thin skin over a blind bore (left: opens into the servo pocket, clear of it)
+        palm = palm.cut(zc(p[0], p[1], FB["ZGB"][0] - 1, FB["ZGB"][1] + 1, FB["PIN_R"]))
     # reliefs in the mount plate's top (z > 22; a slot at y -38..-28 and the corner y > 54), mount plate only (x < 69, the
     # ground-pivot layer starts at 69): level-keeping rod 2 passes there at PIPE_CHUTE (wrist pitch 90) and at
     # PIPE_CHUTE_ROLL90 (head rolled 90 brings the +y corner round). Hub-flange screws and the cradle (z <= 19) are clear;
     # the -y side is only a slot so the ground-layer joint keeps its outer part (palm FEA: SF 1.5 with a full corner cut).
     # 2 mm rounds on the cutters' bottom edges (along x) give rounded inside corners: printed, so free to make. (A fillet
     # on the palm itself after the cuts produced an invalid solid; rounding the simple cutter boxes is robust.)
-    def _rounded_cutter(y0, y1, round_y):
+    def _rounded_cutter(y0, y1, round_y, z0=22.0):
         # round only the bottom edges at y in round_y: rounding the outer edge of the corner cutter (beyond the palm's
         # side at y 75.5) left a thin sliver at the palm edge (check_holes flagged it as a broken-out D4 'hole')
-        c = box(64.0, y0, 22.0, 69.0, y1, g1 + 1.0)
+        c = box(64.0, y0, z0, 69.0, y1, g1 + 1.0)
         return c.makeFillet(2.0, [e for e in c.Edges if e.BoundBox.YLength < 1e-6 and e.BoundBox.ZLength < 1e-6
-                                  and abs(e.BoundBox.ZMin - 22.0) < 1e-6
+                                  and abs(e.BoundBox.ZMin - z0) < 1e-6
                                   and any(abs(e.BoundBox.YMin - y) < 1e-6 for y in round_y)])
     palm = palm.cut(_rounded_cutter(-38.0, -28.0, (-38.0, -28.0)))   # slot over rod 2's plane only (y -35..-31)
-    palm = palm.cut(_rounded_cutter(54.0, YG + 38.0, (54.0,)))
+    palm = palm.cut(_rounded_cutter(54.0, YG + 38.0, (54.0,), 19.0))   # down to the cradle top: no ledge above it
     out.append(Part_("Gripper_Palm", palm, palm, "PRINT", "custom: PETG-CF print (concept)", "pla"))
     for i, (y, z) in enumerate(front):
         # M3x8 (stock ISO 7380): 4 mm mount plate + full 3 mm of the hub flange thread; tip 1 mm clear of the roll housing

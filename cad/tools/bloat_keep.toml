@@ -97,3 +97,16 @@ name = "reload_all"
 path = "cad/arm/*.py"
 guard = true
 reason = "called by hand in a FreeCAD GUI session (CLAUDE.md: arm.reload_all())"
+
+[[item]]
+kind = "dead-def"
+name = "compose"
+path = "cad/tools/report_figures.py"
+reason = "called from the FreeCAD GUI to build the report's before/after figure (see the module docstring)"
+
+[[item]]
+kind = "dead-def"
+name = "render"
+path = "cad/tools/report_figures.py"
+reason = "called from the FreeCAD GUI (view providers exist only there)"
+guard = true

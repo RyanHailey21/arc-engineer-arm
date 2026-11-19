@@ -19,7 +19,7 @@ Evidence for every claim below is in `cad/out/fourbar/`. Each `*.evidence.json` 
 | | Rev A | Four-bar |
 |---|---|---|
 | Past the wrist | 1,040 g | 558 g (484 before the C-frame jaws and bottom links) |
-| Jaw head | 836 g | 353 g (279 before) |
+| Jaw head | 836 g | 352 g (279 before) |
 | Arm total | 3.42 kg | 2.92 kg (2.87 with the belt) |
 
 - **Peak static joint torque:**
@@ -68,7 +68,7 @@ The forearm's GT2 belt (stage 2 of level keeping, elbow to wrist) is replaced by
 | Quick check | envelopes, interfaces, self-interference over the jaw stroke at roll 0/90°, mass/torque, fingerprint: PASS |
 | Hole edge distance | 0 broken out, 0 fail; new WARNs (below the 0.5d plate rule): rod-2 eyes (3 mm wall; shear-out about 2.4 kN against 134 N) and the turned level hubs |
 | Thread engagement | 0 FAIL; the only WARNs are the three known J1 hub screws from rev A |
-| FEA (`fea/run_fea_fourbar.py`) | drive link SF 1.8; jaw block 16 (4.1 before the bottom links); palm 2.0 |
+| FEA (`fea/run_fea_fourbar.py`) | drive link SF 1.8; jaw block 16 (4.1 before the bottom links); palm 2.1 |
 | Jaw stiffness FEA (`fea/run_fea_jaw.py`) | pad bottom 0.0006 mm off its top under 1.25 × stall grip (1.35 mm with the old top-held jaw); tilt 0.001° |
 | Grip hold (`tools/grip_hold.py`, sim loads) | donut margin 1.65 at rated / 5.6 at stall; pipe 1.13 / 5.6 (WARN: below the 1.5 target at rated) |
 | Hand checks (in the same report) | sector tooth (Lewis) 2.7; pivot pins 161; link bore bearing 31 |

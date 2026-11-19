@@ -17,25 +17,25 @@
    {
     "id": "design-inputs",
     "path": "evidence/bom.inputs.json",
-    "sha256": "4eccfecc40d5af6fae831d41cc4c39bf441d1da98ba5901b8aa06893a97282e0"
+    "sha256": "d3f99699d44faf643b5aec68316a285379c5ad581c3d818c69df5925ca611e21"
    }
   ],
   "artifacts": [
    {
     "id": "BOM.csv",
     "path": "BOM.csv",
-    "sha256": "0a659fa96de5e277940c2081b17b9cb51d919e9f80937b08879158b863633823"
+    "sha256": "06c8313295ab8d4e7977b12edfa449e50b823b2fc1ae73b24a55303bb440f4aa"
    },
    {
     "id": "BOM.md",
     "path": "BOM.md",
-    "sha256": "70c0026a2aeac7e3fdcc9f87c5824090f76302592f2f1678c3c296b18ff5a363"
+    "sha256": "8cae8b98b6d41df7924fdccea9f48693e52eba4058bfcba24c1698748adbb504"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-18T23:49:40",
-   "inputs_hash": "7b6e4caeecba02a4",
+   "time": "2026-11-19T04:48:51",
+   "inputs_hash": "a6274db4e832ec4b",
    "external_copies": []
   }
  }

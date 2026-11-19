@@ -72,7 +72,7 @@ custom,Clevis_L_CF3,1,18.0,"3 mm CF plate (DXF), D-bore, 4x csk",make (CF),,GRIP
 custom,Clevis_R_CF3,1,18.1,"3 mm CF plate (DXF), D-bore",make (CF),,GRIPPER
 custom,Roll_Housing,1,24.6,"PETG-CF print, M3 inserts",make (PRINT),,GRIPPER
 custom,Roll_Hub,1,11.5,"6061 turned, D25 journal in 6805",make (AL),,HEAD
-custom,Gripper_Palm,1,63.5,PETG-CF print (concept),make (PRINT),,HEAD
+custom,Gripper_Palm,1,62.8,PETG-CF print (concept),make (PRINT),,HEAD
 custom,Jaw_Block_L,1,30.7,PETG-CF print (concept),make (PRINT),,JAW_L
 custom,Finger_L_bot_CF3,1,6.9,3 mm CF plate (concept),make (CF),,JAW_L
 custom,Pad_L_TPU,1,19.6,"TPU 95A print, R50 arc + 90 deg V",make (TPU),,JAW_L

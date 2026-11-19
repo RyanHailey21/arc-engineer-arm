@@ -8,4 +8,4 @@ pitch sweep DONUT_LIFT   (elbow   37.7): clash-free -30.0 .. 120.0 deg, needs  -
 pitch sweep PIPE_LIFT    (elbow   48.0): clash-free -30.0 .. 120.0 deg, needs  -10 ..   10  PASS
 pitch sweep PIPE_CHUTE   (elbow  -17.1): clash-free -30.0 ..  96.2 deg, needs  -10 ..   93  PASS  (first contact: ROD2/Rod_2_CF4 x LK_RD/Sector_m1_77T_R near pitch 97.0)
 pitch sweep PIPE_CHUTE_ROLL90 (elbow  -17.1): clash-free -30.0 ..  95.0 deg, needs  -10 ..   93  PASS  (first contact: ROD2/Rod_2_CF4 x HEAD/Gripper_Palm near pitch 96.0)
-LEVEL_KEEPING fourbar: PASS (358 s)
+LEVEL_KEEPING fourbar: PASS (310 s)

@@ -127,6 +127,42 @@ class TaskSim:
         self.report, self.phase = [], None
         self.t_wall = time.perf_counter()
         self.video, self.task_label = None, ""
+        self.log, self.snap_dir, self.snaps, self.snap_states = None, None, {}, {}
+
+    # ---------------------------------------------------------------- report figures (--log, --snap)
+    def _log_tick(self):
+        """One row per 10 ms control tick: time, phase, joint angle/speed/torque, and each held object's TCP wrench
+        (gripper frame, NaN when not held or touching the field), for cad/docs/make_plots.py."""
+        d, L = self.data, self.log
+        L["t"].append(d.time)
+        L["phase"].append(len(self.report) - 1)
+        L["q"].append([float(d.qpos[self.qadr[j]]) for j in ACT])
+        L["qd"].append([float(d.qvel[self.dof[j]]) for j in ACT])
+        L["tau"].append([float(d.actuator_force[self.act[j]]) for j in ACT])
+        for o in self.obj:
+            h = self.hold[o]
+            fresh = d.eq_active[self.weld[o]] and h.get("w") and len(h["w"]) != L["_n"][o] and not h["touch"][-1]
+            L["w_" + o].append(list(h["w"][-1]) if fresh else [float("nan")] * 6)
+            L["_n"][o] = len(h.get("w", []))
+
+    def save_log(self, path):
+        L = {k: np.array(v) for k, v in self.log.items() if not k.startswith("_")}
+        np.savez_compressed(path, joints=np.array(ACT), phases=np.array([p["phase"] for p in self.report]), **L)
+
+    def snapshot(self, name, w=1600, h=1000, distance=0.9, azimuth=150.0, elevation=-18.0, mix=0.5):
+        """Offscreen still of the current state; the camera aims `mix` of the way from the arm's base to the TCP."""
+        mj, m = self.mj, self.model
+        m.vis.global_.offwidth, m.vis.global_.offheight = max(w, m.vis.global_.offwidth), max(h, m.vis.global_.offheight)
+        if not hasattr(self, "snap_renderer"):
+            self.snap_renderer = mj.Renderer(m, h, w)
+        cam = mj.MjvCamera()
+        cam.type = mj.mjtCamera.mjCAMERA_FREE
+        cam.distance, cam.azimuth, cam.elevation = distance, azimuth, elevation
+        base = self.data.xpos[self.mj.mj_name2id(m, mj.mjtObj.mjOBJ_BODY, "chassis")] + np.array([0.08, 0.0, 0.33])
+        cam.lookat[:] = base + mix * (np.array(self.data.site_xpos[self.tcp]) - base)
+        self.snap_renderer.update_scene(self.data, camera=cam)
+        from PIL import Image
+        Image.fromarray(self.snap_renderer.render()).save(os.path.join(self.snap_dir, name + ".png"))
 
     def record(self, path, w=1280, h=720, fps=30, crf=26):
         """Offscreen H.264 video (imageio-ffmpeg): camera follows the chassis, phase captions, drives at 2x."""
@@ -292,6 +328,8 @@ class TaskSim:
                         continue
                     k = "%s:%s / %s" % (a[0], a[1], b[1])
                     self.phase["contacts"][k] = max(self.phase["contacts"].get(k, 0.0), -1000.0 * c.dist)
+        if self.log is not None:
+            self._log_tick()
         if self.video is not None and self.data.time >= self.next_frame:
             self._frame()
             fast = self.phase is not None and self.phase["phase"].startswith("drive")
@@ -312,6 +350,10 @@ class TaskSim:
         self.phase.update(kw, t1=round(self.data.time, 2),
                           max_track_err_deg=round(max(abs(q[j] - min(max(self.q[j], self.limits[j][0]), self.limits[j][1]))
                                                       for j in ACT), 2))
+        if self.snap_dir and self.phase["phase"] in self.snaps:
+            fname, cam = self.snaps[self.phase["phase"]]
+            self.snap_states[fname] = (np.array(self.data.qpos), cam)
+            self.snapshot(fname, **cam)
         cs = self.phase["contacts"]
         print("%5.1f s  track %.2f deg  %s%s" % (self.phase["t1"] - self.phase["t0"], self.phase["max_track_err_deg"],
                                                 ", ".join("%s %.1f mm" % kv for kv in sorted(cs.items())) or "no contacts",
@@ -520,12 +562,24 @@ def pipe_task(sim, kin, tp, F):
                 pipe_tip_past_wall_face_mm=round(1000 * float(tip - face), 1), pipe_in_chute=bool(tip - face > 0.1))
 
 
+# report stills (cad/docs/figures): phase (at its end) -> (file, camera)
+REPORT_SHOTS = {
+    "close jaws (donut grip 100)": ("sim_donut_pick", dict(distance=0.6, azimuth=120.0, elevation=-25.0, mix=0.9)),
+    "DONUT_LIFT_ROLL+": ("sim_donut_roll", dict(distance=1.3, azimuth=135.0, elevation=-15.0)),
+    "lower to DONUT_PLACE": ("sim_donut_place", dict(distance=1.3, azimuth=135.0, elevation=-20.0)),
+    "lift straight out (PIPE_LIFT)": ("sim_pipe_lift", dict(distance=1.6, azimuth=135.0, elevation=-15.0)),
+    "drive in: pipe 300 mm into the chute": ("sim_pipe_chute", dict(distance=1.4, azimuth=60.0, elevation=-22.0, mix=0.6)),
+}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("variant", nargs="?", default="fourbar")
     ap.add_argument("--task", default="both", choices=("donut", "pipe", "both"))
     ap.add_argument("--no-viewer", action="store_true", help="run headless, faster than real time")
     ap.add_argument("--speed", type=float, default=0.5, help="fraction of each joint's speed limit")
+    ap.add_argument("--log", help="write a per-tick .npz (time, joints, torques, grasp wrench) for the report plots")
+    ap.add_argument("--snap", help="write report stills (PNG) at the key task poses into this folder")
     ap.add_argument("--video", help="write an MP4 (1280x720, 30 fps, drives at 2x); needs imageio-ffmpeg")
     a = ap.parse_args()
     root = os.path.join(REPO, "sim", "arc_arm_%s" % a.variant)
@@ -544,6 +598,12 @@ def main():
     sim = TaskSim(a.variant, viewer=not a.no_viewer, speed=a.speed)
     if a.video:
         sim.record(a.video)
+    if a.log:
+        sim.log = dict(t=[], phase=[], q=[], qd=[], tau=[], w_donut=[], w_pipe=[], _n=dict(donut=0, pipe=0))
+    if a.snap:
+        os.makedirs(a.snap, exist_ok=True)
+        sim.snap_dir = a.snap
+        sim.snaps = REPORT_SHOTS
     sim.begin("settle at STOW (start)")
     sim.settle(0.5)
     sim.end()
@@ -567,6 +627,10 @@ def main():
         result["actuation"] = sim.actuation_summary()
         result["phases"] = sim.report
         result["sim_time_s"] = round(sim.data.time, 2)
+        if a.log:
+            sim.save_log(a.log)
+        if a.snap:                                       # the states, so the stills can be re-framed (render_stills)
+            np.savez(os.path.join(root, "report_states.npz"), **{k: v[0] for k, v in sim.snap_states.items()})
         json.dump(result, open(os.path.join(root, "task_run.json"), "w", encoding="utf-8"), indent=1)
     print("task run: %.1f s simulated -> %s" % (sim.data.time, os.path.join(root, "task_run.json")))
     if sim.viewer is not None:

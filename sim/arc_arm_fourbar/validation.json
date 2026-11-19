@@ -23,9 +23,9 @@
   "max_equality_drift": 0.000121,
   "max_track_err_deg": 0.479,
   "actuator_torque_Nm": {
-   "shoulder": -3.097,
-   "elbow": 2.36,
-   "wrist_pitch": 0.435,
+   "shoulder": -3.095,
+   "elbow": 2.358,
+   "wrist_pitch": 0.434,
    "wrist_roll": 0.035,
    "gripper": -0.418
   },

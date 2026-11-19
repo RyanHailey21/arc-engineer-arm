@@ -5,7 +5,7 @@ Task requirements come from the ARC Championship Events Manual S2 v1.0, §3.2.4 
 
 ## Current state (2026-11-18)
 
-- **Gripper.** The design gripper is the lightweight **gear-synchronised parallel four-bar** (`GRIP=FOURBAR`). Head: 353 g (C-frame jaws held by the linkage at top and bottom) vs 836 g for rev A.
+- **Gripper.** The design gripper is the lightweight **gear-synchronised parallel four-bar** (`GRIP=FOURBAR`). Head: 352 g (C-frame jaws held by the linkage at top and bottom) vs 836 g for rev A.
   - All checks pass: interference, hole walls, thread engagement, FEA, envelopes, BOM.
   - Open items: the servo back-drive bench test and the pipe-holding servo duty.
   - **Compliance report** (gripper holds the objects, motors hold the arm, the arm actuates): [cad/docs/compliance_report.md](cad/docs/compliance_report.md).

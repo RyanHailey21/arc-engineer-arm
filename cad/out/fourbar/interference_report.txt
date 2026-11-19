@@ -31,13 +31,13 @@ threshold 0.5 mm^3, 5 steps per segment
   DONUT_LIFT_ROLL-  payload 300 g : J1  -1.75  J2   2.72  J3   0.87  J4   0.02
   DONUT_PLACE       payload 300 g : J1   3.34  J2   0.44  J3   0.87  J4   0.03
   PIPE_APPROACH     payload   0 g : J1  -3.19  J2   2.11  J3   0.44  J4   0.03
-  PIPE_GRASP        payload   0 g : J1  -2.83  J2   2.34  J3   0.43  J4   0.03
-  PIPE_GRASP_ROLL+  payload   0 g : J1  -2.83  J2   2.34  J3   0.43  J4   0.02
-  PIPE_GRASP_ROLL-  payload   0 g : J1  -2.83  J2   2.34  J3   0.43  J4   0.04
+  PIPE_GRASP        payload   0 g : J1  -2.83  J2   2.33  J3   0.43  J4   0.03
+  PIPE_GRASP_ROLL+  payload   0 g : J1  -2.83  J2   2.33  J3   0.43  J4   0.02
+  PIPE_GRASP_ROLL-  payload   0 g : J1  -2.83  J2   2.33  J3   0.43  J4   0.04
   PIPE_LIFT         payload 165 g : J1  -2.10  J2   1.99  J3   0.67  J4   0.03
   PIPE_CHUTE        payload 165 g : J1  -0.50  J2   2.84  J3   0.35  J4   0.00
   PIPE_CHUTE_ROLL90 payload 165 g : J1  -0.50  J2   2.84  J3  -0.01  J4   0.00
 
-Modelled arm mass incl. motors and gripper drive: 2980 g
-boolean cache: 5944 hits, 230 computed
-elapsed 109 s
+Modelled arm mass incl. motors and gripper drive: 2979 g
+boolean cache: 6016 hits, 114 computed
+elapsed 65 s
