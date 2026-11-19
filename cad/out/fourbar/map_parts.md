@@ -23,24 +23,24 @@
 | GROUND | ESC_C610 | CAT | C610 | 15.0 | [arm/base.py:85](arm/base.py#L85) body_ground |
 | UPPER | Upper_Arm_L_CF3 | CF | custom: 3 mm CF plate (DXF) | 32.0 | [arm/upper_arm.py:27](arm/upper_arm.py#L27) body_upper |
 | UPPER | Upper_Arm_R_CF3 | CF | custom: 3 mm CF plate (DXF) | 31.4 | [arm/upper_arm.py:27](arm/upper_arm.py#L27) body_upper |
-| UPPER | J1_Output_Hub | AL | custom: 6061 turned + drilled | 13.0 | [arm/base.py:142](arm/base.py#L142) motor_hub |
+| UPPER | J1_Output_Hub | AL | custom: 6061 turned + drilled | 13.0 | [arm/base.py:153](arm/base.py#L153) motor_hub |
 | UPPER | UA_Standoff_D8_0 | AL | custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer) | 10.7 | [arm/upper_arm.py:37](arm/upper_arm.py#L37) body_upper |
 | UPPER | UA_Standoff_D8_1 | AL | custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer) | 10.7 | [arm/upper_arm.py:37](arm/upper_arm.py#L37) body_upper |
 | UPPER | Brg_6700_Elbow_UA_L | CAT | 6700ZZ | 2.0 | [arm/upper_arm.py:28](arm/upper_arm.py#L28) body_upper |
 | UPPER | Brg_6700_Elbow_UA_R | CAT | 6700ZZ | 2.0 | [arm/upper_arm.py:29](arm/upper_arm.py#L29) body_upper |
 | UPPER | Brg_6701_Shoulder_UA_R | CAT | 6701ZZ | 3.0 | [arm/upper_arm.py:30](arm/upper_arm.py#L30) body_upper |
-| UPPER | SHCS_M3x6_J1_Output_Hub (x6) | CAT | SHCS | 6.0 | [arm/base.py:145](arm/base.py#L145) motor_hub |
-| UPPER | Dowel_4x5_J1_Output_Hub (x3) | CAT | DOWEL | 3.0 | [arm/base.py:149](arm/base.py#L149) motor_hub |
-| UPPER | J1_Motor_DM-J4340_rotor | CAT | DM-J4340-2EC | 99.0 | [arm/base.py:112](arm/base.py#L112) dm_rotor_part |
+| UPPER | SHCS_M3x6_J1_Output_Hub (x6) | CAT | SHCS | 6.0 | [arm/base.py:156](arm/base.py#L156) motor_hub |
+| UPPER | Dowel_4x5_J1_Output_Hub (x3) | CAT | DOWEL | 3.0 | [arm/base.py:160](arm/base.py#L160) motor_hub |
+| UPPER | J1_Motor_DM-J4340_rotor | CAT | DM-J4340-2EC | 99.0 | [arm/base.py:123](arm/base.py#L123) dm_rotor_part |
 | UPPER | BHCS_M3x5_UA_hub (x3) | CAT | BHCS | 3.0 | [arm/upper_arm.py:35](arm/upper_arm.py#L35) body_upper |
 | UPPER | PClip_UA (x2) | CAT | PCLIP | 2.0 | [arm/upper_arm.py:41](arm/upper_arm.py#L41) body_upper |
 | UPPER | BHCS_M3x8_UA_st_0L (x4) | CAT | BHCS | 4.0 | [arm/upper_arm.py:44](arm/upper_arm.py#L44) body_upper |
 | CRANK | Crank_CF3 | CF | custom: 3 mm CF plate (DXF), D-bore on journal flat | 7.6 | [arm/upper_arm.py:56](arm/upper_arm.py#L56) body_crank |
-| CRANK | J2_Output_Hub_Journal | AL | custom: 6061 turned + drilled | 16.5 | [arm/base.py:142](arm/base.py#L142) motor_hub |
+| CRANK | J2_Output_Hub_Journal | AL | custom: 6061 turned + drilled | 16.5 | [arm/base.py:153](arm/base.py#L153) motor_hub |
 | CRANK | Shim_A | SHIM | custom: 301 SS shim stock 1.5, laser cut | 0.4 | [arm/upper_arm.py:62](arm/upper_arm.py#L62) body_crank |
-| CRANK | SHCS_M3x6_J2_Output_Hub_Journal (x6) | CAT | SHCS | 6.0 | [arm/base.py:145](arm/base.py#L145) motor_hub |
-| CRANK | Dowel_4x5_J2_Output_Hub_Journal (x3) | CAT | DOWEL | 3.0 | [arm/base.py:149](arm/base.py#L149) motor_hub |
-| CRANK | J2_Motor_DM-J4340_rotor | CAT | DM-J4340-2EC | 99.0 | [arm/base.py:112](arm/base.py#L112) dm_rotor_part |
+| CRANK | SHCS_M3x6_J2_Output_Hub_Journal (x6) | CAT | SHCS | 6.0 | [arm/base.py:156](arm/base.py#L156) motor_hub |
+| CRANK | Dowel_4x5_J2_Output_Hub_Journal (x3) | CAT | DOWEL | 3.0 | [arm/base.py:160](arm/base.py#L160) motor_hub |
+| CRANK | J2_Motor_DM-J4340_rotor | CAT | DM-J4340-2EC | 99.0 | [arm/base.py:123](arm/base.py#L123) dm_rotor_part |
 | CRANK | Washer_M4_crank | CAT | WASHER | 0.3 | [arm/upper_arm.py:59](arm/upper_arm.py#L59) body_crank |
 | CRANK | SHCS_M4x8_crank | CAT | SHCS | 1.0 | [arm/upper_arm.py:60](arm/upper_arm.py#L60) body_crank |
 | CRANK | SB5x8_A | CAT | SB5 | 4.0 | [arm/upper_arm.py:64](arm/upper_arm.py#L64) body_crank |

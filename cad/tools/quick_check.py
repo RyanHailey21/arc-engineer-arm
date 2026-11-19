@@ -16,7 +16,9 @@ Checks, in fail-fast order of usefulness:
   6. level-keep  - parallelogram stage 2 closes at every task pose / lift sample and stays clear of its dead
                    points there and at the elbow limits (tools/check_level_keeping.py checks 1+2; its sweep
                    clearance, check 3, is a milestone check)
-  7. fingerprint - geometry vs cad/tests/fingerprints/<variant>.json (CHANGED is expected after a real edit)
+  7. bloat       - informational: counts from tools/bloat_report.py (dead code, orphan params/catalogue keys,
+                   scratch files); never fails the check.  The full report: python -I cad/tools/bloat_report.py
+  8. fingerprint - geometry vs cad/tests/fingerprints/<variant>.json (CHANGED is expected after a real edit)
 -> cad/out/<variant>/quick.json, a manifest entry, one summary line per check, and the FRESH/STALE status of
    every recorded check (full interference, holes, engagement ...) against the current design inputs.
 """
@@ -191,6 +193,15 @@ def main():
     summary.append(("level-keep", ok, "closure %.0e mm over %d samples; dead-point margin %.1f deg (%s), %.1f at elbow limits"
                     % (lk["closure_mm"], lk["samples"], lk["margin_deg"], lk["margin_at"], lk["limit_margin_deg"]),
                     time.time() - t))
+    t = time.time()
+    try:
+        import bloat_report
+        br = bloat_report.scan()
+        data["bloat"] = br["counts"]
+        note = bloat_report.counts_line(br)[len("BLOAT "):]
+    except Exception as e:                    # informational: a broken report must not fail the quick check
+        note = "report failed: %s" % e
+    summary.append(("bloat", None, note, time.time() - t))
     t = time.time()
     fp = fingerprint.build()
     base = fingerprint.BASE

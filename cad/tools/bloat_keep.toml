@@ -1,0 +1,99 @@
+# Keep-list for tools/bloat_report.py: intentional survivors.  A finding that matches an entry is reported as
+# "kept" with the reason, never as bloat.  The cleanup agent must not delete or edit anything listed here.
+#
+# [[path]]  glob (repo-relative, forward slashes, ** = any depth): every finding inside it is kept.
+# [[item]]  kind + name (glob), optional path (glob): one finding kind for one name.
+#           kinds: unused-import, unused-variable, dead-def, duplicate, orphan-param, orphan-catalogue,
+#                  orphan-interface, orphan-envelope, out-unindexed, scratch
+# guard = true: a protective entry that may match nothing today (it stops a future finding); without it, an
+#           entry that matches nothing is listed as stale so the keep-list does not rot.
+# Keep the reasons to one line.  This file lives in tools/, not data/, so editing it does not change the design
+# inputs hash (params.INPUT_GLOBS) and does not make check evidence STALE.
+
+# ------------------------------------------------------------------ rev A frozen package (never flagged)
+[[path]]
+glob = "cad/fab/**"
+reason = "rev A frozen fabrication package"
+
+[[path]]
+glob = "cad/drawings/out/**"
+reason = "rev A frozen drawings"
+
+[[path]]
+glob = "cad/drawings/review/**"
+reason = "rev A drawing review images"
+
+[[path]]
+glob = "cad/fea/out/**"
+reason = "rev A frozen FEA results"
+
+[[path]]
+glob = "cad/render/**"
+reason = "rev A renders and the render generators (render/export_render.py is a release generator)"
+
+[[path]]
+glob = "cad/tdp/**"
+reason = "rev A technical data package (PDF and its generator)"
+
+# ------------------------------------------------------------------ release generators (build the release variant only)
+[[path]]
+glob = "cad/export_fab.py"
+reason = "release generator: rev A fabrication export"
+
+[[path]]
+glob = "cad/fea/run_fea.py"
+reason = "release generator: rev A FEA"
+
+[[path]]
+glob = "cad/drawings/*.py"
+reason = "release generators: rev A drawings and their layout/lint helpers"
+
+[[path]]
+glob = "cad/build_assembly.py"
+reason = "release generator: rev A FreeCAD assembly (still models the GT2 belt joint)"
+
+# ------------------------------------------------------------------ things only the rev A package needs
+[[item]]
+kind = "orphan-param"
+name = "GT2_T"
+guard = true
+reason = "rev A belt drive: build_assembly.py builds the Belt joint from M.GT2_T"
+
+[[item]]
+kind = "orphan-catalogue"
+name = "GT2-BELT"
+guard = true
+reason = "rev A BOM: the released variant's belt; the parallelogram replaced it after rev A"
+
+[[item]]
+kind = "*"
+name = "gt2_*"
+path = "cad/hardware.py"
+reason = "rev A belt-drive hardware (GT2 pulley and belt); rev A drawings and assembly were built with it"
+
+# ------------------------------------------------------------------ entry points and dynamic lookups
+[[item]]
+kind = "unused-import"
+name = "*"
+path = "cad/arm_model.py"
+guard = true
+reason = "compatibility facade: re-exports the arm/ package for `import arm_model as M`"
+
+[[item]]
+kind = "unused-import"
+name = "FreeCAD"
+guard = true
+reason = "imported for its side effect: puts FreeCAD's modules (Part, ...) on sys.path"
+
+[[item]]
+kind = "unused-import"
+name = "App"
+guard = true
+reason = "imported for its side effect: puts FreeCAD's modules (Part, ...) on sys.path"
+
+[[item]]
+kind = "dead-def"
+name = "reload_all"
+path = "cad/arm/*.py"
+guard = true
+reason = "called by hand in a FreeCAD GUI session (CLAUDE.md: arm.reload_all())"

@@ -1,0 +1,941 @@
+{
+ "findings": [
+  {
+   "kind": "unused-import",
+   "path": "cad/arm/core.py",
+   "line": 9,
+   "name": "os",
+   "detail": "`os` imported, never used",
+   "id": "unused-import:cad/arm/core.py:os"
+  },
+  {
+   "kind": "dead-def",
+   "path": "cad/arm/core.py",
+   "line": 251,
+   "name": "clip_at",
+   "detail": "function `clip_at` is never referenced",
+   "id": "dead-def:cad/arm/core.py:clip_at"
+  },
+  {
+   "kind": "dead-def",
+   "path": "cad/arm/core.py",
+   "line": 240,
+   "name": "to_x",
+   "detail": "function `to_x` is never referenced",
+   "id": "dead-def:cad/arm/core.py:to_x"
+  },
+  {
+   "kind": "dead-def",
+   "path": "cad/hardware.py",
+   "line": 330,
+   "name": "as5600_board",
+   "detail": "function `as5600_board` is never referenced",
+   "id": "dead-def:cad/hardware.py:as5600_board"
+  },
+  {
+   "kind": "dead-def",
+   "path": "cad/hardware.py",
+   "line": 340,
+   "name": "coil_spring",
+   "detail": "function `coil_spring` is never referenced",
+   "id": "dead-def:cad/hardware.py:coil_spring"
+  },
+  {
+   "kind": "dead-def",
+   "path": "cad/hardware.py",
+   "line": 462,
+   "name": "spring_cassette",
+   "detail": "function `spring_cassette` is never referenced",
+   "id": "dead-def:cad/hardware.py:spring_cassette"
+  },
+  {
+   "kind": "dead-def",
+   "path": "cad/hardware.py",
+   "line": 184,
+   "name": "standoff_hex",
+   "detail": "function `standoff_hex` is never referenced",
+   "id": "dead-def:cad/hardware.py:standoff_hex"
+  },
+  {
+   "kind": "duplicate",
+   "path": "cad/arm/core.py",
+   "line": 97,
+   "name": "4285cb9486",
+   "detail": "6 identical lines also at cad/hardware.py:494",
+   "id": "duplicate:cad/arm/core.py:4285cb9486",
+   "other": "cad/hardware.py"
+  },
+  {
+   "kind": "duplicate",
+   "path": "cad/arm/core.py",
+   "line": 224,
+   "name": "near-65e734423d",
+   "detail": "15 near-identical (renamed) lines also at cad/arm/core.py:235",
+   "id": "duplicate:cad/arm/core.py:near-65e734423d",
+   "other": "cad/arm/core.py"
+  },
+  {
+   "kind": "duplicate",
+   "path": "cad/arm/grippers/fourbar.py",
+   "line": 218,
+   "name": "dddc6b3a57",
+   "detail": "6 identical lines also at cad/arm/grippers/screw.py:251",
+   "id": "duplicate:cad/arm/grippers/fourbar.py:dddc6b3a57",
+   "other": "cad/arm/grippers/screw.py"
+  },
+  {
+   "kind": "duplicate",
+   "path": "cad/hardware.py",
+   "line": 471,
+   "name": "db89273908",
+   "detail": "6 identical lines also at cad/hardware.py:528",
+   "id": "duplicate:cad/hardware.py:db89273908",
+   "other": "cad/hardware.py"
+  },
+  {
+   "kind": "orphan-param",
+   "path": "cad/params/arm.toml",
+   "line": 29,
+   "name": "Y.CL",
+   "detail": "params/arm.toml key `Y.CL` is read by no code",
+   "id": "orphan-param:cad/params/arm.toml:Y.CL"
+  },
+  {
+   "kind": "orphan-param",
+   "path": "cad/params/arm.toml",
+   "line": 35,
+   "name": "Y.TW",
+   "detail": "params/arm.toml key `Y.TW` is read by no code",
+   "id": "orphan-param:cad/params/arm.toml:Y.TW"
+  },
+  {
+   "kind": "orphan-param",
+   "path": "cad/params/gripper_fourbar.toml",
+   "line": 29,
+   "name": "SERVO.speed_s_per_60deg",
+   "detail": "params/gripper_fourbar.toml key `SERVO.speed_s_per_60deg` is read by no code",
+   "id": "orphan-param:cad/params/gripper_fourbar.toml:SERVO.speed_s_per_60deg"
+  },
+  {
+   "kind": "orphan-param",
+   "path": "cad/params/gripper_fourbar.toml",
+   "line": 40,
+   "name": "SPRING.alt_pn",
+   "detail": "params/gripper_fourbar.toml key `SPRING.alt_pn` is read by no code",
+   "id": "orphan-param:cad/params/gripper_fourbar.toml:SPRING.alt_pn"
+  },
+  {
+   "kind": "orphan-param",
+   "path": "cad/params/gripper_screw.toml",
+   "line": 22,
+   "name": "M2006_HOLES.ang",
+   "detail": "params/gripper_screw.toml key `M2006_HOLES.ang` is read by no code",
+   "id": "orphan-param:cad/params/gripper_screw.toml:M2006_HOLES.ang"
+  },
+  {
+   "kind": "orphan-param",
+   "path": "cad/params/gripper_screw.toml",
+   "line": 21,
+   "name": "M2006_HOLES.pcd",
+   "detail": "params/gripper_screw.toml key `M2006_HOLES.pcd` is read by no code",
+   "id": "orphan-param:cad/params/gripper_screw.toml:M2006_HOLES.pcd"
+  },
+  {
+   "kind": "orphan-catalogue",
+   "path": "cad/data/catalogue.toml",
+   "line": 147,
+   "name": "HARNESS",
+   "detail": "catalogue key `HARNESS`: no part uses it as its src",
+   "id": "orphan-catalogue:cad/data/catalogue.toml:HARNESS"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/interference_report_2026-11-16_pre-trim.txt",
+   "line": 1,
+   "name": "cad/out/fourbar/interference_report_2026-11-16_pre-trim.txt",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/interference_report_2026-11-16_pre-trim.txt:cad/out/fourbar/interference_report_2026-11-16_pre-trim.txt"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/screw/hole_report_2026-11-15_revA.txt",
+   "line": 1,
+   "name": "cad/out/screw/hole_report_2026-11-15_revA.txt",
+   "detail": "not in screw/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/screw/hole_report_2026-11-15_revA.txt:cad/out/screw/hole_report_2026-11-15_revA.txt"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/ARC_Engineer_Arm.20261115-050757.FCBak",
+   "line": 1,
+   "name": "cad/ARC_Engineer_Arm.20261115-050757.FCBak",
+   "detail": "local leftover (15998 kB)",
+   "id": "scratch:cad/ARC_Engineer_Arm.20261115-050757.FCBak:cad/ARC_Engineer_Arm.20261115-050757.FCBak"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/arm_model.py.bak5",
+   "line": 1,
+   "name": "cad/arm_model.py.bak5",
+   "detail": "local leftover (64 kB)",
+   "id": "scratch:cad/arm_model.py.bak5:cad/arm_model.py.bak5"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/arm_model.py.bak6",
+   "line": 1,
+   "name": "cad/arm_model.py.bak6",
+   "detail": "local leftover (64 kB)",
+   "id": "scratch:cad/arm_model.py.bak6:cad/arm_model.py.bak6"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/arm_model.py.bak7",
+   "line": 1,
+   "name": "cad/arm_model.py.bak7",
+   "detail": "local leftover (65 kB)",
+   "id": "scratch:cad/arm_model.py.bak7:cad/arm_model.py.bak7"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/batch_drawings.py.bak2",
+   "line": 1,
+   "name": "cad/drawings/batch_drawings.py.bak2",
+   "detail": "local leftover (33 kB)",
+   "id": "scratch:cad/drawings/batch_drawings.py.bak2:cad/drawings/batch_drawings.py.bak2"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/batch_drawings.py.bak4",
+   "line": 1,
+   "name": "cad/drawings/batch_drawings.py.bak4",
+   "detail": "local leftover (39 kB)",
+   "id": "scratch:cad/drawings/batch_drawings.py.bak4:cad/drawings/batch_drawings.py.bak4"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/batch_drawings.py.bak",
+   "line": 1,
+   "name": "cad/drawings/batch_drawings.py.bak",
+   "detail": "local leftover (19 kB)",
+   "id": "scratch:cad/drawings/batch_drawings.py.bak:cad/drawings/batch_drawings.py.bak"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/layout.py.bak3",
+   "line": 1,
+   "name": "cad/drawings/layout.py.bak3",
+   "detail": "local leftover (24 kB)",
+   "id": "scratch:cad/drawings/layout.py.bak3:cad/drawings/layout.py.bak3"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/out/fourbar/ARC_Arm_Fourbar.20261117-213148.FCBak",
+   "line": 1,
+   "name": "cad/out/fourbar/ARC_Arm_Fourbar.20261117-213148.FCBak",
+   "detail": "local leftover (12226 kB)",
+   "id": "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261117-213148.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261117-213148.FCBak"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/out/fourbar/fea/FEA_fb_drive_link.20261117-212241.FCBak",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_drive_link.20261117-212241.FCBak",
+   "detail": "local leftover (11326 kB)",
+   "id": "scratch:cad/out/fourbar/fea/FEA_fb_drive_link.20261117-212241.FCBak:cad/out/fourbar/fea/FEA_fb_drive_link.20261117-212241.FCBak"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-212339.FCBak",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-212339.FCBak",
+   "detail": "local leftover (21397 kB)",
+   "id": "scratch:cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-212339.FCBak:cad/out/fourbar/fea/FEA_fb_jaw_block.20261117-212339.FCBak"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/out/fourbar/fea/FEA_fb_palm.20261117-212553.FCBak",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_palm.20261117-212553.FCBak",
+   "detail": "local leftover (58749 kB)",
+   "id": "scratch:cad/out/fourbar/fea/FEA_fb_palm.20261117-212553.FCBak:cad/out/fourbar/fea/FEA_fb_palm.20261117-212553.FCBak"
+  }
+ ],
+ "kept": [
+  {
+   "kind": "unused-import",
+   "path": "cad/drawings/batch_drawings.py",
+   "line": 23,
+   "name": "Gui",
+   "detail": "`Gui` imported, never used",
+   "id": "unused-import:cad/drawings/batch_drawings.py:Gui",
+   "kept": "release generators: rev A drawings and their layout/lint helpers"
+  },
+  {
+   "kind": "unused-import",
+   "path": "cad/drawings/lint_pdf.py",
+   "line": 12,
+   "name": "json",
+   "detail": "`json` imported, never used",
+   "id": "unused-import:cad/drawings/lint_pdf.py:json",
+   "kept": "release generators: rev A drawings and their layout/lint helpers"
+  },
+  {
+   "kind": "unused-variable",
+   "path": "cad/drawings/batch_drawings.py",
+   "line": 707,
+   "name": "part_drawing.dd_",
+   "detail": "`dd_` assigned in part_drawing(), never read",
+   "id": "unused-variable:cad/drawings/batch_drawings.py:part_drawing.dd_",
+   "kept": "release generators: rev A drawings and their layout/lint helpers"
+  },
+  {
+   "kind": "unused-variable",
+   "path": "cad/drawings/batch_drawings.py",
+   "line": 754,
+   "name": "part_drawing.fl_",
+   "detail": "`fl_` assigned in part_drawing(), never read",
+   "id": "unused-variable:cad/drawings/batch_drawings.py:part_drawing.fl_",
+   "kept": "release generators: rev A drawings and their layout/lint helpers"
+  },
+  {
+   "kind": "unused-variable",
+   "path": "cad/drawings/batch_drawings.py",
+   "line": 777,
+   "name": "part_drawing.step",
+   "detail": "`step` assigned in part_drawing(), never read",
+   "id": "unused-variable:cad/drawings/batch_drawings.py:part_drawing.step",
+   "kept": "release generators: rev A drawings and their layout/lint helpers"
+  },
+  {
+   "kind": "unused-variable",
+   "path": "cad/drawings/batch_drawings.py",
+   "line": 775,
+   "name": "part_drawing.x_text",
+   "detail": "`x_text` assigned in part_drawing(), never read",
+   "id": "unused-variable:cad/drawings/batch_drawings.py:part_drawing.x_text",
+   "kept": "release generators: rev A drawings and their layout/lint helpers"
+  },
+  {
+   "kind": "unused-variable",
+   "path": "cad/drawings/batch_drawings.py",
+   "line": 776,
+   "name": "part_drawing.y_text",
+   "detail": "`y_text` assigned in part_drawing(), never read",
+   "id": "unused-variable:cad/drawings/batch_drawings.py:part_drawing.y_text",
+   "kept": "release generators: rev A drawings and their layout/lint helpers"
+  },
+  {
+   "kind": "unused-variable",
+   "path": "cad/drawings/make_drawings.py",
+   "line": 430,
+   "name": "hub_j1_annotate.flat",
+   "detail": "`flat` assigned in hub_j1_annotate(), never read",
+   "id": "unused-variable:cad/drawings/make_drawings.py:hub_j1_annotate.flat",
+   "kept": "release generators: rev A drawings and their layout/lint helpers"
+  },
+  {
+   "kind": "unused-variable",
+   "path": "cad/hardware.py",
+   "line": 209,
+   "name": "gt2_pulley.rr",
+   "detail": "`rr` assigned in gt2_pulley(), never read",
+   "id": "unused-variable:cad/hardware.py:gt2_pulley.rr",
+   "kept": "rev A belt-drive hardware (GT2 pulley and belt); rev A drawings and assembly were built with it"
+  },
+  {
+   "kind": "dead-def",
+   "path": "cad/hardware.py",
+   "line": 220,
+   "name": "gt2_belt",
+   "detail": "function `gt2_belt` is never referenced",
+   "id": "dead-def:cad/hardware.py:gt2_belt",
+   "kept": "rev A belt-drive hardware (GT2 pulley and belt); rev A drawings and assembly were built with it"
+  },
+  {
+   "kind": "dead-def",
+   "path": "cad/hardware.py",
+   "line": 205,
+   "name": "gt2_pulley",
+   "detail": "function `gt2_pulley` is never referenced",
+   "id": "dead-def:cad/hardware.py:gt2_pulley",
+   "kept": "rev A belt-drive hardware (GT2 pulley and belt); rev A drawings and assembly were built with it"
+  },
+  {
+   "kind": "dead-def",
+   "path": "cad/params.py",
+   "line": 164,
+   "name": "use_release_variant",
+   "detail": "function `use_release_variant` is never referenced",
+   "id": "dead-def:cad/params.py:use_release_variant",
+   "kept": "used only by frozen/release code: cad/build_assembly.py, cad/drawings/batch_drawings.py, cad/drawings/make_drawings.py"
+  },
+  {
+   "kind": "orphan-catalogue",
+   "path": "cad/data/catalogue.toml",
+   "line": 184,
+   "name": "GT2-BELT",
+   "detail": "catalogue key `GT2-BELT`: no part uses it as its src",
+   "id": "orphan-catalogue:cad/data/catalogue.toml:GT2-BELT",
+   "kept": "used only by frozen/release code: cad/fab/make_procurement.py"
+  },
+  {
+   "kind": "orphan-catalogue",
+   "path": "cad/data/catalogue.toml",
+   "line": 45,
+   "name": "MR104ZZ",
+   "detail": "catalogue key `MR104ZZ`: no part uses it as its src",
+   "id": "orphan-catalogue:cad/data/catalogue.toml:MR104ZZ",
+   "kept": "used only by frozen/release code: cad/drawings/asme_rules.py, cad/fab/make_procurement.py"
+  },
+  {
+   "kind": "orphan-catalogue",
+   "path": "cad/data/catalogue.toml",
+   "line": 57,
+   "name": "SHAFT10",
+   "detail": "catalogue key `SHAFT10`: no part uses it as its src",
+   "id": "orphan-catalogue:cad/data/catalogue.toml:SHAFT10",
+   "kept": "used only by frozen/release code: cad/fab/make_procurement.py"
+  },
+  {
+   "kind": "orphan-catalogue",
+   "path": "cad/data/catalogue.toml",
+   "line": 143,
+   "name": "STANDOFF",
+   "detail": "catalogue key `STANDOFF`: no part uses it as its src",
+   "id": "orphan-catalogue:cad/data/catalogue.toml:STANDOFF",
+   "kept": "used only by frozen/release code: cad/drawings/batch_drawings.py"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_drive_link.FCStd:cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd:cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_palm.FCStd:cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-101_J1_Output_Hub.20261115-170447.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-101_J1_Output_Hub.20261115-170447.FCBak",
+   "detail": "local leftover (18 kB)",
+   "id": "scratch:cad/drawings/out/ARC-101_J1_Output_Hub.20261115-170447.FCBak:cad/drawings/out/ARC-101_J1_Output_Hub.20261115-170447.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-102_Base_Plate_AL5.20261115-170403.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-102_Base_Plate_AL5.20261115-170403.FCBak",
+   "detail": "local leftover (17 kB)",
+   "id": "scratch:cad/drawings/out/ARC-102_Base_Plate_AL5.20261115-170403.FCBak:cad/drawings/out/ARC-102_Base_Plate_AL5.20261115-170403.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-103_Belt_Idler_Spacer.20261115-170419.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-103_Belt_Idler_Spacer.20261115-170419.FCBak",
+   "detail": "local leftover (14 kB)",
+   "id": "scratch:cad/drawings/out/ARC-103_Belt_Idler_Spacer.20261115-170419.FCBak:cad/drawings/out/ARC-103_Belt_Idler_Spacer.20261115-170419.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-104_GT2_Pulley_Elbow.20261115-170632.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-104_GT2_Pulley_Elbow.20261115-170632.FCBak",
+   "detail": "local leftover (34 kB)",
+   "id": "scratch:cad/drawings/out/ARC-104_GT2_Pulley_Elbow.20261115-170632.FCBak:cad/drawings/out/ARC-104_GT2_Pulley_Elbow.20261115-170632.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-105_J2_Output_Hub_Journal.20261115-170428.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-105_J2_Output_Hub_Journal.20261115-170428.FCBak",
+   "detail": "local leftover (18 kB)",
+   "id": "scratch:cad/drawings/out/ARC-105_J2_Output_Hub_Journal.20261115-170428.FCBak:cad/drawings/out/ARC-105_J2_Output_Hub_Journal.20261115-170428.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-106_Jaw_Bracket_L.20261115-184223.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-106_Jaw_Bracket_L.20261115-184223.FCBak",
+   "detail": "local leftover (20 kB)",
+   "id": "scratch:cad/drawings/out/ARC-106_Jaw_Bracket_L.20261115-184223.FCBak:cad/drawings/out/ARC-106_Jaw_Bracket_L.20261115-184223.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-107_Roll_Hub.20261115-170753.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-107_Roll_Hub.20261115-170753.FCBak",
+   "detail": "local leftover (17 kB)",
+   "id": "scratch:cad/drawings/out/ARC-107_Roll_Hub.20261115-170753.FCBak:cad/drawings/out/ARC-107_Roll_Hub.20261115-170753.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-108_Screw_End_Block_L.20261115-170448.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-108_Screw_End_Block_L.20261115-170448.FCBak",
+   "detail": "local leftover (17 kB)",
+   "id": "scratch:cad/drawings/out/ARC-108_Screw_End_Block_L.20261115-170448.FCBak:cad/drawings/out/ARC-108_Screw_End_Block_L.20261115-170448.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-109_Screw_End_Block_R.20261115-170635.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-109_Screw_End_Block_R.20261115-170635.FCBak",
+   "detail": "local leftover (18 kB)",
+   "id": "scratch:cad/drawings/out/ARC-109_Screw_End_Block_R.20261115-170635.FCBak:cad/drawings/out/ARC-109_Screw_End_Block_R.20261115-170635.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-110_Sleeve_E_outer.20261115-170811.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-110_Sleeve_E_outer.20261115-170811.FCBak",
+   "detail": "local leftover (13 kB)",
+   "id": "scratch:cad/drawings/out/ARC-110_Sleeve_E_outer.20261115-170811.FCBak:cad/drawings/out/ARC-110_Sleeve_E_outer.20261115-170811.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-111_Spacer_B.20261115-170503.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-111_Spacer_B.20261115-170503.FCBak",
+   "detail": "local leftover (14 kB)",
+   "id": "scratch:cad/drawings/out/ARC-111_Spacer_B.20261115-170503.FCBak:cad/drawings/out/ARC-111_Spacer_B.20261115-170503.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-112_Spacer_G1.20261115-170655.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-112_Spacer_G1.20261115-170655.FCBak",
+   "detail": "local leftover (14 kB)",
+   "id": "scratch:cad/drawings/out/ARC-112_Spacer_G1.20261115-170655.FCBak:cad/drawings/out/ARC-112_Spacer_G1.20261115-170655.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-113_Wrist_Shaft_Coupler.20261115-174824.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-113_Wrist_Shaft_Coupler.20261115-174824.FCBak",
+   "detail": "local leftover (15 kB)",
+   "id": "scratch:cad/drawings/out/ARC-113_Wrist_Shaft_Coupler.20261115-174824.FCBak:cad/drawings/out/ARC-113_Wrist_Shaft_Coupler.20261115-174824.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-114_Clevis_L_CF3.20261115-174709.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-114_Clevis_L_CF3.20261115-174709.FCBak",
+   "detail": "local leftover (20 kB)",
+   "id": "scratch:cad/drawings/out/ARC-114_Clevis_L_CF3.20261115-174709.FCBak:cad/drawings/out/ARC-114_Clevis_L_CF3.20261115-174709.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-115_Clevis_R_CF3.20261115-174855.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-115_Clevis_R_CF3.20261115-174855.FCBak",
+   "detail": "local leftover (18 kB)",
+   "id": "scratch:cad/drawings/out/ARC-115_Clevis_R_CF3.20261115-174855.FCBak:cad/drawings/out/ARC-115_Clevis_R_CF3.20261115-174855.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-116_Crank_CF3.20261115-174842.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-116_Crank_CF3.20261115-174842.FCBak",
+   "detail": "local leftover (17 kB)",
+   "id": "scratch:cad/drawings/out/ARC-116_Crank_CF3.20261115-174842.FCBak:cad/drawings/out/ARC-116_Crank_CF3.20261115-174842.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-117_Finger_L_top_CF3.20261115-170604.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-117_Finger_L_top_CF3.20261115-170604.FCBak",
+   "detail": "local leftover (18 kB)",
+   "id": "scratch:cad/drawings/out/ARC-117_Finger_L_top_CF3.20261115-170604.FCBak:cad/drawings/out/ARC-117_Finger_L_top_CF3.20261115-170604.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-118_Forearm_L_CF3.20261115-170843.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-118_Forearm_L_CF3.20261115-170843.FCBak",
+   "detail": "local leftover (24 kB)",
+   "id": "scratch:cad/drawings/out/ARC-118_Forearm_L_CF3.20261115-170843.FCBak:cad/drawings/out/ARC-118_Forearm_L_CF3.20261115-170843.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-119_Forearm_R_CF3.20261115-171326.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-119_Forearm_R_CF3.20261115-171326.FCBak",
+   "detail": "local leftover (23 kB)",
+   "id": "scratch:cad/drawings/out/ARC-119_Forearm_R_CF3.20261115-171326.FCBak:cad/drawings/out/ARC-119_Forearm_R_CF3.20261115-171326.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-120_Gripper_Bridge_CF3.20261115-170624.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-120_Gripper_Bridge_CF3.20261115-170624.FCBak",
+   "detail": "local leftover (18 kB)",
+   "id": "scratch:cad/drawings/out/ARC-120_Gripper_Bridge_CF3.20261115-170624.FCBak:cad/drawings/out/ARC-120_Gripper_Bridge_CF3.20261115-170624.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-121_Level_Rocker_CF3.20261115-170909.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-121_Level_Rocker_CF3.20261115-170909.FCBak",
+   "detail": "local leftover (17 kB)",
+   "id": "scratch:cad/drawings/out/ARC-121_Level_Rocker_CF3.20261115-170909.FCBak:cad/drawings/out/ARC-121_Level_Rocker_CF3.20261115-170909.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-122_Rod_AB_CF3.20261115-171351.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-122_Rod_AB_CF3.20261115-171351.FCBak",
+   "detail": "local leftover (17 kB)",
+   "id": "scratch:cad/drawings/out/ARC-122_Rod_AB_CF3.20261115-171351.FCBak:cad/drawings/out/ARC-122_Rod_AB_CF3.20261115-171351.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-123_Tower_L_CF3.20261115-170904.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-123_Tower_L_CF3.20261115-170904.FCBak",
+   "detail": "local leftover (20 kB)",
+   "id": "scratch:cad/drawings/out/ARC-123_Tower_L_CF3.20261115-170904.FCBak:cad/drawings/out/ARC-123_Tower_L_CF3.20261115-170904.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-124_Tower_R_CF3.20261115-171214.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-124_Tower_R_CF3.20261115-171214.FCBak",
+   "detail": "local leftover (19 kB)",
+   "id": "scratch:cad/drawings/out/ARC-124_Tower_R_CF3.20261115-171214.FCBak:cad/drawings/out/ARC-124_Tower_R_CF3.20261115-171214.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-125_Upper_Arm_L_CF3.20261115-171428.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-125_Upper_Arm_L_CF3.20261115-171428.FCBak",
+   "detail": "local leftover (22 kB)",
+   "id": "scratch:cad/drawings/out/ARC-125_Upper_Arm_L_CF3.20261115-171428.FCBak:cad/drawings/out/ARC-125_Upper_Arm_L_CF3.20261115-171428.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-126_Upper_Arm_R_CF3.20261115-171024.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-126_Upper_Arm_R_CF3.20261115-171024.FCBak",
+   "detail": "local leftover (22 kB)",
+   "id": "scratch:cad/drawings/out/ARC-126_Upper_Arm_R_CF3.20261115-171024.FCBak:cad/drawings/out/ARC-126_Upper_Arm_R_CF3.20261115-171024.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-127_Wrist_Level_Member_CF3.20261115-171252.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-127_Wrist_Level_Member_CF3.20261115-171252.FCBak",
+   "detail": "local leftover (21 kB)",
+   "id": "scratch:cad/drawings/out/ARC-127_Wrist_Level_Member_CF3.20261115-171252.FCBak:cad/drawings/out/ARC-127_Wrist_Level_Member_CF3.20261115-171252.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-128_Belt_Idler_Roller.20261115-171446.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-128_Belt_Idler_Roller.20261115-171446.FCBak",
+   "detail": "local leftover (14 kB)",
+   "id": "scratch:cad/drawings/out/ARC-128_Belt_Idler_Roller.20261115-171446.FCBak:cad/drawings/out/ARC-128_Belt_Idler_Roller.20261115-171446.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-129_Gripper_Palm.20261115-181658.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-129_Gripper_Palm.20261115-181658.FCBak",
+   "detail": "local leftover (29 kB)",
+   "id": "scratch:cad/drawings/out/ARC-129_Gripper_Palm.20261115-181658.FCBak:cad/drawings/out/ARC-129_Gripper_Palm.20261115-181658.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-130_Motor_Clamp_0.20261115-180853.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-130_Motor_Clamp_0.20261115-180853.FCBak",
+   "detail": "local leftover (16 kB)",
+   "id": "scratch:cad/drawings/out/ARC-130_Motor_Clamp_0.20261115-180853.FCBak:cad/drawings/out/ARC-130_Motor_Clamp_0.20261115-180853.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-131_Roll_Housing.20261115-193527.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-131_Roll_Housing.20261115-193527.FCBak",
+   "detail": "local leftover (24 kB)",
+   "id": "scratch:cad/drawings/out/ARC-131_Roll_Housing.20261115-193527.FCBak:cad/drawings/out/ARC-131_Roll_Housing.20261115-193527.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-132_Tower_Bracket_L0.20261115-171246.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-132_Tower_Bracket_L0.20261115-171246.FCBak",
+   "detail": "local leftover (22 kB)",
+   "id": "scratch:cad/drawings/out/ARC-132_Tower_Bracket_L0.20261115-171246.FCBak:cad/drawings/out/ARC-132_Tower_Bracket_L0.20261115-171246.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-133_Pad_L_TPU.20261115-171348.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-133_Pad_L_TPU.20261115-171348.FCBak",
+   "detail": "local leftover (15 kB)",
+   "id": "scratch:cad/drawings/out/ARC-133_Pad_L_TPU.20261115-171348.FCBak:cad/drawings/out/ARC-133_Pad_L_TPU.20261115-171348.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-134_FA_Standoff_D8_0.20261115-171939.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-134_FA_Standoff_D8_0.20261115-171939.FCBak",
+   "detail": "local leftover (14 kB)",
+   "id": "scratch:cad/drawings/out/ARC-134_FA_Standoff_D8_0.20261115-171939.FCBak:cad/drawings/out/ARC-134_FA_Standoff_D8_0.20261115-171939.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-135_Finger_Standoff_D6x50_L0.20261115-171311.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-135_Finger_Standoff_D6x50_L0.20261115-171311.FCBak",
+   "detail": "local leftover (14 kB)",
+   "id": "scratch:cad/drawings/out/ARC-135_Finger_Standoff_D6x50_L0.20261115-171311.FCBak:cad/drawings/out/ARC-135_Finger_Standoff_D6x50_L0.20261115-171311.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-136_Servo_Standoff_0.20261115-171407.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-136_Servo_Standoff_0.20261115-171407.FCBak",
+   "detail": "local leftover (14 kB)",
+   "id": "scratch:cad/drawings/out/ARC-136_Servo_Standoff_0.20261115-171407.FCBak:cad/drawings/out/ARC-136_Servo_Standoff_0.20261115-171407.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-137_Spring_Output_Drum.20261115-172009.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-137_Spring_Output_Drum.20261115-172009.FCBak",
+   "detail": "local leftover (25 kB)",
+   "id": "scratch:cad/drawings/out/ARC-137_Spring_Output_Drum.20261115-172009.FCBak:cad/drawings/out/ARC-137_Spring_Output_Drum.20261115-172009.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-138_UA_Standoff_D8_0.20261115-171329.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-138_UA_Standoff_D8_0.20261115-171329.FCBak",
+   "detail": "local leftover (14 kB)",
+   "id": "scratch:cad/drawings/out/ARC-138_UA_Standoff_D8_0.20261115-171329.FCBak:cad/drawings/out/ARC-138_UA_Standoff_D8_0.20261115-171329.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-139_Spring_Housing.20261115-185109.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-139_Spring_Housing.20261115-185109.FCBak",
+   "detail": "local leftover (31 kB)",
+   "id": "scratch:cad/drawings/out/ARC-139_Spring_Housing.20261115-185109.FCBak:cad/drawings/out/ARC-139_Spring_Housing.20261115-185109.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-140_Elbow_Shaft_D10x101.20261115-172036.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-140_Elbow_Shaft_D10x101.20261115-172036.FCBak",
+   "detail": "local leftover (14 kB)",
+   "id": "scratch:cad/drawings/out/ARC-140_Elbow_Shaft_D10x101.20261115-172036.FCBak:cad/drawings/out/ARC-140_Elbow_Shaft_D10x101.20261115-172036.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-141_Wrist_Shaft_D10x70.20261115-171349.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-141_Wrist_Shaft_D10x70.20261115-171349.FCBak",
+   "detail": "local leftover (16 kB)",
+   "id": "scratch:cad/drawings/out/ARC-141_Wrist_Shaft_D10x70.20261115-171349.FCBak:cad/drawings/out/ARC-141_Wrist_Shaft_D10x70.20261115-171349.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-142_Shim_8x10_L.20261115-181707.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-142_Shim_8x10_L.20261115-181707.FCBak",
+   "detail": "local leftover (13 kB)",
+   "id": "scratch:cad/drawings/out/ARC-142_Shim_8x10_L.20261115-181707.FCBak:cad/drawings/out/ARC-142_Shim_8x10_L.20261115-181707.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-143_Shim_A.20261115-182439.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-143_Shim_A.20261115-182439.FCBak",
+   "detail": "local leftover (14 kB)",
+   "id": "scratch:cad/drawings/out/ARC-143_Shim_A.20261115-182439.FCBak:cad/drawings/out/ARC-143_Shim_A.20261115-182439.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-144_Shim_Ev1.20261115-182221.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-144_Shim_Ev1.20261115-182221.FCBak",
+   "detail": "local leftover (13 kB)",
+   "id": "scratch:cad/drawings/out/ARC-144_Shim_Ev1.20261115-182221.FCBak:cad/drawings/out/ARC-144_Shim_Ev1.20261115-182221.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-145_Washer_PTFE_E.20261115-172109.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-145_Washer_PTFE_E.20261115-172109.FCBak",
+   "detail": "local leftover (13 kB)",
+   "id": "scratch:cad/drawings/out/ARC-145_Washer_PTFE_E.20261115-172109.FCBak:cad/drawings/out/ARC-145_Washer_PTFE_E.20261115-172109.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/ARC-146_Nut_Tr8x8_LH.20261115-172131.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/ARC-146_Nut_Tr8x8_LH.20261115-172131.FCBak",
+   "detail": "local leftover (15 kB)",
+   "id": "scratch:cad/drawings/out/ARC-146_Nut_Tr8x8_LH.20261115-172131.FCBak:cad/drawings/out/ARC-146_Nut_Tr8x8_LH.20261115-172131.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/drawings/out/obsolete/ARC-140_Elbow_Shaft_D10x99.20261115-110012.FCBak",
+   "line": 1,
+   "name": "cad/drawings/out/obsolete/ARC-140_Elbow_Shaft_D10x99.20261115-110012.FCBak",
+   "detail": "local leftover (14 kB)",
+   "id": "scratch:cad/drawings/out/obsolete/ARC-140_Elbow_Shaft_D10x99.20261115-110012.FCBak:cad/drawings/out/obsolete/ARC-140_Elbow_Shaft_D10x99.20261115-110012.FCBak",
+   "kept": "rev A frozen drawings"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/fea/out/FEA_clevis.20261115-121722.FCBak",
+   "line": 1,
+   "name": "cad/fea/out/FEA_clevis.20261115-121722.FCBak",
+   "detail": "local leftover (19753 kB)",
+   "id": "scratch:cad/fea/out/FEA_clevis.20261115-121722.FCBak:cad/fea/out/FEA_clevis.20261115-121722.FCBak",
+   "kept": "rev A frozen FEA results"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/fea/out/FEA_end_block.20261114-231710.FCBak",
+   "line": 1,
+   "name": "cad/fea/out/FEA_end_block.20261114-231710.FCBak",
+   "detail": "local leftover (48800 kB)",
+   "id": "scratch:cad/fea/out/FEA_end_block.20261114-231710.FCBak:cad/fea/out/FEA_end_block.20261114-231710.FCBak",
+   "kept": "rev A frozen FEA results"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/fea/out/FEA_forearm.20261114-232917.FCBak",
+   "line": 1,
+   "name": "cad/fea/out/FEA_forearm.20261114-232917.FCBak",
+   "detail": "local leftover (50782 kB)",
+   "id": "scratch:cad/fea/out/FEA_forearm.20261114-232917.FCBak:cad/fea/out/FEA_forearm.20261114-232917.FCBak",
+   "kept": "rev A frozen FEA results"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/fea/out/FEA_j2_hub.20261115-034158.FCBak",
+   "line": 1,
+   "name": "cad/fea/out/FEA_j2_hub.20261115-034158.FCBak",
+   "detail": "local leftover (16636 kB)",
+   "id": "scratch:cad/fea/out/FEA_j2_hub.20261115-034158.FCBak:cad/fea/out/FEA_j2_hub.20261115-034158.FCBak",
+   "kept": "rev A frozen FEA results"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/fea/out/FEA_jaw_bracket.20261114-225151.FCBak",
+   "line": 1,
+   "name": "cad/fea/out/FEA_jaw_bracket.20261114-225151.FCBak",
+   "detail": "local leftover (50925 kB)",
+   "id": "scratch:cad/fea/out/FEA_jaw_bracket.20261114-225151.FCBak:cad/fea/out/FEA_jaw_bracket.20261114-225151.FCBak",
+   "kept": "rev A frozen FEA results"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/fea/out/FEA_roll_housing.20261114-225621.FCBak",
+   "line": 1,
+   "name": "cad/fea/out/FEA_roll_housing.20261114-225621.FCBak",
+   "detail": "local leftover (25025 kB)",
+   "id": "scratch:cad/fea/out/FEA_roll_housing.20261114-225621.FCBak:cad/fea/out/FEA_roll_housing.20261114-225621.FCBak",
+   "kept": "rev A frozen FEA results"
+  },
+  {
+   "kind": "scratch",
+   "path": "cad/fea/out/FEA_upper_arm.20261114-223812.FCBak",
+   "line": 1,
+   "name": "cad/fea/out/FEA_upper_arm.20261114-223812.FCBak",
+   "detail": "local leftover (17857 kB)",
+   "id": "scratch:cad/fea/out/FEA_upper_arm.20261114-223812.FCBak:cad/fea/out/FEA_upper_arm.20261114-223812.FCBak",
+   "kept": "rev A frozen FEA results"
+  }
+ ],
+ "counts": {
+  "unused-import": 1,
+  "unused-variable": 0,
+  "dead-def": 6,
+  "duplicate": 4,
+  "orphan-param": 6,
+  "orphan-catalogue": 1,
+  "orphan-interface": 0,
+  "orphan-envelope": 0,
+  "out-unindexed": 2,
+  "scratch": 12
+ },
+ "scanned": 75,
+ "stale_keep": [],
+ "notes": [],
+ "new": [],
+ "resolved": [],
+ "keep_file": "cad/tools/bloat_keep.toml"
+}

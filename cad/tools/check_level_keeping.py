@@ -11,7 +11,6 @@ quick_check.py runs 1 + 2 (closure_margins(), < 1 s); 3 is the slow part and run
 Writes out/<variant>/level_keeping.txt and a cad-evidence record.
     python -I cad/tools/run.py --grip FOURBAR cad/tools/check_level_keeping.py
 """
-import math
 import os
 import sys
 import time
@@ -163,7 +162,7 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
     open(os.path.join(out_dir, "level_keeping.txt"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
     print("\n".join(lines))
-    params.record("level_keeping", verdict, files=["level_keeping.txt"], note=lines[-1])
+    params.record("level_keeping", verdict, files=[os.path.join(out_dir, "level_keeping.txt")], note=lines[-1])
     return 0 if ok else 1
 
 

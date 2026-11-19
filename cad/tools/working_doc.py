@@ -64,7 +64,7 @@ def build(pose=None):
     note = "%s: %d parts in %d body groups at %s, %s (%.1f MB)" % (
         os.path.basename(path), n, len(groups), pose, "coloured" if App.GuiUp else "uncoloured (headless)",
         os.path.getsize(path) / 1e6)
-    params.record("working_doc", "PASS", files=[os.path.basename(path)], note=note)
+    params.record("working_doc", "PASS", files=[path], note=note)   # absolute: GUI cwd is System32
     print("WORKING_DOC", note)
     return path
 

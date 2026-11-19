@@ -14,7 +14,6 @@ Per pose (STOW, DONUT_LIFT, PIPE_CHUTE at two jaw openings): every body placemen
 """
 import hashlib
 import json
-import math
 import os
 import sys
 

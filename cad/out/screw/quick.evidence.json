@@ -5,14 +5,14 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
   "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; fingerprint MATCH",
-  "scope": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; fingerprint MATCH",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 32 findings (unused-import 1, dead-def 6, duplicate 4, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 12), 73 kept; fingerprint MATCH",
+  "scope": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 32 findings (unused-import 1, dead-def 6, duplicate 4, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 12), 73 kept; fingerprint MATCH",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "7351489b31b7bebdd5fc3d08418e6a3e4b35a2099a22ffefbc6bdca6095fbb58",
+  "implementation_sha256": "1c76b0d9b31d77d35d938533e90694aa3d70b4921f8eb4c2d778873e6865d978",
   "inputs": [
    {
     "id": "design-inputs",
@@ -24,12 +24,12 @@
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "ef75fdff13c1fb6f9b914695ebbfb2102cbed3578a367ca9335c42221b4384f1"
+    "sha256": "e3547bd97927a4f7f61e7866c39a820c46563640601336e73e476e5fac030877"
    }
   ],
   "extensions": {
    "variant": "SCREW",
-   "time": "2026-11-18T20:30:29",
+   "time": "2026-11-18T20:56:46",
    "inputs_hash": "d7e43ee0e386a980",
    "external_copies": []
   }

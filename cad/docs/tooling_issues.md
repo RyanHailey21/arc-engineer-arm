@@ -26,6 +26,8 @@ against its `tool_use` (142 errors in 19,040 lines up to 2026-11-17 04:30Z).
 | TI-017 | 2026-11-17 | check_engagement skipped SB5 shoulder screws (exact name match), then SetScrew_* (case) | fixed: match by catalogue key + test |
 | TI-018 | 2026-11-17 | freecadcmd swallows tracebacks (exit 1, no output) and prints nothing for short scripts | fixed: tools/run.py |
 | TI-019 | 2026-11-17 | quick_check doesn't run the new level-keeping linkage check | fixed 2026-11-18 |
+| TI-020 | 2026-11-18 | No detector for dead code, orphan params/catalogue keys or scratch files for a periodic cleanup agent | fixed: tools/bloat_report.py + keep-list + hook installer + test |
+| TI-021 | 2026-11-18 | manifest.json `files` for level_keeping and working_doc point outside the job folder (paths relative to the cwd) | fixed: absolute paths |
 
 ---
 
@@ -381,3 +383,34 @@ had a single `main()`.
 - quick_check check 6 `level-keep` prints closure, the worst dead-point margin and where, and the margin at the
   elbow limits, with any FAIL line. The sweep's FRESH/STALE shows in the evidence list as `level_keeping`.
 - One function, not separate `closure()` and `margins()` as planned: both walk the same sample list.
+
+## TI-020: no bloat detector for the periodic cleanup agent  (fixed 2026-11-18)
+
+**Request** (user-approved, via the main session): a deterministic report that a scheduled cleanup agent consumes.
+
+**Fix.** `tools/bloat_report.py`, plain Python, about 1.5 s, always exits 0.
+- Kinds: unused-import, unused-variable, dead-def (ast names, attributes and words in string literals across every
+  tracked `*.py`, docstrings excluded), duplicate (6 identical significant lines, or 8 after blanking names, numbers
+  and strings), orphan-param, orphan-catalogue (string literals plus the CAT `src` column of
+  `out/<variant>/map_parts.md`, because some keys are built at run time), orphan-interface, orphan-envelope,
+  out-unindexed (not in the manifest and no tool names the file), scratch (`*.bak*`, `*.FCBak`, ...).
+- `tools/bloat_keep.toml`: `[[path]]` globs (rev A package, release generators) and `[[item]]` entries, each with a
+  reason. Kept in `tools/`, not `data/`, so editing it does not change `params.inputs_hash()` and stale every check.
+  A name that only frozen code uses is reported as kept ("used only by frozen/release code: ..."), e.g. GT2-BELT.
+  Unmatched `[[item]]` entries without `guard = true` are listed so the keep-list does not rot.
+- Outputs: `cad/out/bloat_report.md` + `.json` (stable ids `kind:path:name`, new/resolved since the last run,
+  deterministic so re-runs don't churn git) and a `bloat` evidence record. `--counts` prints one line, writes nothing.
+- quick_check line `bloat` (informational, never fails). `tools/install_hooks.py` writes a non-blocking
+  `.git/hooks/pre-commit` that prints the counts; it refuses to replace a hook it did not write. **Not installed**:
+  installing a hook is the user's call (`python -I cad/tools/install_hooks.py`).
+- `tests/test_bloat_report.py`: planted dead function, unused import, unused local and orphan param are found; a
+  keep-listed planted function is kept; nothing in the rev A package or a release generator is a finding.
+- Limits: names built at run time (`getattr(H, "gt2_" + x)`) are invisible; a TOML key read by iterating its table
+  shows as an orphan. The report says to check both before deleting. Stale part maps are noted in the report.
+
+## TI-021: manifest `files` paths escape the job folder  (fixed 2026-11-18)
+
+`out/fourbar/manifest.json` listed `../level_keeping.txt` (level_keeping) and
+`../../../../Windows/System32/ARC_Arm_Fourbar.FCStd` (working_doc): both tools passed a bare file name to
+`params.record`, which resolved it against the cwd (System32 in the FreeCAD GUI). Found while reading the
+manifest for bloat_report. Fix: both pass the absolute path. The entries correct themselves on the next run of each tool.
