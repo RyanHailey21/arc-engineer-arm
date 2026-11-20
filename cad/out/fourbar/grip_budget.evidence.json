@@ -8,16 +8,15 @@
   "reason": "WARN: pipe 143% of rated / 48% of stall; open spring 0.12 N*m",
   "scope": "pipe 143% of rated / 48% of stall; open spring 0.12 N*m",
   "versions": {
-   "python": "3.11.14",
-   "platform": "Windows",
-   "freecad": "1.1.4"
+   "python": "3.14.10",
+   "platform": "Windows"
   },
-  "implementation_sha256": "193b08a10c14b03d451f61573c5f7e9f181342cb49f5105c1b870658b3091874",
+  "implementation_sha256": "4dc13e9475263324211063b3e56312d6bf4e4236c4768e49b8b082ed4b3169ee",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/grip_budget.inputs.json",
-    "sha256": "de9dc09a046104fc92b22e253308f1f57c8923dafd6db747ea214c5827aa7e6f"
+    "sha256": "ad040decec558f914b08adf7264abde4d0fea66b42f8ac675cc493eb0444fd41"
    }
   ],
   "artifacts": [
@@ -29,8 +28,8 @@
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-19T21:19:58",
-   "inputs_hash": "583f149273fa8325",
+   "time": "2026-11-20T15:44:07",
+   "inputs_hash": "edad1cb6ff27034b",
    "external_copies": []
   }
  }

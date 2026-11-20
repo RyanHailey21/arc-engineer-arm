@@ -8,7 +8,7 @@
   "inputs_hash": "583f149273fa8325",
   "note": "BLOAT 25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept",
   "status": "WARN",
-  "time": "2026-11-19T21:20:01"
+  "time": "2026-11-20T15:35:02"
  },
  "bom": {
   "evidence": "bom.evidence.json",
@@ -59,10 +59,10 @@
   "files": [
    "grip_budget.txt"
   ],
-  "inputs_hash": "583f149273fa8325",
+  "inputs_hash": "edad1cb6ff27034b",
   "note": "pipe 143% of rated / 48% of stall; open spring 0.12 N*m",
   "status": "WARN",
-  "time": "2026-11-19T21:19:58"
+  "time": "2026-11-20T15:44:07"
  },
  "grip_hold": {
   "evidence": "grip_hold.evidence.json",
@@ -111,10 +111,10 @@
   "files": [
    "quick.json"
   ],
-  "inputs_hash": "583f149273fa8325",
-  "note": "envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 193 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; working-doc MATCH; bloat 25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept; fingerprint MATCH",
+  "inputs_hash": "b4502f469da85777",
+  "note": "envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 193 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 78 kept; fingerprint MATCH",
   "status": "PASS",
-  "time": "2026-11-20T04:59:49"
+  "time": "2026-11-20T15:52:21"
  },
  "seated": {
   "evidence": "seated.evidence.json",

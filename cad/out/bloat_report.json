@@ -166,11 +166,11 @@
   },
   {
    "kind": "scratch",
-   "path": "cad/out/fourbar/ARC_Arm_Fourbar.20261119-204339.FCBak",
+   "path": "cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak",
    "line": 1,
-   "name": "cad/out/fourbar/ARC_Arm_Fourbar.20261119-204339.FCBak",
+   "name": "cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak",
    "detail": "local leftover (9661 kB)",
-   "id": "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261119-204339.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261119-204339.FCBak"
+   "id": "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak"
   },
   {
    "kind": "scratch",
@@ -912,32 +912,14 @@
   "out-unindexed": 2,
   "scratch": 13
  },
- "scanned": 81,
+ "scanned": 84,
  "stale_keep": [],
  "notes": [],
  "new": [
-  "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261119-204339.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261119-204339.FCBak",
-  "scratch:cad/out/fourbar/fea/FEA_fb_drive_link.20261119-192144.FCBak:cad/out/fourbar/fea/FEA_fb_drive_link.20261119-192144.FCBak",
-  "scratch:cad/out/fourbar/fea/FEA_fb_jaw_block.20261119-193139.FCBak:cad/out/fourbar/fea/FEA_fb_jaw_block.20261119-193139.FCBak",
-  "scratch:cad/out/fourbar/fea/FEA_fb_palm.20261119-193411.FCBak:cad/out/fourbar/fea/FEA_fb_palm.20261119-193411.FCBak"
+  "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak"
  ],
  "resolved": [
-  "dead-def:cad/arm/core.py:clip_at",
-  "dead-def:cad/arm/core.py:to_x",
-  "dead-def:cad/hardware.py:as5600_board",
-  "dead-def:cad/hardware.py:coil_spring",
-  "dead-def:cad/hardware.py:servo_horn_disc",
-  "dead-def:cad/hardware.py:servo_std",
-  "dead-def:cad/hardware.py:spring_cassette",
-  "dead-def:cad/hardware.py:standoff_hex",
-  "duplicate:cad/arm/core.py:near-65e734423d",
-  "duplicate:cad/hardware.py:db89273908",
-  "orphan-catalogue:cad/data/catalogue.toml:DS3225MG",
-  "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261119-182659.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261119-182659.FCBak",
-  "scratch:cad/out/fourbar/fea/FEA_fb_drive_link.20261118-233025.FCBak:cad/out/fourbar/fea/FEA_fb_drive_link.20261118-233025.FCBak",
-  "scratch:cad/out/fourbar/fea/FEA_fb_jaw_block.20261118-234048.FCBak:cad/out/fourbar/fea/FEA_fb_jaw_block.20261118-234048.FCBak",
-  "scratch:cad/out/fourbar/fea/FEA_fb_palm.20261118-234325.FCBak:cad/out/fourbar/fea/FEA_fb_palm.20261118-234325.FCBak",
-  "unused-import:cad/arm/core.py:os"
+  "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261119-204339.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261119-204339.FCBak"
  ],
  "keep_file": "cad/tools/bloat_keep.toml"
 }
