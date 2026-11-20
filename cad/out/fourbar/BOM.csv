@@ -1,46 +1,51 @@
 type,item,qty,mass_g,description,source,verify,bodies
 purchased,6700ZZ,6,12.0,Deep-groove bearing 6700ZZ 10x15x4,VXB 6700ZZ (10x15x4 shielded) [VERIFIED],,FOREARM LEVEL ROCKER UPPER
 purchased,6701ZZ,1,3.0,Deep-groove bearing 6701ZZ 12x18x4,VXB kit7125 [VERIFIED],,UPPER
+purchased,6804ZZ,2,38.0,Thin-section bearing 6804ZZ 20x32x7 (J1/J2 hub journals in the drive frames),standard size: McMaster-Carr / VXB / Amazon 6804ZZ,,GROUND
 purchased,6805ZZ,1,18.0,Thin-section bearing 6805ZZ 25x37x7 (roll support),VXB Kit7501 [VERIFIED],,GRIPPER
 purchased,9271K56,1,3.5,"Torsion spring 90 deg right-hand wound, 0.499 in OD, 0.059 in wire, 4.5 in*lbf max (0.508 N*m), 2 in legs (trim to fit), music wire - opens the four-bar jaws unpowered",McMaster 9271K56,bench-test against the STS3215 unpowered back-drive torque; alternate 9271K52 (3.509 in*lbf) if lighter preload suffices,HEAD
-purchased,BHCS,69,69.0,ISO 7380 button head screw,"McMaster-Carr 92095A182 [VERIFIED] (+3 sizes, see fab/procurement.csv)",,FOREARM GRIPPER GROUND HEAD JAW_L JAW_R LEVEL UPPER
+purchased,BHCS,63,63.0,ISO 7380 button head screw,"McMaster-Carr 92095A182 [VERIFIED] (+3 sizes, see fab/procurement.csv)",,FOREARM GRIPPER GROUND HEAD JAW_L JAW_R UPPER
 purchased,C610,1,15.0,DJI RoboMaster C610 ESC for M2006 (vendor STEP),robomaster.com product 1277 STEP,,GROUND
 purchased,CLIP,3,3.0,Adhesive cable-tie mount 10x10 + 2.5 mm cable tie,"McMaster-Carr 7582K151 [VERIFIED] (+2 sizes, see fab/procurement.csv)",,GROUND
 purchased,COLLAR10,2,50.0,"One-piece clamp collar D10 x D24 x 9, steel, M3x10 clamp screw included (Stafford 1LM010)",Stafford 1LM010 [VERIFIED],,FOREARM
 purchased,CSK,8,8.0,ISO 10642 countersunk screw,McMaster-Carr 92125A126 [VERIFIED],,GRIPPER LEVEL
-purchased,DM-J4340-2EC,2,660.0,"Damiao DM-J4340-2EC joint motor, 24 V, 9/27 N*m, 40:1, CAN (vendor STEP)",github.com/dmBots/DM-J4340-2EC models/3d + drawings/2d,,CRANK GROUND UPPER
-purchased,DOWEL,10,10.0,ISO 8734 dowel pin,"McMaster-Carr 91595A122 [VERIFIED] (+2 sizes, see fab/procurement.csv)",,CRANK GROUND UPPER
-purchased,DS3225MG,2,120.0,"DSServo DS3225MG 25 kg*cm standard servo, 25T spline (J3 pitch + J4 roll)",DSServo (dsservo.com) / resellers DS3225MG [VERIFIED],no vendor CAD; caliper-check ear hole grid 49.5 x 10,GRIPPER LEVEL
 purchased,ECLIP,3,0.9,DIN 6799 retaining washer,Wurth / Fabory 0490100 / 36200.070.001 [VERIFIED],,FOREARM GRIPPER
-purchased,HORN-25T,3,9.0,"25T aluminium disc servo horn D20, 4x M3 tapped PCD14 (Thingbits TH1144 type)",Thingbits / Handsontec TH1144 [VERIFIED],,GRIPPER HEAD LK_LD
-purchased,INSERT,18,5.4,M3 heat-set insert 4.0 x 4,McMaster-Carr 94180A331 [VERIFIED],,GRIPPER JAW_L JAW_R
+purchased,HORN-25T,5,15.0,"25T aluminium disc servo horn D19.95, 4x M3 tapped PCD14 (supplied with each STS3215)",Feetech (in the servo box) STS3215 horn [VERIFIED],,GRIPPER GROUND HEAD LK_LD
+purchased,INSERT,24,7.2,M3 heat-set insert 4.0 x 4,McMaster-Carr 94180A331 [VERIFIED],,GRIPPER GROUND JAW_L JAW_R LEVEL
 purchased,MR105ZZ,6,7.2,Miniature bearing MR105ZZ 5x10x4,VXB mr105zz-1 [VERIFIED],,ROD1 ROD2 ROD_AB
 purchased,NYLOC,10,5.0,ISO 10511 nyloc nut,"McMaster-Carr 93625A100 [VERIFIED] (+1 sizes, see fab/procurement.csv)",,CRANK FOREARM GROUND LEVEL ROCKER
+purchased,PAN-M2x12,16,4.8,"Pan-head self-tapping screw 2.0 x 12 (PA2.0), stainless: fixes an STS3215 through its cradle floor (replaces a bottom-cap screw)",M2 x 12 thread-forming screws for plastic (e.g. McMaster-Carr 99461A series) or PA2.0 x 12 self-tapping,self-tapping into the servo's own bottom-cap holes; snug only (plastic case),GRIPPER GROUND LEVEL
 purchased,PCLIP,2,2.0,"Nylon-coated P-clip, 9 mm bundle, 7 mm wide, M3 hole",McMaster-Carr 3177T51 [VERIFIED],,UPPER
 purchased,PIN-D4x14,10,14.0,"Dowel pin D4 m6 x 14, 52100 steel, ISO 8734 (four-bar coupler and idler pivots)",McMaster 91595A158,"pivot bores ream 4 H8 (running) in the links, press fit in one side",HEAD JAW_L JAW_R
 purchased,PIN-D4x20,1,2.0,"Dowel pin D4 m6 x 20, 52100 steel, ISO 8734 (left drive pivot)",McMaster 91595A167,,LK_LD
 purchased,PIN-D4x30,1,3.0,"Dowel pin D4 m6 x 30, 52100 steel, ISO 8734 (right drive pivot through the spring arbor)",McMaster 91595A179,,HEAD
 purchased,PIN-D4x8,4,3.2,"Dowel pin D4 m6 x 8, 52100 steel, ISO 8734 (four-bar bottom-link ground pivots)",McMaster 91595A series (ISO 8734 4 x 8),confirm the McMaster part number for 4 x 8 mm; press fit in the palm's lower ground layer,HEAD
-purchased,SB5,6,24.0,"ISO 7379 shoulder screw d5, M4 thread","McMaster-Carr 92981A030 [VERIFIED] (+3 sizes, see fab/procurement.csv)",,CRANK FOREARM GROUND LEVEL ROCKER
-purchased,SHCS,17,17.0,ISO 4762 socket head cap screw,"McMaster-Carr 91290A130 [VERIFIED] (+6 sizes, see fab/procurement.csv)",,CRANK GROUND UPPER
-purchased,STS3215,1,60.0,"Feetech STS3215 serial-bus servo, 12 V version: 10 kg*cm rated / 30 kg*cm stall at 12 V, 0.222 s/60 deg, magnetic encoder 360 deg, steel gears (four-bar gripper drive)",Amazon ASIN B0FKY4Z15R (Stemedu ST3215 12 V) / B0FMXVR77Y (Feetech 2-pack); Feetech STS3215 datasheet,weigh on receipt (sources list 55-69 g); confirm 12 V / 1:345 variant and 25T spline; bench-test unpowered back-drive torque,HEAD
-purchased,WASHER,1,0.3,ISO 7089 washer / shim,McMaster-Carr 93475A230 [VERIFIED],,CRANK
+purchased,SB5,6,24.0,"ISO 7379 shoulder screw d5, M4 thread","McMaster-Carr 92981A030 [VERIFIED] (+5 sizes, see fab/procurement.csv)",,CRANK FOREARM GROUND LEVEL ROCKER
+purchased,SHCS,7,7.0,ISO 4762 socket head cap screw,"McMaster-Carr 91290A148 [VERIFIED] (+2 sizes, see fab/procurement.csv)",,CRANK GROUND UPPER
+purchased,STS3215,5,300.0,"Feetech STS3215 serial-bus servo, 12 V version: 10 kg*cm rated / 30 kg*cm stall at 12 V, 0.222 s/60 deg, magnetic encoder 360 deg, steel gears (all joints and the four-bar gripper: J1/J2 through a 3:1 printed spur stage, J3/J4 direct)",Amazon ASIN B0FKY4Z15R (Stemedu ST3215 12 V) / B0FMXVR77Y (Feetech 2-pack); Feetech STS3215 datasheet,weigh on receipt (sources list 55-69 g); confirm 12 V / 1:345 variant and 25T spline; bench-test unpowered back-drive torque,GRIPPER GROUND HEAD LEVEL
+purchased,WASHER,3,0.9,ISO 7089 washer / shim,"McMaster-Carr 93475A230 [VERIFIED] (+3 sizes, see fab/procurement.csv)",,CRANK UPPER
 purchased,WASHER-D4,2,0.6,D4 thrust washers either side of the palm ground layer,"DIN 988 shim ring 4 x 8 x 0.5, stainless - standard part, any supplier",,LK_LD LK_RD
 custom,Base_Plate_AL5,1,1041.0,"5 mm 6061, waterjet + tap",make (AL),,GROUND
-custom,Tower_L_CF3,1,49.9,3 mm CF plate (DXF),make (CF),,GROUND
+custom,Tower_L_CF3,1,68.8,3 mm CF plate (DXF),make (CF),,GROUND
+custom,Drive_Frame_L,1,81.0,"PETG-CF print, 3x M3 heat-set inserts",make (PRINT),,GROUND
+custom,Pinion_m2_18T_J1,1,4.6,"PA12 / PETG-CF print, m2 18T, 4x M3 cbore",make (PRINT),,GROUND
 custom,Tower_Bracket_L0,1,1.6,PETG-CF print,make (PRINT),,GROUND
 custom,Tower_Bracket_L1,1,1.6,PETG-CF print,make (PRINT),,GROUND
-custom,Tower_R_CF3,1,39.5,3 mm CF plate (DXF),make (CF),,GROUND
+custom,Tower_R_CF3,1,64.3,3 mm CF plate (DXF),make (CF),,GROUND
+custom,Drive_Frame_R,1,81.0,"PETG-CF print, 3x M3 heat-set inserts",make (PRINT),,GROUND
+custom,Pinion_m2_18T_J2,1,4.6,"PA12 / PETG-CF print, m2 18T, 4x M3 cbore",make (PRINT),,GROUND
 custom,Tower_Bracket_R0,1,1.6,PETG-CF print,make (PRINT),,GROUND
 custom,Tower_Bracket_R1,1,1.6,PETG-CF print,make (PRINT),,GROUND
 custom,Spacer_G1,1,0.7,D9/D5.2 x 6 alu,make (AL),,GROUND
 custom,Upper_Arm_L_CF3,1,32.0,3 mm CF plate (DXF),make (CF),,UPPER
 custom,Upper_Arm_R_CF3,1,31.4,3 mm CF plate (DXF),make (CF),,UPPER
-custom,J1_Output_Hub,1,13.0,6061 turned + drilled,make (AL),,UPPER
+custom,J1_Output_Hub,1,32.5,6061 turned + milled hex,make (AL),,UPPER
+custom,Drive_Gear_m2_54T_J1,1,43.8,"PA12 / PETG-CF print, m2 54T, 19 AF hex bore",make (PRINT),,UPPER
 custom,UA_Standoff_D8_0,1,10.7,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",make (AL),,UPPER
 custom,UA_Standoff_D8_1,1,10.7,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",make (AL),,UPPER
 custom,Crank_CF3,1,7.6,"3 mm CF plate (DXF), D-bore on journal flat",make (CF),,CRANK
-custom,J2_Output_Hub_Journal,1,16.5,6061 turned + drilled,make (AL),,CRANK
+custom,J2_Output_Hub_Journal,1,35.9,6061 turned + milled hex,make (AL),,CRANK
+custom,Drive_Gear_m2_54T_J2,1,43.8,"PA12 / PETG-CF print, m2 54T, 19 AF hex bore",make (PRINT),,CRANK
 custom,Shim_A,1,0.4,"301 SS shim stock 1.5, laser cut",make (SHIM),,CRANK
 custom,Rod_AB_CF3,1,17.3,3 mm CF plate (DXF),make (CF),,ROD_AB
 custom,Rod_1_CF3,1,17.3,3 mm CF plate (DXF),make (CF),,ROD1
@@ -58,19 +63,16 @@ custom,Sleeve_E_outer,1,0.7,D13/D10 sleeve,make (AL),,ROCKER
 custom,Washer_PTFE_E,1,0.7,"PTFE rod D13, turned thrust sleeve",make (PTFE),,ROCKER
 custom,Shim_Ev1,1,0.1,"301 SS shim stock 0.5, laser cut",make (SHIM),,ROCKER
 custom,Rod_2_CF4,1,33.1,4 mm CF plate (DXF),make (CF),,ROD2
-custom,Wrist_Level_Member_CF3,1,10.8,"3 mm CF plate (DXF), hex af19",make (CF),,LEVEL
+custom,Wrist_Level_Member_CF3,1,13.3,"3 mm CF plate (DXF), hex af19",make (CF),,LEVEL
 custom,Level_Hub_Wrist,1,3.1,"6061 turned hub, hex key af19, 6700 seat",make (AL),,LEVEL
 custom,Washer_Dv2_head,1,0.1,"301 SS shim stock 0.5, laser cut",make (SHIM),,LEVEL
 custom,Washer_PTFE_Dv2,1,0.1,"PTFE sheet 1.0, laser cut",make (PTFE),,LEVEL
-custom,Servo_Standoff_0,1,1.2,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",make (AL),,LEVEL
-custom,Servo_Standoff_1,1,1.2,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",make (AL),,LEVEL
-custom,Servo_Standoff_2,1,1.2,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",make (AL),,LEVEL
-custom,Servo_Standoff_3,1,1.2,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",make (AL),,LEVEL
+custom,Wrist_Servo_Cradle,1,17.5,"PETG-CF print, 4x M3 heat-set inserts",make (PRINT),,LEVEL
 custom,Wrist_Shaft_D10x70,1,41.2,"cut from McMaster 6112K47 D10 h6 rod, D6x4 ground step, D-flats, e-clip groove",make (STEEL),,GRIPPER
 custom,Wrist_Shaft_Coupler,1,2.1,"6061, D6 D-bore on the shaft step, 4x M3 clearance (horn)",make (AL),,GRIPPER
 custom,Clevis_L_CF3,1,18.0,"3 mm CF plate (DXF), D-bore, 4x csk",make (CF),,GRIPPER
 custom,Clevis_R_CF3,1,18.1,"3 mm CF plate (DXF), D-bore",make (CF),,GRIPPER
-custom,Roll_Housing,1,24.6,"PETG-CF print, M3 inserts",make (PRINT),,GRIPPER
+custom,Roll_Housing,1,35.0,"PETG-CF print, M3 inserts",make (PRINT),,GRIPPER
 custom,Roll_Hub,1,11.5,"6061 turned, D25 journal in 6805",make (AL),,HEAD
 custom,Gripper_Palm,1,62.8,PETG-CF print (concept),make (PRINT),,HEAD
 custom,Jaw_Block_L,1,30.7,PETG-CF print (concept),make (PRINT),,JAW_L

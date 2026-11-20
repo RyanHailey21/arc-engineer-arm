@@ -5,26 +5,25 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "bloat",
   "status": "pass",
-  "reason": "WARN: BLOAT 35 findings (unused-import 1, dead-def 6, duplicate 6, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 13), 75 kept",
-  "scope": "BLOAT 35 findings (unused-import 1, dead-def 6, duplicate 6, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 13), 75 kept",
+  "reason": "WARN: BLOAT 37 findings (unused-import 1, dead-def 8, duplicate 6, orphan-param 5, orphan-catalogue 2, out-unindexed 2, scratch 13), 77 kept",
+  "scope": "BLOAT 37 findings (unused-import 1, dead-def 8, duplicate 6, orphan-param 5, orphan-catalogue 2, out-unindexed 2, scratch 13), 77 kept",
   "versions": {
-   "python": "3.11.14",
-   "platform": "Windows",
-   "freecad": "1.1.4"
+   "python": "3.14.10",
+   "platform": "Windows"
   },
   "implementation_sha256": "6354672b79deb4e614702010df406b608b3b60828e092c7ed237be1940825b8f",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/bloat.inputs.json",
-    "sha256": "d3f99699d44faf643b5aec68316a285379c5ad581c3d818c69df5925ca611e21"
+    "sha256": "df0c713fc9381b6daed4d244410d742c22f370ed52dc6501cdc33bdd5e1bcc30"
    }
   ],
   "artifacts": [],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-19T05:09:55",
-   "inputs_hash": "a6274db4e832ec4b",
+   "time": "2026-11-19T19:18:06",
+   "inputs_hash": "865bde89d3c8437d",
    "external_copies": [
     "out/bloat_report.md",
     "out/bloat_report.json"

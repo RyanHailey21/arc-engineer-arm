@@ -4,7 +4,7 @@ through the joint command interface (cad/sim/joint_command.py).
   host: task pose sequence -> minimum-jerk move per pose pair, timed by the joint speed limits
         -> position setpoints streamed at a fixed rate (default 100 Hz), clamped to the joint limits
   backend:
-    mujoco  native viewer on Windows/Linux/macOS; position actuators (kp/kv = the DM-J4340 MIT-mode law)
+    mujoco  native viewer on Windows/Linux/macOS; position actuators (kp/kv = the joint PD law, tau = kp*e + kd*de)
     gazebo  Gazebo Harmonic over gz-transport (start the world first, see sim/README.md)
 No planner beyond the CAD-verified task poses, no collision avoidance, no grasping.
 

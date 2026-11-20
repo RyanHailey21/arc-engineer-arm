@@ -1,6 +1,7 @@
 # Design variant selection.  The GRIP environment variable overrides this for one run (GRIP=SCREW ...).
 # Gripper modules live in cad/arm/grippers/ and are registered in cad/arm/bodies.py GRIPPERS.
 
-grip = "FOURBAR"     # "FOURBAR" (lightweight concept, under evaluation) | "SCREW" (rev A: drawings, FEA and fab exports)
-release = "SCREW"    # variant behind the released rev A package (fab/, drawings/out, fea/out, render/, tdp/);
-                     # release generators pin to it so another variant can't overwrite released outputs
+grip = "FOURBAR"     # "FOURBAR" (design gripper; rev B) | "SCREW" (lead-screw gripper of rev A: too heavy for the
+                     # STS3215 base's 50 %-of-stall holding rule, kept as a non-release variant)
+release = "FOURBAR"  # variant behind the released package (rev B, 2026-11-19: fab/, fea/out); drawings/out, render/
+                     # and tdp/ are still rev A (drawings on hold).  Release generators pin to it so another variant can't overwrite them

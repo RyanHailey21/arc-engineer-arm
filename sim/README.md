@@ -81,7 +81,7 @@ To play the task sequences in MuJoCo (native on Windows; the viewer stays open a
 python cad/sim/demo.py --backend mujoco --seq both
 ```
 
-`--scene free` (the default) removes the donut-pick station (lower tier and donut), so whole sequences run; `--scene pick` keeps it. Measured here: 20 moves in 25 s at 100 Hz. Poses settle 0.3–0.6° off target. That's the finite-stiffness motor law sagging under gravity (kp/kv as in DM-J4340 MIT mode), which Gazebo's ideal velocity motors don't show.
+`--scene free` (the default) removes the donut-pick station (lower tier and donut), so whole sequences run; `--scene pick` keeps it. Measured here: 20 moves in 25 s at 100 Hz. Poses settle 0.3–0.6° off target. That's the finite-stiffness motor law sagging under gravity (the joint PD law's kp/kv), which Gazebo's ideal velocity motors don't show.
 
 Gazebo Harmonic (gz-sim 8):
 
@@ -125,10 +125,10 @@ Joint values are the CAD model's own angles. The CAD convention is **radians in 
 
 | Joint | Actuator | Limits (deg) | Meaning |
 |---|---|---|---|
-| `shoulder` | DM-J4340-2EC, 27 N·m peak | 0 … 180 | upper-arm angle th1 |
-| `elbow` | DM-J4340-2EC, 27 N·m peak | −86 … 51 | **absolute** forearm angle th2 (J2 drives it through the crank and rod AB). The limits keep the level-keeping parallelogram ≥ 21° from its dead points |
-| `wrist_pitch` | DS3225, 2.4 N·m | −30 … 120 | gripper pitch (absolute: the level member stays level) |
-| `wrist_roll` | DS3225, 2.4 N·m | −95 … 95 | roll about the gripper axis |
+| `shoulder` | STS3215 + 3:1 spur stage, 8.4 N·m stall | 0 … 180 | upper-arm angle th1 |
+| `elbow` | STS3215 + 3:1 spur stage, 8.4 N·m stall | −86 … 51 | **absolute** forearm angle th2 (J2 drives it through the crank and rod AB). The limits keep the level-keeping parallelogram ≥ 21° from its dead points |
+| `wrist_pitch` | STS3215, 2.94 N·m stall | −30 … 120 | gripper pitch (absolute: the level member stays level) |
+| `wrist_roll` | STS3215, 2.94 N·m stall | −95 … 95 | roll about the gripper axis |
 | `gripper` | STS3215, 2.94 N·m stall | 0 … 63.2 | drive-link angle from the pipe grip (0 = 13.8 mm pad gap, 54.6 = donut 100 mm, 63.2 = fully open 112 mm) |
 
 The 12 passive joints each follow one actuated joint exactly:

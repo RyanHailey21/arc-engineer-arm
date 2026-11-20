@@ -7,16 +7,16 @@ Step 2 (plain Python with mujoco/yourdfpy, cad/sim/build_robot.py) writes the UR
 
 Kinematic tree (every passive joint follows exactly ONE actuated joint, so the same tree is a URDF with <mimic>
 and an MJCF with joint-equality constraints).  Joint values equal arm_model's own angles:
-    shoulder    base -> upper        th1 (J1, DM-J4340)
+    shoulder    base -> upper        th1 (J1, STS3215 via 3:1 spur stage)
     rod1        base -> rod1         = shoulder            (level-keeping stage-1 rod, parallel to the upper arm)
     rocker      rod1 -> rocker       = -shoulder           (rocker keeps a constant absolute angle)
-    elbow       rocker -> forearm    th2 (J2, DM-J4340; absolute because the rocker never rotates)
+    elbow       rocker -> forearm    th2 (J2, STS3215 via 3:1 spur stage; absolute because the rocker never rotates)
     crank       base -> crank        = elbow               (J2 crank, built rotated 180 deg)
     crank_pin   crank -> crank_pin   = -elbow              (massless: absolute angle 0 at crank pin A)
     rod_ab      crank_pin -> rod_ab  = shoulder            (forearm drive rod, parallel to the upper arm)
     level       forearm -> level     = -elbow              (GT2 1:1 belt keeps the level member level)
-    wrist_pitch level -> gripper     pitch (J3, DS3225)
-    wrist_roll  gripper -> head      roll (J4, DS3225)
+    wrist_pitch level -> gripper     pitch (J3, STS3215)
+    wrist_roll  gripper -> head      roll (J4, STS3215)
     gripper     head -> lk_ld        d = theta - theta_ref (STS3215; 0 at the pipe grip)
     jaw_l       lk_ld -> jaw_l       = -gripper            (parallelogram: jaw stays parallel)
     lk_li       head -> lk_li        = gripper
@@ -189,11 +189,13 @@ def main():
         links.append(L)
         print("link %-14s %-8s %6.3f kg  %d visual, %d collision meshes" % (name, body, m, len(L["visuals"]), len(L["collisions"])))
     th_ref = M.FB_TREF
+    _g = M.BASE_R["ratio"] * M.BASE_R["efficiency"]                 # J1/J2 spur stage
+    _BS, _BR = M.STS_R["stall_Nm"] * _g, M.STS_R["rated_Nm"] * _g
     actuators = dict(
-        shoulder=dict(source="DM-J4340-2EC (J1)", peak_Nm=27.0, rated_Nm=9.0),
-        elbow=dict(source="DM-J4340-2EC (J2, via crank + rod AB)", peak_Nm=27.0, rated_Nm=9.0),
-        wrist_pitch=dict(source="DS3225MG (J3)", peak_Nm=2.4, rated_Nm=1.2),
-        wrist_roll=dict(source="DS3225MG (J4)", peak_Nm=2.4, rated_Nm=1.2),
+        shoulder=dict(source="STS3215 + 3:1 spur stage (J1)", peak_Nm=round(_BS, 2), rated_Nm=round(_BR, 2)),
+        elbow=dict(source="STS3215 + 3:1 spur stage (J2, via crank + rod AB)", peak_Nm=round(_BS, 2), rated_Nm=round(_BR, 2)),
+        wrist_pitch=dict(source="STS3215 (J3)", peak_Nm=M.STS_R["stall_Nm"], rated_Nm=M.STS_R["rated_Nm"]),
+        wrist_roll=dict(source="STS3215 (J4)", peak_Nm=M.STS_R["stall_Nm"], rated_Nm=M.STS_R["rated_Nm"]),
         gripper=dict(source="STS3215 12 V (four-bar drive)", peak_Nm=M.SERVO["stall_Nm"], rated_Nm=M.SERVO["rated_Nm"]))
     limits = dict(shoulder=(0.0, 180.0), elbow=(-86.0, 51.0), wrist_pitch=(-30.0, 120.0), wrist_roll=(-95.0, 95.0),
                   gripper=(0.0, M.fb_theta(112.0) - th_ref))

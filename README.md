@@ -10,7 +10,7 @@ Task requirements come from the ARC Championship Events Manual S2 v1.0, §3.2.4 
   - Open items: the servo back-drive bench test and the pipe-holding servo duty.
   - **Compliance report** (gripper holds the objects, motors hold the arm, the arm actuates): [cad/docs/compliance_report.md](cad/docs/compliance_report.md).
   - Status and evidence: [cad/docs/fourbar_status.md](cad/docs/fourbar_status.md).
-- **Rev A.** The **released rev A package** (TDP, 46 drawings, fab STEP/DXF, FEA) documents the lead-screw gripper (`GRIP=SCREW`).
+- **Rev B (2026-11-19).** The released fab STEP/DXF, BOM, procurement list and FEA document the four-bar arm with STS3215 drives on every joint (`GRIP=FOURBAR`, the release variant). The drawings are on hold: `drawings/out`, the TDP and the renders are still rev A (lead-screw gripper, old base motors) and do not match the model.
 - **Simulation models.** MuJoCo (MJCF) and Gazebo (URDF with `<mimic>`) models of the four-bar arm are in [sim/](sim/README.md). Both are generated from the CAD and validated against it.
 - **Where to start.** `cad/MAP.md` indexes every module, parameter, interface, envelope and part. `CLAUDE.md` holds the working conventions.
 
@@ -30,15 +30,15 @@ Task requirements come from the ARC Championship Events Manual S2 v1.0, §3.2.4 
   - The paper's 1 N·m / 416 rpm gripper motor class: a DJI M2006 P36 (with C610 ESC, CAN, current control = grip-force control).
 - **Changed:**
   - Links scaled about 2.4×: l1/l2/l3 go from 60/140/205 to 80/340/350 mm.
-  - Wrist-pitch servo added (J3): a DS3225, mounted on the level member so the pitch angle is absolute.
-  - Wrist-roll stage added (J4): a second DS3225 mounted axially in a printed roll housing between the clevis plates. Its output carries the gripper head on an aluminium hub running in a 6805 thin-section bearing, so the servo doesn't take the pipe's bending moment. The roll axis is 15 mm above the TCP, so a 30° roll shifts the TCP about 4 mm sideways (handled by the IK). Roll lets the arm grip sideways-leaning pipes and tilt the donut through the zig-zag bends.
+  - Wrist-pitch servo added (J3): an STS3215 in a printed cradle on the level member, so the pitch angle is absolute.
+  - Wrist-roll stage added (J4): an STS3215 mounted axially in a printed roll housing between the clevis plates. Its output carries the gripper head on an aluminium hub running in a 6805 thin-section bearing, so the servo doesn't take the pipe's bending moment. The roll axis is 15 mm above the TCP, so a 30° roll shifts the TCP about 4 mm sideways (handled by the IK). Roll lets the arm grip sideways-leaning pipes and tilt the donut through the zig-zag bends.
   - **No rope drive.** The paper's LAHM reel and rope are replaced by a linear drive on the gripper itself:
     - a Tr8x8 (4-start) **bidirectional lead screw** (RH half drives the left jaw, LH half the right) running in 688ZZ bearings in two 6061 end blocks;
     - the M2006 clamped under a CF bridge that closes the end blocks into a stiff frame, driving the screw through an m1 20T/32T reduction (1.6:1; 8 mm per screw turn, about 35 mm/s per jaw at full speed, with 2.6× finer grip-force control than the earlier 32T/20T step-up);
     - a constant-torque spiral spring motor on the screw end for the power-off release;
     - jaws on 2× MGN9 rails, synchronised by the screw itself.
   - **Curved, more robust jaws:** each jaw is a machined 6061 bracket (on the MGN9H block, carrying the flange nut) with two 3 mm CF finger plates, top and bottom, tied by D6 standoffs. A TPU pad between the plates has an R50 arc that wraps the donut OD and a 90° V-notch in the middle that self-centres the Ø26.7 pipe on four lines. The `jaw` value is now the gap between the pad arcs at the TCP: 100 for the donut, 13.8 for the pipe (the pipe sits in the notches).
-  - Joint motors are DM-J4340-2EC (9 N·m rated) instead of the paper's 7 N·m-peak motor.
+  - Shoulder and elbow are driven by Feetech STS3215 serial-bus servos (about USD 22–49 each) through a printed m2 18T/54T spur stage (3:1: 8.4 N·m stall, 1.57 rad/s at the joint), on a printed drive frame per tower that also carries the joint's 6804 bearing. The wrist (J3, J4) and the gripper use the same servo, so the whole arm runs on one 12 V serial bus.
 
 ## Model structure
 
@@ -46,7 +46,7 @@ The full model is generated from code, so it can be rebuilt after any parameter 
 
 | File | What it holds |
 |---|---|
-| `cad/arm/` | The model, one module per subassembly (see `cad/arm/__init__.py`): `core.py` (parameters `K`, layer stack `Y`, motor interface `DM`, catalogue `CAT`, helpers), `base.py`, `upper_arm.py`, `forearm.py`, `wrist.py` (pitch and roll stage, shared roll hub), `grippers/screw.py` (rev A) and `grippers/fourbar.py`, `bodies.py` (body registry and gripper variants), `kinematics.py` (joints, IK, placements, torques, poses). |
+| `cad/arm/` | The model, one module per subassembly (see `cad/arm/__init__.py`): `core.py` (parameters `K`, layer stack `Y`, actuator ratings `STS_R`/`BASE_R`, base-drive interfaces and STS3215 helpers, catalogue `CAT`, helpers), `base.py`, `upper_arm.py`, `forearm.py`, `wrist.py` (pitch and roll stage, shared roll hub), `grippers/screw.py` (rev A) and `grippers/fourbar.py`, `bodies.py` (body registry and gripper variants), `kinematics.py` (joints, IK, placements, torques, poses). |
 | `cad/arm_model.py` | Compatibility facade: re-exports the whole `cad/arm` namespace so `import arm_model as M` works everywhere. In a long-running FreeCAD session, call `arm.reload_all()` to pick up edits. |
 | `cad/hardware.py` | Purchased-part geometry (see below). |
 | `cad/vendor/` | The original vendor STEP files and drawings (official downloads). |
@@ -55,18 +55,18 @@ The full model is generated from code, so it can be rebuilt after any parameter 
 Purchased parts in `hardware.py` come from three sources:
 
 - **Vendor CAD:**
-  - Damiao DM-J4340-2EC: STEP model and 2D drawing from [dmBots/DM-J4340-2EC](https://github.com/dmBots/DM-J4340-2EC). The hubs, towers and dowels follow the real interfaces: output 6×M3 on PCD 27 plus 3×Ø4 dowels on PCD 24; housing 6×M3 on PCD 50 plus 2×Ø3 dowels.
+  - Feetech STS3215: STEP model and product specification (2020-04-10) from the Feetech downloads on AIFitLab's product page. Every joint and the gripper use it; the cradles hold it by its four bottom-cap screws (it has no mounting ears) and its supplied horn carries the pinion, coupler or roll hub.
   - DJI M2006 P36 and C610: STEP files from robomaster.com. The M2006 output shaft is Ø6 × 16.5 mm with a flat (overall length 64.8 mm); the motor is clamped by its body and the shaft runs through the 20T gear (full 5 mm engagement, set screw on the flat).
 - **ISO/DIN hardware at standard dimensions:** ISO 4762, 7380 and 10642 screws; ISO 7379 shoulder screws; ISO 10511 nylocs; DIN 6799 e-clips; ISO 8734 dowels; bearings; standoffs. These are generated the same way the FreeCAD Fasteners workbench generates them.
-- **Modelled from catalog data (no public CAD):** HIWIN MGN9R rail and MGN9H block, GT2 30T pulleys and belt, DS3225 servo envelope, Tr8x8 bidirectional screw and flange nuts, m1 spur gears, shaft collars, spring-motor cassette, P-clips and cable-tie mounts.
+- **Modelled from catalog data (no public CAD):** HIWIN MGN9R rail and MGN9H block, GT2 30T pulleys and belt, Tr8x8 bidirectional screw and flange nuts, m1 spur gears, shaft collars, spring-motor cassette, P-clips and cable-tie mounts.
 
 Every pivot has a stated stack-up: bearing, shoulder screw, spacer or shim, and nyloc nut. Every bolted interface has its screws modelled.
 
 ### Gripper variants, interfaces and regression guards
 
 - **Gripper variant:** `cad/params/variant.toml` selects the gripper. Setting the `GRIP` environment variable overrides it for one run.
-  - `GRIP=FOURBAR` (the default) is the lightweight gear-synchronised parallel four-bar gripper. It is a concept under evaluation.
-  - `GRIP=SCREW` is the rev A lead-screw gripper. The rev A drawings, FEA jaw case and fabrication exports assume this variant.
+  - `GRIP=FOURBAR` (the default and the release variant) is the lightweight gear-synchronised parallel four-bar gripper.
+  - `GRIP=SCREW` is the rev A lead-screw gripper, kept as a non-release variant. With the STS3215 base its J1/J2 holding torque (4.8 / 4.5 N·m) is over the 50 %-of-stall rule, so its quick check reports mass/torque FAIL.
 - **Parameter files:** `cad/params/*.toml` hold the named design inputs, one file per subsystem. Each value has its unit and the reason it has that value:
   - `arm.toml`: kinematics `K`, layer stack `Y`, plate thickness, level-keeping, J1 hub, harness;
   - `pads.toml`: jaw pads shared by every gripper;
@@ -81,10 +81,13 @@ Every pivot has a stated stack-up: bearing, shoulder screw, spacer or shim, and 
   - the quick check, interface check and fingerprint.
 
   Each run is logged in `cad/out/<variant>/manifest.json` with its status and a hash of the design inputs (model code, parameters, interfaces, envelopes, vendor CAD). The quick check lists every logged check as FRESH or STALE against the current inputs. The hash covers both variants' code, so an edit to either marks both STALE.
-- **Release guard:** the release generators (`export_fab.py`, `fea/run_fea.py`, `drawings/*`, `build_assembly.py`, `render/export_render.py`) build the release variant set in `params/variant.toml` (`SCREW`, rev A). They refuse any other `GRIP`, so a concept can't overwrite `fab/`, `drawings/out`, `fea/out` or `render/`. For the release variant, the engagement report and projected heights are also written to `cad/fab/`, because the rev A TDP and drawings read them from there.
+- **Release guard:** the release generators (`export_fab.py`, `fea/run_fea.py`, `drawings/*`, `build_assembly.py`, `render/export_render.py`) build the release variant set in `params/variant.toml` (`FOURBAR`, rev B). They refuse any other `GRIP`, so a concept can't overwrite `fab/`, `drawings/out`, `fea/out` or `render/`. For the release variant, the engagement report and projected heights are also written to `cad/fab/`, because the drawings (and the rev A TDP) read them from there.
 - **Model map:** `cad/MAP.md` is generated by `cad/tools/make_map.py`; run it once per variant. It indexes every module, parameter file, interface and envelope, and every part with its kind, source, mass and a link to the line that builds it. `CLAUDE.md` at the repo root holds the working conventions.
 - **Interface files:** `cad/interfaces/*.toml` holds one file per mating interface: frame, bolt pattern, hole type and size on each side, and fastener. Both mating parts build from the file through `cad/iface.py`. Look here first for "what bolts to what". Current files:
-  - `dm_j4340__hub_tower.toml` (J1/J2 motor bolt and dowel patterns; not probed by the check yet)
+  - `drive_frame__tower.toml` (J1/J2 drive frame legs to the towers: 3×M3 on R64; probed on both towers)
+  - `base_hub__drive.toml` (hub stub, 54T gear hex and 6804 bearing; data)
+  - `sts3215__cradle.toml` (STS3215 pocket, bottom-cap screws and horn pattern; data, used by every servo cradle)
+  - `level_member__j3_cradle.toml` (J3 cradle pillars on the level member; data)
   - `roll_horn__roll_hub.toml`
   - `roll_hub__gripper_palm.toml` (every gripper variant mounts here)
 - **Interface check:** `cad/tools/check_interfaces.py` probes the built geometry to confirm both sides of each interface have a hole on every pattern axis at the specified size. Output goes to `cad/out/<variant>/interfaces.json`.
@@ -303,7 +306,7 @@ Leaders attach to whichever instance of a hole pattern, and whichever rim point,
 2. **Robot Building Specifications not reviewed.** No size or weight limits are applied yet. The stowed arm top is about 420 mm, which equals the central limbo bar (420) and won't fit under the side bar (300).
 3. **Fail-safe release.** The spring motor must back-drive the unpowered M2006 (36:1) through the 20/32 reduction. Measure the real back-drive torque at the M2006 output, then pick a spring of at least 2× that × 32/20 (about 0.2 N·m assumed), and bench-test release < 1 s.
 4. **M2006 gear retention.** The 20T gear sits on the Ø6 × 16.5 mm output shaft with a set screw on the flat (add Loctite 638); check the shaft flat orientation on a real motor before drilling the set-screw hole.
-5. **DS3225 envelope.** There's no vendor CAD for this servo. Caliper-check the ear-hole grid (49.5 × 10) before cutting the level member.
+5. **STS3215 bottom-cap screws.** The cradles hold each servo by its four bottom-cap screws (lengthened to 12 mm). Check on a real servo that the screws take the extra length and that the floor bosses meet the case.
 6. **The arm falls when the robot is defeated** (motors unpowered). This is allowed by the rules, but add a soft landing stop or gas spring so it doesn't slam.
 7. **(Rev A only) Stage-2 belt load.** The J3 servo's reaction torque (up to about 1.2 N·m) runs through the belt: about 125 N on the 30T pulleys, so the belt is now 9 mm GT2 (rocker/level plates, rod 1 and the J3 servo stack moved 3 mm outboard to fit it). Use a fibreglass- or steel-cord 2GT-9 belt and set the idler tension to at least the expected load.
 8. **(Rev A only) GT2 pulleys are custom parts** (30T, hex-keyed into the rocker and level member, with a 6700 bearing inside). Hob them in 6061, or buy 30T bore-10 pulleys and machine the hex. The belt is clamp-spliced and tensioned by the idler on the forearm.
@@ -313,4 +316,4 @@ Leaders attach to whichever instance of a hole pattern, and whichever rim point,
 
 1. Fetch the Robot Building Specs and the pole drawing, then update `K` and `field.py`.
 2. Print and cut a v0: CF plates from the DXFs, PETG-CF prints, the 6061 jaw brackets and end blocks. Bench-test the spring release and grip force on a pipe and a donut.
-3. Add the control stack: paper eq. 6–9 IK (already implemented in `ik()`), CAN for the DM motors, and C610 for the M2006.
+3. Add the control stack: paper eq. 6–9 IK (already implemented in `ik()`), one Feetech serial bus for the five STS3215s (J1–J4 and the gripper), and C610 for the M2006 (SCREW gripper only).

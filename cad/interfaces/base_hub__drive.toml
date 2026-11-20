@@ -1,0 +1,34 @@
+# Interface: J1/J2 output hub stub <-> 54T drive gear <-> 6804 bearing in the drive frame.
+# Frame: each hub's own body frame (J1: UPPER, J2: CRANK) and GROUND for the frame, all on the shoulder axis S;
+# y values are |y| outboard (both sides mirror in y). mm.  Data interface (no bolt pattern): the hub, the gear and
+# the drive frame all build their mating features from these tables.
+
+[interface]
+name = "base_hub__drive"
+summary = "Hub stub: D24 collar, 19 AF hex carrying the 54T gear, D20 journal in a 6804 bearing in the drive frame; an M5 end screw clamps the inner race"
+owner = "base (J1/J2 drives)"
+
+[stub]
+collar_d = 24.0          # shoulder that locates the gear's inboard face; passes the tower bore (D42)
+collar_y = [51.5, 54.0]  # from the hub flange's outboard face
+hex_af = 19.0            # drives the gear; its outboard end shoulders the bearing's inner race
+hex_y = [54.0, 64.5]
+journal_d = 20.0         # 6804 bore (k6 fit)
+journal_y = [64.5, 71.5]
+end_tap_d = 4.2          # M5 tapped from the end
+end_depth = 12.0         # 10.5 of thread for the 9 mm the M5 x 10 engages
+
+[gear_bore]
+hex_af = 19.2            # 0.2 printed clearance on the hex
+
+[bearing]                # 6804ZZ 20 x 32 x 7, seated in the drive frame wall
+d = 20.0
+D = 32.0
+B = 7.0
+y = [64.5, 71.5]         # = the drive frame wall
+
+[end_screw]              # SHCS M5 x 10 + washer D12 x 1: clamps the inner race against the hex shoulder
+size = 5
+length = 10.0
+washer_od = 12.0
+washer_t = 1.0

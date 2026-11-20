@@ -47,8 +47,11 @@ import params              # noqa: E402
 V = App.Vector
 VARIANT = M.GRIP.lower()
 GRIPPER_BODIES = {"GRIPPER", "HEAD", "JAW_L", "JAW_R", "SCREW", "MGEAR", "LK_LD", "LK_LI", "LK_RD", "LK_RI"}
-# actuator limits (N*m): DM-J4340-2EC rated 9 (vendor datasheet); DS3225MG ~2.4 at 6.8 V (25 kg*cm)
-RATED = {"J1": 9.0, "J2": 9.0, "J3": 2.4, "J4": 2.4}
+# static holding limit per joint (N*m): every joint is an STS3215 (params/actuators.toml), held to hold_frac of stall
+# (report R4); J1/J2 through the 3:1 spur stage
+_HOLD = M.STS_R["hold_frac"] * M.STS_R["stall_Nm"]
+_BASE = M.BASE_R["ratio"] * M.BASE_R["efficiency"]
+RATED = {"J1": round(_HOLD * _BASE, 2), "J2": round(_HOLD * _BASE, 2), "J3": round(_HOLD, 2), "J4": round(_HOLD, 2)}
 TOL = 0.5                                     # mm^3, same threshold as check_interference.py
 
 

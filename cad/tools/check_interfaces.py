@@ -48,8 +48,8 @@ def main():
     bodies = M.build_bodies()
     parts = {(bn, p.name): p for bn, ps in bodies.items() for p in ps}
     report, ok_all = [], True
-    def probe(I, sk, side, part_name, pts, n):
-        p = parts.get((side["body"], part_name))
+    def probe(I, sk, side, part_name, pts, n, body=None):
+        p = parts.get((body or side["body"], part_name))
         if p is None:
             report.append(dict(interface=I.name, side=sk, part=part_name, status="MISSING"))
             print("INTERFACE %-24s %-6s %-22s MISSING" % (I.name, sk, part_name))
@@ -70,8 +70,9 @@ def main():
             continue                               # data-only interface (e.g. vendor tables): not probe-able
         n = App.Vector(*I["frame"]["normal"])
         pts = I.points()
-        for sk in ("side_a", "side_b"):
-            ok_all &= probe(I, sk, I[sk], I[sk]["part"], pts, n)
+        for sk, side, bps in I.sides():
+            for body, part_name in bps:
+                ok_all &= probe(I, sk, side, part_name, pts, n, body)
         if "spacer" in I:                          # one spacer per station, each probed at its own station
             for i, pt in enumerate(pts):
                 ok_all &= probe(I, "spacer", I["spacer"], "%s%d" % (I["spacer"]["part_prefix"], i), [pt], n)

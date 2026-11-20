@@ -32,9 +32,9 @@ SPEC = json.load(open(os.path.join(ROOT, "robot_spec.json")))
 REF = json.load(open(os.path.join(ROOT, "fk_reference.json")))
 MM = 0.001
 ACT = ["shoulder", "elbow", "wrist_pitch", "wrist_roll", "gripper"]
-VEL = dict(shoulder=4.0, elbow=4.0, wrist_pitch=8.0, wrist_roll=8.0, gripper=4.7)       # rad/s (datasheet-class estimates)
+VEL = dict(shoulder=1.57, elbow=1.57, wrist_pitch=4.7, wrist_roll=4.7, gripper=4.7)     # rad/s: STS3215 no-load 0.222 s/60 deg (4.7), J1/J2 / 3
 KP = dict(shoulder=800.0, elbow=800.0, wrist_pitch=60.0, wrist_roll=30.0, gripper=50.0)   # N*m/rad: stiff position servos
-ARMATURE = dict(shoulder=0.016, elbow=0.016, wrist_pitch=0.002, wrist_roll=0.002, gripper=0.002)   # kg*m^2 (rotor x ratio^2, estimates)
+ARMATURE = dict(shoulder=0.005, elbow=0.005, wrist_pitch=0.002, wrist_roll=0.002, gripper=0.002)   # kg*m^2 (rotor x ratio^2, estimates; STS3215 1:345, J1/J2 x 3 more)
 LINKS = SPEC["links"]
 BY = {l["name"]: l for l in LINKS}
 

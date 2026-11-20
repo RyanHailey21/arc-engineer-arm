@@ -15,17 +15,17 @@
   "nq": 17,
   "nu": 5,
   "neq": 12,
-  "ngeom": 116
+  "ngeom": 129
  },
  "mjcf_hold_stow": {
   "seconds": 3.0,
   "nan": false,
-  "max_equality_drift": 0.000121,
+  "max_equality_drift": 0.000327,
   "max_track_err_deg": 0.479,
   "actuator_torque_Nm": {
-   "shoulder": -3.095,
-   "elbow": 2.358,
-   "wrist_pitch": 0.434,
+   "shoulder": -3.157,
+   "elbow": 2.425,
+   "wrist_pitch": 0.437,
    "wrist_roll": 0.035,
    "gripper": -0.418
   },
@@ -42,7 +42,7 @@
  "scene": {
   "compiles": true,
   "nbody": 21,
-  "ngeom": 121
+  "ngeom": 134
  },
  "urdf_in_mujoco": {
   "compiles": true,
@@ -52,7 +52,7 @@
  "ok": true,
  "gazebo_package": {
   "parses": true,
-  "mesh_uris": 116,
+  "mesh_uris": 129,
   "missing_meshes": [],
   "name_clashes": [],
   "mimic_joints": 12,

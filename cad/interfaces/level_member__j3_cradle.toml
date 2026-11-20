@@ -1,0 +1,22 @@
+# Interface: wrist level member (CF plate) <-> J3 STS3215 cradle (printed).
+# Frame: the J3 servo's canonical frame (hardware.STS: spline +y, horn seat y=0, long axis +x), which the LEVEL body
+# turns by params/wrist.toml SERVO_ANG about y.  Data interface: the level plate's holes and the cradle's pillars
+# both build from these points (cad/arm/wrist.py).
+
+[interface]
+name = "level_member__j3_cradle"
+summary = "J3 cradle's four pillars bolt to the level member plate: 4x M3 countersunk from the plate's inboard face into heat-set inserts"
+owner = "wrist (J3)"
+
+[pillars]
+points = [[-16.5, 8.0], [-16.5, -8.0], [41.5, 8.0], [41.5, -8.0]]   # (x, z) in the servo frame: just outside the
+                                       # pocket ends, 14.3 mm clear of the coupler (R12) that turns on the spline axis
+d = 8.0
+insert_d = 4.0                         # M3 x 3.8 heat-set insert bore
+insert_depth = 4.5
+flange = [0.5, 3.5]                    # cradle rim (servo-frame y) that joins the pillars to the pocket walls
+
+[fastener]
+kind = "CSK"
+size = "M3"
+length = 6.0

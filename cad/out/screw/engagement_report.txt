@@ -1,4 +1,6 @@
-Thread engagement: 51 tapped holes, 51 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)
+Thread engagement: 49 tapped holes, 49 with screws -> 2 FAIL (screw past thread), 0 WARN (< 0.8D)
+FAIL J1_Output_Hub                M5 blind drill 10.0 thread 8.5  screw SHCS_M5x10_hub_J1            engages 9.0
+FAIL J2_Output_Hub_Journal        M5 blind drill 10.0 thread 8.5  screw SHCS_M5x10_hub_J2            engages 9.0
 OK   Base_Plate_AL5               M3 THRU drill 5.0 thread 5.0  screw BHCS_M3x8_bracketbase_L0     engages 4.0
 OK   Base_Plate_AL5               M3 THRU drill 5.0 thread 5.0  screw BHCS_M3x8_bracketbase_L1     engages 4.0
 OK   Base_Plate_AL5               M3 THRU drill 5.0 thread 5.0  screw BHCS_M3x8_bracketbase_R0     engages 4.0
@@ -13,6 +15,9 @@ OK   Finger_Standoff_D6x50_R0     M3 THRU drill 50.0 thread 50.0  screw BHCS_M3x
 OK   Finger_Standoff_D6x50_R1     M3 THRU drill 50.0 thread 50.0  screw BHCS_M3x8_fingtopR_3         engages 3.0
 OK   Finger_Standoff_D6x50_R2     M3 THRU drill 50.0 thread 50.0  screw BHCS_M3x8_fingtopR_4         engages 3.0
 OK   Finger_Standoff_D6x50_R3     M3 THRU drill 50.0 thread 50.0  screw BHCS_M3x8_fingtopR_5         engages 3.0
+OK   J1_Output_Hub                M3 blind drill 4.5 thread 3.0  screw BHCS_M3x6_UA_hub_0           engages 3.0
+OK   J1_Output_Hub                M3 blind drill 4.5 thread 3.0  screw BHCS_M3x6_UA_hub_1           engages 3.0
+OK   J1_Output_Hub                M3 blind drill 4.5 thread 3.0  screw BHCS_M3x6_UA_hub_2           engages 3.0
 OK   J2_Output_Hub_Journal        M4 blind drill 9.5 thread 8.0  screw SHCS_M4x8_crank              engages 7.2
 OK   Jaw_Bracket_L                M3 THRU drill 4.0 thread 4.0  screw BHCS_M3x6_nutL_0             engages 2.5
 OK   Jaw_Bracket_L                M3 THRU drill 4.0 thread 4.0  screw BHCS_M3x6_nutL_1             engages 2.5
@@ -40,13 +45,6 @@ OK   Screw_End_Block_R            M3 blind drill 15.0 thread 13.5  screw SHCS_M3
 OK   Screw_End_Block_R            M3 blind drill 15.0 thread 13.5  screw SHCS_M3x40_endblock_1        engages 13.0
 OK   Screw_End_Block_R            M3 blind drill 8.0 thread 6.5  screw BHCS_M3x8_bridge_0           engages 5.0
 OK   Screw_End_Block_R            M3 blind drill 8.0 thread 6.5  screw BHCS_M3x8_bridge_1           engages 5.0
-OK   Servo_Standoff_0             M3 THRU drill 19.0 thread 19.0  screw BHCS_M3x6_servo_0            engages 3.5
-OK   Servo_Standoff_1             M3 THRU drill 19.0 thread 19.0  screw BHCS_M3x6_servo_1            engages 3.5
-OK   Servo_Standoff_2             M3 THRU drill 19.0 thread 19.0  screw BHCS_M3x6_servo_2            engages 3.5
-OK   Servo_Standoff_3             M3 THRU drill 19.0 thread 19.0  screw BHCS_M3x6_servo_3            engages 3.5
 OK   Spring_Output_Drum           M3 THRU drill 6.3 thread 6.3  screw SetScrew_M3x3_drum           engages 3.5
 OK   UA_Standoff_D8_0             M3 THRU drill 88.0 thread 88.0  screw BHCS_M3x8_UA_st_0L           engages 4.2
 OK   UA_Standoff_D8_1             M3 THRU drill 88.0 thread 88.0  screw BHCS_M3x8_UA_st_1L           engages 4.2
-WARN J1_Output_Hub                M3 blind drill 4.0 thread 2.5  screw BHCS_M3x5_UA_hub_0           engages 2.0
-WARN J1_Output_Hub                M3 blind drill 4.0 thread 2.5  screw BHCS_M3x5_UA_hub_1           engages 2.0
-WARN J1_Output_Hub                M3 blind drill 4.0 thread 2.5  screw BHCS_M3x5_UA_hub_2           engages 2.0

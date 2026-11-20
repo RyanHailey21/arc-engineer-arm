@@ -1,0 +1,27 @@
+# Interface: Feetech STS3215 <-> printed cradle (J1/J2 drive frames, J3 wrist cradle, J4 roll housing).
+# Frame: the servo's canonical frame (cad/hardware.py STS: spline on +y, horn seat y=0, body to -y, long axis +x).
+# The servo has no mounting ears: it sits in a pocket and its four bottom-cap screws (PA2.0, replaced by longer ones)
+# go through the cradle floor.  Its supplied horn (4x M3 on PCD 14) carries the pinion / coupler / roll hub.
+# Data interface: every cradle and the servo screws build from these tables.
+
+[interface]
+name = "sts3215__cradle"
+summary = "STS3215 sits in a printed pocket, fixed by its 4 bottom-cap screws (PA2.0 x 12) through the cradle floor; output via the supplied horn"
+owner = "servos (base, wrist)"
+
+[pocket]
+clearance = 0.2          # each side of the 45.25 x 24.8 body
+wall = 3.0
+floor = 3.0              # below the servo's lowest point (bottom -32.9)
+boss_d = 7.0             # floor bosses (2.3 mm wall round the D2.4 hole) up to the bottom-cap screw bosses (-30.3)
+window = [12.0, 29.0, -7.0, 7.0]   # x0, x1, z0, z1: floor window for the connectors (2 mm wall to the screw holes)
+
+[case_screw]             # replaces the servo's own bottom-cap screws
+kind = "PAN"
+size = 2.0
+length = 12.0            # 3 floor + 2.65 boss + 6.35 into the case
+clearance_d = 2.4
+
+[horn]                   # supplied aluminium horn (hardware.sts_horn): 4x M3 tapped through the 2.5 mm disc
+pcd = 14.0
+angles_deg = [45.0, 135.0, 225.0, 315.0]

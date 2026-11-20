@@ -28,8 +28,8 @@ plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10, "axes.edgeco
                      "savefig.facecolor": SURF, "legend.frameon": False, "lines.linewidth": 1.4})
 
 # actuator ratings (report section 2/3): (label, continuous or 50 %-of-stall limit, peak/stall)
-RATING = {"shoulder": ("J1 shoulder, DM-J4340", 9.0, 27.0), "elbow": ("J2 elbow, DM-J4340", 9.0, 27.0),
-          "wrist_pitch": ("J3 wrist pitch, DS3225MG", 1.2, 2.4), "wrist_roll": ("J4 wrist roll, DS3225MG", 1.2, 2.4),
+RATING = {"shoulder": ("J1 shoulder, STS3215 x3", 2.79, 8.38), "elbow": ("J2 elbow, STS3215 x3", 2.79, 8.38),
+          "wrist_pitch": ("J3 wrist pitch, STS3215", 0.98, 2.94), "wrist_roll": ("J4 wrist roll, STS3215", 0.98, 2.94),
           "gripper": ("Gripper, STS3215", 0.98, 2.94)}
 
 
@@ -43,21 +43,21 @@ def static_torque():
     q = json.load(open(os.path.join(REPO, "cad", "out", "fourbar", "quick.json")))["mass_torque"]
     poses = [p["pose"] for p in q["poses"]]
     tau = np.abs(np.array([p["tau"] for p in q["poses"]]))
-    lim = np.array([9.0, 9.0, 2.4, 2.4])                 # J1/J2 continuous, J3/J4 stall
+    lim = np.array([8.38, 8.38, 2.94, 2.94])               # stall at the joint (J1/J2 through the 3:1 stage)
     util = 100 * tau / lim
     fig, ax = plt.subplots(figsize=(10, 4.2))
     x = np.arange(len(poses))
     w = 0.2
-    names = ("J1 shoulder (of 9 N·m continuous)", "J2 elbow (of 9 N·m continuous)", "J3 wrist pitch (of 2.4 N·m stall)",
-             "J4 wrist roll (of 2.4 N·m stall)")
+    names = ("J1 shoulder (of 8.4 N·m stall)", "J2 elbow (of 8.4 N·m stall)", "J3 wrist pitch (of 2.94 N·m stall)",
+             "J4 wrist roll (of 2.94 N·m stall)")
     for i, (c, n) in enumerate(zip((S1, S2, S3, S4), names)):
         ax.bar(x + (i - 1.5) * w, util[:, i], w * 0.9, color=c, label=n)
     ax.axhline(100, color=INK, lw=1.2)
-    ax.text(len(poses) - 0.5, 101, "rating", ha="right", va="bottom", color=INK, fontsize=9)
+    ax.text(len(poses) - 0.5, 101, "stall", ha="right", va="bottom", color=INK, fontsize=9)
     ax.axhline(50, color=INK2, lw=1.0, ls="--")
     ax.text(len(poses) - 0.5, 51, "servo limit: 50 % of stall", ha="right", va="bottom", color=INK2, fontsize=9)
     ax.set_xticks(x, [p.replace("_", " ") for p in poses], rotation=35, ha="right", fontsize=8.5)
-    ax.set_ylabel("static torque, % of rating")
+    ax.set_ylabel("static torque, % of stall")
     ax.set_ylim(0, 135)
     ax.set_title("Static holding torque at every task pose (object in the jaws)", loc="left", color=INK)
     ax.legend(ncol=2, fontsize=8.5, loc="upper left")
@@ -120,7 +120,7 @@ def sim_series():
     axs[-1].set_xlabel("simulated time, s")
     from matplotlib.lines import Line2D
     fig.legend([Line2D([], [], color=S1), Line2D([], [], color=S3, ls="--"), Line2D([], [], color=INK2, ls=":")],
-               ["actuator torque", "continuous rating (servos: 50 % of stall; gripper: rated)", "peak rating / stall"],
+               ["actuator torque", "continuous rating", "stall"],
                loc="upper center", ncol=3, fontsize=8.5, bbox_to_anchor=(0.5, 1.0))
     fig.tight_layout(rect=(0, 0, 1, 0.97))
     save(fig, "plot_sim_torque.png")

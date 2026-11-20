@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "cad/schemas/interface.schema.json",
   "title": "Mating interface (cad/interfaces/*.toml)",
-  "description": "One mating interface read by both mating parts. A [pattern] (bolt circle) or [stations] (row of holes) table makes it probe-able by tools/check_interfaces.py; vendor data tables (e.g. [DM]) are allowed alongside.",
+  "description": "One mating interface read by both mating parts. A [pattern] (bolt circle) or [stations] (row of holes) table makes it probe-able by tools/check_interfaces.py; vendor data tables (e.g. [motor], [pins]) are allowed alongside.",
   "type": "object",
   "required": [
     "interface"
@@ -183,6 +183,9 @@
           "exclusiveMinimum": 0
         }
       }
+    },
+    "side_c": {
+      "$ref": "#/$defs/side"
     }
   },
   "dependentRequired": {
@@ -204,8 +207,6 @@
     "side": {
       "type": "object",
       "required": [
-        "body",
-        "part",
         "hole"
       ],
       "additionalProperties": false,
@@ -244,8 +245,43 @@
         "depth": {
           "type": "number",
           "exclusiveMinimum": 0
+        },
+        "parts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 2,
+            "maxItems": 2
+          }
+        },
+        "thread_depth": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "counterbore_d": {
+          "type": "number",
+          "exclusiveMinimum": 0
         }
-      }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "body",
+            "part"
+          ]
+        },
+        {
+          "required": [
+            "parts"
+          ]
+        }
+      ],
+      "description": "One mating part (body + part) or several built the same way (parts = [[body, part], ...], e.g. mirrored J1/J2 mounts)."
     }
   }
 }

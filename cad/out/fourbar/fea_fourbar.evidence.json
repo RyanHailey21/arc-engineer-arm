@@ -17,7 +17,7 @@
    {
     "id": "design-inputs",
     "path": "evidence/fea_fourbar.inputs.json",
-    "sha256": "d3f99699d44faf643b5aec68316a285379c5ad581c3d818c69df5925ca611e21"
+    "sha256": "57c2082303afd30a166dc48e102e3564f707f44d17b8840539ada41605477d15"
    }
   ],
   "artifacts": [
@@ -29,13 +29,13 @@
    {
     "id": "fea_results.json",
     "path": "fea/fea_results.json",
-    "sha256": "6b0c7662d92001f3db6843b31f4e9b87a3171a4f9a261c6cd9acf4b6e620f89b"
+    "sha256": "b314fd8028b5058b1c0848daef1ca2841c43174a14724d7ffd66e939a2946d70"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-19T05:08:26",
-   "inputs_hash": "a6274db4e832ec4b",
+   "time": "2026-11-19T19:34:11",
+   "inputs_hash": "db2b71e0300e4019",
    "external_copies": []
   }
  }

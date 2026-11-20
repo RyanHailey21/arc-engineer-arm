@@ -1,6 +1,6 @@
 # ARC S2 Engineer arm: mechanical compliance report
 
-Design state: four-bar gripper (`GRIP=FOURBAR`) with the C-frame jaws and the bottom link layer, parallelogram level keeping, 2026-11-18.
+Design state (rev B, 2026-11-19): four-bar gripper (`GRIP=FOURBAR`) with the C-frame jaws and the bottom link layer, parallelogram level keeping, and Feetech STS3215 servos on every joint (J1/J2 through a printed 3:1 spur stage on a drive frame per tower).
 Every number below comes from a check in this repository; the evidence files are in `cad/out/fourbar/` and `sim/arc_arm_fourbar/`, and `cad/tools/quick_check.py` shows whether each is FRESH against the current design inputs.
 
 ## Verdict
@@ -10,9 +10,9 @@ Every number below comes from a check in this repository; the evidence files are
 | R1 | Gripper holds the donut through the full task | **PASS** | clamp margin 1.65 at the servo's continuous rating, 5.6 at stall (friction 0.5) |
 | R2 | Gripper holds the pipe through the full task | **PASS, with a thermal caveat** | holds within the continuous rating (margin 1.13), 5.6 at stall; target margin at rated is 1.5 |
 | R3 | Jaws stay stiff under the grip (pad parallel) | **PASS** | pad bottom moves 0.0006 mm relative to its top (was 1.35 mm); tilt 0.001°; lowest SF 36 |
-| R4 | Motors hold the arm at every task pose | **PASS** | worst static torque 37 % of rated (J1), 36 % of the J3 servo's stall |
-| R5 | Arm actuates effectively through the full task sequence | **PASS** | both tasks complete in MuJoCo; peak torque ≤ 56 % of rated, RMS ≤ 27 %; peak speed ≤ 54 % of rated |
-| R6 | Parts are strong enough (SF ≥ 1.5 on factored loads) | **PASS** | lowest gripper SF 1.8 (CF drive link at servo stall × 1.25); palm 2.1; arm structure ≥ 7 |
+| R4 | Motors hold the arm at every task pose | **PASS, with a thermal caveat** | worst static torque 81 % of the holding limit (J1: 3.39 of 4.19 N·m, 40 % of stall); but J1/J2 holds exceed the servo's continuous rating (2.79 N·m at the joint) by up to 22 % |
+| R5 | Arm actuates effectively through the full task sequence | **PASS, RMS margin tight** | both tasks complete in MuJoCo (85.6 s); peak torque ≤ 47 % of stall; RMS ≤ 90 % of the continuous rating (elbow); peak speed ≤ 72 % of no-load |
+| R6 | Parts are strong enough (SF ≥ 1.5 on factored loads) | **PASS** | lowest gripper SF 1.8 (CF drive link at servo stall × 1.25); palm 2.1; arm structure ≥ 3.9 |
 | R7 | No collisions; field keep-outs respected; wrist stays level | **PASS** | full interference clear at all poses, moves and the donut lift; level-keeping closure exact |
 | R8 | Claw releases within 1 s of power loss (§3.2.4.5) | **OPEN: bench test** | MuJoCo 0.04 s to open 10 mm; depends on the servo's unmeasured back-drive torque |
 
@@ -33,9 +33,9 @@ Source: ARC Championship Events Manual S2 v1.0, §3.2.4 (Objectives B and C) and
 | R1 | §3.2.4 Obj C | Pick the Ø100/Ø50×25 donut off the pole base, carry it up the zig-zag pole (chassis strafe + wrist roll up to 50°), place it flat on the scoring area | clamp from the servo ≥ 1.5 × the clamp the carried load needs at the continuous rating, ≥ 2 × at stall | `tools/grip_hold.py` on the MuJoCo grasp wrench |
 | R2 | §3.2.4 Obj B | Lift the 500 mm Ø26.7 PVC pipe out of the bucket by its top end, swing it horizontal (wrist pitch 90°), drive it 300 mm into the Ø52.5 chute | as R1 | as R1 |
 | R3 | derived | The grip must not tilt the pad (a tilted pad loses the V-notch seat and the donut wrap) | pad bottom moves ≤ 0.25 mm relative to its top, tilt ≤ 0.5°, SF ≥ 1.5, at 1.25 × the servo's stall grip | `fea/run_fea_jaw.py` (multi-material FEA) |
-| R4 | derived | Motors hold the arm still at every task pose, with the object | static torque ≤ continuous rating (DM-J4340 9 N·m); hobby servos (no continuous rating) ≤ 50 % of stall | `tools/quick_check.py` mass/torque, `check_interference.py` §4 |
+| R4 | derived | Motors hold the arm still at every task pose, with the object | static torque ≤ 50 % of stall at the joint (every joint is an STS3215 hobby servo, no continuous rating; J1/J2 through a 3:1 spur stage) | `tools/quick_check.py` mass/torque, `check_interference.py` §4 |
 | R5 | derived | The arm completes both tasks with realistic actuators | tasks complete; peak torque ≤ peak rating; RMS torque ≤ continuous rating; speed ≤ rated speed | `cad/sim/tasks.py` (MuJoCo) |
-| R6 | derived | No part yields | SF ≥ 1.5 on gravity/impact loads × 2.5 and actuator-bounded loads × 1.25 | `fea/run_fea.py` (arm, rev A basis), `fea/run_fea_fourbar.py` (gripper) |
+| R6 | derived | No part yields | SF ≥ 1.5 on gravity/impact loads × 2.5 and actuator-bounded loads × 1.25 | `fea/run_fea.py` (arm, rev B), `fea/run_fea_fourbar.py` (gripper) |
 | R7 | §3.2 field + derived | No self-collision; field keep-outs at every pose and along the donut lift; wrist level | 0 overlaps; level closure exact | `check_interference.py`, `tools/check_level_keeping.py`, `envelopes/field.toml` |
 | R8 | §3.2.4.5 | A defeated robot is powered off, so the claw must open by itself within 1 s | jaws open far enough to drop the object ≤ 1 s after power loss | spring torque vs servo back-drive (bench); `sim/arc_arm_fourbar/validation.json` power-off release |
 
@@ -123,38 +123,40 @@ The spring drives the jaws open when the servo is unpowered. The MuJoCo model op
 
 Static joint torques from the modelled masses (`check_interference.py` §4), with the object at the TCP and the pipe at its centre of mass 203 mm along the pipe:
 
-| Joint | Actuator | Continuous rating | Worst static torque | Pose | Utilisation |
-|---|---|---|---|---|---|
-| J1 shoulder | DM-J4340-2EC | 9 N·m (27 peak) | 3.34 N·m | DONUT_PLACE | 37 % |
-| J2 elbow | DM-J4340-2EC | 9 N·m (27 peak) | 2.84 N·m | PIPE_CHUTE | 32 % |
-| J3 wrist pitch | DS3225MG | stall 2.4 N·m | 0.87 N·m | DONUT_LIFT | 36 % of stall |
-| J4 wrist roll | DS3225MG | stall 2.4 N·m | 0.04 N·m | — | 2 % of stall |
+| Joint | Actuator | Stall at the joint | Holding limit (50 % of stall) | Worst static torque | Pose | Utilisation |
+|---|---|---|---|---|---|---|
+| J1 shoulder | STS3215 + 3:1 spur stage | 8.38 N·m | 4.19 N·m | 3.39 N·m | DONUT_PLACE | 81 % |
+| J2 elbow | STS3215 + 3:1 spur stage | 8.38 N·m | 4.19 N·m | 2.90 N·m | PIPE_CHUTE | 69 % |
+| J3 wrist pitch | STS3215 | 2.94 N·m | 1.47 N·m | 0.88 N·m | DONUT_LIFT | 60 % |
+| J4 wrist roll | STS3215 | 2.94 N·m | 1.47 N·m | 0.04 N·m | — | 3 % |
 
 ![Static holding torque at every task pose](figures/plot_static_torque.png)
+
+The STS3215's continuous rating (10 kg·cm, 2.79 N·m at the joint through the 3:1 stage) is below the worst J1 and J2 holds (3.39 and 2.90 N·m). The task's RMS stays within it (section 3), but J1 holds about 3.2 N·m for some 20 s while carrying the pipe, so the base servos will run warm on long holds. Two fixes, if the bench test shows it: a gravity-balance spring on J1/J2 (it carries most of the static torque), or a 4:1 stage (72T gear, R74 tip).
 
 The static model used to put the pipe's mass at the TCP. That hid its 0.33 N·m moment on the wrist pitch once the pipe is swung horizontal (PIPE_CHUTE showed 0.01 N·m; it is 0.35). The check now uses the pipe's centre of mass.
 
 ## 3. The arm actuates effectively (R5)
 
-MuJoCo runs both full tasks (`cad/sim/tasks.py`, actuators as position servos with MIT-style velocity feed-forward, joint moves at half the speed limits, the pipe swing at a quarter). Both succeed: the donut lands flat on the platform (centre within 1 mm of the CAD place pose) and the pipe ends 297 mm into the chute. 74.6 s simulated, including the chassis drives; joint tracking within 0.84°.
+MuJoCo runs both full tasks (`cad/sim/tasks.py`, actuators as position servos with velocity feed-forward, joint moves at half the speed limits, the pipe swing at a quarter). Both succeed: the donut lands flat on the platform (centre within 1 mm of the CAD place pose) and the pipe ends 297 mm into the chute. 85.6 s simulated, including the chassis drives (74.6 s with the earlier, faster joint motors: the 3:1 STS3215 drives cost about 11 s); joint tracking within 0.84°.
 
-| Joint | Peak torque | vs peak rating | RMS torque | vs continuous | Peak speed | vs rated speed |
+| Joint | Peak torque | vs stall | RMS torque | vs continuous | Peak speed | vs no-load speed |
 |---|---|---|---|---|---|---|
-| Shoulder | 3.98 N·m | 15 % of 27 | 2.25 N·m | 25 % of 9 | 2.00 rad/s | 53 % of 3.8 |
-| Elbow | 5.07 N·m | 19 % of 27 | 2.46 N·m | 27 % of 9 | 2.06 rad/s | 54 % of 3.8 |
-| Wrist pitch | 0.99 N·m | 41 % of 2.4 stall | 0.61 N·m | 25 % of stall | 2.88 rad/s | 36 % of 8.1 |
-| Wrist roll | 0.40 N·m | 17 % of 2.4 stall | 0.04 N·m | 2 % | 4.09 rad/s | 51 % of 8.1 |
+| Shoulder | 3.92 N·m | 47 % of 8.38 | 2.24 N·m | 80 % of 2.79 | 1.13 rad/s | 72 % of 1.57 |
+| Elbow | 3.65 N·m | 44 % of 8.38 | 2.51 N·m | 90 % of 2.79 | 0.94 rad/s | 60 % of 1.57 |
+| Wrist pitch | 0.93 N·m | 31 % of 2.94 | 0.61 N·m | 62 % of 0.98 | 1.14 rad/s | 24 % of 4.7 |
+| Wrist roll | 0.40 N·m | 13 % of 2.94 | 0.03 N·m | 3 % of 0.98 | 2.45 rad/s | 52 % of 4.7 |
 | Gripper | 0.55 N·m | 19 % of 2.94 stall | 0.35 N·m | 35 % of 0.98 | 2.35 rad/s | 50 % of 4.7 |
 
 ![Actuator torque through both tasks](figures/plot_sim_torque.png)
 
-*Torque at every joint through both tasks against the actuator ratings (dashed: continuous rating, or 50 % of stall for the hobby servos; dotted: peak rating or stall). The gripper's trace is the jaw motion only (the grasp is a weld in the sim).*
+*Torque at every joint through both tasks against the actuator ratings (dashed: continuous rating; dotted: stall; J1/J2 at the joint, through the 3:1 stage). The gripper's trace is the jaw motion only (the grasp is a weld in the sim).*
 
 | Donut gripped on the pole base | Donut placed on the platform | Pipe lifted out of the bucket |
 |---|---|---|
 | ![](figures/sim_donut_pick.png) | ![](figures/sim_donut_place.png) | ![](figures/sim_pipe_lift.png) |
 
-Rated speeds: DM-J4340-2EC 36 rpm at 24 V (3.8 rad/s); DS3225MG 0.13 s/60° at 6.8 V (8.1 rad/s); STS3215 0.222 s/60° at 12 V (4.7 rad/s).
+Rated speeds: STS3215 0.222 s/60° at 12 V (4.7 rad/s); J1/J2 through the 3:1 stage 1.57 rad/s.
 
 **Correction to earlier numbers.** Earlier runs reported shoulder 11.7 and elbow 18.9 N·m peaks and a 1.15 N·m pipe moment. Those were a sim artefact: each 10 ms setpoint was applied as a step, so the stiff joint servos were kicked at 100 Hz (the grasp moment alternated sign every control period). The sim now ramps each setpoint across the physics substeps, as a drive interpolates its command stream, and every load now matches hand calculation (the pipe's median moment is its static 0.324 N·m).
 
@@ -162,7 +164,7 @@ The gripper torque in this table is the jaw motion only: the sim's grasp is a we
 
 ## 4. Strength (R6)
 
-Arm structure (rev A FEA basis, `fea/out/fea_report.md`, loads × 2.5): upper arm SF 7.2, forearm 9.5, clevis 46, J2 hub 36, roll housing 63. These were sized for a 1.0 kg head plus payload; the four-bar head plus the 300 g donut is 0.65 kg, so they remain conservative.
+Arm structure (rev B, `fea/out/fea_report.md`, loads × 2.5): upper arm SF 3.9, forearm 9.7, clevis 46, J2 hub 72 (now held on its hex by the 54T gear), roll housing 62 (with the STS3215 pocket). The upper arm's SF was 7.2 in rev A; that run predates the current upper-arm plate and level-keeping linkage, so 3.9 is the current geometry's value. These were sized for a 1.0 kg head plus payload; the four-bar head plus the 300 g donut is 0.65 kg, so they remain conservative.
 
 Gripper (`fea/run_fea_fourbar.py`, actuator loads × 1.25, external loads × 2.5):
 
@@ -190,7 +192,7 @@ Level keeping, rod 2: buckling 313 N against a worst load of 134 N (SF 2.35), sh
 2. **Pipe-hold servo temperature (R2).** Hold the pipe horizontal for 30 s and log the servo's temperature and load readback; it should stay inside its continuous rating.
 3. **Pad friction.** Measure the TPU pad's friction on PVC and on a printed donut; the hold margins assume 0.5.
 4. **Donut mass and the zig-zag pole.** Weigh a real donut (300 g assumed). The pole is still a placeholder (manual: TBA); re-run `check_interference.py` and the sim when the drawing lands.
-5. **DM-J4340 variant.** Confirm the purchased motor's datasheet (V1.1 lists different torque figures); the margins above are large either way.
+5. **STS3215 drives on the bench.** Check the printed 18T/54T stage for backlash and tooth wear under the J1/J2 holding load, and log the J1/J2 servo temperature through a full pipe task: their holds run up to 22 % over the continuous rating (section 2). If they overheat, add a gravity-balance spring or go to a 4:1 stage.
 6. **Purchased parts to confirm.** McMaster part number for the new D4×8 ground pins (`data/catalogue.toml`).
 
 ## Recommendations

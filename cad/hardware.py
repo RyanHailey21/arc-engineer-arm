@@ -3,7 +3,7 @@
 hardware.py - purchased-part geometry.
 
 * Vendor STEP models (cad/vendor/...) for parts whose makers publish CAD:
-  Damiao DM-J4340-2EC, DJI M2006 P36, DJI C610.  Loaded once, cached as BREP,
+  Feetech STS3215, DJI M2006 P36, DJI C610.  Loaded once, cached as BREP,
   re-oriented to a canonical frame (axis +Y, mounting face at y=0).
 * ISO/DIN standard hardware generated at standard dimensions (same approach as
   the FreeCAD Fasteners workbench): ISO 4762 SHCS, ISO 7380 BHCS, ISO 10511
@@ -11,7 +11,7 @@ hardware.py - purchased-part geometry.
   ISO 8734 dowels, deep-groove bearings (rings + shields), M3 round standoffs.
 * Catalogue parts without public CAD, modelled to catalogue drawings:
   HIWIN MGN9 rail + MGN9H block, GT2 20T pulley + 6 mm belt, standard-size
-  servo (DS3225 envelope), AS5600 board, springs.
+  AS5600 board, springs.
 
 Every builder returns (vis_shape, chk_shape): vis is the detailed display
 geometry, chk is the simplified solid used by the interference sweep.
@@ -48,7 +48,7 @@ _VCACHE = {}
 
 def vendor(name):
     """Return the vendor shape in canonical frame (copy).  Canonical frames:
-    DM4340: axis +Y, OUTPUT face at y=0, housing extends to y=+53.25.
+    STS3215: output spline on +Y through the origin, horn seat at y=0, body to -y, long axis +x (horns removed).
     M2006 : axis +Y; rear cap at y=0 (4 mm rear stub to y=-6.3), gearbox front face at y=42,
             D6 output shaft (flat + tapped centre hole) from y=42 to 58.5.
     C610  : as delivered, recentred on its PCB bounding box."""
@@ -59,10 +59,14 @@ def vendor(name):
         s = Part.Shape()
         s.read(cache)
     else:
-        if name == "DM4340":
-            s = Part.Shape()
-            s.read(os.path.join(VENDOR, "damiao", "DM-J4340-2EC-V1.1.stp"))
-            s = Part.makeCompound(s.Solids)           # model already axis Y, output face y=0
+        if name == "STS3215":
+            raw = Part.Shape()
+            raw.read(os.path.join(VENDOR, "feetech", "STS3215.stp"))
+            # drop the two supplied horns (D19.95, on the output axis at vendor x=-25.5): modelled as their own parts
+            keep = [x.copy() for x in raw.Solids
+                    if not (abs(x.BoundBox.Center.x + 25.5) < 0.6 and abs(x.BoundBox.XLength - 19.95) < 0.3)]
+            s = Part.makeCompound(keep)
+            s.translate(V(25.5, -4.7, 0))             # output axis -> x=0, horn seat -> y=0 (canonical frame above)
         elif name == "M2006":
             raw = Part.Shape()
             raw.read(os.path.join(VENDOR, "dji", "RoboMaster_M2006_P36.STEP"))
@@ -278,52 +282,73 @@ def mgn9h_block(yc, x0, z0):
     return body, chk, holes
 
 
-# ----------------------------------------------------------- servo (DS3225)
-def servo_std(y_spline, direction):
-    """Standard-size servo, spline axis = +/-Y through origin at the spline face
-    y_spline, body extending away (direction) - long axis along +X with spline
-    10 mm from the body end.  Returns (vis, chk, ear_hole_xs, y_ear_face)."""
-    sgn = direction
-    L, W, H = 40.0, 20.0, 37.0
-    so = 10.0
-    x0, x1 = -so, L - so
-    y_top = y_spline + sgn * 4.0
-    yb = y_top + sgn * H
-    ya, yb2 = sorted((y_top, yb))
-    body = Part.makeBox(L, yb2 - ya, W, V(x0, ya, -W / 2))
-    # case split lines + bottom cap
-    for frac in (0.18, 0.82):
-        yl = y_top + sgn * H * frac
-        g0, g1 = sorted((yl, yl + sgn * 0.4))
-        body = body.cut(Part.makeBox(L + 1, g1 - g0, W + 1, V(x0 - 0.5, g0, -W / 2 - 0.5)).cut(
-            Part.makeBox(L - 0.8, g1 - g0 + 2, W - 0.8, V(x0 + 0.4, g0 - 1, -W / 2 + 0.4))))
-    y_ear = y_top + sgn * (H - 28.0)
-    e0, e1 = sorted((y_ear, y_ear + sgn * 2.5))
-    ear = Part.makeBox(54.5, e1 - e0, W, V((x0 + x1) / 2 - 27.25, e0, -W / 2))
-    hx = ((x0 + x1) / 2 + 24.75, (x0 + x1) / 2 - 24.75)
-    for x in hx:
-        for z in (-5.0, 5.0):
-            ear = ear.cut(Part.makeCylinder(2.1, 5, V(x, e0 - 1, z), V(0, 1, 0)))
-        ear = ear.cut(Part.makeBox(4, 5, 1.6, V(x if x > 0 else x - 4, e0 - 1, -0.8)))
-    body = body.fuse(ear)
-    s0, s1 = sorted((y_spline, y_top))
-    boss = _ycyl(6.5, min(y_top, y_top - sgn * 1.0), max(y_top, y_top - sgn * 1.0)).fuse(_ycyl(2.95, s0, s1))
-    vis = body.fuse(boss)
-    chk = Part.makeBox(L, yb2 - ya, W, V(x0, ya, -W / 2)).fuse(ear).fuse(_ycyl(2.95, s0, s1))
-    return vis, chk, hx, y_ear
+# ------------------------------------------------- Feetech STS3215 (vendor STEP, cad/vendor/feetech/STS3215.stp)
+# Canonical frame (vendor("STS3215")): output spline on +Y through the origin, horn seat at y=0, body below (-y),
+# long axis along +x (spline 10.1 mm from the near end), width along z.  Heights measured from the vendor model:
+# case top 0.2 within 10 mm of the spline, 2.8 on the raised far end; bottom-cap screw bosses at -30.3;
+# lowest point (idler shaft, connectors) -32.9.  Bottom-cap screws (4x PA2.0, replaced by longer ones to fix the
+# servo): (8.3, +-10.25) and (32.75, +-10.25).
+STS = dict(x0=-10.14, x1=35.11, w=12.39, top_near=0.2, top_far=2.8, far_x=10.0, boss_y=-30.3, bottom=-32.9,
+           base_y=-30.25, conn=(15.0, 29.0, 8.0), idler_r=1.5,   # bottom: case at -30.3 except the connector block
+                                                                  # (x 15..29, |z|<8) and the idler shaft (x=0), to -32.9
+           screws=((8.3, 10.25), (8.3, -10.25), (32.75, 10.25), (32.75, -10.25)),
+           horn_t=4.5, horn_disc_t=2.5, horn_d=19.95, horn_hub_d=9.0)
 
 
-HORN_D, HORN_PCD = 20.0, 14.0     # commercial 25T aluminium disc horn (Thingbits TH1144 / Handsontec type): D20, 4x M3 on PCD 14
+def _sts_place(shapes, y_seat, direction):
+    """Canonical STS3215 frame -> spline on the Y axis, horn seat at y_seat, body towards 'direction' (+1/-1)."""
+    out = []
+    for s_ in shapes:
+        s_ = s_.copy()
+        if direction > 0:
+            s_.rotate(V(0, 0, 0), V(1, 0, 0), 180)          # body to +y, keeps a right-handed frame
+        s_.translate(V(0, y_seat, 0))
+        out.append(s_)
+    return out
 
 
-def servo_horn_disc(y0, direction, d=HORN_D, t=2.0):
-    """25T aluminium disc horn: hub on spline + disc with 4x M3 on PCD 14."""
-    ya, yb = sorted((y0, y0 + direction * t))
-    h = _ycyl(d / 2, ya, yb).cut(_ycyl(2.95, ya - 1, yb + 1))
+def sts3215(y_seat, direction):
+    """Feetech STS3215 (vendor model, horns removed) with the horn seat at y_seat and the body towards direction.
+    chk: the body footprint from the case bottom (-30.25) to the near-spline top, the raised far end, and the
+    connector block and idler shaft that reach -32.9 (they sit over the cradle floor's window / clear of its bosses)."""
+    S = STS
+    vis = vendor("STS3215")
+    chk = Part.makeBox(S["x1"] - S["x0"], S["top_near"] - S["base_y"], 2 * S["w"], V(S["x0"], S["base_y"], -S["w"]))
+    cx0, cx1, cz = S["conn"]
+    chk = chk.fuse(Part.makeBox(cx1 - cx0, S["base_y"] - S["bottom"] + 0.01, 2 * cz, V(cx0, S["bottom"], -cz)))
+    chk = chk.fuse(_ycyl(S["idler_r"], S["bottom"], S["base_y"] + 0.01))
+    for (sx_, sz_) in S["screws"]:                                         # bottom-cap screw pilot holes (case)
+        chk = chk.cut(_ycyl(0.85, S["base_y"] - 1, S["base_y"] + 7.0, sx_, sz_))
+    chk = chk.fuse(Part.makeBox(S["x1"] - S["far_x"], S["top_far"] - S["top_near"], 2 * S["w"],
+                                V(S["far_x"], S["top_near"], -S["w"])))
+    chk = chk.cut(_ycyl(S["horn_hub_d"] / 2 + 0.1, -1.0, S["top_near"] + 0.1))     # the horn hub seats on the spline
+    return tuple(_sts_place((vis, chk), y_seat, direction))
+
+
+def sts_horn(y_seat, direction):
+    """The STS3215's supplied aluminium horn (Feetech spec p.7): D9 hub on the 25T spline, D19.95 x 2.5 disc on top,
+    4x M3 tapped on PCD 14; 4.5 tall from the horn seat, on the side away from the servo body."""
+    S = STS
+    h = _ycyl(S["horn_hub_d"] / 2, 0.0, S["horn_t"] - S["horn_disc_t"]).fuse(
+        _ycyl(S["horn_d"] / 2, S["horn_t"] - S["horn_disc_t"], S["horn_t"]))
+    h = h.cut(_ycyl(2.95, -1, S["horn_t"] + 1))
     for i in range(4):
         a = math.radians(45 + 90 * i)
-        h = h.cut(_ycyl(1.25, ya - 1, yb + 1, HORN_PCD / 2 * math.cos(a), HORN_PCD / 2 * math.sin(a)))
-    return h, h
+        h = h.cut(_ycyl(1.25, -1, S["horn_t"] + 1, HORN_PCD / 2 * math.cos(a), HORN_PCD / 2 * math.sin(a)))
+    return tuple(_sts_place((h, h), y_seat, direction))
+
+
+def pan_screw(d, L, y_head, direction):
+    """Pan-head screw (ISO 7045 proportions; also the STS3215's PA2.0 self-tapping case screws), head bearing face
+    at y_head, shank towards direction."""
+    dk, k = 2.0 * d, 0.7 * d
+    y0, y1 = sorted((y_head, y_head + direction * L))
+    h0, h1 = sorted((y_head, y_head - direction * k))
+    s = _ycyl(0.41 * d, y0, y1).fuse(_ycyl(dk / 2, h0, h1))
+    return s, s
+
+
+HORN_D, HORN_PCD = 20.0, 14.0     # 25T aluminium disc horn: D20, 4x M3 on PCD 14 (the STS3215's own horn uses the same PCD)
 
 
 # --------------------------------------------------------------- misc boards

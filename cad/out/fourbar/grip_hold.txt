@@ -2,18 +2,18 @@ Grip hold check (tools/grip_hold.py): sim grasp wrench at the TCP vs clamp capac
 source: sim\arc_arm_fourbar\task_run.json (per-phase peaks after the 0.25 s attach transient; field-contact samples excluded)
 
 donut, jaw 100.0, MU 0.50 (design)
-  load at TCP: Fx 0.458, Fy 2.285, Fz 3.323, Mx 0.037, My 0.006, Mz 0.002  (N, N*m)
-  clamp needed per jaw: Fx 0.23, Fy 1.14, Fz 3.32, Mx 0.74, My 0.39, Mz 0.04  -> total 5.87 N
-  clamp available: 9.7 N at rated (0.98 N*m, spring takes 0.173), 33.1 N at stall -> SF 1.65 rated, 5.64 stall
+  load at TCP: Fx 0.221, Fy 2.281, Fz 3.099, Mx 0.037, My 0.006, Mz 0.003  (N, N*m)
+  clamp needed per jaw: Fx 0.11, Fy 1.14, Fz 3.10, Mx 0.74, My 0.39, Mz 0.06  -> total 5.54 N
+  clamp available: 9.7 N at rated (0.98 N*m, spring takes 0.173), 33.1 N at stall -> SF 1.74 rated, 5.97 stall
 donut, jaw 100.0, MU 0.30 (low-friction case)
-  load at TCP: Fx 0.458, Fy 2.285, Fz 3.323, Mx 0.037, My 0.006, Mz 0.002  (N, N*m)
-  clamp needed per jaw: Fx 0.33, Fy 1.14, Fz 5.54, Mx 1.23, My 0.65, Mz 0.07  -> total 8.96 N
-  clamp available: 9.7 N at rated (0.98 N*m, spring takes 0.173), 33.1 N at stall -> SF 1.08 rated, 3.69 stall
+  load at TCP: Fx 0.221, Fy 2.281, Fz 3.099, Mx 0.037, My 0.006, Mz 0.003  (N, N*m)
+  clamp needed per jaw: Fx 0.16, Fy 1.14, Fz 5.17, Mx 1.23, My 0.65, Mz 0.10  -> total 8.45 N
+  clamp available: 9.7 N at rated (0.98 N*m, spring takes 0.173), 33.1 N at stall -> SF 1.14 rated, 3.92 stall
 pipe, jaw 13.8, MU 0.50 (design)
-  load at TCP: Fx 1.620, Fy 0.027, Fz 1.649, Mx 0.005, My 0.325, Mz 0.000  (N, N*m)
-  clamp needed per jaw: Fx 0.27, Fy 0.01, Fz 1.17, Mx 0.33, My 3.53  -> total 5.31 N
-  clamp available: 6.0 N at rated (0.98 N*m, spring takes 0.481), 29.5 N at stall -> SF 1.13 rated, 5.55 stall
+  load at TCP: Fx 1.620, Fy 0.027, Fz 1.652, Mx 0.005, My 0.324, Mz 0.000  (N, N*m)
+  clamp needed per jaw: Fx 0.27, Fy 0.01, Fz 1.17, Mx 0.33, My 3.52  -> total 5.30 N
+  clamp available: 6.0 N at rated (0.98 N*m, spring takes 0.481), 29.5 N at stall -> SF 1.13 rated, 5.56 stall
 pipe, jaw 13.8, MU 0.30 (low-friction case)
-  load at TCP: Fx 1.620, Fy 0.027, Fz 1.649, Mx 0.005, My 0.325, Mz 0.000  (N, N*m)
-  clamp needed per jaw: Fx 0.44, Fy 0.01, Fz 1.94, Mx 0.33, My 5.71  -> total 8.43 N
+  load at TCP: Fx 1.620, Fy 0.027, Fz 1.652, Mx 0.005, My 0.324, Mz 0.000  (N, N*m)
+  clamp needed per jaw: Fx 0.44, Fy 0.01, Fz 1.95, Mx 0.33, My 5.69  -> total 8.41 N
   clamp available: 6.0 N at rated (0.98 N*m, spring takes 0.481), 29.5 N at stall -> SF 0.71 rated, 3.50 stall

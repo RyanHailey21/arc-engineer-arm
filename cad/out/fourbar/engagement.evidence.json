@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "engagement",
   "status": "pass",
-  "reason": "WARN: Thread engagement: 20 tapped holes, 20 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
-  "scope": "Thread engagement: 20 tapped holes, 20 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
+  "reason": "PASS: Thread engagement: 18 tapped holes, 18 with screws -> 0 FAIL (screw past thread), 0 WARN (< 0.8D)",
+  "scope": "Thread engagement: 18 tapped holes, 18 with screws -> 0 FAIL (screw past thread), 0 WARN (< 0.8D)",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -17,21 +17,23 @@
    {
     "id": "design-inputs",
     "path": "evidence/engagement.inputs.json",
-    "sha256": "d3f99699d44faf643b5aec68316a285379c5ad581c3d818c69df5925ca611e21"
+    "sha256": "8383e80ebafcafb78a2360f4e56f73c7ec41b3258cc4b2b08bb1c26d5571e1b3"
    }
   ],
   "artifacts": [
    {
     "id": "engagement_report.txt",
     "path": "engagement_report.txt",
-    "sha256": "3e354212bb93a33d3bf3645c63b4bacf101a9a726e1b3eeee200ef457a22f97b"
+    "sha256": "0b63a9c8f1714111f15a5fab82d70cbf36a13239cf0708ec9f7c1bb0b7fd5774"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-19T04:48:10",
-   "inputs_hash": "a6274db4e832ec4b",
-   "external_copies": []
+   "time": "2026-11-19T20:20:09",
+   "inputs_hash": "301ffdfdcfc51099",
+   "external_copies": [
+    "fab/engagement_report.txt"
+   ]
   }
  }
 }

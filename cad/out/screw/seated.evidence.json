@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "seated",
   "status": "pass",
-  "reason": "PASS: Fastener seating (SCREW, STOW): 161 screws/pins, 172 seat points -> 0 FAIL",
-  "scope": "Fastener seating (SCREW, STOW): 161 screws/pins, 172 seat points -> 0 FAIL",
+  "reason": "PASS: Fastener seating (SCREW, STOW): 135 screws/pins, 136 seat points -> 0 FAIL",
+  "scope": "Fastener seating (SCREW, STOW): 135 screws/pins, 136 seat points -> 0 FAIL",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -17,20 +17,20 @@
    {
     "id": "design-inputs",
     "path": "evidence/seated.inputs.json",
-    "sha256": "c0983bbdfa1c64433d4de423a6db9d8253f177bcb526733003aaa24283c71f5c"
+    "sha256": "e310c8967299d39c32e658826a3a167a5346ce50a2bf194d9787abeec33f3789"
    }
   ],
   "artifacts": [
    {
     "id": "seated_report.txt",
     "path": "seated_report.txt",
-    "sha256": "35d673664339840c67a2a5a6454dcd3f59155dd7948fca2d9c55ee6deb7cea80"
+    "sha256": "16d66666143e73bf81dac0c7fae47befbbe802486831583dc3757e5569fcfbfc"
    }
   ],
   "extensions": {
    "variant": "SCREW",
-   "time": "2026-11-18T04:57:38",
-   "inputs_hash": "d7e43ee0e386a980",
+   "time": "2026-11-19T18:48:31",
+   "inputs_hash": "a6a5f3405c32a209",
    "external_copies": []
   }
  }

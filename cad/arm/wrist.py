@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Wrist: LEVEL (level member + J3 pitch servo), GRIPPER (pitch frame: shaft, clevis plates, roll housing,
-J4 roll servo, 6805 bearing) and the roll hub shared by every gripper variant (roll_hub_parts, built from
+"""Wrist: LEVEL (level member + J3 pitch STS3215 in its printed cradle), GRIPPER (pitch frame: shaft, clevis
+plates, roll housing with the J4 roll STS3215, 6805 bearing) and the roll hub shared by every gripper variant (roll_hub_parts, built from
 interfaces/roll_*.toml).  Roll-stage constants: HX, ROLL_Z, ROLL_XS.
 """
 from arm.core import *  # noqa: F401,F403
@@ -14,21 +14,38 @@ SERVO_ANG = _W["SERVO_ANG"]
 HX = _W["HX"]
 ROLL_Z = _W["ROLL_Z"]
 ROLL_XS = _W["ROLL_XS"]
+IF_J3 = iface.load("level_member__j3_cradle")
+J3_SEAT = -45.0 + 2.0 - H.STS["horn_t"]          # J3 horn seat: the horn's disc face stays at y=-43 (coupler face)
+J4_SEAT = ROLL_XS + 2.0 - H.STS["horn_t"]        # J4 horn seat: the horn's disc face stays at x=49 (roll hub rear face)
 
 
 def _servo_rot():
     return App.Rotation(V(0, 1, 0), -SERVO_ANG)
 
 
+def j3_cradle():
+    """Printed J3 cradle in the servo's canonical frame: pocket (walls + floor + bottom-cap screw bosses), a rim at the
+    top and four pillars up to the level member plate, each with an M3 heat-set insert."""
+    J = IF_J3["pillars"]
+    y_plate = (Y["ROCK"] - T / 2) - J3_SEAT                # level plate's outboard face in the servo frame (8.5)
+    f0, f1 = J["flange"]
+    cr = sts_pocket(f1)
+    S, pc = H.STS, IF_STS["pocket"]
+    m = pc["clearance"] + pc["wall"]
+    xs = [p[0] for p in J["points"]]
+    rim = box(min(xs) - J["d"] / 2, f0, -(S["w"] + m), max(xs) + J["d"] / 2, f1, S["w"] + m)
+    rim = rim.cut(box(S["x0"] - pc["clearance"], f0 - 1, -(S["w"] + pc["clearance"]), S["x1"] + pc["clearance"], f1 + 1,
+                      S["w"] + pc["clearance"]))
+    cr = cr.fuse(rim)
+    for (px, pz) in J["points"]:
+        cr = cr.fuse(ycyl(px, pz, f0, y_plate, J["d"] / 2))
+        cr = cr.cut(ycyl(px, pz, y_plate - J["insert_depth"], y_plate + 1, J["insert_d"] / 2))
+    return cr.removeSplitter()
+
+
 def body_level():
     yc = Y["ROCK"]
-    R = _servo_rot()
-    sv, svc, hx, y_ear = H.servo_std(-45.0, -1)
-    st_pts = []
-    for x in hx:
-        for z in (-5.0, 5.0):
-            p = R.multVec(V(x, 0, z))
-            st_pts.append((p.x, p.z))
+    st_pts = [sts_xz(px, pz, -1, SERVO_ANG) for (px, pz) in IF_J3["pillars"]["points"]]
     v2 = u(K["V2_ANG"], K["V2_LEN"])         # stage-2 lever (same as the rocker's: the parallelogram's far end)
     pts = [(0, 0, 14), (v2[0], v2[1], 8.5)] + [(x, z, 6) for (x, z) in st_pts]
     pl = plate(pts, yc, [(x, z, 1.65) for (x, z) in st_pts] + [(v2[0], v2[1], 2.55)])
@@ -38,14 +55,18 @@ def body_level():
     out = [Part_("Wrist_Level_Member_CF3", pl, pl, "CF", "custom: 3 mm CF plate (DXF), hex af19", "cf")]
     out += level_hub("Level_Hub_Wrist")
     out += v2_pin("Dv2", *v2)
-    sv.Placement = App.Placement(V(), R).multiply(sv.Placement)
-    svc.Placement = App.Placement(V(), R).multiply(svc.Placement)
-    out.append(Part_("J3_Wrist_Servo_DS3225", sv, svc, "CAT", "DS3225MG", "motor"))
+    sv, svc = H.sts3215(0.0, -1)
+    out.append(Part_("J3_Wrist_Servo_STS3215", sts_place(sv, J3_SEAT, -1, SERVO_ANG), sts_place(svc, J3_SEAT, -1, SERVO_ANG),
+                     "CAT", "STS3215", "motor"))
+    cr = sts_place(j3_cradle(), J3_SEAT, -1, SERVO_ANG)
+    out.append(Part_("Wrist_Servo_Cradle", cr, cr, "PRINT", "custom: PETG-CF print, 4x M3 heat-set inserts", "pla", "J3 STS3215 cradle"))
+    out += sts_case_screws("J3", J3_SEAT, -1, SERVO_ANG)
+    J = IF_J3["pillars"]
     for i, (x, z) in enumerate(st_pts):
-        out.append(P("Servo_Standoff_%d" % i, at(H.standoff_round(6, abs(y_ear - (yc - T / 2)), y_ear, 1), x, z),
-                     "AL", "custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)", "alu", "D6 x %.0f M3 female" % abs(y_ear - (yc - T / 2))))
-        out.append(P("CSK_M3x6_level_%d" % i, at(csk(3, 6, yc + T / 2, -1), x, z), "CAT", "CSK", "steel"))
-        out.append(P("BHCS_M3x6_servo_%d" % i, at(H.screw("BHCS", 3, 6, y_ear - 2.5, 1), x, z), "CAT", "BHCS", "steel"))
+        y_pl = yc - T / 2
+        out.append(P("Insert_M3_j3cradle_%d" % i, at((ring(0, 0, y_pl, y_pl - 3.8, J["insert_d"] / 2, 1.25),) * 2, x, z),
+                     "CAT", "INSERT", "brass"))
+        out.append(P("CSK_M3x6_level_%d" % i, at(csk(3, IF_J3["fastener"]["length"], yc + T / 2, -1), x, z), "CAT", "CSK", "steel"))
     return out
 
 
@@ -85,7 +106,7 @@ IF_HORN = iface.load("roll_horn__roll_hub")
 def roll_hub_parts():
     """Roll horn + 6061 roll hub + horn screws, shared by every gripper variant.  The two bolt patterns
     come from interfaces/roll_horn__roll_hub.toml (rear) and roll_hub__gripper_palm.toml (front)."""
-    out = [P("Servo_Horn_25T_roll", _to_roll_axis(H.servo_horn_disc(ROLL_XS, 1)), "CAT", "HORN-25T", "alu")]
+    out = [P("Servo_Horn_25T_roll", _to_roll_axis(H.sts_horn(J4_SEAT, -1)), "CAT", "HORN-25T", "alu", "supplied with the J4 STS3215")]
     fx, fl = IF_PALM.frame_x, IF_PALM["flange"]
     hub = xcyl(49, fx - fl["thickness"], fl["journal_od"] / 2).fuse(xcyl(fx - fl["thickness"], fx, fl["od"] / 2)).cut(xcyl(52, fx + 1, 11))
     hub = hub.cut(xcyl(48, 53, 3.0))           # rear wall = journal dia: the 6805 slides on from the rear
@@ -115,7 +136,7 @@ def body_gripper():
     out.append(Part_("Wrist_Shaft_D10x70", sh, sh, "STEEL", "custom: cut from McMaster 6112K47 D10 h6 rod, D6x4 ground step, D-flats, e-clip groove", "steel"))
     ec = H.eclip(10, 25.0, 1)
     out.append(P("Eclip_D10_wrist", (ec[0], ycyl(0, 0, 25.0, 25.9, 8.5).cut(ycyl(0, 0, 24, 27, 3.5))), "CAT", "ECLIP", "steel"))
-    out.append(P("Servo_Horn_25T_pitch", H.servo_horn_disc(-45.0, 1), "CAT", "HORN-25T", "alu"))
+    out.append(P("Servo_Horn_25T_pitch", H.sts_horn(J3_SEAT, -1), "CAT", "HORN-25T", "alu", "supplied with the J3 STS3215"))
     cp = ring(0, 0, -43.0, -41.0, 12.0, 3.075)               # D6 bore on the stepped shaft end (mid-limit 6.15)
     cp = cp.fuse(ycyl(0, 0, -43.0, -41.0, 3.075).common(box(2.6, -43.0, -4, 4.0, -41.0, 4)))   # D-bore flat at mid-limit 2.6
     for k in range(4):
@@ -150,24 +171,23 @@ def body_gripper():
     hs = box(8, 20, hz0, 60, 22, hz1).fuse(box(8, -22, hz0, 60, -20, hz1))
     hs = hs.fuse(box(34, -22, hz0, 37, 22, hz1)).fuse(box(53, -22, hz0, 60, 22, hz1))
     hs = hs.fuse(box(8, -22, hz0, 60, 22, hz0 + 3))
-    hs = hs.cut(box(33, -10.3, ROLL_Z - 10.3, 38, 10.3, ROLL_Z + 30.3))                            # servo body through bulkhead
+    # J4 STS3215: located by the bulkhead opening, held by its bottom-cap screws through a pocket floor
+    S_, pk_ = H.STS, IF_STS["pocket"]
+    cl_ = pk_["clearance"]
+    hs = hs.cut(box(33, -(S_["w"] + cl_), ROLL_Z + S_["x0"] - cl_, 38, S_["w"] + cl_, ROLL_Z + S_["x1"] + cl_))   # bulkhead opening
+    hs = hs.fuse(_to_roll_axis((sts_place(sts_pocket(34.0 - J4_SEAT), J4_SEAT, -1),) * 2)[0])
     hs = hs.cut(xcyl(52, 61, 18.5))                                               # 6805 seat
-    ear_pts = [(y, z) for z in (ROLL_Z + 34.75, ROLL_Z - 14.75) for y in (-5.0, 5.0)]
-    for (y, z) in ear_pts:
-        hs = hs.cut(Part.makeCylinder(2.0, 4, V(33.5, y, z), V(1, 0, 0)))
     for (x, z) in cl_holes:
         for sg in (-1, 1):                          # 2 mm inside boss: 4 mm wall for the 3.8 mm insert (94180A331)
             hs = hs.fuse(ycyl(x, z, sg * 20.0, sg * 18.0, 3.6))
             hs = hs.cut(ycyl(x, z, sg * 22.5, sg * 17.5, 2.0))
+    hs = hs.removeSplitter()
     out.append(Part_("Roll_Housing", hs, hs, "PRINT", "custom: PETG-CF print, M3 inserts", "pla"))
-    for i, (y, z) in enumerate(ear_pts):
-        ins = Part.makeCylinder(2.0, 3, V(34, y, z), V(1, 0, 0)).cut(Part.makeCylinder(1.25, 3, V(34, y, z), V(1, 0, 0)))
-        out.append(Part_("Insert_M3_rollear_%d" % i, ins, ins, "CAT", "INSERT", "brass"))
-    sv, svc, _hx, _ye = H.servo_std(ROLL_XS, -1)
-    sv, svc = _to_roll_axis((sv, svc))
-    out.append(Part_("J4_Roll_Servo_DS3225", sv, svc, "CAT", "DS3225MG", "motor"))
-    for i, (y, z) in enumerate(ear_pts):
-        out.append(_xscrew("BHCS_M3x6_rollservo_%d" % i, ROLL_XS - 15.5, 6.0, y, z))
+    sv, svc = _to_roll_axis(H.sts3215(J4_SEAT, -1))
+    out.append(Part_("J4_Roll_Servo_STS3215", sv, svc, "CAT", "STS3215", "motor"))
+    for p_ in sts_case_screws("J4", J4_SEAT, -1):
+        v_, c_ = _to_roll_axis((p_.vis, p_.chk))
+        out.append(Part_(p_.name, v_, c_, p_.kind, p_.src, p_.color, p_.note))
     brg = [b_.copy() for b_ in H.bearing(25, 37, 7, 0, 1)[:2]]
     for b_ in brg:
         b_.rotate(V(0, 0, 0), V(0, 0, 1), -90)

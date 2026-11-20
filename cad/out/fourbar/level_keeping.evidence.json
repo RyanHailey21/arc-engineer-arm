@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "level_keeping",
   "status": "pass",
-  "reason": "PASS: LEVEL_KEEPING fourbar: PASS (310 s)",
-  "scope": "LEVEL_KEEPING fourbar: PASS (310 s)",
+  "reason": "PASS: LEVEL_KEEPING fourbar: PASS (305 s)",
+  "scope": "LEVEL_KEEPING fourbar: PASS (305 s)",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -17,20 +17,20 @@
    {
     "id": "design-inputs",
     "path": "evidence/level_keeping.inputs.json",
-    "sha256": "d3f99699d44faf643b5aec68316a285379c5ad581c3d818c69df5925ca611e21"
+    "sha256": "df0c713fc9381b6daed4d244410d742c22f370ed52dc6501cdc33bdd5e1bcc30"
    }
   ],
   "artifacts": [
    {
     "id": "level_keeping.txt",
     "path": "level_keeping.txt",
-    "sha256": "7ba7e78c35aa69af518de4f8ad0654aef90ae0bc80d2684ee1127dd1e29d1aa0"
+    "sha256": "2b3220d37bae8671496ef0140b47c123273493d641170247658471eb9835d13a"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-19T04:55:08",
-   "inputs_hash": "a6274db4e832ec4b",
+   "time": "2026-11-19T19:13:22",
+   "inputs_hash": "865bde89d3c8437d",
    "external_copies": []
   }
  }

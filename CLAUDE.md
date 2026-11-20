@@ -26,7 +26,7 @@ Start with `cad/MAP.md` (generated). It lists every module, parameter file, inte
 6. New gripper: add `arm/grippers/<name>.py` with `<name>_bodies()` and `<name>_placements(Hd, jaw)`, register it in `arm/bodies.py` GRIPPERS, and mount it on `interfaces/roll_hub__gripper_palm.toml`.
 
 ## Guard rails
-- Release generators build the release variant only and refuse another `GRIP`: `export_fab.py`, `fea/run_fea.py`, `drawings/*`, `build_assembly.py`, `render/export_render.py`. The rev A package in `fab/`, `drawings/out`, `fea/out` and `render/` stays intact.
+- Release generators build the release variant only and refuse another `GRIP`: `export_fab.py`, `fea/run_fea.py`, `drawings/*`, `build_assembly.py`, `render/export_render.py`. The released package (rev B since 2026-11-19, `GRIP=FOURBAR`) in `fab/` and `fea/out` changes only on request; `drawings/out`, `render/` and `tdp/` are still rev A (drawings on hold).
 - In a running FreeCAD GUI session, call `arm.reload_all()` to pick up edits. Don't drive the GUI from `execute_code_async`.
 - Run long jobs (full interference, FEA, renders) in the background.
 - Final deliverables go to the UT Arlington OneDrive folder (`OneDrive - UT Arlington\ARC_Engineer_Arm_TDP\`) with a README.

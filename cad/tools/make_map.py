@@ -50,7 +50,9 @@ def params_desc(d):
 
 def iface_desc(d):
     i = d.get("interface", {})
-    sides = [d[s]["part"] for s in ("side_a", "side_b") if s in d]
+    sides = []
+    for k in sorted(k for k in d if k.startswith("side_")):        # a side names one part or several (parts list)
+        sides += [d[k]["part"]] if "part" in d[k] else [bp[1] for bp in d[k]["parts"]]
     return "%s%s" % (i.get("summary", ""), (" - parts: " + " / ".join(sides)) if sides else "")
 
 

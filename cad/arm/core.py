@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Shared core of the arm model: frames and global parameters (K, Y, T), jaw/pad geometry shared by every
-gripper, motor interface (DM), purchased-part catalogue (CAT), materials (MAT), the Part_ record and the
+gripper, actuators (STS_R, BASE_R) and base-drive interfaces, purchased-part catalogue (CAT), materials (MAT), the Part_ record and the
 geometry helpers (box, ycyl, plate, at, to_z, ...).  Every other arm module star-imports this one.
 """
 
@@ -33,8 +33,19 @@ ROD2_W = _ARM["level_keeping"]["ROD2_W"]
 UA_HUB_SCREWS = _ARM["j1_hub"]["UA_HUB_SCREWS"]
 HUB_R = _ARM["j1_hub"]["HUB_R"]
 
-# motor interface (from Damiao drawing + vendor STEP, model frame, angles atan2(z,x))
-DM = params._tuples(dict(iface.load("dm_j4340__hub_tower")["DM"]))   # motor interface (vendor drawing)
+# actuators: every joint and the gripper run Feetech STS3215 servos (params/actuators.toml)
+_ACT = params.load("actuators")
+STS_R = dict(_ACT["STS3215"])                         # servo ratings (N*m, s/60deg)
+BASE_R = dict(_ACT["BASE"])                           # J1/J2 spur stage
+# J1/J2 base drives: STS3215 + printed m2 spur stage on a printed drive frame per tower (params/base_drive.toml)
+_BD = params.load("base_drive")
+GEAR = dict(_BD["GEAR"])
+DFRAME = dict(_BD["FRAME"])
+GEAR_CD = GEAR["module"] * (GEAR["z_gear"] + GEAR["z_pinion"]) / 2.0     # centre distance (72)
+IF_DRIVE_TOWER = iface.load("drive_frame__tower")     # frame legs <-> tower (probed)
+IF_HUB_DRIVE = iface.load("base_hub__drive")          # hub stub <-> gear <-> 6804 bearing in the frame
+IF_STS = iface.load("sts3215__cradle")                # STS3215 <-> printed cradles, horn screws
+
 
 # ------------------------------------------------------- purchased-part data
 CAT = {k: dict(v) for k, v in params.data("catalogue").items()}   # data/catalogue.toml
@@ -284,3 +295,55 @@ def _vprism(x, y_apex, z0, z1, depth=60.0):
 
 # active gripper variant (GRIP=FOURBAR default, GRIP=SCREW = rev A); see arm/grippers/
 GRIP = params.grip()      # $GRIP, else params/variant.toml
+
+
+# ------------------------------------------------------------- STS3215 placement
+def sts_place(shape, y_seat, direction, ang=0.0, x=0.0, z=0.0):
+    """Shape built in the STS3215 canonical frame (hardware.STS: spline +y, horn seat y=0, body -y, long axis +x)
+    -> spline on the body's y axis through (x, z), horn seat at y_seat, body towards direction (+1/-1), long axis
+    pointing at angle ang (deg, atan2(z, x))."""
+    s_ = shape.copy()
+    if direction > 0:
+        s_.rotate(V(0, 0, 0), V(1, 0, 0), 180)          # spline -> -y, body -> +y (right-handed)
+    s_.rotate(V(0, 0, 0), V(0, 1, 0), -ang)
+    s_.translate(V(x, y_seat, z))
+    return s_
+
+
+def sts_xz(px, pz, direction, ang=0.0, x=0.0, z=0.0):
+    """(x, z) of the canonical-frame point (px, pz) after sts_place (y is unchanged by the in-plane maps)."""
+    if direction > 0:
+        pz = -pz
+    a = math.radians(ang)
+    return (x + px * math.cos(a) - pz * math.sin(a), z + px * math.sin(a) + pz * math.cos(a))
+
+
+def sts_pocket(top_y):
+    """Printed pocket for the STS3215 in its canonical frame: walls from the floor up to top_y (canonical y), floor
+    under the body with bosses to the bottom-cap screws, their clearance holes and the connector window."""
+    S, C, cs = H.STS, IF_STS["pocket"], IF_STS["case_screw"]
+    c, w, f = C["clearance"], C["wall"], C["floor"]
+    x0, x1, zw = S["x0"] - c, S["x1"] + c, S["w"] + c
+    yb = S["bottom"] - 0.05
+    pk = box(x0 - w, yb - f, -zw - w, x1 + w, top_y, zw + w).cut(box(x0, yb, -zw, x1, top_y + 1, zw))
+    for (sx_, sz_) in S["screws"]:
+        pk = pk.fuse(ycyl(sx_, sz_, yb, S["boss_y"], C["boss_d"] / 2))
+        pk = pk.cut(ycyl(sx_, sz_, yb - f - 1, S["boss_y"] + 1, cs["clearance_d"] / 2))
+    wx0, wx1, wz0, wz1 = C["window"]
+    pk = pk.cut(box(wx0, yb - f - 1, wz0, wx1, yb + 0.01, wz1))
+    return pk
+
+
+def sts_case_screws(name, y_seat, direction, ang=0.0, x=0.0, z=0.0):
+    """The four lengthened bottom-cap screws (pan head on the cradle floor), placed like sts_place."""
+    S, C, cs = H.STS, IF_STS["pocket"], IF_STS["case_screw"]
+    y_head = S["bottom"] - 0.05 - C["floor"]
+    out = []
+    for i, (sx_, sz_) in enumerate(S["screws"]):
+        vis = H.pan_screw(cs["size"], cs["length"], y_head, 1)[0].copy()
+        vis.translate(V(sx_, 0, sz_))
+        chk = vis.copy()
+        out.append(P("PAN_M2x%d_%s_%d" % (cs["length"], name, i),
+                     (sts_place(vis, y_seat, direction, ang, x, z), sts_place(chk, y_seat, direction, ang, x, z)),
+                     "CAT", "PAN-M2x12", "steel", "replaces the servo's bottom-cap screw"))
+    return out

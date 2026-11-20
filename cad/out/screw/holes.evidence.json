@@ -1,0 +1,37 @@
+{
+ "status": "fail",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "holes",
+  "status": "fail",
+  "reason": "FAIL: Hole edge-distance check (custom parts): 263 holes -> 0 broken-out, 3 fail (wall < 1.0 mm), 62 warn (wall < max(1.5 mm, 0.5 d))",
+  "scope": "Hole edge-distance check (custom parts): 263 holes -> 0 broken-out, 3 fail (wall < 1.0 mm), 62 warn (wall < max(1.5 mm, 0.5 d))",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "6aba0b4f093d3c1c2e9a932c14cfc333cd648a149d3c22b1c85e13bd76efd8ed",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/holes.inputs.json",
+    "sha256": "e310c8967299d39c32e658826a3a167a5346ce50a2bf194d9787abeec33f3789"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "hole_report.txt",
+    "path": "hole_report.txt",
+    "sha256": "d1dac658204104d784b1bc44cb403d6402523b30f6609317a4b8c14e1ea0da37"
+   }
+  ],
+  "extensions": {
+   "variant": "SCREW",
+   "time": "2026-11-19T18:47:59",
+   "inputs_hash": "a6a5f3405c32a209",
+   "external_copies": []
+  }
+ }
+}

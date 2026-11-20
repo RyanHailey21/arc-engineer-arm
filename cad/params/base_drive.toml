@@ -1,0 +1,20 @@
+# J1/J2 base drives: an STS3215 on each tower drives the joint hub through a printed spur stage, all carried by a
+# printed drive frame bolted to the tower's outboard face (interfaces/drive_frame__tower.toml, base_hub__drive.toml,
+# sts3215__cradle.toml).  Frame: GROUND; angles are atan2(z, x) about the shoulder axis S; y values are |y| outboard
+# (both sides are mirror images in y).  Read by cad/arm/base.py and cad/arm/upper_arm.py.
+
+[GEAR]
+module = 2.0          # m2, 20 deg: Lewis root stress ~21 MPa on the 18T pinion at 6.3 N*m on the joint (5.07 sim peak x 1.25)
+z_gear = 54           # on the hub stub's hex (3:1 with the pinion; params/actuators.toml BASE.ratio)
+z_pinion = 18         # screwed to the servo horn
+face = 9.0
+y0 = 54.0             # |y| of the gear faces' inboard side: 1.5 running gap to the tower's outboard face (52.5)
+pinion_angle = -30.0  # pinion centre direction from S (deg): below and forward, outside the upper arm's sweep
+                      # (th1 0..180) and 47 mm clear of the G1 ground pivot (192 deg, r70)
+lightening = [6, 9.0, 31.0]   # big gear: 6 windows of radius 9 on radius 31 (between the hex hub and the root circle)
+
+[FRAME]               # printed drive frame (PETG-CF): bearing wall + servo cradle + three legs to the tower
+lip = 2.0             # outboard lip, bore D27, retains the bearing's outer race
+lip_d = 27.0
+boss_r = 22.0         # wall around the bearing seat
+leg_d = 10.0          # legs from the tower face to the wall, M3 heat-set insert in each

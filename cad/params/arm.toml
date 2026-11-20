@@ -42,8 +42,8 @@ ROD2_W = 16.0            # rod 2 width (eyes r 8 around MR105, wall 3)
 GT2_T = 30               # rev A only (build_assembly.py renders the released belt drive); the model no longer has a belt
 
 [j1_hub]
-HUB_R = 19.5             # J1/J2 output hub flange radius (counterbores on PCD27 need >= 2.5 mm wall)
-UA_HUB_SCREWS = [30.0, 150.0, 270.0]   # J1 hub -> UA-L: 3x M3 on PCD20 (deg), clear of the PCD27 counterbores + dowels
+HUB_R = 19.5             # J1/J2 output hub flange radius (inside the D42 tower bore)
+UA_HUB_SCREWS = [30.0, 150.0, 270.0]   # J1 hub -> UA-L: 3x M3 on PCD20 (deg)
 
 [harness]
 UA_CLIP_YZ = [-52.3, 9.0]              # harness bundle centre in the UA frame (y, z): 47 + 5.3 outboard of the UA plate

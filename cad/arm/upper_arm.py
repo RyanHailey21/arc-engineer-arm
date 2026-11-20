@@ -29,10 +29,10 @@ def body_upper():
     out.append(P("Brg_6700_Elbow_UA_R", at(H.bearing(10, 15, 4, 44.0, 1), L2, 0), "CAT", "6700ZZ", "alu"))
     out.append(P("Brg_6701_Shoulder_UA_R", H.bearing(12, 18, 4, 47.0, -1), "CAT", "6701ZZ", "alu"))
     out += motor_hub(-1)
-    out.append(dm_rotor_part("J1_Motor_DM-J4340_rotor", -1, None, DM["face"]))
+    out += drive_gear_parts(-1, 1)
     for k, a_ in enumerate(UA_HUB_SCREWS):
         p = u(a_, 10.0)
-        out.append(P("BHCS_M3x5_UA_hub_%d" % k, at(H.screw("BHCS", 3, 5, -44.0, -1), p[0], p[1]), "CAT", "BHCS", "steel"))   # x5: 2 mm in the 2.5 mm thread (drill cannot go deeper)
+        out.append(P("BHCS_M3x6_UA_hub_%d" % k, at(H.screw("BHCS", 3, 6, -44.0, -1), p[0], p[1]), "CAT", "BHCS", "steel"))   # x6: 3 mm in the 3 mm thread of the 4.5 mm drill
     for i, x in enumerate(UA_CLIP_X):
         out.append(P("UA_Standoff_D8_%d" % i, at(H.standoff_round(8, 88, -44.0, 1), x, 0), "AL", "custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)", "alu",
                      "D8 x 88 M3 female"))
@@ -55,7 +55,7 @@ def body_crank():
     cr = cr.fuse(ycyl(0, 0, yc - T / 2, yc + T / 2, 6.075).common(box(5.6, yc - T / 2, -7, 7.0, yc + T / 2, 7)))   # D-bore at mid-limit (12.15 / 5.6)
     out.append(Part_("Crank_CF3", cr, cr, "CF", "custom: 3 mm CF plate (DXF), D-bore on journal flat", "cf"))
     out += motor_hub(1, journal=True)
-    out.append(dm_rotor_part("J2_Motor_DM-J4340_rotor", 1, None, DM["face"]))
+    out += drive_gear_parts(1, 2)
     out.append(P("Washer_M4_crank", H.washer(4, 33.0, -1, od=12, t=0.8), "CAT", "WASHER", "steel"))
     out.append(P("SHCS_M4x8_crank", H.screw("SHCS", 4, 8, 32.2, 1), "CAT", "SHCS", "steel", "axial retention"))
     # pivot A

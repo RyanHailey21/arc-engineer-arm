@@ -3,6 +3,166 @@
  "ok": true,
  "report": [
   {
+   "interface": "drive_frame__tower",
+   "side": "side_a",
+   "part": "Tower_L_CF3",
+   "expected_r": 1.65,
+   "status": "PASS",
+   "holes": [
+    {
+     "x": -128.0,
+     "y": 0.0,
+     "z": 270.426,
+     "radii": [
+      1.65,
+      7.0
+     ],
+     "ok": true
+    },
+    {
+     "x": -215.426,
+     "y": 0.0,
+     "z": 247.0,
+     "radii": [
+      7.0,
+      1.65
+     ],
+     "ok": true
+    },
+    {
+     "x": -176.564,
+     "y": 0.0,
+     "z": 153.181,
+     "radii": [
+      1.65
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "drive_frame__tower",
+   "side": "side_a",
+   "part": "Tower_R_CF3",
+   "expected_r": 1.65,
+   "status": "PASS",
+   "holes": [
+    {
+     "x": -128.0,
+     "y": 0.0,
+     "z": 270.426,
+     "radii": [
+      1.65,
+      7.0
+     ],
+     "ok": true
+    },
+    {
+     "x": -215.426,
+     "y": 0.0,
+     "z": 247.0,
+     "radii": [
+      7.0,
+      1.65
+     ],
+     "ok": true
+    },
+    {
+     "x": -176.564,
+     "y": 0.0,
+     "z": 153.181,
+     "radii": [
+      1.65
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "drive_frame__tower",
+   "side": "side_b",
+   "part": "Drive_Frame_L",
+   "expected_r": 2.0,
+   "status": "PASS",
+   "holes": [
+    {
+     "x": -128.0,
+     "y": 0.0,
+     "z": 270.426,
+     "radii": [
+      6.0,
+      5.0,
+      2.0
+     ],
+     "ok": true
+    },
+    {
+     "x": -215.426,
+     "y": 0.0,
+     "z": 247.0,
+     "radii": [
+      6.0,
+      5.0,
+      2.0
+     ],
+     "ok": true
+    },
+    {
+     "x": -176.564,
+     "y": 0.0,
+     "z": 153.181,
+     "radii": [
+      6.0,
+      5.0,
+      2.0
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "drive_frame__tower",
+   "side": "side_b",
+   "part": "Drive_Frame_R",
+   "expected_r": 2.0,
+   "status": "PASS",
+   "holes": [
+    {
+     "x": -128.0,
+     "y": 0.0,
+     "z": 270.426,
+     "radii": [
+      6.0,
+      5.0,
+      2.0
+     ],
+     "ok": true
+    },
+    {
+     "x": -215.426,
+     "y": 0.0,
+     "z": 247.0,
+     "radii": [
+      6.0,
+      5.0,
+      2.0
+     ],
+     "ok": true
+    },
+    {
+     "x": -176.564,
+     "y": 0.0,
+     "z": 153.181,
+     "radii": [
+      6.0,
+      5.0,
+      2.0
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
    "interface": "roll_horn__roll_hub",
    "side": "side_a",
    "part": "Servo_Horn_25T_roll",

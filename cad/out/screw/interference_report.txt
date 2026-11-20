@@ -1,0 +1,61 @@
+ARC Engineer arm - interference report
+threshold 0.5 mm^3, 5 steps per segment
+
+[1] static assembly @STOW (all part pairs): 8 overlaps
+    Drive_Frame_L                      x J1_Servo_STS3215                      212.7 mm^3
+    Drive_Frame_R                      x J2_Servo_STS3215                      212.7 mm^3
+    J3_Wrist_Servo_STS3215             x Wrist_Servo_Cradle                    212.7 mm^3
+    Clevis_L_CF3                       x PAN_M2x12_J4_1                          1.3 mm^3
+    Clevis_R_CF3                       x PAN_M2x12_J4_0                          1.3 mm^3
+    Roll_Housing                       x J4_Roll_Servo_STS3215                 212.7 mm^3
+    Roll_Housing                       x PAN_M2x12_J4_0                         25.9 mm^3
+    Roll_Housing                       x PAN_M2x12_J4_1                         25.9 mm^3
+
+[2] motion task poses (quick): 14 poses, 10 distinct overlapping pairs
+    Rod_2_CF4                          x Leadscrew_Tr8x8_bidir                 333.1 mm^3  worst @ pose PIPE_CHUTE_ROLL90->PIPE_CHUTE_ROLL90 t=0.0 q=(98,-17,90,90)
+    Rod_2_CF4                          x Collar_D8_L                           269.6 mm^3  worst @ pose PIPE_CHUTE_ROLL90->PIPE_CHUTE_ROLL90 t=0.0 q=(98,-17,90,90)
+    Rod_2_CF4                          x Screw_End_Block_L                     256.8 mm^3  worst @ pose PIPE_CHUTE_ROLL90->PIPE_CHUTE_ROLL90 t=0.0 q=(98,-17,90,90)
+    Rod_2_CF4                          x Brg_688_Screw_L                       128.4 mm^3  worst @ pose PIPE_CHUTE_ROLL90->PIPE_CHUTE_ROLL90 t=0.0 q=(98,-17,90,90)
+    Rod_2_CF4                          x Gripper_Bridge_CF3                    108.0 mm^3  worst @ pose PIPE_CHUTE->PIPE_CHUTE t=0.0 q=(98,-17,90,0)
+    Rod_2_CF4                          x Shim_8x10_L                             5.4 mm^3  worst @ pose PIPE_CHUTE_ROLL90->PIPE_CHUTE_ROLL90 t=0.0 q=(98,-17,90,90)
+    Forearm_L_CF3                      x PAN_M2x12_J4_3                          3.4 mm^3  worst @ pose PIPE_CHUTE->PIPE_CHUTE t=0.0 q=(98,-17,90,0)
+    Forearm_L_CF3                      x PAN_M2x12_J4_1                          3.4 mm^3  worst @ pose PIPE_CHUTE->PIPE_CHUTE t=0.0 q=(98,-17,90,0)
+    Forearm_R_CF3                      x PAN_M2x12_J4_0                          3.4 mm^3  worst @ pose PIPE_CHUTE->PIPE_CHUTE t=0.0 q=(98,-17,90,0)
+    Forearm_R_CF3                      x PAN_M2x12_J4_2                          3.4 mm^3  worst @ pose PIPE_CHUTE->PIPE_CHUTE t=0.0 q=(98,-17,90,0)
+
+[3] field clearance at task poses
+  DONUT_APPROACH  q=( 115.7, -35.1,  0.0) jaw=112.0 : clear
+  DONUT_PICK      q=(  95.5, -60.6,  0.0) jaw=100.0 : clear
+  DONUT_LIFT      q=( 113.9,  37.7,  0.0) jaw=100.0 : clear
+  DONUT_LIFT_ROLL+ q=( 113.9,  37.7,  0.0) jaw=100.0 : clear
+  DONUT_LIFT_ROLL- q=( 113.9,  37.7,  0.0) jaw=100.0 : clear
+  DONUT_PLACE     q=(  39.1, -82.6,  0.0) jaw=100.0 : clear
+  PIPE_APPROACH   q=( 164.5,  28.8,  0.0) jaw= 50.0 : clear
+  PIPE_GRASP      q=( 148.8,  13.9,  0.0) jaw= 13.8 : clear
+  PIPE_GRASP_ROLL+ q=( 148.8,  13.9,  0.0) jaw= 13.8 : clear
+  PIPE_GRASP_ROLL- q=( 148.8,  13.9,  0.0) jaw= 13.8 : clear
+  PIPE_LIFT       q=( 123.0,  48.0,  0.0) jaw= 13.8 : clear
+  PIPE_CHUTE      q=(  97.5, -17.1, 90.0) jaw= 13.8 : clear
+  PIPE_CHUTE_ROLL90 q=(  97.5, -17.1, 90.0) jaw= 13.8 : clear
+
+[3b] donut lift along the pole: 25 samples (tcp z 228..720, strafe -51..49 mm): clear
+
+[4] static joint torques from modelled masses (N*m: shoulder J1, elbow J2, wrist pitch J3, roll J4)
+  STOW              payload   0 g : J1  -4.68  J2   4.07  J3   0.80  J4  -0.01
+  DONUT_APPROACH    payload   0 g : J1  -2.16  J2   3.38  J3   0.80  J4  -0.01
+  DONUT_PICK        payload   0 g : J1  -0.48  J2   2.03  J3   0.80  J4  -0.01
+  DONUT_LIFT        payload 300 g : J1  -2.43  J2   4.08  J3   1.25  J4  -0.01
+  DONUT_LIFT_ROLL+  payload 300 g : J1  -2.43  J2   4.08  J3   1.25  J4  -0.09
+  DONUT_LIFT_ROLL-  payload 300 g : J1  -2.43  J2   4.08  J3   1.25  J4   0.06
+  DONUT_PLACE       payload 300 g : J1   4.64  J2   0.67  J3   1.25  J4  -0.01
+  PIPE_APPROACH     payload   0 g : J1  -4.80  J2   3.62  J3   0.80  J4  -0.01
+  PIPE_GRASP        payload   0 g : J1  -4.26  J2   4.01  J3   0.80  J4  -0.01
+  PIPE_GRASP_ROLL+  payload   0 g : J1  -4.26  J2   4.01  J3   0.80  J4  -0.13
+  PIPE_GRASP_ROLL-  payload   0 g : J1  -4.26  J2   4.01  J3   0.80  J4   0.10
+  PIPE_LIFT         payload 165 g : J1  -3.02  J2   3.15  J3   1.05  J4  -0.01
+  PIPE_CHUTE        payload 165 g : J1  -0.72  J2   4.49  J3   0.17  J4   0.00
+  PIPE_CHUTE_ROLL90 payload 165 g : J1  -0.72  J2   4.49  J3   0.06  J4   0.00
+
+Modelled arm mass incl. motors and gripper drive: 3314 g
+boolean cache: 7031 hits, 0 computed
+elapsed 91 s

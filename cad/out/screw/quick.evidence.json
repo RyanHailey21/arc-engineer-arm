@@ -1,36 +1,36 @@
 {
- "status": "pass",
+ "status": "fail",
  "evidence": {
   "schema": "cad-evidence/1",
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
-  "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 35 findings (unused-import 1, dead-def 6, duplicate 6, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 13), 74 kept; fingerprint MATCH",
-  "scope": "envelopes 10 pose checks; interfaces 8 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1040 g (head 836 g); worst static J1 4.74 J2 4.42 J3 1.24 N*m; catalogue 31 keys, 243 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 35 findings (unused-import 1, dead-def 6, duplicate 6, orphan-param 6, orphan-catalogue 1, out-unindexed 2, scratch 13), 74 kept; fingerprint MATCH",
+  "status": "fail",
+  "reason": "FAIL: envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1047 g (head 836 g); worst static J1 4.80 J2 4.49 J3 1.25 N*m; catalogue 32 keys, 245 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 37 findings (unused-import 1, dead-def 8, duplicate 6, orphan-param 5, orphan-catalogue 2, out-unindexed 2, scratch 13), 77 kept; fingerprint MATCH",
+  "scope": "envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 1047 g (head 836 g); worst static J1 4.80 J2 4.49 J3 1.25 N*m; catalogue 32 keys, 245 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 37 findings (unused-import 1, dead-def 8, duplicate 6, orphan-param 5, orphan-catalogue 2, out-unindexed 2, scratch 13), 77 kept; fingerprint MATCH",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "866af20d4c4ec45f55ef0b9a98a795219ec670a50f6c6d75d9d896c34bb03dd6",
+  "implementation_sha256": "ff53b0040f279707f083c71adf41f7c6c44805c4ecb6e8e1020e42c2fcf0663b",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/quick.inputs.json",
-    "sha256": "4eccfecc40d5af6fae831d41cc4c39bf441d1da98ba5901b8aa06893a97282e0"
+    "sha256": "df0c713fc9381b6daed4d244410d742c22f370ed52dc6501cdc33bdd5e1bcc30"
    }
   ],
   "artifacts": [
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "bdd7e90db982419d0da42c80b7d14c165384d9b18f22462b633bc217694c48ba"
+    "sha256": "50bc814a9e5246bedae4cb3f520b89f45d888c1e2764f83d7d67684ec0ccd3b8"
    }
   ],
   "extensions": {
    "variant": "SCREW",
-   "time": "2026-11-18T23:46:30",
-   "inputs_hash": "7b6e4caeecba02a4",
+   "time": "2026-11-19T19:17:49",
+   "inputs_hash": "865bde89d3c8437d",
    "external_copies": []
   }
  }

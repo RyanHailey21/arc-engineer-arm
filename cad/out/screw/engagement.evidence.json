@@ -1,12 +1,12 @@
 {
- "status": "pass",
+ "status": "fail",
  "evidence": {
   "schema": "cad-evidence/1",
   "producer": "light_weight_arm/cad/tools",
   "operation": "engagement",
-  "status": "pass",
-  "reason": "WARN: Thread engagement: 51 tapped holes, 51 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
-  "scope": "Thread engagement: 51 tapped holes, 51 with screws -> 0 FAIL (screw past thread), 3 WARN (< 0.8D)",
+  "status": "fail",
+  "reason": "FAIL: Thread engagement: 49 tapped holes, 49 with screws -> 2 FAIL (screw past thread), 0 WARN (< 0.8D)",
+  "scope": "Thread engagement: 49 tapped holes, 49 with screws -> 2 FAIL (screw past thread), 0 WARN (< 0.8D)",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -17,20 +17,20 @@
    {
     "id": "design-inputs",
     "path": "evidence/engagement.inputs.json",
-    "sha256": "562b1b237d6cc19a6a98bcb86f42461062680e6105c94439a3ac98f5166b2df2"
+    "sha256": "e310c8967299d39c32e658826a3a167a5346ce50a2bf194d9787abeec33f3789"
    }
   ],
   "artifacts": [
    {
     "id": "engagement_report.txt",
     "path": "engagement_report.txt",
-    "sha256": "c375959019df309bf50299f82206776734c26ce862304024ea378fa325c05fb8"
+    "sha256": "c7b81ea1dec56ad6ae88b6de2469fb7a272a7c1d5cc7f281913b85c8ca2cd779"
    }
   ],
   "extensions": {
    "variant": "SCREW",
-   "time": "2026-11-18T04:51:47",
-   "inputs_hash": "8cde22ae93768790",
+   "time": "2026-11-19T18:48:57",
+   "inputs_hash": "a6a5f3405c32a209",
    "external_copies": [
     "fab/engagement_report.txt"
    ]

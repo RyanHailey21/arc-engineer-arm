@@ -11,9 +11,11 @@ frames are used by build_assembly.py to create Assembly-workbench joints.
 Frame: X forward from chassis front bumper, Y left, Z up from Battlefield floor.
 
 Y stack (centre planes, 3 mm CF plates):
-    J1 DM-J4340 stator  -52.5 .. -105     |  J2 DM-J4340 stator +52.5 .. +105
-    tower L  -51.0  (motor bolts on PCD50)|  tower R  +51.0
-    J1 hub   -51.5 .. -47.0               |  J2 hub   +47.0 .. +51.5, journal D12
+    J1 STS3215 -64.6 .. -103.4 (cradle)   |  J2 STS3215 +64.6 .. +103.4, both on printed drive frames
+    6804 bearing + frame wall -64.5..-71.5 |  +64.5 .. +71.5
+    54T gear / 18T pinion -54 .. -63      |  +54 .. +63
+    tower L  -51.0  (drive frame legs)    |  tower R  +51.0
+    J1 hub   -47.0 .. -71.5 (stub)        |  J2 hub   +47.0 .. +71.5, journal D12 inboard
     upper L  -45.5                        |  upper R  +45.5  (6701 on J2 journal)
     rod 1    -42.0                        |
     rocker / level member -37.5 (+GT2 30T pulley -36..-25.5, 9 mm belt -35.25..-26.25)
@@ -29,7 +31,6 @@ This module re-exports the whole namespace so `import arm_model as M` keeps work
 from arm.core import *          # noqa: F401,F403
 from arm.core import _hull2, _convex_hull, _vprism  # noqa: F401
 from arm.base import *          # noqa: F401,F403
-from arm.base import _DM        # noqa: F401
 from arm.upper_arm import *     # noqa: F401,F403
 from arm.forearm import *       # noqa: F401,F403
 from arm.wrist import *         # noqa: F401,F403

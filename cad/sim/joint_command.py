@@ -1,12 +1,12 @@
 """Joint command interface: host-side trajectory generation + fixed-rate setpoint streaming.
 
-This mirrors how the real arm is driven. The DM-J4340 joints (MIT mode over CAN) and the DS3225 / STS3215 servos
+This mirrors how the real arm is driven. Every joint and the gripper are STS3215 servos on one serial bus
 all take streamed position setpoints and run their own control loops; nothing on the robot executes a whole
 trajectory. So planning lives here, on the host, and only the backend changes between simulation and hardware:
 
     Commander (backend)    send(q_deg) / state_deg()
       GazeboCommander      gz-transport: /arc_arm/<joint>/cmd_pos (gz.msgs.Double, rad), reads /joint_state
-      (HardwareCommander)  later: CAN (DM-J4340 MIT mode) + Feetech/servo bus, same two methods
+      (HardwareCommander)  later: Feetech serial bus (STS3215) + Feetech/servo bus, same two methods
 
     stream_move(cmd, q_from, q_to, ...)   minimum-jerk move, timed by the joint speed limits, streamed at rate_hz
 
@@ -99,7 +99,7 @@ class GazeboCommander(Commander):
 
 class MujocoCommander(Commander):
     """Runs the MuJoCo model in real time in a background thread with the native viewer; send() sets the position
-    actuator targets (same kp/kv as the MJCF actuators: the DM-J4340 MIT-mode law, tau = kp*e + kd*de).
+    actuator targets (same kp/kv as the MJCF actuators: the joint PD law, tau = kp*e + kd*de).
     scene="free": scene.xml without the donut-pick station (lower tier + donut), for whole task sequences;
     scene="pick": scene.xml as generated (pick station)."""
 

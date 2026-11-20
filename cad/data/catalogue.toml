@@ -2,11 +2,6 @@
 # verify on receipt.  Keyed by the 'src' field of CAT parts.  Read by cad/arm/core.py as CAT.
 # Masses are vendor figures where a source is given, otherwise estimates (flagged in desc/verify).
 
-["DM-J4340-2EC"]
-desc = "Damiao DM-J4340-2EC joint motor, 24 V, 9/27 N*m, 40:1, CAN (vendor STEP)"
-mass = 330
-src = "github.com/dmBots/DM-J4340-2EC models/3d + drawings/2d"
-
 ["M2006-P36"]
 desc = "DJI RoboMaster M2006 P36 gear motor, 1 N*m @ 416 rpm (vendor STEP) - gripper drive"
 mass = 90
@@ -17,17 +12,23 @@ desc = "DJI RoboMaster C610 ESC for M2006 (vendor STEP)"
 mass = 15
 src = "robomaster.com product 1277 STEP"
 
-["DS3225MG"]
-desc = "DSServo DS3225MG 25 kg*cm standard servo, 25T spline (J3 pitch + J4 roll)"
-mass = 60
-verify = "no vendor CAD; caliper-check ear hole grid 49.5 x 10"
+["6804ZZ"]
+desc = "Thin-section bearing 6804ZZ 20x32x7 (J1/J2 hub journals in the drive frames)"
+mass = 19
+src = "standard size: McMaster-Carr / VXB / Amazon 6804ZZ"
+
+["PAN-M2x12"]
+desc = "Pan-head self-tapping screw 2.0 x 12 (PA2.0), stainless: fixes an STS3215 through its cradle floor (replaces a bottom-cap screw)"
+mass = 0.3
+src = "M2 x 12 thread-forming screws for plastic (e.g. McMaster-Carr 99461A series) or PA2.0 x 12 self-tapping"
+verify = "self-tapping into the servo's own bottom-cap holes; snug only (plastic case)"
 
 ["6805ZZ"]
 desc = "Thin-section bearing 6805ZZ 25x37x7 (roll support)"
 mass = 18
 
 ["HORN-25T"]
-desc = "25T aluminium disc servo horn D20, 4x M3 tapped PCD14 (Thingbits TH1144 type)"
+desc = "25T aluminium disc servo horn D19.95, 4x M3 tapped PCD14 (supplied with each STS3215)"
 mass = 3
 
 ["6700ZZ"]
@@ -149,7 +150,7 @@ desc = "Cabling (CAN/power, servo, M2006 phase + hall) - routed, not interferenc
 mass = 0
 
 ["STS3215"]
-desc = "Feetech STS3215 serial-bus servo, 12 V version: 10 kg*cm rated / 30 kg*cm stall at 12 V, 0.222 s/60 deg, magnetic encoder 360 deg, steel gears (four-bar gripper drive)"
+desc = "Feetech STS3215 serial-bus servo, 12 V version: 10 kg*cm rated / 30 kg*cm stall at 12 V, 0.222 s/60 deg, magnetic encoder 360 deg, steel gears (all joints and the four-bar gripper: J1/J2 through a 3:1 printed spur stage, J3/J4 direct)"
 mass = 60
 src = "Amazon ASIN B0FKY4Z15R (Stemedu ST3215 12 V) / B0FMXVR77Y (Feetech 2-pack); Feetech STS3215 datasheet"
 verify = "weigh on receipt (sources list 55-69 g); confirm 12 V / 1:345 variant and 25T spline; bench-test unpowered back-drive torque"

@@ -5,36 +5,37 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "grip_hold",
   "status": "pass",
-  "reason": "WARN: donut SF 1.6 rated / 5.6 stall; pipe SF 1.1 rated / 5.5 stall (MU 0.50)",
-  "scope": "donut SF 1.6 rated / 5.6 stall; pipe SF 1.1 rated / 5.5 stall (MU 0.50)",
+  "reason": "WARN: donut SF 1.7 rated / 6.0 stall; pipe SF 1.1 rated / 5.6 stall (MU 0.50)",
+  "scope": "donut SF 1.7 rated / 6.0 stall; pipe SF 1.1 rated / 5.6 stall (MU 0.50)",
   "versions": {
-   "python": "3.14.10",
-   "platform": "Windows"
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
   },
   "implementation_sha256": "52602199543e99b3dc9017342a0a092cda9ddf4212e2429096180e30d560349f",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/grip_hold.inputs.json",
-    "sha256": "d3f99699d44faf643b5aec68316a285379c5ad581c3d818c69df5925ca611e21"
+    "sha256": "df0c713fc9381b6daed4d244410d742c22f370ed52dc6501cdc33bdd5e1bcc30"
    }
   ],
   "artifacts": [
    {
     "id": "grip_hold.txt",
     "path": "grip_hold.txt",
-    "sha256": "f56af670363c0060cfdae7e82e84a17862b9d784708332dc3e3e5818acfcada4"
+    "sha256": "65cf6ab2135c559a3257ab806f6f1db4b741c63c78db0ef938f16dfb6ade61bc"
    },
    {
     "id": "grip_hold.json",
     "path": "grip_hold.json",
-    "sha256": "0c1d9e3c0e5d4f591f9ac7e4dda852475efb6c33b812fa8c16cb06ee6077332d"
+    "sha256": "e3c87402b080f455ca4dfdf407372f6801c9f4a1b4a00fd99da29ad371bfeddd"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-19T05:08:45",
-   "inputs_hash": "a6274db4e832ec4b",
+   "time": "2026-11-19T19:10:59",
+   "inputs_hash": "865bde89d3c8437d",
    "external_copies": [
     "../sim/arc_arm_fourbar/task_run.json"
    ]

@@ -12,7 +12,7 @@ and chassis, so the run reports every arm-field and object-field contact: e.g. t
 the lift would show there.
 
 Control: host-side setpoints every 10 ms (min-jerk over each move), clamped to the joint limits; MuJoCo position
-actuators per joint (the DM-J4340 MIT-mode law), position servos on the chassis slides.
+actuators per joint (joint PD law, tau = kp*e + kd*de), position servos on the chassis slides.
 
     python cad/sim/tasks.py [--task donut|pipe|both] [--no-viewer] [--speed 0.5]
 Needs: pip install mujoco. Writes sim/arc_arm_<variant>/task_run.json.
@@ -208,7 +208,7 @@ class TaskSim:
 
     # ---------------------------------------------------------------- low level
     def _apply(self):
-        """MIT-mode style control (as the DM-J4340s run): tau = kp*(q_des - q) + kd*(v_des - v). MuJoCo's position
+        """Joint PD control: tau = kp*(q_des - q) + kd*(v_des - v). MuJoCo's position
         actuator gives kp*(ctrl - q) - kd*v, so the velocity feed-forward goes in as ctrl = q_des + (kd/kp)*v_des.
         Without it the damping term fights every commanded motion and the effort overstates what the drive needs."""
         vff = getattr(self, "v_des", {})
@@ -532,7 +532,7 @@ def pipe_task(sim, kin, tp, F):
     sim.drive(x=-0.45)
     sim.end()
     sim.begin("swing to PIPE_CHUTE (pitch 90)")
-    # slow swing: the 500 mm pipe's inertia dominates the J3 torque (at the default 0.5 speed the DS3225 needed
+    # slow swing: the 500 mm pipe's inertia dominates the J3 torque (at the default 0.5 speed the wrist servo needed
     # ~2.1 N*m, ~85 % of its stall); a quarter of the speed limit roughly halves the inertial part
     sim.joints(P("PIPE_CHUTE"), speed=0.25)
     sim.end()

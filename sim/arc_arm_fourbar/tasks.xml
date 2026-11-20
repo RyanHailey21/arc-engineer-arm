@@ -24,26 +24,35 @@
   </default>
   <asset>
     <mesh name="base_link__alu" file="meshes/visual/base_link__alu.stl" />
+    <mesh name="base_link__brass" file="meshes/visual/base_link__brass.stl" />
     <mesh name="base_link__cf" file="meshes/visual/base_link__cf.stl" />
     <mesh name="base_link__motor" file="meshes/visual/base_link__motor.stl" />
     <mesh name="base_link__pad" file="meshes/visual/base_link__pad.stl" />
     <mesh name="base_link__pla" file="meshes/visual/base_link__pla.stl" />
+    <mesh name="base_link__pom" file="meshes/visual/base_link__pom.stl" />
     <mesh name="base_link__steel" file="meshes/visual/base_link__steel.stl" />
     <mesh name="base_link__Base_Plate_AL5" file="meshes/collision/base_link__Base_Plate_AL5.stl" />
     <mesh name="base_link__Tower_L_CF3" file="meshes/collision/base_link__Tower_L_CF3.stl" />
-    <mesh name="base_link__J1_Motor_DM-J4340_stator" file="meshes/collision/base_link__J1_Motor_DM-J4340_stator.stl" />
+    <mesh name="base_link__Drive_Frame_L" file="meshes/collision/base_link__Drive_Frame_L.stl" />
+    <mesh name="base_link__Brg_6804_J1" file="meshes/collision/base_link__Brg_6804_J1.stl" />
+    <mesh name="base_link__J1_Servo_STS3215" file="meshes/collision/base_link__J1_Servo_STS3215.stl" />
+    <mesh name="base_link__Pinion_m2_18T_J1" file="meshes/collision/base_link__Pinion_m2_18T_J1.stl" />
     <mesh name="base_link__Tower_R_CF3" file="meshes/collision/base_link__Tower_R_CF3.stl" />
-    <mesh name="base_link__J2_Motor_DM-J4340_stator" file="meshes/collision/base_link__J2_Motor_DM-J4340_stator.stl" />
+    <mesh name="base_link__Drive_Frame_R" file="meshes/collision/base_link__Drive_Frame_R.stl" />
+    <mesh name="base_link__Brg_6804_J2" file="meshes/collision/base_link__Brg_6804_J2.stl" />
+    <mesh name="base_link__J2_Servo_STS3215" file="meshes/collision/base_link__J2_Servo_STS3215.stl" />
+    <mesh name="base_link__Pinion_m2_18T_J2" file="meshes/collision/base_link__Pinion_m2_18T_J2.stl" />
     <mesh name="base_link__SB5x10_G1" file="meshes/collision/base_link__SB5x10_G1.stl" />
     <mesh name="base_link__ESC_C610" file="meshes/collision/base_link__ESC_C610.stl" />
     <mesh name="upper__alu" file="meshes/visual/upper__alu.stl" />
     <mesh name="upper__cf" file="meshes/visual/upper__cf.stl" />
-    <mesh name="upper__motor" file="meshes/visual/upper__motor.stl" />
+    <mesh name="upper__pom" file="meshes/visual/upper__pom.stl" />
     <mesh name="upper__steel" file="meshes/visual/upper__steel.stl" />
     <mesh name="upper__Upper_Arm_L_CF3" file="meshes/collision/upper__Upper_Arm_L_CF3.stl" />
     <mesh name="upper__Upper_Arm_R_CF3" file="meshes/collision/upper__Upper_Arm_R_CF3.stl" />
     <mesh name="upper__Brg_6701_Shoulder_UA_R" file="meshes/collision/upper__Brg_6701_Shoulder_UA_R.stl" />
     <mesh name="upper__J1_Output_Hub" file="meshes/collision/upper__J1_Output_Hub.stl" />
+    <mesh name="upper__Drive_Gear_m2_54T_J1" file="meshes/collision/upper__Drive_Gear_m2_54T_J1.stl" />
     <mesh name="upper__UA_Standoff_D8_0" file="meshes/collision/upper__UA_Standoff_D8_0.stl" />
     <mesh name="upper__UA_Standoff_D8_1" file="meshes/collision/upper__UA_Standoff_D8_1.stl" />
     <mesh name="rod1__alu" file="meshes/visual/rod1__alu.stl" />
@@ -68,23 +77,27 @@
     <mesh name="forearm__SB5x12_B" file="meshes/collision/forearm__SB5x12_B.stl" />
     <mesh name="crank__alu" file="meshes/visual/crank__alu.stl" />
     <mesh name="crank__cf" file="meshes/visual/crank__cf.stl" />
-    <mesh name="crank__motor" file="meshes/visual/crank__motor.stl" />
+    <mesh name="crank__pom" file="meshes/visual/crank__pom.stl" />
     <mesh name="crank__steel" file="meshes/visual/crank__steel.stl" />
     <mesh name="crank__Crank_CF3" file="meshes/collision/crank__Crank_CF3.stl" />
     <mesh name="crank__J2_Output_Hub_Journal" file="meshes/collision/crank__J2_Output_Hub_Journal.stl" />
+    <mesh name="crank__Drive_Gear_m2_54T_J2" file="meshes/collision/crank__Drive_Gear_m2_54T_J2.stl" />
     <mesh name="crank__SB5x8_A" file="meshes/collision/crank__SB5x8_A.stl" />
     <mesh name="rod_ab__alu" file="meshes/visual/rod_ab__alu.stl" />
     <mesh name="rod_ab__cf" file="meshes/visual/rod_ab__cf.stl" />
     <mesh name="rod_ab__Rod_AB_CF3" file="meshes/collision/rod_ab__Rod_AB_CF3.stl" />
     <mesh name="level__alu" file="meshes/visual/level__alu.stl" />
+    <mesh name="level__brass" file="meshes/visual/level__brass.stl" />
     <mesh name="level__cf" file="meshes/visual/level__cf.stl" />
     <mesh name="level__motor" file="meshes/visual/level__motor.stl" />
     <mesh name="level__pad" file="meshes/visual/level__pad.stl" />
+    <mesh name="level__pla" file="meshes/visual/level__pla.stl" />
     <mesh name="level__steel" file="meshes/visual/level__steel.stl" />
     <mesh name="level__Wrist_Level_Member_CF3" file="meshes/collision/level__Wrist_Level_Member_CF3.stl" />
     <mesh name="level__Level_Hub_Wrist" file="meshes/collision/level__Level_Hub_Wrist.stl" />
     <mesh name="level__SB5x8_Dv2" file="meshes/collision/level__SB5x8_Dv2.stl" />
-    <mesh name="level__J3_Wrist_Servo_DS3225" file="meshes/collision/level__J3_Wrist_Servo_DS3225.stl" />
+    <mesh name="level__J3_Wrist_Servo_STS3215" file="meshes/collision/level__J3_Wrist_Servo_STS3215.stl" />
+    <mesh name="level__Wrist_Servo_Cradle" file="meshes/collision/level__Wrist_Servo_Cradle.stl" />
     <mesh name="rod2__alu" file="meshes/visual/rod2__alu.stl" />
     <mesh name="rod2__cf" file="meshes/visual/rod2__cf.stl" />
     <mesh name="rod2__Rod_2_CF4" file="meshes/collision/rod2__Rod_2_CF4.stl" />
@@ -98,7 +111,7 @@
     <mesh name="gripper_frame__Clevis_L_CF3" file="meshes/collision/gripper_frame__Clevis_L_CF3.stl" />
     <mesh name="gripper_frame__Clevis_R_CF3" file="meshes/collision/gripper_frame__Clevis_R_CF3.stl" />
     <mesh name="gripper_frame__Roll_Housing" file="meshes/collision/gripper_frame__Roll_Housing.stl" />
-    <mesh name="gripper_frame__J4_Roll_Servo_DS3225" file="meshes/collision/gripper_frame__J4_Roll_Servo_DS3225.stl" />
+    <mesh name="gripper_frame__J4_Roll_Servo_STS3215" file="meshes/collision/gripper_frame__J4_Roll_Servo_STS3215.stl" />
     <mesh name="gripper_frame__Brg_6805_Roll" file="meshes/collision/gripper_frame__Brg_6805_Roll.stl" />
     <mesh name="head__alu" file="meshes/visual/head__alu.stl" />
     <mesh name="head__motor" file="meshes/visual/head__motor.stl" />
@@ -151,33 +164,42 @@
       <inertial pos="-0.29 0 0.08" mass="12" diaginertia="0.3 0.4 0.6" />
       <geom class="field" name="chassis_deck" type="box" pos="-0.29 0 0.08" size="0.29 0.24 0.04" rgba="0.15 0.16 0.17 1" mass="0" />
       <body name="base_link">
-        <inertial pos="-0.226793 -0.001233 0.15254" mass="1.652152" fullinertia="1.0941e-02 1.7654e-02 2.2440e-02 -5.6784e-05 -3.2342e-03 1.2308e-06" />
+        <inertial pos="-0.221386 -0.001105 0.144672" mass="1.571086" fullinertia="9.0745e-03 1.9351e-02 2.3998e-02 -7.1762e-05 -2.7690e-03 3.9126e-06" />
         <site name="base_link_cad" pos="0 0 0" size="0.004" group="5" />
         <geom class="visual" mesh="base_link__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
+        <geom class="visual" mesh="base_link__brass" pos="0 0 0" rgba="0.85 0.65 0.3 1" />
         <geom class="visual" mesh="base_link__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
         <geom class="visual" mesh="base_link__motor" pos="0 0 0" rgba="0.08 0.08 0.09 1" />
         <geom class="visual" mesh="base_link__pad" pos="0 0 0" rgba="0.12 0.35 0.85 1" />
         <geom class="visual" mesh="base_link__pla" pos="0 0 0" rgba="0.9 0.32 0.06 1" />
+        <geom class="visual" mesh="base_link__pom" pos="0 0 0" rgba="0.92 0.91 0.86 1" />
         <geom class="visual" mesh="base_link__steel" pos="0 0 0" rgba="0.3 0.31 0.33 1" />
         <geom class="collision" mesh="base_link__Base_Plate_AL5" pos="0 0 0" />
         <geom class="collision" mesh="base_link__Tower_L_CF3" pos="0 0 0" />
-        <geom class="collision" mesh="base_link__J1_Motor_DM-J4340_stator" pos="0 0 0" />
+        <geom class="collision" mesh="base_link__Drive_Frame_L" pos="0 0 0" />
+        <geom class="collision" mesh="base_link__Brg_6804_J1" pos="0 0 0" />
+        <geom class="collision" mesh="base_link__J1_Servo_STS3215" pos="0 0 0" />
+        <geom class="collision" mesh="base_link__Pinion_m2_18T_J1" pos="0 0 0" />
         <geom class="collision" mesh="base_link__Tower_R_CF3" pos="0 0 0" />
-        <geom class="collision" mesh="base_link__J2_Motor_DM-J4340_stator" pos="0 0 0" />
+        <geom class="collision" mesh="base_link__Drive_Frame_R" pos="0 0 0" />
+        <geom class="collision" mesh="base_link__Brg_6804_J2" pos="0 0 0" />
+        <geom class="collision" mesh="base_link__J2_Servo_STS3215" pos="0 0 0" />
+        <geom class="collision" mesh="base_link__Pinion_m2_18T_J2" pos="0 0 0" />
         <geom class="collision" mesh="base_link__SB5x10_G1" pos="0 0 0" />
         <geom class="collision" mesh="base_link__ESC_C610" pos="0 0 0" />
         <body name="upper" pos="-0.16 0 0.215">
-          <inertial pos="0.059859 -0.028665 0.00007" mass="0.221946" fullinertia="3.3948e-04 2.0569e-03 2.3550e-03 -3.6870e-04 -8.9900e-07 3.6760e-07" />
-          <joint name="shoulder" type="hinge" axis="0 -1 0" range="0.00000 3.14159" armature="0.016" />
+          <inertial pos="0.074434 -0.02568 0.000087" mass="0.178488" fullinertia="3.6581e-04 1.9123e-03 2.1877e-03 -3.2903e-04 -6.7169e-07 4.1417e-07" />
+          <joint name="shoulder" type="hinge" axis="0 -1 0" range="0.00000 3.14159" armature="0.005" />
           <site name="upper_cad" pos="0 0 0" size="0.004" group="5" />
           <geom class="visual" mesh="upper__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
           <geom class="visual" mesh="upper__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
-          <geom class="visual" mesh="upper__motor" pos="0 0 0" rgba="0.08 0.08 0.09 1" />
+          <geom class="visual" mesh="upper__pom" pos="0 0 0" rgba="0.92 0.91 0.86 1" />
           <geom class="visual" mesh="upper__steel" pos="0 0 0" rgba="0.3 0.31 0.33 1" />
           <geom class="collision" mesh="upper__Upper_Arm_L_CF3" pos="0 0 0" />
           <geom class="collision" mesh="upper__Upper_Arm_R_CF3" pos="0 0 0" />
           <geom class="collision" mesh="upper__Brg_6701_Shoulder_UA_R" pos="0 0 0" />
           <geom class="collision" mesh="upper__J1_Output_Hub" pos="0 0 0" />
+          <geom class="collision" mesh="upper__Drive_Gear_m2_54T_J1" pos="0 0 0" />
           <geom class="collision" mesh="upper__UA_Standoff_D8_0" pos="0 0 0" />
           <geom class="collision" mesh="upper__UA_Standoff_D8_1" pos="0 0 0" />
         </body>
@@ -202,7 +224,7 @@
             <geom class="collision" mesh="rocker__SB5x4_Ev1" pos="0.06847 0 0.014554" />
             <body name="forearm" pos="0.06847 0 0.014554">
               <inertial pos="0.059459 0.000662 0" mass="0.209353" fullinertia="1.0016e-04 2.6343e-03 2.7184e-03 1.9315e-05 -5.0281e-21 -3.7765e-23" />
-              <joint name="elbow" type="hinge" axis="0 -1 0" range="-1.50098 0.89012" armature="0.016" />
+              <joint name="elbow" type="hinge" axis="0 -1 0" range="-1.50098 0.89012" armature="0.005" />
               <site name="forearm_cad" pos="0 0 0" size="0.004" group="5" />
               <geom class="visual" mesh="forearm__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
               <geom class="visual" mesh="forearm__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
@@ -214,20 +236,23 @@
               <geom class="collision" mesh="forearm__FA_Standoff_D8_1" pos="0 0 0" />
               <geom class="collision" mesh="forearm__SB5x12_B" pos="0 0 0" />
               <body name="level" pos="0.35 0 0">
-                <inertial pos="-0.006412 -0.05785 0.007955" mass="0.093269" fullinertia="3.9972e-05 3.3537e-05 4.2506e-05 -4.7611e-06 2.2438e-06 -6.2096e-06" />
+                <inertial pos="-0.008932 -0.05588 0.009045" mass="0.106837" fullinertia="4.3263e-05 4.4882e-05 4.8568e-05 -4.9957e-06 3.0522e-06 -5.6346e-06" />
                 <joint name="level_joint" type="hinge" axis="0 -1 0" />
                 <site name="level_cad" pos="0 0 0" size="0.004" group="5" />
                 <geom class="visual" mesh="level__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
+                <geom class="visual" mesh="level__brass" pos="0 0 0" rgba="0.85 0.65 0.3 1" />
                 <geom class="visual" mesh="level__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
                 <geom class="visual" mesh="level__motor" pos="0 0 0" rgba="0.08 0.08 0.09 1" />
                 <geom class="visual" mesh="level__pad" pos="0 0 0" rgba="0.12 0.35 0.85 1" />
+                <geom class="visual" mesh="level__pla" pos="0 0 0" rgba="0.9 0.32 0.06 1" />
                 <geom class="visual" mesh="level__steel" pos="0 0 0" rgba="0.3 0.31 0.33 1" />
                 <geom class="collision" mesh="level__Wrist_Level_Member_CF3" pos="0 0 0" />
                 <geom class="collision" mesh="level__Level_Hub_Wrist" pos="0 0 0" />
                 <geom class="collision" mesh="level__SB5x8_Dv2" pos="0 0 0" />
-                <geom class="collision" mesh="level__J3_Wrist_Servo_DS3225" pos="0 0 0" />
+                <geom class="collision" mesh="level__J3_Wrist_Servo_STS3215" pos="0 0 0" />
+                <geom class="collision" mesh="level__Wrist_Servo_Cradle" pos="0 0 0" />
                 <body name="gripper_frame" pos="0 0 0">
-                  <inertial pos="0.024468 -0.003209 0.00195" mass="0.204898" fullinertia="1.1452e-04 1.3011e-04 1.5254e-04 -1.6354e-05 -1.1821e-06 -1.3002e-06" />
+                  <inertial pos="0.025353 -0.003119 0.003073" mass="0.211263" fullinertia="1.2097e-04 1.3475e-04 1.5597e-04 -1.6972e-05 -2.5960e-06 -2.0429e-06" />
                   <joint name="wrist_pitch" type="hinge" axis="0 -1 0" range="-0.52360 2.09440" armature="0.002" />
                   <site name="gripper_frame_cad" pos="0 0 0" size="0.004" group="5" />
                   <geom class="visual" mesh="gripper_frame__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
@@ -240,10 +265,10 @@
                   <geom class="collision" mesh="gripper_frame__Clevis_L_CF3" pos="0 0 0" />
                   <geom class="collision" mesh="gripper_frame__Clevis_R_CF3" pos="0 0 0" />
                   <geom class="collision" mesh="gripper_frame__Roll_Housing" pos="0 0 0" />
-                  <geom class="collision" mesh="gripper_frame__J4_Roll_Servo_DS3225" pos="0 0 0" />
+                  <geom class="collision" mesh="gripper_frame__J4_Roll_Servo_STS3215" pos="0 0 0" />
                   <geom class="collision" mesh="gripper_frame__Brg_6805_Roll" pos="0 0 0" />
                   <body name="head" pos="0 0 -0.005">
-                    <inertial pos="0.077134 0.021557 0.008506" mass="0.157718" fullinertia="2.4057e-04 6.1036e-05 2.2355e-04 -1.4916e-05 -4.8957e-06 1.4986e-05" />
+                    <inertial pos="0.077125 0.021557 0.008506" mass="0.157718" fullinertia="2.4056e-04 6.1115e-05 2.2363e-04 -1.4947e-05 -4.9077e-06 1.4986e-05" />
                     <joint name="wrist_roll" type="hinge" axis="1 0 0" range="-1.65806 1.65806" armature="0.002" />
                     <site name="head_cad" pos="0 0 0.005" size="0.004" group="5" />
                     <geom class="visual" mesh="head__alu" pos="0 0 0.005" rgba="0.8 0.81 0.84 1" />
@@ -331,15 +356,16 @@
           </body>
         </body>
         <body name="crank" pos="-0.16 0 0.215" quat="0 0 -1 0">
-          <inertial pos="0.0046 0.049356 0" mass="0.138248" fullinertia="1.5057e-05 6.2172e-05 5.7352e-05 1.1074e-05 1.5826e-21 1.0966e-21" />
+          <inertial pos="0.006708 0.053208 0" mass="0.094811" fullinertia="4.5029e-05 1.0980e-04 8.5983e-05 1.3524e-05 1.7154e-21 4.5492e-22" />
           <joint name="crank_joint" type="hinge" axis="0 -1 0" />
           <site name="crank_cad" pos="0 0 0" size="0.004" group="5" />
           <geom class="visual" mesh="crank__alu" pos="0 0 0" rgba="0.8 0.81 0.84 1" />
           <geom class="visual" mesh="crank__cf" pos="0 0 0" rgba="0.12 0.12 0.13 1" />
-          <geom class="visual" mesh="crank__motor" pos="0 0 0" rgba="0.08 0.08 0.09 1" />
+          <geom class="visual" mesh="crank__pom" pos="0 0 0" rgba="0.92 0.91 0.86 1" />
           <geom class="visual" mesh="crank__steel" pos="0 0 0" rgba="0.3 0.31 0.33 1" />
           <geom class="collision" mesh="crank__Crank_CF3" pos="0 0 0" />
           <geom class="collision" mesh="crank__J2_Output_Hub_Journal" pos="0 0 0" />
+          <geom class="collision" mesh="crank__Drive_Gear_m2_54T_J2" pos="0 0 0" />
           <geom class="collision" mesh="crank__SB5x8_A" pos="0 0 0" />
           <body name="crank_pin" pos="0.08 0 0" quat="0 0 1 0">
             <inertial pos="0 0 0" mass="0.000100" fullinertia="1.0000e-08 1.0000e-08 1.0000e-08 0.0000e+00 0.0000e+00 0.0000e+00" />
@@ -499,10 +525,10 @@
     <weld name="grasp_pipe" body1="head" body2="pipe" active="false" solref="0.004 1" />
   </equality>
   <actuator>
-    <position name="shoulder" joint="shoulder" kp="800" kv="40" ctrlrange="0.00000 3.14159" forcerange="-27 27" />
-    <position name="elbow" joint="elbow" kp="800" kv="40" ctrlrange="-1.50098 0.89012" forcerange="-27 27" />
-    <position name="wrist_pitch" joint="wrist_pitch" kp="60" kv="3" ctrlrange="-0.52360 2.09440" forcerange="-2.4 2.4" />
-    <position name="wrist_roll" joint="wrist_roll" kp="30" kv="1.5" ctrlrange="-1.65806 1.65806" forcerange="-2.4 2.4" />
+    <position name="shoulder" joint="shoulder" kp="800" kv="40" ctrlrange="0.00000 3.14159" forcerange="-8.38 8.38" />
+    <position name="elbow" joint="elbow" kp="800" kv="40" ctrlrange="-1.50098 0.89012" forcerange="-8.38 8.38" />
+    <position name="wrist_pitch" joint="wrist_pitch" kp="60" kv="3" ctrlrange="-0.52360 2.09440" forcerange="-2.94 2.94" />
+    <position name="wrist_roll" joint="wrist_roll" kp="30" kv="1.5" ctrlrange="-1.65806 1.65806" forcerange="-2.94 2.94" />
     <position name="gripper" joint="gripper" kp="50" kv="2.5" ctrlrange="0.00000 1.10301" forcerange="-2.94 2.94" />
     <position name="base_x" joint="base_x" kp="20000" kv="2000" ctrlrange="-5 5" forcerange="-800 800" />
     <position name="base_y" joint="base_y" kp="20000" kv="2000" ctrlrange="-5 5" forcerange="-800 800" />

@@ -83,7 +83,49 @@ PROCESS = {
 }
 
 
+# Sheet revisions.  A sheet whose part still matches its STEP export in the previous package (PREV_STEP, a copy of
+# fab/step taken before export_fab.py rewrites it) keeps its letter; a changed part steps to REV with REV_NOTE.
+# New parts start at "A".  REV_REASON adds a specific line for known changes.
+REV, REV_DATE = "B", "2026-11-19"
+PREV_STEP = os.environ.get("PREV_STEP", "")
+REV_NOTE = "GEOMETRY CHANGED SINCE REV A (STS3215 DRIVES, LEVEL-KEEPING LINKAGE); SUPERSEDES REV A"
+REV_REASON = {
+    "J1_Output_Hub": "MOTOR FLANGE REPLACED BY A STUB: " + "\u2300" + "24 COLLAR, 19 AF HEX FOR THE 54T GEAR, " + "\u2300" + "20 JOURNAL IN A 6804, M5 END.",
+    "J2_Output_Hub_Journal": "MOTOR FLANGE REPLACED BY A STUB: " + "\u2300" + "24 COLLAR, 19 AF HEX FOR THE 54T GEAR, " + "\u2300" + "20 JOURNAL IN A 6804, M5 END.",
+    "Tower_L_CF3": "MOTOR BOLT PATTERN REPLACED BY 3X " + "\u2300" + "3.3 FOR THE DRIVE FRAME LEGS; OUTLINE GROWN TO THE LEGS.",
+    "Tower_R_CF3": "MOTOR BOLT PATTERN REPLACED BY 3X " + "\u2300" + "3.3 FOR THE DRIVE FRAME LEGS; OUTLINE GROWN TO THE LEGS.",
+    "Wrist_Level_Member_CF3": "SERVO HOLES MOVED TO THE STS3215 CRADLE PILLARS.",
+    "Roll_Housing": "STS3215 POCKET AND FLOOR REPLACE THE DS3225 EAR BULKHEAD.",
+}
+
+
+def sheet_rev(p, shape):
+    """-> (letter, note or None).  Compares volume, area and bounding box with the previous package's STEP."""
+    f = os.path.join(PREV_STEP, p.name + ".step") if PREV_STEP else ""
+    if not f or not os.path.exists(f):
+        return ("A", None)
+    try:
+        old = Part.read(f)
+        a, b = old, p.vis
+        same = (abs(a.Volume - b.Volume) < 0.5 and abs(a.Area - b.Area) < 0.5
+                and all(abs(x - y) < 0.05 for x, y in zip(sorted((a.BoundBox.XLength, a.BoundBox.YLength, a.BoundBox.ZLength)),
+                                                         sorted((b.BoundBox.XLength, b.BoundBox.YLength, b.BoundBox.ZLength)))))
+    except Exception:
+        same = False
+    if same:
+        return ("A", None)
+    return (REV, "REV %s (%s): %s" % (REV, REV_DATE, REV_REASON.get(p.name, REV_NOTE)))
+
+
 EXTRA_NOTES = {                                    # features the hole/fit logic cannot recognise
+    "J1_Output_Hub": "HEX DRIVES THE 54T DRIVE GEAR (PRINTED); " + "\u2300" + "20 JOURNAL RUNS IN A 6804 IN THE DRIVE FRAME; "
+                     "M5 x 10 END SCREW + WASHER CLAMP THE INNER RACE (interfaces/base_hub__drive.toml).",
+    "J2_Output_Hub": "HEX DRIVES THE 54T DRIVE GEAR (PRINTED); " + "\u2300" + "20 JOURNAL RUNS IN A 6804 IN THE DRIVE FRAME; "
+                     "M5 x 10 END SCREW + WASHER CLAMP THE INNER RACE (interfaces/base_hub__drive.toml).",
+    "Drive_Frame": "CARRIES THE 6804 (PRESS FIT IN THE BORE, LIP OUTBOARD) AND THE STS3215 (POCKET + 4 BOTTOM-CAP SCREWS); "
+                   "3 LEGS WITH M3 HEAT-SET INSERTS BOLT TO THE TOWER (interfaces/drive_frame__tower.toml).",
+    "Wrist_Servo_Cradle": "HOLDS THE J3 STS3215 (POCKET + 4 BOTTOM-CAP SCREWS); 4 PILLARS WITH M3 HEAT-SET INSERTS "
+                          "(interfaces/level_member__j3_cradle.toml).",
     "GT2_Pulley": "HEX BOSS MATES THE ARC-121/ARC-127 HEX HOLE.",
     "Level_Rocker": "HEX HOLE: SHARP CORNERS AS MODELLED; DOG-BONE RELIEF OUTSIDE THE FLATS PERMITTED. MATES THE ARC-104 HEX BOSS.",
     "Wrist_Level_Member": "HEX HOLE: SHARP CORNERS AS MODELLED; DOG-BONE RELIEF OUTSIDE THE FLATS PERMITTED. MATES THE ARC-104 HEX BOSS.",
@@ -120,14 +162,17 @@ def custom_parts():
     for key, ps in groups.items():
         out.append(ps)
     out.sort(key=lambda ps: (["AL", "CF", "PRINT", "TPU", "STEEL", "SHIM", "PTFE", "BRASS"].index(ps[0].kind) if ps[0].kind in DENS else 9, ps[0].name))
-    try:                                   # stable ARC numbers: previous order first, new groups appended
+    try:                                   # stable ARC numbers: a group keeps its previous slot, new groups append
         prev = json.load(open(os.path.join(OUT, "batch_index.json")))
-        pos = {names[0]: i for i, names in enumerate(prev)}
-        old = sorted([g for g in out if g[0].name in pos], key=lambda g: pos[g[0].name])
-        new = [g for g in out if g[0].name not in pos]
-        out = old + new
     except Exception:
-        pass
+        prev = []
+    pos = {names[0]: i for i, names in enumerate(prev)}
+    old = sorted([g for g in out if g[0].name in pos], key=lambda g: pos[g[0].name])
+    new = [g for g in out if g[0].name not in pos]
+    out = old + new
+    nums = [pos[g[0].name] for g in old] + [len(prev) + k for k in range(len(new))]
+    index = [list(n) for n in prev] + [[q.name for q in g] for g in new]      # removed groups keep their slot
+    _CACHE["nums"], _CACHE["index"] = nums, index
     return out
 
 
@@ -286,6 +331,13 @@ def hole_table(shape):
         hs.sort(key=lambda h: (h["r"], h["z0"]))
         base = hs[0]
         base["cbore"] = None
+        apart = [h_ for h_ in hs[1:] if h_["r"] > base["r"] + 0.05 and
+                 (h_["z0"] > base["z1"] + 0.1 or h_["z1"] < base["z0"] - 0.1)]
+        for h_ in apart:                            # coaxial but separated by material (e.g. tapped holes from both
+            h_["cbore"], h_["csk"] = None, None     # ends of a shaft): its own hole, not a counterbore of the base
+            h_["far"] = not _open(h_["x"], h_["y"], h_["z1"] + 0.3) and _open(h_["x"], h_["y"], h_["z0"] - 0.3)
+            final.append(h_)
+        hs = [h_ for h_ in hs if h_ not in apart]
         for big in hs[1:]:
             if big["r"] > base["r"] + 0.05 and not big["thru"]:
                 base["cbore"] = (2 * big["r"], big["depth"])
@@ -575,7 +627,7 @@ def part_drawing(ps, number):
         _hand = ""
     stem = "%s_%s" % (number, p.name)
     doc, page = new_sheet("DWG_" + number.replace("-", "_"), title1[:28], proc["title2"], proc["title3"],
-                          number, scale_txt(sc), R.mm(mass, 1) + " g", tol=proc.get("tol"))
+                          number, scale_txt(sc), R.mm(mass, 1) + " g", tol=proc.get("tol"), rev=sheet_rev(p, shape)[0])
     part = doc.addObject("Part::Feature", "Part")
     part.Shape = shape
     part.ViewObject.Visibility = False
@@ -1102,6 +1154,10 @@ def part_drawing(ps, number):
     if skipped:
         lines.append("%d. ENVELOPE %s x %s x %s (REF)." % (n, R.mm(xh - xl, 1), R.mm(yh - yl, 1), R.mm(Lz, 1)))
         n += 1
+    _rv, _note = sheet_rev(p, shape)
+    if _note:
+        lines.append("%d. %s" % (n, _note))
+        n += 1
     lines.append("%d. MASS %s g (REF). MODEL SOURCE: arm_model.py (%s)." % (n, R.mm(mass, 1), p.src.replace("custom: ", "")))
     rich(doc, page, html_lines(lines, 7), 106, 74, 150, name="Notes")   # column ends 14 mm left of the tolerance block
     rich(doc, page, html_lines(["ISOMETRIC (REF)", "SCALE " + scale_txt(isc)], 8), 372, 196, 40, name="Cap_iso")
@@ -1120,12 +1176,12 @@ def batch(start=0, count=100, only=None):
     if start == 0:
         open(LOG, "w").close()
         with open(os.path.join(OUT, "batch_index.json"), "w") as fh:
-            json.dump([[q.name for q in ps] for ps in groups], fh)
+            json.dump(_CACHE["index"], fh)
     done = []
     idx = only if only is not None else range(start, min(start + count, len(groups)))
     for gi in idx:
         ps = _CACHE["j1"] if gi == -1 else groups[gi]
-        number = "ARC-%03d" % (102 + gi)
+        number = "ARC-%03d" % (101 if gi == -1 else 102 + _CACHE["nums"][gi])
         t0 = time.time()
         try:
             pdf = part_drawing(ps, number)
@@ -1142,7 +1198,7 @@ def draw_one(index):
     if "groups" not in _CACHE:
         _CACHE["groups"] = custom_parts()
     ps = _CACHE["j1"] if index == -1 else _CACHE["groups"][index]
-    number = "ARC-%03d" % (102 + index)
+    number = "ARC-%03d" % (101 if index == -1 else 102 + _CACHE["nums"][index])
     t0 = time.time()
     pdf = part_drawing(ps, number)
     for _try in range(2):                           # notes found no free spot -> one standard scale smaller

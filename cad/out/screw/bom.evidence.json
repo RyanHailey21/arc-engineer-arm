@@ -1,0 +1,42 @@
+{
+ "status": "fail",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "bom",
+  "status": "fail",
+  "reason": "FAIL: 32 purchased items, unsourced: COLLAR8",
+  "scope": "32 purchased items, unsourced: COLLAR8",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "041005672e7966e2f53d8bf80ef8914cfc0852dd0029c94300e54c2ebdc9c7aa",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/bom.inputs.json",
+    "sha256": "e310c8967299d39c32e658826a3a167a5346ce50a2bf194d9787abeec33f3789"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "BOM.csv",
+    "path": "BOM.csv",
+    "sha256": "711d1f6ed77508cf7512ea6a615be2be6ab364d026f8abf1cd5d07a14de20812"
+   },
+   {
+    "id": "BOM.md",
+    "path": "BOM.md",
+    "sha256": "7defd2172e77288a38c3ddec00e0802898aa78ffea3e772c46cea4c41770a782"
+   }
+  ],
+  "extensions": {
+   "variant": "SCREW",
+   "time": "2026-11-19T18:49:46",
+   "inputs_hash": "a6a5f3405c32a209",
+   "external_copies": []
+  }
+ }
+}
