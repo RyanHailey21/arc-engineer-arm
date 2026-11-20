@@ -5,14 +5,14 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
   "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 193 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept; fingerprint MATCH",
-  "scope": "envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 193 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept; fingerprint MATCH",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 193 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; working-doc MATCH; bloat 25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept; fingerprint MATCH",
+  "scope": "envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 193 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; working-doc MATCH; bloat 25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept; fingerprint MATCH",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "ff53b0040f279707f083c71adf41f7c6c44805c4ecb6e8e1020e42c2fcf0663b",
+  "implementation_sha256": "4f92b92135ddb7419768aece3190ff01548033989fa25c96462aad7b74a27a9e",
   "inputs": [
    {
     "id": "design-inputs",
@@ -24,12 +24,12 @@
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "3753c29f1f8bbfe766211ab9eb7e5362ae7ca8fa1d57db645994b0dd292f25ac"
+    "sha256": "0b7d80698ab6b5c5ee859dcc823af3506f8f066e9aef61752485a004b953531d"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-19T21:21:41",
+   "time": "2026-11-20T04:59:49",
    "inputs_hash": "583f149273fa8325",
    "external_copies": []
   }

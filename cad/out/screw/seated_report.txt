@@ -1,1 +1,1 @@
-Fastener seating (SCREW, STOW): 135 screws/pins, 136 seat points -> 0 FAIL
+Fastener seating (SCREW, STOW): 154 screws/pins/washers, 152 seat points + head bearing -> 0 FAIL

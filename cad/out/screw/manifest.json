@@ -66,9 +66,9 @@
   "files": [
    "seated_report.txt"
   ],
-  "inputs_hash": "a6a5f3405c32a209",
-  "note": "Fastener seating (SCREW, STOW): 135 screws/pins, 136 seat points -> 0 FAIL",
+  "inputs_hash": "583f149273fa8325",
+  "note": "Fastener seating (SCREW, STOW): 154 screws/pins/washers, 152 seat points + head bearing -> 0 FAIL",
   "status": "PASS",
-  "time": "2026-11-19T18:48:31"
+  "time": "2026-11-20T05:01:16"
  }
 }

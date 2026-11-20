@@ -1,0 +1,1 @@
+Working doc sync (FOURBAR, STOW): 267 model parts vs open document -> 0 FAIL

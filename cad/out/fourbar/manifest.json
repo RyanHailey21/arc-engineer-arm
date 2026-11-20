@@ -112,9 +112,9 @@
    "quick.json"
   ],
   "inputs_hash": "583f149273fa8325",
-  "note": "envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 193 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; bloat 25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept; fingerprint MATCH",
+  "note": "envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 193 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; working-doc MATCH; bloat 25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept; fingerprint MATCH",
   "status": "PASS",
-  "time": "2026-11-19T21:21:41"
+  "time": "2026-11-20T04:59:49"
  },
  "seated": {
   "evidence": "seated.evidence.json",
@@ -122,9 +122,9 @@
    "seated_report.txt"
   ],
   "inputs_hash": "583f149273fa8325",
-  "note": "Fastener seating (FOURBAR, STOW): 100 screws/pins, 116 seat points -> 0 FAIL",
+  "note": "Fastener seating (FOURBAR, STOW): 119 screws/pins/washers, 132 seat points + head bearing -> 0 FAIL",
   "status": "PASS",
-  "time": "2026-11-19T20:48:54"
+  "time": "2026-11-20T05:00:47"
  },
  "working_doc": {
   "evidence": "working_doc.evidence.json",
@@ -132,8 +132,18 @@
    "ARC_Arm_Fourbar.FCStd"
   ],
   "inputs_hash": "583f149273fa8325",
-  "note": "ARC_Arm_Fourbar.FCStd: 267 parts in 17 body groups at STOW, uncoloured (headless) (9.9 MB)",
+  "note": "ARC_Arm_Fourbar.FCStd: 267 parts in 17 body groups at STOW, coloured (10.0 MB)",
   "status": "PASS",
-  "time": "2026-11-19T20:56:44"
+  "time": "2026-11-20T04:56:53"
+ },
+ "working_doc_sync": {
+  "evidence": "working_doc_sync.evidence.json",
+  "files": [
+   "working_doc_sync.txt"
+  ],
+  "inputs_hash": "583f149273fa8325",
+  "note": "Working doc sync (FOURBAR, STOW): 267 model parts vs file -> 0 FAIL",
+  "status": "PASS",
+  "time": "2026-11-20T04:54:37"
  }
 }

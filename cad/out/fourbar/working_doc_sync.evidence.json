@@ -1,0 +1,37 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "working_doc_sync",
+  "status": "pass",
+  "reason": "PASS: Working doc sync (FOURBAR, STOW): 267 model parts vs file -> 0 FAIL",
+  "scope": "Working doc sync (FOURBAR, STOW): 267 model parts vs file -> 0 FAIL",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "ef08fa060df5d18c34a16e10c9251a2e0e1af92c8512c9e7356b96e89b752a05",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/working_doc_sync.inputs.json",
+    "sha256": "de9dc09a046104fc92b22e253308f1f57c8923dafd6db747ea214c5827aa7e6f"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "working_doc_sync.txt",
+    "path": "working_doc_sync.txt",
+    "sha256": "771094feb98b5e0e81c97c10c72192bfffa34380a5f8b3de5302255e843c9d19"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-20T04:54:37",
+   "inputs_hash": "583f149273fa8325",
+   "external_copies": []
+  }
+ }
+}

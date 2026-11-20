@@ -31,6 +31,7 @@ against its `tool_use` (142 errors in 19,040 lines up to 2026-11-17 04:30Z).
 | TI-022 | 2026-11-18 | Tests and quick_static hard-code the main checkout path: from a worktree they test and write the user's checkout | fixed: `__file__` + test; worktrees git-ignored, skipped by bloat_report |
 | TI-023 | 2026-11-18 | test_validate_data `param_typo_type` hard-codes TOML line 17; ZL0 is on line 18, so it FAILs on main | fixed: line found from the file |
 | TI-024 | 2026-11-18 | `params.inputs_hash` hashes raw bytes: a CRLF checkout (worktree, `core.autocrlf=true`) gets another hash, all evidence STALE | fixed: EOL-neutral input digests + test (staled evidence once) |
+| TI-025 | 2026-11-20 | Rev B servo case screws floated 13 mm off their holes in the GUI working doc; check_seated skipped PAN screws, had no head-contact rule, and nothing compared the open document with the model | fixed: check_seated rule 2 (head/washer bearing) + PAN screws + test; tools/check_working_doc.py |
 
 ---
 
@@ -485,3 +486,26 @@ git re-writes a file (checkout, merge, pull).
   - negative: the old raw-byte hash gives two different values on those trees;
   - `record()`'s snapshot uses `input_sha`.
 Not done: a `.gitattributes` `eol=lf` (fix B), which is a repo-wide line-ending change and not needed for the hash.
+
+## TI-025: floating screws in the working document  (fixed 2026-11-20)
+**Symptom.** The user saw the rev B STS3215 bottom-cap screws (PAN-M2x12, 16 of them) hanging in the air in the
+FreeCAD GUI's ARC_Arm_Fourbar document, 12-33 mm from their holes.
+**Root cause, two gaps.**
+- The coloured GUI build was made while `hardware.pan_screw` returned one object as both vis and chk, so
+  `sts_case_screws` translated it twice by the screw-pattern offset.  The bug was fixed and the file on disk was
+  rebuilt headless, but the document left open in the GUI was never rebuilt, and no check looks at it.
+- `check_seated` would not have caught the bug in the model either: it judged only SHCS/BHCS/CSK/SB5 (not the
+  `PAN-*` keys), and it only asked whether the point under the head lies in a coaxial hole, never whether the head
+  actually bears on anything.
+**Fix.**
+- `tools/check_seated.py`: `PAN-*` screws are judged; new rule 2: the head's bearing face (an annulus between
+  shank and rim; the cone for countersunk heads) and both faces of every washer must touch another part within
+  0.2 mm, else FAIL "floating" with the distance to the nearest part.  It now runs inside `quick_check`
+  (`seating`, ~3-6 s).  FOURBAR 119 and SCREW 154 fasteners: 0 FAIL.
+- `tests/test_seated_floating_head.py`: every PAN screw pulled 2 mm off its floor (rule 2 only) and shifted
+  13.2 mm sideways (the original bug) must be flagged, and nothing else may start failing.  PASS (16/16, 16/16).
+- `tools/check_working_doc.py`: compares every part of the working document (the open GUI document when run in the
+  GUI, else the saved file) with the model at STOW by exact bounding box (`optimalBoundingBox`: the plain box
+  tightens once the GUI has meshed a shape, ~1.3 mm on button heads) and volume.  Before the rebuild: 96 FAIL in
+  the open document; after: 0.  It is a standalone check (its evidence goes STALE like the others), not part of
+  quick_check: opening the document costs ~15 s and quick_check cannot see the GUI anyway.

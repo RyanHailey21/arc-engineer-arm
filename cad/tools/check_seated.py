@@ -17,6 +17,10 @@ Each point must lie inside a coaxial hole of ANOTHER part: a concave cylindrical
 and within 0.3 mm of the fastener axis, radius >= the fastener's local radius - 0.15 mm, the point within the
 face's axial extent (+-0.3 mm).  Clearance, tapped, insert, nut, washer and bearing bores all count.
   FAIL  a point is in no coaxial hole: the fastener bears on air (a pocket, nothing) or on solid with no hole.
+Rule 2 (bearing): the head's bearing face (screws, incl. PAN) and both faces of every washer must touch another
+part: points BEAR_GAP (0.2 mm) past the face, on an annulus between shank and head rim (on the cone for countersunk
+heads), must fall inside some other part's solid.
+  FAIL  "floating": the head or washer stands off its seat; the report gives the distance to the nearest part.
 Set screws are not judged (their seat is a tapped hole across a shaft).  Exit 1 on any FAIL.
 """
 import math
@@ -32,7 +36,10 @@ import params          # noqa: E402
 
 V = App.Vector
 SCREW_SRC = {"SHCS", "BHCS", "CSK", "SB5"}
+SCREW_PREFIX = ("PAN-",)
 PIN_PREFIX = ("PIN-", "DOWEL")
+BEAR_GAP = 0.2          # head / washer faces may stand off their seat by at most this (mm)
+GAP_SCAN = 20.0         # how far to look for the seat when reporting a floating head
 AX_TOL, RAD_TOL, T_TOL, ANG_TOL = 0.3, 0.15, 0.3, math.radians(1.0)
 
 
@@ -57,6 +64,10 @@ def cylinders(shape, concave):
         ts = [(x.Point - c).dot(ax) for x in f.Vertexes] or [0.0]
         out.append((c, ax, s.Radius, min(ts), max(ts)))
     return out
+
+
+def is_screw(p):
+    return p.src in SCREW_SRC or p.src.startswith(SCREW_PREFIX)
 
 
 def fastener_points(p, s):
@@ -99,6 +110,7 @@ def fastener_points(p, s):
     else:
         under, d = ha, -1.0
     tu = under + 0.5 * d
+    fastener_points.bearing = (c, ax, under, d, shank_r, max(h[2] for h in head) if head else None, cones)
     return [("under head", at(tu), r_at(tu))], ax
 
 
@@ -113,10 +125,68 @@ def seated(point, ax, r, holes):
     return False
 
 
+def _perp(ax):
+    a = ax.cross(V(0, 0, 1)) if abs(ax.z) < 0.9 else ax.cross(V(1, 0, 0))
+    a.normalize()
+    return a, ax.cross(a)
+
+
+def _ring(c, ax, t, r, n=16):
+    e1, e2 = _perp(ax)
+    return [c + ax * t + e1 * (r * math.cos(2 * math.pi * k / n)) + e2 * (r * math.sin(2 * math.pi * k / n))
+            for k in range(n)]
+
+
+def _touches(pts, others):
+    for pt in pts:
+        for j, bb, sh in others:
+            if bb.isInside(pt) and sh.isInside(pt, 1e-3, False):
+                return placed_name(j)
+    return None
+
+
+def placed_name(j):
+    return _PLACED[j][1].name
+
+
+_PLACED = []
+
+
+def bearing_rings(p, s, ax):
+    """[(label, [ring point sets at offset g])] -> callable g -> points just past each bearing face.
+    Screw heads: an annulus between the shank and the head rim, g past the head's bearing face.
+    Countersunk heads: points g outside the cone face.  Washers: both faces."""
+    if p.src == "WASHER":
+        cyl = cylinders(s, concave=False)
+        c, ax_ = cyl[0][:2]
+        tv = [(x.Point - c).dot(ax_) for x in s.Vertexes]
+        t0, t1 = min(tv), max(tv)
+        ro = max(h[2] for h in cyl)
+        ri = min(h[2] for h in cylinders(s, concave=True) or [(0, 0, ro * 0.5)])
+        rs = (ri + 0.3, (ri + ro) / 2, ro - 0.3)       # any contact counts: the mating head or face may be small
+        return [("washer face A", lambda g: [q for r in rs for q in _ring(c, ax_, t0 - g, r)]),
+                ("washer face B", lambda g: [q for r in rs for q in _ring(c, ax_, t1 + g, r)])]
+    c, ax_, under, d, shank_r, head_r, cones = fastener_points.bearing
+    if head_r:
+        rm = (shank_r + 0.3 + head_r - 0.15) / 2
+        return [("head face", lambda g: _ring(c, ax_, under + d * g, rm) + _ring(c, ax_, under + d * g, head_r - 0.3))]
+    out = []
+    for f in cones:
+        u0, u1, v0, v1 = f.ParameterRange
+        pts0 = []
+        for k in range(12):
+            for vv in (0.35, 0.65):
+                uu, v_ = u0 + (u1 - u0) * k / 12.0, v0 + (v1 - v0) * vv
+                pts0.append((f.valueAt(uu, v_), f.normalAt(uu, v_)))
+        out.append(("cone face", lambda g, pts0=pts0: [pt + n * g for pt, n in pts0]))
+    return out
+
+
 def run(bodies=None, pose="STOW"):
     bodies = bodies or M.build_bodies()
     q, jaw = M.pose_q(pose)
     placed = list(M.placed(bodies, *q, jaw=jaw, which="vis"))
+    _PLACED[:] = placed
     holes = []
     for i, (_b, _p, s) in enumerate(placed):
         if s.isNull() or not s.Faces:
@@ -126,8 +196,15 @@ def run(bodies=None, pose="STOW"):
         holes.append((i, bb, cylinders(s, concave=True)))
     rows, n_f, n_pts, skipped = [], 0, 0, []
     for i, (bn, p, s) in enumerate(placed):
-        if p.kind != "CAT" or not (p.src in SCREW_SRC or p.src.startswith(PIN_PREFIX)) or s.isNull():
+        if p.kind != "CAT" or s.isNull():
             continue
+        if p.src == "WASHER":
+            rows += _bearing_rows(i, p, s, None, holes)
+            n_f += 1
+            continue
+        if not (is_screw(p) or p.src.startswith(PIN_PREFIX)):
+            continue
+        fastener_points.bearing = None
         pts, ax = fastener_points(p, s)
         if pts is None:
             skipped.append("%s/%s (%s)" % (bn, p.name, ax))
@@ -143,12 +220,35 @@ def run(bodies=None, pose="STOW"):
                     p.name, label, pt.x, pt.y, pt.z,
                     ("inside solid " + ", ".join(where[:3]) + ", no coaxial hole") if where
                     else "no coaxial hole and no material (pocket, gap or off-axis hole)"))
+        if is_screw(p) and fastener_points.bearing:
+            rows += _bearing_rows(i, p, s, ax, holes)
     return n_f, n_pts, rows, skipped
+
+
+def _bearing_rows(i, p, s, ax, holes):
+    """Rule 2: the head (or washer face) must bear on another part within BEAR_GAP."""
+    rows = []
+    for label, ring in bearing_rings(p, s, ax):
+        pts = ring(BEAR_GAP)
+        bb = s.BoundBox
+        bb.enlarge(GAP_SCAN + 1)
+        others = [(j, hb, _PLACED[j][2]) for j, hb, _h in holes if j != i and hb.intersect(bb)]
+        if _touches(pts, others):
+            continue
+        g, hit = BEAR_GAP, None
+        while g < GAP_SCAN and not hit:
+            g += 0.25
+            hit = _touches(ring(g), others)
+        c = sum(pts, V()) * (1.0 / len(pts))
+        rows.append("FAIL %-32s %-10s at (%.1f, %.1f, %.1f)  floating: %s" % (
+            p.name, label, c.x, c.y, c.z,
+            ("nearest seat %s %.2f mm away" % (hit, g)) if hit else "nothing within %.0f mm" % GAP_SCAN))
+    return rows
 
 
 def main():
     n_f, n_pts, rows, skipped = run()
-    head = "Fastener seating (%s, STOW): %d screws/pins, %d seat points -> %d FAIL%s" % (
+    head = "Fastener seating (%s, STOW): %d screws/pins/washers, %d seat points + head bearing -> %d FAIL%s" % (
         M.GRIP, n_f, n_pts, len(rows), ("; %d not judged" % len(skipped)) if skipped else "")
     txt = "\n".join([head] + rows + ["not judged: " + s for s in skipped])
     out = os.path.join(params.out_dir(), "seated_report.txt")
