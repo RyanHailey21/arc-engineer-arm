@@ -40,10 +40,7 @@ ZLB = [-25.0, -22.0]    # bottom link layer z
 ZGB = [-21.5, -16.3]    # palm lower ground-pivot layer z (top = servo cradle floor top; servo body from -16)
 ZLUG = [-21.5, -14.5]   # jaw block above the bottom link: lower coupler-pin bore z (D4x14 pin, z -28.9 .. -14.9)
 
-[SERVO]               # Feetech STS3215, 12 V version (Amazon B0FKY4Z15R listing, Feetech data)
-rated_Nm = 0.98       # 10 kg*cm rated (continuous) at 12 V
-stall_Nm = 2.94       # 30 kg*cm peak stall at 12 V
-speed_s_per_60deg = 0.222   # no-load at 12 V
+# The jaw servo is an STS3215: its torques come from params/actuators.toml [STS3215] (one source for every joint).
 
 [SPRING]              # opening torsion spring on the right drive pivot (McMaster 9271K56, right-hand, 90 deg)
 pn = "9271K56"
@@ -54,7 +51,7 @@ arbor_d = 7.5         # 0.296 in maximum shaft -> printed D7.5 arbor around the 
 max_torque_Nm = 0.508 # 4.5 in*lbf at 90 deg
 rate_Nm_per_deg = 0.005648
 preload_deg = 22.0    # wound 22 deg at full open (jaw 112): 0.12 N*m opening torque; 85 deg (0.48 N*m) at the pipe grip
-alt_pn = "9271K52"    # weaker alternate, same arbor (3.509 in*lbf at 90 deg): fit if the back-drive bench test allows
+                      # weaker alternate 9271K52, same arbor (3.509 in*lbf at 90 deg): fit if the back-drive bench test allows
 
 [GRIP_REQ]            # hand-estimated clamp per jaw (N) for tools/grip_budget.py; the sim-based check that supersedes
                       # these (donut 300 g, the full task's carried loads) is tools/grip_hold.py

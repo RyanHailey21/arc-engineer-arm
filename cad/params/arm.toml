@@ -26,7 +26,6 @@ DECK_Z = 120.0           # chassis deck top (placeholder chassis)
 
 [Y]                      # layer stack: centre planes of the plates (y, mm); see the arm_model.py docstring
 FL = -18.0               # forearm plate L (R is +18)
-CL = -23.5               # wrist clevis plate L (R is +23.5)
 ROD2 = -33.0             # level-keeping rod 2 centre plane (4 mm rod, y -35..-31): 1 mm washer to the rocker/level plates
                          # (-36); pin head on the inboard face ends at -27, 2 mm clear of the wrist clevis plate L (-25)
 ROCK = -37.5             # rocker / level member

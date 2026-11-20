@@ -145,10 +145,6 @@ mass = 0.3
 desc = "Round aluminium standoff M3 female"
 mass = 1
 
-["HARNESS"]
-desc = "Cabling (CAN/power, servo, M2006 phase + hall) - routed, not interference-checked"
-mass = 0
-
 ["STS3215"]
 desc = "Feetech STS3215 serial-bus servo, 12 V version: 10 kg*cm rated / 30 kg*cm stall at 12 V, 0.222 s/60 deg, magnetic encoder 360 deg, steel gears (all joints and the four-bar gripper: J1/J2 through a 3:1 printed spur stage, J3/J4 direct)"
 mass = 60

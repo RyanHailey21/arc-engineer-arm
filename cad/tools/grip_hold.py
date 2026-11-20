@@ -49,7 +49,8 @@ os.environ.setdefault("GRIP", "FOURBAR")
 import params  # noqa: E402
 
 P = params.load("gripper_fourbar")
-FB, SV, SP = P["FB"], P["SERVO"], P["SPRING"]
+FB, SP = P["FB"], P["SPRING"]
+SV = params.load("actuators")["STS3215"]          # the jaw servo
 PAD = params.load("pads")
 MU_DESIGN = 0.5          # TPU 95A on PVC / PLA, dry: published 0.5-0.8; 0.5 for design, 0.3 as the low case
 SF_RATED, SF_STALL = 1.5, 2.0

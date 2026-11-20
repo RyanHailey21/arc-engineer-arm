@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Four-bar gripper grip-force budget from params/gripper_fourbar.toml ([FB], [SERVO], [SPRING], [GRIP_REQ]) and
+Four-bar gripper grip-force budget from params/gripper_fourbar.toml ([FB], [SPRING], [GRIP_REQ]; servo torques from actuators.toml [STS3215]) and
 params/pads.toml.  Pure Python (no FreeCAD):  python -I cad/tools/grip_budget.py
 -> cad/out/fourbar/grip_budget.txt + an evidence record.
 
@@ -22,7 +22,8 @@ os.environ.setdefault("GRIP", "FOURBAR")
 import params  # noqa: E402
 
 P = params.load("gripper_fourbar")
-FB, SV, SP, REQ = P["FB"], P["SERVO"], P["SPRING"], P["GRIP_REQ"]
+FB, SP, REQ = P["FB"], P["SPRING"], P["GRIP_REQ"]
+SV = params.load("actuators")["STS3215"]          # the jaw servo
 PAD = params.load("pads")
 O_PIPE = PAD["PIPE_OD"] / 2 * math.sqrt(2) - PAD["NOTCH"]
 

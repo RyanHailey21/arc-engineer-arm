@@ -3,8 +3,7 @@
 
 [STS3215]                 # Feetech STS3215, 12 V (Feetech spec 2020-04-10; Amazon B0FKY4Z15R listing)
 rated_Nm = 0.98           # 10 kg*cm rated (continuous) at 12 V
-stall_Nm = 2.94           # 30 kg*cm stall at 12 V
-speed_s_per_60deg = 0.222 # no-load at 12 V (4.72 rad/s)
+stall_Nm = 2.94           # 30 kg*cm stall at 12 V; no-load speed 0.222 s/60 deg (4.72 rad/s)
 hold_frac = 0.5           # project rule for hobby servos: static holding torque <= 50 % of stall (report R4)
 
 [BASE]                    # J1 shoulder and J2 elbow: STS3215 through a printed m2 18T/54T spur stage

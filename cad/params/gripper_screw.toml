@@ -17,6 +17,3 @@ M2006_FRONT = 42.0    # vendor STEP: gearbox front face at model y = 42, output 
 GEAR_Y0 = -4.6        # gear face planes (y)
 GEAR_Y1 = 0.4
 
-[M2006_HOLES]         # M2006 gearbox face screws (vendor drawing)
-pcd = 18.4
-ang = [1, 121, 241]
