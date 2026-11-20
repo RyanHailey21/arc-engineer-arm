@@ -6,7 +6,6 @@ geometry helpers (box, ycyl, plate, at, to_z, ...).  Every other arm module star
 
 
 import math
-import os
 import FreeCAD as App
 import Part
 import hardware as H
@@ -245,28 +244,6 @@ def to_z(pair, x, y, z):
         s.rotate(V(0, 0, 0), V(1, 0, 0), 90)       # +Y -> +Z
         s.translate(V(x, y, z))
         out.append(s)
-    return out
-
-
-def to_x(pair, x, y, z):
-    """Move a Y-axis built item to the -X axis (Y -> -X) at (x, y, z)."""
-    out = []
-    for s in pair[:2]:
-        s = s.copy()
-        s.rotate(V(0, 0, 0), V(0, 0, 1), 90)
-        s.translate(V(x, y, z))
-        out.append(s)
-    return out
-
-
-def clip_at(x, z, y_face, sgn):
-    """Cable-tie mount stuck on a Y-normal face at (x, y_face, z), pointing sgn*Y."""
-    out = []
-    for s_ in H.cable_clip()[:2]:
-        s_ = s_.copy()
-        s_.rotate(V(0, 0, 0), V(1, 0, 0), -90 * sgn)
-        s_.translate(V(x, y_face, z))
-        out.append(s_)
     return out
 
 

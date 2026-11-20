@@ -185,12 +185,6 @@ def standoff_round(od, L, y0, direction, thread=3):
     return s, s
 
 
-def standoff_hex(af, L, y0, direction, thread=3):
-    y_a, y_b = sorted((y0, y0 + direction * L))
-    s = _hexprism(af, y_a, y_b).cut(_ycyl(0.42 * thread + 0.01, y_a - 1, y_b + 1))
-    return s, s
-
-
 # ------------------------------------------------------------------ bearings
 def bearing(d, D, B, y0, direction):
     """Deep-groove bearing: inner + outer race, two shields with chamfer look."""
@@ -351,35 +345,6 @@ def pan_screw(d, L, y_head, direction):
 HORN_D, HORN_PCD = 20.0, 14.0     # 25T aluminium disc horn: D20, 4x M3 on PCD 14 (the STS3215's own horn uses the same PCD)
 
 
-# --------------------------------------------------------------- misc boards
-def as5600_board(cx, cy, z0):
-    """23 x 23 x 1.6 PCB with SOIC-8 and two M2 holes, lying in XY at z0."""
-    b = Part.makeBox(23, 23, 1.6, V(cx - 11.5, cy - 11.5, z0))
-    b = b.fuse(Part.makeBox(5, 4, 1.5, V(cx - 2.5, cy - 2, z0 - 1.5)))       # chip faces magnet
-    for sx in (-1, 1):
-        b = b.cut(Part.makeCylinder(1.1, 3, V(cx + sx * 8.5, cy + 8.5, z0 - 1)))
-    b = b.fuse(Part.makeBox(10, 2.5, 8.5, V(cx - 5, cy + 9, z0 + 1.6)))       # header
-    return b, Part.makeBox(23, 23, 1.6, V(cx - 11.5, cy - 11.5, z0))
-
-
-def coil_spring(od, wire, L, p0, axis, turns=None):
-    """Helical compression/extension spring along unit 'axis' from p0."""
-    turns = turns or max(3, int(L / (wire * 1.6)))
-    r = (od - wire) / 2
-    pitch = L / turns
-    try:
-        h = Part.makeHelix(pitch, L, r)
-        prof = Part.Wire(Part.makeCircle(wire / 2, V(r, 0, 0), V(0, 1, 0)))
-        sp = Part.Wire(h).makePipeShell([prof], True, True)
-    except Exception:
-        sp = Part.makeCylinder(od / 2, L).cut(Part.makeCylinder(od / 2 - wire, L))
-    rot = App.Rotation(V(0, 0, 1), axis)
-    sp.Placement = App.Placement(p0, rot)
-    chk = Part.makeCylinder(od / 2, L).cut(Part.makeCylinder(od / 2 - wire, L))
-    chk.Placement = App.Placement(p0, rot)
-    return sp, chk
-
-
 # ------------------------------------------------- gripper linear drive parts
 def set_screw(d, L, y_face, direction):
     """ISO 4026 flat-point set screw (hex socket) on the Y axis, outer face at y_face,
@@ -482,36 +447,6 @@ def cable_clip(w=19.0, h=6.0, cable_d=4.0):          # Panduit ABMM-AT-D0: 19 mm
     base = Part.makeBox(w, w, 1.2, V(-w / 2, -w / 2, 0))
     loop = Part.makeTorus(cable_d / 2 + 0.8, 0.6, V(0, 0, 1.2 + cable_d / 2), V(1, 0, 0))
     return base.fuse(loop), base
-
-
-def spring_cassette(y_back, direction, od=40.0, w=13.5, arbor_clear=9.0):
-    """Constant-torque spiral spring motor (tape-measure type) in a closed cassette on the
-    Y axis: back wall at y_back (with arbor clearance), body extending 'direction'.
-    Two mounting tabs at (+-12, -22).  Returns (vis, chk, tab_xz)."""
-    sgn = direction
-    ya, yb = sorted((y_back, y_back + sgn * w))
-    shell = _ycyl(od / 2, ya, yb).cut(_ycyl(od / 2 - 1.5, ya + 1.5, yb - 1.5))
-    shell = shell.cut(_ycyl(arbor_clear, ya - 1, ya + 1.6) if sgn > 0 else _ycyl(arbor_clear, yb - 1.6, yb + 1))
-    tabs = [(13.5, -22.0), (-13.5, -22.0)]
-    for (x, z) in tabs:
-        t = _ycyl(4.0, ya, ya + 2.5, x, z) if sgn > 0 else _ycyl(4.0, yb - 2.5, yb, x, z)
-        t = t.fuse(Part.makeBox(8, 2.5, 8, V(x - 4, (ya if sgn > 0 else yb - 2.5), z)))
-        y0_, y1_ = (ya, ya + 2.5) if sgn > 0 else (yb - 2.5, yb)
-        t = t.fuse(_yhull2(x, z, 3.0, x * 0.45, z * 0.45, 3.0, y0_, y1_))   # web: tab joined to the shell (was 3.4 mm adrift)
-        shell = shell.fuse(t).cut(inner).cut(_ycyl(arbor_clear, *back_y)).cut(_ycyl(1.65, ya - 1, yb + 1, x, z))
-    # spiral strip seen through a ring window in the front cover
-    yf0, yf1 = ((yb - 1.6, yb + 0.1) if sgn > 0 else (ya - 0.1, ya + 1.6))
-    shell = shell.cut(_ycyl(od / 2 - 5, yf0, yf1).cut(_ycyl(arbor_clear + 1, yf0 - 1, yf1 + 1)))
-    ym = (ya + yb) / 2
-    for k in range(7):
-        r = arbor_clear + 1.0 + 1.25 * k
-        shell = shell.fuse(_ring(r + 0.3, r, ym - 4.5, ym + 4.5))
-    vis = shell
-    chk = _ycyl(od / 2, ya, yb).cut(_ycyl(arbor_clear, ya - 1, yb + 1))      # arbor + collar run inside
-    for (x, z) in tabs:
-        tt = _ycyl(4.0, ya, ya + 2.5, x, z) if sgn > 0 else _ycyl(4.0, yb - 2.5, yb, x, z)
-        chk = chk.fuse(tt.fuse(Part.makeBox(8, 2.5, 8, V(x - 4, (ya if sgn > 0 else yb - 2.5), z)))).cut(_ycyl(1.65, ya - 1, yb + 1, x, z))
-    return vis, chk, tabs
 
 
 def _yhull2(x1, z1, r1, x2, z2, r2, ya, yb):

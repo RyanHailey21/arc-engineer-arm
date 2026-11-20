@@ -2,6 +2,8 @@
 """Gripper variant SCREW (rev A): Tr8x8 bidirectional lead screw, M2006 via 20T/32T, MGN9 rails, 6061 jaw
 brackets, constant-torque spring-motor release.  API: screw_bodies(), screw_placements(Hd, jaw).
 """
+import os
+
 from arm.core import *  # noqa: F401,F403
 from arm.wrist import *  # noqa: F401,F403
 
