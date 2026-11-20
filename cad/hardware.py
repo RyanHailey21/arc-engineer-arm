@@ -449,8 +449,8 @@ def cable_clip(w=19.0, h=6.0, cable_d=4.0):          # Panduit ABMM-AT-D0: 19 mm
     return base.fuse(loop), base
 
 
-def _yhull2(x1, z1, r1, x2, z2, r2, ya, yb):
-    """Convex hull of two circles in the XZ plane, extruded ya..yb along Y."""
+def _yhull2(x1, z1, r1, x2, z2, r2, ya, yb, clean=True):
+    """Convex hull of two circles in the XZ plane, extruded ya..yb along Y (clean=False skips removeSplitter)."""
     dx, dz = x2 - x1, z2 - z1
     L = math.hypot(dx, dz)
     a = math.atan2(dz, dx)
@@ -460,7 +460,8 @@ def _yhull2(x1, z1, r1, x2, z2, r2, ya, yb):
     poly = [V(x1 + r1 * n1[0], ya, z1 + r1 * n1[1]), V(x2 + r2 * n1[0], ya, z2 + r2 * n1[1]),
             V(x2 + r2 * n2[0], ya, z2 + r2 * n2[1]), V(x1 + r1 * n2[0], ya, z1 + r1 * n2[1])]
     s = Part.Face(Part.makePolygon(poly + [poly[0]])).extrude(V(0, yb - ya, 0))
-    return s.fuse(_ycyl(r1, ya, yb, x1, z1)).fuse(_ycyl(r2, ya, yb, x2, z2)).removeSplitter()
+    s = s.fuse(_ycyl(r1, ya, yb, x1, z1)).fuse(_ycyl(r2, ya, yb, x2, z2))
+    return s.removeSplitter() if clean else s
 
 
 CT_SPRING = dict(pn="9293K337", load_N=21.9, width=15.9, coil_od=28.6, coil_id=21.8, length=610.0)

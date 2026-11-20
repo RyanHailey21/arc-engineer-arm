@@ -104,17 +104,8 @@ def hexhole(af, x, z, y0, y1):
 
 
 def _hull2(x1, z1, r1, x2, z2, r2, y0, t):
-    dx, dz = x2 - x1, z2 - z1
-    L = math.hypot(dx, dz)
-    a = math.atan2(dz, dx)
-    phi = math.asin(max(-1.0, min(1.0, (r1 - r2) / L)))
-    # outer tangents: normal n with (c2 - c1).n = r1 - r2  ->  angle a +- (pi/2 - phi)
-    n1 = (math.cos(a + math.pi / 2 - phi), math.sin(a + math.pi / 2 - phi))
-    n2 = (math.cos(a - math.pi / 2 + phi), math.sin(a - math.pi / 2 + phi))
-    poly = [V(x1 + r1 * n1[0], y0, z1 + r1 * n1[1]), V(x2 + r2 * n1[0], y0, z2 + r2 * n1[1]),
-            V(x2 + r2 * n2[0], y0, z2 + r2 * n2[1]), V(x1 + r1 * n2[0], y0, z1 + r1 * n2[1])]
-    s = Part.Face(Part.makePolygon(poly + [poly[0]])).extrude(V(0, t, 0))
-    return s.fuse(ycyl(x1, z1, y0, y0 + t, r1)).fuse(ycyl(x2, z2, y0, y0 + t, r2))
+    """Convex hull of two circles in the XZ plane, extruded y0..y0+t (hardware._yhull2, splitter edges kept)."""
+    return H._yhull2(x1, z1, r1, x2, z2, r2, y0, y0 + t, clean=False)
 
 
 def _convex_hull(points):
@@ -249,6 +240,15 @@ def to_z(pair, x, y, z):
 
 def P(name, pair, kind, src, color, note="", sub=None, check=True):
     return Part_(name, pair[0], pair[1], kind, src, color, note, sub, check)
+
+
+def mirror_y(parts):
+    """Mirror parts in place through the y=0 plane (the right-hand side of a symmetric gripper); returns them."""
+    for p in parts:
+        p.vis = p.vis.mirror(V(0, 0, 0), V(0, 1, 0))
+        p.chk = p.chk.mirror(V(0, 0, 0), V(0, 1, 0))
+        p.shape = p.chk
+    return parts
 
 
 def csk(d, L, y_face, direction):

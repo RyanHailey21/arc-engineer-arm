@@ -110,3 +110,10 @@ name = "render"
 path = "cad/tools/report_figures.py"
 reason = "called from the FreeCAD GUI (view providers exist only there)"
 guard = true
+
+# ------------------------------------------------------------------ deliberate boilerplate
+[[item]]
+kind = "duplicate"
+name = "*"
+path = "cad/fea/run_fea_fourbar.py"
+reason = "standalone freecadcmd FEA scripts share a 7-line sys.path / FEA_LIB bootstrap; a shared module would need the same bootstrap to be found"

@@ -13,7 +13,6 @@ from arm.wrist import _xscrew  # noqa: F401
 _S = params.load("gripper_screw")   # params/gripper_screw.toml
 LEAD = _S["LEAD"]
 Z_SCREW_T, Z_MOTOR_T = _S["Z_SCREW_T"], _S["Z_MOTOR_T"]
-M2006_HOLES = dict(_S["M2006_HOLES"])
 HXJ = HX + _S["HXJ_OFF"]       # rails / jaws datum (clear of the hub flange)
 XR = _S["XR_OFF"] + HXJ        # rail centre line = lead-screw axis x
 ZS = _S["ZS"]                  # lead-screw axis z
@@ -250,12 +249,7 @@ def body_jaw(s):
                      "CAT", "BHCS", "steel"))
         out.append(P("BHCS_M3x8_fingbot%s_%d" % (nm, i), to_z(H.screw("BHCS", 3, 8 if i < 2 else 6, 0, 1), x, y, -29.0),
                      "CAT", "BHCS", "steel"))
-    if s < 0:
-        for p in out:
-            p.vis = p.vis.mirror(V(0, 0, 0), V(0, 1, 0))
-            p.chk = p.chk.mirror(V(0, 0, 0), V(0, 1, 0))
-            p.shape = p.chk
-    return out
+    return mirror_y(out) if s < 0 else out
 
 
 

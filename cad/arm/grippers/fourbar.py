@@ -16,7 +16,7 @@ from arm.wrist import _xscrew  # noqa: F401
 # GRIP=SCREW rebuilds the rev A lead-screw gripper.
 FB = dict(params.load("gripper_fourbar")["FB"])   # params/gripper_fourbar.toml (units, reasons)
 SPRING = dict(params.load("gripper_fourbar")["SPRING"])
-SERVO = dict(params.load("gripper_fourbar")["SERVO"])
+SERVO = dict(params.load("actuators")["STS3215"])   # the jaw servo: same STS3215 as the joints
 
 
 def fb_theta(jaw):
@@ -40,12 +40,7 @@ def zprism(pts, z0, z1):
 
 def zlink(p0, p1, r, z0, z1, hole):
     """Stadium link plate between pin centres p0, p1 (XY), holes at both ends."""
-    a = zc(p0[0], p0[1], z0, z1, r).fuse(zc(p1[0], p1[1], z0, z1, r))
-    dx, dy = p1[0] - p0[0], p1[1] - p0[1]
-    n = math.hypot(dx, dy)
-    nx, ny = -dy / n * r, dx / n * r
-    a = a.fuse(zprism([(p0[0] + nx, p0[1] + ny), (p1[0] + nx, p1[1] + ny), (p1[0] - nx, p1[1] - ny),
-                       (p0[0] - nx, p0[1] - ny)], z0, z1))
+    a = _stadium_raw(p0, p1, r, z0, z1)
     for p in (p0, p1):
         a = a.cut(zc(p[0], p[1], z0 - 1, z1 + 1, hole))
     return a.removeSplitter()
@@ -53,17 +48,16 @@ def zlink(p0, p1, r, z0, z1, hole):
 
 def stadium(p0, p1, r, z0, z1):
     """Solid stadium (true arcs) round two pin centres p0, p1, extruded z0..z1: rounded lugs and tabs."""
-    return _stadium(p0, p1, r, z0, z1)
+    return _stadium_raw(p0, p1, r, z0, z1).removeSplitter()
 
 
-def _stadium(p0, p1, r, z0, z1):
+def _stadium_raw(p0, p1, r, z0, z1):
     a = zc(p0[0], p0[1], z0, z1, r).fuse(zc(p1[0], p1[1], z0, z1, r))
     dx, dy = p1[0] - p0[0], p1[1] - p0[1]
     n = math.hypot(dx, dy)
     nx, ny = -dy / n * r, dx / n * r
-    a = a.fuse(zprism([(p0[0] + nx, p0[1] + ny), (p1[0] + nx, p1[1] + ny), (p1[0] - nx, p1[1] - ny),
-                       (p0[0] - nx, p0[1] - ny)], z0, z1))
-    return a.removeSplitter()
+    return a.fuse(zprism([(p0[0] + nx, p0[1] + ny), (p1[0] + nx, p1[1] + ny), (p1[0] - nx, p1[1] - ny),
+                          (p0[0] - nx, p0[1] - ny)], z0, z1))
 
 
 def fb_pivots(s=1):
@@ -333,12 +327,7 @@ def body_fb_jaw(s):
         z0 = FB["ZFB"][0] + 0.1                     # bottom link: finger tab .. lug
         pin = zc(p[0], p[1], z0, z0 + 14.0, FB["PIN_R"])
         out.append(Part_("Pin_D4x14_coupler_bot_%s%d" % (nm, i), pin, pin, "CAT", "PIN-D4x14", "steel"))
-    if s < 0:
-        for p in out:
-            p.vis = p.vis.mirror(V(0, 0, 0), V(0, 1, 0))
-            p.chk = p.chk.mirror(V(0, 0, 0), V(0, 1, 0))
-            p.shape = p.chk
-    return out
+    return mirror_y(out) if s < 0 else out
 
 
 
