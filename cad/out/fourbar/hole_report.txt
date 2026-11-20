@@ -1,7 +1,4 @@
-Hole edge-distance check (custom parts): 225 holes -> 0 broken-out, 3 fail (wall < 1.0 mm), 43 warn (wall < max(1.5 mm, 0.5 d))
-FAIL   J1_Output_Hub                D2.5 at (-0.0, -51.5, -10.0)  wall 0.75 mm
-FAIL   J1_Output_Hub                D2.5 at (-8.7, -51.5, 5.0)  wall 0.75 mm
-FAIL   J1_Output_Hub                D2.5 at (8.7, -51.5, 5.0)  wall 0.75 mm
+Hole edge-distance check (custom parts): 225 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 43 warn (wall < max(1.5 mm, 0.5 d))
 WARN   Drive_Frame_L                D2.4 at (-64.2, -104.4, 171.5)  wall 1.14 mm
 WARN   Drive_Frame_L                D2.4 at (-74.4, -104.4, 153.7)  wall 1.14 mm
 WARN   Drive_Frame_L                D2.4 at (-85.3, -104.4, 183.7)  wall 1.14 mm

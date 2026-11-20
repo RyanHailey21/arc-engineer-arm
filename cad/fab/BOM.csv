@@ -53,12 +53,12 @@ CUSTOM,Tower_Bracket_R1,custom: PETG-CF print; body GROUND; env 16x20x20 mm,1,2,
 CUSTOM,Spacer_G1,custom: D9/D5.2 x 6 alu; body GROUND; env 9x6x9 mm,1,1,AL,
 CUSTOM,Upper_Arm_L_CF3,custom: 3 mm CF plate (DXF); body UPPER; env 375x3x44 mm,1,32,CF,
 CUSTOM,Upper_Arm_R_CF3,custom: 3 mm CF plate (DXF); body UPPER; env 375x3x44 mm,1,31,CF,
-CUSTOM,J1_Output_Hub,custom: 6061 turned + milled hex; body UPPER; env 39x27x39 mm,1,33,AL,
+CUSTOM,J1_Output_Hub,custom: 6061 turned + milled hex; body UPPER; env 39x27x39 mm,1,34,AL,
 CUSTOM,Drive_Gear_m2_54T_J1,"custom: PA12 / PETG-CF print, m2 54T, 19 AF hex bore; body UPPER; env 112x9x112 mm",1,44,PRINT,
 CUSTOM,UA_Standoff_D8_0,"custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer); body UPPER; env 8x88x8 mm",1,11,AL,D8 x 88 M3 female
 CUSTOM,UA_Standoff_D8_1,"custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer); body UPPER; env 8x88x8 mm",1,11,AL,D8 x 88 M3 female
 CUSTOM,Crank_CF3,"custom: 3 mm CF plate (DXF), D-bore on journal flat; body CRANK; env 102x3x28 mm",1,8,CF,
-CUSTOM,J2_Output_Hub_Journal,custom: 6061 turned + milled hex; body CRANK; env 39x38x39 mm,1,36,AL,
+CUSTOM,J2_Output_Hub_Journal,custom: 6061 turned + milled hex; body CRANK; env 39x38x39 mm,1,37,AL,
 CUSTOM,Drive_Gear_m2_54T_J2,"custom: PA12 / PETG-CF print, m2 54T, 19 AF hex bore; body CRANK; env 112x9x112 mm",1,44,PRINT,
 CUSTOM,Shim_A,"custom: 301 SS shim stock 1.5, laser cut; body CRANK; env 8x2x8 mm",1,0,SHIM,
 CUSTOM,Rod_AB_CF3,custom: 3 mm CF plate (DXF); body ROD_AB; env 357x3x17 mm,1,17,CF,
@@ -114,4 +114,4 @@ CUSTOM,Link_RI_lo_CF3,custom: 3 mm CF plate (concept); body LK_RI; env 52x32x3 m
 CUSTOM,Link_RI_hi_CF3,custom: 3 mm CF plate (concept); body LK_RI; env 52x32x3 mm,1,2,CF,
 CUSTOM,Link_RI_bot_CF3,custom: 3 mm CF plate (concept); body LK_RI; env 52x32x3 mm,1,2,CF,
 
-TOTAL,,"modelled mass (motors, gripper drive, all hardware)",,2831,,
+TOTAL,,"modelled mass (motors, gripper drive, all hardware)",,2834,,

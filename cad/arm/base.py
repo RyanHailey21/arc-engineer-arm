@@ -149,7 +149,7 @@ def body_ground():
 
 def motor_hub(sgn, journal=False):
     """J1/J2 output hub (6061, turned): flange inside the tower bore, then the stub (interfaces/base_hub__drive.toml)
-    - D24 collar, 19 AF hex for the 54T gear, D20 journal in the drive frame's 6804, M5 tapped end.
+    - D28 collar, 19 AF hex for the 54T gear, D20 journal in the drive frame's 6804, M5 tapped end.
     J1: 3x M3 tapped PCD20 for UA-L + pilot.  J2: D12 h6 journal through UA-R 6701 to the crank."""
     st = IF_HUB_DRIVE["stub"]
     y_fl = sgn * st["collar_y"][0]                                        # flange outboard face (51.5)

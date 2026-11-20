@@ -1,12 +1,12 @@
 {
- "status": "fail",
+ "status": "pass",
  "evidence": {
   "schema": "cad-evidence/1",
   "producer": "light_weight_arm/cad/tools",
   "operation": "holes",
-  "status": "fail",
-  "reason": "FAIL: Hole edge-distance check (custom parts): 225 holes -> 0 broken-out, 3 fail (wall < 1.0 mm), 43 warn (wall < max(1.5 mm, 0.5 d))",
-  "scope": "Hole edge-distance check (custom parts): 225 holes -> 0 broken-out, 3 fail (wall < 1.0 mm), 43 warn (wall < max(1.5 mm, 0.5 d))",
+  "status": "pass",
+  "reason": "WARN: Hole edge-distance check (custom parts): 225 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 43 warn (wall < max(1.5 mm, 0.5 d))",
+  "scope": "Hole edge-distance check (custom parts): 225 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 43 warn (wall < max(1.5 mm, 0.5 d))",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -17,20 +17,20 @@
    {
     "id": "design-inputs",
     "path": "evidence/holes.inputs.json",
-    "sha256": "8383e80ebafcafb78a2360f4e56f73c7ec41b3258cc4b2b08bb1c26d5571e1b3"
+    "sha256": "de9dc09a046104fc92b22e253308f1f57c8923dafd6db747ea214c5827aa7e6f"
    }
   ],
   "artifacts": [
    {
     "id": "hole_report.txt",
     "path": "hole_report.txt",
-    "sha256": "bfdb867f0ef57e9be3c9ae1ca93aeda8a5edb28040d102fd8914b4148c0bdbdf"
+    "sha256": "c293935c946bae96c88dabe1fc2e8bd8b955c8068efeb15df4e743914e56f9ad"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-19T20:18:30",
-   "inputs_hash": "301ffdfdcfc51099",
+   "time": "2026-11-19T20:48:26",
+   "inputs_hash": "583f149273fa8325",
    "external_copies": []
   }
  }

@@ -12,7 +12,7 @@
   "nodes": 28015,
   "mesh_h_mm": 0.8,
   "verdict": "PASS",
-  "seconds": 16.3,
+  "seconds": 15.5,
   "method": "FEA (gmsh 2nd-order tets + CalculiX)"
  },
  {
@@ -28,7 +28,7 @@
   "nodes": 226310,
   "mesh_h_mm": 1.2,
   "verdict": "PASS",
-  "seconds": 595.2,
+  "seconds": 792.9,
   "method": "FEA (gmsh 2nd-order tets + CalculiX)"
  },
  {
@@ -44,7 +44,7 @@
   "nodes": 185208,
   "mesh_h_mm": 2.0,
   "verdict": "PASS",
-  "seconds": 151.9,
+  "seconds": 205.5,
   "method": "FEA (gmsh 2nd-order tets + CalculiX)"
  },
  {

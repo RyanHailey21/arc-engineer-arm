@@ -39,12 +39,12 @@ custom,Tower_Bracket_R1,1,1.6,PETG-CF print,make (PRINT),,GROUND
 custom,Spacer_G1,1,0.7,D9/D5.2 x 6 alu,make (AL),,GROUND
 custom,Upper_Arm_L_CF3,1,32.0,3 mm CF plate (DXF),make (CF),,UPPER
 custom,Upper_Arm_R_CF3,1,31.4,3 mm CF plate (DXF),make (CF),,UPPER
-custom,J1_Output_Hub,1,32.5,6061 turned + milled hex,make (AL),,UPPER
+custom,J1_Output_Hub,1,33.6,6061 turned + milled hex,make (AL),,UPPER
 custom,Drive_Gear_m2_54T_J1,1,43.8,"PA12 / PETG-CF print, m2 54T, 19 AF hex bore",make (PRINT),,UPPER
 custom,UA_Standoff_D8_0,1,10.7,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",make (AL),,UPPER
 custom,UA_Standoff_D8_1,1,10.7,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",make (AL),,UPPER
 custom,Crank_CF3,1,7.6,"3 mm CF plate (DXF), D-bore on journal flat",make (CF),,CRANK
-custom,J2_Output_Hub_Journal,1,35.9,6061 turned + milled hex,make (AL),,CRANK
+custom,J2_Output_Hub_Journal,1,37.0,6061 turned + milled hex,make (AL),,CRANK
 custom,Drive_Gear_m2_54T_J2,1,43.8,"PA12 / PETG-CF print, m2 54T, 19 AF hex bore",make (PRINT),,CRANK
 custom,Shim_A,1,0.4,"301 SS shim stock 1.5, laser cut",make (SHIM),,CRANK
 custom,Rod_AB_CF3,1,17.3,3 mm CF plate (DXF),make (CF),,ROD_AB

@@ -12,7 +12,7 @@
   "nodes": 46401,
   "mesh_h_mm": 2.0,
   "verdict": "PASS",
-  "seconds": 26.0
+  "seconds": 25.9
  },
  {
   "case": "forearm",
@@ -27,7 +27,7 @@
   "nodes": 44735,
   "mesh_h_mm": 2.0,
   "verdict": "PASS",
-  "seconds": 23.7
+  "seconds": 19.6
  },
  {
   "case": "clevis",
@@ -42,7 +42,7 @@
   "nodes": 47807,
   "mesh_h_mm": 1.5,
   "verdict": "PASS",
-  "seconds": 29.9
+  "seconds": 26.4
  },
  {
   "case": "j2_hub",
@@ -50,14 +50,14 @@
   "material": "Aluminium-6061-T6",
   "load": "crank reaction 62 N on the D12 journal (J2 10.0 N*m incl. x2.5)",
   "total_force_N": 62.5,
-  "max_von_mises_MPa": 3.84,
+  "max_von_mises_MPa": 3.94,
   "max_disp_mm": 0.0009,
   "allowable_MPa": 276.0,
-  "safety_factor": 71.94,
-  "nodes": 63826,
+  "safety_factor": 70.07,
+  "nodes": 65877,
   "mesh_h_mm": 1.2,
   "verdict": "PASS",
-  "seconds": 88.3
+  "seconds": 74.2
  },
  {
   "case": "roll_housing",
@@ -72,6 +72,6 @@
   "nodes": 97087,
   "mesh_h_mm": 2.0,
   "verdict": "PASS",
-  "seconds": 67.2
+  "seconds": 56.3
  }
 ]

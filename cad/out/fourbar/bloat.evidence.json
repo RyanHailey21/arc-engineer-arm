@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "bloat",
   "status": "pass",
-  "reason": "WARN: BLOAT 37 findings (unused-import 1, dead-def 8, duplicate 6, orphan-param 5, orphan-catalogue 2, out-unindexed 2, scratch 13), 77 kept",
-  "scope": "BLOAT 37 findings (unused-import 1, dead-def 8, duplicate 6, orphan-param 5, orphan-catalogue 2, out-unindexed 2, scratch 13), 77 kept",
+  "reason": "WARN: BLOAT 25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept",
+  "scope": "BLOAT 25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept",
   "versions": {
    "python": "3.14.10",
    "platform": "Windows"
@@ -16,14 +16,14 @@
    {
     "id": "design-inputs",
     "path": "evidence/bloat.inputs.json",
-    "sha256": "df0c713fc9381b6daed4d244410d742c22f370ed52dc6501cdc33bdd5e1bcc30"
+    "sha256": "de9dc09a046104fc92b22e253308f1f57c8923dafd6db747ea214c5827aa7e6f"
    }
   ],
   "artifacts": [],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-19T19:18:06",
-   "inputs_hash": "865bde89d3c8437d",
+   "time": "2026-11-19T21:20:01",
+   "inputs_hash": "583f149273fa8325",
    "external_copies": [
     "out/bloat_report.md",
     "out/bloat_report.json"

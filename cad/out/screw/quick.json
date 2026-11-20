@@ -678,12 +678,12 @@
   "limit_margin_deg": 21.3
  },
  "bloat": {
-  "unused-import": 1,
+  "unused-import": 0,
   "unused-variable": 0,
-  "dead-def": 8,
-  "duplicate": 6,
+  "dead-def": 0,
+  "duplicate": 4,
   "orphan-param": 5,
-  "orphan-catalogue": 2,
+  "orphan-catalogue": 1,
   "orphan-interface": 0,
   "orphan-envelope": 0,
   "out-unindexed": 2,
@@ -694,7 +694,7 @@
    "check": "envelopes",
    "ok": true,
    "note": "10 pose checks",
-   "s": 1.4
+   "s": 1.1
   },
   {
    "check": "interfaces",
@@ -706,13 +706,13 @@
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 7.1
+   "s": 7.2
   },
   {
    "check": "mass/torque",
    "ok": false,
    "note": "past wrist 1047 g (head 836 g); worst static J1 4.80 J2 4.49 J3 1.25 N*m",
-   "s": 2.1
+   "s": 1.8
   },
   {
    "check": "catalogue",
@@ -729,15 +729,15 @@
   {
    "check": "bloat",
    "ok": null,
-   "note": "37 findings (unused-import 1, dead-def 8, duplicate 6, orphan-param 5, orphan-catalogue 2, out-unindexed 2, scratch 13), 77 kept",
-   "s": 2.6
+   "note": "25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept",
+   "s": 2.3
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 34.2
+   "s": 32.8
   }
  ],
- "elapsed_s": 78.8
+ "elapsed_s": 73.6
 }
