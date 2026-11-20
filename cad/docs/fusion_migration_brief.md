@@ -34,6 +34,10 @@ Fusion and have the part, and its mates, follow.
    - what is next.
 
    A later session resumes from it.
+6. **Never launch, restart or kill Fusion.** Fusion supports only one running instance; a second launch (which
+   a crash recovery from the Codex sandbox account did on 2026-11-20) leaves a stray process that blocks the
+   user's Fusion. If the Fusion MCP server stops answering, stop at once: update PROGRESS.md and end the run
+   with a note that Fusion needs restarting by the user.
 
 ## Organisation (target)
 ```
