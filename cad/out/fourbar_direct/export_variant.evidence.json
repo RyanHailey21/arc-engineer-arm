@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "export_variant",
   "status": "pass",
-  "reason": "PASS: 68 custom STEP, 193 purchased instances (placements only), 109 BOM lines, 2999 g",
-  "scope": "68 custom STEP, 193 purchased instances (placements only), 109 BOM lines, 2999 g",
+  "reason": "PASS: 68 custom STEP, 191 purchased instances (placements only), 108 BOM lines, 2212 g",
+  "scope": "68 custom STEP, 191 purchased instances (placements only), 108 BOM lines, 2212 g",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -17,30 +17,30 @@
    {
     "id": "design-inputs",
     "path": "evidence/export_variant.inputs.json",
-    "sha256": "47658065525d4e61965a33152f7d88dc7a9a24a6ccb47b9de06cbcd8e54aa7fa"
+    "sha256": "d5831362eb7307e8a3975543215e3b994daf3ee5588820d919452ac4568c985b"
    }
   ],
   "artifacts": [
    {
     "id": "BOM.csv",
     "path": "fab/BOM.csv",
-    "sha256": "6a9f24549a71b37dde73c728f6ce381fe6fbcafb35c2f0cbeec74fe18e049cd7"
+    "sha256": "21c82a655214df6d7c4afa8cb3502a6bf21f1a2e325002ba7399ea9f5f76ad84"
    },
    {
     "id": "stow.json",
     "path": "fab/stow.json",
-    "sha256": "9f1ac069bf195183ee22c84ecddbadedb2bc5eba8875d2df1328bac6114c9218"
+    "sha256": "912c18380bb03e2a421e7b1596981bae528bab6eb645fb817f492342eba87574"
    },
    {
     "id": "ARC_Arm_STOW.step",
     "path": "fab/step/ARC_Arm_STOW.step",
-    "sha256": "da89f00f68bd800267e845c641eb250c3c708541f312e5153ff02acb03dd7ce4"
+    "sha256": "52f03f12a42f01fe4ff7f17cad189b89b95dddbebfc967fb9c9e68607c9fa889"
    }
   ],
   "extensions": {
    "variant": "FOURBAR_DIRECT",
-   "time": "2026-11-20T21:59:22",
-   "inputs_hash": "026f4aad2fdf1b1d",
+   "time": "2026-11-21T11:19:08",
+   "inputs_hash": "478409e3dd83afc9",
    "external_copies": []
   }
  }

@@ -16,30 +16,30 @@
    "fab/stow.json",
    "fab/step/ARC_Arm_STOW.step"
   ],
-  "inputs_hash": "026f4aad2fdf1b1d",
-  "note": "68 custom STEP, 193 purchased instances (placements only), 109 BOM lines, 2999 g",
+  "inputs_hash": "478409e3dd83afc9",
+  "note": "68 custom STEP, 191 purchased instances (placements only), 108 BOM lines, 2212 g",
   "status": "PASS",
-  "time": "2026-11-20T21:59:22"
+  "time": "2026-11-21T11:19:08"
  },
  "interference_full": {
   "evidence": "interference_full.evidence.json",
   "files": [
    "interference_report.txt"
   ],
-  "inputs_hash": "026f4aad2fdf1b1d",
+  "inputs_hash": "478409e3dd83afc9",
   "note": "static, 14 task poses, field clearance, donut lift",
   "status": "PASS",
-  "time": "2026-11-20T21:57:28"
+  "time": "2026-11-21T11:09:49"
  },
  "quick": {
   "evidence": "quick.evidence.json",
   "files": [
    "quick.json"
   ],
-  "inputs_hash": "026f4aad2fdf1b1d",
-  "note": "envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 27 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 0 findings (none), 77 kept; fingerprint MATCH",
+  "inputs_hash": "478409e3dd83afc9",
+  "note": "envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 4 findings (unused-variable 2, duplicate 1, scratch 1), 14 kept; fingerprint MATCH",
   "status": "PASS",
-  "time": "2026-11-20T21:56:08"
+  "time": "2026-11-21T11:15:16"
  },
  "seated": {
   "evidence": "seated.evidence.json",

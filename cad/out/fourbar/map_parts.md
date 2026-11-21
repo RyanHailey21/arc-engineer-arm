@@ -1,54 +1,53 @@
-### Parts - variant FOURBAR (267 parts)
+### Parts - variant FOURBAR (265 parts)
 
 | Body | Part | Kind | Source / note | Mass g | Built at |
 |---|---|---|---|---|---|
-| GROUND | Base_Plate_AL5 | AL | custom: 5 mm 6061, waterjet + tap | 1041.0 | [arm/base.py:69](arm/base.py#L69) body_ground |
-| GROUND | Tower_L_CF3 | CF | custom: 3 mm CF plate (DXF) | 68.8 | [arm/base.py:121](arm/base.py#L121) _tower |
-| GROUND | Drive_Frame_L | PRINT | custom: PETG-CF print, 3x M3 heat-set inserts | 81.0 | [arm/base.py:136](arm/base.py#L136) _geared_tower_side |
-| GROUND | Pinion_m2_18T_J1 | PRINT | custom: PA12 / PETG-CF print, m2 18T, 4x M3 cbore | 4.6 | [arm/base.py:162](arm/base.py#L162) _geared_tower_side |
-| GROUND | Tower_Bracket_L0 | PRINT | custom: PETG-CF print | 1.6 | [arm/base.py:84](arm/base.py#L84) body_ground |
-| GROUND | Tower_Bracket_L1 | PRINT | custom: PETG-CF print | 1.6 | [arm/base.py:84](arm/base.py#L84) body_ground |
-| GROUND | Tower_R_CF3 | CF | custom: 3 mm CF plate (DXF) | 64.3 | [arm/base.py:121](arm/base.py#L121) _tower |
-| GROUND | Drive_Frame_R | PRINT | custom: PETG-CF print, 3x M3 heat-set inserts | 81.0 | [arm/base.py:136](arm/base.py#L136) _geared_tower_side |
-| GROUND | Pinion_m2_18T_J2 | PRINT | custom: PA12 / PETG-CF print, m2 18T, 4x M3 cbore | 4.6 | [arm/base.py:162](arm/base.py#L162) _geared_tower_side |
-| GROUND | Tower_Bracket_R0 | PRINT | custom: PETG-CF print | 1.6 | [arm/base.py:84](arm/base.py#L84) body_ground |
-| GROUND | Tower_Bracket_R1 | PRINT | custom: PETG-CF print | 1.6 | [arm/base.py:84](arm/base.py#L84) body_ground |
-| GROUND | Spacer_G1 | AL | custom: D9/D5.2 x 6 alu | 0.7 | [arm/base.py:92](arm/base.py#L92) body_ground |
-| GROUND | SHCS_M4x12_base (x4) | CAT | SHCS | 4.0 | [arm/base.py:72](arm/base.py#L72) body_ground |
-| GROUND | Insert_M3_frame_L (x6) | CAT | INSERT | 1.8 | [arm/base.py:139](arm/base.py#L139) _geared_tower_side |
-| GROUND | BHCS_M3x6_frame_L (x6) | CAT | BHCS | 6.0 | [arm/base.py:142](arm/base.py#L142) _geared_tower_side |
-| GROUND | Brg_6804_J (x2) | CAT | 6804ZZ | 38.0 | [arm/base.py:145](arm/base.py#L145) _geared_tower_side |
-| GROUND | J1_Servo_STS (x2) | CAT | STS3215 | 120.0 | [arm/base.py:148](arm/base.py#L148) _geared_tower_side |
-| GROUND | Servo_Horn_STS_J (x2) | CAT | HORN-25T | 6.0 | [arm/base.py:151](arm/base.py#L151) _geared_tower_side |
-| GROUND | PAN_M2x12_J (x8) | CAT | PAN-M2x12 | 2.4 | [arm/core.py:318](arm/core.py#L318) sts_case_screws |
-| GROUND | BHCS_M3x8_pinion_J (x8) | CAT | BHCS | 8.0 | [arm/base.py:165](arm/base.py#L165) _geared_tower_side |
-| GROUND | BHCS_M3x10_bracket_L (x4) | CAT | BHCS | 4.0 | [arm/base.py:85](arm/base.py#L85) body_ground |
-| GROUND | Nyloc_M3_bracket_L (x4) | CAT | NYLOC | 2.0 | [arm/base.py:87](arm/base.py#L87) body_ground |
-| GROUND | BHCS_M3x8_bracketbase_L (x4) | CAT | BHCS | 4.0 | [arm/base.py:89](arm/base.py#L89) body_ground |
-| GROUND | SB5x10_G1 | CAT | SB5 | 4.0 | [arm/base.py:93](arm/base.py#L93) body_ground |
-| GROUND | Nyloc_M4_G1 | CAT | NYLOC | 0.5 | [arm/base.py:94](arm/base.py#L94) body_ground |
-| GROUND | Cable_Clip_Base (x3) | CAT | CLIP | 3.0 | [arm/base.py:96](arm/base.py#L96) body_ground |
-| GROUND | ESC_C610 | CAT | C610 | 15.0 | [arm/base.py:101](arm/base.py#L101) body_ground |
+| GROUND | Base_Plate_AL5 | AL | custom: 5 mm 6061, waterjet + tap | 269.5 | [arm/base.py:73](arm/base.py#L73) body_ground |
+| GROUND | Tower_L_CF3 | CF | custom: 3 mm CF plate (DXF) | 68.8 | [arm/base.py:119](arm/base.py#L119) _tower |
+| GROUND | Drive_Frame_L | PRINT | custom: PETG-CF print, 3x M3 heat-set inserts | 81.0 | [arm/base.py:134](arm/base.py#L134) _geared_tower_side |
+| GROUND | Pinion_m2_18T_J1 | PRINT | custom: PA12 / PETG-CF print, m2 18T, 4x M3 cbore | 4.6 | [arm/base.py:160](arm/base.py#L160) _geared_tower_side |
+| GROUND | Tower_Bracket_L0 | PRINT | custom: PETG-CF print | 1.6 | [arm/base.py:88](arm/base.py#L88) body_ground |
+| GROUND | Tower_Bracket_L1 | PRINT | custom: PETG-CF print | 1.6 | [arm/base.py:88](arm/base.py#L88) body_ground |
+| GROUND | Tower_R_CF3 | CF | custom: 3 mm CF plate (DXF) | 64.3 | [arm/base.py:119](arm/base.py#L119) _tower |
+| GROUND | Drive_Frame_R | PRINT | custom: PETG-CF print, 3x M3 heat-set inserts | 81.0 | [arm/base.py:134](arm/base.py#L134) _geared_tower_side |
+| GROUND | Pinion_m2_18T_J2 | PRINT | custom: PA12 / PETG-CF print, m2 18T, 4x M3 cbore | 4.6 | [arm/base.py:160](arm/base.py#L160) _geared_tower_side |
+| GROUND | Tower_Bracket_R0 | PRINT | custom: PETG-CF print | 1.6 | [arm/base.py:88](arm/base.py#L88) body_ground |
+| GROUND | Tower_Bracket_R1 | PRINT | custom: PETG-CF print | 1.6 | [arm/base.py:88](arm/base.py#L88) body_ground |
+| GROUND | Spacer_G1 | AL | custom: D9/D5.2 x 6 alu | 0.7 | [arm/base.py:96](arm/base.py#L96) body_ground |
+| GROUND | SHCS_M4x12_base (x4) | CAT | SHCS | 4.0 | [arm/base.py:76](arm/base.py#L76) body_ground |
+| GROUND | Insert_M3_frame_L (x6) | CAT | INSERT | 1.8 | [arm/base.py:137](arm/base.py#L137) _geared_tower_side |
+| GROUND | BHCS_M3x6_frame_L (x6) | CAT | BHCS | 6.0 | [arm/base.py:140](arm/base.py#L140) _geared_tower_side |
+| GROUND | Brg_6804_J (x2) | CAT | 6804ZZ | 38.0 | [arm/base.py:143](arm/base.py#L143) _geared_tower_side |
+| GROUND | J1_Servo_STS (x2) | CAT | STS3215 | 120.0 | [arm/base.py:146](arm/base.py#L146) _geared_tower_side |
+| GROUND | Servo_Horn_STS_J (x2) | CAT | HORN-25T | 6.0 | [arm/base.py:149](arm/base.py#L149) _geared_tower_side |
+| GROUND | PAN_M2x12_J (x8) | CAT | PAN-M2x12 | 2.4 | [arm/core.py:319](arm/core.py#L319) sts_case_screws |
+| GROUND | BHCS_M3x8_pinion_J (x8) | CAT | BHCS | 8.0 | [arm/base.py:163](arm/base.py#L163) _geared_tower_side |
+| GROUND | BHCS_M3x10_bracket_L (x4) | CAT | BHCS | 4.0 | [arm/base.py:89](arm/base.py#L89) body_ground |
+| GROUND | Nyloc_M3_bracket_L (x4) | CAT | NYLOC | 2.0 | [arm/base.py:91](arm/base.py#L91) body_ground |
+| GROUND | BHCS_M3x8_bracketbase_L (x4) | CAT | BHCS | 4.0 | [arm/base.py:93](arm/base.py#L93) body_ground |
+| GROUND | SB5x10_G1 | CAT | SB5 | 4.0 | [arm/base.py:97](arm/base.py#L97) body_ground |
+| GROUND | Nyloc_M4_G1 | CAT | NYLOC | 0.5 | [arm/base.py:98](arm/base.py#L98) body_ground |
+| GROUND | Cable_Clip_Base (x2) | CAT | CLIP | 2.0 | [arm/base.py:100](arm/base.py#L100) body_ground |
 | UPPER | Upper_Arm_L_CF3 | CF | custom: 3 mm CF plate (DXF) | 32.0 | [arm/upper_arm.py:27](arm/upper_arm.py#L27) body_upper |
 | UPPER | Upper_Arm_R_CF3 | CF | custom: 3 mm CF plate (DXF) | 31.4 | [arm/upper_arm.py:27](arm/upper_arm.py#L27) body_upper |
-| UPPER | J1_Output_Hub | AL | custom: 6061 turned + milled hex | 33.6 | [arm/base.py:188](arm/base.py#L188) motor_hub |
-| UPPER | Drive_Gear_m2_54T_J1 | PRINT | custom: PA12 / PETG-CF print, m2 54T, 19 AF hex bore | 43.8 | [arm/base.py:226](arm/base.py#L226) drive_gear_parts |
+| UPPER | J1_Output_Hub | AL | custom: 6061 turned + milled hex | 33.6 | [arm/base.py:186](arm/base.py#L186) motor_hub |
+| UPPER | Drive_Gear_m2_54T_J1 | PRINT | custom: PA12 / PETG-CF print, m2 54T, 19 AF hex bore | 43.8 | [arm/base.py:224](arm/base.py#L224) drive_gear_parts |
 | UPPER | UA_Standoff_D8_0 | AL | custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer) | 10.7 | [arm/upper_arm.py:37](arm/upper_arm.py#L37) body_upper |
 | UPPER | UA_Standoff_D8_1 | AL | custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer) | 10.7 | [arm/upper_arm.py:37](arm/upper_arm.py#L37) body_upper |
 | UPPER | Brg_6700_Elbow_UA_L | CAT | 6700ZZ | 2.0 | [arm/upper_arm.py:28](arm/upper_arm.py#L28) body_upper |
 | UPPER | Brg_6700_Elbow_UA_R | CAT | 6700ZZ | 2.0 | [arm/upper_arm.py:29](arm/upper_arm.py#L29) body_upper |
 | UPPER | Brg_6701_Shoulder_UA_R | CAT | 6701ZZ | 3.0 | [arm/upper_arm.py:30](arm/upper_arm.py#L30) body_upper |
-| UPPER | Washer_M5_hub_J1 | CAT | WASHER | 0.3 | [arm/base.py:229](arm/base.py#L229) drive_gear_parts |
-| UPPER | SHCS_M5x10_hub_J1 | CAT | SHCS | 1.0 | [arm/base.py:230](arm/base.py#L230) drive_gear_parts |
+| UPPER | Washer_M5_hub_J1 | CAT | WASHER | 0.3 | [arm/base.py:227](arm/base.py#L227) drive_gear_parts |
+| UPPER | SHCS_M5x10_hub_J1 | CAT | SHCS | 1.0 | [arm/base.py:228](arm/base.py#L228) drive_gear_parts |
 | UPPER | BHCS_M3x6_UA_hub (x3) | CAT | BHCS | 3.0 | [arm/upper_arm.py:35](arm/upper_arm.py#L35) body_upper |
 | UPPER | PClip_UA (x2) | CAT | PCLIP | 2.0 | [arm/upper_arm.py:41](arm/upper_arm.py#L41) body_upper |
 | UPPER | BHCS_M3x8_UA_st_0L (x4) | CAT | BHCS | 4.0 | [arm/upper_arm.py:44](arm/upper_arm.py#L44) body_upper |
 | CRANK | Crank_CF3 | CF | custom: 3 mm CF plate (DXF), D-bore on journal flat | 7.6 | [arm/upper_arm.py:56](arm/upper_arm.py#L56) body_crank |
-| CRANK | J2_Output_Hub_Journal | AL | custom: 6061 turned + milled hex | 37.0 | [arm/base.py:188](arm/base.py#L188) motor_hub |
-| CRANK | Drive_Gear_m2_54T_J2 | PRINT | custom: PA12 / PETG-CF print, m2 54T, 19 AF hex bore | 43.8 | [arm/base.py:226](arm/base.py#L226) drive_gear_parts |
+| CRANK | J2_Output_Hub_Journal | AL | custom: 6061 turned + milled hex | 37.0 | [arm/base.py:186](arm/base.py#L186) motor_hub |
+| CRANK | Drive_Gear_m2_54T_J2 | PRINT | custom: PA12 / PETG-CF print, m2 54T, 19 AF hex bore | 43.8 | [arm/base.py:224](arm/base.py#L224) drive_gear_parts |
 | CRANK | Shim_A | SHIM | custom: 301 SS shim stock 1.5, laser cut | 0.4 | [arm/upper_arm.py:62](arm/upper_arm.py#L62) body_crank |
-| CRANK | Washer_M5_hub_J2 | CAT | WASHER | 0.3 | [arm/base.py:229](arm/base.py#L229) drive_gear_parts |
-| CRANK | SHCS_M5x10_hub_J2 | CAT | SHCS | 1.0 | [arm/base.py:230](arm/base.py#L230) drive_gear_parts |
+| CRANK | Washer_M5_hub_J2 | CAT | WASHER | 0.3 | [arm/base.py:227](arm/base.py#L227) drive_gear_parts |
+| CRANK | SHCS_M5x10_hub_J2 | CAT | SHCS | 1.0 | [arm/base.py:228](arm/base.py#L228) drive_gear_parts |
 | CRANK | Washer_M4_crank | CAT | WASHER | 0.3 | [arm/upper_arm.py:59](arm/upper_arm.py#L59) body_crank |
 | CRANK | SHCS_M4x8_crank | CAT | SHCS | 1.0 | [arm/upper_arm.py:60](arm/upper_arm.py#L60) body_crank |
 | CRANK | SB5x8_A | CAT | SB5 | 4.0 | [arm/upper_arm.py:64](arm/upper_arm.py#L64) body_crank |
@@ -93,7 +92,7 @@
 | LEVEL | SB5x8_Dv2 | CAT | SB5 | 4.0 | [arm/forearm.py:39](arm/forearm.py#L39) v2_pin |
 | LEVEL | Nyloc_M4_Dv2 | CAT | NYLOC | 0.5 | [arm/forearm.py:40](arm/forearm.py#L40) v2_pin |
 | LEVEL | J3_Wrist_Servo_STS3215 | CAT | STS3215 | 60.0 | [arm/wrist.py:59](arm/wrist.py#L59) body_level |
-| LEVEL | PAN_M2x12_J (x4) | CAT | PAN-M2x12 | 1.2 | [arm/core.py:318](arm/core.py#L318) sts_case_screws |
+| LEVEL | PAN_M2x12_J (x4) | CAT | PAN-M2x12 | 1.2 | [arm/core.py:319](arm/core.py#L319) sts_case_screws |
 | LEVEL | Insert_M3_j3cradle (x4) | CAT | INSERT | 1.2 | [arm/wrist.py:67](arm/wrist.py#L67) body_level |
 | LEVEL | CSK_M3x6_level (x4) | CAT | CSK | 4.0 | [arm/wrist.py:69](arm/wrist.py#L69) body_level |
 | GRIPPER | Wrist_Shaft_D10x70 | STEEL | custom: cut from McMaster 6112K47 D10 h6 rod, D6x4 ground step, D-flats, e-clip groove | 41.2 | [arm/wrist.py:136](arm/wrist.py#L136) body_gripper |

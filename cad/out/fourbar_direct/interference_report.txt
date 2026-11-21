@@ -38,6 +38,6 @@ threshold 0.5 mm^3, 5 steps per segment
   PIPE_CHUTE        payload 165 g : J1  -0.51  J2   2.90  J3   0.35  J4   0.00
   PIPE_CHUTE_ROLL90 payload 165 g : J1  -0.51  J2   2.90  J3  -0.01  J4   0.00
 
-Modelled arm mass incl. motors and gripper drive: 2999 g
-boolean cache: 6220 hits, 96 computed
-elapsed 79 s
+Modelled arm mass incl. motors and gripper drive: 2212 g
+boolean cache: 6303 hits, 12 computed
+elapsed 157 s

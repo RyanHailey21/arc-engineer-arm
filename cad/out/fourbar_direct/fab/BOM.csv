@@ -9,10 +9,9 @@ PURCHASED,Brg_6700ZZ,Deep-groove bearing 6700ZZ 10x15x4,4,8.0,,,,
 PURCHASED,Brg_6701ZZ,Deep-groove bearing 6701ZZ 12x18x4,1,3.0,,,,
 PURCHASED,Brg_6805ZZ,Thin-section bearing 6805ZZ 25x37x7 (roll support),1,18.0,,,,
 PURCHASED,Brg_MR105ZZ,Miniature bearing MR105ZZ 5x10x4,6,7.2,,,,
-PURCHASED,C610,DJI RoboMaster C610 ESC for M2006 (vendor STEP),1,15.0,,,,robomaster.com product 1277 STEP
 PURCHASED,COLLAR10,"One-piece clamp collar D10 x D24 x 9, steel, M3x10 clamp screw included (Stafford 1LM010)",2,50.0,,,,
 PURCHASED,CSK_M3x6,ISO 10642 countersunk screw,8,8.0,,,,
-PURCHASED,Cable_Clip,Adhesive cable-tie mount 10x10 + 2.5 mm cable tie,3,3.0,,,,
+PURCHASED,Cable_Clip,Adhesive cable-tie mount 10x10 + 2.5 mm cable tie,2,2.0,,,,
 PURCHASED,DM-J4340-2EC,"Damiao DM-J4340-2EC joint motor, 24 V, 9/27 N*m rated/peak, 40:1, CAN (vendor STEP) - J1/J2 direct drive (BASE_DRIVE=DIRECT only)",2,660.0,,,,weigh on receipt; caliper-check the PCD 50 stator and PCD 27 output screw circles and the dowel holes
 PURCHASED,Dowel_3x7,ISO 8734 dowel pin,4,4.0,,,,
 PURCHASED,Dowel_4x5,ISO 8734 dowel pin,6,6.0,,,,
@@ -40,7 +39,7 @@ PURCHASED,STS3215,"Feetech STS3215 serial-bus servo, 12 V version: 10 kg*cm rate
 PURCHASED,Washer_LD,D4 thrust washers either side of the palm ground layer,1,0.3,,,,"DIN 988 shim ring 4 x 8 x 0.5, stainless - standard part, any supplier"
 PURCHASED,Washer_M4,ISO 7089 washer / shim,1,0.3,,,,
 PURCHASED,Washer_RD,D4 thrust washers either side of the palm ground layer,1,0.3,,,,"DIN 988 shim ring 4 x 8 x 0.5, stainless - standard part, any supplier"
-CUSTOM,Base_Plate_AL5,"custom: 5 mm 6061, waterjet + tap; body GROUND; env 345x224x5 mm",1,1041.0,AL,6061-T6 aluminium,2.7,4x M4 to chassis; M3 tapped for brackets / ESC / cable clips
+CUSTOM,Base_Plate_AL5,"custom: 5 mm 6061, waterjet + tap; body GROUND; env 150x160x5 mm",1,269.5,AL,6061-T6 aluminium,2.7,4x M4 to chassis; M3 tapped for the tower brackets
 CUSTOM,Tower_L_CF3,custom: 3 mm CF plate (DXF); body GROUND; env 141x3x124 mm,1,49.9,CF,"carbon-fibre plate (3K, epoxy)",1.55,
 CUSTOM,Tower_Bracket_L0,custom: PETG-CF print; body GROUND; env 16x20x20 mm,1,1.6,PRINT,PETG-CF print (gears: PA12 or PETG-CF),0.75,
 CUSTOM,Tower_Bracket_L1,custom: PETG-CF print; body GROUND; env 16x20x20 mm,1,1.6,PRINT,PETG-CF print (gears: PA12 or PETG-CF),0.75,
@@ -109,4 +108,4 @@ CUSTOM,Link_RI_lo_CF3,custom: 3 mm CF plate (concept); body LK_RI; env 52x32x3 m
 CUSTOM,Link_RI_hi_CF3,custom: 3 mm CF plate (concept); body LK_RI; env 52x32x3 mm,1,2.4,CF,"carbon-fibre plate (3K, epoxy)",1.55,
 CUSTOM,Link_RI_bot_CF3,custom: 3 mm CF plate (concept); body LK_RI; env 52x32x3 mm,1,2.4,CF,"carbon-fibre plate (3K, epoxy)",1.55,
 
-TOTAL,,"modelled mass, variant FOURBAR_DIRECT (motors, gripper drive, all hardware)",,2999,,,,
+TOTAL,,"modelled mass, variant FOURBAR_DIRECT (motors, gripper drive, all hardware)",,2212,,,,
