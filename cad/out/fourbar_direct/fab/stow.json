@@ -1,0 +1,4704 @@
+{
+ "variant": "FOURBAR_DIRECT",
+ "grip": "FOURBAR",
+ "base_drive": "DIRECT",
+ "inputs_hash": "026f4aad2fdf1b1d",
+ "pose": "STOW",
+ "q_deg": [
+  160.0,
+  10.0,
+  0.0,
+  0.0
+ ],
+ "jaw_mm": 30.0,
+ "units": "mm",
+ "frames": "each part's STEP is in its body frame; to_world places it",
+ "bodies": {
+  "GROUND": {
+   "to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Base_Plate_AL5",
+     "kind": "AL",
+     "src": "custom: 5 mm 6061, waterjet + tap",
+     "material": "6061-T6 aluminium",
+     "mass_g": 1041.0,
+     "bbox_body_mm": [
+      -435.0,
+      -112.0,
+      120.0,
+      -90.0,
+      112.0,
+      125.0
+     ],
+     "step": "step/Base_Plate_AL5.step"
+    },
+    {
+     "name": "SHCS_M4x12_base_0",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -425.5,
+      -102.5,
+      113.0,
+      -418.5,
+      -95.5,
+      129.0
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M4x12_base_1",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -425.5,
+      95.5,
+      113.0,
+      -418.5,
+      102.5,
+      129.0
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M4x12_base_2",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -106.5,
+      -102.5,
+      113.0,
+      -99.5,
+      -95.5,
+      129.0
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M4x12_base_3",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -106.5,
+      95.5,
+      113.0,
+      -99.5,
+      102.5,
+      129.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Tower_L_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 49.87,
+     "bbox_body_mm": [
+      -238.47,
+      -52.5,
+      125.0,
+      -97.0,
+      -49.5,
+      249.0
+     ],
+     "step": "step/Tower_L_CF3.step"
+    },
+    {
+     "name": "J1_Motor_DM-J4340_stator",
+     "kind": "CAT",
+     "src": "DM-J4340-2EC",
+     "material": "purchased",
+     "mass_g": 231.0,
+     "bbox_body_mm": [
+      -188.5,
+      -104.75,
+      186.5,
+      -131.5,
+      -52.5,
+      243.5
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_motorL_0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -184.502,
+      -55.5,
+      224.648,
+      -178.799,
+      -46.508,
+      230.35
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_motorL_1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -162.851,
+      -55.5,
+      237.148,
+      -157.149,
+      -46.508,
+      242.85
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_motorL_2",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -141.2,
+      -55.5,
+      224.648,
+      -135.498,
+      -46.508,
+      230.35
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_motorL_3",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -184.502,
+      -55.5,
+      199.648,
+      -178.799,
+      -46.508,
+      205.35
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_motorL_4",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -162.851,
+      -55.5,
+      187.148,
+      -157.149,
+      -46.508,
+      192.85
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_motorL_5",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -141.2,
+      -55.5,
+      199.648,
+      -135.498,
+      -46.508,
+      205.35
+     ],
+     "step": null
+    },
+    {
+     "name": "Dowel_3x7_motorL_0",
+     "kind": "CAT",
+     "src": "DOWEL",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -167.97,
+      -56.5,
+      237.648,
+      -164.97,
+      -49.5,
+      240.648
+     ],
+     "step": null
+    },
+    {
+     "name": "Dowel_3x7_motorL_1",
+     "kind": "CAT",
+     "src": "DOWEL",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -155.03,
+      -56.5,
+      189.352,
+      -152.03,
+      -49.5,
+      192.352
+     ],
+     "step": null
+    },
+    {
+     "name": "Tower_Bracket_L0",
+     "kind": "PRINT",
+     "src": "custom: PETG-CF print",
+     "material": "PETG-CF print (gears: PA12 or PETG-CF)",
+     "mass_g": 1.65,
+     "bbox_body_mm": [
+      -213.0,
+      -72.5,
+      125.0,
+      -196.965,
+      -52.5,
+      145.0
+     ],
+     "step": "step/Tower_Bracket_L0.step"
+    },
+    {
+     "name": "BHCS_M3x10_bracket_L0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -207.851,
+      -59.5,
+      134.148,
+      -202.149,
+      -46.508,
+      139.85
+     ],
+     "step": null
+    },
+    {
+     "name": "Nyloc_M3_bracket_L0",
+     "kind": "CAT",
+     "src": "NYLOC",
+     "material": "purchased",
+     "mass_g": 0.5,
+     "bbox_body_mm": [
+      -207.75,
+      -60.5,
+      133.825,
+      -202.25,
+      -56.5,
+      140.175
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x8_bracketbase_L0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -207.851,
+      -67.35,
+      121.0,
+      -202.149,
+      -61.648,
+      131.993
+     ],
+     "step": null
+    },
+    {
+     "name": "Tower_Bracket_L1",
+     "kind": "PRINT",
+     "src": "custom: PETG-CF print",
+     "material": "PETG-CF print (gears: PA12 or PETG-CF)",
+     "mass_g": 1.65,
+     "bbox_body_mm": [
+      -123.0,
+      -72.5,
+      125.0,
+      -106.965,
+      -52.5,
+      145.0
+     ],
+     "step": "step/Tower_Bracket_L1.step"
+    },
+    {
+     "name": "BHCS_M3x10_bracket_L1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -117.851,
+      -59.5,
+      134.148,
+      -112.149,
+      -46.508,
+      139.85
+     ],
+     "step": null
+    },
+    {
+     "name": "Nyloc_M3_bracket_L1",
+     "kind": "CAT",
+     "src": "NYLOC",
+     "material": "purchased",
+     "mass_g": 0.5,
+     "bbox_body_mm": [
+      -117.75,
+      -60.5,
+      133.825,
+      -112.25,
+      -56.5,
+      140.175
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x8_bracketbase_L1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -117.851,
+      -67.35,
+      121.0,
+      -112.149,
+      -61.648,
+      131.993
+     ],
+     "step": null
+    },
+    {
+     "name": "Tower_R_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 39.51,
+     "bbox_body_mm": [
+      -223.0,
+      49.5,
+      125.0,
+      -97.0,
+      52.5,
+      249.0
+     ],
+     "step": "step/Tower_R_CF3.step"
+    },
+    {
+     "name": "J2_Motor_DM-J4340_stator",
+     "kind": "CAT",
+     "src": "DM-J4340-2EC",
+     "material": "purchased",
+     "mass_g": 231.0,
+     "bbox_body_mm": [
+      -188.5,
+      52.5,
+      186.5,
+      -131.5,
+      104.75,
+      243.5
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_motorR_0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -141.2,
+      46.508,
+      224.648,
+      -135.498,
+      55.5,
+      230.35
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_motorR_1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -162.851,
+      46.508,
+      237.148,
+      -157.149,
+      55.5,
+      242.85
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_motorR_2",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -184.502,
+      46.508,
+      224.648,
+      -178.799,
+      55.5,
+      230.35
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_motorR_3",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -141.2,
+      46.508,
+      199.648,
+      -135.498,
+      55.5,
+      205.35
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_motorR_4",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -162.851,
+      46.508,
+      187.148,
+      -157.149,
+      55.5,
+      192.85
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_motorR_5",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -184.502,
+      46.508,
+      199.648,
+      -178.799,
+      55.5,
+      205.35
+     ],
+     "step": null
+    },
+    {
+     "name": "Dowel_3x7_motorR_0",
+     "kind": "CAT",
+     "src": "DOWEL",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -155.03,
+      49.5,
+      237.648,
+      -152.03,
+      56.5,
+      240.648
+     ],
+     "step": null
+    },
+    {
+     "name": "Dowel_3x7_motorR_1",
+     "kind": "CAT",
+     "src": "DOWEL",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -167.97,
+      49.5,
+      189.352,
+      -164.97,
+      56.5,
+      192.352
+     ],
+     "step": null
+    },
+    {
+     "name": "Tower_Bracket_R0",
+     "kind": "PRINT",
+     "src": "custom: PETG-CF print",
+     "material": "PETG-CF print (gears: PA12 or PETG-CF)",
+     "mass_g": 1.65,
+     "bbox_body_mm": [
+      -213.0,
+      52.5,
+      125.0,
+      -196.965,
+      72.5,
+      145.0
+     ],
+     "step": "step/Tower_Bracket_R0.step"
+    },
+    {
+     "name": "BHCS_M3x10_bracket_R0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -207.851,
+      46.508,
+      134.148,
+      -202.149,
+      59.5,
+      139.85
+     ],
+     "step": null
+    },
+    {
+     "name": "Nyloc_M3_bracket_R0",
+     "kind": "CAT",
+     "src": "NYLOC",
+     "material": "purchased",
+     "mass_g": 0.5,
+     "bbox_body_mm": [
+      -207.75,
+      56.5,
+      133.825,
+      -202.25,
+      60.5,
+      140.175
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x8_bracketbase_R0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -207.851,
+      61.65,
+      121.0,
+      -202.149,
+      67.352,
+      131.993
+     ],
+     "step": null
+    },
+    {
+     "name": "Tower_Bracket_R1",
+     "kind": "PRINT",
+     "src": "custom: PETG-CF print",
+     "material": "PETG-CF print (gears: PA12 or PETG-CF)",
+     "mass_g": 1.65,
+     "bbox_body_mm": [
+      -123.0,
+      52.5,
+      125.0,
+      -106.965,
+      72.5,
+      145.0
+     ],
+     "step": "step/Tower_Bracket_R1.step"
+    },
+    {
+     "name": "BHCS_M3x10_bracket_R1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -117.851,
+      46.508,
+      134.148,
+      -112.149,
+      59.5,
+      139.85
+     ],
+     "step": null
+    },
+    {
+     "name": "Nyloc_M3_bracket_R1",
+     "kind": "CAT",
+     "src": "NYLOC",
+     "material": "purchased",
+     "mass_g": 0.5,
+     "bbox_body_mm": [
+      -117.75,
+      56.5,
+      133.825,
+      -112.25,
+      60.5,
+      140.175
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x8_bracketbase_R1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -117.851,
+      61.65,
+      121.0,
+      -112.149,
+      67.352,
+      131.993
+     ],
+     "step": null
+    },
+    {
+     "name": "Spacer_G1",
+     "kind": "AL",
+     "src": "custom: D9/D5.2 x 6 alu",
+     "material": "6061-T6 aluminium",
+     "mass_g": 0.69,
+     "bbox_body_mm": [
+      -232.97,
+      -49.5,
+      195.946,
+      -223.97,
+      -43.5,
+      204.946
+     ],
+     "step": "step/Spacer_G1.step"
+    },
+    {
+     "name": "SB5x10_G1",
+     "kind": "CAT",
+     "src": "SB5",
+     "material": "purchased",
+     "mass_g": 4,
+     "bbox_body_mm": [
+      -232.97,
+      -57.5,
+      195.946,
+      -223.97,
+      -36.0,
+      204.946
+     ],
+     "step": null
+    },
+    {
+     "name": "Nyloc_M4_G1",
+     "kind": "CAT",
+     "src": "NYLOC",
+     "material": "purchased",
+     "mass_g": 0.5,
+     "bbox_body_mm": [
+      -231.97,
+      -57.5,
+      196.405,
+      -224.97,
+      -52.5,
+      204.488
+     ],
+     "step": null
+    },
+    {
+     "name": "Cable_Clip_Base_0",
+     "kind": "CAT",
+     "src": "CLIP",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -239.5,
+      -87.5,
+      124.52,
+      -220.5,
+      -68.5,
+      131.88
+     ],
+     "step": null
+    },
+    {
+     "name": "Cable_Clip_Base_1",
+     "kind": "CAT",
+     "src": "CLIP",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -339.5,
+      -49.5,
+      124.52,
+      -320.5,
+      -30.5,
+      131.88
+     ],
+     "step": null
+    },
+    {
+     "name": "Cable_Clip_Base_2",
+     "kind": "CAT",
+     "src": "CLIP",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -399.5,
+      30.5,
+      124.52,
+      -380.5,
+      49.5,
+      131.88
+     ],
+     "step": null
+    },
+    {
+     "name": "ESC_C610",
+     "kind": "CAT",
+     "src": "C610",
+     "material": "purchased",
+     "mass_g": 15,
+     "bbox_body_mm": [
+      -291.071,
+      -104.835,
+      126.0,
+      -268.929,
+      -55.165,
+      132.9
+     ],
+     "step": null
+    }
+   ]
+  },
+  "UPPER": {
+   "to_world": [
+    [
+     -0.9396926207859086,
+     0.0,
+     -0.3420201433256687,
+     -160.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.3420201433256687,
+     0.0,
+     -0.9396926207859086,
+     215.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Upper_Arm_L_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 31.98,
+     "bbox_body_mm": [
+      -22.0,
+      -47.0,
+      -22.0,
+      353.0,
+      -44.0,
+      22.0
+     ],
+     "step": "step/Upper_Arm_L_CF3.step"
+    },
+    {
+     "name": "Upper_Arm_R_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 31.45,
+     "bbox_body_mm": [
+      -22.0,
+      44.0,
+      -22.0,
+      353.0,
+      47.0,
+      22.0
+     ],
+     "step": "step/Upper_Arm_R_CF3.step"
+    },
+    {
+     "name": "Brg_6700_Elbow_UA_L",
+     "kind": "CAT",
+     "src": "6700ZZ",
+     "material": "purchased",
+     "mass_g": 2,
+     "bbox_body_mm": [
+      332.5,
+      -48.0,
+      -7.5,
+      347.5,
+      -44.0,
+      7.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Brg_6700_Elbow_UA_R",
+     "kind": "CAT",
+     "src": "6700ZZ",
+     "material": "purchased",
+     "mass_g": 2,
+     "bbox_body_mm": [
+      332.5,
+      44.0,
+      -7.5,
+      347.5,
+      48.0,
+      7.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Brg_6701_Shoulder_UA_R",
+     "kind": "CAT",
+     "src": "6701ZZ",
+     "material": "purchased",
+     "mass_g": 3,
+     "bbox_body_mm": [
+      -9.0,
+      43.0,
+      -9.0,
+      9.0,
+      47.0,
+      9.0
+     ],
+     "step": null
+    },
+    {
+     "name": "J1_Output_Hub",
+     "kind": "AL",
+     "src": "custom: 6061 turned + drilled",
+     "material": "6061-T6 aluminium",
+     "mass_g": 13.02,
+     "bbox_body_mm": [
+      -19.5,
+      -51.5,
+      -19.5,
+      19.5,
+      -44.5,
+      19.5
+     ],
+     "step": "step/J1_Output_Hub.step"
+    },
+    {
+     "name": "J1_Motor_DM-J4340_rotor",
+     "kind": "CAT",
+     "src": "DM-J4340-2EC",
+     "material": "purchased",
+     "mass_g": 99.0,
+     "bbox_body_mm": [
+      -17.65,
+      -59.05,
+      -17.65,
+      17.65,
+      -51.45,
+      17.65
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M3x6_hub_J1_0",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -16.25,
+      -56.0,
+      -2.75,
+      -10.75,
+      -47.0,
+      2.75
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M3x6_hub_J1_1",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -9.5,
+      -56.0,
+      8.941,
+      -4.0,
+      -47.0,
+      14.441
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M3x6_hub_J1_2",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      4.0,
+      -56.0,
+      8.941,
+      9.5,
+      -47.0,
+      14.441
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M3x6_hub_J1_3",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      10.75,
+      -56.0,
+      -2.75,
+      16.25,
+      -47.0,
+      2.75
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M3x6_hub_J1_4",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      4.0,
+      -56.0,
+      -14.441,
+      9.5,
+      -47.0,
+      -8.941
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M3x6_hub_J1_5",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -9.5,
+      -56.0,
+      -14.441,
+      -4.0,
+      -47.0,
+      -8.941
+     ],
+     "step": null
+    },
+    {
+     "name": "Dowel_4x5_hub_J1_0",
+     "kind": "CAT",
+     "src": "DOWEL",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -2.0,
+      -54.0,
+      10.0,
+      2.0,
+      -49.0,
+      14.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Dowel_4x5_hub_J1_1",
+     "kind": "CAT",
+     "src": "DOWEL",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -12.392,
+      -54.0,
+      -8.0,
+      -8.392,
+      -49.0,
+      -4.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Dowel_4x5_hub_J1_2",
+     "kind": "CAT",
+     "src": "DOWEL",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      8.392,
+      -54.0,
+      -8.0,
+      12.392,
+      -49.0,
+      -4.0
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_UA_hub_0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      5.809,
+      -50.0,
+      2.148,
+      11.511,
+      -41.008,
+      7.85
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_UA_hub_1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -11.511,
+      -50.0,
+      2.148,
+      -5.809,
+      -41.008,
+      7.85
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_UA_hub_2",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -2.851,
+      -50.0,
+      -12.852,
+      2.851,
+      -41.008,
+      -7.15
+     ],
+     "step": null
+    },
+    {
+     "name": "UA_Standoff_D8_0",
+     "kind": "AL",
+     "src": "custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",
+     "material": "6061-T6 aluminium",
+     "mass_g": 10.74,
+     "bbox_body_mm": [
+      81.0,
+      -44.0,
+      -4.0,
+      89.0,
+      44.0,
+      4.0
+     ],
+     "step": "step/UA_Standoff_D8_0.step"
+    },
+    {
+     "name": "PClip_UA_0",
+     "kind": "CAT",
+     "src": "PCLIP",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      81.5,
+      -57.6,
+      -3.5,
+      88.5,
+      -47.0,
+      14.3
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x8_UA_st_0L",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      82.149,
+      -50.792,
+      -2.852,
+      87.851,
+      -39.8,
+      2.85
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_UA_st_0R",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      82.149,
+      41.0,
+      -2.852,
+      87.851,
+      49.992,
+      2.85
+     ],
+     "step": null
+    },
+    {
+     "name": "UA_Standoff_D8_1",
+     "kind": "AL",
+     "src": "custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",
+     "material": "6061-T6 aluminium",
+     "mass_g": 10.74,
+     "bbox_body_mm": [
+      146.0,
+      -44.0,
+      -4.0,
+      154.0,
+      44.0,
+      4.0
+     ],
+     "step": "step/UA_Standoff_D8_1.step"
+    },
+    {
+     "name": "PClip_UA_1",
+     "kind": "CAT",
+     "src": "PCLIP",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      146.5,
+      -57.6,
+      -3.5,
+      153.5,
+      -47.0,
+      14.3
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x8_UA_st_1L",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      147.149,
+      -50.792,
+      -2.852,
+      152.851,
+      -39.8,
+      2.85
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_UA_st_1R",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      147.149,
+      41.0,
+      -2.852,
+      152.851,
+      49.992,
+      2.85
+     ],
+     "step": null
+    }
+   ]
+  },
+  "CRANK": {
+   "to_world": [
+    [
+     -0.9848077530122081,
+     0.0,
+     0.17364817766693072,
+     -160.0
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     -0.17364817766693072,
+     0.0,
+     -0.9848077530122081,
+     215.0
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Crank_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF), D-bore on journal flat",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 7.63,
+     "bbox_body_mm": [
+      -14.0,
+      33.0,
+      -14.0,
+      88.0,
+      36.0,
+      14.0
+     ],
+     "step": "step/Crank_CF3.step"
+    },
+    {
+     "name": "J2_Output_Hub_Journal",
+     "kind": "AL",
+     "src": "custom: 6061 turned + drilled",
+     "material": "6061-T6 aluminium",
+     "mass_g": 16.47,
+     "bbox_body_mm": [
+      -19.5,
+      33.0,
+      -19.5,
+      19.5,
+      51.5,
+      19.5
+     ],
+     "step": "step/J2_Output_Hub_Journal.step"
+    },
+    {
+     "name": "J2_Motor_DM-J4340_rotor",
+     "kind": "CAT",
+     "src": "DM-J4340-2EC",
+     "material": "purchased",
+     "mass_g": 99.0,
+     "bbox_body_mm": [
+      -17.65,
+      51.45,
+      -17.65,
+      17.65,
+      59.05,
+      17.65
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M3x6_hub_J2_0",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      10.75,
+      47.0,
+      -2.75,
+      16.25,
+      56.0,
+      2.75
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M3x6_hub_J2_1",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      4.0,
+      47.0,
+      8.941,
+      9.5,
+      56.0,
+      14.441
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M3x6_hub_J2_2",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -9.5,
+      47.0,
+      8.941,
+      -4.0,
+      56.0,
+      14.441
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M3x6_hub_J2_3",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -16.25,
+      47.0,
+      -2.75,
+      -10.75,
+      56.0,
+      2.75
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M3x6_hub_J2_4",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -9.5,
+      47.0,
+      -14.441,
+      -4.0,
+      56.0,
+      -8.941
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M3x6_hub_J2_5",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      4.0,
+      47.0,
+      -14.441,
+      9.5,
+      56.0,
+      -8.941
+     ],
+     "step": null
+    },
+    {
+     "name": "Dowel_4x5_hub_J2_0",
+     "kind": "CAT",
+     "src": "DOWEL",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -2.0,
+      49.0,
+      10.0,
+      2.0,
+      54.0,
+      14.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Dowel_4x5_hub_J2_1",
+     "kind": "CAT",
+     "src": "DOWEL",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      8.392,
+      49.0,
+      -8.0,
+      12.392,
+      54.0,
+      -4.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Dowel_4x5_hub_J2_2",
+     "kind": "CAT",
+     "src": "DOWEL",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -12.392,
+      49.0,
+      -8.0,
+      -8.392,
+      54.0,
+      -4.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Washer_M4_crank",
+     "kind": "CAT",
+     "src": "WASHER",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      -6.0,
+      32.2,
+      -6.0,
+      6.0,
+      33.0,
+      6.0
+     ],
+     "step": null
+    },
+    {
+     "name": "SHCS_M4x8_crank",
+     "kind": "CAT",
+     "src": "SHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -3.5,
+      28.2,
+      -3.5,
+      3.5,
+      40.2,
+      3.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Shim_A",
+     "kind": "SHIM",
+     "src": "custom: 301 SS shim stock 1.5, laser cut",
+     "material": "301 stainless shim stock",
+     "mass_g": 0.35,
+     "bbox_body_mm": [
+      76.0,
+      31.5,
+      -4.0,
+      84.0,
+      33.0,
+      4.0
+     ],
+     "step": "step/Shim_A.step"
+    },
+    {
+     "name": "SB5x8_A",
+     "kind": "CAT",
+     "src": "SB5",
+     "material": "purchased",
+     "mass_g": 4,
+     "bbox_body_mm": [
+      75.5,
+      24.0,
+      -4.5,
+      84.5,
+      40.5,
+      4.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Nyloc_M4_A",
+     "kind": "CAT",
+     "src": "NYLOC",
+     "material": "purchased",
+     "mass_g": 0.5,
+     "bbox_body_mm": [
+      76.5,
+      36.0,
+      -4.041,
+      83.5,
+      41.0,
+      4.041
+     ],
+     "step": null
+    }
+   ]
+  },
+  "ROD_AB": {
+   "to_world": [
+    [
+     -0.9396926207859086,
+     0.0,
+     -0.3420201433256687,
+     -238.78462024097664
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.3420201433256687,
+     0.0,
+     -0.9396926207859086,
+     201.10814578664557
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Rod_AB_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 17.34,
+     "bbox_body_mm": [
+      -8.5,
+      27.5,
+      -8.5,
+      348.5,
+      30.5,
+      8.5
+     ],
+     "step": "step/Rod_AB_CF3.step"
+    },
+    {
+     "name": "Brg_MR105_Rod_AB_0",
+     "kind": "CAT",
+     "src": "MR105ZZ",
+     "material": "purchased",
+     "mass_g": 1.2,
+     "bbox_body_mm": [
+      -5.0,
+      27.5,
+      -5.0,
+      5.0,
+      31.5,
+      5.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Brg_MR105_Rod_AB_340",
+     "kind": "CAT",
+     "src": "MR105ZZ",
+     "material": "purchased",
+     "mass_g": 1.2,
+     "bbox_body_mm": [
+      335.0,
+      27.5,
+      -5.0,
+      345.0,
+      31.5,
+      5.0
+     ],
+     "step": null
+    }
+   ]
+  },
+  "ROD1": {
+   "to_world": [
+    [
+     -0.9396926207859086,
+     0.0,
+     -0.3420201433256687,
+     -228.47033205136637
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.3420201433256687,
+     0.0,
+     -0.9396926207859086,
+     200.44618164275684
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Rod_1_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 17.34,
+     "bbox_body_mm": [
+      -8.5,
+      -43.5,
+      -8.5,
+      348.5,
+      -40.5,
+      8.5
+     ],
+     "step": "step/Rod_1_CF3.step"
+    },
+    {
+     "name": "Brg_MR105_Rod_1_0",
+     "kind": "CAT",
+     "src": "MR105ZZ",
+     "material": "purchased",
+     "mass_g": 1.2,
+     "bbox_body_mm": [
+      -5.0,
+      -43.5,
+      -5.0,
+      5.0,
+      -39.5,
+      5.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Brg_MR105_Rod_1_340",
+     "kind": "CAT",
+     "src": "MR105ZZ",
+     "material": "purchased",
+     "mass_g": 1.2,
+     "bbox_body_mm": [
+      335.0,
+      -43.5,
+      -5.0,
+      345.0,
+      -39.5,
+      5.0
+     ],
+     "step": null
+    }
+   ]
+  },
+  "FOREARM": {
+   "to_world": [
+    [
+     0.984807753012208,
+     0.0,
+     -0.1736481776669304,
+     -479.49549106720883
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.1736481776669304,
+     0.0,
+     0.984807753012208,
+     331.2868487307274
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Forearm_L_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 37.8,
+     "bbox_body_mm": [
+      -89.0,
+      -19.5,
+      -14.0,
+      362.0,
+      -16.5,
+      14.0
+     ],
+     "step": "step/Forearm_L_CF3.step"
+    },
+    {
+     "name": "Forearm_R_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 37.8,
+     "bbox_body_mm": [
+      -89.0,
+      16.5,
+      -14.0,
+      362.0,
+      19.5,
+      14.0
+     ],
+     "step": "step/Forearm_R_CF3.step"
+    },
+    {
+     "name": "Brg_6700_Wrist_FA_L",
+     "kind": "CAT",
+     "src": "6700ZZ",
+     "material": "purchased",
+     "mass_g": 2,
+     "bbox_body_mm": [
+      342.5,
+      -19.5,
+      -7.5,
+      357.5,
+      -15.5,
+      7.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Brg_6700_Wrist_FA_R",
+     "kind": "CAT",
+     "src": "6700ZZ",
+     "material": "purchased",
+     "mass_g": 2,
+     "bbox_body_mm": [
+      342.5,
+      15.5,
+      -7.5,
+      357.5,
+      19.5,
+      7.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Elbow_Shaft_D10x101",
+     "kind": "STEEL",
+     "src": "custom: cut from McMaster 6112K47 D10 h6 rod, ground e-clip grooves",
+     "material": "steel",
+     "mass_g": 61.68,
+     "bbox_body_mm": [
+      -5.0,
+      -50.5,
+      -5.0,
+      5.0,
+      50.5,
+      5.0
+     ],
+     "step": "step/Elbow_Shaft_D10x101.step"
+    },
+    {
+     "name": "Elbow_Clamp_Collar_L",
+     "kind": "CAT",
+     "src": "COLLAR10",
+     "material": "purchased",
+     "mass_g": 25,
+     "bbox_body_mm": [
+      -12.0,
+      -16.5,
+      -12.0,
+      12.0,
+      -7.5,
+      12.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Eclip_D10_elbow_L",
+     "kind": "CAT",
+     "src": "ECLIP",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      -8.5,
+      -48.9,
+      -8.5,
+      8.5,
+      -48.0,
+      8.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Elbow_Clamp_Collar_R",
+     "kind": "CAT",
+     "src": "COLLAR10",
+     "material": "purchased",
+     "mass_g": 25,
+     "bbox_body_mm": [
+      -12.0,
+      7.5,
+      -12.0,
+      12.0,
+      16.5,
+      12.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Eclip_D10_elbow_R",
+     "kind": "CAT",
+     "src": "ECLIP",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      -8.5,
+      48.0,
+      -8.5,
+      8.5,
+      48.9,
+      8.5
+     ],
+     "step": null
+    },
+    {
+     "name": "FA_Standoff_D8_0",
+     "kind": "AL",
+     "src": "custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",
+     "material": "6061-T6 aluminium",
+     "mass_g": 4.03,
+     "bbox_body_mm": [
+      112.667,
+      -16.5,
+      -4.0,
+      120.667,
+      16.5,
+      4.0
+     ],
+     "step": "step/FA_Standoff_D8_0.step"
+    },
+    {
+     "name": "BHCS_M3x6_FA_st_0L",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      113.816,
+      -22.492,
+      -2.852,
+      119.518,
+      -13.5,
+      2.85
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_FA_st_0R",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      113.816,
+      13.5,
+      -2.852,
+      119.518,
+      22.492,
+      2.85
+     ],
+     "step": null
+    },
+    {
+     "name": "FA_Standoff_D8_1",
+     "kind": "AL",
+     "src": "custom: 6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",
+     "material": "6061-T6 aluminium",
+     "mass_g": 4.03,
+     "bbox_body_mm": [
+      229.333,
+      -16.5,
+      -4.0,
+      237.333,
+      16.5,
+      4.0
+     ],
+     "step": "step/FA_Standoff_D8_1.step"
+    },
+    {
+     "name": "BHCS_M3x6_FA_st_1L",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      230.482,
+      -22.492,
+      -2.852,
+      236.185,
+      -13.5,
+      2.85
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_FA_st_1R",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      230.482,
+      13.5,
+      -2.852,
+      236.185,
+      22.492,
+      2.85
+     ],
+     "step": null
+    },
+    {
+     "name": "Spacer_B",
+     "kind": "AL",
+     "src": "custom: D9/D5.2 x 8 alu",
+     "material": "6061-T6 aluminium",
+     "mass_g": 0.92,
+     "bbox_body_mm": [
+      -84.5,
+      19.5,
+      -4.5,
+      -75.5,
+      27.5,
+      4.5
+     ],
+     "step": "step/Spacer_B.step"
+    },
+    {
+     "name": "SB5x12_B",
+     "kind": "CAT",
+     "src": "SB5",
+     "material": "purchased",
+     "mass_g": 4,
+     "bbox_body_mm": [
+      -84.5,
+      11.5,
+      -4.5,
+      -75.5,
+      35.0,
+      4.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Nyloc_M4_B",
+     "kind": "CAT",
+     "src": "NYLOC",
+     "material": "purchased",
+     "mass_g": 0.5,
+     "bbox_body_mm": [
+      -83.5,
+      11.5,
+      -4.041,
+      -76.5,
+      16.5,
+      4.041
+     ],
+     "step": null
+    }
+   ]
+  },
+  "ROCKER": {
+   "to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -479.49549106720883
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     331.2868487307274
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Level_Rocker_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF), hex af19",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 16.0,
+     "bbox_body_mm": [
+      -76.97,
+      -39.0,
+      -23.054,
+      21.287,
+      -36.0,
+      49.555
+     ],
+     "step": "step/Level_Rocker_CF3.step"
+    },
+    {
+     "name": "Level_Hub_Elbow",
+     "kind": "AL",
+     "src": "custom: 6061 turned hub, hex key af19, 6700 seat",
+     "material": "6061-T6 aluminium",
+     "mass_g": 3.07,
+     "bbox_body_mm": [
+      -9.5,
+      -39.0,
+      -10.97,
+      9.5,
+      -25.5,
+      10.97
+     ],
+     "step": "step/Level_Hub_Elbow.step"
+    },
+    {
+     "name": "Level_Hub_Elbow_Brg_6700",
+     "kind": "CAT",
+     "src": "6700ZZ",
+     "material": "purchased",
+     "mass_g": 2,
+     "bbox_body_mm": [
+      -7.5,
+      -39.0,
+      -7.5,
+      7.5,
+      -35.0,
+      7.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Washer_Ev2_head",
+     "kind": "SHIM",
+     "src": "custom: 301 SS shim stock 0.5, laser cut",
+     "material": "301 stainless shim stock",
+     "mass_g": 0.07,
+     "bbox_body_mm": [
+      9.287,
+      -31.0,
+      37.555,
+      16.287,
+      -30.5,
+      44.555
+     ],
+     "step": "step/Washer_Ev2_head.step"
+    },
+    {
+     "name": "Washer_PTFE_Ev2",
+     "kind": "PTFE",
+     "src": "custom: PTFE sheet 1.0, laser cut",
+     "material": "PTFE",
+     "mass_g": 0.09,
+     "bbox_body_mm": [
+      8.287,
+      -36.0,
+      36.555,
+      17.287,
+      -35.0,
+      45.555
+     ],
+     "step": "step/Washer_PTFE_Ev2.step"
+    },
+    {
+     "name": "SB5x8_Ev2",
+     "kind": "CAT",
+     "src": "SB5",
+     "material": "purchased",
+     "mass_g": 4,
+     "bbox_body_mm": [
+      8.287,
+      -45.5,
+      36.555,
+      17.287,
+      -27.0,
+      45.555
+     ],
+     "step": null
+    },
+    {
+     "name": "Nyloc_M4_Ev2",
+     "kind": "CAT",
+     "src": "NYLOC",
+     "material": "purchased",
+     "mass_g": 0.5,
+     "bbox_body_mm": [
+      9.287,
+      -44.0,
+      37.013,
+      16.287,
+      -39.0,
+      45.096
+     ],
+     "step": null
+    },
+    {
+     "name": "Sleeve_E_outer",
+     "kind": "AL",
+     "src": "custom: D13/D10 sleeve",
+     "material": "6061-T6 aluminium",
+     "mass_g": 0.71,
+     "bbox_body_mm": [
+      -6.5,
+      -44.0,
+      -6.5,
+      6.5,
+      -39.0,
+      6.5
+     ],
+     "step": "step/Sleeve_E_outer.step"
+    },
+    {
+     "name": "Washer_PTFE_E",
+     "kind": "PTFE",
+     "src": "custom: PTFE rod D13, turned thrust sleeve",
+     "material": "PTFE",
+     "mass_g": 0.69,
+     "bbox_body_mm": [
+      -6.5,
+      -25.5,
+      -6.5,
+      6.5,
+      -19.5,
+      6.5
+     ],
+     "step": "step/Washer_PTFE_E.step"
+    },
+    {
+     "name": "Shim_Ev1",
+     "kind": "SHIM",
+     "src": "custom: 301 SS shim stock 0.5, laser cut",
+     "material": "301 stainless shim stock",
+     "mass_g": 0.12,
+     "bbox_body_mm": [
+      -72.47,
+      -39.5,
+      -18.554,
+      -64.47,
+      -39.0,
+      -10.554
+     ],
+     "step": "step/Shim_Ev1.step"
+    },
+    {
+     "name": "SB5x4_Ev1",
+     "kind": "CAT",
+     "src": "SB5",
+     "material": "purchased",
+     "mass_g": 4,
+     "bbox_body_mm": [
+      -72.97,
+      -47.0,
+      -19.054,
+      -63.97,
+      -30.5,
+      -10.054
+     ],
+     "step": null
+    },
+    {
+     "name": "Nyloc_M4_Ev1",
+     "kind": "CAT",
+     "src": "NYLOC",
+     "material": "purchased",
+     "mass_g": 0.5,
+     "bbox_body_mm": [
+      -71.97,
+      -36.0,
+      -18.595,
+      -64.97,
+      -31.0,
+      -10.512
+     ],
+     "step": null
+    }
+   ]
+  },
+  "ROD2": {
+   "to_world": [
+    [
+     0.984807753012208,
+     0.0,
+     -0.1736481776669304,
+     -466.70837148186405
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.1736481776669304,
+     0.0,
+     0.984807753012208,
+     372.3415631093477
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Rod_2_CF4",
+     "kind": "CF",
+     "src": "custom: 4 mm CF plate (DXF)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 33.09,
+     "bbox_body_mm": [
+      -8.0,
+      -35.0,
+      -8.0,
+      358.0,
+      -31.0,
+      8.0
+     ],
+     "step": "step/Rod_2_CF4.step"
+    },
+    {
+     "name": "Brg_MR105_Rod_2_0",
+     "kind": "CAT",
+     "src": "MR105ZZ",
+     "material": "purchased",
+     "mass_g": 1.2,
+     "bbox_body_mm": [
+      -5.0,
+      -35.0,
+      -5.0,
+      5.0,
+      -31.0,
+      5.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Brg_MR105_Rod_2_350",
+     "kind": "CAT",
+     "src": "MR105ZZ",
+     "material": "purchased",
+     "mass_g": 1.2,
+     "bbox_body_mm": [
+      345.0,
+      -35.0,
+      -5.0,
+      355.0,
+      -31.0,
+      5.0
+     ],
+     "step": null
+    }
+   ]
+  },
+  "LEVEL": {
+   "to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -134.812777512936
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     392.06371091415303
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Wrist_Level_Member_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF), hex af19",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 13.31,
+     "bbox_body_mm": [
+      -45.94,
+      -39.0,
+      -21.178,
+      24.289,
+      -36.0,
+      49.555
+     ],
+     "step": "step/Wrist_Level_Member_CF3.step"
+    },
+    {
+     "name": "Level_Hub_Wrist",
+     "kind": "AL",
+     "src": "custom: 6061 turned hub, hex key af19, 6700 seat",
+     "material": "6061-T6 aluminium",
+     "mass_g": 3.07,
+     "bbox_body_mm": [
+      -9.5,
+      -39.0,
+      -10.97,
+      9.5,
+      -25.5,
+      10.97
+     ],
+     "step": "step/Level_Hub_Wrist.step"
+    },
+    {
+     "name": "Level_Hub_Wrist_Brg_6700",
+     "kind": "CAT",
+     "src": "6700ZZ",
+     "material": "purchased",
+     "mass_g": 2,
+     "bbox_body_mm": [
+      -7.5,
+      -39.0,
+      -7.5,
+      7.5,
+      -35.0,
+      7.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Washer_Dv2_head",
+     "kind": "SHIM",
+     "src": "custom: 301 SS shim stock 0.5, laser cut",
+     "material": "301 stainless shim stock",
+     "mass_g": 0.07,
+     "bbox_body_mm": [
+      9.287,
+      -31.0,
+      37.555,
+      16.287,
+      -30.5,
+      44.555
+     ],
+     "step": "step/Washer_Dv2_head.step"
+    },
+    {
+     "name": "Washer_PTFE_Dv2",
+     "kind": "PTFE",
+     "src": "custom: PTFE sheet 1.0, laser cut",
+     "material": "PTFE",
+     "mass_g": 0.09,
+     "bbox_body_mm": [
+      8.287,
+      -36.0,
+      36.555,
+      17.287,
+      -35.0,
+      45.555
+     ],
+     "step": "step/Washer_PTFE_Dv2.step"
+    },
+    {
+     "name": "SB5x8_Dv2",
+     "kind": "CAT",
+     "src": "SB5",
+     "material": "purchased",
+     "mass_g": 4,
+     "bbox_body_mm": [
+      8.287,
+      -45.5,
+      36.555,
+      17.287,
+      -27.0,
+      45.555
+     ],
+     "step": null
+    },
+    {
+     "name": "Nyloc_M4_Dv2",
+     "kind": "CAT",
+     "src": "NYLOC",
+     "material": "purchased",
+     "mass_g": 0.5,
+     "bbox_body_mm": [
+      9.287,
+      -44.0,
+      37.013,
+      16.287,
+      -39.0,
+      45.096
+     ],
+     "step": null
+    },
+    {
+     "name": "J3_Wrist_Servo_STS3215",
+     "kind": "CAT",
+     "src": "STS3215",
+     "material": "purchased",
+     "mass_g": 60,
+     "bbox_body_mm": [
+      -35.868,
+      -80.4,
+      -14.291,
+      13.467,
+      -43.774,
+      27.541
+     ],
+     "step": null
+    },
+    {
+     "name": "Wrist_Servo_Cradle",
+     "kind": "PRINT",
+     "src": "custom: PETG-CF print, 4x M3 heat-set inserts",
+     "material": "PETG-CF print (gears: PA12 or PETG-CF)",
+     "mass_g": 17.46,
+     "bbox_body_mm": [
+      -47.199,
+      -83.45,
+      -23.751,
+      25.549,
+      -39.0,
+      36.251
+     ],
+     "step": "step/Wrist_Servo_Cradle.step"
+    },
+    {
+     "name": "PAN_M2x12_J3_0",
+     "kind": "CAT",
+     "src": "PAN-M2x12",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      -14.313,
+      -84.85,
+      -6.727,
+      -10.313,
+      -71.45,
+      -2.727
+     ],
+     "step": null
+    },
+    {
+     "name": "PAN_M2x12_J3_1",
+     "kind": "CAT",
+     "src": "PAN-M2x12",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      -4.063,
+      -84.85,
+      11.027,
+      -0.063,
+      -71.45,
+      15.027
+     ],
+     "step": null
+    },
+    {
+     "name": "PAN_M2x12_J3_2",
+     "kind": "CAT",
+     "src": "PAN-M2x12",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      -35.487,
+      -84.85,
+      5.498,
+      -31.487,
+      -71.45,
+      9.498
+     ],
+     "step": null
+    },
+    {
+     "name": "PAN_M2x12_J3_3",
+     "kind": "CAT",
+     "src": "PAN-M2x12",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      -25.237,
+      -84.85,
+      23.252,
+      -21.237,
+      -71.45,
+      27.252
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_j3cradle_0",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      8.289,
+      -42.8,
+      -17.178,
+      12.289,
+      -39.0,
+      -13.178
+     ],
+     "step": null
+    },
+    {
+     "name": "CSK_M3x6_level_0",
+     "kind": "CAT",
+     "src": "CSK",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      7.289,
+      -42.0,
+      -18.178,
+      13.289,
+      -36.0,
+      -12.178
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_j3cradle_1",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      16.289,
+      -42.8,
+      -3.322,
+      20.289,
+      -39.0,
+      0.678
+     ],
+     "step": null
+    },
+    {
+     "name": "CSK_M3x6_level_1",
+     "kind": "CAT",
+     "src": "CSK",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      15.289,
+      -42.0,
+      -4.322,
+      21.289,
+      -36.0,
+      1.678
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_j3cradle_2",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      -41.94,
+      -42.8,
+      11.822,
+      -37.94,
+      -39.0,
+      15.822
+     ],
+     "step": null
+    },
+    {
+     "name": "CSK_M3x6_level_2",
+     "kind": "CAT",
+     "src": "CSK",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -42.94,
+      -42.0,
+      10.822,
+      -36.94,
+      -36.0,
+      16.822
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_j3cradle_3",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      -33.94,
+      -42.8,
+      25.678,
+      -29.94,
+      -39.0,
+      29.678
+     ],
+     "step": null
+    },
+    {
+     "name": "CSK_M3x6_level_3",
+     "kind": "CAT",
+     "src": "CSK",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -34.94,
+      -42.0,
+      24.678,
+      -28.94,
+      -36.0,
+      30.678
+     ],
+     "step": null
+    }
+   ]
+  },
+  "GRIPPER": {
+   "to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -134.812777512936
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     392.06371091415303
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Wrist_Shaft_D10x70",
+     "kind": "STEEL",
+     "src": "custom: cut from McMaster 6112K47 D10 h6 rod, D6x4 ground step, D-flats, e-clip groove",
+     "material": "steel",
+     "mass_g": 41.16,
+     "bbox_body_mm": [
+      -5.0,
+      -43.0,
+      -5.0,
+      5.0,
+      27.0,
+      5.0
+     ],
+     "step": "step/Wrist_Shaft_D10x70.step"
+    },
+    {
+     "name": "Eclip_D10_wrist",
+     "kind": "CAT",
+     "src": "ECLIP",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      -8.5,
+      25.0,
+      -8.5,
+      8.5,
+      25.9,
+      8.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Servo_Horn_25T_pitch",
+     "kind": "CAT",
+     "src": "HORN-25T",
+     "material": "purchased",
+     "mass_g": 3,
+     "bbox_body_mm": [
+      -9.975,
+      -47.5,
+      -9.975,
+      9.975,
+      -43.0,
+      9.975
+     ],
+     "step": null
+    },
+    {
+     "name": "Wrist_Shaft_Coupler",
+     "kind": "AL",
+     "src": "custom: 6061, D6 D-bore on the shaft step, 4x M3 clearance (horn)",
+     "material": "6061-T6 aluminium",
+     "mass_g": 2.1,
+     "bbox_body_mm": [
+      -12.0,
+      -43.0,
+      -12.0,
+      12.0,
+      -41.0,
+      12.0
+     ],
+     "step": "step/Wrist_Shaft_Coupler.step"
+    },
+    {
+     "name": "BHCS_M3x5_horn_0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      2.099,
+      -46.0,
+      2.098,
+      7.801,
+      -38.008,
+      7.8
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x5_horn_1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -7.801,
+      -46.0,
+      2.098,
+      -2.099,
+      -38.008,
+      7.8
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x5_horn_2",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      -7.801,
+      -46.0,
+      -7.802,
+      -2.099,
+      -38.008,
+      -2.1
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x5_horn_3",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      2.099,
+      -46.0,
+      -7.802,
+      7.801,
+      -38.008,
+      -2.1
+     ],
+     "step": null
+    },
+    {
+     "name": "Clevis_L_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF), D-bore, 4x csk",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 18.03,
+     "bbox_body_mm": [
+      -12.0,
+      -25.0,
+      -31.0,
+      58.0,
+      -22.0,
+      37.0
+     ],
+     "step": "step/Clevis_L_CF3.step"
+    },
+    {
+     "name": "CSK_M3x6_clevis_L0",
+     "kind": "CAT",
+     "src": "CSK",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      17.0,
+      -25.0,
+      -23.0,
+      23.0,
+      -19.0,
+      -17.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_clevis_L0",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      18.0,
+      -22.0,
+      -22.0,
+      22.0,
+      -18.2,
+      -18.0
+     ],
+     "step": null
+    },
+    {
+     "name": "CSK_M3x6_clevis_L1",
+     "kind": "CAT",
+     "src": "CSK",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      27.0,
+      -25.0,
+      22.0,
+      33.0,
+      -19.0,
+      28.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_clevis_L1",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      28.0,
+      -22.0,
+      23.0,
+      32.0,
+      -18.2,
+      27.0
+     ],
+     "step": null
+    },
+    {
+     "name": "CSK_M3x6_clevis_L2",
+     "kind": "CAT",
+     "src": "CSK",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      45.0,
+      -25.0,
+      -23.0,
+      51.0,
+      -19.0,
+      -17.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_clevis_L2",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      46.0,
+      -22.0,
+      -22.0,
+      50.0,
+      -18.2,
+      -18.0
+     ],
+     "step": null
+    },
+    {
+     "name": "CSK_M3x6_clevis_L3",
+     "kind": "CAT",
+     "src": "CSK",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      45.0,
+      -25.0,
+      22.0,
+      51.0,
+      -19.0,
+      28.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_clevis_L3",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      46.0,
+      -22.0,
+      23.0,
+      50.0,
+      -18.2,
+      27.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Clevis_R_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (DXF), D-bore",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 18.1,
+     "bbox_body_mm": [
+      -12.0,
+      22.0,
+      -31.0,
+      58.0,
+      25.0,
+      37.0
+     ],
+     "step": "step/Clevis_R_CF3.step"
+    },
+    {
+     "name": "BHCS_M3x6_clevis_R0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      17.149,
+      19.0,
+      -22.852,
+      22.851,
+      27.992,
+      -17.15
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_clevis_R0",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      18.0,
+      18.2,
+      -22.0,
+      22.0,
+      22.0,
+      -18.0
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_clevis_R1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      27.149,
+      19.0,
+      22.148,
+      32.851,
+      27.992,
+      27.85
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_clevis_R1",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      28.0,
+      18.2,
+      23.0,
+      32.0,
+      22.0,
+      27.0
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_clevis_R2",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      45.149,
+      19.0,
+      -22.852,
+      50.851,
+      27.992,
+      -17.15
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_clevis_R2",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      46.0,
+      18.2,
+      -22.0,
+      50.0,
+      22.0,
+      -18.0
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_clevis_R3",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      45.149,
+      19.0,
+      22.148,
+      50.851,
+      27.992,
+      27.85
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_clevis_R3",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      46.0,
+      18.2,
+      23.0,
+      50.0,
+      22.0,
+      27.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Roll_Housing",
+     "kind": "PRINT",
+     "src": "custom: PETG-CF print, M3 inserts",
+     "material": "PETG-CF print (gears: PA12 or PETG-CF)",
+     "mass_g": 35.04,
+     "bbox_body_mm": [
+      8.0,
+      -22.0,
+      -27.0,
+      60.0,
+      22.0,
+      35.0
+     ],
+     "step": "step/Roll_Housing.step"
+    },
+    {
+     "name": "J4_Roll_Servo_STS3215",
+     "kind": "CAT",
+     "src": "STS3215",
+     "material": "purchased",
+     "mass_g": 60,
+     "bbox_body_mm": [
+      11.6,
+      -12.389,
+      -15.139,
+      48.226,
+      12.389,
+      30.113
+     ],
+     "step": null
+    },
+    {
+     "name": "PAN_M2x12_J4_0",
+     "kind": "CAT",
+     "src": "PAN-M2x12",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      7.15,
+      8.25,
+      1.3,
+      20.55,
+      12.25,
+      5.3
+     ],
+     "step": null
+    },
+    {
+     "name": "PAN_M2x12_J4_1",
+     "kind": "CAT",
+     "src": "PAN-M2x12",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      7.15,
+      -12.25,
+      1.3,
+      20.55,
+      -8.25,
+      5.3
+     ],
+     "step": null
+    },
+    {
+     "name": "PAN_M2x12_J4_2",
+     "kind": "CAT",
+     "src": "PAN-M2x12",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      7.15,
+      8.25,
+      25.75,
+      20.55,
+      12.25,
+      29.75
+     ],
+     "step": null
+    },
+    {
+     "name": "PAN_M2x12_J4_3",
+     "kind": "CAT",
+     "src": "PAN-M2x12",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      7.15,
+      -12.25,
+      25.75,
+      20.55,
+      -8.25,
+      29.75
+     ],
+     "step": null
+    },
+    {
+     "name": "Brg_6805_Roll",
+     "kind": "CAT",
+     "src": "6805ZZ",
+     "material": "purchased",
+     "mass_g": 18,
+     "bbox_body_mm": [
+      53.0,
+      -18.5,
+      -23.5,
+      60.0,
+      18.5,
+      13.5
+     ],
+     "step": null
+    }
+   ]
+  },
+  "HEAD": {
+   "to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -134.812777512936
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     392.06371091415303
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Servo_Horn_25T_roll",
+     "kind": "CAT",
+     "src": "HORN-25T",
+     "material": "purchased",
+     "mass_g": 3,
+     "bbox_body_mm": [
+      44.5,
+      -9.975,
+      -14.975,
+      49.0,
+      9.975,
+      4.975
+     ],
+     "step": null
+    },
+    {
+     "name": "Roll_Hub",
+     "kind": "AL",
+     "src": "custom: 6061 turned, D25 journal in 6805",
+     "material": "6061-T6 aluminium",
+     "mass_g": 11.47,
+     "bbox_body_mm": [
+      49.0,
+      -18.0,
+      -23.0,
+      65.0,
+      18.0,
+      13.0
+     ],
+     "step": "step/Roll_Hub.step"
+    },
+    {
+     "name": "BHCS_M3x5_rollhorn_0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      47.0,
+      2.099,
+      -2.902,
+      54.992,
+      7.801,
+      2.8
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x5_rollhorn_1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      47.0,
+      -7.801,
+      -2.902,
+      54.992,
+      -2.099,
+      2.8
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x5_rollhorn_2",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      47.0,
+      -7.801,
+      -12.802,
+      54.992,
+      -2.099,
+      -7.1
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x5_rollhorn_3",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      47.0,
+      2.099,
+      -12.802,
+      54.992,
+      7.801,
+      -7.1
+     ],
+     "step": null
+    },
+    {
+     "name": "Grip_Servo_STS3215",
+     "kind": "CAT",
+     "src": "STS3215",
+     "material": "purchased",
+     "mass_g": 60,
+     "bbox_body_mm": [
+      69.65,
+      27.5,
+      -16.0,
+      94.35,
+      72.7,
+      19.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Gripper_Palm",
+     "kind": "PRINT",
+     "src": "custom: PETG-CF print (concept)",
+     "material": "PETG-CF print (gears: PA12 or PETG-CF)",
+     "mass_g": 62.75,
+     "bbox_body_mm": [
+      65.0,
+      -60.5,
+      -21.5,
+      97.0,
+      75.5,
+      33.0
+     ],
+     "step": "step/Gripper_Palm.step"
+    },
+    {
+     "name": "BHCS_M3x8_palmhub_0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      61.0,
+      12.399,
+      -7.852,
+      71.993,
+      18.101,
+      -2.15
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x8_palmhub_1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      61.0,
+      -18.101,
+      -7.852,
+      71.993,
+      -12.399,
+      -2.15
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x8_palmhub_2",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      61.0,
+      -13.635,
+      -18.635,
+      71.993,
+      -7.932,
+      -12.933
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x8_palmhub_3",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      61.0,
+      7.932,
+      -18.635,
+      71.993,
+      13.634,
+      -12.933
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x14_ground_LI",
+     "kind": "CAT",
+     "src": "PIN-D4x14",
+     "material": "purchased",
+     "mass_g": 1.4,
+     "bbox_body_mm": [
+      80.0,
+      52.5,
+      23.4,
+      84.0,
+      56.5,
+      37.4
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x14_ground_RI",
+     "kind": "CAT",
+     "src": "PIN-D4x14",
+     "material": "purchased",
+     "mass_g": 1.4,
+     "bbox_body_mm": [
+      80.0,
+      -56.5,
+      23.4,
+      84.0,
+      -52.5,
+      37.4
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x30_ground_RD",
+     "kind": "CAT",
+     "src": "PIN-D4x30",
+     "material": "purchased",
+     "mass_g": 3.0,
+     "bbox_body_mm": [
+      80.0,
+      -40.5,
+      12.0,
+      84.0,
+      -36.5,
+      42.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x8_ground_bot_LD",
+     "kind": "CAT",
+     "src": "PIN-D4x8",
+     "material": "purchased",
+     "mass_g": 0.8,
+     "bbox_body_mm": [
+      80.0,
+      36.5,
+      -25.3,
+      84.0,
+      40.5,
+      -17.3
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x8_ground_bot_LI",
+     "kind": "CAT",
+     "src": "PIN-D4x8",
+     "material": "purchased",
+     "mass_g": 0.8,
+     "bbox_body_mm": [
+      80.0,
+      52.5,
+      -25.3,
+      84.0,
+      56.5,
+      -17.3
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x8_ground_bot_RD",
+     "kind": "CAT",
+     "src": "PIN-D4x8",
+     "material": "purchased",
+     "mass_g": 0.8,
+     "bbox_body_mm": [
+      80.0,
+      -40.5,
+      -25.3,
+      84.0,
+      -36.5,
+      -17.3
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x8_ground_bot_RI",
+     "kind": "CAT",
+     "src": "PIN-D4x8",
+     "material": "purchased",
+     "mass_g": 0.8,
+     "bbox_body_mm": [
+      80.0,
+      -56.5,
+      -25.3,
+      84.0,
+      -52.5,
+      -17.3
+     ],
+     "step": null
+    },
+    {
+     "name": "Torsion_Spring_Open",
+     "kind": "CAT",
+     "src": "9271K56",
+     "material": "purchased",
+     "mass_g": 3.5,
+     "bbox_body_mm": [
+      75.665,
+      -44.835,
+      14.56,
+      88.335,
+      -32.165,
+      23.2
+     ],
+     "step": null
+    }
+   ]
+  },
+  "JAW_L": {
+   "to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -131.5253973135081
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     8.12024894231918
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     392.06371091415303
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Jaw_Block_L",
+     "kind": "PRINT",
+     "src": "custom: PETG-CF print (concept)",
+     "material": "PETG-CF print (gears: PA12 or PETG-CF)",
+     "mass_g": 30.74,
+     "bbox_body_mm": [
+      117.732,
+      1.292,
+      -26.0,
+      177.0,
+      38.88,
+      33.0
+     ],
+     "step": "step/Jaw_Block_L.step"
+    },
+    {
+     "name": "Finger_L_bot_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 6.9,
+     "bbox_body_mm": [
+      117.732,
+      1.292,
+      -29.0,
+      177.0,
+      38.88,
+      -26.0
+     ],
+     "step": "step/Finger_L_bot_CF3.step"
+    },
+    {
+     "name": "Insert_M3_wall_L0",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      135.0,
+      29.88,
+      -26.0,
+      139.0,
+      33.88,
+      -22.0
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_wall_L0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      134.149,
+      29.03,
+      -31.992,
+      139.851,
+      34.732,
+      -23.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_wall_L1",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      151.0,
+      29.88,
+      -26.0,
+      155.0,
+      33.88,
+      -22.0
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_wall_L1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      150.149,
+      29.03,
+      -31.992,
+      155.851,
+      34.732,
+      -23.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_wall_L2",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      159.0,
+      27.88,
+      -26.0,
+      163.0,
+      31.88,
+      -22.0
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_wall_L2",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      158.149,
+      27.03,
+      -31.992,
+      163.851,
+      32.732,
+      -23.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Pad_L_TPU",
+     "kind": "TPU",
+     "src": "custom: TPU 95A print, R50 arc + 90 deg V",
+     "material": "TPU 95A print",
+     "mass_g": 19.62,
+     "bbox_body_mm": [
+      128.736,
+      3.239,
+      -26.0,
+      175.724,
+      22.88,
+      20.0
+     ],
+     "step": "step/Pad_L_TPU.step"
+    },
+    {
+     "name": "Standoff_D6_L0",
+     "kind": "AL",
+     "src": "custom: 6061 D6 standoff, M3 both ends",
+     "material": "6061-T6 aluminium",
+     "mass_g": 2.89,
+     "bbox_body_mm": [
+      136.0,
+      12.88,
+      -26.0,
+      142.0,
+      18.88,
+      20.0
+     ],
+     "step": "step/Standoff_D6_L0.step"
+    },
+    {
+     "name": "BHCS_M3x6_fingtopL_0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      136.149,
+      13.03,
+      17.0,
+      141.851,
+      18.732,
+      25.992
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_fingbotL_0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      136.149,
+      13.03,
+      -31.992,
+      141.851,
+      18.732,
+      -23.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Standoff_D6_L1",
+     "kind": "AL",
+     "src": "custom: 6061 D6 standoff, M3 both ends",
+     "material": "6061-T6 aluminium",
+     "mass_g": 2.89,
+     "bbox_body_mm": [
+      160.0,
+      12.88,
+      -26.0,
+      166.0,
+      18.88,
+      20.0
+     ],
+     "step": "step/Standoff_D6_L1.step"
+    },
+    {
+     "name": "BHCS_M3x6_fingtopL_1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      160.149,
+      13.03,
+      17.0,
+      165.851,
+      18.732,
+      25.992
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_fingbotL_1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      160.149,
+      13.03,
+      -31.992,
+      165.851,
+      18.732,
+      -23.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x14_coupler_L0",
+     "kind": "CAT",
+     "src": "PIN-D4x14",
+     "material": "purchased",
+     "mass_g": 1.4,
+     "bbox_body_mm": [
+      121.732,
+      14.88,
+      23.4,
+      125.732,
+      18.88,
+      37.4
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x14_coupler_bot_L0",
+     "kind": "CAT",
+     "src": "PIN-D4x14",
+     "material": "purchased",
+     "mass_g": 1.4,
+     "bbox_body_mm": [
+      121.732,
+      14.88,
+      -28.9,
+      125.732,
+      18.88,
+      -14.9
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x14_coupler_L1",
+     "kind": "CAT",
+     "src": "PIN-D4x14",
+     "material": "purchased",
+     "mass_g": 1.4,
+     "bbox_body_mm": [
+      121.732,
+      30.88,
+      23.4,
+      125.732,
+      34.88,
+      37.4
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x14_coupler_bot_L1",
+     "kind": "CAT",
+     "src": "PIN-D4x14",
+     "material": "purchased",
+     "mass_g": 1.4,
+     "bbox_body_mm": [
+      121.732,
+      30.88,
+      -28.9,
+      125.732,
+      34.88,
+      -14.9
+     ],
+     "step": null
+    }
+   ]
+  },
+  "JAW_R": {
+   "to_world": [
+    [
+     1.0,
+     0.0,
+     0.0,
+     -131.5253973135081
+    ],
+    [
+     0.0,
+     1.0,
+     0.0,
+     -8.12024894231918
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     392.06371091415303
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Jaw_Block_R",
+     "kind": "PRINT",
+     "src": "custom: PETG-CF print (concept)",
+     "material": "PETG-CF print (gears: PA12 or PETG-CF)",
+     "mass_g": 30.74,
+     "bbox_body_mm": [
+      117.732,
+      -38.88,
+      -26.0,
+      177.0,
+      -1.292,
+      33.0
+     ],
+     "step": "step/Jaw_Block_R.step"
+    },
+    {
+     "name": "Finger_R_bot_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 6.9,
+     "bbox_body_mm": [
+      117.732,
+      -38.88,
+      -29.0,
+      177.0,
+      -1.292,
+      -26.0
+     ],
+     "step": "step/Finger_R_bot_CF3.step"
+    },
+    {
+     "name": "Insert_M3_wall_R0",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      135.0,
+      -33.88,
+      -26.0,
+      139.0,
+      -29.88,
+      -22.0
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_wall_R0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      134.149,
+      -34.732,
+      -31.992,
+      139.851,
+      -29.03,
+      -23.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_wall_R1",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      151.0,
+      -33.88,
+      -26.0,
+      155.0,
+      -29.88,
+      -22.0
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_wall_R1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      150.149,
+      -34.732,
+      -31.992,
+      155.851,
+      -29.03,
+      -23.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Insert_M3_wall_R2",
+     "kind": "CAT",
+     "src": "INSERT",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      159.0,
+      -31.88,
+      -26.0,
+      163.0,
+      -27.88,
+      -22.0
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_wall_R2",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      158.149,
+      -32.732,
+      -31.992,
+      163.851,
+      -27.03,
+      -23.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Pad_R_TPU",
+     "kind": "TPU",
+     "src": "custom: TPU 95A print, R50 arc + 90 deg V",
+     "material": "TPU 95A print",
+     "mass_g": 19.62,
+     "bbox_body_mm": [
+      128.736,
+      -22.88,
+      -26.0,
+      175.724,
+      -3.239,
+      20.0
+     ],
+     "step": "step/Pad_R_TPU.step"
+    },
+    {
+     "name": "Standoff_D6_R0",
+     "kind": "AL",
+     "src": "custom: 6061 D6 standoff, M3 both ends",
+     "material": "6061-T6 aluminium",
+     "mass_g": 2.89,
+     "bbox_body_mm": [
+      136.0,
+      -18.88,
+      -26.0,
+      142.0,
+      -12.88,
+      20.0
+     ],
+     "step": "step/Standoff_D6_R0.step"
+    },
+    {
+     "name": "BHCS_M3x6_fingtopR_0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      136.149,
+      -18.732,
+      17.0,
+      141.851,
+      -13.03,
+      25.993
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_fingbotR_0",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      136.149,
+      -18.732,
+      -31.992,
+      141.851,
+      -13.03,
+      -23.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Standoff_D6_R1",
+     "kind": "AL",
+     "src": "custom: 6061 D6 standoff, M3 both ends",
+     "material": "6061-T6 aluminium",
+     "mass_g": 2.89,
+     "bbox_body_mm": [
+      160.0,
+      -18.88,
+      -26.0,
+      166.0,
+      -12.88,
+      20.0
+     ],
+     "step": "step/Standoff_D6_R1.step"
+    },
+    {
+     "name": "BHCS_M3x6_fingtopR_1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      160.149,
+      -18.732,
+      17.0,
+      165.851,
+      -13.03,
+      25.993
+     ],
+     "step": null
+    },
+    {
+     "name": "BHCS_M3x6_fingbotR_1",
+     "kind": "CAT",
+     "src": "BHCS",
+     "material": "purchased",
+     "mass_g": 1,
+     "bbox_body_mm": [
+      160.149,
+      -18.732,
+      -31.992,
+      165.851,
+      -13.03,
+      -23.0
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x14_coupler_R0",
+     "kind": "CAT",
+     "src": "PIN-D4x14",
+     "material": "purchased",
+     "mass_g": 1.4,
+     "bbox_body_mm": [
+      121.732,
+      -18.88,
+      23.4,
+      125.732,
+      -14.88,
+      37.4
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x14_coupler_bot_R0",
+     "kind": "CAT",
+     "src": "PIN-D4x14",
+     "material": "purchased",
+     "mass_g": 1.4,
+     "bbox_body_mm": [
+      121.732,
+      -18.88,
+      -28.9,
+      125.732,
+      -14.88,
+      -14.9
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x14_coupler_R1",
+     "kind": "CAT",
+     "src": "PIN-D4x14",
+     "material": "purchased",
+     "mass_g": 1.4,
+     "bbox_body_mm": [
+      121.732,
+      -34.88,
+      23.4,
+      125.732,
+      -30.88,
+      37.4
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x14_coupler_bot_R1",
+     "kind": "CAT",
+     "src": "PIN-D4x14",
+     "material": "purchased",
+     "mass_g": 1.4,
+     "bbox_body_mm": [
+      121.732,
+      -34.88,
+      -28.9,
+      125.732,
+      -30.88,
+      -14.9
+     ],
+     "step": null
+    }
+   ]
+  },
+  "LK_LD": {
+   "to_world": [
+    [
+     0.9826289471568976,
+     -0.18558112029332874,
+     0.0,
+     -126.24347804850845
+    ],
+    [
+     0.18558112029332874,
+     0.9826289471568976,
+     0.0,
+     -14.548866329593508
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     392.06371091415303
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Link_LD_lo_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 2.43,
+     "bbox_body_mm": [
+      77.0,
+      11.88,
+      23.5,
+      128.732,
+      43.5,
+      26.5
+     ],
+     "step": "step/Link_LD_lo_CF3.step"
+    },
+    {
+     "name": "Link_LD_hi_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 2.43,
+     "bbox_body_mm": [
+      77.0,
+      11.88,
+      33.5,
+      128.732,
+      43.5,
+      36.5
+     ],
+     "step": "step/Link_LD_hi_CF3.step"
+    },
+    {
+     "name": "Link_LD_bot_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 2.43,
+     "bbox_body_mm": [
+      77.0,
+      11.88,
+      -25.0,
+      128.732,
+      43.5,
+      -22.0
+     ],
+     "step": "step/Link_LD_bot_CF3.step"
+    },
+    {
+     "name": "Sector_m1_77T_L",
+     "kind": "PRINT",
+     "src": "custom: POM/PA12 sector gear m1 77T, 5 thick (concept)",
+     "material": "PETG-CF print (gears: PA12 or PETG-CF)",
+     "mass_g": 3.44,
+     "bbox_body_mm": [
+      45.617,
+      -0.998,
+      37.0,
+      89.0,
+      45.5,
+      42.0
+     ],
+     "step": "step/Sector_m1_77T_L.step"
+    },
+    {
+     "name": "Washer_LD",
+     "kind": "CAT",
+     "src": "WASHER-D4",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      78.0,
+      34.5,
+      26.5,
+      86.0,
+      42.5,
+      33.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Servo_Horn_STS_disc",
+     "kind": "CAT",
+     "src": "HORN-25T",
+     "material": "purchased",
+     "mass_g": 3,
+     "bbox_body_mm": [
+      72.0,
+      28.5,
+      19.5,
+      92.0,
+      48.5,
+      23.5
+     ],
+     "step": null
+    },
+    {
+     "name": "Pin_D4x20_ground_LD",
+     "kind": "CAT",
+     "src": "PIN-D4x20",
+     "material": "purchased",
+     "mass_g": 2.0,
+     "bbox_body_mm": [
+      80.0,
+      36.5,
+      22.5,
+      84.0,
+      40.5,
+      42.5
+     ],
+     "step": null
+    }
+   ]
+  },
+  "LK_LI": {
+   "to_world": [
+    [
+     0.9826289471568976,
+     -0.18558112029332874,
+     0.0,
+     -123.27418012381519
+    ],
+    [
+     0.18558112029332874,
+     0.9826289471568976,
+     0.0,
+     -14.270929484103874
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     392.06371091415303
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Link_LI_lo_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 2.43,
+     "bbox_body_mm": [
+      77.0,
+      27.88,
+      23.5,
+      128.732,
+      59.5,
+      26.5
+     ],
+     "step": "step/Link_LI_lo_CF3.step"
+    },
+    {
+     "name": "Link_LI_hi_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 2.43,
+     "bbox_body_mm": [
+      77.0,
+      27.88,
+      33.5,
+      128.732,
+      59.5,
+      36.5
+     ],
+     "step": "step/Link_LI_hi_CF3.step"
+    },
+    {
+     "name": "Link_LI_bot_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 2.43,
+     "bbox_body_mm": [
+      77.0,
+      27.88,
+      -25.0,
+      128.732,
+      59.5,
+      -22.0
+     ],
+     "step": "step/Link_LI_bot_CF3.step"
+    }
+   ]
+  },
+  "LK_RD": {
+   "to_world": [
+    [
+     0.9826289471568976,
+     0.1855811202933287,
+     0.0,
+     -126.24347804850845
+    ],
+    [
+     -0.1855811202933287,
+     0.9826289471568976,
+     0.0,
+     14.548866329593508
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     392.06371091415303
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Link_RD_lo_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 2.43,
+     "bbox_body_mm": [
+      77.0,
+      -43.5,
+      23.5,
+      128.732,
+      -11.88,
+      26.5
+     ],
+     "step": "step/Link_RD_lo_CF3.step"
+    },
+    {
+     "name": "Link_RD_hi_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 2.43,
+     "bbox_body_mm": [
+      77.0,
+      -43.5,
+      33.5,
+      128.732,
+      -11.88,
+      36.5
+     ],
+     "step": "step/Link_RD_hi_CF3.step"
+    },
+    {
+     "name": "Link_RD_bot_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 2.43,
+     "bbox_body_mm": [
+      77.0,
+      -43.5,
+      -25.0,
+      128.732,
+      -11.88,
+      -22.0
+     ],
+     "step": "step/Link_RD_bot_CF3.step"
+    },
+    {
+     "name": "Sector_m1_77T_R",
+     "kind": "PRINT",
+     "src": "custom: POM/PA12 sector gear m1 77T, 5 thick (concept)",
+     "material": "PETG-CF print (gears: PA12 or PETG-CF)",
+     "mass_g": 3.44,
+     "bbox_body_mm": [
+      45.281,
+      -45.5,
+      37.0,
+      89.0,
+      0.981,
+      42.0
+     ],
+     "step": "step/Sector_m1_77T_R.step"
+    },
+    {
+     "name": "Washer_RD",
+     "kind": "CAT",
+     "src": "WASHER-D4",
+     "material": "purchased",
+     "mass_g": 0.3,
+     "bbox_body_mm": [
+      78.0,
+      -42.5,
+      26.5,
+      86.0,
+      -34.5,
+      33.5
+     ],
+     "step": null
+    }
+   ]
+  },
+  "LK_RI": {
+   "to_world": [
+    [
+     0.9826289471568976,
+     0.1855811202933287,
+     0.0,
+     -123.27418012381519
+    ],
+    [
+     -0.1855811202933287,
+     0.9826289471568976,
+     0.0,
+     14.27092948410386
+    ],
+    [
+     0.0,
+     0.0,
+     1.0,
+     392.06371091415303
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ],
+   "parts": [
+    {
+     "name": "Link_RI_lo_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 2.43,
+     "bbox_body_mm": [
+      77.0,
+      -59.5,
+      23.5,
+      128.732,
+      -27.88,
+      26.5
+     ],
+     "step": "step/Link_RI_lo_CF3.step"
+    },
+    {
+     "name": "Link_RI_hi_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 2.43,
+     "bbox_body_mm": [
+      77.0,
+      -59.5,
+      33.5,
+      128.732,
+      -27.88,
+      36.5
+     ],
+     "step": "step/Link_RI_hi_CF3.step"
+    },
+    {
+     "name": "Link_RI_bot_CF3",
+     "kind": "CF",
+     "src": "custom: 3 mm CF plate (concept)",
+     "material": "carbon-fibre plate (3K, epoxy)",
+     "mass_g": 2.43,
+     "bbox_body_mm": [
+      77.0,
+      -59.5,
+      -25.0,
+      128.732,
+      -27.88,
+      -22.0
+     ],
+     "step": "step/Link_RI_bot_CF3.step"
+    }
+   ]
+  }
+ }
+}
