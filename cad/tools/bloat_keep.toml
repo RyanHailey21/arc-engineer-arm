@@ -32,29 +32,6 @@ reason = "release generator: rev A fabrication export"
 glob = "cad/fea/run_fea.py"
 reason = "release generator: rev A FEA"
 
-[[path]]
-glob = "cad/build_assembly.py"
-reason = "release generator: rev A FreeCAD assembly (still models the GT2 belt joint)"
-
-# ------------------------------------------------------------------ things only the rev A package needs
-[[item]]
-kind = "orphan-param"
-name = "GT2_T"
-guard = true
-reason = "rev A belt drive: build_assembly.py builds the Belt joint from M.GT2_T"
-
-[[item]]
-kind = "orphan-catalogue"
-name = "GT2-BELT"
-guard = true
-reason = "rev A BOM: the released variant's belt; the parallelogram replaced it after rev A"
-
-[[item]]
-kind = "*"
-name = "gt2_*"
-path = "cad/hardware.py"
-reason = "rev A belt-drive hardware (GT2 pulley and belt); rev A drawings and assembly were built with it"
-
 # ------------------------------------------------------------------ entry points and dynamic lookups
 [[item]]
 kind = "unused-import"

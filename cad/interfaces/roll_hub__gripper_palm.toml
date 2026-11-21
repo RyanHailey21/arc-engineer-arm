@@ -35,7 +35,6 @@ part = "Gripper_Palm"
 hole = "clearance"
 clearance_d = 3.3
 # grip length (mount-plate thickness) and screw length are set by each gripper variant:
-#   SCREW (rev A):  palm boss face x = 70, BHCS M3x8
 #   FOURBAR:        mount plate face x = 69, BHCS M3x6
 
 [fastener]

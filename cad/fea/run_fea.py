@@ -231,29 +231,6 @@ def cases():
                   fixed=flats,
                   loads=[(cyl_faces(s, (0, 1, 0), (0, 0, 0), r=6.0), (0, 0, -F))],
                   desc="crank reaction %.0f N on the D12 journal (J2 %.1f N*m incl. x%.1f)" % (F, T, DF)))
-    if M.GRIP == "SCREW":                 # lead-screw gripper parts (the four-bar gripper: fea/run_fea_fourbar.py)
-        # ---- jaw bracket (6061): fixed at the MGN9H block screws, grip reaction on the nut upright
-        s = part_shape("Jaw_Bracket_L")
-        Fg = 100.0
-        nut = [f for f in cyl_faces(s, (0, 1, 0), (M.XR, 0, M.ZS), r=5.3)]
-        blk = [f for f in cyl_faces(s, (0, 0, 1), None, r=1.65)]
-        C.append(dict(name="jaw_bracket", part="Jaw_Bracket_L", mat="AL6061", shape=s, h=1.2,
-                      fixed=blk, loads=[(nut, (0, -Fg, 0))],
-                      desc="grip/lead-screw reaction %.0f N on the nut upright (M2006 current-limited grip)" % Fg))
-        # ---- screw end block R (6061): fixed at its two palm through-bolts, screw axial load on the 688 seat
-        s = part_shape("Screw_End_Block_R")
-        seat = shoulder_faces(s, (0, 1, 0), (M.XR, M.ZS), 8.0)
-        bolts = cyl_faces(s, (0, 0, 1), None, r=1.25)
-        C.append(dict(name="end_block", part="Screw_End_Block_R", mat="AL6061", shape=s, h=1.5,
-                      fixed=[f for f in bolts], loads=[(seat, (0, 100.0, 0))],
-                      desc="lead-screw axial reaction 100 N on the 688 bearing seat"))
-        # ---- finger plate (CF): fixed at the root-wall screws, grip on the pad standoff holes
-        s = part_shape("Finger_L_top_CF3")
-        C.append(dict(name="finger", part="Finger_L_top_CF3", mat="CF_QI", shape=s, h=1.2,
-                      fixed=cyl_faces(s, (0, 0, 1), (104.0, M.O_REF + 12.0, 0), r=1.65) + cyl_faces(s, (0, 0, 1), (104.0, M.O_REF + 32.0, 0), r=1.65),
-                      loads=[(cyl_faces(s, (0, 0, 1), (M.K["GRIP"] - 12.0, M.O_REF + 9.0, 0), r=1.65) +
-                              cyl_faces(s, (0, 0, 1), (M.K["GRIP"] + 12.0, M.O_REF + 9.0, 0), r=1.65), (0, 50.0, 0))],
-                      desc="grip reaction 50 N per finger plate (100 N jaw force over 2 plates)"))
     # ---- roll housing (PETG-CF): fixed at the clevis screw holes, roll-servo + pipe moment as force at the bearing seat
     s = part_shape("Roll_Housing")
     C.append(dict(name="roll_housing", part="Roll_Housing", mat="PETG_CF", shape=s, h=2.0,

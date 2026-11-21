@@ -8,16 +8,13 @@ from arm.forearm import *  # noqa: F401,F403
 from arm.wrist import *  # noqa: F401,F403
 
 
-from arm.grippers.screw import screw_bodies, screw_placements
 from arm.grippers.fourbar import fourbar_bodies, fb_placements
 
 # gripper variants: each provides bodies() -> {body name: builder} (HEAD + its moving bodies, built in the
 # gripper frame) and placements(Hd, jaw) -> {body name: placement} relative to the roll head Hd
 GRIPPERS = {
-    "SCREW": dict(bodies=screw_bodies, placements=screw_placements,
-                  summary="rev A: Tr8x8 bidirectional lead screw, M2006, MGN9 rails, spring-motor release"),
     "FOURBAR": dict(bodies=fourbar_bodies, placements=fb_placements,
-                    summary="gear-synchronised parallel four-bar, STS3215 direct, torsion-spring release (concept)"),
+                    summary="gear-synchronised parallel four-bar, STS3215 direct, torsion-spring release"),
 }
 
 ARM_BODY_FUNCS = dict(GROUND=body_ground, UPPER=body_upper, CRANK=body_crank,
@@ -26,6 +23,8 @@ ARM_BODY_FUNCS = dict(GROUND=body_ground, UPPER=body_upper, CRANK=body_crank,
                       FOREARM=body_forearm, ROCKER=body_rocker, ROD2=body_rod2, LEVEL=body_level,
                       GRIPPER=body_gripper)
 BODY_FUNCS = dict(ARM_BODY_FUNCS)
+if GRIP not in GRIPPERS:
+    raise SystemExit("GRIP=%s: unknown gripper variant; one of %s (params/variant.toml)" % (GRIP, ", ".join(GRIPPERS)))
 BODY_FUNCS.update(GRIPPERS[GRIP]["bodies"]())
 
 _BODIES = {}

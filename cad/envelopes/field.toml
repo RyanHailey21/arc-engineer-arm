@@ -4,7 +4,7 @@
 #
 # frame = "world"   : robot frame (x forward from the front bumper, z up from the floor), mm
 # frame = "gripper" : gripper frame at roll 0 (x along the roll axis, TCP at (151, 0, -20)), mm
-# bodies = "arm" (every moving body) or "gripper" (GRIPPER, HEAD, jaws, links, screw, gear)
+# bodies = "arm" (every moving body) or "gripper" (GRIPPER, HEAD, jaws, links)
 # A box bound of 1e4 means "unbounded".  Each entry says where the number comes from.
 
 [[keepout]]

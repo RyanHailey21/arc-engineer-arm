@@ -6,7 +6,7 @@
    an orphan key: all four are findings; the function and key the planted code does use are not.
 2. The same dead function under a keep-list item is "kept" with its reason, not a finding.
 3. The real keep-list: nothing in the released package (fab/, fea/out, render/) or a release generator
-   is a finding; the GT2 belt hardware and the GT2-BELT catalogue entry are never findings.
+   is a finding.
 4. Nothing under .claude/ (Claude Code worktrees of this repo) is scanned for code or scratch (TI-022).
 """
 import fnmatch
@@ -70,12 +70,10 @@ with tempfile.TemporaryDirectory() as td:
 # 3: the real report against the real keep-list
 res3 = B.scan()
 frozen = ["cad/fab/**", "cad/fea/out/**", "cad/render/**", "cad/export_fab.py",
-          "cad/fea/run_fea.py", "cad/build_assembly.py"]
+          "cad/fea/run_fea.py"]
 for f in res3["findings"]:
     if any(fnmatch.fnmatch(f["path"], g) for g in frozen) or any(fnmatch.fnmatch(f.get("other", ""), g) for g in frozen):
         fails.append("3: frozen/release item flagged: %s" % f["id"])
-    if f["name"] in ("GT2-BELT", "GT2_T") or f["name"].startswith("gt2_"):
-        fails.append("3: rev A belt item flagged: %s" % f["id"])
 
 # 4 (TI-022): nothing under .claude/ is scanned. Other sessions' git worktrees live in .claude/worktrees/<name>/
 # (whole copies of the repo); a planted .py and .bak there must be invisible, and visible without the skip.

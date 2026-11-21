@@ -51,7 +51,7 @@ BANNER = ("FreeCAD ", "(C) 2001", "FreeCAD is free and open-source")
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--grip", help="set GRIP for the run (SCREW / FOURBAR)")
+    ap.add_argument("--grip", help="set GRIP for the run (FOURBAR)")
     ap.add_argument("--base-drive", help="set BASE_DRIVE for the run (GEARED / DIRECT)")
     ap.add_argument("--timeout", type=float, default=900, help="seconds (default 900)")
     ap.add_argument("--banner", action="store_true", help="keep FreeCAD's start-up banner")

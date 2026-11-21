@@ -3,7 +3,7 @@
 Interface agreement check (quick tier): for every cad/interfaces/*.toml with a bolt pattern, confirm that both
 mating parts, as actually built, have a hole on each pattern axis with the size the interface specifies.
 
-    set GRIP=FOURBAR (or SCREW)
+    set BASE_DRIVE=DIRECT for the direct-drive base (default GEARED)
     "%LOCALAPPDATA%\\Programs\\FreeCAD 1.1\\bin\\freecadcmd.exe" cad/tools/check_interfaces.py
 -> cad/out/<variant>/interfaces.json and a PASS/FAIL line per interface side.
 """

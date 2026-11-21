@@ -5,7 +5,7 @@
 is_screw() now uses the catalogue key.  This test cross-checks it against the names: every CAT part whose name
 starts (any case) with a screw type, SB5 or SetScrew must be picked, and every picked part must be CAT.
 Fails (exit 1) if a screw is missed or the variant has no shoulder screw to exercise the regression.
-    python -I cad/tools/run.py --grip SCREW cad/tests/test_engagement_screws.py      (then --grip FOURBAR)
+    python -I cad/tools/run.py cad/tests/test_engagement_screws.py      (then with BASE_DRIVE=DIRECT)
 """
 import os
 import sys

@@ -13,7 +13,6 @@ from arm.wrist import _xscrew  # noqa: F401
 # 10 mm apart) pivoting on the printed palm; sector gears on the two drive links mesh at y=0, so the jaws
 # move symmetrically and the pads stay parallel.  One STS3215 (direct, on the left drive pivot) closes the
 # jaws; a torsion spring on the right drive pivot biases them OPEN, back-driving the servo when unpowered.
-# GRIP=SCREW rebuilds the rev A lead-screw gripper.
 FB = dict(params.load("gripper_fourbar")["FB"])   # params/gripper_fourbar.toml (units, reasons)
 SPRING = dict(params.load("gripper_fourbar")["SPRING"])
 SERVO = dict(params.load("actuators")["STS3215"])   # the jaw servo: same STS3215 as the joints

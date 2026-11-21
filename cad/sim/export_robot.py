@@ -14,7 +14,7 @@ and an MJCF with joint-equality constraints).  Joint values equal arm_model's ow
     crank       base -> crank        = elbow               (J2 crank, built rotated 180 deg)
     crank_pin   crank -> crank_pin   = -elbow              (massless: absolute angle 0 at crank pin A)
     rod_ab      crank_pin -> rod_ab  = shoulder            (forearm drive rod, parallel to the upper arm)
-    level       forearm -> level     = -elbow              (GT2 1:1 belt keeps the level member level)
+    level       forearm -> level     = -elbow              (parallelogram level keeping holds the level member level)
     wrist_pitch level -> gripper     pitch (J3, STS3215)
     wrist_roll  gripper -> head      roll (J4, STS3215)
     gripper     head -> lk_ld        d = theta - theta_ref (STS3215; 0 at the pipe grip)

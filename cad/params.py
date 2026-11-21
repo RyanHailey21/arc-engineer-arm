@@ -61,7 +61,7 @@ def base_drive():
 
 
 def variant():
-    """Variant key for outputs, evidence and fingerprints: the gripper (FOURBAR, SCREW), with "_DIRECT" appended
+    """Variant key for outputs, evidence and fingerprints: the gripper (FOURBAR), with "_DIRECT" appended
     when the base drive is not the default GEARED one (so the GEARED folders and baselines keep their names)."""
     return grip() if base_drive() == "GEARED" else "%s_%s" % (grip(), base_drive())
 

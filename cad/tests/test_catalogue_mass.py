@@ -6,7 +6,7 @@ twice in part_mass_g; it was found only while building the BOM.  The check itsel
 
 Prints TEST PASS / TEST FAIL and exits 1 on FAIL.  Run for both variants through tools/run.py (TI-010/TI-018:
 freecadcmd by path printed nothing for short scripts and swallowed tracebacks):
-    python -I cad/tools/run.py --grip SCREW cad/tests/test_catalogue_mass.py      (then --grip FOURBAR)
+    python -I cad/tools/run.py cad/tests/test_catalogue_mass.py      (then with BASE_DRIVE=DIRECT)
 """
 import os
 import sys

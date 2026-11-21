@@ -8,13 +8,8 @@ mass = 330
 src = "github.com/dmBots/DM-J4340-2EC models/3d + drawings/2d"
 verify = "weigh on receipt; caliper-check the PCD 50 stator and PCD 27 output screw circles and the dowel holes"
 
-["M2006-P36"]
-desc = "DJI RoboMaster M2006 P36 gear motor, 1 N*m @ 416 rpm (vendor STEP) - gripper drive"
-mass = 90
-src = "robomaster.com product 1277 STEP"
-
 ["C610"]
-desc = "DJI RoboMaster C610 ESC for M2006 (vendor STEP)"
+desc = "DJI RoboMaster C610 ESC (vendor STEP); its M2006 motor went with the SCREW gripper"
 mass = 15
 src = "robomaster.com product 1277 STEP"
 
@@ -49,63 +44,13 @@ mass = 3
 desc = "Miniature bearing MR105ZZ 5x10x4"
 mass = 1.2
 
-["MR104ZZ"]
-desc = "Miniature bearing MR104ZZ 4x10x4"
-mass = 1.2
-
-["MGN9-RAIL"]
-desc = "HIWIN MGN9R rail, cut 83 mm (catalogue geometry)"
-mass = 27
-
-["MGN9H"]
-desc = "HIWIN MGN9H block (catalogue geometry)"
-mass = 26
-
-["SHAFT10"]
-desc = "D10 h6 ground shaft (e-clip grooves; wrist: D6x4 stepped end + 0.5 mm D-flat)"
-mass = 0
-
 ["DOWEL"]
 desc = "ISO 8734 dowel pin"
 mass = 1
 
-["688ZZ"]
-desc = "Deep-groove bearing 688ZZ 8x16x5 (lead-screw supports)"
-mass = 4
-
-["TR8X8-BIDIR"]
-desc = "Tr8x8 (4-start) bidirectional lead screw (RH/LH halves), 235 mm, D8 journals both ends"
-mass = 88
-verify = "order with ends machined to D8 h7 x 16 and plain centre 68 mm"
-
-["NUT-T8"]
-desc = "Tr8x8 (P2, 4-start) RH brass flange nut D22, 4x M3 on PCD16 (Creality T8)"
-mass = 12
-
-["SPRING-MOTOR"]
-desc = "Constant-force strip spring 21.9 N x 610 mm, 15.9 wide, 301 SS (McMaster 9293K337); back-wound on a D20 drum = 0.22 N*m over ~9.7 turns - opens the jaws when unpowered (R52)"
-mass = 12
-verify = "size to >=2x the measured M2006 back-drive torque x 32/20; bench-test release < 1 s"
-
-["GEAR-M1-20T"]
-desc = "Spur gear m1 20T steel, bore 6 (M2006 shaft), M3 set screw + Loctite 638"
-mass = 6
-
-["GEAR-M1-32T"]
-desc = "Spur gear m1 32T 6061, bore 8, hub D14 + M3 set screw (on the lead screw)"
-mass = 10
-
 ["COLLAR10"]
 desc = "One-piece clamp collar D10 x D24 x 9, steel, M3x10 clamp screw included (Stafford 1LM010)"
 mass = 25
-
-["COLLAR8"]
-desc = "Set-screw shaft collar D8 x D16 x 8 (Ruland MSC-8-F)"
-mass = 8
-
-["SETSCREW"]
-desc = "ISO 4026 M3 set screw"
-mass = 0.3
 
 ["CLIP"]
 desc = "Adhesive cable-tie mount 10x10 + 2.5 mm cable tie"
@@ -147,10 +92,6 @@ mass = 0.3
 desc = "M3 heat-set insert 4.0 x 4"
 mass = 0.3
 
-["STANDOFF"]
-desc = "Round aluminium standoff M3 female"
-mass = 1
-
 ["STS3215"]
 desc = "Feetech STS3215 serial-bus servo, 12 V version: 10 kg*cm rated / 30 kg*cm stall at 12 V, 0.222 s/60 deg, magnetic encoder 360 deg, steel gears (all joints and the four-bar gripper: J1/J2 through a 3:1 printed spur stage, J3/J4 direct)"
 mass = 60
@@ -189,10 +130,4 @@ desc = "Torsion spring 90 deg right-hand wound, 0.499 in OD, 0.059 in wire, 4.5 
 mass = 3.5
 src = "McMaster 9271K56"
 verify = "bench-test against the STS3215 unpowered back-drive torque; alternate 9271K52 (3.509 in*lbf) if lighter preload suffices"
-
-["GT2-BELT"]
-desc = "GT2 (2 mm pitch) timing belt, 9 mm wide, ~0.8 m open length clamp-spliced (rev A level-keeping stage 2; replaced by the rod-2 parallelogram 2026-11-17, kept for the rev A package)"
-mass = 5.5
-src = "3D Printing Canada GT2-9mm Timing Belt (1 m) [VERIFIED, cad/fab/procurement.csv]"
-verify = "mass is an estimate (~6.8 g/m for 9 mm GT2 x 0.8 m): weigh the cut belt"
 

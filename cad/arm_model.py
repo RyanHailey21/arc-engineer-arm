@@ -5,8 +5,7 @@ adapted from Wang et al., Actuators 2025, 14, 71.
 
 Every part carries two shapes:  vis (detailed / vendor geometry, for the
 assembly and renders) and chk (simplified solid used by the interference sweep).
-Rigid bodies are built in local frames and placed by placements(); the same
-frames are used by build_assembly.py to create Assembly-workbench joints.
+Rigid bodies are built in local frames and placed by placements().
 
 Frame: X forward from chassis front bumper, Y left, Z up from Battlefield floor.
 
@@ -18,7 +17,7 @@ Y stack (centre planes, 3 mm CF plates):
     J1 hub   -47.0 .. -71.5 (stub)        |  J2 hub   +47.0 .. +71.5, journal D12 inboard
     upper L  -45.5                        |  upper R  +45.5  (6701 on J2 journal)
     rod 1    -42.0                        |
-    rocker / level member -37.5 (+GT2 30T pulley -36..-25.5, 9 mm belt -35.25..-26.25)
+    rocker / level member -37.5 (rod 2 -35..-31 on the stage-2 levers)
                                           |  crank   +34.5
                                           |  rod AB  +29.0
     clevis L -23.5 (wrist)                |  clevis R +23.5
@@ -35,7 +34,6 @@ from arm.upper_arm import *     # noqa: F401,F403
 from arm.forearm import *       # noqa: F401,F403
 from arm.wrist import *         # noqa: F401,F403
 from arm.wrist import _to_roll_axis, _xscrew, _servo_rot  # noqa: F401
-from arm.grippers.screw import *    # noqa: F401,F403
 from arm.grippers.fourbar import *  # noqa: F401,F403
 from arm.grippers.fourbar import _pad_shape  # noqa: F401
 from arm.bodies import *        # noqa: F401,F403

@@ -3,7 +3,7 @@
 Quick check (target < 30 s incl. the ~14 s model build): run after every design edit; the full checks
 (check_interference.py, FEA) are for milestones.
 
-    set GRIP=FOURBAR (or SCREW)
+    set BASE_DRIVE=DIRECT for the direct-drive base (default GEARED)
     "%LOCALAPPDATA%\\Programs\\FreeCAD 1.1\\bin\\freecadcmd.exe" cad/tools/quick_check.py
 
 Checks, in fail-fast order of usefulness:
@@ -50,7 +50,7 @@ import params              # noqa: E402
 
 V = App.Vector
 VARIANT = M.VARIANT.lower()
-GRIPPER_BODIES = {"GRIPPER", "HEAD", "JAW_L", "JAW_R", "SCREW", "MGEAR", "LK_LD", "LK_LI", "LK_RD", "LK_RI"}
+GRIPPER_BODIES = {"GRIPPER", "HEAD", "JAW_L", "JAW_R", "LK_LD", "LK_LI", "LK_RD", "LK_RI"}
 # static holding limit per joint (N*m): every STS3215 joint is held to hold_frac of stall (params/actuators.toml,
 # report R4); J1/J2: GEARED through the 3:1 spur stage, DIRECT the DM-J4340 at hold_frac of its rated torque
 _HOLD = M.STS_R["hold_frac"] * M.STS_R["stall_Nm"]

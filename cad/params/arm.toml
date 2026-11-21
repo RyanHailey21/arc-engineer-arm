@@ -1,6 +1,6 @@
 # Arm geometry: kinematic dimensions, plate layer stack and drive details.  mm, degrees.
 # Frame: X forward from the chassis front bumper, Y left, Z up from the Battlefield floor.
-# Read by cad/arm/core.py (K, Y, T, ROD2_T, ROD2_W, GT2_T, HUB_R, UA_HUB_SCREWS) and cad/arm/upper_arm.py (harness).
+# Read by cad/arm/core.py (K, Y, T, ROD2_T, ROD2_W, HUB_R, UA_HUB_SCREWS) and cad/arm/upper_arm.py (harness).
 
 T = 3.0                  # CF plate thickness (every plate in the layer stack)
 
@@ -38,7 +38,6 @@ CRANK = 34.5             # crank (J2 side)
 [level_keeping]
 ROD2_T = 4.0             # rod 2 thickness: CF plate, buckling 313 N with the wrist-end notch (E 50 GPa, L 350) vs 134 N worst (SF 2.35)
 ROD2_W = 16.0            # rod 2 width (eyes r 8 around MR105, wall 3)
-GT2_T = 30               # rev A only (build_assembly.py renders the released belt drive); the model no longer has a belt
 
 [j1_hub]
 HUB_R = 19.5             # J1/J2 output hub flange radius (inside the D42 tower bore)

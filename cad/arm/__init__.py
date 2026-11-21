@@ -6,19 +6,19 @@ ARC S2 Engineer arm model, one module per subassembly (import the facade `arm_mo
     base.py        GROUND: chassis deck, towers + J1/J2 drives (BASE_DRIVE: GEARED STS3215 drive frames | DIRECT DM-J4340),
                    motor_hub + joint_drive_parts (J1/J2 output hubs)
     upper_arm.py   UPPER, CRANK, parallel rods (body_rod)
-    forearm.py     FOREARM, ROCKER, GT2 level-keeping pulley
+    forearm.py     FOREARM, ROCKER, stage-2 level-keeping hubs and rod 2
     wrist.py       LEVEL (J3 pitch), GRIPPER (pitch frame + J4 roll stage), roll_hub_parts (interfaces/roll_*.toml)
-    grippers/      one module per gripper variant (GRIP env var): screw.py (rev A), fourbar.py (concept)
+    grippers/      one module per gripper variant (GRIP env var): fourbar.py
     bodies.py      body registry: arm bodies + GRIPPERS[GRIP]; build_bodies()
     kinematics.py  joints, ik, placements, placed, part_mass_g, static_torques, POSES, pose_q
 
 Mating interfaces: cad/interfaces/*.toml.  Field keep-outs: cad/envelopes/*.toml.
-Regression guard: cad/tools/fingerprint.py (a pure refactor must report MATCH for GRIP=SCREW and GRIP=FOURBAR, and
+Regression guard: cad/tools/fingerprint.py (a pure refactor must report MATCH for GRIP=FOURBAR and
 BASE_DRIVE=DIRECT -> fourbar_direct).
 """
 
 # dependency order, for importlib.reload in long-running FreeCAD sessions (reload these, then arm_model)
-MODULES = ("arm.core", "arm.base", "arm.upper_arm", "arm.forearm", "arm.wrist", "arm.grippers.screw",
+MODULES = ("arm.core", "arm.base", "arm.upper_arm", "arm.forearm", "arm.wrist",
            "arm.grippers.fourbar", "arm.bodies", "arm.kinematics")
 
 

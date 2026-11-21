@@ -26,7 +26,6 @@ PIPE_R = _PADS["PIPE_OD"] / 2
 O_PIPE = PIPE_R * math.sqrt(2) - NOTCH  # pad-face half gap when the V-notches hold the pipe
 O_REF = O_PIPE         # jaw half-opening at which jaw bodies are modelled (pipe grip)
 PIPE_JAW = 2 * O_PIPE  # 'jaw' value = gap between the arc-bottom pad faces at the TCP
-GT2_T = _ARM["level_keeping"]["GT2_T"]          # rev A belt drive only (build_assembly.py)
 ROD2_T = _ARM["level_keeping"]["ROD2_T"]
 ROD2_W = _ARM["level_keeping"]["ROD2_W"]
 UA_HUB_SCREWS = _ARM["j1_hub"]["UA_HUB_SCREWS"]
@@ -214,15 +213,6 @@ def fillet_z(shape, r):
         return shape
 
 
-def fillet_y(shape, r):
-    try:
-        es = [e for e in shape.Edges if e.Curve.TypeId == "Part::GeomLine"
-              and abs(abs(e.tangentAt(e.FirstParameter).y) - 1) < 1e-6]
-        return shape.makeFillet(r, es) if es else shape
-    except Exception:
-        return shape
-
-
 def at(pair, x=0.0, z=0.0, y=0.0):
     out = []
     for s in pair[:2]:
@@ -274,8 +264,7 @@ def _vprism(x, y_apex, z0, z1, depth=60.0):
     return Part.Face(Part.makePolygon(pts + [pts[0]])).extrude(V(0, 0, z1 - z0))
 
 
-
-# active gripper variant (GRIP=FOURBAR default, GRIP=SCREW = rev A); see arm/grippers/
+# active gripper variant (GRIP=FOURBAR); see arm/grippers/
 GRIP = params.grip()      # $GRIP, else params/variant.toml
 VARIANT = params.variant()   # output / evidence / fingerprint key: GRIP, or GRIP_DIRECT for the direct-drive base
 

@@ -2,7 +2,7 @@
 """
 Geometry fingerprint: a regression guard for refactors (moving parameters/interfaces must not move geometry).
 
-    set GRIP=FOURBAR (or SCREW) and FP_MODE=record | check, then
+    set FP_MODE=record | check (and BASE_DRIVE=DIRECT for fourbar_direct), then
     "%LOCALAPPDATA%\\Programs\\FreeCAD 1.1\\bin\\freecadcmd.exe" cad/tools/fingerprint.py
 
 record -> cad/tests/fingerprints/<variant>.json (the baseline)
@@ -24,7 +24,7 @@ if os.environ.get("FP_MODEL_DIR"):          # fingerprint an older copy of arm_m
 import FreeCAD as App      # noqa: E402
 import arm_model as M      # noqa: E402
 
-VARIANT = getattr(M, "VARIANT", getattr(M, "GRIP", "screw")).lower()
+VARIANT = getattr(M, "VARIANT", getattr(M, "GRIP", "fourbar")).lower()
 MODE = os.environ.get("FP_MODE", "check")
 BASE = os.path.join(CAD, "tests", "fingerprints", VARIANT + ".json")
 OUT = os.path.join(CAD, "out", VARIANT, "fingerprint.json")
