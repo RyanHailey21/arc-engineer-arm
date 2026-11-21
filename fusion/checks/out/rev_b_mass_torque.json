@@ -1,0 +1,321 @@
+{
+ "revision": "rev_b",
+ "snapshot": {
+  "document": "ARC Arm Rev B",
+  "document_id": "urn:adsk.wipprod:dm.lineage:cGWSAxvSQQaYddhXmTl3HA",
+  "document_version": 18,
+  "exported": "2026-11-21T11:03:28",
+  "joints": 32,
+  "motion_links": 0,
+  "occurrences": 379,
+  "parts": 120,
+  "revision": "rev_b",
+  "total_mass_g": 3291.0
+ },
+ "bodies": [
+  {
+   "body": "GROUND",
+   "fusion_g": 1774.6,
+   "code_g": 783.8,
+   "diff_pct": 126.4,
+   "com_offset_mm": 70.33
+  },
+  {
+   "body": "GRIPPER",
+   "fusion_g": 288.3,
+   "code_g": 211.3,
+   "diff_pct": 36.4,
+   "com_offset_mm": 3.65
+  },
+  {
+   "body": "FOREARM",
+   "fusion_g": 212.8,
+   "code_g": 209.4,
+   "diff_pct": 1.6,
+   "com_offset_mm": 11.9
+  },
+  {
+   "body": "UPPER",
+   "fusion_g": 180.0,
+   "code_g": 179.6,
+   "diff_pct": 0.3,
+   "com_offset_mm": 15.88
+  },
+  {
+   "body": "HEAD",
+   "fusion_g": 245.8,
+   "code_g": 157.7,
+   "diff_pct": 55.8,
+   "com_offset_mm": 14.84
+  },
+  {
+   "body": "LEVEL",
+   "fusion_g": 197.9,
+   "code_g": 106.9,
+   "diff_pct": 85.1,
+   "com_offset_mm": 3.12
+  },
+  {
+   "body": "CRANK",
+   "fusion_g": 104.1,
+   "code_g": 95.9,
+   "diff_pct": 8.5,
+   "com_offset_mm": 1.31
+  },
+  {
+   "body": "JAW_R",
+   "fusion_g": 73.1,
+   "code_g": 76.5,
+   "diff_pct": -4.5,
+   "com_offset_mm": 3.37
+  },
+  {
+   "body": "JAW_L",
+   "fusion_g": 73.1,
+   "code_g": 76.5,
+   "diff_pct": -4.5,
+   "com_offset_mm": 3.37
+  },
+  {
+   "body": "ROD2",
+   "fusion_g": 33.9,
+   "code_g": 35.5,
+   "diff_pct": -4.6,
+   "com_offset_mm": 6.19
+  },
+  {
+   "body": "ROCKER",
+   "fusion_g": 30.3,
+   "code_g": 31.8,
+   "diff_pct": -4.6,
+   "com_offset_mm": 3.97
+  },
+  {
+   "body": "ROD_AB",
+   "fusion_g": 18.1,
+   "code_g": 19.7,
+   "diff_pct": -8.2,
+   "com_offset_mm": 0.04
+  },
+  {
+   "body": "ROD1",
+   "fusion_g": 18.1,
+   "code_g": 19.7,
+   "diff_pct": -8.2,
+   "com_offset_mm": 0.04
+  },
+  {
+   "body": "LK_LD",
+   "fusion_g": 15.1,
+   "code_g": 16.0,
+   "diff_pct": -5.5,
+   "com_offset_mm": 1.67
+  },
+  {
+   "body": "LK_RD",
+   "fusion_g": 11.2,
+   "code_g": 11.0,
+   "diff_pct": 2.0,
+   "com_offset_mm": 1.14
+  },
+  {
+   "body": "LK_RI",
+   "fusion_g": 7.3,
+   "code_g": 7.3,
+   "diff_pct": 0.0,
+   "com_offset_mm": 0.0
+  },
+  {
+   "body": "LK_LI",
+   "fusion_g": 7.3,
+   "code_g": 7.3,
+   "diff_pct": 0.0,
+   "com_offset_mm": 0.0
+  }
+ ],
+ "torques_no_payload": [
+  {
+   "pose": "STOW",
+   "fusion": [
+    -3.919,
+    3.25,
+    0.52
+   ],
+   "code": [
+    -3.17,
+    2.435,
+    0.437
+   ]
+  },
+  {
+   "pose": "DONUT_APPROACH",
+   "fusion": [
+    -1.806,
+    2.698,
+    0.51
+   ],
+   "code": [
+    -1.46,
+    2.022,
+    0.427
+   ]
+  },
+  {
+   "pose": "DONUT_PICK",
+   "fusion": [
+    -0.403,
+    1.62,
+    0.516
+   ],
+   "code": [
+    -0.326,
+    1.214,
+    0.433
+   ]
+  },
+  {
+   "pose": "DONUT_LIFT",
+   "fusion": [
+    -1.691,
+    2.61,
+    0.516
+   ],
+   "code": [
+    -1.367,
+    1.956,
+    0.433
+   ]
+  },
+  {
+   "pose": "DONUT_LIFT_ROLL+",
+   "fusion": [
+    -1.691,
+    2.61,
+    0.516
+   ],
+   "code": [
+    -1.367,
+    1.956,
+    0.433
+   ]
+  },
+  {
+   "pose": "DONUT_LIFT_ROLL-",
+   "fusion": [
+    -1.691,
+    2.61,
+    0.516
+   ],
+   "code": [
+    -1.367,
+    1.956,
+    0.433
+   ]
+  },
+  {
+   "pose": "DONUT_PLACE",
+   "fusion": [
+    3.235,
+    0.427,
+    0.516
+   ],
+   "code": [
+    2.617,
+    0.32,
+    0.433
+   ]
+  },
+  {
+   "pose": "PIPE_APPROACH",
+   "fusion": [
+    -4.018,
+    2.89,
+    0.523
+   ],
+   "code": [
+    -3.25,
+    2.166,
+    0.441
+   ]
+  },
+  {
+   "pose": "PIPE_GRASP",
+   "fusion": [
+    -3.567,
+    3.204,
+    0.514
+   ],
+   "code": [
+    -2.885,
+    2.401,
+    0.432
+   ]
+  },
+  {
+   "pose": "PIPE_GRASP_ROLL+",
+   "fusion": [
+    -3.567,
+    3.204,
+    0.514
+   ],
+   "code": [
+    -2.885,
+    2.401,
+    0.432
+   ]
+  },
+  {
+   "pose": "PIPE_GRASP_ROLL-",
+   "fusion": [
+    -3.567,
+    3.204,
+    0.514
+   ],
+   "code": [
+    -2.885,
+    2.401,
+    0.432
+   ]
+  },
+  {
+   "pose": "PIPE_LIFT",
+   "fusion": [
+    -2.274,
+    2.21,
+    0.514
+   ],
+   "code": [
+    -1.839,
+    1.656,
+    0.432
+   ]
+  },
+  {
+   "pose": "PIPE_CHUTE",
+   "fusion": [
+    -0.546,
+    3.154,
+    -0.033
+   ],
+   "code": [
+    -0.441,
+    2.363,
+    -0.014
+   ]
+  },
+  {
+   "pose": "PIPE_CHUTE_ROLL90",
+   "fusion": [
+    -0.546,
+    3.154,
+    -0.082
+   ],
+   "code": [
+    -0.441,
+    2.363,
+    -0.023
+   ]
+  }
+ ],
+ "unmapped": []
+}

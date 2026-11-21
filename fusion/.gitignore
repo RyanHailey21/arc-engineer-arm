@@ -1,0 +1,3 @@
+# The assembly STEP is rebuilt by snapshot_export.py in about 50 s and is 35 MB: keep it out of git.
+snapshot/*/assembly.step
+__pycache__/
