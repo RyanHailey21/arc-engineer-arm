@@ -6,6 +6,6 @@ grip = "FOURBAR"     # "FOURBAR" (design gripper; rev B) | "SCREW" (lead-screw g
 base_drive = "GEARED"  # J1/J2 base drive: "GEARED" (STS3215 + printed m2 18T/54T spur stage on a drive frame per
                        # tower; rev B) | "DIRECT" (Damiao DM-J4340-2EC on each tower driving the hub directly: the Fusion
                        # "Rev A", kept to compare base motors).  Outputs of a DIRECT build go to cad/out/<grip>_direct/
-release = "FOURBAR"  # variant behind the released package (rev B, 2026-11-19: fab/, fea/out); drawings/out, render/
-                     # and tdp/ are still rev A (drawings on hold).  Release generators pin to it so another variant can't overwrite them
+release = "FOURBAR"  # variant behind the released package (rev B, 2026-11-19: fab/, fea/out, render/). There are no
+                     # drawings (not required). Release generators pin to it so another variant can't overwrite them
 release_base_drive = "GEARED"   # base drive of the released package (release generators refuse another BASE_DRIVE)

@@ -23,7 +23,7 @@ Findings (each has a stable id `kind:path:name`, so a later run can diff against
 
 Scanned code: every git-tracked *.py (cad/, sim/, analysis/) plus untracked, not-ignored *.py.
 Anything matching tools/bloat_keep.toml is reported as "kept" with its reason, never as bloat; the rev A package
-(fab/, drawings/out, fea/out, render/) and the release generators are on it.
+(fab/, fea/out, render/) and the release generators are on it.
 Limits: a name built at run time (getattr(H, "gt2_" + x)) is invisible, so check a dead-def before deleting it;
 a TOML key read by iterating its table (for k, v in T.items()) shows as an orphan unless kept.
 """

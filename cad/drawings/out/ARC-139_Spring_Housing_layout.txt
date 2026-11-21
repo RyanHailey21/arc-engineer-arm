@@ -1,8 +1,0 @@
-pass 0: no free spot for Notes
-pass 0: moved 4, leaders 4, dim segments 18
-pass 1: moved 5, leaders 4, dim segments 18
-pass 2: moved 4, leaders 4, dim segments 18
-order default
-repair: no better spot for Call_g1 (drawn leader on Dim_W)
-dropped reference dimension Dim_W (blocked Call_g1)
-REMAINING 0

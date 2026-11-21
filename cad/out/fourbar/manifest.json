@@ -101,10 +101,10 @@
   "files": [
    "quick.json"
   ],
-  "inputs_hash": "06838cc0d0ec66c8",
-  "note": "envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 193 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 77 kept; fingerprint MATCH",
+  "inputs_hash": "eb028674289d609a",
+  "note": "envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 193 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 1 findings (orphan-catalogue 1), 20 kept; fingerprint MATCH",
   "status": "PASS",
-  "time": "2026-11-20T22:23:34"
+  "time": "2026-11-20T23:58:48"
  },
  "seated": {
   "evidence": "seated.evidence.json",

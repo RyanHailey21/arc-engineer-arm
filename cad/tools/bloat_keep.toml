@@ -16,24 +16,12 @@ glob = "cad/fab/**"
 reason = "rev A frozen fabrication package"
 
 [[path]]
-glob = "cad/drawings/out/**"
-reason = "rev A frozen drawings"
-
-[[path]]
-glob = "cad/drawings/review/**"
-reason = "rev A drawing review images"
-
-[[path]]
 glob = "cad/fea/out/**"
 reason = "rev A frozen FEA results"
 
 [[path]]
 glob = "cad/render/**"
 reason = "rev A renders and the render generators (render/export_render.py is a release generator)"
-
-[[path]]
-glob = "cad/tdp/**"
-reason = "rev A technical data package (PDF and its generator)"
 
 # ------------------------------------------------------------------ release generators (build the release variant only)
 [[path]]
@@ -43,10 +31,6 @@ reason = "release generator: rev A fabrication export"
 [[path]]
 glob = "cad/fea/run_fea.py"
 reason = "release generator: rev A FEA"
-
-[[path]]
-glob = "cad/drawings/*.py"
-reason = "release generators: rev A drawings and their layout/lint helpers"
 
 [[path]]
 glob = "cad/build_assembly.py"
@@ -98,20 +82,6 @@ path = "cad/arm/*.py"
 guard = true
 reason = "called by hand in a FreeCAD GUI session (CLAUDE.md: arm.reload_all())"
 
-[[item]]
-kind = "dead-def"
-name = "compose"
-path = "cad/tools/report_figures.py"
-reason = "called from the FreeCAD GUI to build the report's before/after figure (see the module docstring)"
-
-[[item]]
-kind = "dead-def"
-name = "render"
-path = "cad/tools/report_figures.py"
-reason = "called from the FreeCAD GUI (view providers exist only there)"
-guard = true
-
-# ------------------------------------------------------------------ deliberate boilerplate
 [[item]]
 kind = "duplicate"
 name = "*"

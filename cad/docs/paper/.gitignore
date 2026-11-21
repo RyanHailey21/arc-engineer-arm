@@ -1,0 +1,6 @@
+# LaTeX build artifacts (make_paper.py copies the PDF to cad/docs/ARC_S2_Engineer_Arm.pdf)
+*.aux
+*.log
+*.out
+*.synctex.gz
+paper.pdf

@@ -141,7 +141,7 @@ def main():
     for nm, sc, kw in (("hero_donut_lift", "DONUT_LIFT", {"roll": 15.0}), ("hero_pipe_chute", "PIPE_CHUTE", {}),
                        ("hero_stow", "STOW", {}), ("detail_gripper_pipe", "PIPE_GRASP", {}),
                        ("detail_gripper_donut", "DONUT_PICK", {}),
-                       # TDP close-ups / review views (no field items, robot at the origin)
+                       # close-ups / review views (no field items, robot at the origin)
                        ("overview_side", "DONUT_APPROACH", {}), ("overview_rear", "DONUT_APPROACH", {}),
                        ("detail_shoulder", "DONUT_APPROACH", {}), ("detail_elbow", "DONUT_APPROACH", {}),
                        ("detail_wrist_roll", "DONUT_APPROACH", {"roll": 20.0}),

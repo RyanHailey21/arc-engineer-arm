@@ -1,0 +1,205 @@
+% ARC S2 Engineer arm: product summary. Build: python -I cad/docs/paper/make_paper.py
+% Every number is a macro from numbers.tex, which make_paper.py writes from the check results.
+% Pictures: fig/render_*.png from cad/render (blender -b -P cad/render/blender_render.py -- --stills);
+%           fig/sim_*.png from cad/sim/tasks.py --snap.
+\documentclass[10pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage[section]{placeins}
+\captionsetup{font=small,labelfont=bf}
+\input{numbers}
+\newcommand{\pass}{\textsc{pass}}
+\newcommand{\open}{\textsc{open}}
+\newcommand{\Nm}{\,N\,m}
+\newcommand{\render}[2]{\IfFileExists{fig/#1}{\includegraphics[width=#2]{fig/#1}}{\fbox{\parbox[c][0.18\textheight][c]{#2}{\centering\small render pending: \detokenize{#1}}}}}
+
+\title{A Lightweight Four-Axis Arm for the ARC S2 Engineer Robot:\\ Design and Requirements Verification}
+\author{UTA RoboMasters --- ARC S2 Engineer team\\ \small University of Texas at Arlington}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present the manipulator for the ARC Season 2 Engineer robot. It must lift a donut onto a zig-zag pole and
+drive a PVC pipe into a chute. The arm has four joints and a parallel-jaw gripper. It uses carbon-fibre plates,
+and a parallelogram keeps the wrist level, so the arm weighs \ArmMass\,g, with \PastWrist\,g beyond the wrist. Every
+joint is driven by a Feetech STS3215 servo, the shoulder and elbow through a 3:1 spur stage. A second revision
+replaces that stage with Damiao DM-J4340 direct-drive motors to compare base drives. We state eight requirements
+derived from the competition manual and verify each from the CAD model, finite-element analysis and a MuJoCo
+simulation of both tasks. Seven pass. The power-off release requirement needs a bench test.
+\end{abstract}
+
+\section{Introduction}
+The Engineer robot scores two objectives with one arm (Events Manual S2, \S3.2.4). In Objective~C it picks a
+$\varnothing$100\,mm donut off a pole base, carries it up a zig-zag pole while the chassis strafes and the wrist
+rolls up to 50$^\circ$, and places it flat. In Objective~B it lifts a 500\,mm $\varnothing$26.7\,mm pipe out of a
+bucket, swings it horizontal and drives it 300\,mm into a $\varnothing$52.5\,mm chute. The arm stows inside the
+robot's footprint, must clear the field keep-outs at every pose, and its claw must open by itself when the robot is
+powered off (\S3.2.4.5). This note summarises the design and the evidence that it meets these needs.
+
+\section{Design}
+\begin{figure}[t]
+  \centering
+  \render{render_stow.jpg}{0.32\linewidth}\hfill
+  \render{render_donut_lift.jpg}{0.32\linewidth}\hfill
+  \render{render_pipe_chute.jpg}{0.32\linewidth}
+  \caption{The arm at STOW, lifting the donut, and driving the pipe into the chute (rev~B). Black: 3\,mm carbon-fibre
+  plates; orange: PETG-CF prints; silver: 6061 aluminium; blue: TPU pads.}
+  \label{fig:renders}
+\end{figure}
+
+\paragraph{Kinematics.} The shoulder J1 and the elbow J2 are coaxial at the base. J2 drives the forearm through an
+80\,mm crank and a rod, so neither motor rides on the arm. The upper arm is 340\,mm long and the forearm 350\,mm.
+A parallelogram of two rods and a rocker keeps the wrist level through the whole workspace. Wrist pitch J3 and roll
+J4 then orient the gripper (Fig.~\ref{fig:renders}).
+
+\paragraph{Gripper.} A parallel four-bar moves each jaw; meshed acetal sector gears synchronise the two jaws, so the
+pads stay parallel and centred. Each jaw is a C-frame held by link layers at its top and bottom, so a grip load low
+on the pad does not tilt it. One STS3215 closes the jaws. A torsion spring opens them when the servo is unpowered.
+Each TPU pad has a V-notch for the pipe and an R50 arc for the donut.
+
+\paragraph{Actuators and revisions.} Table~\ref{tab:specs} lists the main figures. Revision~B drives J1 and J2 with
+an STS3215 through a printed m2 18T/54T stage. Revision~A is identical except for the base: a DM-J4340 is bolted
+directly to each joint hub (Section~\ref{sec:base}).
+
+\begin{table}[h]
+  \centering\small
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    & Rev.~B (geared) & Rev.~A (direct) \\
+    \midrule
+    Arm mass (incl.\ base drive) & \ArmMass\,g & \ArmMassDirect\,g \\
+    Mass beyond the wrist / gripper head & \multicolumn{2}{l}{\PastWrist\,g / \HeadMass\,g} \\
+    J1, J2 drive & STS3215 + \Ratio:1 spur stage & DM-J4340-2EC, direct \\
+    J1, J2 holding limit at the joint & \HoldSTS\Nm{} (50\,\% of stall) & \HoldDM\Nm{} (rated) \\
+    J3, J4, gripper & \multicolumn{2}{l}{STS3215 (0.98\Nm{} rated, 2.94\Nm{} stall)} \\
+    Upper arm / forearm & \multicolumn{2}{l}{340\,mm / 350\,mm, parallelogram level keeping} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Main figures of the two revisions.}
+  \label{tab:specs}
+\end{table}
+
+\section{Requirements}
+Table~\ref{tab:req} lists the requirements. R1, R2, R7 and R8 come from the manual; the others make sure the arm can
+do the job with margin. Each has an acceptance criterion that a check in the repository tests.
+
+\begin{table}[!htb]
+  \centering\small
+  \begin{tabular}{@{}llp{0.42\linewidth}p{0.18\linewidth}l@{}}
+    \toprule
+    & Source & Requirement & Acceptance & Result \\
+    \midrule
+    R1 & \S3.2.4 C & Hold the donut through the whole task & clamp margin $\ge$1.5 at rated torque & \pass{} (\DonutRated) \\
+    R2 & \S3.2.4 B & Hold the pipe through the whole task & as R1 & \pass{}$^*$ (\PipeRated) \\
+    R3 & derived & The grip does not tilt the pad & tilt $\le$0.5$^\circ$, SF $\ge$1.5 & \pass{} \\
+    R4 & derived & The motors hold the arm still at every task pose & static torque $\le$ holding limit & \pass{} (\JOneUtilG\,\%) \\
+    R5 & derived & The arm completes both tasks with real actuators & peak $\le$ stall, RMS $\le$ rated & \pass{} \\
+    R6 & derived & No part yields & SF $\ge$1.5 on factored loads & \pass{} (\MinSF) \\
+    R7 & \S3.2 & No collisions; keep-outs met; wrist level & 0 overlaps & \pass{} \\
+    R8 & \S3.2.4.5 & The claw opens within 1\,s of power loss & bench test & \open{} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Requirements and verification results (rev.~B). $^*$Within the rated torque, but the margin is below the
+  1.5 target; see Section~\ref{sec:grip}.}
+  \label{tab:req}
+\end{table}
+
+\section{Verification}
+
+\subsection{Grip (R1--R3)}\label{sec:grip}
+The simulation records the wrench the jaws must supply while each object is carried: gravity plus inertia, at the
+50$^\circ$ roll on the pole and with the pipe horizontal. From the pad geometry and the four-bar's mechanical
+advantage, the check finds the clamp needed and the clamp the servo can supply, after the opening spring
+(Fig.~\ref{fig:grip}). At friction 0.5 the donut holds with margin \DonutRated{} at rated torque and \DonutStall{} at
+stall. The pipe holds within the rated torque, but with margin \PipeRated, below the 1.5 target, because the spring
+takes about half of the servo's torque at the pipe's jaw width. A weaker spring raises the margin; the choice depends
+on the R8 bench test. A multi-material FEA of the jaw under 1.25$\times$ the stall grip moves the pad bottom by
+0.0006\,mm relative to its top (R3).
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.48\linewidth]{fig/grip_margin.pdf}\hfill
+  \includegraphics[width=0.48\linewidth]{fig/sim_donut_roll.png}
+  \caption{Left: clamp margin for each object and pad friction, at the servo's rated and stall torque.
+  Right: the donut carried up the pole with the wrist rolled (MuJoCo).}
+  \label{fig:grip}
+\end{figure}
+
+\subsection{Holding torque (R4)}
+The static joint torques at all 14 task poses, with the object in the jaws, are compared with each actuator's
+holding limit (Fig.~\ref{fig:static}). The worst case is J1 at the donut place, \JOneTau\Nm. That is \JOneUtilG\,\% of
+the geared limit and \JOneUtilD\,\% of the DM-J4340's rated torque. The wrist uses at most \JThreeUtil\,\% of its limit.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{fig/static_torque.pdf}
+  \caption{Static torque at each task pose against the holding limits of both base drives.}
+  \label{fig:static}
+\end{figure}
+
+\subsection{Task simulation (R5)}
+A MuJoCo model built from the CAD meshes runs both tasks end to end in \SimTime\,s, with position servos and
+acceleration-limited moves. The donut lands flat on the platform, and the pipe ends \PipeDepth\,mm into the chute. The peak
+joint torque is at most \PeakFrac\,\% of stall, and the RMS torque at most \RmsFrac\,\% of the continuous rating
+(the elbow, Fig.~\ref{fig:sim}).
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{fig/sim_torque.pdf}
+  \caption{Joint torque through the donut task and then the pipe task, against the continuous rating and stall.}
+  \label{fig:sim}
+\end{figure}
+
+\subsection{Strength (R6)}
+Every load-bearing part was analysed with second-order tetrahedral FEA (gmsh and CalculiX). Gravity and impact loads
+were factored by 2.5 and actuator-limited loads by 1.25. The lowest safety factor is \MinSF, for the carbon-fibre
+gripper drive link at servo stall; everything else is higher (Fig.~\ref{fig:fea}).
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}[c]{0.48\linewidth}\centering\includegraphics[width=\linewidth]{fig/fea_sf.pdf}\end{minipage}\hfill
+  \begin{minipage}[c]{0.48\linewidth}\centering\includegraphics[width=\linewidth]{fig/sim_pipe_chute.png}\end{minipage}
+  \caption{Left: safety factor of each analysed part; the dashed line is the 1.5 requirement. Right: the pipe driven
+  into the chute (MuJoCo).}
+  \label{fig:fea}
+\end{figure}
+
+\subsection{Collisions, keep-outs and level keeping (R7)}
+A full interference check of every pair of parts found \Overlaps{} overlaps at STOW, at the 14 task poses and along
+the moves between them. The arm also clears the field keep-outs at every pose and along the donut's path up the pole.
+The level-keeping parallelogram closes exactly, and stays at least \DeadPoint$^\circ$ from its dead point.
+
+\subsection{Power-off release (R8)}
+In simulation the spring opens the jaws 10\,mm within \ReleaseTime\,s of power loss. The result depends on the servo's
+unpowered back-drive torque, which has not been measured, so R8 stays open until the bench test.
+
+\section{Base drive comparison}\label{sec:base}
+Both revisions see the same joint torques: the base motors sit on the robot, not on the arm. The difference is
+margin. The geared STS3215 holds the worst pose at \JOneUtilG\,\% of its limit and runs up to \JOneOverRated\,\% above its
+continuous rating on long holds. The DM-J4340 holds the same pose at \JOneUtilD\,\% of its rated torque, with no
+printed gear stage to wear or add backlash. It costs \DirectExtra\,g more at the base and
+needs a 24\,V CAN bus.
+
+\section{Open items}
+\begin{enumerate}\itemsep0pt
+  \item Measure the STS3215's unpowered back-drive torque, time the power-off release with each object, and choose
+  the gripper spring (R8, R2).
+  \item Hold the pipe horizontal for 30\,s and log the gripper servo's temperature.
+  \item Measure the TPU pad friction on PVC and on a printed donut (the margins assume 0.5).
+  \item Bench-test the printed 18T/54T stage for backlash and wear, and log the J1/J2 temperature (rev.~B).
+\end{enumerate}
+
+\paragraph{Reproducibility.} The CAD model, checks, FEA and simulation are in the project repository. This document
+is rebuilt from their latest results with \texttt{python -I cad/docs/paper/make\_paper.py}.
+
+\end{document}

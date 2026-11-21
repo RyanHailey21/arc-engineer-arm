@@ -200,7 +200,7 @@ def evidence():
 
 def use_release_variant(script):
     """Release generators: build the released variant.  An explicit GRIP for another variant is refused, so a
-    concept can't overwrite the released fab/drawings/FEA/render outputs."""
+    concept can't overwrite the released fab/FEA/render outputs."""
     rel = release_variant()
     g = os.environ.get("GRIP")
     if g and g.upper() != rel:

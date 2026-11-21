@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Quick check (target < 30 s incl. the ~14 s model build): run after every design edit; the full checks
-(check_interference.py, FEA, drawings) are for milestones.
+(check_interference.py, FEA) are for milestones.
 
     set GRIP=FOURBAR (or SCREW)
     "%LOCALAPPDATA%\\Programs\\FreeCAD 1.1\\bin\\freecadcmd.exe" cad/tools/quick_check.py

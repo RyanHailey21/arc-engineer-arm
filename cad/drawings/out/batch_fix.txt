@@ -1,2 +1,0 @@
-OK   ARC-146 Nut_Tr8x8_LH                  15.6s ARC-146_Nut_Tr8x8_LH.pdf
-DONE

@@ -132,7 +132,7 @@ class TaskSim:
     # ---------------------------------------------------------------- report figures (--log, --snap)
     def _log_tick(self):
         """One row per 10 ms control tick: time, phase, joint angle/speed/torque, and each held object's TCP wrench
-        (gripper frame, NaN when not held or touching the field), for cad/docs/make_plots.py."""
+        (gripper frame, NaN when not held or touching the field), for cad/docs/paper/make_paper.py."""
         d, L = self.data, self.log
         L["t"].append(d.time)
         L["phase"].append(len(self.report) - 1)
@@ -562,7 +562,7 @@ def pipe_task(sim, kin, tp, F):
                 pipe_tip_past_wall_face_mm=round(1000 * float(tip - face), 1), pipe_in_chute=bool(tip - face > 0.1))
 
 
-# report stills (cad/docs/figures): phase (at its end) -> (file, camera)
+# report stills (cad/docs/paper/fig): phase (at its end) -> (file, camera)
 REPORT_SHOTS = {
     "close jaws (donut grip 100)": ("sim_donut_pick", dict(distance=0.6, azimuth=120.0, elevation=-25.0, mix=0.9)),
     "DONUT_LIFT_ROLL+": ("sim_donut_roll", dict(distance=1.3, azimuth=135.0, elevation=-15.0)),

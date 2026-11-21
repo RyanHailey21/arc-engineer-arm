@@ -5,7 +5,7 @@
 1. A planted module with a dead function, an unused import and an unused local, plus a planted params file with
    an orphan key: all four are findings; the function and key the planted code does use are not.
 2. The same dead function under a keep-list item is "kept" with its reason, not a finding.
-3. The real keep-list: nothing in the rev A package (fab/, drawings/out, fea/out, render/) or a release generator
+3. The real keep-list: nothing in the released package (fab/, fea/out, render/) or a release generator
    is a finding; the GT2 belt hardware and the GT2-BELT catalogue entry are never findings.
 4. Nothing under .claude/ (Claude Code worktrees of this repo) is scanned for code or scratch (TI-022).
 """
@@ -69,8 +69,8 @@ with tempfile.TemporaryDirectory() as td:
 
 # 3: the real report against the real keep-list
 res3 = B.scan()
-frozen = ["cad/fab/**", "cad/drawings/out/**", "cad/fea/out/**", "cad/render/**", "cad/export_fab.py",
-          "cad/fea/run_fea.py", "cad/drawings/*.py", "cad/build_assembly.py"]
+frozen = ["cad/fab/**", "cad/fea/out/**", "cad/render/**", "cad/export_fab.py",
+          "cad/fea/run_fea.py", "cad/build_assembly.py"]
 for f in res3["findings"]:
     if any(fnmatch.fnmatch(f["path"], g) for g in frozen) or any(fnmatch.fnmatch(f.get("other", ""), g) for g in frozen):
         fails.append("3: frozen/release item flagged: %s" % f["id"])

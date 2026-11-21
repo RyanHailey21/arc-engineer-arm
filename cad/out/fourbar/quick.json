@@ -679,7 +679,7 @@
   "dead-def": 0,
   "duplicate": 0,
   "orphan-param": 0,
-  "orphan-catalogue": 0,
+  "orphan-catalogue": 1,
   "orphan-interface": 0,
   "orphan-envelope": 0,
   "out-unindexed": 0,
@@ -702,7 +702,7 @@
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 5.3
+   "s": 5.6
   },
   {
    "check": "mass/torque",
@@ -726,20 +726,20 @@
    "check": "seating",
    "ok": true,
    "note": "119 fasteners, 0 FAIL",
-   "s": 3.7
+   "s": 3.5
   },
   {
    "check": "bloat",
    "ok": null,
-   "note": "0 findings (none), 77 kept",
-   "s": 2.5
+   "note": "1 findings (orphan-catalogue 1), 20 kept",
+   "s": 1.7
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 42.6
+   "s": 30.6
   }
  ],
- "elapsed_s": 87.6
+ "elapsed_s": 74.2
 }

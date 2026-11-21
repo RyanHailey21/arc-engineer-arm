@@ -107,11 +107,12 @@ def main():
     doc += toml_section("Envelopes", "envelopes", env_desc)
     doc += ["## Checks and outputs", "",
             "- `tools/quick_check.py` (~25-30 s, every edit) -> `out/<variant>/quick.json`",
-            "- `check_interference.py`, `tools/check_holes.py`, `tools/check_engagement.py`, `tools/projected_heights.py`"
+            "- `check_interference.py`, `tools/check_holes.py`, `tools/check_engagement.py`"
             " -> `out/<variant>/`; each run is logged in `out/<variant>/manifest.json` with the inputs hash",
             "- `tools/fingerprint.py` -> regression guard against `tests/fingerprints/<variant>.json`",
-            "- release generators (export_fab, fea/run_fea, drawings, build_assembly, render/export_render) build the"
-            " release variant (`params/variant.toml` release) into `fab/`, `fea/out/`, `drawings/out/`, `render/`", ""]
+            "- release generators (export_fab, fea/run_fea, build_assembly, render/export_render) build the"
+            " release variant (`params/variant.toml` release) into `fab/`, `fea/out/`, `render/`",
+            "- `docs/paper/make_paper.py` -> `docs/ARC_S2_Engineer_Arm.pdf`, the product summary (from the check results)", ""]
     doc += ["## Parts by variant", ""]
     for t in sorted(glob.glob(os.path.join(CAD, "out", "*", "map_parts.md"))):
         doc += open(t, encoding="utf-8").read().rstrip("\n").split("\n") + [""]

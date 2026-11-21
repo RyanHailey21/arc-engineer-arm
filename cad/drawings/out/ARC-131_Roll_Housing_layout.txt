@@ -1,7 +1,0 @@
-pass 0: moved 6, leaders 3, dim segments 27
-pass 1: moved 4, leaders 3, dim segments 27
-pass 2: moved 4, leaders 3, dim segments 27
-order default
-repair: profile leader re-anchored -> 2 conflicts
-repair: moved group of FCF_g0 by (8.0, 0.0) -> 0 conflicts
-REMAINING 0

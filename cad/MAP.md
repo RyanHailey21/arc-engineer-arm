@@ -2,7 +2,7 @@
 
 Regenerate with `cad/tools/make_map.py` (once per variant).  Search here first: every part links to the
 file:line that builds it; parameters, interfaces and keep-outs are data files.  Active variant comes from
-`params/variant.toml` (override with GRIP and BASE_DRIVE).  Inputs hash at generation: `06838cc0d0ec66c8`.
+`params/variant.toml` (override with GRIP and BASE_DRIVE).  Inputs hash at generation: `eb028674289d609a`.
 
 ## Model modules (`cad/arm/`)
 
@@ -51,9 +51,10 @@ file:line that builds it; parameters, interfaces and keep-outs are data files.  
 ## Checks and outputs
 
 - `tools/quick_check.py` (~25-30 s, every edit) -> `out/<variant>/quick.json`
-- `check_interference.py`, `tools/check_holes.py`, `tools/check_engagement.py`, `tools/projected_heights.py` -> `out/<variant>/`; each run is logged in `out/<variant>/manifest.json` with the inputs hash
+- `check_interference.py`, `tools/check_holes.py`, `tools/check_engagement.py` -> `out/<variant>/`; each run is logged in `out/<variant>/manifest.json` with the inputs hash
 - `tools/fingerprint.py` -> regression guard against `tests/fingerprints/<variant>.json`
-- release generators (export_fab, fea/run_fea, drawings, build_assembly, render/export_render) build the release variant (`params/variant.toml` release) into `fab/`, `fea/out/`, `drawings/out/`, `render/`
+- release generators (export_fab, fea/run_fea, build_assembly, render/export_render) build the release variant (`params/variant.toml` release) into `fab/`, `fea/out/`, `render/`
+- `docs/paper/make_paper.py` -> `docs/ARC_S2_Engineer_Arm.pdf`, the product summary (from the check results)
 
 ## Parts by variant
 
