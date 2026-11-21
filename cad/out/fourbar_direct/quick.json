@@ -1,0 +1,1103 @@
+{
+ "variant": "fourbar_direct",
+ "envelopes": [
+  {
+   "envelope": "donut_plate_floor",
+   "pose": "DONUT_APPROACH",
+   "ok": true,
+   "hits": []
+  },
+  {
+   "envelope": "donut_plate_floor",
+   "pose": "DONUT_PICK",
+   "ok": true,
+   "hits": []
+  },
+  {
+   "envelope": "lower_tier",
+   "pose": "DONUT_APPROACH",
+   "ok": true,
+   "hits": []
+  },
+  {
+   "envelope": "lower_tier",
+   "pose": "DONUT_PICK",
+   "ok": true,
+   "hits": []
+  },
+  {
+   "envelope": "lower_tier",
+   "pose": "DONUT_LIFT",
+   "ok": true,
+   "hits": []
+  },
+  {
+   "envelope": "pole_above_fingers",
+   "pose": "DONUT_LIFT",
+   "ok": true,
+   "hits": []
+  },
+  {
+   "envelope": "pole_below_donut",
+   "pose": "DONUT_LIFT",
+   "ok": true,
+   "hits": []
+  },
+  {
+   "envelope": "perimeter_wall_at_chute",
+   "pose": "PIPE_CHUTE",
+   "ok": true,
+   "hits": []
+  },
+  {
+   "envelope": "perimeter_wall_at_chute",
+   "pose": "PIPE_CHUTE_ROLL90",
+   "ok": true,
+   "hits": []
+  },
+  {
+   "envelope": "scoring_platform",
+   "pose": "DONUT_PLACE",
+   "ok": true,
+   "hits": []
+  }
+ ],
+ "interfaces": {
+  "variant": "fourbar_direct",
+  "ok": true,
+  "report": [
+   {
+    "interface": "dm_j4340__output_hub",
+    "side": "side_a",
+    "part": "J1_Output_Hub",
+    "expected_r": 1.65,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 13.5,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       3.25,
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": 6.75,
+      "y": 0.0,
+      "z": 11.691,
+      "radii": [
+       3.25,
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -6.75,
+      "y": 0.0,
+      "z": 11.691,
+      "radii": [
+       3.25,
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -13.5,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       3.25,
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -6.75,
+      "y": 0.0,
+      "z": -11.691,
+      "radii": [
+       3.25,
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": 6.75,
+      "y": 0.0,
+      "z": -11.691,
+      "radii": [
+       3.25,
+       1.65
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "dm_j4340__output_hub",
+    "side": "side_a",
+    "part": "J2_Output_Hub_Journal",
+    "expected_r": 1.65,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 13.5,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.65,
+       3.25
+      ],
+      "ok": true
+     },
+     {
+      "x": 6.75,
+      "y": 0.0,
+      "z": 11.691,
+      "radii": [
+       1.65,
+       3.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -6.75,
+      "y": 0.0,
+      "z": 11.691,
+      "radii": [
+       1.65,
+       3.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -13.5,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.65,
+       3.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -6.75,
+      "y": 0.0,
+      "z": -11.691,
+      "radii": [
+       1.65,
+       3.25
+      ],
+      "ok": true
+     },
+     {
+      "x": 6.75,
+      "y": 0.0,
+      "z": -11.691,
+      "radii": [
+       1.65,
+       3.25
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "dm_j4340__output_hub",
+    "side": "side_b",
+    "part": "J1_Motor_DM-J4340_rotor",
+    "expected_r": 1.25,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 13.5,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": 6.75,
+      "y": 0.0,
+      "z": 11.691,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -6.75,
+      "y": 0.0,
+      "z": 11.691,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -13.5,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -6.75,
+      "y": 0.0,
+      "z": -11.691,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": 6.75,
+      "y": 0.0,
+      "z": -11.691,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "dm_j4340__output_hub",
+    "side": "side_b",
+    "part": "J2_Motor_DM-J4340_rotor",
+    "expected_r": 1.25,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 13.5,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": 6.75,
+      "y": 0.0,
+      "z": 11.691,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -6.75,
+      "y": 0.0,
+      "z": 11.691,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -13.5,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -6.75,
+      "y": 0.0,
+      "z": -11.691,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": 6.75,
+      "y": 0.0,
+      "z": -11.691,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "dm_j4340__tower",
+    "side": "side_a",
+    "part": "Tower_L_CF3",
+    "expected_r": 1.65,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": -138.349,
+      "y": 0.0,
+      "z": 227.5,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -160.0,
+      "y": 0.0,
+      "z": 240.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -181.651,
+      "y": 0.0,
+      "z": 227.5,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -138.349,
+      "y": 0.0,
+      "z": 202.5,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -160.0,
+      "y": 0.0,
+      "z": 190.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -181.651,
+      "y": 0.0,
+      "z": 202.5,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "dm_j4340__tower",
+    "side": "side_a",
+    "part": "Tower_R_CF3",
+    "expected_r": 1.65,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": -138.349,
+      "y": 0.0,
+      "z": 227.5,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -160.0,
+      "y": 0.0,
+      "z": 240.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -181.651,
+      "y": 0.0,
+      "z": 227.5,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -138.349,
+      "y": 0.0,
+      "z": 202.5,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -160.0,
+      "y": 0.0,
+      "z": 190.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": -181.651,
+      "y": 0.0,
+      "z": 202.5,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "dm_j4340__tower",
+    "side": "side_b",
+    "part": "J1_Motor_DM-J4340_stator",
+    "expected_r": 1.25,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": -138.349,
+      "y": 0.0,
+      "z": 227.5,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -160.0,
+      "y": 0.0,
+      "z": 240.0,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -181.651,
+      "y": 0.0,
+      "z": 227.5,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -138.349,
+      "y": 0.0,
+      "z": 202.5,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -160.0,
+      "y": 0.0,
+      "z": 190.0,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -181.651,
+      "y": 0.0,
+      "z": 202.5,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "dm_j4340__tower",
+    "side": "side_b",
+    "part": "J2_Motor_DM-J4340_stator",
+    "expected_r": 1.25,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": -138.349,
+      "y": 0.0,
+      "z": 227.5,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -160.0,
+      "y": 0.0,
+      "z": 240.0,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -181.651,
+      "y": 0.0,
+      "z": 227.5,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -138.349,
+      "y": 0.0,
+      "z": 202.5,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -160.0,
+      "y": 0.0,
+      "z": 190.0,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": -181.651,
+      "y": 0.0,
+      "z": 202.5,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "roll_horn__roll_hub",
+    "side": "side_a",
+    "part": "Servo_Horn_25T_roll",
+    "expected_r": null,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 49.0,
+      "y": 4.95,
+      "z": -0.05,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": 49.0,
+      "y": -4.95,
+      "z": -0.05,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": 49.0,
+      "y": -4.95,
+      "z": -9.95,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": 49.0,
+      "y": 4.95,
+      "z": -9.95,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "roll_horn__roll_hub",
+    "side": "side_b",
+    "part": "Roll_Hub",
+    "expected_r": 1.65,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 49.0,
+      "y": 4.95,
+      "z": -0.05,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": 49.0,
+      "y": -4.95,
+      "z": -0.05,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": 49.0,
+      "y": -4.95,
+      "z": -9.95,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": 49.0,
+      "y": 4.95,
+      "z": -9.95,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "roll_hub__gripper_palm",
+    "side": "side_a",
+    "part": "Roll_Hub",
+    "expected_r": 1.25,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 65.0,
+      "y": 15.25,
+      "z": -5.0,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": 65.0,
+      "y": -15.25,
+      "z": -5.0,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": 65.0,
+      "y": -10.783,
+      "z": -15.783,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     },
+     {
+      "x": 65.0,
+      "y": 10.783,
+      "z": -15.783,
+      "radii": [
+       1.25
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "roll_hub__gripper_palm",
+    "side": "side_b",
+    "part": "Gripper_Palm",
+    "expected_r": 1.65,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 65.0,
+      "y": 15.25,
+      "z": -5.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": 65.0,
+      "y": -15.25,
+      "z": -5.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": 65.0,
+      "y": -10.783,
+      "z": -15.783,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": 65.0,
+      "y": 10.783,
+      "z": -15.783,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "ua_plate__ua_standoff",
+    "side": "side_a",
+    "part": "Upper_Arm_L_CF3",
+    "expected_r": 1.65,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 85.0,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": 150.0,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "ua_plate__ua_standoff",
+    "side": "side_b",
+    "part": "Upper_Arm_R_CF3",
+    "expected_r": 1.65,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 85.0,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     },
+     {
+      "x": 150.0,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       1.65
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "ua_plate__ua_standoff",
+    "side": "spacer",
+    "part": "UA_Standoff_D8_0",
+    "expected_r": 1.27,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 85.0,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       4.0,
+       1.27
+      ],
+      "ok": true
+     }
+    ]
+   },
+   {
+    "interface": "ua_plate__ua_standoff",
+    "side": "spacer",
+    "part": "UA_Standoff_D8_1",
+    "expected_r": 1.27,
+    "status": "PASS",
+    "holes": [
+     {
+      "x": 150.0,
+      "y": 0.0,
+      "z": 0.0,
+      "radii": [
+       4.0,
+       1.27
+      ],
+      "ok": true
+     }
+    ]
+   }
+  ]
+ },
+ "self_hit": [],
+ "mass_torque": {
+  "arm_g": 1346.9,
+  "past_wrist_g": 563.8,
+  "head_g": 352.4,
+  "worst_static_Nm": {
+   "J1": 3.39,
+   "J2": 2.9,
+   "J3": 0.88,
+   "J4": 0.04
+  },
+  "rated_utilisation": {
+   "J1": 0.377,
+   "J2": 0.323,
+   "J3": 0.597,
+   "J4": 0.028
+  },
+  "poses": [
+   {
+    "pose": "STOW",
+    "payload_g": 0.0,
+    "tau": [
+     -3.17,
+     2.44,
+     0.44,
+     0.03
+    ]
+   },
+   {
+    "pose": "DONUT_APPROACH",
+    "payload_g": 0.0,
+    "tau": [
+     -1.46,
+     2.02,
+     0.43,
+     0.03
+    ]
+   },
+   {
+    "pose": "DONUT_PICK",
+    "payload_g": 0.0,
+    "tau": [
+     -0.33,
+     1.21,
+     0.43,
+     0.03
+    ]
+   },
+   {
+    "pose": "DONUT_LIFT",
+    "payload_g": 300.0,
+    "tau": [
+     -1.77,
+     2.77,
+     0.88,
+     0.03
+    ]
+   },
+   {
+    "pose": "DONUT_LIFT_ROLL+",
+    "payload_g": 300.0,
+    "tau": [
+     -1.77,
+     2.77,
+     0.88,
+     0.04
+    ]
+   },
+   {
+    "pose": "DONUT_LIFT_ROLL-",
+    "payload_g": 300.0,
+    "tau": [
+     -1.77,
+     2.77,
+     0.88,
+     0.02
+    ]
+   },
+   {
+    "pose": "DONUT_PLACE",
+    "payload_g": 300.0,
+    "tau": [
+     3.39,
+     0.45,
+     0.88,
+     0.03
+    ]
+   },
+   {
+    "pose": "PIPE_APPROACH",
+    "payload_g": 0.0,
+    "tau": [
+     -3.25,
+     2.17,
+     0.44,
+     0.03
+    ]
+   },
+   {
+    "pose": "PIPE_GRASP",
+    "payload_g": 0.0,
+    "tau": [
+     -2.89,
+     2.4,
+     0.43,
+     0.03
+    ]
+   },
+   {
+    "pose": "PIPE_GRASP_ROLL+",
+    "payload_g": 0.0,
+    "tau": [
+     -2.89,
+     2.4,
+     0.43,
+     0.02
+    ]
+   },
+   {
+    "pose": "PIPE_GRASP_ROLL-",
+    "payload_g": 0.0,
+    "tau": [
+     -2.89,
+     2.4,
+     0.43,
+     0.04
+    ]
+   },
+   {
+    "pose": "PIPE_LIFT",
+    "payload_g": 165.0,
+    "tau": [
+     -2.14,
+     2.04,
+     0.68,
+     0.03
+    ]
+   },
+   {
+    "pose": "PIPE_CHUTE",
+    "payload_g": 165.0,
+    "tau": [
+     -0.51,
+     2.9,
+     0.35,
+     0.0
+    ]
+   },
+   {
+    "pose": "PIPE_CHUTE_ROLL90",
+    "payload_g": 165.0,
+    "tau": [
+     -0.51,
+     2.9,
+     -0.01,
+     0.0
+    ]
+   }
+  ]
+ },
+ "catalogue": {
+  "keys": 27,
+  "units": 191,
+  "split": {
+   "DM-J4340-2EC": "4 parts = 2 units"
+  },
+  "fails": []
+ },
+ "level_keeping": {
+  "closure_mm": 2.5915335619454374e-13,
+  "samples": 47,
+  "margin_deg": 24.7,
+  "margin_at": "DONUT_PLACE",
+  "limit_margin_deg": 21.3
+ },
+ "bloat": {
+  "unused-import": 0,
+  "unused-variable": 0,
+  "dead-def": 0,
+  "duplicate": 0,
+  "orphan-param": 0,
+  "orphan-catalogue": 0,
+  "orphan-interface": 0,
+  "orphan-envelope": 0,
+  "out-unindexed": 0,
+  "scratch": 0
+ },
+ "summary": [
+  {
+   "check": "envelopes",
+   "ok": true,
+   "note": "10 pose checks",
+   "s": 1.2
+  },
+  {
+   "check": "interfaces",
+   "ok": true,
+   "note": "16 sides",
+   "s": 0.1
+  },
+  {
+   "check": "self-hit",
+   "ok": true,
+   "note": "0 overlaps over the jaw stroke",
+   "s": 7.2
+  },
+  {
+   "check": "mass/torque",
+   "ok": true,
+   "note": "past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m",
+   "s": 3.0
+  },
+  {
+   "check": "catalogue",
+   "ok": true,
+   "note": "27 keys, 191 purchased units match catalogue mass",
+   "s": 0.0
+  },
+  {
+   "check": "level-keep",
+   "ok": true,
+   "note": "closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits",
+   "s": 0.3
+  },
+  {
+   "check": "seating",
+   "ok": true,
+   "note": "127 fasteners, 0 FAIL",
+   "s": 7.3
+  },
+  {
+   "check": "bloat",
+   "ok": null,
+   "note": "0 findings (none), 77 kept",
+   "s": 5.2
+  },
+  {
+   "check": "fingerprint",
+   "ok": null,
+   "note": "MATCH",
+   "s": 54.4
+  }
+ ],
+ "elapsed_s": 106.8
+}

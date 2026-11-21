@@ -2,207 +2,12 @@
  "findings": [
   {
    "kind": "duplicate",
-   "path": "cad/arm/core.py",
-   "line": 107,
-   "name": "4285cb9486",
-   "detail": "6 identical lines also at cad/hardware.py:454",
-   "id": "duplicate:cad/arm/core.py:4285cb9486",
-   "other": "cad/hardware.py"
-  },
-  {
-   "kind": "duplicate",
-   "path": "cad/arm/grippers/fourbar.py",
-   "line": 43,
-   "name": "81f2b47712",
-   "detail": "6 identical lines also at cad/arm/grippers/fourbar.py:60",
-   "id": "duplicate:cad/arm/grippers/fourbar.py:81f2b47712",
-   "other": "cad/arm/grippers/fourbar.py"
-  },
-  {
-   "kind": "duplicate",
-   "path": "cad/arm/grippers/fourbar.py",
-   "line": 336,
-   "name": "dddc6b3a57",
-   "detail": "6 identical lines also at cad/arm/grippers/screw.py:253",
-   "id": "duplicate:cad/arm/grippers/fourbar.py:dddc6b3a57",
-   "other": "cad/arm/grippers/screw.py"
-  },
-  {
-   "kind": "duplicate",
-   "path": "cad/fea/run_fea_fourbar.py",
-   "line": 20,
-   "name": "ef88d93b96",
-   "detail": "7 identical lines also at cad/fea/run_fea_jaw.py:26",
-   "id": "duplicate:cad/fea/run_fea_fourbar.py:ef88d93b96",
-   "other": "cad/fea/run_fea_jaw.py"
-  },
-  {
-   "kind": "orphan-param",
-   "path": "cad/params/actuators.toml",
-   "line": 7,
-   "name": "STS3215.speed_s_per_60deg",
-   "detail": "params/actuators.toml key `STS3215.speed_s_per_60deg` is read by no code",
-   "id": "orphan-param:cad/params/actuators.toml:STS3215.speed_s_per_60deg"
-  },
-  {
-   "kind": "orphan-param",
-   "path": "cad/params/arm.toml",
-   "line": 29,
-   "name": "Y.CL",
-   "detail": "params/arm.toml key `Y.CL` is read by no code",
-   "id": "orphan-param:cad/params/arm.toml:Y.CL"
-  },
-  {
-   "kind": "orphan-param",
-   "path": "cad/params/gripper_fourbar.toml",
-   "line": 46,
-   "name": "SERVO.speed_s_per_60deg",
-   "detail": "params/gripper_fourbar.toml key `SERVO.speed_s_per_60deg` is read by no code",
-   "id": "orphan-param:cad/params/gripper_fourbar.toml:SERVO.speed_s_per_60deg"
-  },
-  {
-   "kind": "orphan-param",
-   "path": "cad/params/gripper_fourbar.toml",
-   "line": 57,
-   "name": "SPRING.alt_pn",
-   "detail": "params/gripper_fourbar.toml key `SPRING.alt_pn` is read by no code",
-   "id": "orphan-param:cad/params/gripper_fourbar.toml:SPRING.alt_pn"
-  },
-  {
-   "kind": "orphan-param",
-   "path": "cad/params/gripper_screw.toml",
-   "line": 22,
-   "name": "M2006_HOLES.ang",
-   "detail": "params/gripper_screw.toml key `M2006_HOLES.ang` is read by no code",
-   "id": "orphan-param:cad/params/gripper_screw.toml:M2006_HOLES.ang"
-  },
-  {
-   "kind": "orphan-catalogue",
-   "path": "cad/data/catalogue.toml",
-   "line": 148,
-   "name": "HARNESS",
-   "detail": "catalogue key `HARNESS`: no part uses it as its src",
-   "id": "orphan-catalogue:cad/data/catalogue.toml:HARNESS"
-  },
-  {
-   "kind": "out-unindexed",
-   "path": "cad/out/fourbar/interference_report_2026-11-16_pre-trim.txt",
-   "line": 1,
-   "name": "cad/out/fourbar/interference_report_2026-11-16_pre-trim.txt",
-   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
-   "id": "out-unindexed:cad/out/fourbar/interference_report_2026-11-16_pre-trim.txt:cad/out/fourbar/interference_report_2026-11-16_pre-trim.txt"
-  },
-  {
-   "kind": "out-unindexed",
-   "path": "cad/out/screw/hole_report_2026-11-15_revA.txt",
-   "line": 1,
-   "name": "cad/out/screw/hole_report_2026-11-15_revA.txt",
-   "detail": "not in screw/manifest.json and no tool writes a file of this name",
-   "id": "out-unindexed:cad/out/screw/hole_report_2026-11-15_revA.txt:cad/out/screw/hole_report_2026-11-15_revA.txt"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/ARC_Engineer_Arm.20261115-050757.FCBak",
-   "line": 1,
-   "name": "cad/ARC_Engineer_Arm.20261115-050757.FCBak",
-   "detail": "local leftover (15998 kB)",
-   "id": "scratch:cad/ARC_Engineer_Arm.20261115-050757.FCBak:cad/ARC_Engineer_Arm.20261115-050757.FCBak"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/arm_model.py.bak5",
-   "line": 1,
-   "name": "cad/arm_model.py.bak5",
-   "detail": "local leftover (64 kB)",
-   "id": "scratch:cad/arm_model.py.bak5:cad/arm_model.py.bak5"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/arm_model.py.bak6",
-   "line": 1,
-   "name": "cad/arm_model.py.bak6",
-   "detail": "local leftover (64 kB)",
-   "id": "scratch:cad/arm_model.py.bak6:cad/arm_model.py.bak6"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/arm_model.py.bak7",
-   "line": 1,
-   "name": "cad/arm_model.py.bak7",
-   "detail": "local leftover (65 kB)",
-   "id": "scratch:cad/arm_model.py.bak7:cad/arm_model.py.bak7"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/drawings/batch_drawings.py.bak2",
-   "line": 1,
-   "name": "cad/drawings/batch_drawings.py.bak2",
-   "detail": "local leftover (33 kB)",
-   "id": "scratch:cad/drawings/batch_drawings.py.bak2:cad/drawings/batch_drawings.py.bak2"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/drawings/batch_drawings.py.bak4",
-   "line": 1,
-   "name": "cad/drawings/batch_drawings.py.bak4",
-   "detail": "local leftover (39 kB)",
-   "id": "scratch:cad/drawings/batch_drawings.py.bak4:cad/drawings/batch_drawings.py.bak4"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/drawings/batch_drawings.py.bak",
-   "line": 1,
-   "name": "cad/drawings/batch_drawings.py.bak",
-   "detail": "local leftover (19 kB)",
-   "id": "scratch:cad/drawings/batch_drawings.py.bak:cad/drawings/batch_drawings.py.bak"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/drawings/layout.py.bak3",
-   "line": 1,
-   "name": "cad/drawings/layout.py.bak3",
-   "detail": "local leftover (24 kB)",
-   "id": "scratch:cad/drawings/layout.py.bak3:cad/drawings/layout.py.bak3"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak",
-   "line": 1,
-   "name": "cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak",
-   "detail": "local leftover (9661 kB)",
-   "id": "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/out/fourbar/fea/FEA_fb_drive_link.20261119-192144.FCBak",
-   "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_fb_drive_link.20261119-192144.FCBak",
-   "detail": "local leftover (11326 kB)",
-   "id": "scratch:cad/out/fourbar/fea/FEA_fb_drive_link.20261119-192144.FCBak:cad/out/fourbar/fea/FEA_fb_drive_link.20261119-192144.FCBak"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/out/fourbar/fea/FEA_fb_jaw_block.20261119-193139.FCBak",
-   "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_fb_jaw_block.20261119-193139.FCBak",
-   "detail": "local leftover (96954 kB)",
-   "id": "scratch:cad/out/fourbar/fea/FEA_fb_jaw_block.20261119-193139.FCBak:cad/out/fourbar/fea/FEA_fb_jaw_block.20261119-193139.FCBak"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/out/fourbar/fea/FEA_fb_palm.20261119-193411.FCBak",
-   "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_fb_palm.20261119-193411.FCBak",
-   "detail": "local leftover (77343 kB)",
-   "id": "scratch:cad/out/fourbar/fea/FEA_fb_palm.20261119-193411.FCBak:cad/out/fourbar/fea/FEA_fb_palm.20261119-193411.FCBak"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/out/fourbar/fea/FEA_jaw_stiffness_debug.20261118-214319.FCBak",
-   "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_jaw_stiffness_debug.20261118-214319.FCBak",
-   "detail": "local leftover (23658 kB)",
-   "id": "scratch:cad/out/fourbar/fea/FEA_jaw_stiffness_debug.20261118-214319.FCBak:cad/out/fourbar/fea/FEA_jaw_stiffness_debug.20261118-214319.FCBak"
+   "path": "cad/arm/base.py",
+   "line": 121,
+   "name": "2fa0c21c77",
+   "detail": "7 identical lines also at cad/arm/base.py:269",
+   "id": "duplicate:cad/arm/base.py:2fa0c21c77",
+   "other": "cad/arm/base.py"
   }
  ],
  "kept": [
@@ -281,7 +86,7 @@
   {
    "kind": "unused-variable",
    "path": "cad/hardware.py",
-   "line": 207,
+   "line": 212,
    "name": "gt2_pulley.rr",
    "detail": "`rr` assigned in gt2_pulley(), never read",
    "id": "unused-variable:cad/hardware.py:gt2_pulley.rr",
@@ -290,16 +95,7 @@
   {
    "kind": "dead-def",
    "path": "cad/hardware.py",
-   "line": 176,
-   "name": "dowel",
-   "detail": "function `dowel` is never referenced",
-   "id": "dead-def:cad/hardware.py:dowel",
-   "kept": "used only by frozen/release code: cad/fab/make_procurement.py, cad/tdp/make_tdp.py"
-  },
-  {
-   "kind": "dead-def",
-   "path": "cad/hardware.py",
-   "line": 218,
+   "line": 223,
    "name": "gt2_belt",
    "detail": "function `gt2_belt` is never referenced",
    "id": "dead-def:cad/hardware.py:gt2_belt",
@@ -308,7 +104,7 @@
   {
    "kind": "dead-def",
    "path": "cad/hardware.py",
-   "line": 203,
+   "line": 208,
    "name": "gt2_pulley",
    "detail": "function `gt2_pulley` is never referenced",
    "id": "dead-def:cad/hardware.py:gt2_pulley",
@@ -317,7 +113,7 @@
   {
    "kind": "dead-def",
    "path": "cad/params.py",
-   "line": 178,
+   "line": 201,
    "name": "use_release_variant",
    "detail": "function `use_release_variant` is never referenced",
    "id": "dead-def:cad/params.py:use_release_variant",
@@ -333,9 +129,19 @@
    "kept": "called from the FreeCAD GUI to build the report's before/after figure (see the module docstring)"
   },
   {
+   "kind": "duplicate",
+   "path": "cad/fea/run_fea_fourbar.py",
+   "line": 20,
+   "name": "ef88d93b96",
+   "detail": "7 identical lines also at cad/fea/run_fea_jaw.py:26",
+   "id": "duplicate:cad/fea/run_fea_fourbar.py:ef88d93b96",
+   "other": "cad/fea/run_fea_jaw.py",
+   "kept": "standalone freecadcmd FEA scripts share a 7-line sys.path / FEA_LIB bootstrap; a shared module would need the same bootstrap to be found"
+  },
+  {
    "kind": "orphan-catalogue",
    "path": "cad/data/catalogue.toml",
-   "line": 191,
+   "line": 193,
    "name": "GT2-BELT",
    "detail": "catalogue key `GT2-BELT`: no part uses it as its src",
    "id": "orphan-catalogue:cad/data/catalogue.toml:GT2-BELT",
@@ -344,7 +150,7 @@
   {
    "kind": "orphan-catalogue",
    "path": "cad/data/catalogue.toml",
-   "line": 46,
+   "line": 52,
    "name": "MR104ZZ",
    "detail": "catalogue key `MR104ZZ`: no part uses it as its src",
    "id": "orphan-catalogue:cad/data/catalogue.toml:MR104ZZ",
@@ -353,7 +159,7 @@
   {
    "kind": "orphan-catalogue",
    "path": "cad/data/catalogue.toml",
-   "line": 58,
+   "line": 64,
    "name": "SHAFT10",
    "detail": "catalogue key `SHAFT10`: no part uses it as its src",
    "id": "orphan-catalogue:cad/data/catalogue.toml:SHAFT10",
@@ -362,7 +168,7 @@
   {
    "kind": "orphan-catalogue",
    "path": "cad/data/catalogue.toml",
-   "line": 144,
+   "line": 150,
    "name": "STANDOFF",
    "detail": "catalogue key `STANDOFF`: no part uses it as its src",
    "id": "orphan-catalogue:cad/data/catalogue.toml:STANDOFF",
@@ -904,22 +710,50 @@
   "unused-import": 0,
   "unused-variable": 0,
   "dead-def": 0,
-  "duplicate": 4,
-  "orphan-param": 5,
-  "orphan-catalogue": 1,
+  "duplicate": 1,
+  "orphan-param": 0,
+  "orphan-catalogue": 0,
   "orphan-interface": 0,
   "orphan-envelope": 0,
-  "out-unindexed": 2,
-  "scratch": 13
+  "out-unindexed": 0,
+  "scratch": 0
  },
  "scanned": 84,
  "stale_keep": [],
- "notes": [],
+ "notes": [
+  "fourbar/map_parts.md is older than the model inputs (rerun tools/make_map.py)",
+  "fourbar_direct: no map_parts.md (run tools/make_map.py)",
+  "screw/map_parts.md is older than the model inputs (rerun tools/make_map.py)"
+ ],
  "new": [
-  "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak"
+  "duplicate:cad/arm/base.py:2fa0c21c77"
  ],
  "resolved": [
-  "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261119-204339.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261119-204339.FCBak"
+  "duplicate:cad/arm/core.py:4285cb9486",
+  "duplicate:cad/arm/grippers/fourbar.py:81f2b47712",
+  "duplicate:cad/arm/grippers/fourbar.py:dddc6b3a57",
+  "duplicate:cad/fea/run_fea_fourbar.py:ef88d93b96",
+  "orphan-catalogue:cad/data/catalogue.toml:HARNESS",
+  "orphan-param:cad/params/actuators.toml:STS3215.speed_s_per_60deg",
+  "orphan-param:cad/params/arm.toml:Y.CL",
+  "orphan-param:cad/params/gripper_fourbar.toml:SERVO.speed_s_per_60deg",
+  "orphan-param:cad/params/gripper_fourbar.toml:SPRING.alt_pn",
+  "orphan-param:cad/params/gripper_screw.toml:M2006_HOLES.ang",
+  "out-unindexed:cad/out/fourbar/interference_report_2026-11-16_pre-trim.txt:cad/out/fourbar/interference_report_2026-11-16_pre-trim.txt",
+  "out-unindexed:cad/out/screw/hole_report_2026-11-15_revA.txt:cad/out/screw/hole_report_2026-11-15_revA.txt",
+  "scratch:cad/ARC_Engineer_Arm.20261115-050757.FCBak:cad/ARC_Engineer_Arm.20261115-050757.FCBak",
+  "scratch:cad/arm_model.py.bak5:cad/arm_model.py.bak5",
+  "scratch:cad/arm_model.py.bak6:cad/arm_model.py.bak6",
+  "scratch:cad/arm_model.py.bak7:cad/arm_model.py.bak7",
+  "scratch:cad/drawings/batch_drawings.py.bak2:cad/drawings/batch_drawings.py.bak2",
+  "scratch:cad/drawings/batch_drawings.py.bak4:cad/drawings/batch_drawings.py.bak4",
+  "scratch:cad/drawings/batch_drawings.py.bak:cad/drawings/batch_drawings.py.bak",
+  "scratch:cad/drawings/layout.py.bak3:cad/drawings/layout.py.bak3",
+  "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261119-205644.FCBak",
+  "scratch:cad/out/fourbar/fea/FEA_fb_drive_link.20261119-192144.FCBak:cad/out/fourbar/fea/FEA_fb_drive_link.20261119-192144.FCBak",
+  "scratch:cad/out/fourbar/fea/FEA_fb_jaw_block.20261119-193139.FCBak:cad/out/fourbar/fea/FEA_fb_jaw_block.20261119-193139.FCBak",
+  "scratch:cad/out/fourbar/fea/FEA_fb_palm.20261119-193411.FCBak:cad/out/fourbar/fea/FEA_fb_palm.20261119-193411.FCBak",
+  "scratch:cad/out/fourbar/fea/FEA_jaw_stiffness_debug.20261118-214319.FCBak:cad/out/fourbar/fea/FEA_jaw_stiffness_debug.20261118-214319.FCBak"
  ],
  "keep_file": "cad/tools/bloat_keep.toml"
 }

@@ -690,25 +690,25 @@
    "check": "envelopes",
    "ok": true,
    "note": "10 pose checks",
-   "s": 1.4
+   "s": 1.2
   },
   {
    "check": "interfaces",
    "ok": true,
    "note": "12 sides",
-   "s": 0.2
+   "s": 0.1
   },
   {
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 7.4
+   "s": 6.3
   },
   {
    "check": "mass/torque",
    "ok": true,
    "note": "past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m",
-   "s": 2.5
+   "s": 2.1
   },
   {
    "check": "catalogue",
@@ -720,26 +720,26 @@
    "check": "level-keep",
    "ok": true,
    "note": "closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits",
-   "s": 0.3
+   "s": 0.2
   },
   {
    "check": "seating",
    "ok": true,
    "note": "119 fasteners, 0 FAIL",
-   "s": 6.0
+   "s": 4.1
   },
   {
    "check": "bloat",
    "ok": null,
-   "note": "0 findings (none), 78 kept",
-   "s": 3.7
+   "note": "0 findings (none), 77 kept",
+   "s": 2.4
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 44.9
+   "s": 38.8
   }
  ],
- "elapsed_s": 109.4
+ "elapsed_s": 96.3
 }

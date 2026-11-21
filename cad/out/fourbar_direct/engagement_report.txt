@@ -1,0 +1,17 @@
+Thread engagement: 16 tapped holes, 16 with screws -> 0 FAIL (screw past thread), 0 WARN (< 0.8D)
+OK   Base_Plate_AL5               M3 THRU drill 5.0 thread 5.0  screw BHCS_M3x8_bracketbase_L0     engages 4.0
+OK   Base_Plate_AL5               M3 THRU drill 5.0 thread 5.0  screw BHCS_M3x8_bracketbase_L1     engages 4.0
+OK   Base_Plate_AL5               M3 THRU drill 5.0 thread 5.0  screw BHCS_M3x8_bracketbase_R0     engages 4.0
+OK   Base_Plate_AL5               M3 THRU drill 5.0 thread 5.0  screw BHCS_M3x8_bracketbase_R1     engages 4.0
+OK   FA_Standoff_D8_0             M3 THRU drill 33.0 thread 33.0  screw BHCS_M3x6_FA_st_0L           engages 3.0
+OK   FA_Standoff_D8_1             M3 THRU drill 33.0 thread 33.0  screw BHCS_M3x6_FA_st_1L           engages 3.0
+OK   J1_Output_Hub                M3 THRU drill 4.5 thread 4.5  screw BHCS_M3x6_UA_hub_0           engages 3.0
+OK   J1_Output_Hub                M3 THRU drill 4.5 thread 4.5  screw BHCS_M3x6_UA_hub_1           engages 3.0
+OK   J1_Output_Hub                M3 THRU drill 4.5 thread 4.5  screw BHCS_M3x6_UA_hub_2           engages 3.0
+OK   J2_Output_Hub_Journal        M4 blind drill 9.5 thread 8.0  screw SHCS_M4x8_crank              engages 7.2
+OK   Roll_Hub                     M3 THRU drill 3.0 thread 3.0  screw BHCS_M3x8_palmhub_0          engages 3.0
+OK   Roll_Hub                     M3 THRU drill 3.0 thread 3.0  screw BHCS_M3x8_palmhub_1          engages 3.0
+OK   Roll_Hub                     M3 THRU drill 3.0 thread 3.0  screw BHCS_M3x8_palmhub_2          engages 3.0
+OK   Roll_Hub                     M3 THRU drill 3.0 thread 3.0  screw BHCS_M3x8_palmhub_3          engages 3.0
+OK   UA_Standoff_D8_0             M3 THRU drill 88.0 thread 88.0  screw BHCS_M3x8_UA_st_0L           engages 4.2
+OK   UA_Standoff_D8_1             M3 THRU drill 88.0 thread 88.0  screw BHCS_M3x8_UA_st_1L           engages 4.2

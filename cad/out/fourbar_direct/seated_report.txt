@@ -1,0 +1,1 @@
+Fastener seating (FOURBAR, STOW): 127 screws/pins/washers, 152 seat points + head bearing -> 0 FAIL

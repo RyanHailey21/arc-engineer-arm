@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "bloat",
   "status": "pass",
-  "reason": "WARN: BLOAT 25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept",
-  "scope": "BLOAT 25 findings (duplicate 4, orphan-param 5, orphan-catalogue 1, out-unindexed 2, scratch 13), 77 kept",
+  "reason": "WARN: BLOAT 1 findings (duplicate 1), 77 kept",
+  "scope": "BLOAT 1 findings (duplicate 1), 77 kept",
   "versions": {
    "python": "3.14.10",
    "platform": "Windows"
@@ -16,14 +16,14 @@
    {
     "id": "design-inputs",
     "path": "evidence/bloat.inputs.json",
-    "sha256": "de9dc09a046104fc92b22e253308f1f57c8923dafd6db747ea214c5827aa7e6f"
+    "sha256": "7f490defe1fdfee68acc9d669a01b1f58449d780682c3783e38170cbd608952b"
    }
   ],
   "artifacts": [],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-20T15:35:02",
-   "inputs_hash": "583f149273fa8325",
+   "time": "2026-11-20T21:41:43",
+   "inputs_hash": "3aa96864cced5afb",
    "external_copies": [
     "out/bloat_report.md",
     "out/bloat_report.json"

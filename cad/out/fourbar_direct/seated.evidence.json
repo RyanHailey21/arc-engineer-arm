@@ -1,0 +1,37 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "seated",
+  "status": "pass",
+  "reason": "PASS: Fastener seating (FOURBAR, STOW): 127 screws/pins/washers, 152 seat points + head bearing -> 0 FAIL",
+  "scope": "Fastener seating (FOURBAR, STOW): 127 screws/pins/washers, 152 seat points + head bearing -> 0 FAIL",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "b655629f3a780bc56499745eb2bea1c3615818bbcb967fec9d3dc138249e6147",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/seated.inputs.json",
+    "sha256": "47658065525d4e61965a33152f7d88dc7a9a24a6ccb47b9de06cbcd8e54aa7fa"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "seated_report.txt",
+    "path": "seated_report.txt",
+    "sha256": "fbf9c3762df480d9b98c22a19f48be8e84b95c3ee0f23c046e5f4e734bf72e35"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR_DIRECT",
+   "time": "2026-11-20T21:58:40",
+   "inputs_hash": "026f4aad2fdf1b1d",
+   "external_copies": []
+  }
+ }
+}
