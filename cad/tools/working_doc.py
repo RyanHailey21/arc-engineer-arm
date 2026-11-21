@@ -5,7 +5,7 @@ the design changes (it records cad-evidence, so tools/quick_check.py shows it FR
   - one group per moving body (GROUND, UPPER, ..., ROD2, LEVEL, GRIPPER, HEAD, jaws/links), parts as Part::Feature;
   - posed at STOW (POSE env var to change), jaw at that pose;
   - colours by material when run inside the FreeCAD GUI (view providers only exist there); headless runs write the
-    same geometry uncoloured. Any variant (unlike the release generator build_assembly.py).
+    same geometry uncoloured. Any variant (unlike the release generators).
 
 GUI (coloured):   exec(open(r"<repo>/cad/tools/working_doc.py").read())       (or via the MCP execute_code tool)
 headless:         GRIP=FOURBAR freecadcmd cad/tools/working_doc.py

@@ -3,7 +3,7 @@
 FreeCAD-native (Coin3D/OpenGL) high-quality renders of the mated assembly.
 Run inside the FreeCAD GUI:
     exec(open(r"...\\cad\\render\\fc_render.py").read())
-    setup()                      # open assembly, field items, materials, lights
+    setup(r"<assembly>.FCStd")   # open assembly, field items, materials, lights
     still("hero_donut_lift")     # -> render/out_fc/<name>.png  (4K render, 1920x1080 AA output)
     frames(0, 60)                # animation frames -> render/out_fc/frames/f_0000.png ...
 
@@ -158,7 +158,9 @@ def lights(view):
         pass
 
 
-def setup(scene_doc=r"C:\Users\ryanh\light_weight_arm\cad\ARC_Engineer_Arm.FCStd"):
+def setup(scene_doc):
+    """scene_doc: an Assembly-workbench document of the arm.  The rev A one (cad/ARC_Engineer_Arm.FCStd) went with
+    build_assembly.py on 2026-11-21; take it from git history (commit 951cc30) to re-render rev A."""
     for n in list(App.listDocuments()):
         App.closeDocument(n)
     doc = App.openDocument(scene_doc)
