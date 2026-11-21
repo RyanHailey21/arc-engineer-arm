@@ -15,6 +15,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage[section]{placeins}
 \captionsetup{font=small,labelfont=bf}
+\renewcommand{\topfraction}{0.9}\renewcommand{\bottomfraction}{0.8}\renewcommand{\textfraction}{0.07}\renewcommand{\floatpagefraction}{0.8}
 \input{numbers}
 \newcommand{\pass}{\textsc{pass}}
 \newcommand{\open}{\textsc{open}}
@@ -191,6 +192,17 @@ continuous rating on long holds. The DM-J4340 holds the same pose at \JOneUtilD\
 printed gear stage to wear or add backlash. It costs \DirectExtra\,g more at the base and
 needs a 24\,V CAN bus.
 
+\section{Design master}\label{sec:fusion}
+The team designs the arm in Autodesk Fusion: a parametric assembly per revision, with a shared gripper and purchased
+parts at their catalogue mass. Each Fusion version is exported to the repository as text: every part's placement,
+mass and centre of mass, the joints and the parameters. The same checks then run on it. The code-CAD model that
+produced the results above is the reference. At the checked versions (rev.~B v\FusionVerB, \FusionMassB\,g; rev.~A
+v\FusionVerA, \FusionMassA\,g) the static joint torques agree with it within \FusionTqDiffB\,\% (rev.~B) and
+\FusionTqDiffA\,\% (rev.~A) at every task pose. The interference check of the full rev.~B Fusion geometry
+(\FusionSolids{} solids) finds one unintended overlap: the opening spring's rigid vendor leg touches the palm by
+0.6\,mm$^3$, and that leg is bent to fit at assembly. The others are fasteners, inserts and contacts inside the vendor
+servo model.
+
 \section{Open items}
 \begin{enumerate}\itemsep0pt
   \item Measure the STS3215's unpowered back-drive torque, time the power-off release with each object, and choose
@@ -198,6 +210,15 @@ needs a 24\,V CAN bus.
   \item Hold the pipe horizontal for 30\,s and log the gripper servo's temperature.
   \item Measure the TPU pad friction on PVC and on a printed donut (the margins assume 0.5).
   \item Bench-test the printed 18T/54T stage for backlash and wear, and log the J1/J2 temperature (rev.~B).
+  \item Update the zig-zag pole when its drawing is published (the manual marks it TBA). The donut path is generated
+  from a placeholder S-curve, so re-run the interference check.
+  \item Review the Robot Building Specifications: no size or weight limit has been applied yet. The stowed arm top is
+  about 420\,mm.
+  \item Check on a real STS3215 that its four bottom-cap screws take the 12\,mm length and that the cradle floor
+  bosses meet the case.
+  \item Add a soft landing stop or gas spring: the arm falls when the robot is defeated (this is allowed by the rules).
+  \item Design the chassis interface. The arm assumes a deck at 120\,mm, the shoulder 160\,mm behind the bumper, and
+  4$\times$M4 into the 150$\times$160\,mm base plate.
 \end{enumerate}
 
 \paragraph{Reproducibility.} The CAD model, checks, FEA and simulation are in the project repository. This document

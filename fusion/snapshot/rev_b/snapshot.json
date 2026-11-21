@@ -15897,12 +15897,12 @@
   },
   {
    "bbox": [
-    -76.3365,
-    -38.4625,
-    438.9783,
-    -26.6197,
-    11.2543,
-    497.9659
+    -62.9452,
+    -89.0335,
+    404.6112,
+    12.2914,
+    -14.4409,
+    417.0113
    ],
    "bodies": [
     {
@@ -15913,28 +15913,28 @@
    ],
    "body_group": "ARC Four-Bar Gripper:1",
    "com_mm": [
-    -64.1768,
-    -0.9049,
-    485.8919
+    -47.8385,
+    -40.8193,
+    410.8116
    ],
    "component": "9271K56",
    "mass_g": 3.475,
-   "path": "ARC Four-Bar Gripper:1+HEAD:1+9271K56:2",
+   "path": "ARC Four-Bar Gripper:1+HEAD:1+9271K56:4",
    "source_id": "urn:adsk.wipprod:dm.lineage:h08mwmOoRdaO7r2gxqi4LQ",
    "source_version": 2,
    "transform": [
-    0.707107,
-    0.707107,
+    -0.0,
+    0.34202,
+    0.939693,
+    -52.812778,
+    -0.0,
+    -0.939693,
+    0.34202,
+    -38.5,
+    1.0,
     0.0,
-    -69.211079,
-    0.707107,
-    -0.707107,
     0.0,
-    -0.451079,
-    0.0,
-    0.0,
-    -1.0,
-    489.773011,
+    407.572711,
     0.0,
     0.0,
     0.0,
@@ -15946,18 +15946,18 @@
   {
    "bbox": [
     -87.97,
-    -60.52,
+    -89.0407,
     366.7437,
-    -26.6139,
+    12.2986,
     76.52,
-    497.9759
+    434.0837
    ],
    "bodies": [],
    "body_group": "ARC Four-Bar Gripper:1",
    "com_mm": [
-    -56.9402,
-    25.2394,
-    398.9985
+    -56.5714,
+    24.3383,
+    397.3036
    ],
    "component": "HEAD",
    "mass_g": 153.915,
@@ -18976,24 +18976,24 @@
   {
    "bbox": [
     -90.2227,
-    -68.1157,
+    -89.0407,
     361.3837,
     45.5046,
     76.52,
-    497.9759
+    434.5937
    ],
    "bodies": [],
    "body_group": "ARC Four-Bar Gripper:1",
    "com_mm": [
-    -23.6392,
-    11.6744,
-    395.8524
+    -23.4719,
+    11.2657,
+    395.0837
    ],
    "component": "ARC Four-Bar Gripper",
    "mass_g": 339.346,
    "path": "ARC Four-Bar Gripper:1",
    "source_id": "urn:adsk.wipprod:dm.lineage:tMIPrFzzQv6FUw6DusQ6Lw",
-   "source_version": 2,
+   "source_version": 3,
    "transform": [
     1.0,
     0.0,
@@ -19019,8 +19019,8 @@
  "summary": {
   "document": "ARC Arm Rev B",
   "document_id": "urn:adsk.wipprod:dm.lineage:cGWSAxvSQQaYddhXmTl3HA",
-  "document_version": 21,
-  "exported": "2026-11-21T14:11:08",
+  "document_version": 22,
+  "exported": "2026-11-21T15:23:00",
   "joints": 32,
   "motion_links": 0,
   "occurrences": 372,

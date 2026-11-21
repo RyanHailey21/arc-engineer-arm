@@ -3,7 +3,7 @@
 Runs inside Autodesk Fusion. Send it through the Fusion MCP (featureType "script", readOnly true) or run it as a
 Fusion script. It only reads: no design is changed, and nothing is saved.
 
-Efficiency and crash safety (see the 2026-11-20 crash analysis in cad/docs/fusion_migration_brief.md):
+Efficiency and crash safety (Fusion API notes in fusion/README.md):
   - one cloud data-API touch: findFileById plus documents.open of the top assembly. Every part comes in through the
     assembly's references, so masses, materials, placements and joints are read locally, with no per-part document
     opens;
@@ -112,9 +112,16 @@ def export(rev="rev_b", out_root=None, step=True):
                         return o.fullPathName if o else None
                     except Exception:
                         return None
+                def safe(get):
+                    try:
+                        return get()
+                    except Exception:
+                        return None
                 row = dict(name=j.name, kind=kind, type=str(m.jointType),
                            occ1=occ_path(lambda: j.occurrenceOne), occ2=occ_path(lambda: j.occurrenceTwo),
-                           suppressed=j.isSuppressed)
+                           suppressed=safe(lambda: j.isSuppressed))
+                if row["occ1"] is None and row["occ2"] is None:
+                    row["broken"] = True       # neither occurrence resolves: a joint left over from a deleted part
                 for attr in ("rotationValue", "slideValue"):
                     if hasattr(m, attr):
                         row[attr] = getattr(m, attr)

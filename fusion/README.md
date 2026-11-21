@@ -17,6 +17,7 @@ materials, placements and joints are read locally. One more open reads the param
 | `params.toml` | the revision's master user parameters: value, unit, expression, comment | yes |
 | `bom.csv` | unique parts: quantity, material, mass, source document and version | yes |
 | `summary.json` | document version, counts, total mass, time | yes |
+| `view_iso.png` | the assembly at STOW, isometric, Z up (taken with the snapshot) | yes |
 | `assembly.step` | the assembly at its saved pose, read by the checks | no (35 MB; regenerated) |
 
 A commit of a new snapshot is the design diff: parameters, masses, versions and joint limits as text.
@@ -38,13 +39,13 @@ Results go to `checks/out/<rev>_*.json`. Set `SNAP_REV=rev_a` to check the other
 | Duplicate horn | the five `HORN-25T (placeholder)` occurrences are deleted (Rev B, Rev A, shared gripper): the STS3215 vendor model has its horn | none |
 | STS3215 vs palm | `Gripper_Palm` gets `servo_seat_z` (19.0) and `palm_y_out` (76.5): the floor sits under the real case (32.9 below the horn seat), and the pocket is sized from the vendor case with a 2.7 mm end wall. The jaw servo moves 0.55 mm down, so its 4.53 mm horn sits under the drive link | `gripper_fourbar.toml` `SEAT_Z`, `Y_OUT`; the gripper uses `hardware.sts3215` and the real horn; fingerprints re-recorded (palm, jaw servo, horn) |
 | J2 gear mesh | `Pinion_m2_18T_J2` gets `mesh_phase` (half a tooth, 10°); the horn screw holes keep their angle | the code-CAD gears are check shapes, no teeth |
-| Spring vs palm | 9271K56 turned 225° about its coil and raised 0.4 mm: its legs now point forward and outboard, clear of the mount plate and web | legs are not modelled |
+| Spring vs palm | 9271K56 placed natively in HEAD, turned 200° about its coil and raised 0.2 mm (best of 65 placements, checked at jaw 13.8, 30 and 112; Codex, gripper v3). Its legs point away from the mount plate and web. Residual: 0.6 mm³ against the palm and 0.54 mm³ against `Link_RI_lo` at full open. The rigid vendor legs are bent and cut at assembly | legs are not modelled |
 | Base shrink (code-CAD 06cb9a0) | `Base_Plate_AL5` (shared): named parameters for the 150 x 160 outline, 4x M4 chassis holes at SX -/+68, +/-70 and the 70 x 56 R8 harness window (volume equals the code-CAD to 0.1 mm³). C610 removed. M4 chassis screws and two cable clips moved (Codex, rev B and rev A v21) | none |
 | Rev A motor masses | the DM-J4340-2EC configured design (Stator and Rotor configurations, used by rev A) gets effective densities: stator 231 g, rotor 99 g, full motor 330 g (Codex, rev A v22) | `actuators.toml` `rotor_share` 0.30 |
 
 Re-check (rev B v19): 577 solids, 142 overlaps above 0.5 mm³, 15 min. None of the five findings remain. What is left is intended contacts (fasteners, pins, inserts), overlaps inside the STS3215 vendor model (motor, output gear and case screws against its own case) and the servos' bottom caps touching the cradle floors (1.7 mm³ each).
 
-Afterwards the moving bodies match the code-CAD within a few percent. The static torques agree within 4 % at all 14 poses (rev B and rev A). Totals: rev B 2,024 g (code-CAD 2,049 g), rev A 2,169 g (2,215 g); GROUND within 1 %. Still open: the jaw servo's spline touches the D4x20 drive-link pin (2.1 mm³).
+Afterwards the moving bodies match the code-CAD within a few percent. The static torques agree within 5 % at all 14 poses (rev B and rev A). Totals: rev B 2,024 g (code-CAD 2,049 g), rev A 2,169 g (2,215 g); GROUND within 1 %. Still open: leftover joints from before the gripper became a shared document (rev A: eight suppressed joints that point at nothing; rev B: an unsuppressed duplicate "J4 roll (before shared gripper)"). The jaw servo's spline touches the D4x20 drive-link pin (2.1 mm³).
 
 **Fusion API notes, learned the hard way:**
 - `Document.updateAllReferences()` crashes Fusion when the document was opened invisibly. Open it visibly (`documents.open(f, True)`).

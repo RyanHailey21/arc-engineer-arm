@@ -3,8 +3,8 @@
  "snapshot": {
   "document": "ARC Arm Rev B",
   "document_id": "urn:adsk.wipprod:dm.lineage:cGWSAxvSQQaYddhXmTl3HA",
-  "document_version": 21,
-  "exported": "2026-11-21T14:11:08",
+  "document_version": 22,
+  "exported": "2026-11-21T15:23:00",
   "joints": 32,
   "motion_links": 0,
   "occurrences": 372,
@@ -46,7 +46,7 @@
    "fusion_g": 153.9,
    "code_g": 160.9,
    "diff_pct": -4.4,
-   "com_offset_mm": 5.37
+   "com_offset_mm": 3.82
   },
   {
    "body": "LEVEL",
@@ -152,7 +152,7 @@
    "fusion": [
     -1.414,
     1.939,
-    0.412
+    0.413
    ],
    "code": [
     -1.465,
@@ -243,7 +243,7 @@
    "fusion": [
     -2.793,
     2.302,
-    0.416
+    0.417
    ],
    "code": [
     -2.895,
@@ -256,7 +256,7 @@
    "fusion": [
     -2.793,
     2.302,
-    0.416
+    0.417
    ],
    "code": [
     -2.895,
@@ -269,7 +269,7 @@
    "fusion": [
     -2.793,
     2.302,
-    0.416
+    0.417
    ],
    "code": [
     -2.895,
@@ -282,7 +282,7 @@
    "fusion": [
     -1.78,
     1.588,
-    0.416
+    0.417
    ],
    "code": [
     -1.845,
@@ -295,7 +295,7 @@
    "fusion": [
     -0.427,
     2.266,
-    -0.02
+    -0.017
    ],
    "code": [
     -0.443,
@@ -308,7 +308,7 @@
    "fusion": [
     -0.427,
     2.266,
-    -0.029
+    -0.028
    ],
    "code": [
     -0.443,

@@ -1,7 +1,7 @@
 {
  "revision": "rev_b",
- "solids": 577,
- "pairs_tested": 1833,
+ "solids": 526,
+ "pairs_tested": 1810,
  "min_mm3": 0.5,
  "overlaps": [
   {
@@ -700,20 +700,10 @@
    "volume_mm3": 1.16
   },
   {
-   "a": "C623",
-   "b": "C653",
-   "volume_mm3": 0.99
-  },
-  {
-   "a": "C625",
-   "b": "C653",
-   "volume_mm3": 0.99
-  },
-  {
-   "a": "C624",
-   "b": "C653",
-   "volume_mm3": 0.77
+   "a": "Gripper_Palm",
+   "b": "9271K56",
+   "volume_mm3": 0.6
   }
  ],
- "seconds": 920.3
+ "seconds": 965.3
 }
