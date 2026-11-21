@@ -16,7 +16,7 @@
    {
     "id": "design-inputs",
     "path": "evidence/grip_hold.inputs.json",
-    "sha256": "126141cc2110daafbb10110452f3929732e6f9d9431c262a8a840df6cd05ed50"
+    "sha256": "4f747b82642adaea64d467b9077418be92ed93df47defa6adef20a7c73a1698c"
    }
   ],
   "artifacts": [
@@ -33,8 +33,8 @@
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-20T22:17:01",
-   "inputs_hash": "06838cc0d0ec66c8",
+   "time": "2026-11-21T00:20:17",
+   "inputs_hash": "eb028674289d609a",
    "external_copies": [
     "../sim/arc_arm_fourbar/task_run.json"
    ]

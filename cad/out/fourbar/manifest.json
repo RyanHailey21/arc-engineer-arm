@@ -61,10 +61,10 @@
    "grip_hold.json",
    "../sim/arc_arm_fourbar/task_run.json"
   ],
-  "inputs_hash": "06838cc0d0ec66c8",
+  "inputs_hash": "eb028674289d609a",
   "note": "donut SF 1.7 rated / 6.0 stall; pipe SF 1.1 rated / 5.6 stall (MU 0.50)",
   "status": "WARN",
-  "time": "2026-11-20T22:17:01"
+  "time": "2026-11-21T00:20:17"
  },
  "holes": {
   "evidence": "holes.evidence.json",

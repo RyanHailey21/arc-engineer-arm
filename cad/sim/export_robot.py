@@ -63,7 +63,7 @@ def tree():
     Z = (0, 0, 1)
     # name, CAD body, parent, joint, axis, origin xyz in parent link frame (mm), origin rot about y (deg),
     # F = link-frame origin in the CAD body frame (mm), mimic (leader, multiplier) or None
-    # passive joints are named <link>_joint: SDF (Gazebo) puts links and joints in one frame namespace
+    # passive joints are named <link>_joint: keeps joint names distinct from link names (one frame namespace in URDF/SDF tools)
     return [
         ("base_link", "GROUND", None, None, None, (0, 0, 0), 0, (0, 0, 0), None),
         ("upper", "UPPER", "base_link", "shoulder", Ym, S, 0, (0, 0, 0), None),

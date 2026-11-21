@@ -8,12 +8,11 @@ The whole arm is code-CAD (FreeCAD 1.1 Python). **Start with [`cad/MAP.md`](cad/
 ## Current state
 
 - **Design (rev B, released 2026-11-19, `GRIP=FOURBAR`).** Gear-synchronised parallel four-bar gripper on a palletizer arm with parallelogram level keeping, Feetech STS3215 servos on every joint (J1/J2 through a printed 3:1 spur stage). Head 352 g, past the wrist 564 g; worst static torque J1 3.39, J2 2.90, J3 0.88 N·m.
-  - Status, evidence and open items: [cad/docs/fourbar_status.md](cad/docs/fourbar_status.md).
-  - Compliance report (gripper holds the objects, motors hold the arm, the arm actuates): [cad/docs/compliance_report.md](cad/docs/compliance_report.md).
+  - **Product summary and requirements verification:** [cad/docs/ARC_S2_Engineer_Arm.pdf](cad/docs/ARC_S2_Engineer_Arm.pdf), rebuilt from the check results by `cad/docs/paper/make_paper.py`.
 - **Base-drive variant (`BASE_DRIVE=DIRECT`).** Damiao DM-J4340-2EC direct drive on J1/J2 (the Fusion "Rev A"), kept to compare base motors. Outputs in `cad/out/fourbar_direct/`; its STEP set and BOM for the Fusion migration come from `cad/tools/export_variant.py` → `cad/out/fourbar_direct/fab/`.
 - **`GRIP=SCREW`** is the old rev A lead-screw gripper (M2006 + Tr8x8 screw on MGN9 rails), a non-release variant. With the STS3215 base it is over the 50 %-of-stall holding rule, so its quick check reports mass/torque FAIL.
-- **Released package.** `cad/fab/` (STEP, DXF, BOM, procurement) and `cad/fea/out` are rev B. `cad/drawings/out`, `cad/render/`, `cad/tdp/` and `cad/scenes/` are still **rev A** (lead-screw gripper, belt level keeping, old base motors) and do not match the model; drawings are on hold.
-- **Simulation.** MuJoCo (MJCF) and Gazebo (URDF) models of the four-bar arm, generated from the CAD and validated against it: [sim/README.md](sim/README.md).
+- **Released package.** `cad/fab/` (STEP, DXF, BOM, procurement), `cad/fea/out` and the renders in `cad/render/out` are rev B. `cad/scenes/` is still rev A. There are no drawings: they are not a project requirement.
+- **Simulation.** A MuJoCo model of the four-bar arm, generated from the CAD and validated against it, that runs both tasks end to end; video at the real servo speed: [sim/README.md](sim/README.md).
 
 ## What the arm does
 
@@ -33,9 +32,10 @@ The whole arm is code-CAD (FreeCAD 1.1 Python). **Start with [`cad/MAP.md`](cad/
 | `cad/field.py` | ARC Battlefield items (tier, placeholder pole, bucket, pipes, scoring area, chute). |
 | `cad/tools/`, `cad/check_interference.py`, `cad/tests/` | Checks (quick check, interfaces, seating, engagement, holes, level keeping, grip hold, fingerprint, bloat report) and their tests. |
 | `cad/out/<variant>/` | Check results, `manifest.json` (status + inputs hash: FRESH/STALE), the maintained FreeCAD working document. |
-| `cad/sim/`, `sim/` | Simulation model generators and the generated MuJoCo/Gazebo packages. |
+| `cad/sim/`, `sim/` | MuJoCo model generators, the generated model, task runs and the task video. |
 | `cad/fab/`, `cad/fea/` | Release fabrication export and FEA. |
-| `cad/drawings/`, `cad/render/`, `cad/tdp/`, `cad/build_assembly.py`, `cad/scenes/` | Rev A drawings, renders, technical data package and mated Assembly-workbench documents (release generators). |
+| `cad/docs/` | The product summary PDF and its generator (`paper/`). |
+| `cad/render/`, `cad/build_assembly.py`, `cad/scenes/` | Blender renders, and mated Assembly-workbench documents (release generators). |
 
 ## Checks
 
@@ -57,4 +57,3 @@ The whole arm is code-CAD (FreeCAD 1.1 Python). **Start with [`cad/MAP.md`](cad/
 5. **STS3215 bottom-cap screws.** The cradles hold each servo by its four bottom-cap screws (12 mm). Check on a real servo that they take the length and the floor bosses meet the case.
 6. **The arm falls when the robot is defeated** (allowed by the rules): add a soft landing stop or gas spring.
 7. **The chassis isn't designed.** Assumptions: deck at 120 mm, shoulder 160 mm behind the bumper.
-8. **Drawings, renders and TDP for rev B.** Still rev A; regenerate with the release generators when drawings come off hold.

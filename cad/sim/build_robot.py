@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Robot description, step 2 of 2: write URDF (Gazebo / ROS) and MJCF (MuJoCo) from the CAD export, then validate.
+Robot description, step 2 of 2: write URDF (ROS tools) and MJCF (MuJoCo) from the CAD export, then validate.
     C:\\Users\\ryanh\\tools\\simenv\\Scripts\\python.exe cad/sim/build_robot.py [variant]      (default fourbar)
 Needs: mujoco, yourdfpy, trimesh, numpy (the simenv venv).  Step 1 is cad/sim/export_robot.py (FreeCAD).
 
@@ -109,7 +109,7 @@ def build_urdf():
             ET.SubElement(J, "mimic", joint=l["mimic"][0], multiplier="%g" % l["mimic"][1], offset="0")
     sp = SPEC["spring"]
     r.append(ET.Comment(" gripper opening spring (%s): %.4f N*m/rad, free at %.1f deg of the gripper joint - model it with a "
-                        "joint spring/stiffness in your simulator (Gazebo: <spring_stiffness>/<spring_reference> on the SDF joint) "
+                        "joint spring/stiffness in your simulator "
                         % (sp["part"], sp["k_Nm_per_rad"], sp["free_angle_deg"])))
     ET.indent(r)
     p = os.path.join(ROOT, "arc_arm.urdf")
@@ -355,45 +355,8 @@ def validate(urdf, mjcf, order, scene):
     return out
 
 
-def validate_gazebo(gz_urdf):
-    """Structural checks of the Gazebo package (the run test is cad/sim/gz_check.py, see gazebo_run): model.urdf parses with
-    yourdfpy, every model:// mesh resolves to a file in the model dir, mimic joints and plugins are present, the
-    world references the model and bullet-featherstone physics."""
-    import yourdfpy
-    model = "arc_arm_%s" % VAR
-    u = yourdfpy.URDF.load(gz_urdf, build_scene_graph=True, load_meshes=False)
-    r = ET.parse(gz_urdf).getroot()
-    uris = [m.get("filename") for m in r.iter("mesh")]
-    missing = [x for x in uris if not os.path.exists(os.path.join(ROOT, x.replace("model://%s/" % model, "")))]
-    mimics = len(list(r.iter("mimic")))
-    plugins = [p.get("filename") for p in r.iter("plugin")]
-    # SDF puts links and joints in one frame namespace: a joint named like a link makes gz-sim reject the model
-    clash = sorted({l.get("name") for l in r.iter("link")} & {j.get("name") for j in r.iter("joint")})
-    w = open(os.path.join(ROOT, "worlds", "arc_arm.sdf"), encoding="utf-8").read()
-    n_mimic = sum(1 for l in SPEC["links"] if l.get("mimic"))
-    ok = not missing and not clash and mimics == n_mimic and plugins.count("gz-sim-joint-position-controller-system") == 5 and         ("model://%s" % model) in w and "bullet-featherstone" in w and len(u.actuated_joint_names) == 5
-    return dict(parses=True, mesh_uris=len(uris), missing_meshes=missing[:5], name_clashes=clash, mimic_joints=mimics,
-                actuated=list(u.actuated_joint_names), plugins=len(plugins), ok=ok,
-                note="structure only; the gz-sim run test is gazebo_run (cad/sim/gz_check.py)")
 
 
-def gazebo_run(gz_urdf):
-    """Summary of the last gz-sim run test (cad/sim/gz_check.py -> gazebo_validation.json), FRESH only if it ran on
-    this exact model.urdf. Needs gz-sim 8, so it runs separately (WSL). Informational only: it no longer gates the build."""
-    import hashlib
-    f = os.path.join(ROOT, "gazebo_validation.json")
-    if not os.path.exists(f):
-        return dict(ok=False, status="MISSING", note="run cad/sim/gz_check.py in a gz-sim 8 environment")
-    g = json.load(open(f, encoding="utf-8"))
-    fresh = g.get("model_urdf_sha256") == hashlib.sha256(open(gz_urdf, "rb").read().replace(b"\r\n", b"\n")).hexdigest()   # EOL-neutral
-    P = g.get("poses", [])
-    return dict(ok=bool(g.get("ok")) and fresh, status="FRESH" if fresh else "STALE", gz_version=g.get("gz_version"),
-                world=g.get("world"), poses=len(P),
-                max_track_err_deg=max((max(abs(v) for v in p["track_err_deg"].values()) for p in P), default=None),
-                max_mimic_err_deg=max((p["max_mimic_err_deg"] for p in P), default=None),
-                max_tcp_err_mm=max((p["tcp_err_mm"] for p in P), default=None), tolerances=g.get("tolerances"),
-                power_off_release={k: (g.get("power_off_release") or {}).get(k) for k in
-                                   ("t_open_10mm_s", "t_90pct_open_s", "end_gap_mm", "ok")})
 
 
 def trans(v):
@@ -404,7 +367,7 @@ def trans(v):
 
 def lump_crank_pin(r, mp=0.003, ip=1e-5):
     """Give the massless crank_pin helper link 3 g and 1e-5 kg*m^2 (the crank-pin bolt + bearing; that hardware is
-    also in the crank's mass, so the Gazebo model double-counts ~0.1 % of the arm mass).
+    also in the crank's mass, a double count of ~0.1 % of the arm mass).
     Why: crank_pin's joint and rod_ab's joint are coaxial at the same point, so with a ~0 inertia link between them
     the crank_pin DOF has a near-singular mass matrix and bullet-featherstone's stiff mimic (gear) constraints jam:
     the elbow stalled at ~0 deg whatever was commanded. (Taking the 3 g from the crank instead fails sdformat's
@@ -414,85 +377,9 @@ def lump_crank_pin(r, mp=0.003, ip=1e-5):
     il.find("inertia").attrib.update(ixx="%g" % ip, ixy="0", ixz="0", iyy="%g" % ip, iyz="0", izz="%g" % ip)
 
 
-def build_gazebo(urdf):
-    """Gazebo (Harmonic, gz-sim 8) model directory: model.config + model.urdf (model:// mesh URIs, gz-sim joint
-    position controllers + joint state publisher, the gripper spring on the SDF joint) + worlds/arc_arm.sdf using
-    bullet-featherstone physics (the gz-physics engine with mimic-joint constraints).
-    Usage:  GZ_SIM_RESOURCE_PATH=<repo>/sim  gz sim <repo>/sim/arc_arm_<variant>/worlds/arc_arm.sdf"""
-    model = "arc_arm_%s" % VAR
-    t = ET.parse(urdf)
-    r = t.getroot()
-    for mesh in r.iter("mesh"):
-        mesh.set("filename", "model://%s/%s" % (model, mesh.get("filename")))
-    lump_crank_pin(r)
-    sp = SPEC["spring"]
-    # gz-physics 7 bullet-featherstone applies joint spring + viscous damping each step (not joint friction): the
-    # power-off release run in cad/sim/gz_check.py shows this spring opening the jaws in Gazebo.
-    g = ET.SubElement(r, "gazebo", reference="gripper")
-    # sdformat's URDF parser copies unknown <gazebo reference="joint"> children into the SDF <joint>; these are SDF
-    # joint-axis dynamics written in the URDF extension form that sdformat converts (springStiffness/springReference)
-    ET.SubElement(g, "springStiffness").text = "%.5f" % sp["k_Nm_per_rad"]
-    ET.SubElement(g, "springReference").text = "%.5f" % math.radians(sp["free_angle_deg"])
-    gz = ET.SubElement(r, "gazebo")
-    ET.SubElement(gz, "plugin", filename="gz-sim-joint-state-publisher-system", name="gz::sim::systems::JointStatePublisher")
-    for j in ACT:
-        p = ET.SubElement(gz, "plugin", filename="gz-sim-joint-position-controller-system", name="gz::sim::systems::JointPositionController")
-        ET.SubElement(p, "joint_name").text = j
-        ET.SubElement(p, "topic").text = "/arc_arm/%s/cmd_pos" % j
-        # velocity mode: the plugin writes a joint velocity command (-error/dt, capped at cmd_max = the joint speed);
-        # bullet-featherstone runs it through its implicit joint motor, whose impulse is limited by the URDF effort
-        # limit (= actuator peak torque). Force-mode PID with MuJoCo gains is unstable on the light gripper links.
-        ET.SubElement(p, "use_velocity_commands").text = "true"
-        ET.SubElement(p, "cmd_max").text = "%g" % VEL[j]
-        ET.SubElement(p, "cmd_min").text = "%g" % -VEL[j]
-    ET.indent(r)
-    t.write(os.path.join(ROOT, "model.urdf"), encoding="utf-8", xml_declaration=True)
-    open(os.path.join(ROOT, "model.config"), "w", encoding="utf-8").write(
-        '<?xml version="1.0"?>\n<model>\n  <name>%s</name>\n  <version>1.0</version>\n  <sdf version="1.11">model.urdf</sdf>\n'
-        '  <description>ARC S2 Engineer arm (%s gripper), generated from the CAD model by cad/sim/build_robot.py</description>\n'
-        '</model>\n' % (model, VAR))
-    os.makedirs(os.path.join(ROOT, "worlds"), exist_ok=True)
-    world = """<?xml version="1.0"?>
-<sdf version="1.11">
-  <world name="arc_arm">
-    <physics name="1ms" type="ignored"><max_step_size>0.001</max_step_size><real_time_factor>1.0</real_time_factor></physics>
-    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"><engine><filename>gz-physics-bullet-featherstone-plugin</filename></engine></plugin>
-    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
-    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
-    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors"><render_engine>ogre2</render_engine></plugin>
-    <gravity>0 0 -9.81</gravity>
-    <light type="directional" name="sun"><cast_shadows>true</cast_shadows><pose>0 0 10 0 0 0</pose><diffuse>0.8 0.8 0.8 1</diffuse><direction>-0.5 0.1 -0.9</direction></light>
-    <model name="ground_plane"><static>true</static><link name="link">
-      <collision name="c"><geometry><plane><normal>0 0 1</normal><size>10 10</size></plane></geometry></collision>
-      <visual name="v"><geometry><plane><normal>0 0 1</normal><size>10 10</size></plane></geometry><material><diffuse>0.3 0.35 0.4 1</diffuse></material></visual>
-    </link></model>
-    <!-- chassis deck placeholder (chassis not designed yet): top at DECK_Z = 120 mm under the arm base -->
-    <model name="chassis_placeholder"><static>true</static><pose>-0.29 0 0.08 0 0 0</pose><link name="link">
-      <collision name="c"><geometry><box><size>0.58 0.48 0.08</size></box></geometry></collision>
-      <visual name="v"><geometry><box><size>0.58 0.48 0.08</size></box></geometry><material><diffuse>0.15 0.16 0.17 1</diffuse></material></visual>
-    </link></model>
-    <!-- DONUT PICK STATION: ARC lower tier, 210 mm high, front edge 30 mm ahead of the bumper (cad/field.py).
-         The field is per station: the robot drives to the scoring platform (DONUT_PLACE) and to the bucket and
-         chute (pipe poses), where this tier is not in front of it. Use arc_arm_free.sdf to play whole sequences. -->
-    <model name="lower_tier"><static>true</static><pose>0.53 0 0.105 0 0 0</pose><link name="link">
-      <collision name="c"><geometry><box><size>1.0 1.0 0.21</size></box></geometry></collision>
-      <visual name="v"><geometry><box><size>1.0 1.0 0.21</size></box></geometry><material><diffuse>0.55 0.45 0.33 1</diffuse></material></visual>
-    </link></model>
-    <include><uri>model://%s</uri><name>%s</name><pose>0 0 0 0 0 0</pose></include>
-  </world>
-</sdf>
-""" % (model, model)
-    open(os.path.join(ROOT, "worlds", "arc_arm.sdf"), "w", encoding="utf-8").write(world)
-    # free-space world (floor + chassis deck only) for whole task sequences across stations; same world name, so the
-    # topics are identical
-    start = world.index("    <!-- DONUT PICK STATION")
-    free = world[:start] + world[world.index("</model>", world.index('<model name="lower_tier"')) + len("</model>\n"):]
-    assert "lower_tier" not in free and "chassis_placeholder" in free
-    open(os.path.join(ROOT, "worlds", "arc_arm_free.sdf"), "w", encoding="utf-8").write(free)
-    return os.path.join(ROOT, "model.urdf")
 
 
-MAX_FACES = 60000      # MuJoCo's STL limit is 200k faces; 60k keeps viewers and Gazebo fast
+MAX_FACES = 60000      # MuJoCo's STL limit is 200k faces; 60k keeps the viewer fast
 
 
 def decimate_meshes():
@@ -518,14 +405,8 @@ def main():
     urdf = build_urdf()
     mjcf, order = build_mjcf()
     scene = build_scene()
-    gz_urdf = build_gazebo(urdf)
     res = validate(urdf, mjcf, order, scene)
-    res["gazebo_package"] = validate_gazebo(gz_urdf)
-    res["gazebo_run"] = gazebo_run(gz_urdf)
-    # Gazebo is informational (dropped as a requirement 2026-11-18): MuJoCo is the validated backend, so the gz package
-    # and its run test are reported but do not gate the build
-    INFO = ("gazebo_package", "gazebo_run")
-    res["ok"] = all(v.get("ok", True) for k, v in res.items() if isinstance(v, dict) and k not in INFO)
+    res["ok"] = all(v.get("ok", True) for k, v in res.items() if isinstance(v, dict))
     json.dump(res, open(os.path.join(ROOT, "validation.json"), "w"), indent=1)
     lines = ["# Validation - arc_arm_%s" % VAR, ""] + ["- **%s**: `%s`" % (k, json.dumps(v)) for k, v in res.items() if k != "variant"]
     open(os.path.join(ROOT, "validation.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")

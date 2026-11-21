@@ -28,16 +28,70 @@ Fusion and have the part, and its mates, follow.
 4. The FreeCAD repos are references.
    - Do not edit them and do not commit or push anything from them.
    - Scratch work goes in `C:\Users\ryanh\tools\_agent\codex-fusion\work\`.
-5. Keep `C:\Users\ryanh\tools\_agent\codex-fusion\PROGRESS.md` current after every part. Record:
-   - what exists in Fusion (folder path, document names and ids);
-   - what is verified;
-   - what is next.
+5. Keep `C:\Users\ryanh\tools\_agent\codex-fusion\PROGRESS.md` as a **short ledger**. A later session resumes
+   from it. It holds:
+   - the folder path, the folder ids and the parameter method, once;
+   - a table with one row per document: folder, name, cloud id, version, `verified` / `WIP` / `failed`, and a few
+     words if something is odd;
+   - a `Next:` line and an `Open issues` list.
 
-   A later session resumes from it.
-6. **Never launch, restart or kill Fusion.** Fusion supports only one running instance; a second launch (which
-   a crash recovery from the Codex sandbox account did on 2026-11-20) leaves a stray process that blocks the
-   user's Fusion. If the Fusion MCP server stops answering, stop at once: update PROGRESS.md and end the run
-   with a note that Fusion needs restarting by the user.
+   Update a part's row when its state changes.
+   - Do not paste raw verification output, measurements or script dumps into the ledger. Verification scripts
+     write their own numbers to `work/verify/<part>.json`.
+   - A row points to that file only when a check failed.
+   - Keep the file under about 150 lines.
+
+   The full history up to 2026-11-20 is in `work/PROGRESS_full_2026-11-20.md`. Read it only to settle a specific
+   question.
+6. **Never launch, restart or kill Fusion yourself.** Fusion supports only one running instance. On 2026-11-20 a
+   second launch from the Codex sandbox account left a stray process that blocked the user's Fusion.
+   - Recovery belongs to `fusion_watchdog.ps1`, which runs as the desktop user. It relaunches Fusion after a
+     crash and writes `UP`, `RECOVERING` or `DOWN` to `work/fusion_state.txt`.
+   - If a Fusion MCP call fails at the transport level, follow **Crash recovery** below. Do not end the run.
+
+## Crash recovery
+Fusion crashed three times on 2026-11-20. Each time it was a native exception inside an MCP-executed Python
+script (`Ns::MCP::executeScript` → `PyEval` → `_core registerTypeInfo`), in a call that did several things at
+once: build, import STEP, `saveAs`, an `adsk.doEvents()`/`time.sleep` polling loop, and `close`.
+
+To avoid it, follow these **script rules**:
+- **One Fusion operation per MCP call:** build and measure; import a reference STEP and close it; `saveAs`;
+  check the cloud; close the document. Each is its own call.
+- **No waiting inside Fusion.** Never call `adsk.doEvents()`, `time.sleep()` or a polling loop inside a Fusion
+  script. To wait for a save, make short read-only calls from outside, a few seconds apart.
+- **Hold nothing across calls.** Re-fetch documents, folders and data files by id at the start of every call.
+  Never reuse an object from a document that was closed.
+- **Keep at most two designs open:** the part, plus its parameter master if needed.
+
+**The cloud data API is the main crash trigger.** On 2026-11-20 there were 709 Fusion calls:
+- 398 touched `dataFiles`, `dataFolders`, `findFolderById`, `isComplete`, `documents.open` or `saveAs`, and
+  18 of them crashed Fusion (4.5 %);
+- 311 did only modelling, measuring or closing, and 2 of them crashed (0.6 %).
+
+Several crashes came seconds after a save, while Fusion was still handling cloud push notifications. So:
+- **Gate every data-API touch through `work/fusion_guard.py`.**
+  - Call `G.data_api(label)` first in every helper that lists folders, reads data files, opens a cloud document
+    or saves. Pass `heavy=True` for `saveAs` and `documents.open`.
+  - After a confirmed save, call `G.saved(name, id, version)`.
+  - The guard allows one data-API call per 20 s and none for 45 s after a save or open. A call that comes too
+    soon raises `RetryLater` at once. Wait outside Fusion for the seconds it gives, then send the call again.
+- **Do not list folders to check something you already know.**
+  - Confirm a save from the document's own `doc.dataFile`, not by listing its folder.
+  - Use `G.cached(name)` and the ledger for existence checks.
+  - List a folder only once per part, just before its `saveAs`, and when reconciling after a crash.
+- **Never run two Fusion calls at once.** Never call the data API from a modelling step.
+
+To recover after a crash:
+1. Wait for `work/fusion_state.txt` to read `UP`: check every 30 s.
+   - `DOWN` means the watchdog has paused after 10 relaunches in an hour. It is not final: it goes back to `UP`
+     once Fusion runs again.
+   - Keep waiting for up to 30 min in total. Only then update the ledger and end the run with a note that the
+     user must restart Fusion.
+2. Reconcile before doing anything else. Read the target folder read-only.
+   - If the part you were working on now exists in the cloud, open it, verify it, record it, and do not build it
+     again.
+   - If it does not exist, rebuild it from scratch. Its earlier in-memory state is gone.
+3. Mark the crash in the ledger's `Open issues` with one line: time, part and step. Then continue the work.
 
 ## Organisation (target)
 ```
@@ -62,6 +116,29 @@ ARC S2 Engineer Arm/
 - **Built, not imported.** Every custom part (plates, hubs, frames, cradles, gears, brackets, gripper parts) is
   built from sketches and features in Fusion. It is not an imported STEP body. Imported STEP is allowed only for
   purchased parts.
+
+## Purchased parts: found and imported, never built
+Purchased and vendor parts include motors, servos, ESCs, bearings, screws, nuts, washers, dowels, inserts,
+standoffs, collars, clips, rails, carriages, lead screws, springs and catalogue gears. These parts are **never
+built** in Fusion. They are also **never exported from the FreeCAD model**: the FreeCAD repo models most of them
+itself, as approximations. For each one:
+
+1. **One document per part number.** Use the part numbers in `cad/data/catalogue.toml` and `cad/fab/BOM.csv`,
+   e.g. one `BHCS M3x6` document. Do not make one per instance. The assemblies insert that one document as many
+   times as needed.
+2. **Find the manufacturer's or distributor's CAD, and import it.** Look in this order:
+   - the repo's `cad/vendor/`, which already has the DJI M2006 and C610 and the Feetech STS3215;
+   - McMaster-Carr through the `mcmaster-carr` MCP server: `mcmaster_search`, then `mcmaster_download_cad`;
+   - the manufacturer's own site, for example Damiao, Hiwin, NSK or SKF.
+3. **Check that the CAD fits the design.** Its key dimensions must match what the arm was designed around:
+   bore, OD and width for bearings; thread, length and head for screws; the mounting pattern for motors and
+   servos. A mismatch is an open issue, not something to adjust.
+4. **Record the source** in the ledger row: the vendor and part number, or the URL.
+5. **No vendor CAD found?** Only then import the FreeCAD-exported shape, name it `<part> (placeholder)`, and list
+   it in the ledger's `Open issues` and in the README. Never build one with sketches.
+
+The per-instance STEP files in `work/assembly_inputs_rev*/purchased/` were exported from the FreeCAD model.
+Use them only for STOW positions, or as a last-resort placeholder.
 - **Key dimensions are user parameters.** Name them after the TOML keys in that revision's `cad/params/*.toml`
   and `cad/interfaces/*.toml`, e.g. `GEAR_module`, `stub_hex_af`, `pocket_clearance`. Give each its unit and the
   TOML comment as its Fusion comment. Sketch dimensions and feature inputs reference these parameters, not
@@ -86,7 +163,8 @@ ARC S2 Engineer Arm/
   - bounding box within 0.1 mm;
   - the same hole count and diameters.
   Use a read-only Fusion script, or import the STEP into a scratch document that you then close without saving.
-- Log the result in PROGRESS.md. A part that does not match is not done.
+- Record the result as the part's ledger status in PROGRESS.md; the numbers go in `work/verify/<part>.json`. A
+  part that does not match is not done.
 - Parametric check: change one key parameter (e.g. a hole PCD or a plate thickness), confirm the part updates
   and its mate follows, then restore the value. Log it.
 - At assembly level: screenshot each top assembly at STOW (front and iso) into the work folder, and check that

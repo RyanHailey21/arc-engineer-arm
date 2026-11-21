@@ -5,12 +5,12 @@ all take streamed position setpoints and run their own control loops; nothing on
 trajectory. So planning lives here, on the host, and only the backend changes between simulation and hardware:
 
     Commander (backend)    send(q_deg) / state_deg()
-      GazeboCommander      gz-transport: /arc_arm/<joint>/cmd_pos (gz.msgs.Double, rad), reads /joint_state
+      MujocoCommander      the MuJoCo model (sim/arc_arm_<variant>/scene.xml), with a viewer
       (HardwareCommander)  later: Feetech serial bus (STS3215) + Feetech/servo bus, same two methods
 
     stream_move(cmd, q_from, q_to, ...)   minimum-jerk move, timed by the joint speed limits, streamed at rate_hz
 
-Limits (position + speed) come from the generated model (robot_spec.json / model.urdf), so sim and planner agree.
+Limits (position + speed) come from the generated model (robot_spec.json), so sim and planner agree.
 Every setpoint is clamped to the joint limits before it is sent.
 """
 import json
@@ -29,7 +29,7 @@ def load_limits(variant="fourbar"):
     root = os.path.join(REPO, "sim", "arc_arm_%s" % variant)
     spec = json.load(open(os.path.join(root, "robot_spec.json"), encoding="utf-8"))
     vel = {}
-    for j in ET.parse(os.path.join(root, "model.urdf")).getroot().iter("joint"):
+    for j in ET.parse(os.path.join(root, "arc_arm.urdf")).getroot().iter("joint"):
         lim = j.find("limit")
         if j.get("name") in ACT and lim is not None:
             vel[j.get("name")] = math.degrees(float(lim.get("velocity")))
@@ -49,52 +49,6 @@ class Commander:
     def state_deg(self):
         raise NotImplementedError
 
-
-class GazeboCommander(Commander):
-    """Streams setpoints to the Gazebo JointPositionControllers over gz-transport (one persistent node)."""
-
-    def __init__(self, variant="fourbar"):
-        from gz.msgs10.double_pb2 import Double
-        from gz.msgs10.model_pb2 import Model
-        from gz.transport13 import Node
-        self.limits = load_limits(variant)
-        self._Double = Double
-        self.node = Node()
-        self.pubs = {j: self.node.advertise("/arc_arm/%s/cmd_pos" % j, Double) for j in ACT}
-        self._q, self._lock = {}, threading.Lock()
-        topic = self._topic = "/world/arc_arm/model/arc_arm_%s/joint_state" % variant
-        if not self.node.subscribe(Model, topic, self._on_state):
-            raise RuntimeError("cannot subscribe to " + topic)
-        # gz-transport discovery takes ~1 s: messages published before a controller connects are dropped
-        t0 = time.time()
-        while not all(p.has_connections() for p in self.pubs.values()):
-            if time.time() - t0 > 10:
-                missing = [j for j, p in self.pubs.items() if not p.has_connections()]
-                raise RuntimeError("no controller listening on cmd_pos for %s - is the world running?" % missing)
-            time.sleep(0.05)
-
-    def _on_state(self, msg):
-        with self._lock:
-            for jt in msg.joint:
-                if jt.name in ACT:
-                    self._q[jt.name] = math.degrees(jt.axis1.position)
-
-    def send(self, q_deg):
-        q = self.clamp(q_deg)
-        for j in ACT:
-            m = self._Double()
-            m.data = math.radians(q[j])
-            self.pubs[j].publish(m)
-
-    def state_deg(self):
-        with self._lock:
-            return dict(self._q)
-
-    def close(self):
-        """Unsubscribe before the interpreter exits: the gz-transport13 Python bindings segfault (exit 139) if a
-        subscription callback is still live during interpreter teardown."""
-        self.node.unsubscribe(self._topic)
-        time.sleep(0.1)
 
 
 class MujocoCommander(Commander):

@@ -164,9 +164,11 @@ class TaskSim:
         from PIL import Image
         Image.fromarray(self.snap_renderer.render()).save(os.path.join(self.snap_dir, name + ".png"))
 
-    def record(self, path, w=1280, h=720, fps=30, crf=26):
-        """Offscreen H.264 video (imageio-ffmpeg): camera follows the chassis, phase captions, drives at 2x."""
+    def record(self, path, w=1280, h=720, fps=30, crf=26, realtime=False):
+        """Offscreen H.264 video (imageio-ffmpeg): camera follows the chassis, phase captions. Chassis drives play at 2x
+        unless realtime, which plays the whole run at 1x (for showing the arm at its real servo speed)."""
         import imageio_ffmpeg
+        self.realtime = realtime
         mj, m = self.mj, self.model
         m.vis.global_.offwidth, m.vis.global_.offheight = max(w, m.vis.global_.offwidth), max(h, m.vis.global_.offheight)
         self.renderer = mj.Renderer(m, h, w)
@@ -193,11 +195,13 @@ class TaskSim:
         img = Image.fromarray(self.renderer.render())
         dr = ImageDraw.Draw(img, "RGBA")
         name = self.phase["phase"] if self.phase else ""
-        fast = name.startswith("drive")
+        fast = name.startswith("drive") and not self.realtime
+        rate = "real time, servos at %.0f %% of rated speed" % (100 * self.speed) if self.realtime else ""
         dr.rectangle([0, 0, img.width, 92], fill=(0, 0, 0, 150))
         dr.text((24, 12), "%s%s" % (self.task_label, name), font=self.font, fill=(255, 255, 255, 255))
         dr.text((24, 54), "ARC S2 Engineer arm, four-bar gripper  |  MuJoCo  |  t = %.1f s%s"
-                % (d.time, "   (2x)" if fast else ""), font=self.font_s, fill=(210, 210, 210, 255))
+                % (d.time, "   (2x)" if fast else ("   |  " + rate if rate else "")), font=self.font_s,
+                fill=(210, 210, 210, 255))
         self.video.send(np.ascontiguousarray(np.asarray(img)))
         self.frames += 1
 
@@ -330,10 +334,12 @@ class TaskSim:
                     self.phase["contacts"][k] = max(self.phase["contacts"].get(k, 0.0), -1000.0 * c.dist)
         if self.log is not None:
             self._log_tick()
-        if self.video is not None and self.data.time >= self.next_frame:
+        # Frames on a fixed clock (next_frame += period). This runs once per 10 ms control tick, so scheduling the
+        # next frame from data.time rounded every 33.3 ms frame up to 40 ms and played the video 1.2x too fast.
+        while self.video is not None and self.data.time >= self.next_frame:
             self._frame()
-            fast = self.phase is not None and self.phase["phase"].startswith("drive")
-            self.next_frame = self.data.time + (2.0 if fast else 1.0) / self.fps
+            fast = self.phase is not None and self.phase["phase"].startswith("drive") and not self.realtime
+            self.next_frame += (2.0 if fast else 1.0) / self.fps
         if self.viewer is not None:
             self.viewer.sync()
             lag = self.data.time - (time.perf_counter() - self.t_wall)
@@ -581,6 +587,7 @@ def main():
     ap.add_argument("--log", help="write a per-tick .npz (time, joints, torques, grasp wrench) for the report plots")
     ap.add_argument("--snap", help="write report stills (PNG) at the key task poses into this folder")
     ap.add_argument("--video", help="write an MP4 (1280x720, 30 fps, drives at 2x); needs imageio-ffmpeg")
+    ap.add_argument("--realtime", action="store_true", help="with --video: play the whole run at 1x (no 2x drives)")
     a = ap.parse_args()
     root = os.path.join(REPO, "sim", "arc_arm_%s" % a.variant)
     tp = json.load(open(os.path.join(root, "task_poses.json"), encoding="utf-8"))
@@ -597,7 +604,7 @@ def main():
         sys.exit("IK/jaw copy disagrees with CAD by %.2g deg" % worst)
     sim = TaskSim(a.variant, viewer=not a.no_viewer, speed=a.speed)
     if a.video:
-        sim.record(a.video)
+        sim.record(a.video, realtime=a.realtime)
     if a.log:
         sim.log = dict(t=[], phase=[], q=[], qd=[], tau=[], w_donut=[], w_pipe=[], _n=dict(donut=0, pipe=0))
     if a.snap:
