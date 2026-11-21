@@ -37,7 +37,13 @@ WALL_INSERTS = [[-14.0, 25.0], [2.0, 25.0], [10.0, 23.0]]   # M3 heat-set insert
 # finger has the same outline. The lower coupler pin is in double shear between the block (bore to ZLUG top) and
 # the bottom finger. Palm side: a lower ground layer (ZGB); its D4x8 pins stop short of the servo body.
 ZLB = [-25.0, -22.0]    # bottom link layer z
-ZGB = [-21.5, -16.3]    # palm lower ground-pivot layer z (top = servo cradle floor top; servo body from -16)
+ZGB = [-21.5, -16.3]    # palm lower ground-pivot layer z (the servo cradle's own floor is higher: SEAT_Z - 32.9)
+SEAT_Z = 19.0           # jaw servo horn seat z: the supplied horn (4.5 tall, hardware.STS) tops out at 23.5 = the lower
+                        # drive link's underside (ZL0), which it screws to. The real case reaches 32.9 below the seat, so
+                        # the cradle floor top is at -13.95 (rev B Fusion check 2026-11-21: the old -16.3 floor left the
+                        # real servo 2.9 mm off it, and a 4.0 horn on a 19.5 seat put the real horn 0.5 into the link)
+Y_OUT = 76.5            # palm outboard end |y| (cradle, mount plate, lower layer): 2.7 mm wall past the servo pocket
+                        # (the real case ends 35.1 from the spline, 0.6 past the old pocket)
 ZLUG = [-21.5, -14.5]   # jaw block above the bottom link: lower coupler-pin bore z (D4x14 pin, z -28.9 .. -14.9)
 
 # The jaw servo is an STS3215: its torques come from params/actuators.toml [STS3215] (one source for every joint).

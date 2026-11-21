@@ -1,44 +1,9 @@
 {
  "revision": "rev_b",
- "solids": 582,
- "pairs_tested": 1902,
+ "solids": 577,
+ "pairs_tested": 1833,
  "min_mm3": 0.5,
  "overlaps": [
-  {
-   "a": "FK-AP-019-25T_004",
-   "b": "HORN-25T (placeholder)004",
-   "volume_mm3": 553.89
-  },
-  {
-   "a": "Drive_Gear_m2_54T_J2",
-   "b": "Pinion_m2_18T_J2",
-   "volume_mm3": 165.41
-  },
-  {
-   "a": "SJ-WK00-0022MIDDLECASE_004",
-   "b": "Gripper_Palm",
-   "volume_mm3": 161.62
-  },
-  {
-   "a": "SJ-WK00-0023BOTTOMCASE_004",
-   "b": "Gripper_Palm",
-   "volume_mm3": 127.24
-  },
-  {
-   "a": "FK-AP-019-25T_004",
-   "b": "Link_LD_lo_CF3",
-   "volume_mm3": 57.64
-  },
-  {
-   "a": "SJ-WK00-0021TOPCABINETCASE_108",
-   "b": "Gripper_Palm",
-   "volume_mm3": 55.54
-  },
-  {
-   "a": "Gripper_Palm",
-   "b": "9271K56",
-   "volume_mm3": 31.55
-  },
   {
    "a": "Drive_Frame_L",
    "b": "INSERT",
@@ -180,11 +145,6 @@
    "volume_mm3": 15.91
   },
   {
-   "a": "SJ-WK00-0021TOPCABINETCASE_108",
-   "b": "MOTOR-1723_3_004",
-   "volume_mm3": 15.91
-  },
-  {
    "a": "FK-AP-019-25T_11",
    "b": "BHCS_M3x030",
    "volume_mm3": 11.08
@@ -270,6 +230,11 @@
    "volume_mm3": 8.44
   },
   {
+   "a": "SB5x008",
+   "b": "Nyloc_M027",
+   "volume_mm3": 8.44
+  },
+  {
    "a": "OUTPUTGEAR_20",
    "b": "FK-AP-019-25T_11",
    "volume_mm3": 8.33
@@ -346,13 +311,13 @@
   },
   {
    "a": "SJ-WK00-0021TOPCABINETCASE_108",
-   "b": "HORN-25T (placeholder)004",
-   "volume_mm3": 7.07
+   "b": "FK-AP-019-25T_004",
+   "volume_mm3": 6.77
   },
   {
    "a": "SB5x006",
    "b": "Nyloc_M024",
-   "volume_mm3": 5.74
+   "volume_mm3": 5.73
   },
   {
    "a": "SJ-WK00-0023BOTTOMCASE_12",
@@ -405,9 +370,19 @@
    "volume_mm3": 5.62
   },
   {
-   "a": "FK-AP-019-25T_004",
-   "b": "PIN-D4x20",
-   "volume_mm3": 4.07
+   "a": "SJ-WK00-0021TOPCABINETCASE_108",
+   "b": "LUOSI-2-25_1_016",
+   "volume_mm3": 5.16
+  },
+  {
+   "a": "SJ-WK00-0021TOPCABINETCASE_108",
+   "b": "LUOSI-2-25_1_017",
+   "volume_mm3": 5.16
+  },
+  {
+   "a": "SJ-WK00-0021TOPCABINETCASE_108",
+   "b": "MOTOR-1723_3_004",
+   "volume_mm3": 4.11
   },
   {
    "a": "Wrist_Level_Member_CF3",
@@ -550,11 +525,6 @@
    "volume_mm3": 2.22
   },
   {
-   "a": "FA_Standoff_D8_1",
-   "b": "BHCS_M3x022",
-   "volume_mm3": 2.14
-  },
-  {
    "a": "UA_Standoff_D8_0",
    "b": "BHCS_M3x016",
    "volume_mm3": 2.13
@@ -562,21 +532,31 @@
   {
    "a": "UA_Standoff_D8_1",
    "b": "BHCS_M3x018",
-   "volume_mm3": 2.12
+   "volume_mm3": 2.13
   },
   {
    "a": "FA_Standoff_D8_0",
    "b": "BHCS_M3x020",
-   "volume_mm3": 2.12
+   "volume_mm3": 2.13
   },
   {
    "a": "FA_Standoff_D8_1",
-   "b": "BHCS_M3x021",
-   "volume_mm3": 2.1
+   "b": "BHCS_M3x022",
+   "volume_mm3": 2.13
+  },
+  {
+   "a": "FK-AP-019-25T_004",
+   "b": "PIN-D4x20",
+   "volume_mm3": 2.11
   },
   {
    "a": "FA_Standoff_D8_0",
    "b": "BHCS_M3x019",
+   "volume_mm3": 2.1
+  },
+  {
+   "a": "FA_Standoff_D8_1",
+   "b": "BHCS_M3x021",
    "volume_mm3": 2.09
   },
   {
@@ -633,26 +613,6 @@
    "a": "LUOSI-2-25_1_005",
    "b": "PAN-M2x007",
    "volume_mm3": 1.64
-  },
-  {
-   "a": "BHCS_M3x041",
-   "b": "HORN-25T (placeholder)003",
-   "volume_mm3": 1.55
-  },
-  {
-   "a": "BHCS_M3x039",
-   "b": "HORN-25T (placeholder)003",
-   "volume_mm3": 1.54
-  },
-  {
-   "a": "BHCS_M3x040",
-   "b": "HORN-25T (placeholder)003",
-   "volume_mm3": 1.54
-  },
-  {
-   "a": "BHCS_M3x038",
-   "b": "HORN-25T (placeholder)003",
-   "volume_mm3": 1.53
   },
   {
    "a": "SB5x001",
@@ -715,11 +675,6 @@
    "volume_mm3": 1.39
   },
   {
-   "a": "OUTPUTGEAR_004",
-   "b": "PIN-D4x20",
-   "volume_mm3": 1.26
-  },
-  {
    "a": "MOTOR-1723_3_1",
    "b": "SJ-WK00-0023BOTTOMCASE_12",
    "volume_mm3": 1.16
@@ -760,5 +715,5 @@
    "volume_mm3": 0.77
   }
  ],
- "seconds": 1455.4
+ "seconds": 920.3
 }

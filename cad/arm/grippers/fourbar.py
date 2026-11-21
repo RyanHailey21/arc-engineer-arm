@@ -75,10 +75,15 @@ def body_fb_palm():
     front = IF_PALM.points_yz()                 # palm <-> hub bolt pattern (interfaces/roll_hub__gripper_palm.toml)
     XG, YG, S = FB["XG"], FB["YG"], FB["S"]
     g0, g1 = FB["ZG"]
-    # STS3215 (45.2 x 24.7 x 35), spline on the left drive-pivot axis pointing +z, 11 mm from the body end
-    sv = box(XG - 12.35, YG - 11.0, -16.0, XG + 12.35, YG - 11.0 + 45.2, 19.0)        # body runs outboard
-    svv = sv.fuse(zc(XG, YG, 19.0, 19.5, 3.0))
+    # STS3215 (vendor model, hardware.sts3215), spline on the left drive-pivot axis pointing +z, horn seat at SEAT_Z,
+    # body running outboard (+y): canonical (x long, y spline, z width) -> palm (y, z, x)
+    seat, YO = FB["SEAT_Z"], FB["Y_OUT"]
+    m = App.Matrix(0, 0, 1, XG, 1, 0, 0, YG, 0, 1, 0, seat, 0, 0, 0, 1)
+    svv, sv = (s_.transformGeometry(m) for s_ in H.sts3215(0.0, -1))
     out.append(Part_("Grip_Servo_STS3215", svv, sv, "CAT", "STS3215", "motor", "direct drive on the left drive link (disc horn)"))
+    St, c_ = H.STS, IF_STS["pocket"]["clearance"]
+    pk = box(XG - St["w"] - c_, YG + St["x0"] - c_, seat + St["bottom"] - 0.05,
+             XG + St["w"] + c_, YG + St["x1"] + c_, 20.0)                     # servo pocket (open top)
     # palm: mount plate on the hub flange, servo cradle, ground layer, spring boss
     # corners: every block that runs out from the mount plate ends at x = XG + 15; its two free vertical corners there
     # get the same R3 (blocks sharing a footprint stay flush), while its corners on the mount plate (x = 69) stay
@@ -86,18 +91,18 @@ def body_fb_palm():
     XE = XG + 15.0
 
     def _round_end(shape, r=3.0, x=XE):
-        # also the back corners (x = 69) that stand past the mount plate's ends (y -47.5 .. 75.5): free there too
+        # also the back corners (x = 69) that stand past the mount plate's ends (y -47.5 .. Y_OUT): free there too
         def free(e):
             b = e.BoundBox
             if abs(b.XMin - x) < 1e-6:
                 return True
-            return x == XE and abs(b.XMin - 69.0) < 1e-6 and not (-(YG + 9) - 1e-6 <= b.YMin <= YG + 37.0 + 1e-6)
+            return x == XE and abs(b.XMin - 69.0) < 1e-6 and not (-(YG + 9) - 1e-6 <= b.YMin <= YO + 1e-6)
         es = [e for e in shape.Edges if e.Curve.TypeId == "Part::GeomLine" and e.BoundBox.ZLength > 1e-6
               and e.BoundBox.XLength < 1e-6 and e.BoundBox.YLength < 1e-6 and free(e)]
         return shape.makeFillet(r, es) if es else shape
-    palm = _round_end(box(65, -(YG + 9), FB["ZGB"][0], 69, YG + 37.0, g1), 2.0, 65.0)   # mount plate (bottom flush with the lower plates)
-    palm = palm.fuse(_round_end(box(69, YG - 14.0, -19.0, XE, YG + 37.0, 19.0)).cut(
-        box(XG - 12.65, YG - 11.3, -16.3, XG + 12.65, YG - 11.0 + 45.5, 20.0)))         # cradle (open top)
+    palm = _round_end(box(65, -(YG + 9), FB["ZGB"][0], 69, YO, g1), 2.0, 65.0)   # mount plate (bottom flush with the lower plates)
+    palm = palm.fuse(_round_end(box(69, YG - 14.0, -19.0, XE, YO, 19.0)).cut(
+        pk))                                                                             # cradle (open top)
     palm = palm.fuse(_round_end(box(69, -(YG + S + 6), g0, XE, YG + S + 6, g1)))         # ground-pivot layer
     SP = SPRING
     z_sp1 = FB["ZL0"][0] - 0.3                                                             # spring top, under the lower link
@@ -110,7 +115,7 @@ def body_fb_palm():
     # lower ground-pivot layer (bottom links, params ZGB): the servo cradle's floor thickened on the left; on the right
     # a plate flush with the top ground-pivot layer above it (same y extent), both off the mount plate, free corners R3
     b0, b1 = FB["ZGB"]
-    palm = palm.fuse(_round_end(box(69, YG - 14.0, b0, XE, YG + 37.0, b1)))
+    palm = palm.fuse(_round_end(box(69, YG - 14.0, b0, XE, YO, b1)))
     palm = palm.fuse(_round_end(box(69, -(YG + S + 6.0), b0, XE, -(YG - 14.0), b1)))
     palm = palm.removeSplitter()                  # flush blocks share one face: no seam lines where they meet
     for (y, z) in front:
@@ -128,13 +133,13 @@ def body_fb_palm():
     # on the palm itself after the cuts produced an invalid solid; rounding the simple cutter boxes is robust.)
     def _rounded_cutter(y0, y1, round_y, z0=22.0):
         # round only the bottom edges at y in round_y: rounding the outer edge of the corner cutter (beyond the palm's
-        # side at y 75.5) left a thin sliver at the palm edge (check_holes flagged it as a broken-out D4 'hole')
+        # side at y Y_OUT) left a thin sliver at the palm edge (check_holes flagged it as a broken-out D4 'hole')
         c = box(64.0, y0, z0, 69.0, y1, g1 + 1.0)
         return c.makeFillet(2.0, [e for e in c.Edges if e.BoundBox.YLength < 1e-6 and e.BoundBox.ZLength < 1e-6
                                   and abs(e.BoundBox.ZMin - z0) < 1e-6
                                   and any(abs(e.BoundBox.YMin - y) < 1e-6 for y in round_y)])
     palm = palm.cut(_rounded_cutter(-38.0, -28.0, (-38.0, -28.0)))   # slot over rod 2's plane only (y -35..-31)
-    palm = palm.cut(_rounded_cutter(54.0, YG + 38.0, (54.0,), 19.0))   # down to the cradle top: no ledge above it
+    palm = palm.cut(_rounded_cutter(54.0, YO + 1.0, (54.0,), 19.0))   # down to the cradle top: no ledge above it
     out.append(Part_("Gripper_Palm", palm, palm, "PRINT", "custom: PETG-CF print (concept)", "pla"))
     for i, (y, z) in enumerate(front):
         # M3x8 (stock ISO 7380): 4 mm mount plate + full 3 mm of the hub flange thread; tip 1 mm clear of the roll housing
@@ -188,7 +193,10 @@ def body_fb_link(s, drive):
         sp = sp.cut(zc(g[0], g[1], 0, 50, FB["PIN_R"] + 0.05))
         out.append(Part_("Washer_%s" % nm, sp, sp, "CAT", "WASHER-D4", "steel", "thrust washers either side of the ground layer"))
         if s > 0:
-            horn = zc(g[0], g[1], 19.5, 23.5, 10.0).cut(zc(g[0], g[1], 19, 24, 2.6))
+            St, z0 = H.STS, FB["SEAT_Z"]                            # supplied horn: D9 hub on the spline, D19.95 disc on top
+            zd = z0 + St["horn_t"] - St["horn_disc_t"]
+            horn = zc(g[0], g[1], z0, zd, St["horn_hub_d"] / 2).fuse(zc(g[0], g[1], zd, z0 + St["horn_t"], St["horn_d"] / 2))
+            horn = horn.cut(zc(g[0], g[1], z0 - 1, z0 + St["horn_t"] + 1, 2.6))
             out.append(Part_("Servo_Horn_STS_disc", horn, horn, "CAT", "HORN-25T", "alu", "STS3215 disc horn, screwed to the lower drive link"))
             pin = zc(g[0], g[1], FB["ZSEC"][1] + 0.5 - 20.0, FB["ZSEC"][1] + 0.5, FB["PIN_R"])
             out.append(Part_("Pin_D4x20_ground_LD", pin, pin, "CAT", "PIN-D4x20", "steel", "turns with the drive link, bushed in the palm"))

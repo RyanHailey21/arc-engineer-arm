@@ -1,0 +1,124 @@
+component,qty,material,mass_g,source_id,source_version
+"3PIN-1_1",6,"STS3215 (catalogue mass)",0.409,None,None
+"4040V300",2,"DM-J4340-2EC (catalogue mass)",14.832,None,None
+"4310_202409130001",2,"DM-J4340-2EC (catalogue mass)",13.802,None,None
+"4340__3D_20240814_1_2_4",2,"DM-J4340-2EC (catalogue mass)",16.097,None,None
+"6700ZZ",6,"6700ZZ (catalogue mass)",2.000,urn:adsk.wipprod:dm.lineage:_ZNgT1JnSXyAGqzcjyGA-w,3
+"6701ZZ",1,"6701ZZ (catalogue mass)",3.000,urn:adsk.wipprod:dm.lineage:Fkx3lJ7nSkWrQ4nVjmOfjg,3
+"6805ZZ",1,"6805ZZ (catalogue mass)",18.000,urn:adsk.wipprod:dm.lineage:2fK2Oh36RiWw_O2DUTDciQ,3
+"9271K56",1,"Steel",3.475,urn:adsk.wipprod:dm.lineage:h08mwmOoRdaO7r2gxqi4LQ,2
+"BHCS_M3x10",4,"Steel",0.655,urn:adsk.wipprod:dm.lineage:IK31fZhGTTiAAPHkmPJ9Qg,2
+"BHCS_M3x5",8,"Steel",0.433,urn:adsk.wipprod:dm.lineage:YLDfdSSpRsmUxi4FYQJ7_A,2
+"BHCS_M3x6",39,"Steel",0.477,urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q,2
+"BHCS_M3x8",10,"Steel",0.566,urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA,2
+"Base_Plate_AL5",1,"Aluminum 6061",1040.997,urn:adsk.wipprod:dm.lineage:_5l7s_6pRv2j5WC-l0Yslg,2
+"C610",1,"Steel",51.485,urn:adsk.wipprod:dm.lineage:AbGH-q4ERe-WE3qcbgm5eQ,2
+"CHOUCHENGMR106_3",6,"STS3215 (catalogue mass)",0.358,None,None
+"CLIP (placeholder)",3,"CLIP (catalogue mass)",1.000,urn:adsk.wipprod:dm.lineage:6kHQHWbHSwayl5XSRh7HiQ,2
+"COLLAR10",2,"COLLAR10 (catalogue mass)",25.000,urn:adsk.wipprod:dm.lineage:1BoE51w6QTCcgyLrkPwJiQ,3
+"CSK_M3x6",8,"Steel",0.399,urn:adsk.wipprod:dm.lineage:mqyMZP3VTm2AfpCl3NX2oQ,2
+"Clevis_L_CF3",1,"CF plate 3K",18.029,urn:adsk.wipprod:dm.lineage:apV3WtJXQzGm42u8JNvZNA,2
+"Clevis_R_CF3",1,"CF plate 3K",18.104,urn:adsk.wipprod:dm.lineage:BSumk09mSdyNm_HNWyDLbw,2
+"Crank_CF3",1,"CF plate 3K",7.628,urn:adsk.wipprod:dm.lineage:7CHGS6VTS_SBmQ6dtH8Gaw,2
+"Dowel_3x7",4,"Steel",0.360,urn:adsk.wipprod:dm.lineage:I9orrBj7SradVOeHnj_VIg,2
+"Dowel_4x5",6,"Steel",0.427,urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw,2
+"ECLIP",3,"ECLIP (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:EaHeYLbYRbaQyxS6jQM3bQ,3
+"Elbow_Shaft_D10x101",1,"Steel 7.85",61.679,urn:adsk.wipprod:dm.lineage:PpjofDiJRPGpTPLWhu_Tyg,2
+"FA_Standoff_D8_0",1,"Aluminum 6061",4.027,urn:adsk.wipprod:dm.lineage:_yi_dJQ8RGe68clPWb2M7w,2
+"FA_Standoff_D8_1",1,"Aluminum 6061",4.027,urn:adsk.wipprod:dm.lineage:Sb4z8AsvTnOnR2H2jluNqg,2
+"FK-AP-019-25T_11",3,"STS3215 (catalogue mass)",2.295,None,None
+"Finger_L_bot_CF3",1,"CF plate 3K",6.898,urn:adsk.wipprod:dm.lineage:VfSg6udJROykoBKUE3K21g,2
+"Finger_R_bot_CF3",1,"CF plate 3K",6.898,urn:adsk.wipprod:dm.lineage:1txF1MguRp2QlZd6FzP_cw,2
+"Forearm_L_CF3",1,"CF plate 3K",37.802,urn:adsk.wipprod:dm.lineage:HhxNsBd9QfST1_QGP84bEA,2
+"Forearm_R_CF3",1,"CF plate 3K",37.802,urn:adsk.wipprod:dm.lineage:2501f9_yQA2CFKnAee_UCw,2
+"G43_V1_1_3-230824_4",2,"DM-J4340-2EC (catalogue mass)",10.411,None,None
+"Gripper_Palm",1,"PETG-CF print (effective)",65.976,urn:adsk.wipprod:dm.lineage:wxfNb0iAT2iXjeidN2u2mg,2
+"INSERT",18,"INSERT (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:Gb7W_OS_Q7Oim2wk-y7I9Q,3
+"J1_Output_Hub",1,"Aluminum 6061",13.024,urn:adsk.wipprod:dm.lineage:15JAW7C5R6Chn9TqLCRHdA,3
+"J2_Output_Hub_Journal",1,"Aluminum 6061",16.466,urn:adsk.wipprod:dm.lineage:lfU8fLgiRSaGSRgz6MKdRw,3
+"Jaw_Block_L",1,"PETG-CF print (effective)",30.742,urn:adsk.wipprod:dm.lineage:9jxUozqyT_qs53a9IWErsw,2
+"Jaw_Block_R",1,"PETG-CF print (effective)",30.742,urn:adsk.wipprod:dm.lineage:-FqalFr9QmueYJfkrbNhSw,2
+"LUOSI-2-25_1_2",12,"STS3215 (catalogue mass)",0.273,None,None
+"Level_Hub_Elbow",1,"Aluminum 6061",3.074,urn:adsk.wipprod:dm.lineage:mMtJLDI9Qe6XiD81bNAb0w,2
+"Level_Hub_Wrist",1,"Aluminum 6061",3.074,urn:adsk.wipprod:dm.lineage:8vqzuBwmS-WNCpyvmqGSvA,2
+"Level_Rocker_CF3",1,"CF plate 3K",16.000,urn:adsk.wipprod:dm.lineage:pLty1pzxQiGPP1_otYn62Q,2
+"Link_LD_bot_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:KOaJNAXoR7yv7LCGf1s9Cw,2
+"Link_LD_hi_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:0WPNrlNOQ5CiUOIbhsi55A,2
+"Link_LD_lo_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:Z7qz21m5R-i8E3mBR_1RhA,2
+"Link_LI_bot_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:umc0Mz66TkO_2t4tDHt4aw,2
+"Link_LI_hi_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:NRV1KiIXTDuwOs2Hp6TDag,2
+"Link_LI_lo_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:cmi8fiL3RnumEao453e3UA,2
+"Link_RD_bot_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:64Cse4UmRUumdBSel43s0w,2
+"Link_RD_hi_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:-1qhwDmdS0CthdeDJ8PTdQ,2
+"Link_RD_lo_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:mLOYdrQZQA2tux1ZxJmwQA,2
+"Link_RI_bot_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:k4N8WxhsQRamISnNH_Izrg,2
+"Link_RI_hi_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:3yFlaaLIScO4kY7-WWXM0w,2
+"Link_RI_lo_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:3LqWuCq6Ttaf9WDV40DQLA,2
+"M2_5-800",12,"DM-J4340-2EC (catalogue mass)",0.154,None,None
+"M2_5-L4",8,"DM-J4340-2EC (catalogue mass)",0.106,None,None
+"M2_5-L6",14,"DM-J4340-2EC (catalogue mass)",0.133,None,None
+"MOTOR-1723_3_1",3,"STS3215 (catalogue mass)",16.198,None,None
+"MR105ZZ",6,"MR105ZZ (catalogue mass)",1.200,urn:adsk.wipprod:dm.lineage:ZiVZQUtYSQ-dYlhNg8SS6w,3
+"Nyloc_M3",4,"Steel",0.622,urn:adsk.wipprod:dm.lineage:UzPCxPnVQzOnQ3X-MZpGKw,2
+"Nyloc_M4",6,"Steel",1.212,urn:adsk.wipprod:dm.lineage:_4zPGOeHRGuYkHYYEt12Fg,2
+"OUTPUTGEAR_20",3,"STS3215 (catalogue mass)",2.475,None,None
+"PAN-M2x12",8,"PAN-M2x12 (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:KYhiKBSHTKan5gwdf7Tnwg,3
+"PCB-CHAZUO_92_2",3,"STS3215 (catalogue mass)",1.955,None,None
+"PCLIP (placeholder)",2,"PCLIP (catalogue mass)",1.000,urn:adsk.wipprod:dm.lineage:8IivQ1vMQlOrXbUQwjLGsA,2
+"PIN-D4x14",10,"PIN-D4x14 (catalogue mass)",1.400,urn:adsk.wipprod:dm.lineage:9c_18b9_RgiFr_OLkYYsJA,2
+"PIN-D4x20",1,"PIN-D4x20 (catalogue mass)",2.000,urn:adsk.wipprod:dm.lineage:7l8EkxA4SlqkIaIgPERwhg,2
+"PIN-D4x30",1,"PIN-D4x30 (catalogue mass)",3.000,urn:adsk.wipprod:dm.lineage:y9AJF3WPRgS7xW5eNCAZWw,2
+"PIN-D4x8",4,"PIN-D4x8 (catalogue mass)",0.800,urn:adsk.wipprod:dm.lineage:83z5oFJRRuuL-EuhoBaokw,2
+"Pad_L_TPU",1,"TPU print (effective)",19.620,urn:adsk.wipprod:dm.lineage:4t-y8JeuRpSo2KikloCD0Q,2
+"Pad_R_TPU",1,"TPU print (effective)",19.620,urn:adsk.wipprod:dm.lineage:pO-AYcvMTvmrbhGoA3zcFQ,2
+"Rod_1_CF3",1,"CF plate 3K",17.340,urn:adsk.wipprod:dm.lineage:-9fZ7ryVRFqErvXzhkiShA,2
+"Rod_2_CF4",1,"CF plate 3K",33.088,urn:adsk.wipprod:dm.lineage:vFasrF19S22bF7hA2NctWA,2
+"Rod_AB_CF3",1,"CF plate 3K",17.340,urn:adsk.wipprod:dm.lineage:ab7wjp0zQsSkBCRWsmF13A,2
+"Roll_Housing",1,"PETG-CF print (effective)",35.041,urn:adsk.wipprod:dm.lineage:A9aSUxOfT3SbtlkV7AdlYQ,2
+"Roll_Hub",1,"Aluminum 6061",11.467,urn:adsk.wipprod:dm.lineage:aUDmXxMFRoqpT70BPKBBXg,2
+"Rotor - supplier housing split",2,"Steel",45.171,None,None
+"SB5x10",1,"Steel",4.017,urn:adsk.wipprod:dm.lineage:fmcBAtHvRVSSF-FtFC9f2Q,2
+"SB5x12",1,"Steel",4.323,urn:adsk.wipprod:dm.lineage:99nuskZpSKK3EtyBmoF1IA,2
+"SB5x4",1,"Steel",3.034,urn:adsk.wipprod:dm.lineage:PwuLRF5PTjOhEt6VvplUnA,2
+"SB5x8",3,"Steel",3.409,urn:adsk.wipprod:dm.lineage:sv0F5xT5T66lCJ91memEZw,2
+"SHCS_M3x6",12,"Steel",0.726,urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw,2
+"SHCS_M4x12",4,"Steel",1.931,urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA,2
+"SHCS_M4x8",1,"Steel",1.619,urn:adsk.wipprod:dm.lineage:G55wbKMDR_2D433JI0yOFA,2
+"SJ-WK00-0021TOPCABINETCASE_104",3,"STS3215 (catalogue mass)",13.080,None,None
+"SJ-WK00-0022MIDDLECASE_68",3,"STS3215 (catalogue mass)",8.637,None,None
+"SJ-WK00-0023BOTTOMCASE_12",3,"STS3215 (catalogue mass)",10.961,None,None
+"Sector_m1_77T_L",1,"PA12 print (effective)",3.664,urn:adsk.wipprod:dm.lineage:9FrFZtJrQISZLpVjBqMvkQ,2
+"Sector_m1_77T_R",1,"PA12 print (effective)",3.664,urn:adsk.wipprod:dm.lineage:8V6qMkX5SmW3r-V6nrIj5w,2
+"Shim_A",1,"Shim steel 7.90",0.354,urn:adsk.wipprod:dm.lineage:BioWRYorSle-n_GQhwl1bw,2
+"Shim_Ev1",1,"Shim steel 7.90",0.118,urn:adsk.wipprod:dm.lineage:J3TN1AW3RxmQDQGW5Tjsvg,2
+"Sleeve_E_outer",1,"Aluminum 6061",0.710,urn:adsk.wipprod:dm.lineage:enhJZSq2Rxqam4HvVVJvcw,2
+"Spacer_B",1,"Aluminum 6061",0.915,urn:adsk.wipprod:dm.lineage:yxXJTcXERkW0kFV-DDWOEA,2
+"Spacer_G1",1,"Aluminum 6061",0.687,urn:adsk.wipprod:dm.lineage:2VUvTviWQ4izdOj8ndVoXA,2
+"Standoff_D6_L0",1,"Aluminum 6061",2.892,urn:adsk.wipprod:dm.lineage:ZQLkTeOwSAy4Jq_U2PyNIg,2
+"Standoff_D6_L1",1,"Aluminum 6061",2.892,urn:adsk.wipprod:dm.lineage:YjIfC7RwSKSnKaKWot9ccQ,2
+"Standoff_D6_R0",1,"Aluminum 6061",2.892,urn:adsk.wipprod:dm.lineage:3SPRYcMNT-CGGyfAlenAgA,2
+"Standoff_D6_R1",1,"Aluminum 6061",2.892,urn:adsk.wipprod:dm.lineage:YNpa-RRhRNOCkw9zpu-EuA,2
+"Stator - supplier housing split",2,"Steel",712.018,None,None
+"Tower_Bracket_L0",1,"PETG-CF print (effective)",1.648,urn:adsk.wipprod:dm.lineage:A96UFFERTz-MzdiEYaBbwA,2
+"Tower_Bracket_L1",1,"PETG-CF print (effective)",1.648,urn:adsk.wipprod:dm.lineage:xDbNswVfQ5auQlo9WsnP1Q,2
+"Tower_Bracket_R0",1,"PETG-CF print (effective)",1.648,urn:adsk.wipprod:dm.lineage:sifw5ACHQVOObNmwSa7gyQ,2
+"Tower_Bracket_R1",1,"PETG-CF print (effective)",1.648,urn:adsk.wipprod:dm.lineage:CYVOX57ISjecWccr5wNdig,2
+"Tower_L_CF3",1,"CF plate 3K",49.870,urn:adsk.wipprod:dm.lineage:RpS7r5QSSvmejDEF5VD1OA,3
+"Tower_R_CF3",1,"CF plate 3K",39.507,urn:adsk.wipprod:dm.lineage:VbbedEC-QSyA40KoD1UlwA,3
+"UA_Standoff_D8_0",1,"Aluminum 6061",10.739,urn:adsk.wipprod:dm.lineage:_wj87uxITKqt9uPVcwNSow,2
+"UA_Standoff_D8_1",1,"Aluminum 6061",10.739,urn:adsk.wipprod:dm.lineage:a7QwMGnsT-K_gNvL6nFVeg,2
+"Upper_Arm_L_CF3",1,"CF plate 3K",31.976,urn:adsk.wipprod:dm.lineage:GoRgoG4jQ56Ikw8yLCvXug,4
+"Upper_Arm_R_CF3",1,"CF plate 3K",31.447,urn:adsk.wipprod:dm.lineage:3wh6UplhTDiln-CMVxl8Bg,2
+"WASHER-D4",4,"WASHER-D4 (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:IggnPTkGRR2WTcTTrb4epg,2
+"WJ-DP00-0002-FK-AP-020_7",3,"STS3215 (catalogue mass)",1.773,None,None
+"Washer_Dv2_head",1,"Shim steel 7.90",0.068,urn:adsk.wipprod:dm.lineage:dOA_Tgn8SPmJeKMa8fVIuQ,2
+"Washer_Ev2_head",1,"Shim steel 7.90",0.068,urn:adsk.wipprod:dm.lineage:5Bi9NFuhRd6BuySu0vBflw,2
+"Washer_M4",1,"Steel",0.308,urn:adsk.wipprod:dm.lineage:zW3omaHCTHi3_67g_-Wgbw,2
+"Washer_PTFE_Dv2",1,"PTFE 2.20",0.093,urn:adsk.wipprod:dm.lineage:MtXYt51BSqG19v6E7ehaPQ,2
+"Washer_PTFE_E",1,"PTFE 2.20",0.695,urn:adsk.wipprod:dm.lineage:k5Q6IV5cSQy2s7oxXv1-Mw,2
+"Washer_PTFE_Ev2",1,"PTFE 2.20",0.093,urn:adsk.wipprod:dm.lineage:qGHRtly3TLeubv74dwsavA,2
+"Wrist_Level_Member_CF3",1,"CF plate 3K",13.313,urn:adsk.wipprod:dm.lineage:eF2EaZi0QEOVhfQ3vknkMw,2
+"Wrist_Servo_Cradle",1,"PETG-CF print (effective)",17.465,urn:adsk.wipprod:dm.lineage:VhacO3DgSSSOd4n0O6AktQ,2
+"Wrist_Shaft_Coupler",1,"Aluminum 6061",2.103,urn:adsk.wipprod:dm.lineage:QOkekBygRp6UGzp6i6Ko4g,2
+"Wrist_Shaft_D10x70",1,"Steel 7.85",41.162,urn:adsk.wipprod:dm.lineage:4ooIUXh0TH-jWZ6I2j2XeQ,2
+"_M2_5-100001",8,"DM-J4340-2EC (catalogue mass)",0.141,None,None

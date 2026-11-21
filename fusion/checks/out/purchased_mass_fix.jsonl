@@ -1,0 +1,56 @@
+{"doc": "6700ZZ", "status": "fixed", "before_g": 0.68, "after_g": 2.0, "target_g": 2}
+{"doc": "6701ZZ", "status": "fixed", "before_g": 1.02, "after_g": 3.0, "target_g": 3}
+{"doc": "6804ZZ", "status": "fixed", "before_g": 6.0, "after_g": 19.0, "target_g": 19}
+{"doc": "6805ZZ", "status": "fixed", "before_g": 7.27, "after_g": 18.0, "target_g": 18}
+{"doc": "688ZZ", "status": "skipped: no catalogue mass"}
+{"doc": "9271K56", "status": "ok already", "mass_g": 3.47, "target_g": 3.5}
+{"doc": "BHCS_M3x10", "status": "skipped: no catalogue mass"}
+{"doc": "BHCS_M3x5", "status": "skipped: no catalogue mass"}
+{"doc": "BHCS_M3x6", "status": "skipped: no catalogue mass"}
+{"doc": "BHCS_M3x8", "status": "skipped: no catalogue mass"}
+{"doc": "C610", "status": "skipped: no catalogue mass"}
+{"doc": "CLIP (placeholder)", "status": "fixed", "before_g": 3.52, "after_g": 1.0, "target_g": 1}
+{"doc": "COLLAR10", "status": "fixed", "before_g": 28.42, "after_g": 25.0, "target_g": 25}
+{"doc": "COLLAR8", "status": "skipped: no catalogue mass"}
+{"doc": "CSK_M3x6", "status": "skipped: no catalogue mass"}
+{"doc": "DM-J4340-2EC", "status": "fixed", "before_g": 918.59, "after_g": 330.0, "target_g": 330}
+{"doc": "Dowel_3x20", "status": "skipped: no catalogue mass"}
+{"doc": "Dowel_3x7", "status": "skipped: no catalogue mass"}
+{"doc": "Dowel_4x5", "status": "skipped: no catalogue mass"}
+{"doc": "ECLIP", "status": "fixed", "before_g": 0.44, "after_g": 0.3, "target_g": 0.3}
+{"doc": "GEAR-M1-20T", "status": "skipped: no catalogue mass"}
+{"doc": "GEAR-M1-32T", "status": "skipped: no catalogue mass"}
+{"doc": "HORN-25T (placeholder)", "status": "fixed", "before_g": 1.99, "after_g": 3.0, "target_g": 3}
+{"doc": "INSERT", "status": "fixed", "before_g": 0.48, "after_g": 0.3, "target_g": 0.3}
+{"doc": "M2006-P36", "status": "skipped: no catalogue mass"}
+{"doc": "MGN9H", "status": "skipped: no catalogue mass"}
+{"doc": "MR104ZZ", "status": "skipped: no catalogue mass"}
+{"doc": "MR105ZZ", "status": "fixed", "before_g": 0.39, "after_g": 1.2, "target_g": 1.2}
+{"doc": "Nyloc_M3", "status": "skipped: no catalogue mass"}
+{"doc": "Nyloc_M4", "status": "skipped: no catalogue mass"}
+{"doc": "PAN-M2x12", "status": "fixed", "before_g": 0.35, "after_g": 0.3, "target_g": 0.3}
+{"doc": "PCLIP (placeholder)", "status": "fixed", "before_g": 1.58, "after_g": 1.0, "target_g": 1}
+{"doc": "PIN-D4x14", "status": "fixed", "before_g": 1.31, "after_g": 1.4, "target_g": 1.4}
+{"doc": "PIN-D4x20", "status": "fixed", "before_g": 1.91, "after_g": 2.0, "target_g": 2.0}
+{"doc": "PIN-D4x30", "status": "fixed", "before_g": 2.89, "after_g": 3.0, "target_g": 3.0}
+{"doc": "PIN-D4x8", "status": "fixed", "before_g": 0.72, "after_g": 0.8, "target_g": 0.8}
+{"doc": "SB5x10", "status": "skipped: no catalogue mass"}
+{"doc": "SB5x12", "status": "skipped: no catalogue mass"}
+{"doc": "SB5x4", "status": "skipped: no catalogue mass"}
+{"doc": "SB5x8", "status": "skipped: no catalogue mass"}
+{"doc": "SHCS_M3x30", "status": "skipped: no catalogue mass"}
+{"doc": "SHCS_M3x40", "status": "skipped: no catalogue mass"}
+{"doc": "SHCS_M3x6", "status": "skipped: no catalogue mass"}
+{"doc": "SHCS_M3x8", "status": "skipped: no catalogue mass"}
+{"doc": "SHCS_M4x12", "status": "skipped: no catalogue mass"}
+{"doc": "SHCS_M4x30", "status": "skipped: no catalogue mass"}
+{"doc": "SHCS_M4x8", "status": "skipped: no catalogue mass"}
+{"doc": "SHCS_M5x10", "status": "skipped: no catalogue mass"}
+{"doc": "SPRING-MOTOR", "status": "skipped: no catalogue mass"}
+{"doc": "STS3215", "status": "fixed", "before_g": 153.7, "after_g": 60.0, "target_g": 60}
+{"doc": "SetScrew_M3x3", "status": "skipped: no catalogue mass"}
+{"doc": "SetScrew_M3x3.5", "status": "skipped: no catalogue mass"}
+{"doc": "SetScrew_M3x5.55", "status": "skipped: no catalogue mass"}
+{"doc": "WASHER-D4", "status": "fixed", "before_g": 0.15, "after_g": 0.3, "target_g": 0.3}
+{"doc": "Washer_M4", "status": "skipped: no catalogue mass"}
+{"doc": "Washer_M5", "status": "skipped: no catalogue mass"}

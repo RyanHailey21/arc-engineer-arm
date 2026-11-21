@@ -30,6 +30,25 @@ A commit of a new snapshot is the design diff: parameters, masses, versions and 
 
 Results go to `checks/out/<rev>_*.json`. Set `SNAP_REV=rev_a` to check the other revision.
 
+## Fixes applied (2026-11-21, after the pilot)
+
+| Finding | Fix in Fusion | Code-CAD |
+|---|---|---|
+| Purchased masses wrong | `fix_purchased_mass.py`: each 90 Purchased document gets a copy of its material whose density gives the catalogue mass (19 fixed, e.g. STS3215 153.7 to 60 g, DM-J4340 918.6 to 330 g, 6804ZZ 6 to 19 g). Fasteners and parts without a catalogue mass keep their solid-model mass | none |
+| Duplicate horn | the five `HORN-25T (placeholder)` occurrences are deleted (Rev B, Rev A, shared gripper): the STS3215 vendor model has its horn | none |
+| STS3215 vs palm | `Gripper_Palm` gets `servo_seat_z` (19.0) and `palm_y_out` (76.5): the floor sits under the real case (32.9 below the horn seat), and the pocket is sized from the vendor case with a 2.7 mm end wall. The jaw servo moves 0.55 mm down, so its 4.53 mm horn sits under the drive link | `gripper_fourbar.toml` `SEAT_Z`, `Y_OUT`; the gripper uses `hardware.sts3215` and the real horn; fingerprints re-recorded (palm, jaw servo, horn) |
+| J2 gear mesh | `Pinion_m2_18T_J2` gets `mesh_phase` (half a tooth, 10°); the horn screw holes keep their angle | the code-CAD gears are check shapes, no teeth |
+| Spring vs palm | 9271K56 turned 225° about its coil and raised 0.4 mm: its legs now point forward and outboard, clear of the mount plate and web | legs are not modelled |
+
+Re-check (rev B v19): 577 solids, 142 overlaps above 0.5 mm³, 15 min. None of the five findings remain. What is left is intended contacts (fasteners, pins, inserts), overlaps inside the STS3215 vendor model (motor, output gear and case screws against its own case) and the servos' bottom caps touching the cradle floors (1.7 mm³ each).
+
+Afterwards the moving bodies match the code-CAD within a few percent. The static torques agree within 4 % at all 14 poses (rev B and rev A). Still open: the Fusion base (GROUND) predates the base shrink (C610 removed, 150 x 160 plate). The jaw servo's spline touches the D4x20 drive-link pin (2.1 mm³).
+
+**Fusion API notes, learned the hard way:**
+- `Document.updateAllReferences()` crashes Fusion when the document was opened invisibly. Open it visibly (`documents.open(f, True)`).
+- Several saves in a row can leave Fusion busy for more than 20 minutes on the next cloud-data call (`findFileById`, `dataFiles`).
+- Positions of occurrences inside sub-components are root-level overrides. Set `transform2` on the root proxy (built with `setWithCoordinateSystem`), then `snapshots.add()`. `MoveFeature` doesn't accept occurrences.
+
 ## Pilot findings (rev B, 2026-11-21)
 
 - The custom parts' masses match the code-CAD within a few percent (forearm, upper arm, rods, links, jaws).

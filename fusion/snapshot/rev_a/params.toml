@@ -1,0 +1,154 @@
+# Generated from Fusion (ARC_Params_RevA, v1) by fusion/snapshot_export.py: do not edit; change it in Fusion
+DM_face = { value = 51.5, unit = "mm", expression = "51.5 mm", comment = "output face |y| from the motor centre plane | interfaces/dm_j4340__hub_tower.toml [DM] face" }
+DM_out_dowel_pcd = { value = 24.0, unit = "mm", expression = "24 mm", comment = "interfaces/dm_j4340__hub_tower.toml [DM] out_dowel_pcd" }
+DM_out_dowels_1 = { value = 90.0, unit = "deg", expression = "90 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] out_dowels[0]" }
+DM_out_dowels_2 = { value = -30.0, unit = "deg", expression = "-30 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] out_dowels[1]" }
+DM_out_dowels_3 = { value = -150.0, unit = "deg", expression = "-150 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] out_dowels[2]" }
+DM_out_holes_1 = { value = 0.0, unit = "deg", expression = "0 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] out_holes[0]" }
+DM_out_holes_2 = { value = 60.0, unit = "deg", expression = "60 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] out_holes[1]" }
+DM_out_holes_3 = { value = 120.0, unit = "deg", expression = "120 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] out_holes[2]" }
+DM_out_holes_4 = { value = 180.0, unit = "deg", expression = "180 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] out_holes[3]" }
+DM_out_holes_5 = { value = -120.0, unit = "deg", expression = "-120 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] out_holes[4]" }
+DM_out_holes_6 = { value = -60.0, unit = "deg", expression = "-60 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] out_holes[5]" }
+DM_out_pcd = { value = 27.0, unit = "mm", expression = "27 mm", comment = "interfaces/dm_j4340__hub_tower.toml [DM] out_pcd" }
+DM_stator_dowels_1 = { value = 75.0, unit = "deg", expression = "75 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] stator_dowels[0]" }
+DM_stator_dowels_2 = { value = -105.0, unit = "deg", expression = "-105 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] stator_dowels[1]" }
+DM_stator_holes_1 = { value = 30.0, unit = "deg", expression = "30 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] stator_holes[0]" }
+DM_stator_holes_2 = { value = 90.0, unit = "deg", expression = "90 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] stator_holes[1]" }
+DM_stator_holes_3 = { value = 150.0, unit = "deg", expression = "150 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] stator_holes[2]" }
+DM_stator_holes_4 = { value = -30.0, unit = "deg", expression = "-30 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] stator_holes[3]" }
+DM_stator_holes_5 = { value = -90.0, unit = "deg", expression = "-90 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] stator_holes[4]" }
+DM_stator_holes_6 = { value = -150.0, unit = "deg", expression = "-150 deg", comment = "interfaces/dm_j4340__hub_tower.toml [DM] stator_holes[5]" }
+DM_stator_pcd = { value = 50.0, unit = "mm", expression = "50 mm", comment = "interfaces/dm_j4340__hub_tower.toml [DM] stator_pcd" }
+FB_E = { value = 10.0, unit = "mm", expression = "10 mm", comment = "coupler pivot set-back behind the pad face (keeps the pivots clear of the pad arc) | params/gripper_fourbar.toml [FB] E" }
+FB_L = { value = 47.0, unit = "mm", expression = "47 mm", comment = "link length: short for grip force; coupler pivots must stay behind XMAX | params/gripper_fourbar.toml [FB] L" }
+FB_PIN_R = { value = 2.0, unit = "mm", expression = "2 mm", comment = "D4 pivot pins | params/gripper_fourbar.toml [FB] PIN_R" }
+FB_S = { value = 16.0, unit = "mm", expression = "16 mm", comment = "idler pivot offset outboard of the drive pivot (|y|) | params/gripper_fourbar.toml [FB] S" }
+FB_TEETH = { value = 77.0, unit = "", expression = "77", comment = "sector gear teeth (m1) -> pitch radius 38.5 = YG | params/gripper_fourbar.toml [FB] TEETH" }
+FB_XG = { value = 82.0, unit = "mm", expression = "82 mm", comment = "ground pivot x (servo body must clear the roll hub at x <= 65) | params/gripper_fourbar.toml [FB] XG" }
+FB_XMAX = { value = 135.5, unit = "mm", expression = "135.5 mm", comment = "nothing above the pads beyond this x: pole keep-out (envelopes/field.toml pole_above_fingers); also keeps the jaw-block riser clear of the M3 head on the pad standoff at x 139 | params/gripper_fourbar.toml [FB] XMAX" }
+FB_YG = { value = 38.5, unit = "mm", expression = "38.5 mm", comment = "drive pivot |y| = sector pitch radius (m1 x TEETH / 2); mid-stroke between the pipe and donut grips, so both grips sit at the same TCP x (no drift) | params/gripper_fourbar.toml [FB] YG" }
+FB_ZFB_1 = { value = -29.0, unit = "mm", expression = "-29 mm", comment = "bottom CF finger z (>= -29: 3.5 mm over the pole base plate at the donut pick) | params/gripper_fourbar.toml [FB] ZFB[0]" }
+FB_ZFB_2 = { value = -26.0, unit = "mm", expression = "-26 mm", comment = "bottom CF finger z (>= -29: 3.5 mm over the pole base plate at the donut pick) | params/gripper_fourbar.toml [FB] ZFB[1]" }
+FB_ZFT_1 = { value = 20.0, unit = "mm", expression = "20 mm", comment = "top finger (printed jaw block) z | params/gripper_fourbar.toml [FB] ZFT[0]" }
+FB_ZFT_2 = { value = 23.0, unit = "mm", expression = "23 mm", comment = "top finger (printed jaw block) z | params/gripper_fourbar.toml [FB] ZFT[1]" }
+FB_ZG_1 = { value = 27.0, unit = "mm", expression = "27 mm", comment = "palm ground-pivot layer z (between the link layers) | params/gripper_fourbar.toml [FB] ZG[0]" }
+FB_ZG_2 = { value = 33.0, unit = "mm", expression = "33 mm", comment = "palm ground-pivot layer z (between the link layers) | params/gripper_fourbar.toml [FB] ZG[1]" }
+FB_ZL0_1 = { value = 23.5, unit = "mm", expression = "23.5 mm", comment = "lower link layer z | params/gripper_fourbar.toml [FB] ZL0[0]" }
+FB_ZL0_2 = { value = 26.5, unit = "mm", expression = "26.5 mm", comment = "lower link layer z | params/gripper_fourbar.toml [FB] ZL0[1]" }
+FB_ZL1_1 = { value = 33.5, unit = "mm", expression = "33.5 mm", comment = "upper link layer z | params/gripper_fourbar.toml [FB] ZL1[0]" }
+FB_ZL1_2 = { value = 36.5, unit = "mm", expression = "36.5 mm", comment = "upper link layer z | params/gripper_fourbar.toml [FB] ZL1[1]" }
+FB_ZPAD_1 = { value = -26.0, unit = "mm", expression = "-26 mm", comment = "TPU pad z | params/gripper_fourbar.toml [FB] ZPAD[0]" }
+FB_ZPAD_2 = { value = 20.0, unit = "mm", expression = "20 mm", comment = "TPU pad z | params/gripper_fourbar.toml [FB] ZPAD[1]" }
+FB_ZSEC_1 = { value = 37.0, unit = "mm", expression = "37 mm", comment = "sector gear layer z (above the upper links, clear of the roll housing) | params/gripper_fourbar.toml [FB] ZSEC[0]" }
+FB_ZSEC_2 = { value = 42.0, unit = "mm", expression = "42 mm", comment = "sector gear layer z (above the upper links, clear of the roll housing) | params/gripper_fourbar.toml [FB] ZSEC[1]" }
+GRIP_REQ_donut = { value = "5 N", unit = "N", expression = "5 N", comment = "150 g donut at +-25 deg roll, TPU on plastic, x3 margin (research estimate, not measured) | params/gripper_fourbar.toml [GRIP_REQ] donut" }
+GRIP_REQ_pipe = { value = "11 N", unit = "N", expression = "11 N", comment = "0.5 N*m pipe moment carried as pad-end normal force over the 46 mm pad (wrist rolled 90 deg) | params/gripper_fourbar.toml [GRIP_REQ] pipe" }
+GRIP_REQ_pipe_friction_only = { value = "25 N", unit = "N", expression = "25 N", comment = "same moment carried by friction only (wrist not rolled) | params/gripper_fourbar.toml [GRIP_REQ] pipe_friction_only" }
+HX = { value = 35.0, unit = "mm", expression = "35 mm", comment = "head (palm + jaws) offset forward of the old palm datum, to make room for the roll stage | params/wrist.toml [root] HX" }
+HXJ_OFF = { value = 6.0, unit = "mm", expression = "6 mm", comment = "rails / jaws datum behind HX (clears the hub flange) | params/gripper_screw.toml [root] HXJ_OFF" }
+K_DECK_Z = { value = 120.0, unit = "mm", expression = "120 mm", comment = "chassis deck top (placeholder chassis) | params/arm.toml [K] DECK_Z" }
+K_DROP = { value = 20.0, unit = "mm", expression = "20 mm", comment = "TCP below the wrist pitch axis (gripper frame z = -DROP) | params/arm.toml [K] DROP" }
+K_GRIP = { value = 151.0, unit = "mm", expression = "151 mm", comment = "wrist pitch axis -> TCP, along the gripper x axis | params/arm.toml [K] GRIP" }
+K_L1 = { value = 80.0, unit = "mm", expression = "80 mm", comment = "crank / ground-lever length (parallelogram drive of the forearm) | params/arm.toml [K] L1" }
+K_L2 = { value = 340.0, unit = "mm", expression = "340 mm", comment = "upper arm, shoulder S -> elbow E | params/arm.toml [K] L2" }
+K_L3 = { value = 350.0, unit = "mm", expression = "350 mm", comment = "forearm, elbow E -> wrist pitch axis D | params/arm.toml [K] L3" }
+K_SX = { value = -160.0, unit = "mm", expression = "-160 mm", comment = "shoulder axis x (J1/J2 coaxial) | params/arm.toml [K] SX" }
+K_SZ = { value = 215.0, unit = "mm", expression = "215 mm", comment = "shoulder axis z | params/arm.toml [K] SZ" }
+K_V1_ANG = { value = 192.0, unit = "deg", expression = "192 deg", comment = "level-keeping stage-1 ground lever angle (deg) | params/arm.toml [K] V1_ANG" }
+K_V1_LEN = { value = 70.0, unit = "mm", expression = "70 mm", comment = "level-keeping stage-1 ground lever length | params/arm.toml [K] V1_LEN" }
+LEAD = { value = 8.0, unit = "mm", expression = "8 mm", comment = "Tr8x8 4-start lead: free-running, so the spring motor can spin it open (power-off release) | params/gripper_screw.toml [root] LEAD" }
+M2006_FRONT = { value = 42.0, unit = "mm", expression = "42 mm", comment = "vendor STEP: gearbox front face at model y = 42, output shaft 42..58.5 | params/gripper_screw.toml [root] M2006_FRONT" }
+M2006_HOLES_ang_1 = { value = 1.0, unit = "deg", expression = "1 deg", comment = "params/gripper_screw.toml [M2006_HOLES] ang[0]" }
+M2006_HOLES_ang_2 = { value = 121.0, unit = "deg", expression = "121 deg", comment = "params/gripper_screw.toml [M2006_HOLES] ang[1]" }
+M2006_HOLES_ang_3 = { value = 241.0, unit = "deg", expression = "241 deg", comment = "params/gripper_screw.toml [M2006_HOLES] ang[2]" }
+M2006_HOLES_pcd = { value = 18.4, unit = "mm", expression = "18.4 mm", comment = "params/gripper_screw.toml [M2006_HOLES] pcd" }
+MOT_FACE = { value = 1.0, unit = "mm", expression = "1 mm", comment = "M2006 gearbox front face y; the 16.5 mm D6 output shaft runs through the 20T gear towards -y | params/gripper_screw.toml [root] MOT_FACE" }
+NOTCH = { value = 12.0, unit = "mm", expression = "12 mm", comment = "pipe V-notch depth (90 deg included) | params/pads.toml [root] NOTCH" }
+PAD_R = { value = 50.0, unit = "mm", expression = "50 mm", comment = "donut-OD arc radius (donut OD 100, ARC manual 3.2.4 Objective C) | params/pads.toml [root] PAD_R" }
+PIPE_OD = { value = 26.7, unit = "mm", expression = "26.7 mm", comment = "3/4\" Sch40 PVC pipe OD (ARC manual 3.2.4 Objective B) | params/pads.toml [root] PIPE_OD" }
+RAIL_END = { value = 100.0, unit = "mm", expression = "100 mm", comment = "MGN9 rail outer end |y| | params/gripper_screw.toml [root] RAIL_END" }
+ROLL_XS = { value = 47.0, unit = "mm", expression = "47 mm", comment = "J4 roll servo spline face (x) | params/wrist.toml [root] ROLL_XS" }
+ROLL_Z = { value = -5.0, unit = "mm", expression = "-5 mm", comment = "roll axis height (15 above the TCP, so the roll stage stays above the finger plane) | params/wrist.toml [root] ROLL_Z" }
+SERVO_ANG = { value = 150.0, unit = "deg", expression = "150 deg", comment = "J3 pitch servo body angle on the level member (deg) | params/wrist.toml [root] SERVO_ANG" }
+SERVO_rated_Nm = { value = "0.98 N m", unit = "N*m", expression = "0.98 N m", comment = "10 kg*cm rated (continuous) at 12 V | params/gripper_fourbar.toml [SERVO] rated_Nm" }
+SERVO_speed_s_per_60deg = { value = "0.222 s", unit = "s", expression = "0.222 s", comment = "no-load at 12 V | params/gripper_fourbar.toml [SERVO] speed_s_per_60deg" }
+SERVO_stall_Nm = { value = "2.94 N m", unit = "N*m", expression = "2.94 N m", comment = "30 kg*cm peak stall at 12 V | params/gripper_fourbar.toml [SERVO] stall_Nm" }
+SPRING_alt_pn = { value = "'9271K52'", unit = "Text", expression = "'9271K52'", comment = "weaker alternate, same arbor (3.509 in*lbf at 90 deg): fit if the back-drive bench test allows | params/gripper_fourbar.toml [SPRING] alt_pn" }
+SPRING_arbor_d = { value = 7.5, unit = "mm", expression = "7.5 mm", comment = "0.296 in maximum shaft -> printed D7.5 arbor around the D4 pin | params/gripper_fourbar.toml [SPRING] arbor_d" }
+SPRING_length = { value = 8.64, unit = "mm", expression = "8.64 mm", comment = "0.34 in at maximum torque | params/gripper_fourbar.toml [SPRING] length" }
+SPRING_max_torque_Nm = { value = "0.508 N m", unit = "N*m", expression = "0.508 N m", comment = "4.5 in*lbf at 90 deg | params/gripper_fourbar.toml [SPRING] max_torque_Nm" }
+SPRING_od = { value = 12.67, unit = "mm", expression = "12.67 mm", comment = "0.499 in | params/gripper_fourbar.toml [SPRING] od" }
+SPRING_pn = { value = "'9271K56'", unit = "Text", expression = "'9271K56'", comment = "params/gripper_fourbar.toml [SPRING] pn" }
+SPRING_preload_deg = { value = 22.0, unit = "deg", expression = "22 deg", comment = "wound 22 deg at full open (jaw 112): 0.12 N*m opening torque; 85 deg (0.48 N*m) at the pipe grip | params/gripper_fourbar.toml [SPRING] preload_deg" }
+SPRING_rate_Nm_per_deg = { value = "0.005648 N m / deg", unit = "N*m/deg", expression = "0.005648 N m / deg", comment = "params/gripper_fourbar.toml [SPRING] rate_Nm_per_deg" }
+SPRING_wire = { value = 1.5, unit = "mm", expression = "1.5 mm", comment = "0.059 in | params/gripper_fourbar.toml [SPRING] wire" }
+WRAP = { value = 22.0, unit = "deg", expression = "22 deg", comment = "arc half-angle each side of the notch (deg) | params/pads.toml [root] WRAP" }
+XR_OFF = { value = 41.0, unit = "mm", expression = "41 mm", comment = "rail centre line (= lead-screw axis x) ahead of HXJ | params/gripper_screw.toml [root] XR_OFF" }
+YEB = { value = 103.0, unit = "mm", expression = "103 mm", comment = "end-block inner face |y| | params/gripper_screw.toml [root] YEB" }
+Y_BELT = { value = -30.75, unit = "mm", expression = "-30.75 mm", comment = "GT2 level-keeping belt centre plane | params/arm.toml [Y] BELT" }
+Y_CL = { value = -23.5, unit = "mm", expression = "-23.5 mm", comment = "wrist clevis plate L (R is +23.5) | params/arm.toml [Y] CL" }
+Y_CRANK = { value = 34.5, unit = "mm", expression = "34.5 mm", comment = "crank (J2 side) | params/arm.toml [Y] CRANK" }
+Y_FL = { value = -18.0, unit = "mm", expression = "-18 mm", comment = "forearm plate L (R is +18) | params/arm.toml [Y] FL" }
+Y_RAB = { value = 29.0, unit = "mm", expression = "29 mm", comment = "rod AB (forearm drive rod) | params/arm.toml [Y] RAB" }
+Y_ROCK = { value = -37.5, unit = "mm", expression = "-37.5 mm", comment = "rocker / level member | params/arm.toml [Y] ROCK" }
+Y_ROD1 = { value = -42.0, unit = "mm", expression = "-42 mm", comment = "level-keeping rod 1 | params/arm.toml [Y] ROD1" }
+Y_TW = { value = -51.0, unit = "mm", expression = "-51 mm", comment = "motor tower L (R is +51) | params/arm.toml [Y] TW" }
+Y_UA = { value = -45.5, unit = "mm", expression = "-45.5 mm", comment = "upper-arm plate L (R is +45.5) | params/arm.toml [Y] UA" }
+ZM_OFF = { value = 26.0, unit = "mm", expression = "26 mm", comment = "M2006 axis above the screw: m1 20T + 32T centre distance | params/gripper_screw.toml [root] ZM_OFF" }
+ZS = { value = 31.0, unit = "mm", expression = "31 mm", comment = "lead-screw axis z | params/gripper_screw.toml [root] ZS" }
+ZTOP = { value = 78.0, unit = "mm", expression = "78 mm", comment = "end-block top / CF bridge underside | params/gripper_screw.toml [root] ZTOP" }
+Z_MOTOR_T = { value = 20.0, unit = "", expression = "20", comment = "motor gear teeth (m1): 1.6:1 reduction, 35 mm/s per jaw, finer grip-force control | params/gripper_screw.toml [root] Z_MOTOR_T" }
+Z_SCREW_T = { value = 32.0, unit = "", expression = "32", comment = "screw gear teeth (m1) | params/gripper_screw.toml [root] Z_SCREW_T" }
+arm_T = { value = 3.0, unit = "mm", expression = "3 mm", comment = "CF plate thickness (every plate in the layer stack) | params/arm.toml [root] T" }
+flange_journal_od = { value = 25.0, unit = "mm", expression = "25 mm", comment = "runs in the 6805 bearing behind the flange | interfaces/roll_hub__gripper_palm.toml [flange] journal_od" }
+flange_od = { value = 36.0, unit = "mm", expression = "36 mm", comment = "hub flange OD (r18) | interfaces/roll_hub__gripper_palm.toml [flange] od" }
+flange_thickness = { value = 3.0, unit = "mm", expression = "3 mm", comment = "x 62..65 | interfaces/roll_hub__gripper_palm.toml [flange] thickness" }
+harness_UA_CLIP_YZ_1 = { value = -52.3, unit = "mm", expression = "-52.3 mm", comment = "harness bundle centre in the UA frame (y, z): 47 + 5.3 outboard of the UA plate | params/arm.toml [harness] UA_CLIP_YZ[0]" }
+harness_UA_CLIP_YZ_2 = { value = 9.0, unit = "mm", expression = "9 mm", comment = "harness bundle centre in the UA frame (y, z): 47 + 5.3 outboard of the UA plate | params/arm.toml [harness] UA_CLIP_YZ[1]" }
+j1_hub_HUB_R = { value = 19.5, unit = "mm", expression = "19.5 mm", comment = "J1/J2 output hub flange radius (counterbores on PCD27 need >= 2.5 mm wall) | params/arm.toml [j1_hub] HUB_R" }
+j1_hub_UA_HUB_SCREWS_1 = { value = 30.0, unit = "deg", expression = "30 deg", comment = "J1 hub -> UA-L: 3x M3 on PCD20 (deg), clear of the PCD27 counterbores + dowels | params/arm.toml [j1_hub] UA_HUB_SCREWS[0]" }
+j1_hub_UA_HUB_SCREWS_2 = { value = 150.0, unit = "deg", expression = "150 deg", comment = "J1 hub -> UA-L: 3x M3 on PCD20 (deg), clear of the PCD27 counterbores + dowels | params/arm.toml [j1_hub] UA_HUB_SCREWS[1]" }
+j1_hub_UA_HUB_SCREWS_3 = { value = 270.0, unit = "deg", expression = "270 deg", comment = "J1 hub -> UA-L: 3x M3 on PCD20 (deg), clear of the PCD27 counterbores + dowels | params/arm.toml [j1_hub] UA_HUB_SCREWS[2]" }
+level_keeping_GT2_T = { value = 30.0, unit = "", expression = "30", comment = "pulley teeth: 30T so the D10.6 bore clears the tooth roots (20T left 0.1 mm) | params/arm.toml [level_keeping] GT2_T" }
+materials_AL = { value = "2.7 g / cm^3", unit = "g/cm^3", expression = "2.7 g / cm^3", comment = "params/materials.toml [root] AL" }
+materials_BRASS = { value = "8.5 g / cm^3", unit = "g/cm^3", expression = "8.5 g / cm^3", comment = "params/materials.toml [root] BRASS" }
+materials_CF = { value = "1.55 g / cm^3", unit = "g/cm^3", expression = "1.55 g / cm^3", comment = "params/materials.toml [root] CF" }
+materials_PRINT = { value = "0.75 g / cm^3", unit = "g/cm^3", expression = "0.75 g / cm^3", comment = "params/materials.toml [root] PRINT" }
+materials_PTFE = { value = "2.2 g / cm^3", unit = "g/cm^3", expression = "2.2 g / cm^3", comment = "params/materials.toml [root] PTFE" }
+materials_SHIM = { value = "7.9 g / cm^3", unit = "g/cm^3", expression = "7.9 g / cm^3", comment = "params/materials.toml [root] SHIM" }
+materials_STEEL = { value = "7.85 g / cm^3", unit = "g/cm^3", expression = "7.85 g / cm^3", comment = "params/materials.toml [root] STEEL" }
+materials_TPU = { value = "0.9 g / cm^3", unit = "g/cm^3", expression = "0.9 g / cm^3", comment = "params/materials.toml [root] TPU" }
+roll_horn__roll_hub_fastener_head_face_x = { value = 52.0, unit = "mm", expression = "52 mm", comment = "screws go in from inside the hub towards the horn | interfaces/roll_horn__roll_hub.toml [fastener] head_face_x" }
+roll_horn__roll_hub_fastener_length = { value = 5.0, unit = "mm", expression = "5 mm", comment = "interfaces/roll_horn__roll_hub.toml [fastener] length" }
+roll_horn__roll_hub_frame_normal_1 = { value = 1.0, unit = "", expression = "1", comment = "interfaces/roll_horn__roll_hub.toml [frame] normal[0]" }
+roll_horn__roll_hub_frame_normal_2 = { value = 0.0, unit = "", expression = "0", comment = "interfaces/roll_horn__roll_hub.toml [frame] normal[1]" }
+roll_horn__roll_hub_frame_normal_3 = { value = 0.0, unit = "", expression = "0", comment = "interfaces/roll_horn__roll_hub.toml [frame] normal[2]" }
+roll_horn__roll_hub_frame_origin_1 = { value = 49.0, unit = "mm", expression = "49 mm", comment = "hub rear face on the roll axis (horn face side) | interfaces/roll_horn__roll_hub.toml [frame] origin[0]" }
+roll_horn__roll_hub_frame_origin_2 = { value = 0.0, unit = "mm", expression = "0 mm", comment = "hub rear face on the roll axis (horn face side) | interfaces/roll_horn__roll_hub.toml [frame] origin[1]" }
+roll_horn__roll_hub_frame_origin_3 = { value = -5.0, unit = "mm", expression = "-5 mm", comment = "hub rear face on the roll axis (horn face side) | interfaces/roll_horn__roll_hub.toml [frame] origin[2]" }
+roll_horn__roll_hub_pattern_angles_deg_1 = { value = 45.0, unit = "deg", expression = "45 deg", comment = "interfaces/roll_horn__roll_hub.toml [pattern] angles_deg[0]" }
+roll_horn__roll_hub_pattern_angles_deg_2 = { value = 135.0, unit = "deg", expression = "135 deg", comment = "interfaces/roll_horn__roll_hub.toml [pattern] angles_deg[1]" }
+roll_horn__roll_hub_pattern_angles_deg_3 = { value = 225.0, unit = "deg", expression = "225 deg", comment = "interfaces/roll_horn__roll_hub.toml [pattern] angles_deg[2]" }
+roll_horn__roll_hub_pattern_angles_deg_4 = { value = 315.0, unit = "deg", expression = "315 deg", comment = "interfaces/roll_horn__roll_hub.toml [pattern] angles_deg[3]" }
+roll_horn__roll_hub_pattern_radius = { value = 7.0, unit = "mm", expression = "7 mm", comment = "horn PCD 14 (hardware.HORN_PCD) | interfaces/roll_horn__roll_hub.toml [pattern] radius" }
+roll_horn__roll_hub_side_b_clearance_d = { value = 3.3, unit = "mm", expression = "3.3 mm", comment = "interfaces/roll_horn__roll_hub.toml [side_b] clearance_d" }
+roll_horn__roll_hub_side_b_depth = { value = 5.0, unit = "mm", expression = "5 mm", comment = "x 48..53 (through the 4 mm rear wall) | interfaces/roll_horn__roll_hub.toml [side_b] depth" }
+roll_hub__gripper_palm_frame_normal_1 = { value = 1.0, unit = "", expression = "1", comment = "points from the hub into the palm | interfaces/roll_hub__gripper_palm.toml [frame] normal[0]" }
+roll_hub__gripper_palm_frame_normal_2 = { value = 0.0, unit = "", expression = "0", comment = "points from the hub into the palm | interfaces/roll_hub__gripper_palm.toml [frame] normal[1]" }
+roll_hub__gripper_palm_frame_normal_3 = { value = 0.0, unit = "", expression = "0", comment = "points from the hub into the palm | interfaces/roll_hub__gripper_palm.toml [frame] normal[2]" }
+roll_hub__gripper_palm_frame_origin_1 = { value = 65.0, unit = "mm", expression = "65 mm", comment = "flange front face on the roll axis (roll axis z = ROLL_Z) | interfaces/roll_hub__gripper_palm.toml [frame] origin[0]" }
+roll_hub__gripper_palm_frame_origin_2 = { value = 0.0, unit = "mm", expression = "0 mm", comment = "flange front face on the roll axis (roll axis z = ROLL_Z) | interfaces/roll_hub__gripper_palm.toml [frame] origin[1]" }
+roll_hub__gripper_palm_frame_origin_3 = { value = -5.0, unit = "mm", expression = "-5 mm", comment = "flange front face on the roll axis (roll axis z = ROLL_Z) | interfaces/roll_hub__gripper_palm.toml [frame] origin[2]" }
+roll_hub__gripper_palm_pattern_angles_deg_1 = { value = 0.0, unit = "deg", expression = "0 deg", comment = "in the y-z plane, from +y towards +z; uneven so the palm can only go on one way | interfaces/roll_hub__gripper_palm.toml [pattern] angles_deg[0]" }
+roll_hub__gripper_palm_pattern_angles_deg_2 = { value = 180.0, unit = "deg", expression = "180 deg", comment = "in the y-z plane, from +y towards +z; uneven so the palm can only go on one way | interfaces/roll_hub__gripper_palm.toml [pattern] angles_deg[1]" }
+roll_hub__gripper_palm_pattern_angles_deg_3 = { value = 225.0, unit = "deg", expression = "225 deg", comment = "in the y-z plane, from +y towards +z; uneven so the palm can only go on one way | interfaces/roll_hub__gripper_palm.toml [pattern] angles_deg[2]" }
+roll_hub__gripper_palm_pattern_angles_deg_4 = { value = 315.0, unit = "deg", expression = "315 deg", comment = "in the y-z plane, from +y towards +z; uneven so the palm can only go on one way | interfaces/roll_hub__gripper_palm.toml [pattern] angles_deg[3]" }
+roll_hub__gripper_palm_pattern_radius = { value = 15.25, unit = "mm", expression = "15.25 mm", comment = "bolt circle radius about the roll axis | interfaces/roll_hub__gripper_palm.toml [pattern] radius" }
+roll_hub__gripper_palm_side_a_drill_d = { value = 2.5, unit = "mm", expression = "2.5 mm", comment = "interfaces/roll_hub__gripper_palm.toml [side_a] drill_d" }
+roll_hub__gripper_palm_side_a_drill_depth = { value = 4.0, unit = "mm", expression = "4 mm", comment = "from the front face, into the flange (x 62..66) | interfaces/roll_hub__gripper_palm.toml [side_a] drill_depth" }
+roll_hub__gripper_palm_side_b_clearance_d = { value = 3.3, unit = "mm", expression = "3.3 mm", comment = "interfaces/roll_hub__gripper_palm.toml [side_b] clearance_d" }
+screw_GEAR_Y0 = { value = -4.6, unit = "mm", expression = "-4.6 mm", comment = "gear face planes (y) | params/gripper_screw.toml [root] GEAR_Y0" }
+screw_GEAR_Y1 = { value = 0.4, unit = "mm", expression = "0.4 mm", comment = "params/gripper_screw.toml [root] GEAR_Y1" }
+variant_grip = { value = "'FOURBAR'", unit = "Text", expression = "'FOURBAR'", comment = "\"FOURBAR\" (lightweight concept, under evaluation) | \"SCREW\" (rev A: drawings, FEA and fab exports) | params/variant.toml [root] grip" }
+variant_release = { value = "'SCREW'", unit = "Text", expression = "'SCREW'", comment = "variant behind the released rev A package (fab/, drawings/out, fea/out, render/, tdp/); release generators pin to it so another variant can't overwrite released outputs | params/variant.toml [root] release" }
