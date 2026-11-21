@@ -99,7 +99,7 @@ def envelope_reason_required():
 
 @case
 def catalogue_mass_numeric():
-    t = read("data/catalogue.toml").replace("mass = 330", 'mass = "330 g"', 1)
+    t = re.sub(r"(?m)^mass = ([0-9.]+)", r'mass = "\1 g"', read("data/catalogue.toml"), count=1)   # first entry's mass
     expect("catalogue", "catalogue", t, r"mass: expected number")
 
 

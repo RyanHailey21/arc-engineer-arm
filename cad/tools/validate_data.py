@@ -64,7 +64,7 @@ def check(v, s, root, path=()):
                 return best
             kinds = sorted({m.split(", found")[0][len("expected "):] for b in branches for p, m in b if p == path and m.startswith("expected ")})
             return [(path, "expected %s, found %s" % (" or ".join(kinds), _tname(v)))]
-        return []
+        # a branch matched: fall through, so the schema's own type/properties/enum beside the anyOf still apply
     t = s.get("type")
     if t is not None:
         ts = t if isinstance(t, list) else [t]
