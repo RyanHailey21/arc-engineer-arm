@@ -140,7 +140,7 @@ def main():
             else:
                 detail.append((k, None, "no mating part (spare hole)", loc, None))
     outs = [os.path.join(params.out_dir(), "projected_heights.json")]
-    if params.grip() == params.release_variant():
+    if params.grip() == params.release_variant() and params.base_drive() == params.release_base_drive():
         outs.append(os.path.join(CAD, "fab", "projected_heights.json"))     # read by the rev A drawings
     for out in outs:
         json.dump(dict(heights=res, detail=detail), open(out, "w"), indent=1)

@@ -44,6 +44,11 @@ GEAR_CD = GEAR["module"] * (GEAR["z_gear"] + GEAR["z_pinion"]) / 2.0     # centr
 IF_DRIVE_TOWER = iface.load("drive_frame__tower")     # frame legs <-> tower (probed)
 IF_HUB_DRIVE = iface.load("base_hub__drive")          # hub stub <-> gear <-> 6804 bearing in the frame
 IF_STS = iface.load("sts3215__cradle")                # STS3215 <-> printed cradles, horn screws
+# BASE_DRIVE=DIRECT: a Damiao DM-J4340-2EC on each tower drives the hub directly (params/variant.toml base_drive)
+BASE_DRIVE = params.base_drive()
+DM_R = dict(_ACT["DM_J4340"])                         # DM-J4340 ratings (N*m)
+IF_DM_TOWER = iface.load("dm_j4340__tower")           # DM stator <-> tower (probed, DIRECT only)
+IF_DM_HUB = iface.load("dm_j4340__output_hub")        # DM output flange <-> J1/J2 hub (probed, DIRECT only)
 
 
 # ------------------------------------------------------- purchased-part data
@@ -272,6 +277,7 @@ def _vprism(x, y_apex, z0, z1, depth=60.0):
 
 # active gripper variant (GRIP=FOURBAR default, GRIP=SCREW = rev A); see arm/grippers/
 GRIP = params.grip()      # $GRIP, else params/variant.toml
+VARIANT = params.variant()   # output / evidence / fingerprint key: GRIP, or GRIP_DIRECT for the direct-drive base
 
 
 # ------------------------------------------------------------- STS3215 placement

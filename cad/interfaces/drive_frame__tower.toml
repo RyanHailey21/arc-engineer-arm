@@ -7,6 +7,7 @@
 name = "drive_frame__tower"
 summary = "Drive frame legs bolt to the tower's outboard face: 3x M3 BHCS from inside the tower into heat-set inserts in the legs"
 owner = "base (J1/J2 drives)"
+base_drive = "GEARED"
 
 [frame]
 origin = [-160.0, 0.0, 215.0]          # shoulder axis S = arm.toml K.SX, K.SZ (the probe FAILs if the shoulder moves alone)

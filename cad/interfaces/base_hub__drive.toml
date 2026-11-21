@@ -7,6 +7,7 @@
 name = "base_hub__drive"
 summary = "Hub stub: D28 collar, 19 AF hex carrying the 54T gear, D20 journal in a 6804 bearing in the drive frame; an M5 end screw clamps the inner race"
 owner = "base (J1/J2 drives)"
+base_drive = "GEARED"
 
 [stub]
 collar_d = 28.0          # shoulder that locates the gear's inboard face; passes the tower bore (D42); 2.75 mm wall

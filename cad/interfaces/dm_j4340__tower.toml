@@ -1,0 +1,52 @@
+# Interface: Damiao DM-J4340-2EC stator (J1 on the L tower, J2 on the R tower) <-> CF motor tower.  BASE_DRIVE=DIRECT.
+# Source: Damiao 2D drawing (cad/vendor/damiao/DM4340_drawing.pdf) + vendor STEP (github.com/dmBots/DM-J4340-2EC),
+# re-measured from the STEP on 2026-11-20: front (output-side) face 1.0 behind the output flange, 6x M3 tapped 4.9 deep
+# on PCD 50, 2x D3 dowel holes on PCD 50 at 75 / -105 deg.
+# Frame: GROUND (x forward, y left, z up), origin on the shoulder axis S. mm.  Angles atan2(z, x) for the R motor; the
+# L motor is turned 180 deg about z (output face inboard), so its angles map a -> 180 - a.  The screw circle is
+# symmetric under that map (one probed pattern serves both towers); the two dowels are not (built per side from [dowels]).
+# Both mating parts build from this file (cad/arm/base.py); cad/tools/check_interfaces.py probes the screw circle.
+
+[interface]
+name = "dm_j4340__tower"
+summary = "DM-J4340 stator front face bolts to the tower's outboard face: 6x M3 BHCS on PCD 50 from inside the tower + 2x D3 dowels"
+owner = "base (J1/J2 direct drive)"
+base_drive = "DIRECT"
+
+[frame]
+origin = [-160.0, 0.0, 215.0]          # shoulder axis S = arm.toml K.SX, K.SZ
+normal = [0.0, 1.0, 0.0]
+
+[pattern]
+radius = 25.0                          # PCD 50
+angles_deg = [30.0, 90.0, 150.0, -30.0, -90.0, -150.0]
+
+[side_a]                               # motor towers (3 mm CF): clearance holes
+parts = [["GROUND", "Tower_L_CF3"], ["GROUND", "Tower_R_CF3"]]
+hole = "clearance"
+clearance_d = 3.3
+
+[side_b]                               # DM-J4340 stator front face (vendor), M3 tapped 4.9 deep
+parts = [["GROUND", "J1_Motor_DM-J4340_stator"], ["GROUND", "J2_Motor_DM-J4340_stator"]]
+hole = "tapped"
+thread = "M3x0.5"
+drill_d = 2.5
+thread_depth = 4.9
+
+[fastener]                             # head on the tower's inboard face (|y| 49.5): 3 mm (1D) into the 4.9 mm thread,
+kind = "BHCS"                          # 1.9 short of the hole bottom (rev A's M3 x 8 ended exactly at the bottom)
+size = "M3"
+length = 6.0
+
+[motor]                                # vendor geometry, |y| outboard
+output_face_y = 51.5                   # output flange face (vendor y = 0): 1 mm inside the tower bore (D42)
+stator_face_y = 52.5                   # = tower outboard face (TW 51 + T/2)
+length = 53.25                         # output face -> rear cover
+housing_r = 28.5
+output_r = 17.5                        # output flange (rotor) radius; turns with the hub, inside the tower bore
+
+[dowels]                               # D3 x 7 ISO 8734 (McMaster 91595A113): tower (D3 reamed) -> stator dowel holes
+d = 3.0
+radius = 25.0
+angles_deg = [75.0, -105.0]            # R motor; L: 180 - a
+y = [49.5, 56.5]                       # |y|: flush with the tower's inboard face, 4 mm into the stator

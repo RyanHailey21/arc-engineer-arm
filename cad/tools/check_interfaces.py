@@ -17,7 +17,7 @@ import FreeCAD as App      # noqa: E402
 import arm_model as M      # noqa: E402
 import iface               # noqa: E402
 
-VARIANT = M.GRIP.lower()
+VARIANT = M.VARIANT.lower()
 
 
 def expected_r(side):
@@ -68,6 +68,8 @@ def main():
     for I in iface.all_interfaces():
         if "pattern" not in I and "stations" not in I:
             continue                               # data-only interface (e.g. vendor tables): not probe-able
+        if I["interface"].get("base_drive", M.BASE_DRIVE) != M.BASE_DRIVE:
+            continue                               # the other J1/J2 base drive's mate (params/variant.toml base_drive)
         n = App.Vector(*I["frame"]["normal"])
         pts = I.points()
         for sk, side, bps in I.sides():

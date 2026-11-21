@@ -67,6 +67,8 @@ def placed(bodies, th1, th2, pitch, roll=0.0, jaw=2 * O_REF, which="chk"):
 def part_mass_g(p):
     if p.kind == "CAT":
         m = CAT[p.src]["mass"] if p.src in CAT else 0
+        if p.src == "DM-J4340-2EC":                       # one motor = stator part + rotor part: don't count it twice
+            m *= DM_R["rotor_share"] if "rotor" in p.name else (1.0 - DM_R["rotor_share"])
         return m
     return p.chk.Volume / 1000.0 * MAT.get(p.kind, 1.0)
 

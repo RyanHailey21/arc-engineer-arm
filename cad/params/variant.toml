@@ -1,7 +1,11 @@
-# Design variant selection.  The GRIP environment variable overrides this for one run (GRIP=SCREW ...).
+# Design variant selection.  The GRIP and BASE_DRIVE environment variables override this for one run (GRIP=SCREW ...).
 # Gripper modules live in cad/arm/grippers/ and are registered in cad/arm/bodies.py GRIPPERS.
 
 grip = "FOURBAR"     # "FOURBAR" (design gripper; rev B) | "SCREW" (lead-screw gripper of rev A: too heavy for the
                      # STS3215 base's 50 %-of-stall holding rule, kept as a non-release variant)
+base_drive = "GEARED"  # J1/J2 base drive: "GEARED" (STS3215 + printed m2 18T/54T spur stage on a drive frame per
+                       # tower; rev B) | "DIRECT" (Damiao DM-J4340-2EC on each tower driving the hub directly: the Fusion
+                       # "Rev A", kept to compare base motors).  Outputs of a DIRECT build go to cad/out/<grip>_direct/
 release = "FOURBAR"  # variant behind the released package (rev B, 2026-11-19: fab/, fea/out); drawings/out, render/
                      # and tdp/ are still rev A (drawings on hold).  Release generators pin to it so another variant can't overwrite them
+release_base_drive = "GEARED"   # base drive of the released package (release generators refuse another BASE_DRIVE)

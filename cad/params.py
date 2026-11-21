@@ -5,6 +5,8 @@ Parameter files (cad/params/*.toml) and data files (cad/data/*.toml).
     import params
     P = params.load("arm")          # dict; TOML arrays come back as tuples (hashable, like the old literals)
     params.grip()                   # active gripper variant: $GRIP, else params/variant.toml
+    params.base_drive()             # active J1/J2 base drive: $BASE_DRIVE, else params/variant.toml (GEARED | DIRECT)
+    params.variant()                # output/evidence key: grip(), plus "_DIRECT" for the direct-drive base
 
 Edit the TOML, not the code: each value carries its unit and the reason for it.  After an intended change,
 run cad/tools/quick_check.py, then re-record the fingerprint (cad/tools/fingerprint.py FP_MODE=record).
@@ -47,6 +49,23 @@ def grip():
     return (os.environ.get("GRIP") or load("variant")["grip"]).upper()
 
 
+BASE_DRIVES = ("GEARED", "DIRECT")
+
+
+def base_drive():
+    """J1/J2 base drive: GEARED (STS3215 + 3:1 spur stage, rev B) or DIRECT (DM-J4340 on the hubs, the Fusion rev A)."""
+    b = (os.environ.get("BASE_DRIVE") or load("variant")["base_drive"]).upper()
+    if b not in BASE_DRIVES:
+        raise ValueError("BASE_DRIVE=%s: expected one of %s" % (b, ", ".join(BASE_DRIVES)))
+    return b
+
+
+def variant():
+    """Variant key for outputs, evidence and fingerprints: the gripper (FOURBAR, SCREW), with "_DIRECT" appended
+    when the base drive is not the default GEARED one (so the GEARED folders and baselines keep their names)."""
+    return grip() if base_drive() == "GEARED" else "%s_%s" % (grip(), base_drive())
+
+
 # ------------------------------------------------------------------ outputs, evidence, release guard
 import datetime    # noqa: E402
 import glob        # noqa: E402
@@ -61,9 +80,13 @@ def release_variant():
     return load("variant")["release"].upper()
 
 
+def release_base_drive():
+    return load("variant")["release_base_drive"].upper()
+
+
 def out_dir(*sub):
     """cad/out/<variant>/<sub...> (created): every check's results for the active variant."""
-    d = os.path.join(CAD, "out", grip().lower(), *sub)
+    d = os.path.join(CAD, "out", variant().lower(), *sub)
     os.makedirs(d, exist_ok=True)
     return d
 
@@ -150,7 +173,7 @@ def record(check, status, files=(), note="", implementation=None):
           "implementation_sha256": _sha(implementation) if os.path.isfile(implementation) else "unknown",
           "inputs": [dict(id="design-inputs", path=snap_rel, sha256=_sha(snap))],
           "artifacts": arts,
-          "extensions": {"variant": grip(), "time": now, "inputs_hash": cur, "external_copies": ext}}
+          "extensions": {"variant": variant(), "time": now, "inputs_hash": cur, "external_copies": ext}}
     rep = os.path.join(job, check + ".evidence.json")
     json.dump({"status": st, "evidence": ev}, open(rep, "w"), indent=1)
     p = os.path.join(job, "manifest.json")
@@ -166,7 +189,7 @@ def record(check, status, files=(), note="", implementation=None):
 
 def evidence():
     """[(check, status, time, FRESH|STALE)] for the active variant's manifest against the current inputs."""
-    p = os.path.join(CAD, "out", grip().lower(), "manifest.json")
+    p = os.path.join(CAD, "out", variant().lower(), "manifest.json")
     try:
         man = json.load(open(p))
     except Exception:
@@ -186,3 +209,9 @@ def use_release_variant(script):
     if g is None:
         os.environ["GRIP"] = rel
         print("%s: building the release variant GRIP=%s" % (script, rel))
+    rb, b = release_base_drive(), os.environ.get("BASE_DRIVE")
+    if b and b.upper() != rb:
+        raise RuntimeError("%s writes the released (%s) package; BASE_DRIVE=%s refused (the released base drive is %s). "
+                           "Use tools/export_variant.py for another variant's STEP/BOM." % (script, rel, b, rb))
+    if b is None:
+        os.environ["BASE_DRIVE"] = rb

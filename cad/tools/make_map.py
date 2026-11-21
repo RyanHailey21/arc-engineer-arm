@@ -72,7 +72,7 @@ def link(where):
 
 def part_table():
     bodies = M.build_bodies()
-    out = ["### Parts - variant %s (%d parts)" % (M.GRIP, sum(len(v) for v in bodies.values())), "",
+    out = ["### Parts - variant %s (%d parts)" % (M.VARIANT, sum(len(v) for v in bodies.values())), "",
            "| Body | Part | Kind | Source / note | Mass g | Built at |", "|---|---|---|---|---|---|"]
     for bn, ps in bodies.items():
         cat = {}
@@ -93,13 +93,13 @@ def part_table():
 
 
 def main():
-    var = M.GRIP.lower()
+    var = M.VARIANT.lower()
     tbl = os.path.join(params.out_dir(), "map_parts.md")
     open(tbl, "w", encoding="utf-8").write("\n".join(part_table()) + "\n")
     doc = ["# Model map (generated - do not edit)", "",
            "Regenerate with `cad/tools/make_map.py` (once per variant).  Search here first: every part links to the",
            "file:line that builds it; parameters, interfaces and keep-outs are data files.  Active variant comes from",
-           "`params/variant.toml` (override with GRIP).  Inputs hash at generation: `%s`." % params.inputs_hash(), ""]
+           "`params/variant.toml` (override with GRIP and BASE_DRIVE).  Inputs hash at generation: `%s`." % params.inputs_hash(), ""]
     doc += modules_section() + [""]
     doc += toml_section("Parameters", "params", params_desc)
     doc += ["- [catalogue.toml](data/catalogue.toml): purchased parts (%d entries) - desc, mass, source, verify" % len(M.CAT), ""]

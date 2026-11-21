@@ -157,8 +157,8 @@ def main():
                         ("  (first contact: %s)" % first) if first else ""))
     ok = ok and ok_s and ok_p
     verdict = "PASS" if ok else "FAIL"
-    lines.append("LEVEL_KEEPING %s: %s (%.0f s)" % (M.GRIP.lower(), verdict, time.time() - t0))
-    out_dir = os.path.join(CAD, "out", M.GRIP.lower())
+    lines.append("LEVEL_KEEPING %s: %s (%.0f s)" % (M.VARIANT.lower(), verdict, time.time() - t0))
+    out_dir = os.path.join(CAD, "out", M.VARIANT.lower())
     os.makedirs(out_dir, exist_ok=True)
     open(os.path.join(out_dir, "level_keeping.txt"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
     print("\n".join(lines))

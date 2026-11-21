@@ -24,7 +24,7 @@ if os.environ.get("FP_MODEL_DIR"):          # fingerprint an older copy of arm_m
 import FreeCAD as App      # noqa: E402
 import arm_model as M      # noqa: E402
 
-VARIANT = M.GRIP.lower() if hasattr(M, "GRIP") else "screw"
+VARIANT = getattr(M, "VARIANT", getattr(M, "GRIP", "screw")).lower()
 MODE = os.environ.get("FP_MODE", "check")
 BASE = os.path.join(CAD, "tests", "fingerprints", VARIANT + ".json")
 OUT = os.path.join(CAD, "out", VARIANT, "fingerprint.json")

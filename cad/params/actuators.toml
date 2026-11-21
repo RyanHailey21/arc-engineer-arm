@@ -9,3 +9,11 @@ hold_frac = 0.5           # project rule for hobby servos: static holding torque
 [BASE]                    # J1 shoulder and J2 elbow: STS3215 through a printed m2 18T/54T spur stage
 ratio = 3.0               # 8.4 N*m stall, 2.8 N*m rated, 1.57 rad/s no-load at the joint
 efficiency = 0.95         # one spur mesh
+
+[DM_J4340]                # Damiao DM-J4340-2EC joint motor (BASE_DRIVE=DIRECT only): 24 V, 40:1 planetary, CAN; drives the
+                          # J1/J2 hub directly (data/catalogue.toml "DM-J4340-2EC"; interfaces/dm_j4340__*.toml)
+rated_Nm = 9.0            # rated (continuous) output torque, Damiao spec
+peak_Nm = 27.0            # peak output torque, Damiao spec
+hold_frac = 1.0           # a geared BLDC joint motor holds at its continuous rating (the 50 %-of-stall rule is for hobby servos)
+rotor_share = 0.30        # share of the catalogue mass modelled in the output-flange (rotor) part, which turns with the hub;
+                          # the stator part carries the rest (estimate; the joint torque barely depends on it: the rotor is on the axis)

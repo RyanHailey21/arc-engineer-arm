@@ -29,6 +29,14 @@
         "owner": {
           "type": "string",
           "minLength": 3
+        },
+        "base_drive": {
+          "type": "string",
+          "enum": [
+            "GEARED",
+            "DIRECT"
+          ],
+          "description": "Interface exists only in this J1/J2 base-drive variant (params/variant.toml base_drive); tools/check_interfaces.py skips it in the other"
         }
       }
     },

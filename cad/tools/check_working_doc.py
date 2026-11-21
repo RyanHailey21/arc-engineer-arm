@@ -29,8 +29,8 @@ BB_TOL, VOL_TOL = 0.05, 1e-4
 
 
 def doc_path(M):
-    name = "ARC_Arm_%s" % M.GRIP.capitalize()
-    return name, os.path.join(CAD, "out", M.GRIP.lower(), name + ".FCStd")
+    name = "ARC_Arm_%s" % M.VARIANT.capitalize()
+    return name, os.path.join(CAD, "out", M.VARIANT.lower(), name + ".FCStd")
 
 
 def model_shapes(M, bodies=None, pose="STOW"):
@@ -98,7 +98,7 @@ def main():
             App.closeDocument(tmp.Name)
     rows = ["FAIL %-13s %-8s %-34s %s" % (t, k, lab, det) for t, diffs in targets for k, lab, det in diffs]
     head = "Working doc sync (%s, STOW): %d model parts vs %s -> %d FAIL" % (
-        M.GRIP, len(model), " + ".join(t for t, _d in targets), len(rows))
+        M.VARIANT, len(model), " + ".join(t for t, _d in targets), len(rows))
     txt = "\n".join([head] + rows[:60] + (["... %d more" % (len(rows) - 60)] if len(rows) > 60 else []))
     out = os.path.join(params.out_dir(), "working_doc_sync.txt")
     with open(out, "w", encoding="utf-8") as fh:

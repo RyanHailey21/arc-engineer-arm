@@ -3,6 +3,7 @@
 
     python -I cad/tools/run.py cad/tools/check_engagement.py [args ...]
     python -I cad/tools/run.py --grip FOURBAR cad/tests/test_catalogue_mass.py
+    python -I cad/tools/run.py --base-drive DIRECT cad/tools/quick_check.py
     python -I cad/tools/run.py --timeout 600 cad/check_interference.py
 
 Why (cad/docs/tooling_issues.md TI-010, TI-018): on this machine `freecadcmd script.py`
@@ -51,6 +52,7 @@ BANNER = ("FreeCAD ", "(C) 2001", "FreeCAD is free and open-source")
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--grip", help="set GRIP for the run (SCREW / FOURBAR)")
+    ap.add_argument("--base-drive", help="set BASE_DRIVE for the run (GEARED / DIRECT)")
     ap.add_argument("--timeout", type=float, default=900, help="seconds (default 900)")
     ap.add_argument("--banner", action="store_true", help="keep FreeCAD's start-up banner")
     ap.add_argument("script")
@@ -66,6 +68,8 @@ def main(argv=None):
     env = dict(os.environ, PYTHONUTF8="1", PYTHONIOENCODING="utf-8")
     if a.grip:
         env["GRIP"] = a.grip.upper()
+    if a.base_drive:
+        env["BASE_DRIVE"] = a.base_drive.upper()
     payload = json.dumps(json.dumps({"script": script, "args": a.args}))
     t0 = time.time()
     try:

@@ -49,6 +49,7 @@ _VCACHE = {}
 def vendor(name):
     """Return the vendor shape in canonical frame (copy).  Canonical frames:
     STS3215: output spline on +Y through the origin, horn seat at y=0, body to -y, long axis +x (horns removed).
+    DM4340: Damiao DM-J4340-2EC (BASE_DRIVE=DIRECT): axis +Y, OUTPUT face at y=0, housing extends to y=+53.25.
     M2006 : axis +Y; rear cap at y=0 (4 mm rear stub to y=-6.3), gearbox front face at y=42,
             D6 output shaft (flat + tapped centre hole) from y=42 to 58.5.
     C610  : as delivered, recentred on its PCB bounding box."""
@@ -59,7 +60,11 @@ def vendor(name):
         s = Part.Shape()
         s.read(cache)
     else:
-        if name == "STS3215":
+        if name == "DM4340":
+            s = Part.Shape()
+            s.read(os.path.join(VENDOR, "damiao", "DM-J4340-2EC-V1.1.stp"))
+            s = Part.makeCompound(s.Solids)           # model already axis Y, output face y=0
+        elif name == "STS3215":
             raw = Part.Shape()
             raw.read(os.path.join(VENDOR, "feetech", "STS3215.stp"))
             # drop the two supplied horns (D19.95, on the output axis at vendor x=-25.5): modelled as their own parts

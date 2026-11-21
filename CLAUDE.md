@@ -5,7 +5,7 @@ Start with `cad/MAP.md` (generated). It lists every module, parameter file, inte
 
 ## Where things live
 - `cad/arm/`: the model, one module per subassembly. `arm_model.py` is a compatibility facade (`import arm_model as M`).
-- `cad/params/*.toml`: named design inputs, with units and reasons. **Edit these, not literals in code.** `variant.toml` sets the active gripper (`GRIP` env var overrides it) and the release variant.
+- `cad/params/*.toml`: named design inputs, with units and reasons. **Edit these, not literals in code.** `variant.toml` sets the active gripper (`GRIP` env var overrides it), the J1/J2 base drive (`BASE_DRIVE` env var: `GEARED` = rev B STS3215 + 3:1 spur stage, `DIRECT` = DM-J4340 direct drive, the Fusion "Rev A"; outputs and fingerprint `<grip>_direct`) and the release variant.
 - `cad/interfaces/*.toml`: mating interfaces. Both mating parts build from the file (`cad/iface.py`), and `tools/check_interfaces.py` probes the geometry.
 - `cad/envelopes/*.toml`: field keep-out boxes per task pose, each with a reason and a source.
 - `cad/data/catalogue.toml`: purchased parts (mass, source, what to verify).
@@ -20,13 +20,13 @@ Start with `cad/MAP.md` (generated). It lists every module, parameter file, inte
 ## Workflow
 1. Change a TOML value or a builder.
 2. Run `tools/quick_check.py` (about 25–30 s). It covers envelopes, interfaces, gripper self-interference, mass/torque, fastener seating (every screw, pin and washer in its hole and bearing on a part) and the fingerprint, and shows FRESH/STALE evidence.
-3. Refactors: `tools/fingerprint.py` must report MATCH for **both** `GRIP=SCREW` and `GRIP=FOURBAR`. After an *intended* geometry change, re-record it (`FP_MODE=record`) and say which parts changed.
+3. Refactors: `tools/fingerprint.py` must report MATCH for **both** `GRIP=SCREW` and `GRIP=FOURBAR`, and for `BASE_DRIVE=DIRECT` (fingerprint `fourbar_direct`) when the base or a shared module changed. After an *intended* geometry change, re-record it (`FP_MODE=record`) and say which parts changed.
 4. Milestones: run `check_interference.py` (about 4 min, ground truth). FEA, drawings and renders only on request.
 5. New mates or limits go in `interfaces/` or `envelopes/` first, not as numbers buried in a builder. Both mating parts must build from the file. When you move a part, check its mate is in `interfaces/`; a standoff moved through a parameter once left its plate holes behind. `[pattern]` handles bolt circles and `[stations]` handles rows of holes, with an optional `[spacer]` side.
 6. New gripper: add `arm/grippers/<name>.py` with `<name>_bodies()` and `<name>_placements(Hd, jaw)`, register it in `arm/bodies.py` GRIPPERS, and mount it on `interfaces/roll_hub__gripper_palm.toml`.
 
 ## Guard rails
-- Release generators build the release variant only and refuse another `GRIP`: `export_fab.py`, `fea/run_fea.py`, `drawings/*`, `build_assembly.py`, `render/export_render.py`. The released package (rev B since 2026-11-19, `GRIP=FOURBAR`) in `fab/` and `fea/out` changes only on request; `drawings/out`, `render/` and `tdp/` are still rev A (drawings on hold).
+- Release generators build the release variant only and refuse another `GRIP` or `BASE_DRIVE`: `export_fab.py`, `fea/run_fea.py`, `drawings/*`, `build_assembly.py`, `render/export_render.py`. The released package (rev B since 2026-11-19, `GRIP=FOURBAR`) in `fab/` and `fea/out` changes only on request; `drawings/out`, `render/` and `tdp/` are still rev A (drawings on hold). A non-release variant's STEP/BOM for migration: `tools/export_variant.py` -> `cad/out/<variant>/fab/`.
 - In a running FreeCAD GUI session, call `arm.reload_all()` to pick up edits. Don't drive the GUI from `execute_code_async`.
 - Run long jobs (full interference, FEA, renders) in the background.
 - Final deliverables go to the UT Arlington OneDrive folder (`OneDrive - UT Arlington\ARC_Engineer_Arm_TDP\`) with a README.

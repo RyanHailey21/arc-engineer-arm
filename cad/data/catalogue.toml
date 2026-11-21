@@ -2,6 +2,12 @@
 # verify on receipt.  Keyed by the 'src' field of CAT parts.  Read by cad/arm/core.py as CAT.
 # Masses are vendor figures where a source is given, otherwise estimates (flagged in desc/verify).
 
+["DM-J4340-2EC"]
+desc = "Damiao DM-J4340-2EC joint motor, 24 V, 9/27 N*m rated/peak, 40:1, CAN (vendor STEP) - J1/J2 direct drive (BASE_DRIVE=DIRECT only)"
+mass = 330
+src = "github.com/dmBots/DM-J4340-2EC models/3d + drawings/2d"
+verify = "weigh on receipt; caliper-check the PCD 50 stator and PCD 27 output screw circles and the dowel holes"
+
 ["M2006-P36"]
 desc = "DJI RoboMaster M2006 P36 gear motor, 1 N*m @ 416 rpm (vendor STEP) - gripper drive"
 mass = 90

@@ -49,13 +49,14 @@ import fingerprint        # noqa: E402
 import params              # noqa: E402
 
 V = App.Vector
-VARIANT = M.GRIP.lower()
+VARIANT = M.VARIANT.lower()
 GRIPPER_BODIES = {"GRIPPER", "HEAD", "JAW_L", "JAW_R", "SCREW", "MGEAR", "LK_LD", "LK_LI", "LK_RD", "LK_RI"}
-# static holding limit per joint (N*m): every joint is an STS3215 (params/actuators.toml), held to hold_frac of stall
-# (report R4); J1/J2 through the 3:1 spur stage
+# static holding limit per joint (N*m): every STS3215 joint is held to hold_frac of stall (params/actuators.toml,
+# report R4); J1/J2: GEARED through the 3:1 spur stage, DIRECT the DM-J4340 at hold_frac of its rated torque
 _HOLD = M.STS_R["hold_frac"] * M.STS_R["stall_Nm"]
 _BASE = M.BASE_R["ratio"] * M.BASE_R["efficiency"]
-RATED = {"J1": round(_HOLD * _BASE, 2), "J2": round(_HOLD * _BASE, 2), "J3": round(_HOLD, 2), "J4": round(_HOLD, 2)}
+_J12 = M.DM_R["hold_frac"] * M.DM_R["rated_Nm"] if M.BASE_DRIVE == "DIRECT" else _HOLD * _BASE
+RATED = {"J1": round(_J12, 2), "J2": round(_J12, 2), "J3": round(_HOLD, 2), "J4": round(_HOLD, 2)}
 TOL = 0.5                                     # mm^3, same threshold as check_interference.py
 
 

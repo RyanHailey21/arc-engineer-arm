@@ -1,0 +1,50 @@
+# Interface: Damiao DM-J4340-2EC output flange (rotor) <-> J1 / J2 output hub.  BASE_DRIVE=DIRECT.
+# Source: vendor STEP (github.com/dmBots/DM-J4340-2EC), re-measured 2026-11-20: output face D35 at vendor y = 0, 6x M3
+# tapped 7.5 deep on PCD 27 (D5 x 1 recess at the face), 3x D4 dowel holes 6 deep on PCD 24 at 90 / -30 / -150 deg.
+# Frame: each hub's own body frame (J1: UPPER, J2: CRANK), origin on the joint axis; y values are |y| outboard (both
+# sides mirror in y; angles atan2(z, x), L side a -> 180 - a, and both circles are symmetric under that map).
+# Both mating parts build from this file (cad/arm/base.py); cad/tools/check_interfaces.py probes the screw circle.
+
+[interface]
+name = "dm_j4340__output_hub"
+summary = "Hub flange bolts to the DM-J4340 output flange: 6x M3 SHCS on PCD 27, counterbored from the hub's inboard side, + 3x D4 dowels on PCD 24"
+owner = "base (J1/J2 direct drive)"
+base_drive = "DIRECT"
+
+[frame]
+origin = [0.0, 0.0, 0.0]
+normal = [0.0, 1.0, 0.0]
+
+[pattern]
+radius = 13.5                          # PCD 27
+angles_deg = [0.0, 60.0, 120.0, 180.0, -120.0, -60.0]
+
+[side_a]                               # J1 / J2 output hubs (6061): clearance + counterbore
+parts = [["UPPER", "J1_Output_Hub"], ["CRANK", "J2_Output_Hub_Journal"]]
+hole = "clearance"
+clearance_d = 3.3
+counterbore_d = 6.5
+
+[side_b]                               # DM-J4340 output flange (vendor), M3 tapped 7.5 deep
+parts = [["UPPER", "J1_Motor_DM-J4340_rotor"], ["CRANK", "J2_Motor_DM-J4340_rotor"]]
+hole = "tapped"
+thread = "M3x0.5"
+drill_d = 2.5
+thread_depth = 7.5
+
+[fastener]                             # head in the counterbore (seat |y| 50.0): 4.5 mm into the 7.5 mm thread
+kind = "SHCS"
+size = "M3"
+length = 6.0
+
+[flange]                               # hub flange, |y| outboard
+face_y = 51.5                          # = the output face (dm_j4340__tower motor.output_face_y)
+inboard_y = 47.0                       # 1.5 to the upper-arm plate L (45.5 + T/2) / the 6701 seat on the R side
+counterbore_seat_y = 50.0              # 3 mm counterbore for the M3 SHCS head; 1.5 mm of flange under the head
+radius = 19.5                          # = arm.toml j1_hub.HUB_R (inside the D42 tower bore)
+
+[dowels]                               # D4 x 5 ISO 8734 (McMaster 91595A123): 2.5 in the hub, 2.5 in the flange
+d = 4.0
+radius = 12.0                          # PCD 24
+angles_deg = [90.0, -30.0, -150.0]
+y = [49.0, 54.0]                       # |y|

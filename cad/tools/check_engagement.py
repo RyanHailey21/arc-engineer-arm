@@ -96,7 +96,7 @@ def main():
         n, len(rows), nf, nw)
     txt = "\n".join([head] + sorted(rows))
     outs = [os.path.join(params.out_dir(), "engagement_report.txt")]
-    if params.grip() == params.release_variant():
+    if params.grip() == params.release_variant() and params.base_drive() == params.release_base_drive():
         outs.append(os.path.join(HERE, "fab", "engagement_report.txt"))      # read by the rev A TDP
     for o in outs:
         with open(o, "w", encoding="utf-8") as fh:
