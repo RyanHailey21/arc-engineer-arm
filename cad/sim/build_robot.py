@@ -365,20 +365,6 @@ def trans(v):
     return T
 
 
-def lump_crank_pin(r, mp=0.003, ip=1e-5):
-    """Give the massless crank_pin helper link 3 g and 1e-5 kg*m^2 (the crank-pin bolt + bearing; that hardware is
-    also in the crank's mass, a double count of ~0.1 % of the arm mass).
-    Why: crank_pin's joint and rod_ab's joint are coaxial at the same point, so with a ~0 inertia link between them
-    the crank_pin DOF has a near-singular mass matrix and bullet-featherstone's stiff mimic (gear) constraints jam:
-    the elbow stalled at ~0 deg whatever was commanded. (Taking the 3 g from the crank instead fails sdformat's
-    inertia triangle check.)"""
-    il = next(l for l in r.iter("link") if l.get("name") == "crank_pin").find("inertial")
-    il.find("mass").set("value", "%.6f" % mp)
-    il.find("inertia").attrib.update(ixx="%g" % ip, ixy="0", ixz="0", iyy="%g" % ip, iyz="0", izz="%g" % ip)
-
-
-
-
 MAX_FACES = 60000      # MuJoCo's STL limit is 200k faces; 60k keeps the viewer fast
 
 
