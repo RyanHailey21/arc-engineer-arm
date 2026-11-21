@@ -1,105 +1,113 @@
-﻿blender.exe : C:\Users\ryanh\light_weight_arm\cad\render\blender_render.py:60: DeprecationWarning: 
-'Material.use_nodes' is expected to be removed in Blender 6.0
-At line:1 char:405
-+ ... ipe_chute'; & 'C:\Users\ryanh\tools\blender\blender-5.3.0-windows-x64 ...
-+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (C:\Users\ryanh\... in Blender 6.0:String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
- 
+C:\Users\ryanh\light_weight_arm\cad\render\blender_render.py:60: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
   m.use_nodes = True
-C:\Users\ryanh\light_weight_arm\cad\render\blender_render.py:181: DeprecationWarning: 'World.use_nodes' is expected to 
-be removed in Blender 6.0
+C:\Users\ryanh\light_weight_arm\cad\render\blender_render.py:181: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
   w.use_nodes = True
-00:11.485  cycles           | WARNING CUEW initialization failed: Error opening the library
-04:54.703  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\hero_donut_lift.png'
-10:44.922  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\hero_pipe_chute.png'
-15:35.922  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\hero_stow.png'
+00:08.703  cycles           | WARNING CUEW initialization failed: Error opening the library
+08:34.687  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\hero_donut_lift.png'
+16:02.765  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\hero_pipe_chute.png'
+22:20.078  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\hero_stow.png'
+30:36.328  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\detail_gripper_pipe.png'
+40:01.531  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\detail_gripper_donut.png'
+43:13.031  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\overview_side.png'
+49:00.437  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\overview_rear.png'
+57:58.875  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\detail_shoulder.png'
+01:03:19.922  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\detail_elbow.png'
+01:13:42.062  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\detail_wrist_roll.png'
+01:23:16.078  render           | Saved: 'C:\Users\ryanh\light_weight_arm\cad\render\out\detail_jaw_drive.png'
 Info: Saved as "arc_engineer_arm.blend"
 wrote C:\Users\ryanh\light_weight_arm\cad\render\out\hero_donut_lift.png
 wrote C:\Users\ryanh\light_weight_arm\cad\render\out\hero_pipe_chute.png
 wrote C:\Users\ryanh\light_weight_arm\cad\render\out\hero_stow.png
+wrote C:\Users\ryanh\light_weight_arm\cad\render\out\detail_gripper_pipe.png
+wrote C:\Users\ryanh\light_weight_arm\cad\render\out\detail_gripper_donut.png
+wrote C:\Users\ryanh\light_weight_arm\cad\render\out\overview_side.png
+wrote C:\Users\ryanh\light_weight_arm\cad\render\out\overview_rear.png
+wrote C:\Users\ryanh\light_weight_arm\cad\render\out\detail_shoulder.png
+wrote C:\Users\ryanh\light_weight_arm\cad\render\out\detail_elbow.png
+wrote C:\Users\ryanh\light_weight_arm\cad\render\out\detail_wrist_roll.png
+wrote C:\Users\ryanh\light_weight_arm\cad\render\out\detail_jaw_drive.png
 Blender 5.3.0 (hash 02f0899d78e3 built 2026-11-10 01:33:43)
-OBJ import of 'GROUND__alu.obj' took 12.81 ms
-OBJ import of 'GROUND__steel.obj' took 26.63 ms
-OBJ import of 'GROUND__cf.obj' took 4.39 ms
-OBJ import of 'GROUND__pla.obj' took 8.39 ms
-OBJ import of 'GROUND__brass.obj' took 2.53 ms
-OBJ import of 'GROUND__motor.obj' took 185.52 ms
-OBJ import of 'GROUND__pom.obj' took 6.26 ms
-OBJ import of 'GROUND__pad.obj' took 8.13 ms
-OBJ import of 'UPPER__cf.obj' took 3.45 ms
-OBJ import of 'UPPER__alu.obj' took 5.13 ms
-OBJ import of 'UPPER__pom.obj' took 5.11 ms
-OBJ import of 'UPPER__steel.obj' took 5.44 ms
-OBJ import of 'CRANK__cf.obj' took 1.47 ms
-OBJ import of 'CRANK__alu.obj' took 2.20 ms
-OBJ import of 'CRANK__pom.obj' took 5.10 ms
-OBJ import of 'CRANK__steel.obj' took 3.12 ms
-OBJ import of 'ROD_AB__cf.obj' took 1.56 ms
-OBJ import of 'ROD_AB__alu.obj' took 2.73 ms
-OBJ import of 'ROD1__cf.obj' took 1.57 ms
-OBJ import of 'ROD1__alu.obj' took 2.92 ms
-OBJ import of 'FOREARM__cf.obj' took 4.82 ms
-OBJ import of 'FOREARM__alu.obj' took 3.25 ms
-OBJ import of 'FOREARM__steel.obj' took 5.64 ms
-OBJ import of 'ROCKER__cf.obj' took 1.33 ms
-OBJ import of 'ROCKER__alu.obj' took 3.73 ms
-OBJ import of 'ROCKER__steel.obj' took 3.10 ms
-OBJ import of 'ROCKER__pad.obj' took 1.82 ms
-OBJ import of 'ROD2__cf.obj' took 1.38 ms
-OBJ import of 'ROD2__alu.obj' took 3.42 ms
-OBJ import of 'LEVEL__cf.obj' took 2.74 ms
-OBJ import of 'LEVEL__alu.obj' took 3.88 ms
-OBJ import of 'LEVEL__steel.obj' took 5.45 ms
-OBJ import of 'LEVEL__pad.obj' took 1.17 ms
-OBJ import of 'LEVEL__motor.obj' took 73.41 ms
-OBJ import of 'LEVEL__pla.obj' took 3.17 ms
-OBJ import of 'LEVEL__brass.obj' took 2.23 ms
-OBJ import of 'GRIPPER__steel.obj' took 6.85 ms
-OBJ import of 'GRIPPER__alu.obj' took 3.80 ms
-OBJ import of 'GRIPPER__cf.obj' took 3.25 ms
-OBJ import of 'GRIPPER__brass.obj' took 3.37 ms
-OBJ import of 'GRIPPER__pla.obj' took 5.22 ms
-OBJ import of 'GRIPPER__motor.obj' took 63.15 ms
-OBJ import of 'HEAD__alu.obj' took 4.53 ms
-OBJ import of 'HEAD__steel.obj' took 6.18 ms
-OBJ import of 'HEAD__motor.obj' took 1.07 ms
-OBJ import of 'HEAD__pla.obj' took 6.06 ms
-OBJ import of 'JAW_L__pla.obj' took 4.43 ms
-OBJ import of 'JAW_L__cf.obj' took 2.57 ms
-OBJ import of 'JAW_L__brass.obj' took 2.20 ms
-OBJ import of 'JAW_L__steel.obj' took 6.81 ms
-OBJ import of 'JAW_L__pad.obj' took 1.46 ms
-OBJ import of 'JAW_L__alu.obj' took 1.96 ms
-OBJ import of 'JAW_R__pla.obj' took 5.11 ms
-OBJ import of 'JAW_R__cf.obj' took 2.36 ms
-OBJ import of 'JAW_R__brass.obj' took 2.23 ms
-OBJ import of 'JAW_R__steel.obj' took 7.98 ms
-OBJ import of 'JAW_R__pad.obj' took 1.82 ms
-OBJ import of 'JAW_R__alu.obj' took 1.78 ms
-OBJ import of 'LK_LD__cf.obj' took 3.43 ms
-OBJ import of 'LK_LD__pom.obj' took 5.26 ms
-OBJ import of 'LK_LD__steel.obj' took 2.87 ms
-OBJ import of 'LK_LD__alu.obj' took 1.40 ms
-OBJ import of 'LK_LI__cf.obj' took 3.23 ms
-OBJ import of 'LK_RD__cf.obj' took 4.11 ms
-OBJ import of 'LK_RD__pom.obj' took 4.03 ms
-OBJ import of 'LK_RD__steel.obj' took 5.00 ms
-OBJ import of 'LK_RI__cf.obj' took 2.97 ms
-OBJ import of 'FIELD__Side_High_Ground_Lower_Tier.obj' took 0.71 ms
-OBJ import of 'FIELD__ZigZag_Pole_PLACEHOLDER.obj' took 32.38 ms
-OBJ import of 'FIELD__Objective_C_Donut.obj' took 11.95 ms
-OBJ import of 'FIELD__Objective_B_Bucket.obj' took 1.28 ms
-OBJ import of 'FIELD__Objective_B_Pipe_0.obj' took 1.30 ms
-OBJ import of 'FIELD__Objective_B_Pipe_1.obj' took 0.91 ms
-OBJ import of 'FIELD__Objective_B_Pipe_2.obj' took 0.91 ms
-OBJ import of 'FIELD__Objective_B_Pipe_3.obj' took 1.04 ms
-OBJ import of 'FIELD__Objective_B_Pipe_4.obj' took 0.91 ms
-OBJ import of 'FIELD__Objective_B_Pipe_5.obj' took 1.11 ms
-OBJ import of 'FIELD__Objective_B_Pipe_Target.obj' took 0.98 ms
-OBJ import of 'FIELD__Perimeter_Wall.obj' took 0.80 ms
-OBJ import of 'FIELD__Pipe_Chute_D52.5.obj' took 1.07 ms
-OBJ import of 'HELD__held_donut.obj' took 4.24 ms
-OBJ import of 'HELD__held_pipe.obj' took 1.13 ms
+OBJ import of 'GROUND__alu.obj' took 26.09 ms
+OBJ import of 'GROUND__steel.obj' took 31.78 ms
+OBJ import of 'GROUND__cf.obj' took 7.98 ms
+OBJ import of 'GROUND__pla.obj' took 17.15 ms
+OBJ import of 'GROUND__brass.obj' took 5.54 ms
+OBJ import of 'GROUND__motor.obj' took 234.28 ms
+OBJ import of 'GROUND__pom.obj' took 13.87 ms
+OBJ import of 'GROUND__pad.obj' took 14.13 ms
+OBJ import of 'UPPER__cf.obj' took 9.67 ms
+OBJ import of 'UPPER__alu.obj' took 10.62 ms
+OBJ import of 'UPPER__pom.obj' took 11.12 ms
+OBJ import of 'UPPER__steel.obj' took 11.02 ms
+OBJ import of 'CRANK__cf.obj' took 3.02 ms
+OBJ import of 'CRANK__alu.obj' took 3.43 ms
+OBJ import of 'CRANK__pom.obj' took 8.15 ms
+OBJ import of 'CRANK__steel.obj' took 4.65 ms
+OBJ import of 'ROD_AB__cf.obj' took 2.51 ms
+OBJ import of 'ROD_AB__alu.obj' took 4.23 ms
+OBJ import of 'ROD1__cf.obj' took 2.63 ms
+OBJ import of 'ROD1__alu.obj' took 3.98 ms
+OBJ import of 'FOREARM__cf.obj' took 6.30 ms
+OBJ import of 'FOREARM__alu.obj' took 11.29 ms
+OBJ import of 'FOREARM__steel.obj' took 8.82 ms
+OBJ import of 'ROCKER__cf.obj' took 3.43 ms
+OBJ import of 'ROCKER__alu.obj' took 4.56 ms
+OBJ import of 'ROCKER__steel.obj' took 4.18 ms
+OBJ import of 'ROCKER__pad.obj' took 2.11 ms
+OBJ import of 'ROD2__cf.obj' took 2.22 ms
+OBJ import of 'ROD2__alu.obj' took 4.39 ms
+OBJ import of 'LEVEL__cf.obj' took 3.75 ms
+OBJ import of 'LEVEL__alu.obj' took 4.17 ms
+OBJ import of 'LEVEL__steel.obj' took 8.74 ms
+OBJ import of 'LEVEL__pad.obj' took 1.71 ms
+OBJ import of 'LEVEL__motor.obj' took 116.42 ms
+OBJ import of 'LEVEL__pla.obj' took 6.73 ms
+OBJ import of 'LEVEL__brass.obj' took 3.88 ms
+OBJ import of 'GRIPPER__steel.obj' took 16.16 ms
+OBJ import of 'GRIPPER__alu.obj' took 8.23 ms
+OBJ import of 'GRIPPER__cf.obj' took 8.40 ms
+OBJ import of 'GRIPPER__brass.obj' took 8.08 ms
+OBJ import of 'GRIPPER__pla.obj' took 13.74 ms
+OBJ import of 'GRIPPER__motor.obj' took 92.18 ms
+OBJ import of 'HEAD__alu.obj' took 6.03 ms
+OBJ import of 'HEAD__steel.obj' took 11.50 ms
+OBJ import of 'HEAD__motor.obj' took 2.02 ms
+OBJ import of 'HEAD__pla.obj' took 7.19 ms
+OBJ import of 'JAW_L__pla.obj' took 6.35 ms
+OBJ import of 'JAW_L__cf.obj' took 15.87 ms
+OBJ import of 'JAW_L__brass.obj' took 3.33 ms
+OBJ import of 'JAW_L__steel.obj' took 8.31 ms
+OBJ import of 'JAW_L__pad.obj' took 2.04 ms
+OBJ import of 'JAW_L__alu.obj' took 3.62 ms
+OBJ import of 'JAW_R__pla.obj' took 7.60 ms
+OBJ import of 'JAW_R__cf.obj' took 5.42 ms
+OBJ import of 'JAW_R__brass.obj' took 3.98 ms
+OBJ import of 'JAW_R__steel.obj' took 11.73 ms
+OBJ import of 'JAW_R__pad.obj' took 3.55 ms
+OBJ import of 'JAW_R__alu.obj' took 4.31 ms
+OBJ import of 'LK_LD__cf.obj' took 6.96 ms
+OBJ import of 'LK_LD__pom.obj' took 8.30 ms
+OBJ import of 'LK_LD__steel.obj' took 2.79 ms
+OBJ import of 'LK_LD__alu.obj' took 1.65 ms
+OBJ import of 'LK_LI__cf.obj' took 3.66 ms
+OBJ import of 'LK_RD__cf.obj' took 3.57 ms
+OBJ import of 'LK_RD__pom.obj' took 4.63 ms
+OBJ import of 'LK_RD__steel.obj' took 2.21 ms
+OBJ import of 'LK_RI__cf.obj' took 3.57 ms
+OBJ import of 'FIELD__Side_High_Ground_Lower_Tier.obj' took 0.92 ms
+OBJ import of 'FIELD__ZigZag_Pole_PLACEHOLDER.obj' took 43.71 ms
+OBJ import of 'FIELD__Objective_C_Donut.obj' took 28.56 ms
+OBJ import of 'FIELD__Objective_B_Bucket.obj' took 2.55 ms
+OBJ import of 'FIELD__Objective_B_Pipe_0.obj' took 1.55 ms
+OBJ import of 'FIELD__Objective_B_Pipe_1.obj' took 1.68 ms
+OBJ import of 'FIELD__Objective_B_Pipe_2.obj' took 1.36 ms
+OBJ import of 'FIELD__Objective_B_Pipe_3.obj' took 1.42 ms
+OBJ import of 'FIELD__Objective_B_Pipe_4.obj' took 1.60 ms
+OBJ import of 'FIELD__Objective_B_Pipe_5.obj' took 2.23 ms
+OBJ import of 'FIELD__Objective_B_Pipe_Target.obj' took 2.29 ms
+OBJ import of 'FIELD__Perimeter_Wall.obj' took 1.56 ms
+OBJ import of 'FIELD__Pipe_Chute_D52.5.obj' took 2.19 ms
+OBJ import of 'HELD__held_donut.obj' took 9.47 ms
+OBJ import of 'HELD__held_pipe.obj' took 1.73 ms
 
 Blender quit
