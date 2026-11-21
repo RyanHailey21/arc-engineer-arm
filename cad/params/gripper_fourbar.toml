@@ -52,9 +52,3 @@ max_torque_Nm = 0.508 # 4.5 in*lbf at 90 deg
 rate_Nm_per_deg = 0.005648
 preload_deg = 22.0    # wound 22 deg at full open (jaw 112): 0.12 N*m opening torque; 85 deg (0.48 N*m) at the pipe grip
                       # weaker alternate 9271K52, same arbor (3.509 in*lbf at 90 deg): fit if the back-drive bench test allows
-
-[GRIP_REQ]            # hand-estimated clamp per jaw (N) for tools/grip_budget.py; the sim-based check that supersedes
-                      # these (donut 300 g, the full task's carried loads) is tools/grip_hold.py
-donut = 5.0           # 150 g donut at +-25 deg roll, TPU on plastic, x3 margin (research estimate, not measured)
-pipe = 11.0           # 0.5 N*m pipe moment carried as pad-end normal force over the 46 mm pad (wrist rolled 90 deg)
-pipe_friction_only = 25.0   # same moment carried by friction only (wrist not rolled)

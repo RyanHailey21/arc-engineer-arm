@@ -8,23 +8,22 @@
   "reason": "WARN: donut SF 1.7 rated / 6.0 stall; pipe SF 1.1 rated / 5.6 stall (MU 0.50)",
   "scope": "donut SF 1.7 rated / 6.0 stall; pipe SF 1.1 rated / 5.6 stall (MU 0.50)",
   "versions": {
-   "python": "3.11.14",
-   "platform": "Windows",
-   "freecad": "1.1.4"
+   "python": "3.14.10",
+   "platform": "Windows"
   },
-  "implementation_sha256": "52602199543e99b3dc9017342a0a092cda9ddf4212e2429096180e30d560349f",
+  "implementation_sha256": "20b01e0b1b4eb384b7efee3ff5704cbebcf3eb98372544ade79500a095ba8f55",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/grip_hold.inputs.json",
-    "sha256": "de9dc09a046104fc92b22e253308f1f57c8923dafd6db747ea214c5827aa7e6f"
+    "sha256": "126141cc2110daafbb10110452f3929732e6f9d9431c262a8a840df6cd05ed50"
    }
   ],
   "artifacts": [
    {
     "id": "grip_hold.txt",
     "path": "grip_hold.txt",
-    "sha256": "65cf6ab2135c559a3257ab806f6f1db4b741c63c78db0ef938f16dfb6ade61bc"
+    "sha256": "5a4da38e1f604336d91d1bc93f757a99c54985721422caed8e1739a637768552"
    },
    {
     "id": "grip_hold.json",
@@ -34,8 +33,8 @@
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-19T21:19:58",
-   "inputs_hash": "583f149273fa8325",
+   "time": "2026-11-20T22:17:01",
+   "inputs_hash": "06838cc0d0ec66c8",
    "external_copies": [
     "../sim/arc_arm_fourbar/task_run.json"
    ]

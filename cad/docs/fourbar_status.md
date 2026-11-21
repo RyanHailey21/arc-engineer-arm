@@ -72,7 +72,6 @@ The forearm's GT2 belt (stage 2 of level keeping, elbow to wrist) is replaced by
 | Jaw stiffness FEA (`fea/run_fea_jaw.py`) | pad bottom 0.0006 mm off its top under 1.25 × stall grip (1.35 mm with the old top-held jaw); tilt 0.001° |
 | Grip hold (`tools/grip_hold.py`, sim loads) | donut margin 1.65 at rated / 5.6 at stall; pipe 1.13 / 5.6 (WARN: below the 1.5 target at rated) |
 | Hand checks (in the same report) | sector tooth (Lewis) 2.7; pivot pins 161; link bore bearing 31 |
-| Grip budget (`tools/grip_budget.py`) | WARN: see below |
 | BOM (`tools/bom.py`) | 26 purchased line items, all with a source; 69 custom parts |
 | Simulation export | MuJoCo + Gazebo models in `sim/arc_arm_fourbar/`; forward kinematics within 0.0004 mm of CAD |
 | Gazebo run test (`cad/sim/gz_check.py`, informational since 2026-11-18) | gz-sim 8.10: all 7 task poses commanded and reached; joints within 0.005°, mimic followers within 0.41°, TCP within 2.4 mm |
@@ -85,7 +84,7 @@ The forearm's GT2 belt (stage 2 of level keeping, elbow to wrist) is replaced by
    - Measure it, then keep 9271K56 or change spring: the weaker 9271K52, or a stronger one on the same arbor.
    - The 1 s power-off release depends on this. The MuJoCo release test (0.04 s to open 10 mm) uses an assumed 0.05 N·m.
 2. **Pipe holding torque.**
-   - The sim-based grip check (`tools/grip_hold.py`, which replaces the hand estimate in `grip_budget.py`) shows the pipe held within the servo's continuous rating, margin 1.13 (5.6 at stall). The opening spring takes 0.48 of the 0.98 N·m at the pipe grip.
+   - The sim-based grip check (`tools/grip_hold.py`, which replaced the hand-estimate grip budget and also checks the opening spring) shows the pipe held within the servo's continuous rating, margin 1.13 (5.6 at stall). The opening spring takes 0.48 of the 0.98 N·m at the pipe grip.
    - After the back-drive test, pick a weaker or less-preloaded spring to raise the margin (options in `docs/compliance_report.md` §1.3). Log servo temperature on a 30 s horizontal pipe hold.
 3. **Drawings and renders.** The four-bar parts have no drawings or renders yet; these were dropped during the redesign.
    - The rev A drawing package covers the SCREW variant only.

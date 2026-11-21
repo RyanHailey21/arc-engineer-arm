@@ -7,7 +7,8 @@ gravity + inertia of the held object, moved to the TCP and expressed in the grip
 the fingers, y across the jaws, z up), peak per component after the weld-attach transient.
 Capacity: per unit clamp force F (each jaw), from the pad geometry (params/pads.toml) and a pad friction
 coefficient MU. Supply: the clamp force the STS3215 gives at its rated (continuous) and stall torque at that
-grip, after the opening spring (tools/grip_budget.py mechanics).
+grip, after the opening spring.  Also checks the spring itself: opening torque at full open (it must beat the
+unpowered servo back-drive, to be bench-measured) and its wind at the tightest grip (<= 90 deg and its rated torque).
 
 Load paths per unit clamp F (each jaw). A V flank or arc that wedges the jaws open needs, per unit of load
 along it, a clamp of r = tan(b - atan MU) (b = the contact normal's angle off the load: 45 deg on the V flanks, ~72 on the donut arcs; friction on the flank
@@ -68,7 +69,7 @@ def theta(jaw):
 
 
 def clamp(jaw, torque):
-    """clamp force per jaw (N) at servo torque (N*m), net of the opening spring (grip_budget.py)."""
+    """clamp force per jaw (N) at servo torque (N*m), net of the opening spring."""
     th, th_open = theta(jaw), theta(112.0)
     t_sp = SP["rate_Nm_per_deg"] * (SP["preload_deg"] + math.degrees(th_open - th))
     return (torque - t_sp) / (2 * FB["L"] / 1000.0 * math.cos(th)), t_sp
@@ -139,6 +140,13 @@ def main():
                    + "  -> total %.2f N" % r["F_req"])
         out.append("  clamp available: %.1f N at rated (%.2f N*m, spring takes %.3f), %.1f N at stall -> SF %.2f rated, %.2f stall"
                    % (r["F_rated"], SV["rated_Nm"], r["spring_Nm"], r["F_stall"], r["sf_rated"], r["sf_stall"]))
+    t_open = SP["rate_Nm_per_deg"] * SP["preload_deg"]
+    wind = SP["preload_deg"] + math.degrees(theta(112.0) - theta(2 * O_PIPE))   # tightest grip: the pipe
+    spring_ok = wind <= 90.0 + 1e-6 and SP["rate_Nm_per_deg"] * wind <= SP["max_torque_Nm"] + 1e-9
+    out += ["", "opening spring %s: %.3f N*m at full open (must beat the unpowered servo back-drive: bench-measure it); "
+            "wound %.0f deg at the pipe grip (limit 90 deg, %.3f N*m): %s"
+            % (SP["pn"], t_open, wind, SP["max_torque_Nm"], "ok" if spring_ok else "OVER-WOUND")]
+    ok &= spring_ok
     txt = "\n".join(out) + "\n"
     path = os.path.join(params.out_dir(), "grip_hold.txt")
     open(path, "w", encoding="utf-8").write(txt)
@@ -148,7 +156,8 @@ def main():
     d = [r for r in rows if r["mu"] == a.mu]
     # PASS: margin within the servo's continuous rating. WARN: the margin needs short-duty torque above rated (still
     # >= SF_STALL x the need at stall): a thermal bench test. FAIL: not even the stall torque gives SF_STALL.
-    status = "PASS" if ok else ("WARN" if all(r["sf_stall"] >= SF_STALL and r["sf_rated"] >= 1.0 for r in d) else "FAIL")
+    status = "PASS" if ok else ("WARN" if spring_ok and all(r["sf_stall"] >= SF_STALL and r["sf_rated"] >= 1.0 for r in d)
+                                else "FAIL")
     params.record("grip_hold", status, [path, js, run], "; ".join(
         "%s SF %.1f rated / %.1f stall" % (r["obj"], r["sf_rated"], r["sf_stall"]) for r in d) + " (MU %.2f)" % a.mu)
     print("GRIP HOLD:", status)

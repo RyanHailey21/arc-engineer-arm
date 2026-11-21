@@ -17,3 +17,5 @@ pipe, jaw 13.8, MU 0.30 (low-friction case)
   load at TCP: Fx 1.620, Fy 0.027, Fz 1.652, Mx 0.005, My 0.324, Mz 0.000  (N, N*m)
   clamp needed per jaw: Fx 0.44, Fy 0.01, Fz 1.95, Mx 0.33, My 5.69  -> total 8.41 N
   clamp available: 6.0 N at rated (0.98 N*m, spring takes 0.481), 29.5 N at stall -> SF 0.71 rated, 3.50 stall
+
+opening spring 9271K56: 0.124 N*m at full open (must beat the unpowered servo back-drive: bench-measure it); wound 85 deg at the pipe grip (limit 90 deg, 0.508 N*m): ok

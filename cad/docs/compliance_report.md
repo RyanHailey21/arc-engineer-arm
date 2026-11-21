@@ -212,7 +212,7 @@ python -I cad/tools/run.py --timeout 7200 --grip FOURBAR cad/fea/run_fea_fourbar
 python -I cad/tools/run.py --grip FOURBAR cad/sim/export_robot.py
 <sim python> cad/sim/build_robot.py fourbar ; <sim python> cad/sim/build_tasks.py fourbar
 <sim python> cad/sim/tasks.py --task both --no-viewer
-python -I cad/tools/grip_hold.py ; python -I cad/tools/grip_budget.py
+python -I cad/tools/grip_hold.py
 ```
 
 Figures (`cad/docs/figures/`):
