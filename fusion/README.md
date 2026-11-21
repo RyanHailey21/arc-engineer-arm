@@ -39,15 +39,17 @@ Results go to `checks/out/<rev>_*.json`. Set `SNAP_REV=rev_a` to check the other
 | STS3215 vs palm | `Gripper_Palm` gets `servo_seat_z` (19.0) and `palm_y_out` (76.5): the floor sits under the real case (32.9 below the horn seat), and the pocket is sized from the vendor case with a 2.7 mm end wall. The jaw servo moves 0.55 mm down, so its 4.53 mm horn sits under the drive link | `gripper_fourbar.toml` `SEAT_Z`, `Y_OUT`; the gripper uses `hardware.sts3215` and the real horn; fingerprints re-recorded (palm, jaw servo, horn) |
 | J2 gear mesh | `Pinion_m2_18T_J2` gets `mesh_phase` (half a tooth, 10°); the horn screw holes keep their angle | the code-CAD gears are check shapes, no teeth |
 | Spring vs palm | 9271K56 turned 225° about its coil and raised 0.4 mm: its legs now point forward and outboard, clear of the mount plate and web | legs are not modelled |
+| Base shrink (code-CAD 06cb9a0) | `Base_Plate_AL5` (shared): named parameters for the 150 x 160 outline, 4x M4 chassis holes at SX -/+68, +/-70 and the 70 x 56 R8 harness window (volume equals the code-CAD to 0.1 mm³). C610 removed. M4 chassis screws and two cable clips moved (Codex, rev B and rev A v21) | none |
+| Rev A motor masses | the DM-J4340-2EC configured design (Stator and Rotor configurations, used by rev A) gets effective densities: stator 231 g, rotor 99 g, full motor 330 g (Codex, rev A v22) | `actuators.toml` `rotor_share` 0.30 |
 
 Re-check (rev B v19): 577 solids, 142 overlaps above 0.5 mm³, 15 min. None of the five findings remain. What is left is intended contacts (fasteners, pins, inserts), overlaps inside the STS3215 vendor model (motor, output gear and case screws against its own case) and the servos' bottom caps touching the cradle floors (1.7 mm³ each).
 
-Afterwards the moving bodies match the code-CAD within a few percent. The static torques agree within 4 % at all 14 poses (rev B and rev A). Still open: the Fusion base (GROUND) predates the base shrink (C610 removed, 150 x 160 plate). The jaw servo's spline touches the D4x20 drive-link pin (2.1 mm³).
+Afterwards the moving bodies match the code-CAD within a few percent. The static torques agree within 4 % at all 14 poses (rev B and rev A). Totals: rev B 2,024 g (code-CAD 2,049 g), rev A 2,169 g (2,215 g); GROUND within 1 %. Still open: the jaw servo's spline touches the D4x20 drive-link pin (2.1 mm³).
 
 **Fusion API notes, learned the hard way:**
 - `Document.updateAllReferences()` crashes Fusion when the document was opened invisibly. Open it visibly (`documents.open(f, True)`).
 - Several saves in a row can leave Fusion busy for more than 20 minutes on the next cloud-data call (`findFileById`, `dataFiles`).
-- Positions of occurrences inside sub-components are root-level overrides. Set `transform2` on the root proxy (built with `setWithCoordinateSystem`), then `snapshots.add()`. `MoveFeature` doesn't accept occurrences.
+- Positions of occurrences inside sub-components are root-level overrides. Set `transform2` on the root proxy (built with `setWithCoordinateSystem`), then `snapshots.add()`. `MoveFeature` doesn't accept occurrences. In an assembly with joints (rev B), those overrides on GROUND's children revert on `computeAll()`. `addExistingComponent` adds its matrix on top of the component's first occurrence, and deleting a referenced component's last occurrence removes the component from the design. Codex placed the base parts with its own tooling (tools/_agent/codex-fusion).
 
 ## Pilot findings (rev B, 2026-11-21)
 

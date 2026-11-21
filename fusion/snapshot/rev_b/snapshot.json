@@ -426,11 +426,11 @@
  "occurrences": [
   {
    "bbox": [
-    -435.01,
-    -112.01,
+    -235.01,
+    -80.01,
     119.99,
-    -89.99,
-    112.01,
+    -84.99,
+    80.01,
     125.01
    ],
    "bodies": [
@@ -442,15 +442,15 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -262.5261,
+    -160.0,
     0.0,
     122.5
    ],
    "component": "Base_Plate_AL5",
-   "mass_g": 1040.997,
+   "mass_g": 269.539,
    "path": "GROUND:1+Base_Plate_AL5:1",
    "source_id": "urn:adsk.wipprod:dm.lineage:_5l7s_6pRv2j5WC-l0Yslg",
-   "source_version": 2,
+   "source_version": 3,
    "transform": [
     1.0,
     0.0,
@@ -470,199 +470,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 385554.535
-  },
-  {
-   "bbox": [
-    -425.51,
-    -102.51,
-    112.7275,
-    -418.49,
-    -95.49,
-    129.01
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -422.0006,
-    -99.0005,
-    123.0837
-   ],
-   "component": "SHCS_M4x12",
-   "mass_g": 1.931,
-   "path": "GROUND:1+SHCS_M4x12:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -422.0,
-    0.0,
-    1.0,
-    0.0,
-    -99.0,
-    0.0,
-    0.0,
-    1.0,
-    121.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 245.951
-  },
-  {
-   "bbox": [
-    -425.51,
-    95.49,
-    112.7275,
-    -418.49,
-    102.51,
-    129.01
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -422.0006,
-    98.9995,
-    123.0837
-   ],
-   "component": "SHCS_M4x12",
-   "mass_g": 1.931,
-   "path": "GROUND:1+SHCS_M4x12:2",
-   "source_id": "urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -422.0,
-    0.0,
-    1.0,
-    0.0,
-    99.0,
-    0.0,
-    0.0,
-    1.0,
-    121.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 245.951
-  },
-  {
-   "bbox": [
-    -106.51,
-    -102.51,
-    112.7275,
-    -99.49,
-    -95.49,
-    129.01
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -103.0006,
-    -99.0005,
-    123.0837
-   ],
-   "component": "SHCS_M4x12",
-   "mass_g": 1.931,
-   "path": "GROUND:1+SHCS_M4x12:3",
-   "source_id": "urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -103.0,
-    0.0,
-    1.0,
-    0.0,
-    -99.0,
-    0.0,
-    0.0,
-    1.0,
-    121.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 245.951
-  },
-  {
-   "bbox": [
-    -106.51,
-    95.49,
-    112.7275,
-    -99.49,
-    102.51,
-    129.01
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -103.0006,
-    98.9995,
-    123.0837
-   ],
-   "component": "SHCS_M4x12",
-   "mass_g": 1.931,
-   "path": "GROUND:1+SHCS_M4x12:4",
-   "source_id": "urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -103.0,
-    0.0,
-    1.0,
-    0.0,
-    99.0,
-    0.0,
-    0.0,
-    1.0,
-    121.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 245.951
+   "volume_mm3": 99829.226
   },
   {
    "bbox": [
@@ -4814,304 +4622,203 @@
   },
   {
    "bbox": [
-    -291.0907,
-    -104.855,
-    125.6301,
-    -268.9093,
-    248.5065,
-    132.92
+    -231.51,
+    -73.51,
+    112.7275,
+    -224.49,
+    -66.49,
+    129.01
    ],
    "bodies": [
     {
-     "appearance": "ARC motor",
+     "appearance": "Opaque(192,192,192)",
      "material": "Steel",
      "name": "Body1"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body2"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body3"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body4"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body5"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body6"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body7"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body8"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body9"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body10"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body11"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body12"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body13"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body14"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body15"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body16"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body17"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body18"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body19"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body20"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body21"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body22"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body23"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body24"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body25"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body26"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body27"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body28"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body29"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body30"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body31"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body32"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body33"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body34"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body35"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body36"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body37"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body38"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body39"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body40"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body41"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body42"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body43"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body44"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body45"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body46"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body47"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body48"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body49"
-    },
-    {
-     "appearance": "ARC motor",
-     "material": "Steel",
-     "name": "Body50"
     }
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -279.4316,
-    38.0966,
-    129.1058
+    -228.0006,
+    -70.0005,
+    123.0837
    ],
-   "component": "C610",
-   "mass_g": 51.485,
-   "path": "GROUND:1+C610:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:AbGH-q4ERe-WE3qcbgm5eQ",
+   "component": "SHCS_M4x12",
+   "mass_g": 1.931,
+   "path": "GROUND:1+SHCS_M4x12:5",
+   "source_id": "urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA",
    "source_version": 2,
    "transform": [
     1.0,
     0.0,
     0.0,
-    -140.209608,
-    -0.0,
-    1.0,
-    -0.0,
-    -73.039124,
-    -0.0,
+    -228.0,
     0.0,
     1.0,
-    129.751367,
+    0.0,
+    -70.0,
+    0.0,
+    0.0,
+    1.0,
+    121.0,
     0.0,
     0.0,
     0.0,
     1.0
    ],
    "visible": true,
-   "volume_mm3": 6558.657
+   "volume_mm3": 245.951
   },
   {
    "bbox": [
-    -239.51,
-    -87.51,
+    -231.51,
+    66.49,
+    112.7275,
+    -224.49,
+    73.51,
+    129.01
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -228.0006,
+    69.9995,
+    123.0837
+   ],
+   "component": "SHCS_M4x12",
+   "mass_g": 1.931,
+   "path": "GROUND:1+SHCS_M4x12:6",
+   "source_id": "urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -228.0,
+    0.0,
+    1.0,
+    0.0,
+    70.0,
+    0.0,
+    0.0,
+    1.0,
+    121.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 245.951
+  },
+  {
+   "bbox": [
+    -95.51,
+    -73.51,
+    112.7275,
+    -88.49,
+    -66.49,
+    129.01
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -92.0006,
+    -70.0005,
+    123.0837
+   ],
+   "component": "SHCS_M4x12",
+   "mass_g": 1.931,
+   "path": "GROUND:1+SHCS_M4x12:7",
+   "source_id": "urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -92.0,
+    0.0,
+    1.0,
+    0.0,
+    -70.0,
+    0.0,
+    0.0,
+    1.0,
+    121.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 245.951
+  },
+  {
+   "bbox": [
+    -95.51,
+    66.49,
+    112.7275,
+    -88.49,
+    73.51,
+    129.01
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -92.0006,
+    69.9995,
+    123.0837
+   ],
+   "component": "SHCS_M4x12",
+   "mass_g": 1.931,
+   "path": "GROUND:1+SHCS_M4x12:8",
+   "source_id": "urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -92.0,
+    0.0,
+    1.0,
+    0.0,
+    70.0,
+    0.0,
+    0.0,
+    1.0,
+    121.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 245.951
+  },
+  {
+   "bbox": [
+    -224.51,
+    -9.51,
     124.79,
-    -220.49,
-    -68.49,
+    -205.49,
+    9.51,
     131.61
    ],
    "bodies": [
@@ -5123,120 +4830,24 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -230.0,
-    -78.0,
-    125.7149
-   ],
-   "component": "CLIP (placeholder)",
-   "mass_g": 1.0,
-   "path": "GROUND:1+CLIP (placeholder):1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:6kHQHWbHSwayl5XSRh7HiQ",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 448.41
-  },
-  {
-   "bbox": [
-    -339.51,
-    -49.51,
-    124.79,
-    -320.49,
-    -30.49,
-    131.61
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC pad",
-     "material": "CLIP (catalogue mass)",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -330.0,
-    -40.0,
-    125.7149
-   ],
-   "component": "CLIP (placeholder)",
-   "mass_g": 1.0,
-   "path": "GROUND:1+CLIP (placeholder):2",
-   "source_id": "urn:adsk.wipprod:dm.lineage:6kHQHWbHSwayl5XSRh7HiQ",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -100.0,
-    0.0,
-    1.0,
+    -215.0,
     -0.0,
-    38.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 448.41
-  },
-  {
-   "bbox": [
-    -399.51,
-    30.49,
-    124.79,
-    -380.49,
-    49.51,
-    131.61
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC pad",
-     "material": "CLIP (catalogue mass)",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -390.0,
-    40.0,
     125.7149
    ],
    "component": "CLIP (placeholder)",
    "mass_g": 1.0,
-   "path": "GROUND:1+CLIP (placeholder):3",
+   "path": "GROUND:1+CLIP (placeholder):4",
    "source_id": "urn:adsk.wipprod:dm.lineage:6kHQHWbHSwayl5XSRh7HiQ",
    "source_version": 2,
    "transform": [
     1.0,
     0.0,
     0.0,
-    -160.0,
+    15.0,
     0.0,
     1.0,
     0.0,
-    118.0,
+    78.0,
     0.0,
     -0.0,
     1.0,
@@ -5251,22 +4862,70 @@
   },
   {
    "bbox": [
-    -435.01,
-    -112.01,
+    -114.51,
+    -9.51,
+    124.79,
+    -95.49,
+    9.51,
+    131.61
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC pad",
+     "material": "CLIP (catalogue mass)",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -105.0,
+    -0.0,
+    125.7149
+   ],
+   "component": "CLIP (placeholder)",
+   "mass_g": 1.0,
+   "path": "GROUND:1+CLIP (placeholder):5",
+   "source_id": "urn:adsk.wipprod:dm.lineage:6kHQHWbHSwayl5XSRh7HiQ",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    125.0,
+    0.0,
+    1.0,
+    -0.0,
+    78.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 448.41
+  },
+  {
+   "bbox": [
+    -238.4903,
+    -105.0711,
     112.7175,
     -56.6537,
-    248.5165,
+    105.0711,
     277.4456
    ],
    "bodies": [],
    "body_group": "GROUND:1",
    "com_mm": [
-    -224.7041,
-    0.8751,
-    143.5836
+    -144.5906,
+    -0.6558,
+    166.0111
    ],
    "component": "GROUND",
-   "mass_g": 1583.21,
+   "mass_g": 759.266,
    "path": "GROUND:1",
    "source_id": null,
    "source_version": null,
@@ -5289,7 +4948,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 751549.76
+   "volume_mm3": 458817.384
   },
   {
    "bbox": [
@@ -19360,13 +19019,13 @@
  "summary": {
   "document": "ARC Arm Rev B",
   "document_id": "urn:adsk.wipprod:dm.lineage:cGWSAxvSQQaYddhXmTl3HA",
-  "document_version": 19,
-  "exported": "2026-11-21T13:34:52",
+  "document_version": 21,
+  "exported": "2026-11-21T14:11:08",
   "joints": 32,
   "motion_links": 0,
-  "occurrences": 374,
-  "parts": 119,
+  "occurrences": 372,
+  "parts": 118,
   "revision": "rev_b",
-  "total_mass_g": 2848.2
+  "total_mass_g": 2024.3
  }
 }

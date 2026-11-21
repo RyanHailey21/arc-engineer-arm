@@ -3,29 +3,29 @@
  "snapshot": {
   "document": "ARC Arm Rev A",
   "document_id": "urn:adsk.wipprod:dm.lineage:tGjaaP6BR9alz_2ZsIQF-g",
-  "document_version": 20,
-  "exported": "2026-11-21T13:35:42",
+  "document_version": 22,
+  "exported": "2026-11-21T14:26:59",
   "joints": 30,
   "motion_links": 0,
-  "occurrences": 444,
-  "parts": 123,
+  "occurrences": 442,
+  "parts": 122,
   "revision": "rev_a",
-  "total_mass_g": 3963.1
+  "total_mass_g": 2168.8
  },
  "bodies": [
   {
    "body": "GROUND",
-   "fusion_g": 2759.6,
+   "fusion_g": 857.7,
    "code_g": 864.7,
-   "diff_pct": 219.1,
-   "com_offset_mm": 41.14
+   "diff_pct": -0.8,
+   "com_offset_mm": 1.67
   },
   {
    "body": "UPPER",
-   "fusion_g": 161.2,
+   "fusion_g": 215.1,
    "code_g": 221.9,
-   "diff_pct": -27.3,
-   "com_offset_mm": 15.5
+   "diff_pct": -3.1,
+   "com_offset_mm": 7.25
   },
   {
    "body": "GRIPPER",
@@ -50,10 +50,10 @@
   },
   {
    "body": "CRANK",
-   "fusion_g": 81.8,
+   "fusion_g": 135.6,
    "code_g": 138.2,
-   "diff_pct": -40.8,
-   "com_offset_mm": 3.5
+   "diff_pct": -1.9,
+   "com_offset_mm": 0.69
   },
   {
    "body": "LEVEL",
@@ -63,14 +63,14 @@
    "com_offset_mm": 1.33
   },
   {
-   "body": "JAW_R",
+   "body": "JAW_L",
    "fusion_g": 72.9,
    "code_g": 76.5,
    "diff_pct": -4.8,
    "com_offset_mm": 3.31
   },
   {
-   "body": "JAW_L",
+   "body": "JAW_R",
    "fusion_g": 72.9,
    "code_g": 76.5,
    "diff_pct": -4.8,
@@ -91,14 +91,14 @@
    "com_offset_mm": 4.81
   },
   {
-   "body": "ROD1",
+   "body": "ROD_AB",
    "fusion_g": 19.7,
    "code_g": 19.7,
    "diff_pct": 0.0,
    "com_offset_mm": 0.0
   },
   {
-   "body": "ROD_AB",
+   "body": "ROD1",
    "fusion_g": 19.7,
    "code_g": 19.7,
    "diff_pct": 0.0,
@@ -119,14 +119,14 @@
    "com_offset_mm": 0.89
   },
   {
-   "body": "LK_LI",
+   "body": "LK_RI",
    "fusion_g": 7.3,
    "code_g": 7.3,
    "diff_pct": 0.0,
    "com_offset_mm": 0.0
   },
   {
-   "body": "LK_RI",
+   "body": "LK_LI",
    "fusion_g": 7.3,
    "code_g": 7.3,
    "diff_pct": 0.0,

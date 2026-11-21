@@ -9,10 +9,9 @@ component,qty,material,mass_g,source_id,source_version
 "BHCS_M3x5",8,"Steel",0.433,urn:adsk.wipprod:dm.lineage:YLDfdSSpRsmUxi4FYQJ7_A,2
 "BHCS_M3x6",33,"Steel",0.477,urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q,2
 "BHCS_M3x8",18,"Steel",0.566,urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA,2
-"Base_Plate_AL5",1,"Aluminum 6061",1040.997,urn:adsk.wipprod:dm.lineage:_5l7s_6pRv2j5WC-l0Yslg,2
-"C610",1,"Steel",51.485,urn:adsk.wipprod:dm.lineage:AbGH-q4ERe-WE3qcbgm5eQ,2
+"Base_Plate_AL5",1,"Aluminum 6061",269.539,urn:adsk.wipprod:dm.lineage:_5l7s_6pRv2j5WC-l0Yslg,3
 "CHOUCHENGMR106_3",10,"STS3215 (catalogue mass)",0.358,None,None
-"CLIP (placeholder)",3,"CLIP (catalogue mass)",1.000,urn:adsk.wipprod:dm.lineage:6kHQHWbHSwayl5XSRh7HiQ,2
+"CLIP (placeholder)",2,"CLIP (catalogue mass)",1.000,urn:adsk.wipprod:dm.lineage:6kHQHWbHSwayl5XSRh7HiQ,2
 "COLLAR10",2,"COLLAR10 (catalogue mass)",25.000,urn:adsk.wipprod:dm.lineage:1BoE51w6QTCcgyLrkPwJiQ,3
 "CSK_M3x6",8,"Steel",0.399,urn:adsk.wipprod:dm.lineage:mqyMZP3VTm2AfpCl3NX2oQ,2
 "Clevis_L_CF3",1,"CF plate 3K",18.029,urn:adsk.wipprod:dm.lineage:apV3WtJXQzGm42u8JNvZNA,2

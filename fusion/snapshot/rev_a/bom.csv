@@ -11,10 +11,9 @@ component,qty,material,mass_g,source_id,source_version
 "BHCS_M3x5",8,"Steel",0.433,urn:adsk.wipprod:dm.lineage:YLDfdSSpRsmUxi4FYQJ7_A,2
 "BHCS_M3x6",39,"Steel",0.477,urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q,2
 "BHCS_M3x8",10,"Steel",0.566,urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA,2
-"Base_Plate_AL5",1,"Aluminum 6061",1040.997,urn:adsk.wipprod:dm.lineage:_5l7s_6pRv2j5WC-l0Yslg,2
-"C610",1,"Steel",51.485,urn:adsk.wipprod:dm.lineage:AbGH-q4ERe-WE3qcbgm5eQ,2
+"Base_Plate_AL5",1,"Aluminum 6061",269.539,urn:adsk.wipprod:dm.lineage:_5l7s_6pRv2j5WC-l0Yslg,3
 "CHOUCHENGMR106_3",6,"STS3215 (catalogue mass)",0.358,None,None
-"CLIP (placeholder)",3,"CLIP (catalogue mass)",1.000,urn:adsk.wipprod:dm.lineage:6kHQHWbHSwayl5XSRh7HiQ,2
+"CLIP (placeholder)",2,"CLIP (catalogue mass)",1.000,urn:adsk.wipprod:dm.lineage:6kHQHWbHSwayl5XSRh7HiQ,2
 "COLLAR10",2,"COLLAR10 (catalogue mass)",25.000,urn:adsk.wipprod:dm.lineage:1BoE51w6QTCcgyLrkPwJiQ,3
 "CSK_M3x6",8,"Steel",0.399,urn:adsk.wipprod:dm.lineage:mqyMZP3VTm2AfpCl3NX2oQ,2
 "Clevis_L_CF3",1,"CF plate 3K",18.029,urn:adsk.wipprod:dm.lineage:apV3WtJXQzGm42u8JNvZNA,2
@@ -76,7 +75,7 @@ component,qty,material,mass_g,source_id,source_version
 "Rod_AB_CF3",1,"CF plate 3K",17.340,urn:adsk.wipprod:dm.lineage:ab7wjp0zQsSkBCRWsmF13A,2
 "Roll_Housing",1,"PETG-CF print (effective)",35.041,urn:adsk.wipprod:dm.lineage:A9aSUxOfT3SbtlkV7AdlYQ,2
 "Roll_Hub",1,"Aluminum 6061",11.467,urn:adsk.wipprod:dm.lineage:aUDmXxMFRoqpT70BPKBBXg,2
-"Rotor - supplier housing split",2,"Steel",45.171,None,None
+"Rotor - supplier housing split",2,"DM-J4340 Rotor (catalogue mass allocation)",99.000,None,None
 "SB5x10",1,"Steel",4.017,urn:adsk.wipprod:dm.lineage:fmcBAtHvRVSSF-FtFC9f2Q,2
 "SB5x12",1,"Steel",4.323,urn:adsk.wipprod:dm.lineage:99nuskZpSKK3EtyBmoF1IA,2
 "SB5x4",1,"Steel",3.034,urn:adsk.wipprod:dm.lineage:PwuLRF5PTjOhEt6VvplUnA,2
@@ -98,7 +97,7 @@ component,qty,material,mass_g,source_id,source_version
 "Standoff_D6_L1",1,"Aluminum 6061",2.892,urn:adsk.wipprod:dm.lineage:YjIfC7RwSKSnKaKWot9ccQ,2
 "Standoff_D6_R0",1,"Aluminum 6061",2.892,urn:adsk.wipprod:dm.lineage:3SPRYcMNT-CGGyfAlenAgA,2
 "Standoff_D6_R1",1,"Aluminum 6061",2.892,urn:adsk.wipprod:dm.lineage:YNpa-RRhRNOCkw9zpu-EuA,2
-"Stator - supplier housing split",2,"Steel",712.018,None,None
+"Stator - supplier housing split",2,"DM-J4340 Stator (catalogue mass allocation)",173.018,None,None
 "Tower_Bracket_L0",1,"PETG-CF print (effective)",1.648,urn:adsk.wipprod:dm.lineage:A96UFFERTz-MzdiEYaBbwA,2
 "Tower_Bracket_L1",1,"PETG-CF print (effective)",1.648,urn:adsk.wipprod:dm.lineage:xDbNswVfQ5auQlo9WsnP1Q,2
 "Tower_Bracket_R0",1,"PETG-CF print (effective)",1.648,urn:adsk.wipprod:dm.lineage:sifw5ACHQVOObNmwSa7gyQ,2
