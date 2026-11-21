@@ -106,7 +106,7 @@ GZ_SIM_RESOURCE_PATH=$PWD/sim gz sim -r sim/arc_arm_fourbar/worlds/arc_arm_free.
 ```
 
 ```bash
-python cad/sim/gz_demo.py fourbar --seq both --rate 100 --speed 0.5
+python cad/sim/demo.py fourbar --backend gazebo --seq both --rate 100 --speed 0.5
 ```
 
 The demo needs the gz-transport Python bindings (`gz-transport13-python`, `gz-msgs10-python`). Measured here: 20 moves in 27 s, setpoints at 100 Hz, every pose reached within 0.01°.

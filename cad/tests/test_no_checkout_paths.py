@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """TI-022: no live code names an absolute checkout path.  Plain Python:  python -I cad/tests/test_no_checkout_paths.py
 
-Four tests and tools/quick_static.py set CAD = r"C:\\Users\\<user>\\light_weight_arm\\cad".  Run from a git worktree
+Four tests and a quick-check script set CAD = r"C:\\Users\\<user>\\light_weight_arm\\cad".  Run from a git worktree
 (.claude/worktrees/<name>/), they imported, checked and wrote to the user's main checkout instead.  Code must find
 the repo from its own __file__.
 
