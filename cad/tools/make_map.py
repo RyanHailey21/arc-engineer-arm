@@ -3,7 +3,7 @@
 Generate cad/MAP.md: a searchable index of the model - modules and their builders, parameter files, interfaces,
 envelopes, and every part (body, kind, source, mass, and the file:line that builds it) for each gripper variant.
 
-    set GRIP=SCREW   & freecadcmd cad/tools/make_map.py      (writes cad/out/screw/map_parts.md)
+    set BASE_DRIVE=DIRECT & freecadcmd cad/tools/make_map.py   (writes cad/out/fourbar_direct/map_parts.md)
     set GRIP=FOURBAR & freecadcmd cad/tools/make_map.py      (writes cad/out/fourbar/map_parts.md, then MAP.md)
 Each run refreshes its variant's part table and rebuilds MAP.md from every variant table on disk.
 """
@@ -110,7 +110,7 @@ def main():
             "- `check_interference.py`, `tools/check_holes.py`, `tools/check_engagement.py`"
             " -> `out/<variant>/`; each run is logged in `out/<variant>/manifest.json` with the inputs hash",
             "- `tools/fingerprint.py` -> regression guard against `tests/fingerprints/<variant>.json`",
-            "- release generators (export_fab, fea/run_fea, build_assembly, render/export_render) build the"
+            "- release generators (export_fab, fea/run_fea, render/export_render) build the"
             " release variant (`params/variant.toml` release) into `fab/`, `fea/out/`, `render/`",
             "- `docs/paper/make_paper.py` -> `docs/ARC_S2_Engineer_Arm.pdf`, the product summary (from the check results)", ""]
     doc += ["## Parts by variant", ""]

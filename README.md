@@ -10,8 +10,7 @@ The whole arm is code-CAD (FreeCAD 1.1 Python). **Start with [`cad/MAP.md`](cad/
 - **Design (rev B, released 2026-11-19, `GRIP=FOURBAR`).** Gear-synchronised parallel four-bar gripper on a palletizer arm with parallelogram level keeping, Feetech STS3215 servos on every joint (J1/J2 through a printed 3:1 spur stage). Head 352 g, past the wrist 564 g; worst static torque J1 3.39, J2 2.90, J3 0.88 N·m.
   - **Product summary and requirements verification:** [cad/docs/ARC_S2_Engineer_Arm.pdf](cad/docs/ARC_S2_Engineer_Arm.pdf), rebuilt from the check results by `cad/docs/paper/make_paper.py`.
 - **Base-drive variant (`BASE_DRIVE=DIRECT`).** Damiao DM-J4340-2EC direct drive on J1/J2 (the Fusion "Rev A"), kept to compare base motors. Outputs in `cad/out/fourbar_direct/`; its STEP set and BOM for the Fusion migration come from `cad/tools/export_variant.py` → `cad/out/fourbar_direct/fab/`.
-- **`GRIP=SCREW`** is the old rev A lead-screw gripper (M2006 + Tr8x8 screw on MGN9 rails), a non-release variant. With the STS3215 base it is over the 50 %-of-stall holding rule, so its quick check reports mass/torque FAIL.
-- **Released package.** `cad/fab/` (STEP, DXF, BOM, procurement), `cad/fea/out` and the renders in `cad/render/out` are rev B. `cad/scenes/` is still rev A. There are no drawings: they are not a project requirement.
+- **Released package.** `cad/fab/` (STEP, DXF, BOM, procurement), `cad/fea/out` and the renders in `cad/render/out` are rev B. There are no drawings: they are not a project requirement.
 - **Simulation.** A MuJoCo model of the four-bar arm, generated from the CAD and validated against it, that runs both tasks end to end; video at the real servo speed: [sim/README.md](sim/README.md).
 
 ## What the arm does
@@ -28,21 +27,21 @@ The whole arm is code-CAD (FreeCAD 1.1 Python). **Start with [`cad/MAP.md`](cad/
 |---|---|
 | `cad/arm/` | The model, one module per subassembly; `cad/arm_model.py` re-exports it (`import arm_model as M`). |
 | `cad/params/`, `cad/interfaces/`, `cad/envelopes/`, `cad/data/catalogue.toml` | Design inputs, mating interfaces, field keep-out boxes, purchased parts. Edit these, not literals in code. |
-| `cad/hardware.py`, `cad/vendor/` | Purchased-part geometry: vendor STEP (STS3215, DM-J4340, M2006/C610 for SCREW), ISO/DIN hardware, catalogue-modelled parts. |
+| `cad/hardware.py`, `cad/vendor/` | Purchased-part geometry: vendor STEP (STS3215, DM-J4340, C610 ESC), ISO/DIN hardware, catalogue-modelled parts. |
 | `cad/field.py` | ARC Battlefield items (tier, placeholder pole, bucket, pipes, scoring area, chute). |
 | `cad/tools/`, `cad/check_interference.py`, `cad/tests/` | Checks (quick check, interfaces, seating, engagement, holes, level keeping, grip hold, fingerprint, bloat report) and their tests. |
 | `cad/out/<variant>/` | Check results, `manifest.json` (status + inputs hash: FRESH/STALE), the maintained FreeCAD working document. |
 | `cad/sim/`, `sim/` | MuJoCo model generators, the generated model, task runs and the task video. |
 | `cad/fab/`, `cad/fea/` | Release fabrication export and FEA. |
 | `cad/docs/` | The product summary PDF and its generator (`paper/`). |
-| `cad/render/`, `cad/build_assembly.py`, `cad/scenes/` | Blender renders, and mated Assembly-workbench documents (release generators). |
+| `cad/render/` | Blender renders (release generator). |
 
 ## Checks
 
 | When | Run | Covers |
 |---|---|---|
 | After every edit (~30 s + build) | `python -I cad/tools/run.py cad/tools/quick_check.py` | envelopes, interfaces, gripper self-interference over the jaw stroke, mass/torque, catalogue masses, level keeping, fastener seating, bloat, fingerprint; prints FRESH/STALE evidence |
-| Refactors | `cad/tools/fingerprint.py` with `FP_MODE=check` | MATCH for `GRIP=FOURBAR`, `GRIP=SCREW` and `BASE_DRIVE=DIRECT` |
+| Refactors | `cad/tools/fingerprint.py` with `FP_MODE=check` | MATCH for `GRIP=FOURBAR` and `BASE_DRIVE=DIRECT` (`fourbar_direct`) |
 | Milestones (~4 min, cached) | `python -I cad/tools/run.py --timeout 900 cad/check_interference.py` | every part pair at STOW, the 14 task poses (`FULL=1`: interpolated sweep), field clearance, donut lift along the pole, static torques |
 | Milestones | `tools/check_holes.py`, `tools/check_engagement.py`, `tools/check_level_keeping.py`, `tools/grip_hold.py`, `tools/bom.py` | hole edge distance, thread engagement, parallelogram closure and dead points, grip margins from the sim loads, BOM |
 

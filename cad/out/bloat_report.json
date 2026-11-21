@@ -1,42 +1,15 @@
 {
  "findings": [
   {
-   "kind": "orphan-catalogue",
-   "path": "cad/data/catalogue.toml",
-   "line": 150,
-   "name": "STANDOFF",
-   "detail": "catalogue key `STANDOFF`: no part uses it as its src",
-   "id": "orphan-catalogue:cad/data/catalogue.toml:STANDOFF"
+   "kind": "scratch",
+   "path": "cad/out/fourbar/ARC_Arm_Fourbar.20261120-045651.FCBak",
+   "line": 1,
+   "name": "cad/out/fourbar/ARC_Arm_Fourbar.20261120-045651.FCBak",
+   "detail": "local leftover (9775 kB)",
+   "id": "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261120-045651.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261120-045651.FCBak"
   }
  ],
  "kept": [
-  {
-   "kind": "unused-variable",
-   "path": "cad/hardware.py",
-   "line": 212,
-   "name": "gt2_pulley.rr",
-   "detail": "`rr` assigned in gt2_pulley(), never read",
-   "id": "unused-variable:cad/hardware.py:gt2_pulley.rr",
-   "kept": "rev A belt-drive hardware (GT2 pulley and belt); rev A drawings and assembly were built with it"
-  },
-  {
-   "kind": "dead-def",
-   "path": "cad/hardware.py",
-   "line": 223,
-   "name": "gt2_belt",
-   "detail": "function `gt2_belt` is never referenced",
-   "id": "dead-def:cad/hardware.py:gt2_belt",
-   "kept": "rev A belt-drive hardware (GT2 pulley and belt); rev A drawings and assembly were built with it"
-  },
-  {
-   "kind": "dead-def",
-   "path": "cad/hardware.py",
-   "line": 208,
-   "name": "gt2_pulley",
-   "detail": "function `gt2_pulley` is never referenced",
-   "id": "dead-def:cad/hardware.py:gt2_pulley",
-   "kept": "rev A belt-drive hardware (GT2 pulley and belt); rev A drawings and assembly were built with it"
-  },
   {
    "kind": "dead-def",
    "path": "cad/params.py",
@@ -44,7 +17,7 @@
    "name": "use_release_variant",
    "detail": "function `use_release_variant` is never referenced",
    "id": "dead-def:cad/params.py:use_release_variant",
-   "kept": "used only by frozen/release code: cad/build_assembly.py, cad/export_fab.py, cad/fea/run_fea.py"
+   "kept": "used only by frozen/release code: cad/export_fab.py, cad/fea/run_fea.py, cad/render/export_render.py"
   },
   {
    "kind": "duplicate",
@@ -55,33 +28,6 @@
    "id": "duplicate:cad/fea/run_fea_fourbar.py:ef88d93b96",
    "other": "cad/fea/run_fea_jaw.py",
    "kept": "standalone freecadcmd FEA scripts share a 7-line sys.path / FEA_LIB bootstrap; a shared module would need the same bootstrap to be found"
-  },
-  {
-   "kind": "orphan-catalogue",
-   "path": "cad/data/catalogue.toml",
-   "line": 193,
-   "name": "GT2-BELT",
-   "detail": "catalogue key `GT2-BELT`: no part uses it as its src",
-   "id": "orphan-catalogue:cad/data/catalogue.toml:GT2-BELT",
-   "kept": "used only by frozen/release code: cad/fab/make_procurement.py"
-  },
-  {
-   "kind": "orphan-catalogue",
-   "path": "cad/data/catalogue.toml",
-   "line": 52,
-   "name": "MR104ZZ",
-   "detail": "catalogue key `MR104ZZ`: no part uses it as its src",
-   "id": "orphan-catalogue:cad/data/catalogue.toml:MR104ZZ",
-   "kept": "used only by frozen/release code: cad/fab/make_procurement.py"
-  },
-  {
-   "kind": "orphan-catalogue",
-   "path": "cad/data/catalogue.toml",
-   "line": 64,
-   "name": "SHAFT10",
-   "detail": "catalogue key `SHAFT10`: no part uses it as its src",
-   "id": "orphan-catalogue:cad/data/catalogue.toml:SHAFT10",
-   "kept": "used only by frozen/release code: cad/fab/make_procurement.py"
   },
   {
    "kind": "out-unindexed",
@@ -198,21 +144,24 @@
   "dead-def": 0,
   "duplicate": 0,
   "orphan-param": 0,
-  "orphan-catalogue": 1,
+  "orphan-catalogue": 0,
   "orphan-interface": 0,
   "orphan-envelope": 0,
   "out-unindexed": 0,
-  "scratch": 0
+  "scratch": 1
  },
- "scanned": 70,
+ "scanned": 67,
  "stale_keep": [],
  "notes": [
-  "fourbar_direct/map_parts.md is older than the model inputs (rerun tools/make_map.py)",
-  "screw/map_parts.md is older than the model inputs (rerun tools/make_map.py)"
+  "fourbar/map_parts.md is older than the model inputs (rerun tools/make_map.py)",
+  "fourbar_direct/map_parts.md is older than the model inputs (rerun tools/make_map.py)"
  ],
  "new": [],
  "resolved": [
-  "dead-def:cad/sim/build_robot.py:lump_crank_pin"
+  "dead-def:cad/arm/core.py:fillet_y",
+  "orphan-catalogue:cad/data/catalogue.toml:688ZZ",
+  "orphan-catalogue:cad/data/catalogue.toml:COLLAR8",
+  "orphan-catalogue:cad/data/catalogue.toml:STANDOFF"
  ],
  "keep_file": "cad/tools/bloat_keep.toml"
 }

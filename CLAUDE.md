@@ -19,15 +19,15 @@ Start with `cad/MAP.md` (generated). It lists every module, parameter file, inte
 
 ## Workflow
 1. Change a TOML value or a builder.
-2. Run `tools/quick_check.py` (about 25–30 s). It covers envelopes, interfaces, gripper self-interference, mass/torque, fastener seating (every screw, pin and washer in its hole and bearing on a part) and the fingerprint, and shows FRESH/STALE evidence.
-3. Refactors: `tools/fingerprint.py` must report MATCH for **both** `GRIP=SCREW` and `GRIP=FOURBAR`, and for `BASE_DRIVE=DIRECT` (fingerprint `fourbar_direct`) when the base or a shared module changed. After an *intended* geometry change, re-record it (`FP_MODE=record`) and say which parts changed.
+2. Run `tools/quick_check.py` (about 90 s with the model build). It covers envelopes, interfaces, gripper self-interference, mass/torque, fastener seating (every screw, pin and washer in its hole and bearing on a part) and the fingerprint, and shows FRESH/STALE evidence.
+3. Refactors: `tools/fingerprint.py` must report MATCH for `GRIP=FOURBAR`, and for `BASE_DRIVE=DIRECT` (fingerprint `fourbar_direct`) when the base or a shared module changed. After an *intended* geometry change, re-record it (`FP_MODE=record`) and say which parts changed.
 4. Milestones: run `check_interference.py` (about 4 min, ground truth). FEA and renders only on request.
 5. Documentation is one PDF, `cad/docs/ARC_S2_Engineer_Arm.pdf`: an arXiv-style product summary with the requirements verification, rebuilt from the check results by `cad/docs/paper/make_paper.py` (needs `pdflatex`, e.g. MiKTeX). Change `cad/docs/paper/paper.tex` for wording; numbers come from `numbers.tex`, which is generated. There are no drawings: they are not required.
 6. New mates or limits go in `interfaces/` or `envelopes/` first, not as numbers buried in a builder. Both mating parts must build from the file. When you move a part, check its mate is in `interfaces/`; a standoff moved through a parameter once left its plate holes behind. `[pattern]` handles bolt circles and `[stations]` handles rows of holes, with an optional `[spacer]` side.
 7. New gripper: add `arm/grippers/<name>.py` with `<name>_bodies()` and `<name>_placements(Hd, jaw)`, register it in `arm/bodies.py` GRIPPERS, and mount it on `interfaces/roll_hub__gripper_palm.toml`.
 
 ## Guard rails
-- Release generators build the release variant only and refuse another `GRIP` or `BASE_DRIVE`: `export_fab.py`, `fea/run_fea.py`, `build_assembly.py`, `render/export_render.py`. The released package (rev B since 2026-11-19, `GRIP=FOURBAR`) in `fab/` and `fea/out` changes only on request. A non-release variant's STEP/BOM for migration: `tools/export_variant.py` -> `cad/out/<variant>/fab/`.
+- Release generators build the release variant only and refuse another `GRIP` or `BASE_DRIVE`: `export_fab.py`, `fea/run_fea.py`, `render/export_render.py`. The released package (rev B since 2026-11-19, `GRIP=FOURBAR`) in `fab/` and `fea/out` changes only on request. A non-release variant's STEP/BOM for migration: `tools/export_variant.py` -> `cad/out/<variant>/fab/`.
 - In a running FreeCAD GUI session, call `arm.reload_all()` to pick up edits. Don't drive the GUI from `execute_code_async`.
 - Run long jobs (full interference, FEA, renders) in the background.
 - Deliverables live in this GitHub repo: the product summary is `cad/docs/ARC_S2_Engineer_Arm.pdf`. OneDrive is no longer used.
