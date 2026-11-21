@@ -3,7 +3,7 @@
 hardware.py - purchased-part geometry.
 
 * Vendor STEP models (cad/vendor/...) for parts whose makers publish CAD:
-  Feetech STS3215, Damiao DM-J4340, DJI C610.  Loaded once, cached as BREP,
+  Feetech STS3215, Damiao DM-J4340.  Loaded once, cached as BREP,
   re-oriented to a canonical frame (axis +Y, mounting face at y=0).
 * ISO/DIN standard hardware generated at standard dimensions (same approach as
   the FreeCAD Fasteners workbench): ISO 4762 SHCS, ISO 7380 BHCS, ISO 10511
@@ -48,8 +48,7 @@ _VCACHE = {}
 def vendor(name):
     """Return the vendor shape in canonical frame (copy).  Canonical frames:
     STS3215: output spline on +Y through the origin, horn seat at y=0, body to -y, long axis +x (horns removed).
-    DM4340: Damiao DM-J4340-2EC (BASE_DRIVE=DIRECT): axis +Y, OUTPUT face at y=0, housing extends to y=+53.25.
-    C610  : as delivered, recentred on its PCB bounding box."""
+    DM4340: Damiao DM-J4340-2EC (BASE_DRIVE=DIRECT): axis +Y, OUTPUT face at y=0, housing extends to y=+53.25."""
     if name in _VCACHE:
         return _VCACHE[name].copy()
     cache = os.path.join(VENDOR, "cache_%s.brep" % name)
@@ -69,15 +68,6 @@ def vendor(name):
                     if not (abs(x.BoundBox.Center.x + 25.5) < 0.6 and abs(x.BoundBox.XLength - 19.95) < 0.3)]
             s = Part.makeCompound(keep)
             s.translate(V(25.5, -4.7, 0))             # output axis -> x=0, horn seat -> y=0 (canonical frame above)
-        elif name == "C610":
-            raw = Part.Shape()
-            raw.read(os.path.join(VENDOR, "dji", "RoboMaster_C610.STEP"))
-            sol = sorted(raw.Solids, key=lambda x: -x.Volume)
-            # ESC body spans y -33..18.5 in the vendor file; longer solids are the leads
-            body = [x for x in sol if x.BoundBox.YMin > -33.0 and x.BoundBox.YMax < 18.5]
-            s = Part.makeCompound(body)
-            c = s.BoundBox.Center
-            s.translate(V(-c.x, -c.y, -s.BoundBox.ZMin))
         s.exportBrep(cache)
     _VCACHE[name] = s
     return s.copy()

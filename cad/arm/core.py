@@ -30,6 +30,7 @@ ROD2_T = _ARM["level_keeping"]["ROD2_T"]
 ROD2_W = _ARM["level_keeping"]["ROD2_W"]
 UA_HUB_SCREWS = _ARM["j1_hub"]["UA_HUB_SCREWS"]
 HUB_R = _ARM["j1_hub"]["HUB_R"]
+BASE_PLATE = dict(_ARM["base_plate"])   # Base_Plate_AL5 outline, chassis holes, window, cable clips
 
 # actuators: every joint and the gripper run Feetech STS3215 servos (params/actuators.toml)
 _ACT = params.load("actuators")

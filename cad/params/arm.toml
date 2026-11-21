@@ -1,6 +1,6 @@
 # Arm geometry: kinematic dimensions, plate layer stack and drive details.  mm, degrees.
 # Frame: X forward from the chassis front bumper, Y left, Z up from the Battlefield floor.
-# Read by cad/arm/core.py (K, Y, T, ROD2_T, ROD2_W, HUB_R, UA_HUB_SCREWS) and cad/arm/upper_arm.py (harness).
+# Read by cad/arm/core.py (K, Y, T, ROD2_T, ROD2_W, HUB_R, UA_HUB_SCREWS, BASE_PLATE) and cad/arm/upper_arm.py (harness).
 
 T = 3.0                  # CF plate thickness (every plate in the layer stack)
 
@@ -45,3 +45,15 @@ UA_HUB_SCREWS = [30.0, 150.0, 270.0]   # J1 hub -> UA-L: 3x M3 on PCD20 (deg)
 
 [harness]
 UA_CLIP_YZ = [-52.3, 9.0]              # harness bundle centre in the UA frame (y, z): 47 + 5.3 outboard of the UA plate
+
+[base_plate]             # Base_Plate_AL5 (5 mm 6061, waterjet): the smallest plate that carries the two towers on their four
+                         # angle brackets, for both base drives (the drives hang on the towers, z >= 146, and may overhang it).
+                         # x values are relative to the shoulder axis K.SX, y absolute (symmetric).  mm
+x = [-75.0, 75.0]        # tower feet span SX -/+ 63; the M4 holes sit just outside them
+half_width = 80.0        # bracket feet end at |y| 72.5 (towers at 51 + 21.5 foot)
+thickness = 5.0
+corner_r = 10.0
+chassis_holes = [[-68.0, 70.0], [68.0, 70.0]]   # 4x D4.5 (M4 SHCS to the chassis) at (x, +/-y): clear of the bracket
+                         # feet (x -/+ 37..53), 7 mm edge distance
+window = [70.0, 56.0, 8.0]   # central lightening / harness window between the towers: length x, width y, corner radius
+clips_x = [-55.0, 55.0]  # adhesive cable-tie mounts on the centre line, behind and in front of the window

@@ -27,7 +27,7 @@ The whole arm is code-CAD (FreeCAD 1.1 Python). **Start with [`cad/MAP.md`](cad/
 |---|---|
 | `cad/arm/` | The model, one module per subassembly; `cad/arm_model.py` re-exports it (`import arm_model as M`). |
 | `cad/params/`, `cad/interfaces/`, `cad/envelopes/`, `cad/data/catalogue.toml` | Design inputs, mating interfaces, field keep-out boxes, purchased parts. Edit these, not literals in code. |
-| `cad/hardware.py`, `cad/vendor/` | Purchased-part geometry: vendor STEP (STS3215, DM-J4340, C610 ESC), ISO/DIN hardware, catalogue-modelled parts. |
+| `cad/hardware.py`, `cad/vendor/` | Purchased-part geometry: vendor STEP (STS3215, DM-J4340), ISO/DIN hardware, catalogue-modelled parts. |
 | `cad/field.py` | ARC Battlefield items (tier, placeholder pole, bucket, pipes, scoring area, chute). |
 | `cad/tools/`, `cad/check_interference.py`, `cad/tests/` | Checks (quick check, interfaces, seating, engagement, holes, level keeping, grip hold, fingerprint, bloat report) and their tests. |
 | `cad/out/<variant>/` | Check results, `manifest.json` (status + inputs hash: FRESH/STALE), the maintained FreeCAD working document. |

@@ -8,11 +8,6 @@ mass = 330
 src = "github.com/dmBots/DM-J4340-2EC models/3d + drawings/2d"
 verify = "weigh on receipt; caliper-check the PCD 50 stator and PCD 27 output screw circles and the dowel holes"
 
-["C610"]
-desc = "DJI RoboMaster C610 ESC (vendor STEP); its M2006 motor went with the SCREW gripper"
-mass = 15
-src = "robomaster.com product 1277 STEP"
-
 ["6804ZZ"]
 desc = "Thin-section bearing 6804ZZ 20x32x7 (J1/J2 hub journals in the drive frames)"
 mass = 19

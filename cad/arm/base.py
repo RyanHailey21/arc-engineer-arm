@@ -58,18 +58,22 @@ def body_ground():
     sx, sz, zb = S[0], S[1], K["DECK_Z"]
     G1 = add(S, u(K["V1_ANG"], K["V1_LEN"]))
     out = []
-    # --- base plate
-    base = fillet_z(box(sx - 275, -112, zb, sx + 70, 112, zb + 5), 10)
-    corners = [(sx - 262, -99), (sx - 262, 99), (sx + 57, -99), (sx + 57, 99)]
+    # --- base plate (params/arm.toml [base_plate]): carries the towers' four angle brackets, M4 to the chassis
+    BP = BASE_PLATE
+    x0, x1, hw, t = sx + BP["x"][0], sx + BP["x"][1], BP["half_width"], BP["thickness"]
+    base = fillet_z(box(x0, -hw, zb, x1, hw, zb + t), BP["corner_r"])
+    wl, ww, wr = BP["window"]
+    base = base.cut(fillet_z(box(sx - wl / 2, -ww / 2, zb - 1, sx + wl / 2, ww / 2, zb + t + 1), wr))
+    corners = [(sx + cx, sg * cy) for (cx, cy) in BP["chassis_holes"] for sg in (-1, 1)]
     for (x, y) in corners:
-        base = base.cut(Part.makeCylinder(2.25, 7, V(x, y, zb - 1)))
+        base = base.cut(Part.makeCylinder(2.25, t + 2, V(x, y, zb - 1)))
     tapped = [(bx, sg * 64.5) for bx in (sx - 45, sx + 45) for sg in (-1, 1)]
     for (x, y) in tapped:
-        base = base.cut(Part.makeCylinder(1.25, 7, V(x, y, zb - 1)))
+        base = base.cut(Part.makeCylinder(1.25, t + 2, V(x, y, zb - 1)))
     out.append(Part_("Base_Plate_AL5", base, base, "AL", "custom: 5 mm 6061, waterjet + tap", "alu",
-                     "4x M4 to chassis; M3 tapped for brackets / ESC / cable clips"))
+                     "4x M4 to chassis; M3 tapped for the tower brackets"))
     for i, (x, y) in enumerate(corners):
-        out.append(P("SHCS_M4x12_base_%d" % i, to_z(H.screw("SHCS", 4, 12, 0, -1), x, y, zb + 5),
+        out.append(P("SHCS_M4x12_base_%d" % i, to_z(H.screw("SHCS", 4, 12, 0, -1), x, y, zb + t),
                      "CAT", "SHCS", "steel", "M4x12 into chassis", check=False))
     # --- towers + J1/J2 drives
     for side, sgn in (("L", -1), ("R", 1)):
@@ -92,15 +96,9 @@ def body_ground():
     out.append(P("Spacer_G1", at((ring(0, 0, -49.5, -43.5, 4.5, 2.6),) * 2, G1[0], G1[1]), "AL", "custom: D9/D5.2 x 6 alu", "alu"))
     out.append(P("SB5x10_G1", at(H.shoulder(5, 10, 4, 8, -39.5, -1), G1[0], G1[1]), "CAT", "SB5", "steel"))
     out.append(P("Nyloc_M4_G1", at(H.nyloc(4, -52.5, -1), G1[0], G1[1]), "CAT", "NYLOC", "steel"))
-    for i, (x, y) in enumerate(((sx - 70, -78), (sx - 170, -40), (sx - 230, 40))):
-        out.append(P("Cable_Clip_Base_%d" % i, at(H.cable_clip(), x, zb + 5, y), "CAT", "CLIP", "pad", "harness to C610 / PDB"))
-    # --- C610 ESC (vendor) on base plate under J1
-    esc = H.vendor("C610")
-    bb = esc.BoundBox
-    esc.translate(V(sx - 120 - bb.Center.x, -80 - bb.Center.y, zb + 6 - bb.ZMin))
-    out.append(Part_("ESC_C610", esc, Part.makeBox(bb.XLength, bb.YLength, bb.ZLength,
-                                                   V(sx - 120 - bb.XLength / 2, -80 - bb.YLength / 2, zb + 6)),
-                     "CAT", "C610", "motor", "on 1 mm VHB pad"))
+    for i, cx in enumerate(BASE_PLATE["clips_x"]):
+        out.append(P("Cable_Clip_Base_%d" % i, at(H.cable_clip(), sx + cx, zb + BASE_PLATE["thickness"], 0.0), "CAT", "CLIP", "pad",
+                     "J1/J2 harness to the PDB"))
     return out
 
 
