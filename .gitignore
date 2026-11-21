@@ -41,3 +41,7 @@ cad/out/*/evidence/*.inputs.json
 # Local backup copies
 *.bak
 *.bak[0-9]*
+
+# Bloat report: a local working report (the pre-commit hook prints its counts); regenerate with cad/tools/bloat_report.py
+cad/out/bloat_report.md
+cad/out/bloat_report.json

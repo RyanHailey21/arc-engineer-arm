@@ -2,7 +2,7 @@
 
 Regenerate with `cad/tools/make_map.py` (once per variant).  Search here first: every part links to the
 file:line that builds it; parameters, interfaces and keep-outs are data files.  Active variant comes from
-`params/variant.toml` (override with GRIP and BASE_DRIVE).  Inputs hash at generation: `026f4aad2fdf1b1d`.
+`params/variant.toml` (override with GRIP and BASE_DRIVE).  Inputs hash at generation: `06838cc0d0ec66c8`.
 
 ## Model modules (`cad/arm/`)
 
@@ -23,7 +23,7 @@ file:line that builds it; parameters, interfaces and keep-outs are data files.  
 - [actuators.toml](params/actuators.toml): `STS3215` (rated_Nm, stall_Nm, hold_frac); `BASE` (ratio, efficiency); `DM_J4340` (rated_Nm, peak_Nm, hold_frac, rotor_share)
 - [arm.toml](params/arm.toml): `T`; `K` (SX, SZ, L1, L2, L3, GRIP, DROP, V1_LEN, V1_ANG, V2_LEN, V2_ANG, DECK_Z); `Y` (FL, ROD2, ROCK, ROD1, UA, TW, RAB, CRANK); `level_keeping` (ROD2_T, ROD2_W, GT2_T); `j1_hub` (HUB_R, UA_HUB_SCREWS); `harness` (UA_CLIP_YZ)
 - [base_drive.toml](params/base_drive.toml): `GEAR` (module, z_gear, z_pinion, face, y0, pinion_angle, lightening); `FRAME` (lip, lip_d, boss_r, leg_d)
-- [gripper_fourbar.toml](params/gripper_fourbar.toml): `FB` (XG, YG, L, S, E, TEETH, XMAX, PIN_R, ZL0, ZL1, ZG, ZSEC, ZPAD, ZFT, ZFB, WALL_GAP, WALL_INSERTS, ZLB, ZGB, ZLUG); `SPRING` (pn, od, wire, length, arbor_d, max_torque_Nm, rate_Nm_per_deg, preload_deg); `GRIP_REQ` (donut, pipe, pipe_friction_only)
+- [gripper_fourbar.toml](params/gripper_fourbar.toml): `FB` (XG, YG, L, S, E, TEETH, XMAX, PIN_R, ZL0, ZL1, ZG, ZSEC, ZPAD, ZFT, ZFB, WALL_GAP, WALL_INSERTS, ZLB, ZGB, ZLUG); `SPRING` (pn, od, wire, length, arbor_d, max_torque_Nm, rate_Nm_per_deg, preload_deg)
 - [gripper_screw.toml](params/gripper_screw.toml): `LEAD`; `Z_SCREW_T`; `Z_MOTOR_T`; `HXJ_OFF`; `XR_OFF`; `ZS`; `ZM_OFF`; `ZTOP`; `YEB`; `RAIL_END`; `MOT_FACE`; `M2006_FRONT`; `GEAR_Y0`; `GEAR_Y1`
 - [materials.toml](params/materials.toml): `CF`; `PRINT`; `AL`; `STEEL`; `TPU`; `BRASS`; `SHIM`; `PTFE`
 - [pads.toml](params/pads.toml): `PAD_R`; `NOTCH`; `WRAP`; `PIPE_OD`

@@ -690,7 +690,7 @@
    "check": "envelopes",
    "ok": true,
    "note": "10 pose checks",
-   "s": 1.2
+   "s": 1.1
   },
   {
    "check": "interfaces",
@@ -702,13 +702,13 @@
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 6.3
+   "s": 5.3
   },
   {
    "check": "mass/torque",
    "ok": true,
    "note": "past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m",
-   "s": 2.1
+   "s": 1.9
   },
   {
    "check": "catalogue",
@@ -726,20 +726,20 @@
    "check": "seating",
    "ok": true,
    "note": "119 fasteners, 0 FAIL",
-   "s": 4.1
+   "s": 3.7
   },
   {
    "check": "bloat",
    "ok": null,
    "note": "0 findings (none), 77 kept",
-   "s": 2.4
+   "s": 2.5
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 38.8
+   "s": 42.6
   }
  ],
- "elapsed_s": 96.3
+ "elapsed_s": 87.6
 }
