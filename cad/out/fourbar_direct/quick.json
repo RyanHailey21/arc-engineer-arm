@@ -858,28 +858,28 @@
  },
  "self_hit": [],
  "mass_torque": {
-  "arm_g": 1346.9,
-  "past_wrist_g": 563.8,
-  "head_g": 352.4,
+  "arm_g": 1350.2,
+  "past_wrist_g": 567.0,
+  "head_g": 355.7,
   "worst_static_Nm": {
-   "J1": 3.39,
-   "J2": 2.9,
+   "J1": 3.4,
+   "J2": 2.92,
    "J3": 0.88,
    "J4": 0.04
   },
   "rated_utilisation": {
-   "J1": 0.377,
-   "J2": 0.323,
-   "J3": 0.597,
-   "J4": 0.028
+   "J1": 0.378,
+   "J2": 0.324,
+   "J3": 0.599,
+   "J4": 0.029
   },
   "poses": [
    {
     "pose": "STOW",
     "payload_g": 0.0,
     "tau": [
-     -3.17,
-     2.44,
+     -3.18,
+     2.45,
      0.44,
      0.03
     ]
@@ -888,8 +888,8 @@
     "pose": "DONUT_APPROACH",
     "payload_g": 0.0,
     "tau": [
-     -1.46,
-     2.02,
+     -1.47,
+     2.03,
      0.43,
      0.03
     ]
@@ -899,8 +899,8 @@
     "payload_g": 0.0,
     "tau": [
      -0.33,
-     1.21,
-     0.43,
+     1.22,
+     0.44,
      0.03
     ]
    },
@@ -908,8 +908,8 @@
     "pose": "DONUT_LIFT",
     "payload_g": 300.0,
     "tau": [
-     -1.77,
-     2.77,
+     -1.78,
+     2.78,
      0.88,
      0.03
     ]
@@ -918,8 +918,8 @@
     "pose": "DONUT_LIFT_ROLL+",
     "payload_g": 300.0,
     "tau": [
-     -1.77,
-     2.77,
+     -1.78,
+     2.78,
      0.88,
      0.04
     ]
@@ -928,8 +928,8 @@
     "pose": "DONUT_LIFT_ROLL-",
     "payload_g": 300.0,
     "tau": [
-     -1.77,
-     2.77,
+     -1.78,
+     2.78,
      0.88,
      0.02
     ]
@@ -938,7 +938,7 @@
     "pose": "DONUT_PLACE",
     "payload_g": 300.0,
     "tau": [
-     3.39,
+     3.4,
      0.45,
      0.88,
      0.03
@@ -948,8 +948,8 @@
     "pose": "PIPE_APPROACH",
     "payload_g": 0.0,
     "tau": [
-     -3.25,
-     2.17,
+     -3.26,
+     2.18,
      0.44,
      0.03
     ]
@@ -959,7 +959,7 @@
     "payload_g": 0.0,
     "tau": [
      -2.89,
-     2.4,
+     2.41,
      0.43,
      0.03
     ]
@@ -969,7 +969,7 @@
     "payload_g": 0.0,
     "tau": [
      -2.89,
-     2.4,
+     2.41,
      0.43,
      0.02
     ]
@@ -979,7 +979,7 @@
     "payload_g": 0.0,
     "tau": [
      -2.89,
-     2.4,
+     2.41,
      0.43,
      0.04
     ]
@@ -999,7 +999,7 @@
     "payload_g": 165.0,
     "tau": [
      -0.51,
-     2.9,
+     2.92,
      0.35,
      0.0
     ]
@@ -1009,8 +1009,8 @@
     "payload_g": 165.0,
     "tau": [
      -0.51,
-     2.9,
-     -0.01,
+     2.92,
+     -0.02,
      0.0
     ]
    }
@@ -1033,9 +1033,9 @@
  },
  "bloat": {
   "unused-import": 0,
-  "unused-variable": 2,
-  "dead-def": 0,
-  "duplicate": 1,
+  "unused-variable": 0,
+  "dead-def": 1,
+  "duplicate": 0,
   "orphan-param": 0,
   "orphan-catalogue": 0,
   "orphan-interface": 0,
@@ -1048,25 +1048,25 @@
    "check": "envelopes",
    "ok": true,
    "note": "10 pose checks",
-   "s": 2.4
+   "s": 1.8
   },
   {
    "check": "interfaces",
    "ok": true,
    "note": "16 sides",
-   "s": 0.3
+   "s": 0.2
   },
   {
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 11.9
+   "s": 10.3
   },
   {
    "check": "mass/torque",
    "ok": true,
-   "note": "past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m",
-   "s": 3.5
+   "note": "past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m",
+   "s": 3.6
   },
   {
    "check": "catalogue",
@@ -1084,20 +1084,20 @@
    "check": "seating",
    "ok": true,
    "note": "127 fasteners, 0 FAIL",
-   "s": 5.4
+   "s": 6.0
   },
   {
    "check": "bloat",
    "ok": null,
-   "note": "4 findings (unused-variable 2, duplicate 1, scratch 1), 14 kept",
+   "note": "2 findings (dead-def 1, scratch 1), 14 kept",
    "s": 3.0
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 74.8
+   "s": 81.5
   }
  ],
- "elapsed_s": 142.6
+ "elapsed_s": 157.8
 }

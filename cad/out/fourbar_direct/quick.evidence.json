@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
   "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 4 findings (unused-variable 2, duplicate 1, scratch 1), 14 kept; fingerprint MATCH",
-  "scope": "envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 352 g); worst static J1 3.39 J2 2.90 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 4 findings (unused-variable 2, duplicate 1, scratch 1), 14 kept; fingerprint MATCH",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 2 findings (dead-def 1, scratch 1), 14 kept; fingerprint MATCH",
+  "scope": "envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 2 findings (dead-def 1, scratch 1), 14 kept; fingerprint MATCH",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -17,20 +17,20 @@
    {
     "id": "design-inputs",
     "path": "evidence/quick.inputs.json",
-    "sha256": "d5831362eb7307e8a3975543215e3b994daf3ee5588820d919452ac4568c985b"
+    "sha256": "e1ad103b8917b8c78d8f60ee1a45ca4cccff6d0e57c753d697f059b401bd55c4"
    }
   ],
   "artifacts": [
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "17ebfdf6ee2c86d3f492e7d3dfd4a492e470f7cc1c581f2f7a47e86c5f2f0b4f"
+    "sha256": "3839d55cc44abf9a3bde4f66b0c2056b9b863405dda7916d4984637a3a5fb6d1"
    }
   ],
   "extensions": {
    "variant": "FOURBAR_DIRECT",
-   "time": "2026-11-21T11:15:16",
-   "inputs_hash": "478409e3dd83afc9",
+   "time": "2026-11-21T15:16:56",
+   "inputs_hash": "9cf67eeedebaa998",
    "external_copies": []
   }
  }
