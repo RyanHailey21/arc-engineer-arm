@@ -16,14 +16,14 @@
    {
     "id": "design-inputs",
     "path": "evidence/bloat.inputs.json",
-    "sha256": "d5831362eb7307e8a3975543215e3b994daf3ee5588820d919452ac4568c985b"
+    "sha256": "10f44246d32cf10cd13c13edbc03cb600092099f616f335081cc31f3532d01d4"
    }
   ],
   "artifacts": [],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-21T11:02:42",
-   "inputs_hash": "478409e3dd83afc9",
+   "time": "2026-11-21T11:39:38",
+   "inputs_hash": "dedcc96ec4021ea0",
    "external_copies": [
     "out/bloat_report.md",
     "out/bloat_report.json"

@@ -11,7 +11,6 @@ cad/arm/kinematics.static_torques does, so the two can be compared directly.
 Writes fusion/checks/out/<rev>_mass_torque.json and prints a comparison table.
 """
 import json
-import math
 import os
 import sys
 
@@ -68,21 +67,11 @@ plc0 = K.placements(*q0, jaw=jaw0)
 
 
 def torques(com_body, pose):
+    """Arm-only static torques at a pose (no payload), with the code-CAD's own virtual-work routine."""
     q, jaw = K.pose_q(pose)
-    pay = K.POSES[pose].get("payload_g")
-    payload = {"DONUT": 300.0, "PIPE": 165.0}
-
-    def U(qq):
-        plc = K.placements(*qq, jaw=jaw)
-        return sum(m * 9.81 * plc[b].multVec(c).z / 1e6 for b, (m, c) in com_body.items() if b != "GROUND" and b in plc)
     q = list(q) + [0.0] * (4 - len(q))
-    tau = []
-    for i in range(4):
-        qp, qm = list(q), list(q)
-        qp[i] += 0.05
-        qm[i] -= 0.05
-        tau.append((U(qp) - U(qm)) / math.radians(0.1))
-    return tau
+    coms = {b: [(m / 1000.0, c)] for b, (m, c) in com_body.items()}
+    return K.torques_from_coms(coms, *q, payload_g=0.0, jaw=jaw)
 
 
 fus_body = {b: (m, plc0[b].inverse().multVec(c)) for b, (m, c) in fus.items() if b in plc0}

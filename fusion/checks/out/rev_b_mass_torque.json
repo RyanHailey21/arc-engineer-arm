@@ -91,14 +91,14 @@
    "com_offset_mm": 3.97
   },
   {
-   "body": "ROD_AB",
+   "body": "ROD1",
    "fusion_g": 18.1,
    "code_g": 19.7,
    "diff_pct": -8.2,
    "com_offset_mm": 0.04
   },
   {
-   "body": "ROD1",
+   "body": "ROD_AB",
    "fusion_g": 18.1,
    "code_g": 19.7,
    "diff_pct": -8.2,

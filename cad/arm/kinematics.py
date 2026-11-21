@@ -86,12 +86,17 @@ def static_torques(bodies, th1, th2, pitch, roll=0.0, payload_g=300.0, payload_a
             except Exception:
                 c = p.chk.BoundBox.Center
             coms.setdefault(bn, []).append((m, c))
+    return torques_from_coms(coms, th1, th2, pitch, roll, payload_g, payload_arm, jaw)
 
+
+def torques_from_coms(coms, th1, th2, pitch, roll=0.0, payload_g=0.0, payload_arm=None, jaw=2 * O_REF):
+    """Static torques J1..J4 (N*m) by virtual work. coms: {body: [(mass_kg, com in the body frame, mm), ...]}.
+    Shared by static_torques (masses from the model) and fusion/checks/mass_torque.py (masses from a Fusion snapshot)."""
     def U(q):
         plc = placements(*q, jaw=jaw)
         tot = 0.0
         for bn, lst in coms.items():
-            if bn == "GROUND":
+            if bn == "GROUND" or bn not in plc:
                 continue
             for m, cm in lst:
                 tot += m * 9.81 * plc[bn].multVec(cm).z / 1000.0

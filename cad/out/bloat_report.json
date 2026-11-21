@@ -150,7 +150,7 @@
   "out-unindexed": 0,
   "scratch": 1
  },
- "scanned": 67,
+ "scanned": 70,
  "stale_keep": [],
  "notes": [
   "fourbar/map_parts.md is older than the model inputs (rerun tools/make_map.py)",
@@ -158,10 +158,9 @@
  ],
  "new": [],
  "resolved": [
-  "dead-def:cad/arm/core.py:fillet_y",
-  "orphan-catalogue:cad/data/catalogue.toml:688ZZ",
-  "orphan-catalogue:cad/data/catalogue.toml:COLLAR8",
-  "orphan-catalogue:cad/data/catalogue.toml:STANDOFF"
+  "duplicate:cad/arm/kinematics.py:7f52fa3c71",
+  "unused-variable:fusion/checks/mass_torque.py:torques.pay",
+  "unused-variable:fusion/checks/mass_torque.py:torques.payload"
  ],
  "keep_file": "cad/tools/bloat_keep.toml"
 }
