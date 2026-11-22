@@ -3,9 +3,9 @@
  "snapshot": {
   "document": "ARC Arm Rev B",
   "document_id": "urn:adsk.wipprod:dm.lineage:cGWSAxvSQQaYddhXmTl3HA",
-  "document_version": 22,
-  "exported": "2026-11-21T15:23:00",
-  "joints": 32,
+  "document_version": 23,
+  "exported": "2026-11-21T22:14:43",
+  "joints": 23,
   "motion_links": 0,
   "occurrences": 372,
   "parts": 118,
@@ -91,14 +91,14 @@
    "com_offset_mm": 4.81
   },
   {
-   "body": "ROD1",
+   "body": "ROD_AB",
    "fusion_g": 19.7,
    "code_g": 19.7,
    "diff_pct": 0.0,
    "com_offset_mm": 0.0
   },
   {
-   "body": "ROD_AB",
+   "body": "ROD1",
    "fusion_g": 19.7,
    "code_g": 19.7,
    "diff_pct": 0.0,

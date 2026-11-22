@@ -150,19 +150,6 @@
   },
   {
    "kind": "as-built",
-   "name": "J4 roll (before shared gripper)",
-   "occ1": null,
-   "occ2": "GRIPPER:1",
-   "rotationLimits": {
-    "max": 1.6580627893946132,
-    "min": -1.6580627893946132
-   },
-   "rotationValue": 0.0,
-   "suppressed": true,
-   "type": "1"
-  },
-  {
-   "kind": "as-built",
    "name": "Ev2",
    "occ1": "ROD2:1",
    "occ2": "ROCKER:1",
@@ -172,118 +159,6 @@
    },
    "rotationValue": 0.0,
    "suppressed": false,
-   "type": "1"
-  },
-  {
-   "broken": true,
-   "kind": "as-built",
-   "name": "Ground LD",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": 0.9162978572970231,
-    "min": -0.18675022996339324
-   },
-   "rotationValue": 0.0,
-   "suppressed": true,
-   "type": "1"
-  },
-  {
-   "broken": true,
-   "kind": "as-built",
-   "name": "Coupler LD",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": null,
-    "min": null
-   },
-   "rotationValue": 0.0,
-   "suppressed": true,
-   "type": "1"
-  },
-  {
-   "broken": true,
-   "kind": "as-built",
-   "name": "Coupler LI",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": null,
-    "min": null
-   },
-   "rotationValue": 0.0,
-   "suppressed": true,
-   "type": "1"
-  },
-  {
-   "broken": true,
-   "kind": "as-built",
-   "name": "Ground LI",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": null,
-    "min": null
-   },
-   "rotationValue": 0.0,
-   "suppressed": true,
-   "type": "1"
-  },
-  {
-   "broken": true,
-   "kind": "as-built",
-   "name": "Ground RD",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": 0.9162978572970231,
-    "min": -0.18675022996339324
-   },
-   "rotationValue": 0.0,
-   "suppressed": true,
-   "type": "1"
-  },
-  {
-   "broken": true,
-   "kind": "as-built",
-   "name": "Coupler RD",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": null,
-    "min": null
-   },
-   "rotationValue": 0.0,
-   "suppressed": true,
-   "type": "1"
-  },
-  {
-   "broken": true,
-   "kind": "as-built",
-   "name": "Coupler RI",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": null,
-    "min": null
-   },
-   "rotationValue": 0.0,
-   "suppressed": true,
-   "type": "1"
-  },
-  {
-   "broken": true,
-   "kind": "as-built",
-   "name": "Ground RI",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": null,
-    "min": null
-   },
-   "rotationValue": 0.0,
-   "suppressed": true,
    "type": "1"
   },
   {
@@ -501,1764 +376,6 @@
    ],
    "visible": true,
    "volume_mm3": 32174.158
-  },
-  {
-   "bbox": [
-    -184.5105,
-    -55.6473,
-    224.639,
-    -178.7905,
-    -47.84,
-    230.359
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -181.6501,
-    -50.8831,
-    227.4982
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "GROUND:1+BHCS_M3x6:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -181.6505,
-    0.0,
-    0.0,
-    1.0,
-    -52.5,
-    0.0,
-    -1.0,
-    0.0,
-    227.499,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -162.86,
-    -55.6473,
-    237.139,
-    -157.14,
-    -47.84,
-    242.859
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -159.9996,
-    -50.8831,
-    239.9982
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "GROUND:1+BHCS_M3x6:2",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -160.0,
-    0.0,
-    0.0,
-    1.0,
-    -52.5,
-    0.0,
-    -1.0,
-    0.0,
-    239.999,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -141.209,
-    -55.6473,
-    224.639,
-    -135.489,
-    -47.84,
-    230.359
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -138.3486,
-    -50.8831,
-    227.4982
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "GROUND:1+BHCS_M3x6:3",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -138.349,
-    0.0,
-    0.0,
-    1.0,
-    -52.5,
-    0.0,
-    -1.0,
-    0.0,
-    227.499,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -184.5105,
-    -55.6473,
-    199.639,
-    -178.7905,
-    -47.84,
-    205.359
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -181.6501,
-    -50.8831,
-    202.4982
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "GROUND:1+BHCS_M3x6:4",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -181.6505,
-    0.0,
-    0.0,
-    1.0,
-    -52.5,
-    0.0,
-    -1.0,
-    0.0,
-    202.499,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -162.86,
-    -55.6473,
-    187.139,
-    -157.14,
-    -47.84,
-    192.859
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -159.9996,
-    -50.8831,
-    189.9982
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "GROUND:1+BHCS_M3x6:5",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -160.0,
-    0.0,
-    0.0,
-    1.0,
-    -52.5,
-    0.0,
-    -1.0,
-    0.0,
-    189.999,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -141.209,
-    -55.6473,
-    199.639,
-    -135.489,
-    -47.84,
-    205.359
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -138.3486,
-    -50.8831,
-    202.4982
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "GROUND:1+BHCS_M3x6:6",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -138.349,
-    0.0,
-    0.0,
-    1.0,
-    -52.5,
-    0.0,
-    -1.0,
-    0.0,
-    202.499,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -167.98,
-    -56.51,
-    237.638,
-    -164.96,
-    -49.49,
-    240.658
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -166.47,
-    -52.968,
-    239.148
-   ],
-   "component": "Dowel_3x7",
-   "mass_g": 0.36,
-   "path": "GROUND:1+Dowel_3x7:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:I9orrBj7SradVOeHnj_VIg",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -166.47,
-    0.0,
-    0.0,
-    -1.0,
-    -53.0,
-    0.0,
-    1.0,
-    0.0,
-    239.148,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 45.9
-  },
-  {
-   "bbox": [
-    -155.04,
-    -56.51,
-    189.342,
-    -152.02,
-    -49.49,
-    192.362
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -153.53,
-    -52.968,
-    190.852
-   ],
-   "component": "Dowel_3x7",
-   "mass_g": 0.36,
-   "path": "GROUND:1+Dowel_3x7:2",
-   "source_id": "urn:adsk.wipprod:dm.lineage:I9orrBj7SradVOeHnj_VIg",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -153.53,
-    0.0,
-    0.0,
-    -1.0,
-    -53.0,
-    0.0,
-    1.0,
-    0.0,
-    190.852,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 45.9
-  },
-  {
-   "bbox": [
-    -213.01,
-    -72.51,
-    124.99,
-    -196.99,
-    -52.49,
-    145.01
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC pla",
-     "material": "PETG-CF print (effective)",
-     "name": "Tower_Bracket_L0"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -205.0,
-    -58.9772,
-    131.3646
-   ],
-   "component": "Tower_Bracket_L0",
-   "mass_g": 1.648,
-   "path": "GROUND:1+Tower_Bracket_L0:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:A96UFFERTz-MzdiEYaBbwA",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 2196.948
-  },
-  {
-   "bbox": [
-    -207.86,
-    -59.6473,
-    134.14,
-    -202.14,
-    -47.84,
-    139.86
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -204.9995,
-    -52.6679,
-    137.0005
-   ],
-   "component": "BHCS_M3x10",
-   "mass_g": 0.655,
-   "path": "GROUND:1+BHCS_M3x10:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:IK31fZhGTTiAAPHkmPJ9Qg",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -205.0,
-    0.0,
-    0.0,
-    1.0,
-    -54.5,
-    0.0,
-    -1.0,
-    0.0,
-    137.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 83.495
-  },
-  {
-   "bbox": [
-    -207.76,
-    -60.51,
-    133.8146,
-    -202.24,
-    -56.3181,
-    140.1854
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    },
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body2"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -204.9991,
-    -58.4479,
-    137.0004
-   ],
-   "component": "Nyloc_M3",
-   "mass_g": 0.622,
-   "path": "GROUND:1+Nyloc_M3:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:UzPCxPnVQzOnQ3X-MZpGKw",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -205.0,
-    0.0,
-    0.0,
-    -1.0,
-    -58.5,
-    0.0,
-    1.0,
-    0.0,
-    137.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 79.202
-  },
-  {
-   "bbox": [
-    -207.86,
-    -67.36,
-    120.8527,
-    -202.14,
-    -61.64,
-    130.66
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -205.0002,
-    -64.4955,
-    126.7412
-   ],
-   "component": "BHCS_M3x8",
-   "mass_g": 0.566,
-   "path": "GROUND:1+BHCS_M3x8:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -205.0,
-    0.0,
-    1.0,
-    0.0,
-    -64.5,
-    0.0,
-    0.0,
-    1.0,
-    125.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 72.155
-  },
-  {
-   "bbox": [
-    -123.01,
-    -72.51,
-    124.99,
-    -106.99,
-    -52.49,
-    145.01
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC pla",
-     "material": "PETG-CF print (effective)",
-     "name": "Tower_Bracket_L1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -115.0,
-    -58.9772,
-    131.3646
-   ],
-   "component": "Tower_Bracket_L1",
-   "mass_g": 1.648,
-   "path": "GROUND:1+Tower_Bracket_L1:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:xDbNswVfQ5auQlo9WsnP1Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 2196.948
-  },
-  {
-   "bbox": [
-    -117.86,
-    -59.6473,
-    134.14,
-    -112.14,
-    -47.84,
-    139.86
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -114.9995,
-    -52.6679,
-    137.0005
-   ],
-   "component": "BHCS_M3x10",
-   "mass_g": 0.655,
-   "path": "GROUND:1+BHCS_M3x10:2",
-   "source_id": "urn:adsk.wipprod:dm.lineage:IK31fZhGTTiAAPHkmPJ9Qg",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -115.0,
-    0.0,
-    0.0,
-    1.0,
-    -54.5,
-    0.0,
-    -1.0,
-    0.0,
-    137.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 83.495
-  },
-  {
-   "bbox": [
-    -117.76,
-    -60.51,
-    133.8146,
-    -112.24,
-    -56.3181,
-    140.1854
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    },
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body2"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -114.9991,
-    -58.4479,
-    137.0004
-   ],
-   "component": "Nyloc_M3",
-   "mass_g": 0.622,
-   "path": "GROUND:1+Nyloc_M3:2",
-   "source_id": "urn:adsk.wipprod:dm.lineage:UzPCxPnVQzOnQ3X-MZpGKw",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -115.0,
-    0.0,
-    0.0,
-    -1.0,
-    -58.5,
-    0.0,
-    1.0,
-    0.0,
-    137.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 79.202
-  },
-  {
-   "bbox": [
-    -117.86,
-    -67.36,
-    120.8527,
-    -112.14,
-    -61.64,
-    130.66
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -115.0002,
-    -64.4955,
-    126.7412
-   ],
-   "component": "BHCS_M3x8",
-   "mass_g": 0.566,
-   "path": "GROUND:1+BHCS_M3x8:2",
-   "source_id": "urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -115.0,
-    0.0,
-    1.0,
-    0.0,
-    -64.5,
-    0.0,
-    0.0,
-    1.0,
-    125.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 72.155
-  },
-  {
-   "bbox": [
-    -223.01,
-    49.49,
-    124.99,
-    -96.99,
-    52.51,
-    249.01
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC cf",
-     "material": "CF plate 3K",
-     "name": "Tower_R_CF3"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -160.0,
-    51.0,
-    173.4145
-   ],
-   "component": "Tower_R_CF3",
-   "mass_g": 39.507,
-   "path": "GROUND:1+Tower_R_CF3:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:VbbedEC-QSyA40KoD1UlwA",
-   "source_version": 3,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 25488.385
-  },
-  {
-   "bbox": [
-    -141.209,
-    47.84,
-    224.639,
-    -135.489,
-    55.6473,
-    230.359
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -138.3486,
-    50.8831,
-    227.4998
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "GROUND:1+BHCS_M3x6:7",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -138.349,
-    0.0,
-    0.0,
-    -1.0,
-    52.5,
-    0.0,
-    1.0,
-    0.0,
-    227.499,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -162.86,
-    47.84,
-    237.139,
-    -157.14,
-    55.6473,
-    242.859
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -159.9996,
-    50.8831,
-    239.9998
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "GROUND:1+BHCS_M3x6:8",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -160.0,
-    0.0,
-    0.0,
-    -1.0,
-    52.5,
-    0.0,
-    1.0,
-    0.0,
-    239.999,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -184.5105,
-    47.84,
-    224.639,
-    -178.7905,
-    55.6473,
-    230.359
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -181.6501,
-    50.8831,
-    227.4998
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "GROUND:1+BHCS_M3x6:9",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -181.6505,
-    0.0,
-    0.0,
-    -1.0,
-    52.5,
-    0.0,
-    1.0,
-    0.0,
-    227.499,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -141.209,
-    47.84,
-    199.639,
-    -135.489,
-    55.6473,
-    205.359
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -138.3486,
-    50.8831,
-    202.4998
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "GROUND:1+BHCS_M3x6:10",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -138.349,
-    0.0,
-    0.0,
-    -1.0,
-    52.5,
-    0.0,
-    1.0,
-    0.0,
-    202.499,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -162.86,
-    47.84,
-    187.139,
-    -157.14,
-    55.6473,
-    192.859
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -159.9996,
-    50.8831,
-    189.9998
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "GROUND:1+BHCS_M3x6:11",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -160.0,
-    0.0,
-    0.0,
-    -1.0,
-    52.5,
-    0.0,
-    1.0,
-    0.0,
-    189.999,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -184.5105,
-    47.84,
-    199.639,
-    -178.7905,
-    55.6473,
-    205.359
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -181.6501,
-    50.8831,
-    202.4998
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "GROUND:1+BHCS_M3x6:12",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -181.6505,
-    0.0,
-    0.0,
-    -1.0,
-    52.5,
-    0.0,
-    1.0,
-    0.0,
-    202.499,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -155.04,
-    49.49,
-    237.638,
-    -152.02,
-    56.51,
-    240.658
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -153.53,
-    52.968,
-    239.148
-   ],
-   "component": "Dowel_3x7",
-   "mass_g": 0.36,
-   "path": "GROUND:1+Dowel_3x7:3",
-   "source_id": "urn:adsk.wipprod:dm.lineage:I9orrBj7SradVOeHnj_VIg",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -153.53,
-    0.0,
-    0.0,
-    1.0,
-    53.0,
-    0.0,
-    -1.0,
-    0.0,
-    239.148,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 45.9
-  },
-  {
-   "bbox": [
-    -167.98,
-    49.49,
-    189.342,
-    -164.96,
-    56.51,
-    192.362
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -166.47,
-    52.968,
-    190.852
-   ],
-   "component": "Dowel_3x7",
-   "mass_g": 0.36,
-   "path": "GROUND:1+Dowel_3x7:4",
-   "source_id": "urn:adsk.wipprod:dm.lineage:I9orrBj7SradVOeHnj_VIg",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -166.47,
-    0.0,
-    0.0,
-    1.0,
-    53.0,
-    0.0,
-    -1.0,
-    0.0,
-    190.852,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 45.9
-  },
-  {
-   "bbox": [
-    -213.01,
-    52.49,
-    124.99,
-    -196.99,
-    72.51,
-    145.01
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC pla",
-     "material": "PETG-CF print (effective)",
-     "name": "Tower_Bracket_R0"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -205.0,
-    58.9772,
-    131.3646
-   ],
-   "component": "Tower_Bracket_R0",
-   "mass_g": 1.648,
-   "path": "GROUND:1+Tower_Bracket_R0:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:sifw5ACHQVOObNmwSa7gyQ",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 2196.948
-  },
-  {
-   "bbox": [
-    -207.86,
-    47.84,
-    134.14,
-    -202.14,
-    59.6473,
-    139.86
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -204.9995,
-    52.6679,
-    136.9995
-   ],
-   "component": "BHCS_M3x10",
-   "mass_g": 0.655,
-   "path": "GROUND:1+BHCS_M3x10:3",
-   "source_id": "urn:adsk.wipprod:dm.lineage:IK31fZhGTTiAAPHkmPJ9Qg",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -205.0,
-    0.0,
-    0.0,
-    -1.0,
-    54.5,
-    0.0,
-    1.0,
-    0.0,
-    137.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 83.495
-  },
-  {
-   "bbox": [
-    -207.76,
-    56.3181,
-    133.8146,
-    -202.24,
-    60.51,
-    140.1854
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    },
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body2"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -204.9991,
-    58.4479,
-    136.9996
-   ],
-   "component": "Nyloc_M3",
-   "mass_g": 0.622,
-   "path": "GROUND:1+Nyloc_M3:3",
-   "source_id": "urn:adsk.wipprod:dm.lineage:UzPCxPnVQzOnQ3X-MZpGKw",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -205.0,
-    0.0,
-    0.0,
-    1.0,
-    58.5,
-    0.0,
-    -1.0,
-    0.0,
-    137.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 79.202
-  },
-  {
-   "bbox": [
-    -207.86,
-    61.64,
-    120.8527,
-    -202.14,
-    67.36,
-    130.66
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -205.0002,
-    64.5045,
-    126.7412
-   ],
-   "component": "BHCS_M3x8",
-   "mass_g": 0.566,
-   "path": "GROUND:1+BHCS_M3x8:3",
-   "source_id": "urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -205.0,
-    0.0,
-    1.0,
-    0.0,
-    64.5,
-    0.0,
-    0.0,
-    1.0,
-    125.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 72.155
-  },
-  {
-   "bbox": [
-    -123.01,
-    52.49,
-    124.99,
-    -106.99,
-    72.51,
-    145.01
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC pla",
-     "material": "PETG-CF print (effective)",
-     "name": "Tower_Bracket_R1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -115.0,
-    58.9772,
-    131.3646
-   ],
-   "component": "Tower_Bracket_R1",
-   "mass_g": 1.648,
-   "path": "GROUND:1+Tower_Bracket_R1:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:CYVOX57ISjecWccr5wNdig",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 2196.948
-  },
-  {
-   "bbox": [
-    -117.86,
-    47.84,
-    134.14,
-    -112.14,
-    59.6473,
-    139.86
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -114.9995,
-    52.6679,
-    136.9995
-   ],
-   "component": "BHCS_M3x10",
-   "mass_g": 0.655,
-   "path": "GROUND:1+BHCS_M3x10:4",
-   "source_id": "urn:adsk.wipprod:dm.lineage:IK31fZhGTTiAAPHkmPJ9Qg",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -115.0,
-    0.0,
-    0.0,
-    -1.0,
-    54.5,
-    0.0,
-    1.0,
-    0.0,
-    137.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 83.495
-  },
-  {
-   "bbox": [
-    -117.76,
-    56.3181,
-    133.8146,
-    -112.24,
-    60.51,
-    140.1854
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    },
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body2"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -114.9991,
-    58.4479,
-    136.9996
-   ],
-   "component": "Nyloc_M3",
-   "mass_g": 0.622,
-   "path": "GROUND:1+Nyloc_M3:4",
-   "source_id": "urn:adsk.wipprod:dm.lineage:UzPCxPnVQzOnQ3X-MZpGKw",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -115.0,
-    0.0,
-    0.0,
-    1.0,
-    58.5,
-    0.0,
-    -1.0,
-    0.0,
-    137.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 79.202
-  },
-  {
-   "bbox": [
-    -117.86,
-    61.64,
-    120.8527,
-    -112.14,
-    67.36,
-    130.66
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -115.0002,
-    64.5045,
-    126.7412
-   ],
-   "component": "BHCS_M3x8",
-   "mass_g": 0.566,
-   "path": "GROUND:1+BHCS_M3x8:4",
-   "source_id": "urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -115.0,
-    0.0,
-    1.0,
-    0.0,
-    64.5,
-    0.0,
-    0.0,
-    1.0,
-    125.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 72.155
-  },
-  {
-   "bbox": [
-    -232.9803,
-    -49.51,
-    195.9362,
-    -223.9603,
-    -43.49,
-    204.9562
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC alu",
-     "material": "Aluminum 6061",
-     "name": "Spacer_G1"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -228.4703,
-    -46.5,
-    200.4462
-   ],
-   "component": "Spacer_G1",
-   "mass_g": 0.687,
-   "path": "GROUND:1+Spacer_G1:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:2VUvTviWQ4izdOj8ndVoXA",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 254.281
-  },
-  {
-   "bbox": [
-    -232.9903,
-    -58.054,
-    195.9262,
-    -223.9503,
-    -35.48,
-    204.9662
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    },
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body2"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -228.4704,
-    -42.6807,
-    200.4464
-   ],
-   "component": "SB5x10",
-   "mass_g": 4.017,
-   "path": "GROUND:1+SB5x10:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:fmcBAtHvRVSSF-FtFC9f2Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -228.47033,
-    0.0,
-    0.0,
-    1.0,
-    -46.767,
-    0.0,
-    -1.0,
-    0.0,
-    200.44618,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 511.723
-  },
-  {
-   "bbox": [
-    -231.9915,
-    -57.52,
-    196.4702,
-    -224.9492,
-    -52.48,
-    204.4222
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    },
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body2"
-    }
-   ],
-   "body_group": "GROUND:1",
-   "com_mm": [
-    -228.4711,
-    -54.9648,
-    200.443
-   ],
-   "component": "Nyloc_M4",
-   "mass_g": 1.212,
-   "path": "GROUND:1+Nyloc_M4:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:_4zPGOeHRGuYkHYYEt12Fg",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -228.47033,
-    0.0,
-    0.0,
-    -1.0,
-    -55.0,
-    0.0,
-    1.0,
-    0.0,
-    200.44618,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 154.397
   },
   {
    "bbox": [
@@ -3636,6 +1753,832 @@
   },
   {
    "bbox": [
+    -184.5105,
+    -55.6473,
+    224.639,
+    -178.7905,
+    -47.84,
+    230.359
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -181.6501,
+    -50.8831,
+    227.4982
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "GROUND:1+BHCS_M3x6:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -181.6505,
+    0.0,
+    0.0,
+    1.0,
+    -52.5,
+    0.0,
+    -1.0,
+    0.0,
+    227.499,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -162.86,
+    -55.6473,
+    237.139,
+    -157.14,
+    -47.84,
+    242.859
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -159.9996,
+    -50.8831,
+    239.9982
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "GROUND:1+BHCS_M3x6:2",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -160.0,
+    0.0,
+    0.0,
+    1.0,
+    -52.5,
+    0.0,
+    -1.0,
+    0.0,
+    239.999,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -141.209,
+    -55.6473,
+    224.639,
+    -135.489,
+    -47.84,
+    230.359
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -138.3486,
+    -50.8831,
+    227.4982
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "GROUND:1+BHCS_M3x6:3",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -138.349,
+    0.0,
+    0.0,
+    1.0,
+    -52.5,
+    0.0,
+    -1.0,
+    0.0,
+    227.499,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -184.5105,
+    -55.6473,
+    199.639,
+    -178.7905,
+    -47.84,
+    205.359
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -181.6501,
+    -50.8831,
+    202.4982
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "GROUND:1+BHCS_M3x6:4",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -181.6505,
+    0.0,
+    0.0,
+    1.0,
+    -52.5,
+    0.0,
+    -1.0,
+    0.0,
+    202.499,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -162.86,
+    -55.6473,
+    187.139,
+    -157.14,
+    -47.84,
+    192.859
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -159.9996,
+    -50.8831,
+    189.9982
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "GROUND:1+BHCS_M3x6:5",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -160.0,
+    0.0,
+    0.0,
+    1.0,
+    -52.5,
+    0.0,
+    -1.0,
+    0.0,
+    189.999,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -141.209,
+    -55.6473,
+    199.639,
+    -135.489,
+    -47.84,
+    205.359
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -138.3486,
+    -50.8831,
+    202.4982
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "GROUND:1+BHCS_M3x6:6",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -138.349,
+    0.0,
+    0.0,
+    1.0,
+    -52.5,
+    0.0,
+    -1.0,
+    0.0,
+    202.499,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -167.98,
+    -56.51,
+    237.638,
+    -164.96,
+    -49.49,
+    240.658
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -166.47,
+    -52.968,
+    239.148
+   ],
+   "component": "Dowel_3x7",
+   "mass_g": 0.36,
+   "path": "GROUND:1+Dowel_3x7:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:I9orrBj7SradVOeHnj_VIg",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -166.47,
+    0.0,
+    0.0,
+    -1.0,
+    -53.0,
+    0.0,
+    1.0,
+    0.0,
+    239.148,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 45.9
+  },
+  {
+   "bbox": [
+    -155.04,
+    -56.51,
+    189.342,
+    -152.02,
+    -49.49,
+    192.362
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -153.53,
+    -52.968,
+    190.852
+   ],
+   "component": "Dowel_3x7",
+   "mass_g": 0.36,
+   "path": "GROUND:1+Dowel_3x7:2",
+   "source_id": "urn:adsk.wipprod:dm.lineage:I9orrBj7SradVOeHnj_VIg",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -153.53,
+    0.0,
+    0.0,
+    -1.0,
+    -53.0,
+    0.0,
+    1.0,
+    0.0,
+    190.852,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 45.9
+  },
+  {
+   "bbox": [
+    -213.01,
+    -72.51,
+    124.99,
+    -196.99,
+    -52.49,
+    145.01
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC pla",
+     "material": "PETG-CF print (effective)",
+     "name": "Tower_Bracket_L0"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -205.0,
+    -58.9772,
+    131.3646
+   ],
+   "component": "Tower_Bracket_L0",
+   "mass_g": 1.648,
+   "path": "GROUND:1+Tower_Bracket_L0:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:A96UFFERTz-MzdiEYaBbwA",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 2196.948
+  },
+  {
+   "bbox": [
+    -207.86,
+    -59.6473,
+    134.14,
+    -202.14,
+    -47.84,
+    139.86
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -204.9995,
+    -52.6679,
+    137.0005
+   ],
+   "component": "BHCS_M3x10",
+   "mass_g": 0.655,
+   "path": "GROUND:1+BHCS_M3x10:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:IK31fZhGTTiAAPHkmPJ9Qg",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -205.0,
+    0.0,
+    0.0,
+    1.0,
+    -54.5,
+    0.0,
+    -1.0,
+    0.0,
+    137.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 83.495
+  },
+  {
+   "bbox": [
+    -207.76,
+    -60.51,
+    133.8146,
+    -202.24,
+    -56.3181,
+    140.1854
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    },
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body2"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -204.9991,
+    -58.4479,
+    137.0004
+   ],
+   "component": "Nyloc_M3",
+   "mass_g": 0.622,
+   "path": "GROUND:1+Nyloc_M3:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:UzPCxPnVQzOnQ3X-MZpGKw",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -205.0,
+    0.0,
+    0.0,
+    -1.0,
+    -58.5,
+    0.0,
+    1.0,
+    0.0,
+    137.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 79.202
+  },
+  {
+   "bbox": [
+    -207.86,
+    -67.36,
+    120.8527,
+    -202.14,
+    -61.64,
+    130.66
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -205.0002,
+    -64.4955,
+    126.7412
+   ],
+   "component": "BHCS_M3x8",
+   "mass_g": 0.566,
+   "path": "GROUND:1+BHCS_M3x8:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -205.0,
+    0.0,
+    1.0,
+    0.0,
+    -64.5,
+    0.0,
+    0.0,
+    1.0,
+    125.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 72.155
+  },
+  {
+   "bbox": [
+    -123.01,
+    -72.51,
+    124.99,
+    -106.99,
+    -52.49,
+    145.01
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC pla",
+     "material": "PETG-CF print (effective)",
+     "name": "Tower_Bracket_L1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -115.0,
+    -58.9772,
+    131.3646
+   ],
+   "component": "Tower_Bracket_L1",
+   "mass_g": 1.648,
+   "path": "GROUND:1+Tower_Bracket_L1:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:xDbNswVfQ5auQlo9WsnP1Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 2196.948
+  },
+  {
+   "bbox": [
+    -117.86,
+    -59.6473,
+    134.14,
+    -112.14,
+    -47.84,
+    139.86
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -114.9995,
+    -52.6679,
+    137.0005
+   ],
+   "component": "BHCS_M3x10",
+   "mass_g": 0.655,
+   "path": "GROUND:1+BHCS_M3x10:2",
+   "source_id": "urn:adsk.wipprod:dm.lineage:IK31fZhGTTiAAPHkmPJ9Qg",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -115.0,
+    0.0,
+    0.0,
+    1.0,
+    -54.5,
+    0.0,
+    -1.0,
+    0.0,
+    137.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 83.495
+  },
+  {
+   "bbox": [
+    -117.76,
+    -60.51,
+    133.8146,
+    -112.24,
+    -56.3181,
+    140.1854
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    },
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body2"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -114.9991,
+    -58.4479,
+    137.0004
+   ],
+   "component": "Nyloc_M3",
+   "mass_g": 0.622,
+   "path": "GROUND:1+Nyloc_M3:2",
+   "source_id": "urn:adsk.wipprod:dm.lineage:UzPCxPnVQzOnQ3X-MZpGKw",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -115.0,
+    0.0,
+    0.0,
+    -1.0,
+    -58.5,
+    0.0,
+    1.0,
+    0.0,
+    137.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 79.202
+  },
+  {
+   "bbox": [
+    -117.86,
+    -67.36,
+    120.8527,
+    -112.14,
+    -61.64,
+    130.66
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -115.0002,
+    -64.4955,
+    126.7412
+   ],
+   "component": "BHCS_M3x8",
+   "mass_g": 0.566,
+   "path": "GROUND:1+BHCS_M3x8:2",
+   "source_id": "urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -115.0,
+    0.0,
+    1.0,
+    0.0,
+    -64.5,
+    0.0,
+    0.0,
+    1.0,
+    125.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 72.155
+  },
+  {
+   "bbox": [
+    -223.01,
+    49.49,
+    124.99,
+    -96.99,
+    52.51,
+    249.01
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC cf",
+     "material": "CF plate 3K",
+     "name": "Tower_R_CF3"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -160.0,
+    51.0,
+    173.4145
+   ],
+   "component": "Tower_R_CF3",
+   "mass_g": 39.507,
+   "path": "GROUND:1+Tower_R_CF3:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:VbbedEC-QSyA40KoD1UlwA",
+   "source_version": 3,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 25488.385
+  },
+  {
+   "bbox": [
     0.0,
     0.0,
     0.0,
@@ -5010,6 +3953,938 @@
   },
   {
    "bbox": [
+    -141.209,
+    47.84,
+    224.639,
+    -135.489,
+    55.6473,
+    230.359
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -138.3486,
+    50.8831,
+    227.4998
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "GROUND:1+BHCS_M3x6:7",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -138.349,
+    0.0,
+    0.0,
+    -1.0,
+    52.5,
+    0.0,
+    1.0,
+    0.0,
+    227.499,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -162.86,
+    47.84,
+    237.139,
+    -157.14,
+    55.6473,
+    242.859
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -159.9996,
+    50.8831,
+    239.9998
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "GROUND:1+BHCS_M3x6:8",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -160.0,
+    0.0,
+    0.0,
+    -1.0,
+    52.5,
+    0.0,
+    1.0,
+    0.0,
+    239.999,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -184.5105,
+    47.84,
+    224.639,
+    -178.7905,
+    55.6473,
+    230.359
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -181.6501,
+    50.8831,
+    227.4998
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "GROUND:1+BHCS_M3x6:9",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -181.6505,
+    0.0,
+    0.0,
+    -1.0,
+    52.5,
+    0.0,
+    1.0,
+    0.0,
+    227.499,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -141.209,
+    47.84,
+    199.639,
+    -135.489,
+    55.6473,
+    205.359
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -138.3486,
+    50.8831,
+    202.4998
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "GROUND:1+BHCS_M3x6:10",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -138.349,
+    0.0,
+    0.0,
+    -1.0,
+    52.5,
+    0.0,
+    1.0,
+    0.0,
+    202.499,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -162.86,
+    47.84,
+    187.139,
+    -157.14,
+    55.6473,
+    192.859
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -159.9996,
+    50.8831,
+    189.9998
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "GROUND:1+BHCS_M3x6:11",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -160.0,
+    0.0,
+    0.0,
+    -1.0,
+    52.5,
+    0.0,
+    1.0,
+    0.0,
+    189.999,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -184.5105,
+    47.84,
+    199.639,
+    -178.7905,
+    55.6473,
+    205.359
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -181.6501,
+    50.8831,
+    202.4998
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "GROUND:1+BHCS_M3x6:12",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -181.6505,
+    0.0,
+    0.0,
+    -1.0,
+    52.5,
+    0.0,
+    1.0,
+    0.0,
+    202.499,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -155.04,
+    49.49,
+    237.638,
+    -152.02,
+    56.51,
+    240.658
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -153.53,
+    52.968,
+    239.148
+   ],
+   "component": "Dowel_3x7",
+   "mass_g": 0.36,
+   "path": "GROUND:1+Dowel_3x7:3",
+   "source_id": "urn:adsk.wipprod:dm.lineage:I9orrBj7SradVOeHnj_VIg",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -153.53,
+    0.0,
+    0.0,
+    1.0,
+    53.0,
+    0.0,
+    -1.0,
+    0.0,
+    239.148,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 45.9
+  },
+  {
+   "bbox": [
+    -167.98,
+    49.49,
+    189.342,
+    -164.96,
+    56.51,
+    192.362
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -166.47,
+    52.968,
+    190.852
+   ],
+   "component": "Dowel_3x7",
+   "mass_g": 0.36,
+   "path": "GROUND:1+Dowel_3x7:4",
+   "source_id": "urn:adsk.wipprod:dm.lineage:I9orrBj7SradVOeHnj_VIg",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -166.47,
+    0.0,
+    0.0,
+    1.0,
+    53.0,
+    0.0,
+    -1.0,
+    0.0,
+    190.852,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 45.9
+  },
+  {
+   "bbox": [
+    -213.01,
+    52.49,
+    124.99,
+    -196.99,
+    72.51,
+    145.01
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC pla",
+     "material": "PETG-CF print (effective)",
+     "name": "Tower_Bracket_R0"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -205.0,
+    58.9772,
+    131.3646
+   ],
+   "component": "Tower_Bracket_R0",
+   "mass_g": 1.648,
+   "path": "GROUND:1+Tower_Bracket_R0:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:sifw5ACHQVOObNmwSa7gyQ",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 2196.948
+  },
+  {
+   "bbox": [
+    -207.86,
+    47.84,
+    134.14,
+    -202.14,
+    59.6473,
+    139.86
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -204.9995,
+    52.6679,
+    136.9995
+   ],
+   "component": "BHCS_M3x10",
+   "mass_g": 0.655,
+   "path": "GROUND:1+BHCS_M3x10:3",
+   "source_id": "urn:adsk.wipprod:dm.lineage:IK31fZhGTTiAAPHkmPJ9Qg",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -205.0,
+    0.0,
+    0.0,
+    -1.0,
+    54.5,
+    0.0,
+    1.0,
+    0.0,
+    137.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 83.495
+  },
+  {
+   "bbox": [
+    -207.76,
+    56.3181,
+    133.8146,
+    -202.24,
+    60.51,
+    140.1854
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    },
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body2"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -204.9991,
+    58.4479,
+    136.9996
+   ],
+   "component": "Nyloc_M3",
+   "mass_g": 0.622,
+   "path": "GROUND:1+Nyloc_M3:3",
+   "source_id": "urn:adsk.wipprod:dm.lineage:UzPCxPnVQzOnQ3X-MZpGKw",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -205.0,
+    0.0,
+    0.0,
+    1.0,
+    58.5,
+    0.0,
+    -1.0,
+    0.0,
+    137.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 79.202
+  },
+  {
+   "bbox": [
+    -207.86,
+    61.64,
+    120.8527,
+    -202.14,
+    67.36,
+    130.66
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -205.0002,
+    64.5045,
+    126.7412
+   ],
+   "component": "BHCS_M3x8",
+   "mass_g": 0.566,
+   "path": "GROUND:1+BHCS_M3x8:3",
+   "source_id": "urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -205.0,
+    0.0,
+    1.0,
+    0.0,
+    64.5,
+    0.0,
+    0.0,
+    1.0,
+    125.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 72.155
+  },
+  {
+   "bbox": [
+    -123.01,
+    52.49,
+    124.99,
+    -106.99,
+    72.51,
+    145.01
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC pla",
+     "material": "PETG-CF print (effective)",
+     "name": "Tower_Bracket_R1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -115.0,
+    58.9772,
+    131.3646
+   ],
+   "component": "Tower_Bracket_R1",
+   "mass_g": 1.648,
+   "path": "GROUND:1+Tower_Bracket_R1:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:CYVOX57ISjecWccr5wNdig",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 2196.948
+  },
+  {
+   "bbox": [
+    -117.86,
+    47.84,
+    134.14,
+    -112.14,
+    59.6473,
+    139.86
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -114.9995,
+    52.6679,
+    136.9995
+   ],
+   "component": "BHCS_M3x10",
+   "mass_g": 0.655,
+   "path": "GROUND:1+BHCS_M3x10:4",
+   "source_id": "urn:adsk.wipprod:dm.lineage:IK31fZhGTTiAAPHkmPJ9Qg",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -115.0,
+    0.0,
+    0.0,
+    -1.0,
+    54.5,
+    0.0,
+    1.0,
+    0.0,
+    137.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 83.495
+  },
+  {
+   "bbox": [
+    -117.76,
+    56.3181,
+    133.8146,
+    -112.24,
+    60.51,
+    140.1854
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    },
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body2"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -114.9991,
+    58.4479,
+    136.9996
+   ],
+   "component": "Nyloc_M3",
+   "mass_g": 0.622,
+   "path": "GROUND:1+Nyloc_M3:4",
+   "source_id": "urn:adsk.wipprod:dm.lineage:UzPCxPnVQzOnQ3X-MZpGKw",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -115.0,
+    0.0,
+    0.0,
+    1.0,
+    58.5,
+    0.0,
+    -1.0,
+    0.0,
+    137.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 79.202
+  },
+  {
+   "bbox": [
+    -117.86,
+    61.64,
+    120.8527,
+    -112.14,
+    67.36,
+    130.66
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -115.0002,
+    64.5045,
+    126.7412
+   ],
+   "component": "BHCS_M3x8",
+   "mass_g": 0.566,
+   "path": "GROUND:1+BHCS_M3x8:4",
+   "source_id": "urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -115.0,
+    0.0,
+    1.0,
+    0.0,
+    64.5,
+    0.0,
+    0.0,
+    1.0,
+    125.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 72.155
+  },
+  {
+   "bbox": [
+    -232.9803,
+    -49.51,
+    195.9362,
+    -223.9603,
+    -43.49,
+    204.9562
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC alu",
+     "material": "Aluminum 6061",
+     "name": "Spacer_G1"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -228.4703,
+    -46.5,
+    200.4462
+   ],
+   "component": "Spacer_G1",
+   "mass_g": 0.687,
+   "path": "GROUND:1+Spacer_G1:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:2VUvTviWQ4izdOj8ndVoXA",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 254.281
+  },
+  {
+   "bbox": [
+    -232.9903,
+    -58.054,
+    195.9262,
+    -223.9503,
+    -35.48,
+    204.9662
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    },
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body2"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -228.4704,
+    -42.6807,
+    200.4464
+   ],
+   "component": "SB5x10",
+   "mass_g": 4.017,
+   "path": "GROUND:1+SB5x10:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:fmcBAtHvRVSSF-FtFC9f2Q",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -228.47033,
+    0.0,
+    0.0,
+    1.0,
+    -46.767,
+    0.0,
+    -1.0,
+    0.0,
+    200.44618,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 511.723
+  },
+  {
+   "bbox": [
+    -231.9915,
+    -57.52,
+    196.4702,
+    -224.9492,
+    -52.48,
+    204.4222
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    },
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body2"
+    }
+   ],
+   "body_group": "GROUND:1",
+   "com_mm": [
+    -228.4711,
+    -54.9648,
+    200.443
+   ],
+   "component": "Nyloc_M4",
+   "mass_g": 1.212,
+   "path": "GROUND:1+Nyloc_M4:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:_4zPGOeHRGuYkHYYEt12Fg",
+   "source_version": 2,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -228.47033,
+    0.0,
+    0.0,
+    -1.0,
+    -55.0,
+    0.0,
+    1.0,
+    0.0,
+    200.44618,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 154.397
+  },
+  {
+   "bbox": [
     -231.51,
     -73.51,
     112.7275,
@@ -5845,976 +5720,6 @@
    ],
    "visible": true,
    "volume_mm3": 4823.613
-  },
-  {
-   "bbox": [
-    -150.8517,
-    -56.1975,
-    206.8452,
-    -143.7766,
-    -46.99,
-    213.9203
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -147.3138,
-    -50.21,
-    210.3825
-   ],
-   "component": "SHCS_M3x6",
-   "mass_g": 0.726,
-   "path": "UPPER:1+SHCS_M3x6:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.34202,
-    0.0,
-    -147.31415,
-    0.0,
-    0.0,
-    1.0,
-    -51.5,
-    0.34202,
-    0.939693,
-    -0.0,
-    210.382728,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 92.537
-  },
-  {
-   "bbox": [
-    -161.1932,
-    -56.1975,
-    198.1679,
-    -154.1181,
-    -46.99,
-    205.2429
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -157.6553,
-    -50.21,
-    201.7052
-   ],
-   "component": "SHCS_M3x6",
-   "mass_g": 0.726,
-   "path": "UPPER:1+SHCS_M3x6:2",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.34202,
-    0.0,
-    -157.655632,
-    0.0,
-    0.0,
-    1.0,
-    -51.5,
-    0.34202,
-    0.939693,
-    0.0,
-    201.705418,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 92.537
-  },
-  {
-   "bbox": [
-    -173.879,
-    -56.1975,
-    202.7852,
-    -166.804,
-    -46.99,
-    209.8602
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -170.3411,
-    -50.21,
-    206.3224
-   ],
-   "component": "SHCS_M3x6",
-   "mass_g": 0.726,
-   "path": "UPPER:1+SHCS_M3x6:3",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.34202,
-    0.0,
-    -170.341483,
-    0.0,
-    0.0,
-    1.0,
-    -51.5,
-    0.34202,
-    0.939693,
-    0.0,
-    206.32269,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 92.537
-  },
-  {
-   "bbox": [
-    -176.2234,
-    -56.1975,
-    216.0797,
-    -169.1483,
-    -46.99,
-    223.1548
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -172.6855,
-    -50.21,
-    219.617
-   ],
-   "component": "SHCS_M3x6",
-   "mass_g": 0.726,
-   "path": "UPPER:1+SHCS_M3x6:4",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.34202,
-    0.0,
-    -172.68585,
-    0.0,
-    0.0,
-    1.0,
-    -51.5,
-    0.34202,
-    0.939693,
-    0.0,
-    219.617272,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 92.537
-  },
-  {
-   "bbox": [
-    -165.8819,
-    -56.1975,
-    224.7571,
-    -158.8068,
-    -46.99,
-    231.8321
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -162.344,
-    -50.21,
-    228.2943
-   ],
-   "component": "SHCS_M3x6",
-   "mass_g": 0.726,
-   "path": "UPPER:1+SHCS_M3x6:5",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.34202,
-    0.0,
-    -162.344368,
-    0.0,
-    0.0,
-    1.0,
-    -51.5,
-    0.34202,
-    0.939693,
-    0.0,
-    228.294582,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 92.537
-  },
-  {
-   "bbox": [
-    -153.196,
-    -56.1975,
-    220.1398,
-    -146.121,
-    -46.99,
-    227.2148
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -149.6581,
-    -50.21,
-    223.6771
-   ],
-   "component": "SHCS_M3x6",
-   "mass_g": 0.726,
-   "path": "UPPER:1+SHCS_M3x6:6",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.34202,
-    0.0,
-    -149.658517,
-    0.0,
-    0.0,
-    1.0,
-    -51.5,
-    0.34202,
-    0.939693,
-    0.0,
-    223.67731,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 92.537
-  },
-  {
-   "bbox": [
-    -166.6805,
-    -54.01,
-    201.1474,
-    -161.528,
-    -48.99,
-    206.2999
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -164.1042,
-    -51.4612,
-    203.7237
-   ],
-   "component": "Dowel_4x5",
-   "mass_g": 0.427,
-   "path": "UPPER:1+Dowel_4x5:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    -0.34202,
-    0.0,
-    -164.104242,
-    0.0,
-    0.0,
-    -1.0,
-    -51.5,
-    0.34202,
-    -0.939693,
-    -0.0,
-    203.723689,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 54.346
-  },
-  {
-   "bbox": [
-    -150.7588,
-    -54.01,
-    214.5076,
-    -145.6064,
-    -48.99,
-    219.6601
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -148.1826,
-    -51.4612,
-    217.0839
-   ],
-   "component": "Dowel_4x5",
-   "mass_g": 0.427,
-   "path": "UPPER:1+Dowel_4x5:2",
-   "source_id": "urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    -0.34202,
-    -0.0,
-    -148.182593,
-    0.0,
-    0.0,
-    -1.0,
-    -51.5,
-    0.34202,
-    -0.939693,
-    0.0,
-    217.083882,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 54.346
-  },
-  {
-   "bbox": [
-    -170.2894,
-    -54.01,
-    221.6162,
-    -165.1369,
-    -48.99,
-    226.7687
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -167.7132,
-    -51.4612,
-    224.1924
-   ],
-   "component": "Dowel_4x5",
-   "mass_g": 0.427,
-   "path": "UPPER:1+Dowel_4x5:3",
-   "source_id": "urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    -0.34202,
-    -0.0,
-    -167.713165,
-    0.0,
-    0.0,
-    -1.0,
-    -51.5,
-    0.34202,
-    -0.939693,
-    0.0,
-    224.192429,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 54.346
-  },
-  {
-   "bbox": [
-    -173.5138,
-    -50.1473,
-    209.5978,
-    -166.1824,
-    -42.34,
-    216.9292
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -169.8482,
-    -45.3831,
-    213.2644
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "UPPER:1+BHCS_M3x6:13",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.34202,
-    0.0,
-    -169.848074,
-    0.0,
-    0.0,
-    1.0,
-    -47.0,
-    0.34202,
-    0.939693,
-    0.0,
-    213.263517,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -157.2378,
-    -50.1473,
-    203.6739,
-    -149.9064,
-    -42.34,
-    211.0053
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -153.5722,
-    -45.3831,
-    207.3404
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "UPPER:1+BHCS_M3x6:14",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.34202,
-    0.0,
-    -153.572128,
-    0.0,
-    0.0,
-    1.0,
-    -47.0,
-    0.34202,
-    0.939693,
-    0.0,
-    207.339557,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -160.2455,
-    -50.1473,
-    220.7312,
-    -152.9141,
-    -42.34,
-    228.0626
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -156.5799,
-    -45.3831,
-    224.3978
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "UPPER:1+BHCS_M3x6:15",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.34202,
-    0.0,
-    -156.579799,
-    0.0,
-    0.0,
-    1.0,
-    -47.0,
-    0.34202,
-    0.939693,
-    0.0,
-    224.396926,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -245.0135,
-    -44.01,
-    238.932,
-    -234.7342,
-    44.01,
-    249.2114
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC alu",
-     "material": "Aluminum 6061",
-     "name": "UA_Standoff_D8_0"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -239.8739,
-    0.0,
-    244.0717
-   ],
-   "component": "UA_Standoff_D8_0",
-   "mass_g": 10.739,
-   "path": "UPPER:1+UA_Standoff_D8_0:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:_wj87uxITKqt9uPVcwNSow",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.0,
-    -0.34202,
-    -160.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.34202,
-    0.0,
-    -0.939693,
-    215.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 3977.46
-  },
-  {
-   "bbox": [
-    -248.0793,
-    -57.62,
-    229.4114,
-    -235.3657,
-    -46.98,
-    248.5739
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "PCLIP (catalogue mass)",
-     "name": "Body1"
-    },
-    {
-     "appearance": "ARC steel",
-     "material": "PCLIP (catalogue mass)",
-     "name": "Body2"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -242.5411,
-    -51.5889,
-    236.7437
-   ],
-   "component": "PCLIP (placeholder)",
-   "mass_g": 1.0,
-   "path": "UPPER:1+PCLIP (placeholder):1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:8IivQ1vMQlOrXbUQwjLGsA",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.0,
-    -0.34202,
-    -160.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.34202,
-    0.0,
-    -0.939693,
-    215.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 201.679
-  },
-  {
-   "bbox": [
-    -243.5396,
-    -49.46,
-    240.406,
-    -236.2082,
-    -39.6527,
-    247.7374
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -239.8752,
-    -45.5412,
-    244.0674
-   ],
-   "component": "BHCS_M3x8",
-   "mass_g": 0.566,
-   "path": "UPPER:1+BHCS_M3x8:5",
-   "source_id": "urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    -0.34202,
-    -0.0,
-    -239.873873,
-    0.0,
-    0.0,
-    -1.0,
-    -43.8,
-    0.34202,
-    -0.939693,
-    0.0,
-    244.071712,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 72.155
-  },
-  {
-   "bbox": [
-    -243.5396,
-    40.8527,
-    240.406,
-    -236.2082,
-    48.66,
-    247.7374
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -239.874,
-    45.6169,
-    244.0726
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "UPPER:1+BHCS_M3x6:16",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.34202,
-    0.0,
-    -239.873873,
-    0.0,
-    0.0,
-    1.0,
-    44.0,
-    0.34202,
-    0.939693,
-    0.0,
-    244.071712,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
-  },
-  {
-   "bbox": [
-    -306.0936,
-    -44.01,
-    261.1634,
-    -295.8142,
-    44.01,
-    271.4427
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC alu",
-     "material": "Aluminum 6061",
-     "name": "UA_Standoff_D8_1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -300.9539,
-    0.0,
-    266.303
-   ],
-   "component": "UA_Standoff_D8_1",
-   "mass_g": 10.739,
-   "path": "UPPER:1+UA_Standoff_D8_1:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:a7QwMGnsT-K_gNvL6nFVeg",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.0,
-    -0.34202,
-    -160.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.34202,
-    0.0,
-    -0.939693,
-    215.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 3977.46
-  },
-  {
-   "bbox": [
-    -309.1593,
-    -57.62,
-    251.6427,
-    -296.4457,
-    -46.98,
-    270.8053
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "PCLIP (catalogue mass)",
-     "name": "Body1"
-    },
-    {
-     "appearance": "ARC steel",
-     "material": "PCLIP (catalogue mass)",
-     "name": "Body2"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -303.6211,
-    -51.5889,
-    258.975
-   ],
-   "component": "PCLIP (placeholder)",
-   "mass_g": 1.0,
-   "path": "UPPER:1+PCLIP (placeholder):2",
-   "source_id": "urn:adsk.wipprod:dm.lineage:8IivQ1vMQlOrXbUQwjLGsA",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.0,
-    -0.34202,
-    -221.08002,
-    0.0,
-    1.0,
-    -0.0,
-    -0.0,
-    0.34202,
-    -0.0,
-    -0.939693,
-    237.231309,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 201.679
-  },
-  {
-   "bbox": [
-    -304.6196,
-    -49.46,
-    262.6373,
-    -297.2882,
-    -39.6527,
-    269.9687
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -300.9552,
-    -45.5412,
-    266.2987
-   ],
-   "component": "BHCS_M3x8",
-   "mass_g": 0.566,
-   "path": "UPPER:1+BHCS_M3x8:6",
-   "source_id": "urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    -0.34202,
-    -0.0,
-    -300.953893,
-    0.0,
-    0.0,
-    -1.0,
-    -43.8,
-    0.34202,
-    -0.939693,
-    0.0,
-    266.303021,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 72.155
-  },
-  {
-   "bbox": [
-    -304.6196,
-    40.8527,
-    262.6373,
-    -297.2882,
-    48.66,
-    269.9687
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "UPPER:1",
-   "com_mm": [
-    -300.954,
-    45.6169,
-    266.3039
-   ],
-   "component": "BHCS_M3x6",
-   "mass_g": 0.477,
-   "path": "UPPER:1+BHCS_M3x6:17",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
-   "source_version": 2,
-   "transform": [
-    -0.939693,
-    0.34202,
-    0.0,
-    -300.953893,
-    0.0,
-    0.0,
-    1.0,
-    44.0,
-    0.34202,
-    0.939693,
-    0.0,
-    266.303021,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 60.771
   },
   {
    "bbox": [
@@ -8042,6 +6947,976 @@
   },
   {
    "bbox": [
+    -150.8517,
+    -56.1975,
+    206.8452,
+    -143.7766,
+    -46.99,
+    213.9203
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -147.3138,
+    -50.21,
+    210.3825
+   ],
+   "component": "SHCS_M3x6",
+   "mass_g": 0.726,
+   "path": "UPPER:1+SHCS_M3x6:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.34202,
+    0.0,
+    -147.31415,
+    0.0,
+    0.0,
+    1.0,
+    -51.5,
+    0.34202,
+    0.939693,
+    -0.0,
+    210.382728,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 92.537
+  },
+  {
+   "bbox": [
+    -161.1932,
+    -56.1975,
+    198.1679,
+    -154.1181,
+    -46.99,
+    205.2429
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -157.6553,
+    -50.21,
+    201.7052
+   ],
+   "component": "SHCS_M3x6",
+   "mass_g": 0.726,
+   "path": "UPPER:1+SHCS_M3x6:2",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.34202,
+    0.0,
+    -157.655632,
+    0.0,
+    0.0,
+    1.0,
+    -51.5,
+    0.34202,
+    0.939693,
+    0.0,
+    201.705418,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 92.537
+  },
+  {
+   "bbox": [
+    -173.879,
+    -56.1975,
+    202.7852,
+    -166.804,
+    -46.99,
+    209.8602
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -170.3411,
+    -50.21,
+    206.3224
+   ],
+   "component": "SHCS_M3x6",
+   "mass_g": 0.726,
+   "path": "UPPER:1+SHCS_M3x6:3",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.34202,
+    0.0,
+    -170.341483,
+    0.0,
+    0.0,
+    1.0,
+    -51.5,
+    0.34202,
+    0.939693,
+    0.0,
+    206.32269,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 92.537
+  },
+  {
+   "bbox": [
+    -176.2234,
+    -56.1975,
+    216.0797,
+    -169.1483,
+    -46.99,
+    223.1548
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -172.6855,
+    -50.21,
+    219.617
+   ],
+   "component": "SHCS_M3x6",
+   "mass_g": 0.726,
+   "path": "UPPER:1+SHCS_M3x6:4",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.34202,
+    0.0,
+    -172.68585,
+    0.0,
+    0.0,
+    1.0,
+    -51.5,
+    0.34202,
+    0.939693,
+    0.0,
+    219.617272,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 92.537
+  },
+  {
+   "bbox": [
+    -165.8819,
+    -56.1975,
+    224.7571,
+    -158.8068,
+    -46.99,
+    231.8321
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -162.344,
+    -50.21,
+    228.2943
+   ],
+   "component": "SHCS_M3x6",
+   "mass_g": 0.726,
+   "path": "UPPER:1+SHCS_M3x6:5",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.34202,
+    0.0,
+    -162.344368,
+    0.0,
+    0.0,
+    1.0,
+    -51.5,
+    0.34202,
+    0.939693,
+    0.0,
+    228.294582,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 92.537
+  },
+  {
+   "bbox": [
+    -153.196,
+    -56.1975,
+    220.1398,
+    -146.121,
+    -46.99,
+    227.2148
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -149.6581,
+    -50.21,
+    223.6771
+   ],
+   "component": "SHCS_M3x6",
+   "mass_g": 0.726,
+   "path": "UPPER:1+SHCS_M3x6:6",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.34202,
+    0.0,
+    -149.658517,
+    0.0,
+    0.0,
+    1.0,
+    -51.5,
+    0.34202,
+    0.939693,
+    0.0,
+    223.67731,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 92.537
+  },
+  {
+   "bbox": [
+    -166.6805,
+    -54.01,
+    201.1474,
+    -161.528,
+    -48.99,
+    206.2999
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -164.1042,
+    -51.4612,
+    203.7237
+   ],
+   "component": "Dowel_4x5",
+   "mass_g": 0.427,
+   "path": "UPPER:1+Dowel_4x5:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    -0.34202,
+    0.0,
+    -164.104242,
+    0.0,
+    0.0,
+    -1.0,
+    -51.5,
+    0.34202,
+    -0.939693,
+    -0.0,
+    203.723689,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 54.346
+  },
+  {
+   "bbox": [
+    -150.7588,
+    -54.01,
+    214.5076,
+    -145.6064,
+    -48.99,
+    219.6601
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -148.1826,
+    -51.4612,
+    217.0839
+   ],
+   "component": "Dowel_4x5",
+   "mass_g": 0.427,
+   "path": "UPPER:1+Dowel_4x5:2",
+   "source_id": "urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    -0.34202,
+    -0.0,
+    -148.182593,
+    0.0,
+    0.0,
+    -1.0,
+    -51.5,
+    0.34202,
+    -0.939693,
+    0.0,
+    217.083882,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 54.346
+  },
+  {
+   "bbox": [
+    -170.2894,
+    -54.01,
+    221.6162,
+    -165.1369,
+    -48.99,
+    226.7687
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -167.7132,
+    -51.4612,
+    224.1924
+   ],
+   "component": "Dowel_4x5",
+   "mass_g": 0.427,
+   "path": "UPPER:1+Dowel_4x5:3",
+   "source_id": "urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    -0.34202,
+    -0.0,
+    -167.713165,
+    0.0,
+    0.0,
+    -1.0,
+    -51.5,
+    0.34202,
+    -0.939693,
+    0.0,
+    224.192429,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 54.346
+  },
+  {
+   "bbox": [
+    -173.5138,
+    -50.1473,
+    209.5978,
+    -166.1824,
+    -42.34,
+    216.9292
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -169.8482,
+    -45.3831,
+    213.2644
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "UPPER:1+BHCS_M3x6:13",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.34202,
+    0.0,
+    -169.848074,
+    0.0,
+    0.0,
+    1.0,
+    -47.0,
+    0.34202,
+    0.939693,
+    0.0,
+    213.263517,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -157.2378,
+    -50.1473,
+    203.6739,
+    -149.9064,
+    -42.34,
+    211.0053
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -153.5722,
+    -45.3831,
+    207.3404
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "UPPER:1+BHCS_M3x6:14",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.34202,
+    0.0,
+    -153.572128,
+    0.0,
+    0.0,
+    1.0,
+    -47.0,
+    0.34202,
+    0.939693,
+    0.0,
+    207.339557,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -160.2455,
+    -50.1473,
+    220.7312,
+    -152.9141,
+    -42.34,
+    228.0626
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -156.5799,
+    -45.3831,
+    224.3978
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "UPPER:1+BHCS_M3x6:15",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.34202,
+    0.0,
+    -156.579799,
+    0.0,
+    0.0,
+    1.0,
+    -47.0,
+    0.34202,
+    0.939693,
+    0.0,
+    224.396926,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -245.0135,
+    -44.01,
+    238.932,
+    -234.7342,
+    44.01,
+    249.2114
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC alu",
+     "material": "Aluminum 6061",
+     "name": "UA_Standoff_D8_0"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -239.8739,
+    0.0,
+    244.0717
+   ],
+   "component": "UA_Standoff_D8_0",
+   "mass_g": 10.739,
+   "path": "UPPER:1+UA_Standoff_D8_0:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:_wj87uxITKqt9uPVcwNSow",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.0,
+    -0.34202,
+    -160.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.34202,
+    0.0,
+    -0.939693,
+    215.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 3977.46
+  },
+  {
+   "bbox": [
+    -248.0793,
+    -57.62,
+    229.4114,
+    -235.3657,
+    -46.98,
+    248.5739
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "PCLIP (catalogue mass)",
+     "name": "Body1"
+    },
+    {
+     "appearance": "ARC steel",
+     "material": "PCLIP (catalogue mass)",
+     "name": "Body2"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -242.5411,
+    -51.5889,
+    236.7437
+   ],
+   "component": "PCLIP (placeholder)",
+   "mass_g": 1.0,
+   "path": "UPPER:1+PCLIP (placeholder):1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:8IivQ1vMQlOrXbUQwjLGsA",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.0,
+    -0.34202,
+    -160.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.34202,
+    0.0,
+    -0.939693,
+    215.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 201.679
+  },
+  {
+   "bbox": [
+    -243.5396,
+    -49.46,
+    240.406,
+    -236.2082,
+    -39.6527,
+    247.7374
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -239.8752,
+    -45.5412,
+    244.0674
+   ],
+   "component": "BHCS_M3x8",
+   "mass_g": 0.566,
+   "path": "UPPER:1+BHCS_M3x8:5",
+   "source_id": "urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    -0.34202,
+    -0.0,
+    -239.873873,
+    0.0,
+    0.0,
+    -1.0,
+    -43.8,
+    0.34202,
+    -0.939693,
+    0.0,
+    244.071712,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 72.155
+  },
+  {
+   "bbox": [
+    -243.5396,
+    40.8527,
+    240.406,
+    -236.2082,
+    48.66,
+    247.7374
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -239.874,
+    45.6169,
+    244.0726
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "UPPER:1+BHCS_M3x6:16",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.34202,
+    0.0,
+    -239.873873,
+    0.0,
+    0.0,
+    1.0,
+    44.0,
+    0.34202,
+    0.939693,
+    0.0,
+    244.071712,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
+    -306.0936,
+    -44.01,
+    261.1634,
+    -295.8142,
+    44.01,
+    271.4427
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC alu",
+     "material": "Aluminum 6061",
+     "name": "UA_Standoff_D8_1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -300.9539,
+    0.0,
+    266.303
+   ],
+   "component": "UA_Standoff_D8_1",
+   "mass_g": 10.739,
+   "path": "UPPER:1+UA_Standoff_D8_1:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:a7QwMGnsT-K_gNvL6nFVeg",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.0,
+    -0.34202,
+    -160.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.34202,
+    0.0,
+    -0.939693,
+    215.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 3977.46
+  },
+  {
+   "bbox": [
+    -309.1593,
+    -57.62,
+    251.6427,
+    -296.4457,
+    -46.98,
+    270.8053
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "PCLIP (catalogue mass)",
+     "name": "Body1"
+    },
+    {
+     "appearance": "ARC steel",
+     "material": "PCLIP (catalogue mass)",
+     "name": "Body2"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -303.6211,
+    -51.5889,
+    258.975
+   ],
+   "component": "PCLIP (placeholder)",
+   "mass_g": 1.0,
+   "path": "UPPER:1+PCLIP (placeholder):2",
+   "source_id": "urn:adsk.wipprod:dm.lineage:8IivQ1vMQlOrXbUQwjLGsA",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.0,
+    -0.34202,
+    -221.08002,
+    0.0,
+    1.0,
+    -0.0,
+    -0.0,
+    0.34202,
+    -0.0,
+    -0.939693,
+    237.231309,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 201.679
+  },
+  {
+   "bbox": [
+    -304.6196,
+    -49.46,
+    262.6373,
+    -297.2882,
+    -39.6527,
+    269.9687
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -300.9552,
+    -45.5412,
+    266.2987
+   ],
+   "component": "BHCS_M3x8",
+   "mass_g": 0.566,
+   "path": "UPPER:1+BHCS_M3x8:6",
+   "source_id": "urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    -0.34202,
+    -0.0,
+    -300.953893,
+    0.0,
+    0.0,
+    -1.0,
+    -43.8,
+    0.34202,
+    -0.939693,
+    0.0,
+    266.303021,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 72.155
+  },
+  {
+   "bbox": [
+    -304.6196,
+    40.8527,
+    262.6373,
+    -297.2882,
+    48.66,
+    269.9687
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "UPPER:1",
+   "com_mm": [
+    -300.954,
+    45.6169,
+    266.3039
+   ],
+   "component": "BHCS_M3x6",
+   "mass_g": 0.477,
+   "path": "UPPER:1+BHCS_M3x6:17",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q",
+   "source_version": 2,
+   "transform": [
+    -0.939693,
+    0.34202,
+    0.0,
+    -300.953893,
+    0.0,
+    0.0,
+    1.0,
+    44.0,
+    0.34202,
+    0.939693,
+    0.0,
+    266.303021,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 60.771
+  },
+  {
+   "bbox": [
     -499.2616,
     -59.07,
     186.7767,
@@ -8177,683 +8052,6 @@
    ],
    "visible": true,
    "volume_mm3": 6098.605
-  },
-  {
-   "bbox": [
-    -176.4922,
-    46.99,
-    209.4584,
-    -170.0976,
-    56.1975,
-    215.8531
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -173.2945,
-    50.21,
-    212.6559
-   ],
-   "component": "SHCS_M3x6",
-   "mass_g": 0.726,
-   "path": "CRANK:1+SHCS_M3x6:7",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    0.173648,
-    0.0,
-    -173.294905,
-    0.0,
-    0.0,
-    -1.0,
-    51.5,
-    -0.173648,
-    -0.984808,
-    0.0,
-    212.65575,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 92.537
-  },
-  {
-   "bbox": [
-    -167.8147,
-    46.99,
-    199.1171,
-    -161.42,
-    56.1975,
-    205.5118
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -164.6169,
-    50.21,
-    202.3147
-   ],
-   "component": "SHCS_M3x6",
-   "mass_g": 0.726,
-   "path": "CRANK:1+SHCS_M3x6:8",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    0.173648,
-    0.0,
-    -164.617331,
-    0.0,
-    0.0,
-    -1.0,
-    51.5,
-    -0.173648,
-    -0.984808,
-    0.0,
-    202.314487,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 92.537
-  },
-  {
-   "bbox": [
-    -154.5198,
-    46.99,
-    201.4614,
-    -148.1251,
-    56.1975,
-    207.8561
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -151.322,
-    50.21,
-    204.6589
-   ],
-   "component": "SHCS_M3x6",
-   "mass_g": 0.726,
-   "path": "CRANK:1+SHCS_M3x6:9",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    0.173648,
-    0.0,
-    -151.322427,
-    0.0,
-    0.0,
-    -1.0,
-    51.5,
-    -0.173648,
-    -0.984808,
-    0.0,
-    204.658738,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 92.537
-  },
-  {
-   "bbox": [
-    -149.9024,
-    46.99,
-    214.1469,
-    -143.5078,
-    56.1975,
-    220.5416
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -146.7047,
-    50.21,
-    217.3444
-   ],
-   "component": "SHCS_M3x6",
-   "mass_g": 0.726,
-   "path": "CRANK:1+SHCS_M3x6:10",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    0.173648,
-    0.0,
-    -146.705095,
-    0.0,
-    0.0,
-    -1.0,
-    51.5,
-    -0.173648,
-    -0.984808,
-    0.0,
-    217.34425,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 92.537
-  },
-  {
-   "bbox": [
-    -158.58,
-    46.99,
-    224.4882,
-    -152.1853,
-    56.1975,
-    230.8829
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -155.3823,
-    50.21,
-    227.6857
-   ],
-   "component": "SHCS_M3x6",
-   "mass_g": 0.726,
-   "path": "CRANK:1+SHCS_M3x6:11",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    0.173648,
-    0.0,
-    -155.382669,
-    0.0,
-    0.0,
-    -1.0,
-    51.5,
-    -0.173648,
-    -0.984808,
-    0.0,
-    227.685513,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 92.537
-  },
-  {
-   "bbox": [
-    -171.8749,
-    46.99,
-    222.1439,
-    -165.4802,
-    56.1975,
-    228.5386
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -168.6772,
-    50.21,
-    225.3415
-   ],
-   "component": "SHCS_M3x6",
-   "mass_g": 0.726,
-   "path": "CRANK:1+SHCS_M3x6:12",
-   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    0.173648,
-    0.0,
-    -168.677573,
-    0.0,
-    0.0,
-    -1.0,
-    51.5,
-    -0.173648,
-    -0.984808,
-    0.0,
-    225.341262,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 92.537
-  },
-  {
-   "bbox": [
-    -160.2447,
-    48.99,
-    200.8538,
-    -155.5877,
-    54.01,
-    205.5108
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -157.9162,
-    51.4612,
-    203.1823
-   ],
-   "component": "Dowel_4x5",
-   "mass_g": 0.427,
-   "path": "CRANK:1+Dowel_4x5:4",
-   "source_id": "urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    -0.173648,
-    0.0,
-    -157.916222,
-    0.0,
-    0.0,
-    1.0,
-    51.5,
-    -0.173648,
-    0.984808,
-    0.0,
-    203.182307,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 54.346
-  },
-  {
-   "bbox": [
-    -173.6045,
-    48.99,
-    216.7758,
-    -168.9475,
-    54.01,
-    221.4328
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -171.276,
-    51.4612,
-    219.1043
-   ],
-   "component": "Dowel_4x5",
-   "mass_g": 0.427,
-   "path": "CRANK:1+Dowel_4x5:5",
-   "source_id": "urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    -0.173648,
-    0.0,
-    -171.276011,
-    0.0,
-    0.0,
-    1.0,
-    51.5,
-    -0.173648,
-    0.984808,
-    0.0,
-    219.104295,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 54.346
-  },
-  {
-   "bbox": [
-    -153.1363,
-    48.99,
-    220.3849,
-    -148.4793,
-    54.01,
-    225.0419
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -150.8078,
-    51.4612,
-    222.7134
-   ],
-   "component": "Dowel_4x5",
-   "mass_g": 0.427,
-   "path": "CRANK:1+Dowel_4x5:6",
-   "source_id": "urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    -0.173648,
-    0.0,
-    -150.807767,
-    0.0,
-    0.0,
-    1.0,
-    51.5,
-    -0.173648,
-    0.984808,
-    0.0,
-    222.713398,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 54.346
-  },
-  {
-   "bbox": [
-    -165.2246,
-    32.19,
-    209.7754,
-    -154.7754,
-    33.01,
-    220.2246
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -160.0,
-    32.6,
-    215.0
-   ],
-   "component": "Washer_M4",
-   "mass_g": 0.308,
-   "path": "CRANK:1+Washer_M4:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:zW3omaHCTHi3_67g_-Wgbw",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    -0.173648,
-    0.0,
-    -160.0,
-    0.0,
-    0.0,
-    1.0,
-    32.6,
-    -0.173648,
-    0.984808,
-    0.0,
-    215.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 39.212
-  },
-  {
-   "bbox": [
-    -164.0662,
-    28.19,
-    210.9338,
-    -155.9338,
-    40.4725,
-    219.0662
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -160.0017,
-    32.5701,
-    215.001
-   ],
-   "component": "SHCS_M4x8",
-   "mass_g": 1.619,
-   "path": "CRANK:1+SHCS_M4x8:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:G55wbKMDR_2D433JI0yOFA",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    0.173648,
-    0.0,
-    -160.0,
-    0.0,
-    0.0,
-    -1.0,
-    34.2,
-    -0.173648,
-    -0.984808,
-    0.0,
-    215.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 206.281
-  },
-  {
-   "bbox": [
-    -243.43,
-    31.49,
-    196.4627,
-    -234.1392,
-    33.01,
-    205.7536
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC steel",
-     "material": "Shim steel 7.90",
-     "name": "Shim_A"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -238.7846,
-    32.25,
-    201.1081
-   ],
-   "component": "Shim_A",
-   "mass_g": 0.354,
-   "path": "CRANK:1+Shim_A:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:BioWRYorSle-n_GQhwl1bw",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    0.0,
-    0.173648,
-    -160.0,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    -0.173648,
-    0.0,
-    -0.984808,
-    215.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 44.756
-  },
-  {
-   "bbox": [
-    -244.0093,
-    23.49,
-    195.8835,
-    -233.56,
-    40.7022,
-    206.3328
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -238.7838,
-    28.9574,
-    201.1095
-   ],
-   "component": "SB5x8",
-   "mass_g": 3.409,
-   "path": "CRANK:1+SB5x8:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:sv0F5xT5T66lCJ91memEZw",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    0.173648,
-    0.0,
-    -238.78462,
-    0.0,
-    0.0,
-    -1.0,
-    32.0,
-    -0.173648,
-    -0.984808,
-    0.0,
-    201.108146,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 434.307
-  },
-  {
-   "bbox": [
-    -242.9427,
-    35.98,
-    196.5811,
-    -234.6265,
-    41.02,
-    205.6352
-   ],
-   "bodies": [
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body1"
-    },
-    {
-     "appearance": "Opaque(192,192,192)",
-     "material": "Steel",
-     "name": "Body2"
-    }
-   ],
-   "body_group": "CRANK:1",
-   "com_mm": [
-    -238.7833,
-    38.4648,
-    201.1052
-   ],
-   "component": "Nyloc_M4",
-   "mass_g": 1.212,
-   "path": "CRANK:1+Nyloc_M4:2",
-   "source_id": "urn:adsk.wipprod:dm.lineage:_4zPGOeHRGuYkHYYEt12Fg",
-   "source_version": 2,
-   "transform": [
-    -0.984808,
-    -0.173648,
-    0.0,
-    -238.78462,
-    0.0,
-    0.0,
-    1.0,
-    38.5,
-    -0.173648,
-    0.984808,
-    0.0,
-    201.108146,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 154.397
   },
   {
    "bbox": [
@@ -10078,6 +9276,683 @@
    ],
    "visible": true,
    "volume_mm3": 5754.276
+  },
+  {
+   "bbox": [
+    -176.4922,
+    46.99,
+    209.4584,
+    -170.0976,
+    56.1975,
+    215.8531
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -173.2945,
+    50.21,
+    212.6559
+   ],
+   "component": "SHCS_M3x6",
+   "mass_g": 0.726,
+   "path": "CRANK:1+SHCS_M3x6:7",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    0.173648,
+    0.0,
+    -173.294905,
+    0.0,
+    0.0,
+    -1.0,
+    51.5,
+    -0.173648,
+    -0.984808,
+    0.0,
+    212.65575,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 92.537
+  },
+  {
+   "bbox": [
+    -167.8147,
+    46.99,
+    199.1171,
+    -161.42,
+    56.1975,
+    205.5118
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -164.6169,
+    50.21,
+    202.3147
+   ],
+   "component": "SHCS_M3x6",
+   "mass_g": 0.726,
+   "path": "CRANK:1+SHCS_M3x6:8",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    0.173648,
+    0.0,
+    -164.617331,
+    0.0,
+    0.0,
+    -1.0,
+    51.5,
+    -0.173648,
+    -0.984808,
+    0.0,
+    202.314487,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 92.537
+  },
+  {
+   "bbox": [
+    -154.5198,
+    46.99,
+    201.4614,
+    -148.1251,
+    56.1975,
+    207.8561
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -151.322,
+    50.21,
+    204.6589
+   ],
+   "component": "SHCS_M3x6",
+   "mass_g": 0.726,
+   "path": "CRANK:1+SHCS_M3x6:9",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    0.173648,
+    0.0,
+    -151.322427,
+    0.0,
+    0.0,
+    -1.0,
+    51.5,
+    -0.173648,
+    -0.984808,
+    0.0,
+    204.658738,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 92.537
+  },
+  {
+   "bbox": [
+    -149.9024,
+    46.99,
+    214.1469,
+    -143.5078,
+    56.1975,
+    220.5416
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -146.7047,
+    50.21,
+    217.3444
+   ],
+   "component": "SHCS_M3x6",
+   "mass_g": 0.726,
+   "path": "CRANK:1+SHCS_M3x6:10",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    0.173648,
+    0.0,
+    -146.705095,
+    0.0,
+    0.0,
+    -1.0,
+    51.5,
+    -0.173648,
+    -0.984808,
+    0.0,
+    217.34425,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 92.537
+  },
+  {
+   "bbox": [
+    -158.58,
+    46.99,
+    224.4882,
+    -152.1853,
+    56.1975,
+    230.8829
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -155.3823,
+    50.21,
+    227.6857
+   ],
+   "component": "SHCS_M3x6",
+   "mass_g": 0.726,
+   "path": "CRANK:1+SHCS_M3x6:11",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    0.173648,
+    0.0,
+    -155.382669,
+    0.0,
+    0.0,
+    -1.0,
+    51.5,
+    -0.173648,
+    -0.984808,
+    0.0,
+    227.685513,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 92.537
+  },
+  {
+   "bbox": [
+    -171.8749,
+    46.99,
+    222.1439,
+    -165.4802,
+    56.1975,
+    228.5386
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -168.6772,
+    50.21,
+    225.3415
+   ],
+   "component": "SHCS_M3x6",
+   "mass_g": 0.726,
+   "path": "CRANK:1+SHCS_M3x6:12",
+   "source_id": "urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    0.173648,
+    0.0,
+    -168.677573,
+    0.0,
+    0.0,
+    -1.0,
+    51.5,
+    -0.173648,
+    -0.984808,
+    0.0,
+    225.341262,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 92.537
+  },
+  {
+   "bbox": [
+    -160.2447,
+    48.99,
+    200.8538,
+    -155.5877,
+    54.01,
+    205.5108
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -157.9162,
+    51.4612,
+    203.1823
+   ],
+   "component": "Dowel_4x5",
+   "mass_g": 0.427,
+   "path": "CRANK:1+Dowel_4x5:4",
+   "source_id": "urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    -0.173648,
+    0.0,
+    -157.916222,
+    0.0,
+    0.0,
+    1.0,
+    51.5,
+    -0.173648,
+    0.984808,
+    0.0,
+    203.182307,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 54.346
+  },
+  {
+   "bbox": [
+    -173.6045,
+    48.99,
+    216.7758,
+    -168.9475,
+    54.01,
+    221.4328
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -171.276,
+    51.4612,
+    219.1043
+   ],
+   "component": "Dowel_4x5",
+   "mass_g": 0.427,
+   "path": "CRANK:1+Dowel_4x5:5",
+   "source_id": "urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    -0.173648,
+    0.0,
+    -171.276011,
+    0.0,
+    0.0,
+    1.0,
+    51.5,
+    -0.173648,
+    0.984808,
+    0.0,
+    219.104295,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 54.346
+  },
+  {
+   "bbox": [
+    -153.1363,
+    48.99,
+    220.3849,
+    -148.4793,
+    54.01,
+    225.0419
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -150.8078,
+    51.4612,
+    222.7134
+   ],
+   "component": "Dowel_4x5",
+   "mass_g": 0.427,
+   "path": "CRANK:1+Dowel_4x5:6",
+   "source_id": "urn:adsk.wipprod:dm.lineage:fluGB9g9QtquxI6ue5ySsw",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    -0.173648,
+    0.0,
+    -150.807767,
+    0.0,
+    0.0,
+    1.0,
+    51.5,
+    -0.173648,
+    0.984808,
+    0.0,
+    222.713398,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 54.346
+  },
+  {
+   "bbox": [
+    -165.2246,
+    32.19,
+    209.7754,
+    -154.7754,
+    33.01,
+    220.2246
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -160.0,
+    32.6,
+    215.0
+   ],
+   "component": "Washer_M4",
+   "mass_g": 0.308,
+   "path": "CRANK:1+Washer_M4:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:zW3omaHCTHi3_67g_-Wgbw",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    -0.173648,
+    0.0,
+    -160.0,
+    0.0,
+    0.0,
+    1.0,
+    32.6,
+    -0.173648,
+    0.984808,
+    0.0,
+    215.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 39.212
+  },
+  {
+   "bbox": [
+    -164.0662,
+    28.19,
+    210.9338,
+    -155.9338,
+    40.4725,
+    219.0662
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -160.0017,
+    32.5701,
+    215.001
+   ],
+   "component": "SHCS_M4x8",
+   "mass_g": 1.619,
+   "path": "CRANK:1+SHCS_M4x8:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:G55wbKMDR_2D433JI0yOFA",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    0.173648,
+    0.0,
+    -160.0,
+    0.0,
+    0.0,
+    -1.0,
+    34.2,
+    -0.173648,
+    -0.984808,
+    0.0,
+    215.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 206.281
+  },
+  {
+   "bbox": [
+    -243.43,
+    31.49,
+    196.4627,
+    -234.1392,
+    33.01,
+    205.7536
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC steel",
+     "material": "Shim steel 7.90",
+     "name": "Shim_A"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -238.7846,
+    32.25,
+    201.1081
+   ],
+   "component": "Shim_A",
+   "mass_g": 0.354,
+   "path": "CRANK:1+Shim_A:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:BioWRYorSle-n_GQhwl1bw",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    0.0,
+    0.173648,
+    -160.0,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    -0.173648,
+    0.0,
+    -0.984808,
+    215.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 44.756
+  },
+  {
+   "bbox": [
+    -244.0093,
+    23.49,
+    195.8835,
+    -233.56,
+    40.7022,
+    206.3328
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -238.7838,
+    28.9574,
+    201.1095
+   ],
+   "component": "SB5x8",
+   "mass_g": 3.409,
+   "path": "CRANK:1+SB5x8:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:sv0F5xT5T66lCJ91memEZw",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    0.173648,
+    0.0,
+    -238.78462,
+    0.0,
+    0.0,
+    -1.0,
+    32.0,
+    -0.173648,
+    -0.984808,
+    0.0,
+    201.108146,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 434.307
+  },
+  {
+   "bbox": [
+    -242.9427,
+    35.98,
+    196.5811,
+    -234.6265,
+    41.02,
+    205.6352
+   ],
+   "bodies": [
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body1"
+    },
+    {
+     "appearance": "Opaque(192,192,192)",
+     "material": "Steel",
+     "name": "Body2"
+    }
+   ],
+   "body_group": "CRANK:1",
+   "com_mm": [
+    -238.7833,
+    38.4648,
+    201.1052
+   ],
+   "component": "Nyloc_M4",
+   "mass_g": 1.212,
+   "path": "CRANK:1+Nyloc_M4:2",
+   "source_id": "urn:adsk.wipprod:dm.lineage:_4zPGOeHRGuYkHYYEt12Fg",
+   "source_version": 2,
+   "transform": [
+    -0.984808,
+    -0.173648,
+    0.0,
+    -238.78462,
+    0.0,
+    0.0,
+    1.0,
+    38.5,
+    -0.173648,
+    0.984808,
+    0.0,
+    201.108146,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 154.397
   },
   {
    "bbox": [
@@ -21867,9 +21742,9 @@
  "summary": {
   "document": "ARC Arm Rev A",
   "document_id": "urn:adsk.wipprod:dm.lineage:tGjaaP6BR9alz_2ZsIQF-g",
-  "document_version": 23,
-  "exported": "2026-11-21T15:25:16",
-  "joints": 30,
+  "document_version": 24,
+  "exported": "2026-11-21T22:15:19",
+  "joints": 21,
   "motion_links": 0,
   "occurrences": 442,
   "parts": 122,

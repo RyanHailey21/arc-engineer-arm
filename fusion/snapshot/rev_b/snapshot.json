@@ -150,126 +150,9 @@
   },
   {
    "kind": "as-built",
-   "name": "J4 roll (before shared gripper)",
-   "occ1": null,
-   "occ2": "GRIPPER:1",
-   "rotationLimits": {
-    "max": 1.6580627893946132,
-    "min": -1.6580627893946132
-   },
-   "rotationValue": 0.0,
-   "suppressed": false,
-   "type": "1"
-  },
-  {
-   "kind": "as-built",
    "name": "Ev2",
    "occ1": "ROD2:1",
    "occ2": "ROCKER:1",
-   "rotationLimits": {
-    "max": null,
-    "min": null
-   },
-   "rotationValue": 0.0,
-   "suppressed": false,
-   "type": "1"
-  },
-  {
-   "kind": "as-built",
-   "name": "Ground LD",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": 0.9162978572970231,
-    "min": -0.18675022996339324
-   },
-   "rotationValue": 0.0,
-   "suppressed": false,
-   "type": "1"
-  },
-  {
-   "kind": "as-built",
-   "name": "Coupler LD",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": null,
-    "min": null
-   },
-   "rotationValue": 0.0,
-   "suppressed": false,
-   "type": "1"
-  },
-  {
-   "kind": "as-built",
-   "name": "Coupler LI",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": null,
-    "min": null
-   },
-   "rotationValue": 0.0,
-   "suppressed": false,
-   "type": "1"
-  },
-  {
-   "kind": "as-built",
-   "name": "Ground LI",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": null,
-    "min": null
-   },
-   "rotationValue": 0.0,
-   "suppressed": false,
-   "type": "1"
-  },
-  {
-   "kind": "as-built",
-   "name": "Ground RD",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": 0.9162978572970231,
-    "min": -0.18675022996339324
-   },
-   "rotationValue": 0.0,
-   "suppressed": false,
-   "type": "1"
-  },
-  {
-   "kind": "as-built",
-   "name": "Coupler RD",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": null,
-    "min": null
-   },
-   "rotationValue": 0.0,
-   "suppressed": false,
-   "type": "1"
-  },
-  {
-   "kind": "as-built",
-   "name": "Coupler RI",
-   "occ1": null,
-   "occ2": null,
-   "rotationLimits": {
-    "max": null,
-    "min": null
-   },
-   "rotationValue": 0.0,
-   "suppressed": false,
-   "type": "1"
-  },
-  {
-   "kind": "as-built",
-   "name": "Ground RI",
-   "occ1": null,
-   "occ2": null,
    "rotationLimits": {
     "max": null,
     "min": null
@@ -19019,9 +18902,9 @@
  "summary": {
   "document": "ARC Arm Rev B",
   "document_id": "urn:adsk.wipprod:dm.lineage:cGWSAxvSQQaYddhXmTl3HA",
-  "document_version": 22,
-  "exported": "2026-11-21T15:23:00",
-  "joints": 32,
+  "document_version": 23,
+  "exported": "2026-11-21T22:14:43",
+  "joints": 23,
   "motion_links": 0,
   "occurrences": 372,
   "parts": 118,
