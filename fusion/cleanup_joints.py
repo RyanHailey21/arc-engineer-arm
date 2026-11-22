@@ -12,7 +12,7 @@ import os
 import adsk.core
 import adsk.fusion
 
-REPO = r"C:\Users\ryanh\light_weight_arm"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # load this file by path (importlib)
 LOG = os.path.join(REPO, "fusion", "checks", "out", "cleanup_joints.log")
 ASSEMBLIES = {
     "rev_b": "urn:adsk.wipprod:dm.lineage:cGWSAxvSQQaYddhXmTl3HA",

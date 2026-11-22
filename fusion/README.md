@@ -5,7 +5,7 @@ is exported as **diffable text**, and checks run on that snapshot instead of on 
 
 ## Take a snapshot
 
-Run `snapshot_export.py` in Fusion. An agent sends it through the Fusion MCP; a teammate runs it as a Fusion script.
+Run `snapshot_export.py` in Fusion. A teammate runs it as a Fusion script; an agent loads it by path from a Fusion MCP script (`importlib`, see its docstring), never by pasting the text, so the scripts find the repo from their own location.
 It **only reads**: it changes no design and saves nothing.
 
 It makes one cloud open of the top assembly. Every part comes in through the assembly's references, so masses,

@@ -1,4 +1,7 @@
 {
+  "env": {
+    "PYTHONUTF8": "1"
+  },
   "hooks": {
     "SessionStart": [
       {
@@ -8,6 +11,18 @@
             "type": "command",
             "command": "python -I \"$CLAUDE_PROJECT_DIR/cad/tools/sync_on_open.py\"",
             "timeout": 60
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -I \"$CLAUDE_PROJECT_DIR/cad/tools/hooks/release_guard.py\"",
+            "timeout": 15
           }
         ]
       }

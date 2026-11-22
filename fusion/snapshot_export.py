@@ -18,7 +18,9 @@ Output: <repo>/fusion/snapshot/<rev>/
   bom.csv         unique parts and their quantity, material, mass and source document
   assembly.step   the assembly at its saved pose (the checks read this)
 
-Usage from the MCP: replace REV and ASSEMBLY_ID / MASTER_ID below, or call export(rev, assembly_id, master_id, out_root).
+Usage from the MCP: load this file by path, so REPO resolves from __file__ (pasting the text would not):
+    spec = importlib.util.spec_from_file_location("snapshot_export", "<repo>/fusion/snapshot_export.py")
+    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); m.export("rev_b")
 """
 import json
 import os
@@ -27,7 +29,7 @@ import time
 import adsk.core
 import adsk.fusion
 
-REPO = r"C:\Users\ryanh\light_weight_arm"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # load this file by path (importlib)
 REVS = {
     "rev_b": ("urn:adsk.wipprod:dm.lineage:cGWSAxvSQQaYddhXmTl3HA", "urn:adsk.wipprod:dm.lineage:lOOS22UVSUahWVQdqcVwbg"),
     "rev_a": ("urn:adsk.wipprod:dm.lineage:tGjaaP6BR9alz_2ZsIQF-g", "urn:adsk.wipprod:dm.lineage:KQIqmPAoQN-XdIPTQOXkJQ"),

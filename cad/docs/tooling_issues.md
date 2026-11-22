@@ -9,8 +9,8 @@ against its `tool_use` (142 errors in 19,040 lines up to 2026-11-17 04:30Z).
 |---|---|---|---|
 | TI-001 | 2026-11-16 | MCP client cuts every freecad-mcp call at ~60 s; long results lost | fixed (server restart needed) |
 | TI-002 | 2026-11-16 | Patching Python through heredocs / `s.replace` / `sed` fails or misses silently | fixed |
-| TI-003 | 2026-11-16 | `print()` crashes on cp1252 console (UnicodeEncodeError) | open: settings change proposed |
-| TI-004 | 2026-11-16 | Auto-mode classifier can't review commands that start with `cd`; `sleep N; cat` blocked | open: CLAUDE.md line proposed |
+| TI-003 | 2026-11-16 | `print()` crashes on cp1252 console (UnicodeEncodeError) | fixed 2026-11-21: `PYTHONUTF8=1` in `.claude/settings.json` `env` |
+| TI-004 | 2026-11-16 | Auto-mode classifier can't review commands that start with `cd`; `sleep N; cat` blocked | fixed 2026-11-21: CLAUDE.md line |
 | TI-005 | 2026-11-16 | Quick tier misses hole-wall and thread-engagement defects (found only in the full run) | open: plan |
 | TI-006 | 2026-11-16 | Status tools (`get_rpc_status`, `get_async_status`) hang when FreeCAD is stuck | open: plan |
 | TI-007 | 2026-11-16 | Eval case YAML frontmatter colon bug | open: needs a check in the plugin |
@@ -32,6 +32,10 @@ against its `tool_use` (142 errors in 19,040 lines up to 2026-11-17 04:30Z).
 | TI-023 | 2026-11-18 | test_validate_data `param_typo_type` hard-codes TOML line 17; ZL0 is on line 18, so it FAILs on main | fixed: line found from the file |
 | TI-024 | 2026-11-18 | `params.inputs_hash` hashes raw bytes: a CRLF checkout (worktree, `core.autocrlf=true`) gets another hash, all evidence STALE | fixed: EOL-neutral input digests + test (staled evidence once) |
 | TI-025 | 2026-11-20 | Rev B servo case screws floated 13 mm off their holes in the GUI working doc; check_seated skipped PAN screws, had no head-contact rule, and nothing compared the open document with the model | fixed: check_seated rule 2 (head/washer bearing) + PAN screws + test; tools/check_working_doc.py |
+| TI-026 | 2026-11-21 | The twice-daily tooling agent has stopped at its first Bash call in every run since 2026-11-20 ("Request interrupted ... for tool use"): a permission prompt with nobody to answer it | open: needs the user (task permission mode) |
+| TI-027 | 2026-11-21 | The tooling agent's prompt still named the removed SCREW variant, drawings, TDP and build_assembly, so gate 7b could never pass | fixed: prompt updated |
+| TI-028 | 2026-11-21 | Nothing stopped a hand edit to the released package (`cad/fab/`, `cad/fea/out/`, `cad/render/out/`); only CLAUDE.md said so | fixed: PreToolUse hook `cad/tools/hooks/release_guard.py` (asks) + test |
+| TI-029 | 2026-11-21 | A skill whose frontmatter doesn't parse loads silently with no fields; nothing checked `.claude/` | fixed: `cad/tests/test_agent_config.py` |
 
 ---
 
@@ -96,7 +100,7 @@ then run `python -I cad/tools/apply_patch.py SPEC.toml [--check]`.
 - For a single exact replacement the Edit tool is still the simplest. Use `apply_patch` for multi-anchor or
   multi-file patches, where the heredoc scripts were used.
 
-## TI-003: `print()` crashes on the cp1252 console  (open: settings change proposed)
+## TI-003: `print()` crashes on the cp1252 console  (fixed 2026-11-21: `env` `PYTHONUTF8=1` in `.claude/settings.json`)
 
 **What happened.** `UnicodeEncodeError: 'charmap' codec` at L711, L6123–L6133 (`lint_pdf.py` printing `⟂`),
 L8773, L10724, L16455 and L15738. Some runs succeeded on a second try with `PYTHONIOENCODING=utf-8`, but not all
@@ -111,7 +115,7 @@ and GD&T symbols are outside it. The freecad MCP server already sets `PYTHONUTF8
 uses UTF-8 for stdio and `open()`. New tools in `cad/tools/` already print safely (`apply_patch._say`).
 `cad/drawings/lint_pdf.py` belongs to the main session and is not changed here.
 
-## TI-004: classifier "no verdict" on `cd …` commands; blocked `sleep`  (open: convention proposed)
+## TI-004: classifier "no verdict" on `cd …` commands; blocked `sleep`  (fixed 2026-11-21: the line is in CLAUDE.md)
 
 **What happened.** Five Bash calls were refused with "auto mode reviewed this call without its leading cd, and
 the shell has moved since" (L5847, L6286, L6293, L6373, L6476), and each was re-sent. `sleep 60; cat …` was
@@ -509,3 +513,23 @@ FreeCAD GUI's ARC_Arm_Fourbar document, 12-33 mm from their holes.
   tightens once the GUI has meshed a shape, ~1.3 mm on button heads) and volume.  Before the rebuild: 96 FAIL in
   the open document; after: 0.  It is a standalone check (its evidence goes STALE like the others), not part of
   quick_check: opening the document costs ~15 s and quick_check cannot see the GUI anyway.
+
+## TI-026: scheduled tooling agent stalls on a permission prompt  (open: needs the user)
+
+**What happened.** Runs of `arm-weekly-bloat-cleanup` on 2026-11-20 14:13Z, 11-21 02:13Z, 14:13Z and 11-22 02:13Z
+each ended after 4 turns: the first Bash call (`git fetch` / `worktree add`) raised a permission prompt, nobody was
+there, and the run ended "interrupted ... for tool use". The app still lists them as succeeded. The MCP
+maintenance task runs fine, so it is the task's permission mode, not the prompt.
+
+**Fix (the user's decision; permissions stay with the user).** In the Claude app, Scheduled, open the task and
+set its permission mode to Auto (code.claude.com/docs/en/desktop-scheduled-tasks: the mode is set per task).
+The same applies to `arm-tooling-docs-audit` (created 2026-11-21 in the default mode). Alternative: click "Run now"
+on the task's page and approve its tools once; the app stores those approvals on the task for later runs.
+
+## Docs audits
+
+Kept by the `tooling-audit` skill (`.claude/skills/tooling-audit/SKILL.md`), one row per run.
+
+| Date | CLI | Pages read | Landed | Suggested |
+|---|---|---|---|---|
+| 2026-11-21 | 2.1.326 | code.claude.com/docs: skills, sub-agents, hooks, settings, permissions, memory, mcp, scheduled-tasks, desktop-scheduled-tasks, routines, plugins, worktrees, checkpointing, sandboxing; platform.claude.com/docs/mcp; developers.openai.com/learn/docs-mcp; github.com/anthropics/skills | docs MCPs `claude-platform-docs` and `openai-docs` (user scope); `PYTHONUTF8` env (TI-003); release-guard hook (TI-028); skills `verify`, `fusion-change`, `codex-fusion`, `tooling-audit`; `test_agent_config.py` (TI-029); CLAUDE.md agent section (TI-004); tooling-agent prompt (TI-027); weekly audit task | task permission mode (TI-026) |

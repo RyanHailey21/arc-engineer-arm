@@ -17,7 +17,7 @@ import tomllib
 import adsk.core
 import adsk.fusion
 
-REPO = r"C:\Users\ryanh\light_weight_arm"
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # load this file by path (importlib)
 PURCHASED = "urn:adsk.wipprod:fs.folder:co.FjIp-CuvSZqUB-D_Gh-nsg"
 CAT = tomllib.load(open(os.path.join(REPO, "cad", "data", "catalogue.toml"), "rb"))
 LOG = os.path.join(REPO, "fusion", "checks", "out", "purchased_mass_fix.jsonl")
