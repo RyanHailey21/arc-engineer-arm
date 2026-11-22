@@ -32,7 +32,7 @@ against its `tool_use` (142 errors in 19,040 lines up to 2026-11-17 04:30Z).
 | TI-023 | 2026-11-18 | test_validate_data `param_typo_type` hard-codes TOML line 17; ZL0 is on line 18, so it FAILs on main | fixed: line found from the file |
 | TI-024 | 2026-11-18 | `params.inputs_hash` hashes raw bytes: a CRLF checkout (worktree, `core.autocrlf=true`) gets another hash, all evidence STALE | fixed: EOL-neutral input digests + test (staled evidence once) |
 | TI-025 | 2026-11-20 | Rev B servo case screws floated 13 mm off their holes in the GUI working doc; check_seated skipped PAN screws, had no head-contact rule, and nothing compared the open document with the model | fixed: check_seated rule 2 (head/washer bearing) + PAN screws + test; tools/check_working_doc.py |
-| TI-026 | 2026-11-21 | The twice-daily tooling agent has stopped at its first Bash call in every run since 2026-11-20 ("Request interrupted ... for tool use"): a permission prompt with nobody to answer it | open: needs the user (task permission mode) |
+| TI-026 | 2026-11-21 | The twice-daily tooling agent has stopped at its first Bash call in every run since 2026-11-20 ("Request interrupted ... for tool use"): a permission prompt with nobody to answer it | fixed 2026-11-21: both arm tasks replaced by `arm-repo-upkeep`, saved in Bypass mode (the user can lower it to Auto in the app) |
 | TI-027 | 2026-11-21 | The tooling agent's prompt still named the removed SCREW variant, drawings, TDP and build_assembly, so gate 7b could never pass | fixed: prompt updated |
 | TI-028 | 2026-11-21 | Nothing stopped a hand edit to the released package (`cad/fab/`, `cad/fea/out/`, `cad/render/out/`); only CLAUDE.md said so | fixed: PreToolUse hook `cad/tools/hooks/release_guard.py` (asks) + test |
 | TI-029 | 2026-11-21 | A skill whose frontmatter doesn't parse loads silently with no fields; nothing checked `.claude/` | fixed: `cad/tests/test_agent_config.py` |
@@ -514,7 +514,7 @@ FreeCAD GUI's ARC_Arm_Fourbar document, 12-33 mm from their holes.
   the open document; after: 0.  It is a standalone check (its evidence goes STALE like the others), not part of
   quick_check: opening the document costs ~15 s and quick_check cannot see the GUI anyway.
 
-## TI-026: scheduled tooling agent stalls on a permission prompt  (open: needs the user)
+## TI-026: scheduled tooling agent stalls on a permission prompt  (fixed 2026-11-21)
 
 **What happened.** Runs of `arm-weekly-bloat-cleanup` on 2026-11-20 14:13Z, 11-21 02:13Z, 14:13Z and 11-22 02:13Z
 each ended after 4 turns: the first Bash call (`git fetch` / `worktree add`) raised a permission prompt, nobody was
@@ -523,13 +523,19 @@ maintenance task runs fine, so it is the task's permission mode, not the prompt.
 
 **Fix (the user's decision; permissions stay with the user).** In the Claude app, Scheduled, open the task and
 set its permission mode to Auto (code.claude.com/docs/en/desktop-scheduled-tasks: the mode is set per task).
-The same applies to `arm-tooling-docs-audit` (created 2026-11-21 in the default mode). Alternative: click "Run now"
+The same applies to `arm-repo-upkeep`, which replaced both arm tasks on 2026-11-21 (created in the default mode). Alternative: click "Run now"
 on the task's page and approve its tools once; the app stores those approvals on the task for later runs.
 
-## Docs audits
+**Resolution.** `arm-repo-upkeep` was created from a turn typed in the desktop app, so it kept this session's
+Bypass mode. It needs no prompt answered. Bypass reviews nothing; Auto would still run unattended with the
+classifier checking each action.
 
-Kept by the `tooling-audit` skill (`.claude/skills/tooling-audit/SKILL.md`), one row per run.
+## Upkeep runs
 
-| Date | CLI | Pages read | Landed | Suggested |
-|---|---|---|---|---|
-| 2026-11-21 | 2.1.326 | code.claude.com/docs: skills, sub-agents, hooks, settings, permissions, memory, mcp, scheduled-tasks, desktop-scheduled-tasks, routines, plugins, worktrees, checkpointing, sandboxing; platform.claude.com/docs/mcp; developers.openai.com/learn/docs-mcp; github.com/anthropics/skills | docs MCPs `claude-platform-docs` and `openai-docs` (user scope); `PYTHONUTF8` env (TI-003); release-guard hook (TI-028); skills `verify`, `fusion-change`, `codex-fusion`, `tooling-audit`; `test_agent_config.py` (TI-029); CLAUDE.md agent section (TI-004); tooling-agent prompt (TI-027); weekly audit task | task permission mode (TI-026) |
+Kept by the daily `repo-upkeep` skill (`.claude/skills/repo-upkeep/SKILL.md`, scheduled task `arm-repo-upkeep`), one row per run, "no change" included. It replaced the twice-daily tooling agent and the docs audit on 2026-11-21.
+
+Phase A is the agent harness against the latest docs; phase B is one CAD-tooling improvement.
+
+| Date | CLI | Docs pages read | Phase A (harness) | Phase B (CAD tooling) | Suggested | Gates |
+|---|---|---|---|---|---|---|
+| 2026-11-21 | 2.1.326 | code.claude.com/docs: skills, sub-agents, hooks, settings, permissions, memory, mcp, scheduled-tasks, desktop-scheduled-tasks, routines, plugins, worktrees, checkpointing, sandboxing; platform.claude.com/docs/mcp; developers.openai.com/learn/docs-mcp; github.com/anthropics/skills | docs MCPs `claude-platform-docs` and `openai-docs` (user scope); `PYTHONUTF8` env (TI-003); release-guard hook (TI-028); skills `verify`, `fusion-change`, `codex-fusion`, `tooling-audit`; `test_agent_config.py` (TI-029); CLAUDE.md agent section (TI-004); tooling-agent prompt (TI-027); daily upkeep task | none (manual session; repo cleanup landed: 77cd101) | task permission mode (TI-026) | tests, validate_data, bloat 0 |

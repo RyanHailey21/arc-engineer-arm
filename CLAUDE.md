@@ -36,7 +36,7 @@ Start with `cad/MAP.md` (generated). It lists every module, parameter file, inte
 - A PreToolUse hook (`cad/tools/hooks/release_guard.py`) asks before any hand edit under `cad/fab/`, `cad/fea/out/` or `cad/render/out/`.
 
 ## Agent tooling
-- Project skills in `.claude/skills/`: `verify` (which checks a change needs, before every commit), `fusion-change` (edit, snapshot, check and record a Fusion change), `codex-fusion` (hand Fusion placement work to Codex), `tooling-audit` (daily audit of this tooling against the latest docs).
+- Project skills in `.claude/skills/`: `verify` (which checks a change needs, before every commit), `fusion-change` (edit, snapshot, check and record a Fusion change), `codex-fusion` (hand Fusion placement work to Codex), `repo-upkeep` (the daily scheduled upkeep: agent harness against the latest docs, then one CAD-tooling improvement).
 - Docs MCP servers: `claude-code-docs` (Claude Code), `claude-platform-docs` (Claude API, Agent SDK), `openai-docs` (Codex). Check features there, not from memory.
-- Tooling friction and fixes go in `cad/docs/tooling_issues.md` (one TI row each); audit runs go in its "Docs audits" table. `cad/tests/test_agent_config.py` checks `.claude/`.
+- Tooling friction and fixes go in `cad/docs/tooling_issues.md` (one TI row each); upkeep runs go in its "Upkeep runs" table. `cad/tests/test_agent_config.py` checks `.claude/`.
 - Bash: use absolute paths instead of a leading `cd`; wait on long jobs with `run_in_background` or Monitor, never `sleep`.
