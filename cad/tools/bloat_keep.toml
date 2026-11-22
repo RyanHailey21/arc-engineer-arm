@@ -20,6 +20,10 @@ glob = "cad/fea/out/**"
 reason = "rev A frozen FEA results"
 
 [[path]]
+glob = "cad/out/*/print/gcode/**"
+reason = "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+
+[[path]]
 glob = "cad/render/**"
 reason = "rev A renders and the render generators (render/export_render.py is a release generator)"
 
