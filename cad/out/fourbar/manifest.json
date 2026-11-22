@@ -5,10 +5,10 @@
    "out/bloat_report.md",
    "out/bloat_report.json"
   ],
-  "inputs_hash": "dedcc96ec4021ea0",
-  "note": "BLOAT 1 findings (scratch 1), 14 kept",
+  "inputs_hash": "9cf67eeedebaa998",
+  "note": "BLOAT 1 findings (dead-def 1), 6 kept",
   "status": "WARN",
-  "time": "2026-11-21T11:39:38"
+  "time": "2026-11-21T22:26:20"
  },
  "bom": {
   "evidence": "bom.evidence.json",

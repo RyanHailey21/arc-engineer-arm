@@ -1,12 +1,12 @@
 {
  "findings": [
   {
-   "kind": "scratch",
-   "path": "cad/out/fourbar/ARC_Arm_Fourbar.20261120-045651.FCBak",
-   "line": 1,
-   "name": "cad/out/fourbar/ARC_Arm_Fourbar.20261120-045651.FCBak",
-   "detail": "local leftover (9775 kB)",
-   "id": "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261120-045651.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261120-045651.FCBak"
+   "kind": "dead-def",
+   "path": "fusion/fix_purchased_mass.py",
+   "line": 70,
+   "name": "export_batch",
+   "detail": "function `export_batch` is never referenced",
+   "id": "dead-def:fusion/fix_purchased_mass.py:export_batch"
   }
  ],
  "kept": [
@@ -64,103 +64,28 @@
    "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
    "id": "out-unindexed:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
    "kept": "git-ignored solver/tool output (regenerable, never committed)"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/fea/out/FEA_clevis.20261119-191616.FCBak",
-   "line": 1,
-   "name": "cad/fea/out/FEA_clevis.20261119-191616.FCBak",
-   "detail": "local leftover (19600 kB)",
-   "id": "scratch:cad/fea/out/FEA_clevis.20261119-191616.FCBak:cad/fea/out/FEA_clevis.20261119-191616.FCBak",
-   "kept": "rev A frozen FEA results"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/fea/out/FEA_end_block.20261115-174523.FCBak",
-   "line": 1,
-   "name": "cad/fea/out/FEA_end_block.20261115-174523.FCBak",
-   "detail": "local leftover (28312 kB)",
-   "id": "scratch:cad/fea/out/FEA_end_block.20261115-174523.FCBak:cad/fea/out/FEA_end_block.20261115-174523.FCBak",
-   "kept": "rev A frozen FEA results"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/fea/out/FEA_finger.20261114-225424.FCBak",
-   "line": 1,
-   "name": "cad/fea/out/FEA_finger.20261114-225424.FCBak",
-   "detail": "local leftover (24392 kB)",
-   "id": "scratch:cad/fea/out/FEA_finger.20261114-225424.FCBak:cad/fea/out/FEA_finger.20261114-225424.FCBak",
-   "kept": "rev A frozen FEA results"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/fea/out/FEA_forearm.20261119-191546.FCBak",
-   "line": 1,
-   "name": "cad/fea/out/FEA_forearm.20261119-191546.FCBak",
-   "detail": "local leftover (17546 kB)",
-   "id": "scratch:cad/fea/out/FEA_forearm.20261119-191546.FCBak:cad/fea/out/FEA_forearm.20261119-191546.FCBak",
-   "kept": "rev A frozen FEA results"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/fea/out/FEA_j2_hub.20261119-191744.FCBak",
-   "line": 1,
-   "name": "cad/fea/out/FEA_j2_hub.20261119-191744.FCBak",
-   "detail": "local leftover (26995 kB)",
-   "id": "scratch:cad/fea/out/FEA_j2_hub.20261119-191744.FCBak:cad/fea/out/FEA_j2_hub.20261119-191744.FCBak",
-   "kept": "rev A frozen FEA results"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/fea/out/FEA_jaw_bracket.20261115-174400.FCBak",
-   "line": 1,
-   "name": "cad/fea/out/FEA_jaw_bracket.20261115-174400.FCBak",
-   "detail": "local leftover (50877 kB)",
-   "id": "scratch:cad/fea/out/FEA_jaw_bracket.20261115-174400.FCBak:cad/fea/out/FEA_jaw_bracket.20261115-174400.FCBak",
-   "kept": "rev A frozen FEA results"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/fea/out/FEA_roll_housing.20261119-191851.FCBak",
-   "line": 1,
-   "name": "cad/fea/out/FEA_roll_housing.20261119-191851.FCBak",
-   "detail": "local leftover (39469 kB)",
-   "id": "scratch:cad/fea/out/FEA_roll_housing.20261119-191851.FCBak:cad/fea/out/FEA_roll_housing.20261119-191851.FCBak",
-   "kept": "rev A frozen FEA results"
-  },
-  {
-   "kind": "scratch",
-   "path": "cad/fea/out/FEA_upper_arm.20261119-191522.FCBak",
-   "line": 1,
-   "name": "cad/fea/out/FEA_upper_arm.20261119-191522.FCBak",
-   "detail": "local leftover (18268 kB)",
-   "id": "scratch:cad/fea/out/FEA_upper_arm.20261119-191522.FCBak:cad/fea/out/FEA_upper_arm.20261119-191522.FCBak",
-   "kept": "rev A frozen FEA results"
   }
  ],
  "counts": {
   "unused-import": 0,
   "unused-variable": 0,
-  "dead-def": 0,
+  "dead-def": 1,
   "duplicate": 0,
   "orphan-param": 0,
   "orphan-catalogue": 0,
   "orphan-interface": 0,
   "orphan-envelope": 0,
   "out-unindexed": 0,
-  "scratch": 1
+  "scratch": 0
  },
- "scanned": 70,
+ "scanned": 72,
  "stale_keep": [],
- "notes": [
-  "fourbar/map_parts.md is older than the model inputs (rerun tools/make_map.py)",
-  "fourbar_direct/map_parts.md is older than the model inputs (rerun tools/make_map.py)"
+ "notes": [],
+ "new": [
+  "dead-def:fusion/fix_purchased_mass.py:export_batch"
  ],
- "new": [],
  "resolved": [
-  "duplicate:cad/arm/kinematics.py:7f52fa3c71",
-  "unused-variable:fusion/checks/mass_torque.py:torques.pay",
-  "unused-variable:fusion/checks/mass_torque.py:torques.payload"
+  "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261120-045651.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261120-045651.FCBak"
  ],
  "keep_file": "cad/tools/bloat_keep.toml"
 }

@@ -45,3 +45,11 @@ cad/out/*/evidence/*.inputs.json
 # Bloat report: a local working report (the pre-commit hook prints its counts); regenerate with cad/tools/bloat_report.py
 cad/out/bloat_report.md
 cad/out/bloat_report.json
+
+# Fusion fix/check run logs and progress markers (the JSON results stay)
+fusion/checks/out/*.log
+fusion/checks/out/*.progress
+
+# Extra Blender stills the paper does not use (the hero_*.png stills stay; regenerate: cad/render/blender_render.py)
+cad/render/out/detail_*.png
+cad/render/out/overview_*.png

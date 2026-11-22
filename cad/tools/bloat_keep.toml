@@ -64,3 +64,10 @@ kind = "duplicate"
 name = "*"
 path = "cad/fea/run_fea_fourbar.py"
 reason = "standalone freecadcmd FEA scripts share a 7-line sys.path / FEA_LIB bootstrap; a shared module would need the same bootstrap to be found"
+
+# ------------------------------------------------------------------ Fusion scripts (run inside Fusion through the MCP)
+[[item]]
+kind = "dead-def"
+name = "export_batch"
+path = "fusion/fix_purchased_mass.py"
+reason = "entry point called by name from a Fusion MCP script, never from Python in the repo"
