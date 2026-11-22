@@ -32,7 +32,8 @@
     ]
   },
   "env": {
-    "PYTHONUTF8": "1"
+    "PYTHONUTF8": "1",
+    "CLAUDE_CODE_ENABLE_REFRESH_MCP_TOOLS": "1"
   },
   "hooks": {
     "SessionStart": [
