@@ -6,6 +6,9 @@
 Claude Code does not report a broken skill: frontmatter that fails to parse loads the skill with no fields, and
 an unknown field is ignored (code.claude.com/docs/en/skills). So this checks, for .claude/:
   - settings.json is valid JSON, and every hook command that names a repo script names one that exists;
+  - the deny rules hold force-push, `git reset --hard` and `git clean`, and every `Bash(...)` deny has the same
+    `PowerShell(...)` deny: on Windows a Bash deny rule alone turns the PowerShell tool off without a warning
+    (code.claude.com/docs/en/tools-reference#bash-deny-rules-also-turn-off-the-powershell-tool);
   - every skill and agent file has a frontmatter block of simple `key: value` lines, a `name` equal to its folder
     (skills) or file (agents), a non-empty description of at most 1,536 characters (the listing cut-off), only
     documented keys, and a body under 500 lines.
@@ -25,6 +28,7 @@ AGENT_KEYS = {"name", "description", "tools", "disallowedTools", "model", "permi
               "autoCompactWindow", "skills", "mcpServers", "hooks", "memory", "background", "omitClaudeMd",
               "effort", "isolation", "color", "initialPrompt"}
 MAX_DESC = 1536
+REQUIRED_DENY = ("Bash(git push --force*)", "Bash(git push -f*)", "Bash(git reset --hard*)", "Bash(git clean *)")
 MAX_LINES = 500
 
 
@@ -78,6 +82,13 @@ def check_settings(text, path="settings.json"):
     except ValueError as e:
         return ["%s: invalid JSON (%s)" % (path, e)]
     errs = []
+    deny = set((s.get("permissions") or {}).get("deny", []))
+    for rule in REQUIRED_DENY:
+        if rule not in deny:
+            errs.append("%s: missing deny rule %s" % (path, rule))
+    for rule in sorted(r for r in deny if r.startswith("Bash(")):
+        if "PowerShell(" + rule[5:] not in deny:
+            errs.append("%s: %s has no PowerShell twin (the PowerShell tool would be turned off)" % (path, rule))
     for event, groups in (s.get("hooks") or {}).items():
         for g in groups:
             for h in g.get("hooks", []):
@@ -123,9 +134,16 @@ def negatives():
     missed = [k for k, t in cases.items() if not check_doc("case", t, "x", SKILL_KEYS)]
     if check_doc("good", good, "x", SKILL_KEYS):
         missed.append("good case flagged")
+    full = {"permissions": {"deny": [r for b in REQUIRED_DENY for r in (b, "PowerShell(" + b[5:])]}}
+    if check_settings(json.dumps(full)):
+        missed.append("good settings flagged")
+    if not check_settings(json.dumps({"permissions": {"deny": list(REQUIRED_DENY)}})):
+        missed.append("Bash deny with no PowerShell twin")
+    if not check_settings(json.dumps({"permissions": {"deny": full["permissions"]["deny"][2:]}})):
+        missed.append("missing force-push deny")
     if not check_settings("{not json"):
         missed.append("bad JSON")
-    if not check_settings(json.dumps({"hooks": {"PreToolUse": [{"hooks": [
+    if not check_settings(json.dumps({**full, "hooks": {"PreToolUse": [{"hooks": [
             {"command": 'python "$CLAUDE_PROJECT_DIR/cad/tools/hooks/missing.py"'}]}]}})):
         missed.append("missing hook script")
     return missed
