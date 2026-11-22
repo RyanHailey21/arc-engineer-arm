@@ -1,15 +1,5 @@
 {
- "findings": [
-  {
-   "kind": "duplicate",
-   "path": "cad/tools/amazon_buy_list.py",
-   "line": 18,
-   "name": "near-9e7b413bdc",
-   "detail": "43 near-identical (renamed) lines also at cad/tools/amazon_buy_list.py:26",
-   "id": "duplicate:cad/tools/amazon_buy_list.py:near-9e7b413bdc",
-   "other": "cad/tools/amazon_buy_list.py"
-  }
- ],
+ "findings": [],
  "kept": [
   {
    "kind": "dead-def",
@@ -30,6 +20,15 @@
    "kept": "entry point called by name from a Fusion MCP script, never from Python in the repo"
   },
   {
+   "kind": "dead-def",
+   "path": "fusion/update_references.py",
+   "line": 58,
+   "name": "run_docs",
+   "detail": "function `run_docs` is never referenced",
+   "id": "dead-def:fusion/update_references.py:run_docs",
+   "kept": "entry point called by name from a Fusion MCP script, never from Python in the repo"
+  },
+  {
    "kind": "duplicate",
    "path": "cad/fea/run_fea_fourbar.py",
    "line": 20,
@@ -38,6 +37,16 @@
    "id": "duplicate:cad/fea/run_fea_fourbar.py:ef88d93b96",
    "other": "cad/fea/run_fea_jaw.py",
    "kept": "standalone freecadcmd FEA scripts share a 7-line sys.path / FEA_LIB bootstrap; a shared module would need the same bootstrap to be found"
+  },
+  {
+   "kind": "duplicate",
+   "path": "cad/tools/amazon_buy_list.py",
+   "line": 18,
+   "name": "near-9e7b413bdc",
+   "detail": "43 near-identical (renamed) lines also at cad/tools/amazon_buy_list.py:26",
+   "id": "duplicate:cad/tools/amazon_buy_list.py:near-9e7b413bdc",
+   "other": "cad/tools/amazon_buy_list.py",
+   "kept": "data table: one row per purchased line (section, item, ASIN, packs, price), alike by design, not copied code"
   },
   {
    "kind": "out-unindexed",
@@ -74,13 +83,22 @@
    "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
    "id": "out-unindexed:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
    "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/test_pieces_S1Pro_PETG.gcode",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/test_pieces_S1Pro_PETG.gcode",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/test_pieces_S1Pro_PETG.gcode:cad/out/fourbar/print/gcode/test_pieces_S1Pro_PETG.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
   }
  ],
  "counts": {
   "unused-import": 0,
   "unused-variable": 0,
   "dead-def": 0,
-  "duplicate": 1,
+  "duplicate": 0,
   "orphan-param": 0,
   "orphan-catalogue": 0,
   "orphan-interface": 0,
@@ -88,62 +106,12 @@
   "out-unindexed": 0,
   "scratch": 0
  },
- "scanned": 79,
+ "scanned": 80,
  "stale_keep": [],
  "notes": [],
- "new": [
-  "duplicate:cad/tools/amazon_buy_list.py:near-9e7b413bdc"
- ],
+ "new": [],
  "resolved": [
-  "out-unindexed:cad/out/fourbar/amazon_buy_list.csv:cad/out/fourbar/amazon_buy_list.csv",
-  "out-unindexed:cad/out/fourbar/print/stl/Base_Plate_AL5.stl:cad/out/fourbar/print/stl/Base_Plate_AL5.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Clevis_L_CF3.stl:cad/out/fourbar/print/stl/Clevis_L_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Clevis_R_CF3.stl:cad/out/fourbar/print/stl/Clevis_R_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Crank_CF3.stl:cad/out/fourbar/print/stl/Crank_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Elbow_Shaft_D10x101.stl:cad/out/fourbar/print/stl/Elbow_Shaft_D10x101.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Finger_L_bot_CF3.stl:cad/out/fourbar/print/stl/Finger_L_bot_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Finger_R_bot_CF3.stl:cad/out/fourbar/print/stl/Finger_R_bot_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Forearm_L_CF3_A.stl:cad/out/fourbar/print/stl/Forearm_L_CF3_A.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Forearm_L_CF3_B.stl:cad/out/fourbar/print/stl/Forearm_L_CF3_B.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Forearm_R_CF3_A.stl:cad/out/fourbar/print/stl/Forearm_R_CF3_A.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Forearm_R_CF3_B.stl:cad/out/fourbar/print/stl/Forearm_R_CF3_B.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Gripper_Palm.stl:cad/out/fourbar/print/stl/Gripper_Palm.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/J1_Output_Hub.stl:cad/out/fourbar/print/stl/J1_Output_Hub.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/J2_Output_Hub_Journal.stl:cad/out/fourbar/print/stl/J2_Output_Hub_Journal.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Level_Hub_Elbow.stl:cad/out/fourbar/print/stl/Level_Hub_Elbow.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Level_Hub_Wrist.stl:cad/out/fourbar/print/stl/Level_Hub_Wrist.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Level_Rocker_CF3.stl:cad/out/fourbar/print/stl/Level_Rocker_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Link_LD_bot_CF3.stl:cad/out/fourbar/print/stl/Link_LD_bot_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Link_LD_hi_CF3.stl:cad/out/fourbar/print/stl/Link_LD_hi_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Link_LD_lo_CF3.stl:cad/out/fourbar/print/stl/Link_LD_lo_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Link_LI_bot_CF3.stl:cad/out/fourbar/print/stl/Link_LI_bot_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Link_LI_hi_CF3.stl:cad/out/fourbar/print/stl/Link_LI_hi_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Link_LI_lo_CF3.stl:cad/out/fourbar/print/stl/Link_LI_lo_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Link_RD_bot_CF3.stl:cad/out/fourbar/print/stl/Link_RD_bot_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Link_RD_hi_CF3.stl:cad/out/fourbar/print/stl/Link_RD_hi_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Link_RD_lo_CF3.stl:cad/out/fourbar/print/stl/Link_RD_lo_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Link_RI_bot_CF3.stl:cad/out/fourbar/print/stl/Link_RI_bot_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Link_RI_hi_CF3.stl:cad/out/fourbar/print/stl/Link_RI_hi_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Link_RI_lo_CF3.stl:cad/out/fourbar/print/stl/Link_RI_lo_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Pad_L_TPU.stl:cad/out/fourbar/print/stl/Pad_L_TPU.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Pad_R_TPU.stl:cad/out/fourbar/print/stl/Pad_R_TPU.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Rod_1_CF3.stl:cad/out/fourbar/print/stl/Rod_1_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Rod_AB_CF3.stl:cad/out/fourbar/print/stl/Rod_AB_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Roll_Housing.stl:cad/out/fourbar/print/stl/Roll_Housing.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Roll_Hub.stl:cad/out/fourbar/print/stl/Roll_Hub.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Shim_A.stl:cad/out/fourbar/print/stl/Shim_A.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Shim_Ev1.stl:cad/out/fourbar/print/stl/Shim_Ev1.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Sleeve_E_outer.stl:cad/out/fourbar/print/stl/Sleeve_E_outer.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Spacer_B.stl:cad/out/fourbar/print/stl/Spacer_B.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Spacer_G1.stl:cad/out/fourbar/print/stl/Spacer_G1.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Tower_L_CF3.stl:cad/out/fourbar/print/stl/Tower_L_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Tower_R_CF3.stl:cad/out/fourbar/print/stl/Tower_R_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Upper_Arm_L_CF3.stl:cad/out/fourbar/print/stl/Upper_Arm_L_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Upper_Arm_R_CF3.stl:cad/out/fourbar/print/stl/Upper_Arm_R_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Wrist_Level_Member_CF3.stl:cad/out/fourbar/print/stl/Wrist_Level_Member_CF3.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Wrist_Servo_Cradle.stl:cad/out/fourbar/print/stl/Wrist_Servo_Cradle.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Wrist_Shaft_Coupler.stl:cad/out/fourbar/print/stl/Wrist_Shaft_Coupler.stl",
-  "out-unindexed:cad/out/fourbar/print/stl/Wrist_Shaft_D10x70.stl:cad/out/fourbar/print/stl/Wrist_Shaft_D10x70.stl"
+  "dead-def:fusion/update_references.py:run_docs"
  ],
  "keep_file": "cad/tools/bloat_keep.toml"
 }

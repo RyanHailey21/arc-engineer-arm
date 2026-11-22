@@ -50,6 +50,7 @@ Afterwards the moving bodies match the code-CAD within a few percent. The static
 
 **Fusion API notes, learned the hard way:**
 - `Document.updateAllReferences()` crashes Fusion when the document was opened invisibly. Open it visibly (`documents.open(f, True)`).
+- Out-of-date references nested inside a shared sub-assembly (the gripper's palm and pins seen from rev A or B) can't be updated through the API: `updateAllReferences()` leaves them, and `getLatestVersion()` or setting `version` raises InternalValidationError. Use Get Latest in the UI. `update_references.py` handles direct references and saves only what it updated.
 - Several saves in a row can leave Fusion busy for more than 20 minutes on the next cloud-data call (`findFileById`, `dataFiles`).
 - Positions of occurrences inside sub-components are root-level overrides. Set `transform2` on the root proxy (built with `setWithCoordinateSystem`), then `snapshots.add()`. `MoveFeature` doesn't accept occurrences. In an assembly with joints (rev B), those overrides on GROUND's children revert on `computeAll()`. `addExistingComponent` adds its matrix on top of the component's first occurrence, and deleting a referenced component's last occurrence removes the component from the design. Codex placed the base parts with its own tooling (tools/_agent/codex-fusion).
 

@@ -81,3 +81,9 @@ kind = "duplicate"
 name = "*"
 path = "cad/tools/amazon_buy_list.py"
 reason = "data table: one row per purchased line (section, item, ASIN, packs, price), alike by design, not copied code"
+
+[[item]]
+kind = "dead-def"
+name = "run_docs"
+path = "fusion/update_references.py"
+reason = "entry point called by name from a Fusion MCP script, never from Python in the repo"
