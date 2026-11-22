@@ -1,4 +1,7 @@
 file,part,body,print in,size_mm,volume_cm3,Ender-3 S1 Pro,also fits,production part,note
+Test_Dovetail.stl,Test_Dovetail,TEST,the filament you will print the arm in,83 x 44 x 3.0,6.1,flat,,test piece,"dovetail at 0.1, 0.15, 0.2, 0.25 mm clearance per side; pick the pair that slides together with room for glue, then set CLEAR in export_print.py"
+Test_Fit_Small.stl,Test_Fit_Small,TEST,the filament you will print the arm in,157 x 32 x 4.0,17.0,flat,,test piece,"bores at modelled size (bearing seats, pin 4.0 with +0.1..+0.3 steps, insert, M3 clearance, shoulder screw, D10 with a +0.2 step): note how much each needs drilling or reaming"
+Test_Fit_Large.stl,Test_Fit_Large,TEST,the filament you will print the arm in,84 x 51 x 7.0,16.8,flat,,test piece,6804 and 6805 bearing seats at modelled size
 Crank_CF3.stl,Crank_CF3,CRANK,PETG (or PLA); print flat,102 x 28 x 3.0,4.9,flat,P1S; K2 Pro; H2D,"3 mm CF plate (DXF), D-bore on journal flat",
 Drive_Gear_m2_54T_J2.stl,Drive_Gear_m2_54T_J2,CRANK,PETG (or PLA),112 x 112 x 9.0,65.3,flat,P1S; K2 Pro; H2D,"PA12 / PETG-CF print, m2 54T, 19 AF hex bore",
 J2_Output_Hub_Journal.stl,J2_Output_Hub_Journal,CRANK,PETG (or PLA),39 x 39 x 38.5,13.7,flat,P1S; K2 Pro; H2D,6061 turned + milled hex,

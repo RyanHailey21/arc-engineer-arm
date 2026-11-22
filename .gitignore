@@ -53,3 +53,6 @@ fusion/checks/out/*.progress
 # Extra Blender stills the paper does not use (the hero_*.png stills stay; regenerate: cad/render/blender_render.py)
 cad/render/out/detail_*.png
 cad/render/out/overview_*.png
+
+# sliced G-code: printer- and filament-specific, regenerated with the creality-slicer MCP
+cad/out/*/print/gcode/

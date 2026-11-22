@@ -35,13 +35,12 @@
  "export_print": {
   "evidence": "export_print.evidence.json",
   "files": [
-   "print/print_list.csv",
-   "print/split_joints.png"
+   "print/print_list.csv"
   ],
   "inputs_hash": "9cf67eeedebaa998",
-  "note": "81 STL (74 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4), 1124 cm3; off the Ender-3 S1 Pro bed: none",
+  "note": "84 STL (77 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4), 1163 cm3; off the Ender-3 S1 Pro bed: none",
   "status": "PASS",
-  "time": "2026-11-22T12:04:37"
+  "time": "2026-11-22T12:21:33"
  },
  "fea_fourbar": {
   "evidence": "fea_fourbar.evidence.json",

@@ -32,7 +32,13 @@ import arm_model as M   # noqa: E402
 # beds (name, x, y, z) mm. TARGET decides the splits; the others are listed for information.
 TARGET = ("Ender-3 S1 Pro", 220, 220, 270)
 OTHERS = (("P1S", 256, 256, 256), ("K2 Pro", 300, 300, 300), ("H2D", 325, 320, 325))
-REVIEW = "split_joints.png"                                 # every split joint, for review
+FONT = os.path.join(os.environ.get("WINDIR", "C:/Windows"), "Fonts", "arial.ttf")   # test-piece labels (skipped if missing)
+# test pieces, printed before the arm: the dovetail at four clearances (pick the one that slides in with glue room,
+# then set CLEAR), and every bore the arm uses at its modelled size plus oversize steps (how much to drill or ream)
+DOVETAIL_CLEARS = (0.10, 0.15, 0.20, 0.25)
+FIT_SMALL = (("MR105", 10.0), ("6700", 15.0), ("6701", 18.0), ("pin", 4.0), ("", 4.1), ("", 4.2), ("", 4.3),
+             ("insert", 4.0), ("M3", 3.3), ("SB5", 5.0), ("D10", 10.0), ("", 10.2))
+FIT_LARGE = (("6804", 32.0), ("6805", 37.0))
 STL = "%s.stl"                                              # file name per part (and _A / _B halves)
 # dovetail sizes (mm) by plate height at the joint; glued, clearance per side
 TAILS = ((24.0, dict(length=8.0, neck=8.0, head=12.0)), (0.0, dict(length=7.0, neck=5.0, head=8.0)))
@@ -89,7 +95,7 @@ def solid_at(shape, x0, tail, zs):
     return True
 
 
-def cut_at(shape, x0, tail, zs):
+def cut_at(shape, x0, tail, zs, clear=CLEAR):
     """(A, B) halves at x0 with the dovetail(s) at zs, or None."""
     if not solid_at(shape, x0, tail, zs):
         return None
@@ -97,7 +103,7 @@ def cut_at(shape, x0, tail, zs):
     big = 1000.0
     lo = Part.makeBox(x0 - bb.XMin + 1, big, big, App.Vector(bb.XMin - 1, -big / 2, -big / 2))
     hi = Part.makeBox(bb.XMax - x0 + 1, big, big, App.Vector(x0, -big / 2, -big / 2))
-    a = shape.common(lo).cut(dovetail(x0, bb.YMin, bb.YMax, tail, CLEAR, zs))
+    a = shape.common(lo).cut(dovetail(x0, bb.YMin, bb.YMax, tail, clear, zs))
     b = shape.common(hi).fuse(shape.common(dovetail(x0, bb.YMin, bb.YMax, tail, 0.0, zs))).removeSplitter()
     if not (a.isValid() and b.isValid()) or a.common(b).Volume > 1e-6:
         return None
@@ -148,35 +154,74 @@ def split(shape):
     raise RuntimeError("no dovetail station fits %s" % TARGET[0])
 
 
-def outline(s):
-    """Polylines (x, z) of a plate's mid-thickness section."""
-    bb = s.BoundBox
-    return [[(v.x, v.z) for v in w.discretize(Deflection=0.05)] for w in s.slice(App.Vector(0, 1, 0), (bb.YMin + bb.YMax) / 2)]
+def label(shape, text, x, y, z_top, size=3.5, depth=0.5):
+    """Engrave text into the top face (z = z_top) at (x, y); returns shape unchanged without the font."""
+    if not os.path.exists(FONT) or not text:
+        return shape
+    wires = Part.makeWireString(text, FONT, size, 0)
+    faces = []
+    for ch in wires:
+        for w in ch:
+            if w.isClosed():
+                faces.append(Part.Face(w))
+    if not faces:
+        return shape
+    f = faces[0].fuse(faces[1:]) if len(faces) > 1 else faces[0]
+    f = Part.makeCompound([x_ for x_ in f.Faces])
+    bb = f.BoundBox
+    f.translate(App.Vector(x - bb.XLength / 2 - bb.XMin, y - bb.YMin, z_top - depth))
+    tool = Part.makeCompound([fc.extrude(App.Vector(0, 0, depth + 1)) for fc in f.Faces])
+    return shape.cut(tool)
 
 
-def review(splits, path):
-    """One row per split part: the whole plate (half A blue, half B orange) and a close-up of the joint."""
-    import matplotlib
-    matplotlib.use("Agg")
-    import matplotlib.pyplot as plt
-    fig, axs = plt.subplots(len(splits), 2, figsize=(15, 1.9 * len(splits)), gridspec_kw=dict(width_ratios=[3.2, 1]))
-    for row, (name, x0, a, b) in zip(axs, splits):
-        for ax, zoom in zip(row, (False, True)):
-            for s, c in ((a, "#2b6cb0"), (b, "#dd6b20")):
-                for w in outline(s):
-                    xs, zs = zip(*w)
-                    ax.plot(xs, zs, color=c, lw=0.9)
-            ax.set_aspect("equal")
-            ax.tick_params(labelsize=7)
-            if zoom:
-                ax.set_xlim(x0 - 22, x0 + 12)
-                ax.set_title("joint at x %.0f" % x0, fontsize=8)
-            else:
-                ax.axvline(x0, color="0.6", lw=0.6, ls="--")
-                ax.set_title("%s  (A blue, B orange; body frame, mm)" % name, fontsize=8, loc="left")
-    fig.tight_layout()
-    fig.savefig(path, dpi=130)
-    plt.close(fig)
+def dovetail_test():
+    """Four 30 x 17 x 3 plate pairs, laid flat (z up), the small tail (every split uses it) at DOVETAIL_CLEARS; the
+    clearance is engraved on half A."""
+    tail = TAILS[-1][1]
+    pieces = []
+    for i, c in enumerate(DOVETAIL_CLEARS):
+        blank = Part.makeBox(30, 3, 17, App.Vector(-15, -1.5, -8.5))
+        a, b = cut_at(blank, 0.0, tail, (0.0,), clear=c)
+        for s in (a, b):
+            s.rotate(App.Vector(0, 0, 0), App.Vector(1, 0, 0), 90)        # plate normal y -> z, thickness 0..3
+            s.translate(App.Vector(0, i * 22.0, 1.5))
+        a = label(a, "%.2f" % c, -12.0, i * 22.0 - 1.25, 3.0, size=2.5, depth=0.4)
+        pieces += [a, b.translate(App.Vector(14, 0, 0))]           # printed apart: tail tip 7 mm clear of A
+    return Part.makeCompound(pieces)
+
+
+def fit_test(bores, t, pitch_pad=5.0):
+    """A plate t thick with one through bore per (name, D) in a row, labelled with name and size."""
+    xs, x = [], 0.0
+    for _n, d in bores:
+        x += d / 2
+        xs.append(x)
+        x += d / 2 + pitch_pad
+    width = max(d for _n, d in bores) + 14
+    plate_ = Part.makeBox(x + pitch_pad, width, t, App.Vector(-pitch_pad, -width / 2 + 4, 0))
+    for (n, d), xc in zip(bores, xs):
+        plate_ = plate_.cut(Part.makeCylinder(d / 2, t + 2, App.Vector(xc, 4, -1)))
+        plate_ = label(plate_, "%g" % d, xc, -width / 2 + 5.0, t, size=3.0)
+        plate_ = label(plate_, n, xc, 4 + d / 2 + 1.5, t, size=3.0)
+    return plate_
+
+
+def test_pieces(sd):
+    """Write the test-piece STLs; return their print_list rows."""
+    rows = []
+    for name, s, what in (("Test_Dovetail", dovetail_test(),
+                           "dovetail at %s mm clearance per side; pick the pair that slides together with room for "
+                           "glue, then set CLEAR in export_print.py" % ", ".join("%g" % c for c in DOVETAIL_CLEARS)),
+                          ("Test_Fit_Small", fit_test(FIT_SMALL, 4.0),
+                           "bores at modelled size (bearing seats, pin 4.0 with +0.1..+0.3 steps, insert, M3 clearance, "
+                           "shoulder screw, D10 with a +0.2 step): note how much each needs drilling or reaming"),
+                          ("Test_Fit_Large", fit_test(FIT_LARGE, 7.0), "6804 and 6805 bearing seats at modelled size")):
+        fn = STL % name
+        MeshPart.meshFromShape(Shape=s, LinearDeflection=0.02, AngularDeflection=0.2).write(os.path.join(sd, fn))
+        d = dims_of(s)
+        rows.append([fn, name, "TEST", "the filament you will print the arm in", "%.0f x %.0f x %.1f" % tuple(d),
+                     round(s.Volume / 1000.0, 1), fit(d, TARGET), "", "test piece", what])
+    return rows
 
 
 def main():
@@ -186,7 +231,7 @@ def main():
     for f in os.listdir(sd):
         if f.endswith(".stl"):
             os.remove(os.path.join(sd, f))
-    rows, unfit, cuts, splits = [], [], [], []
+    rows, unfit, cuts = [], [], []
     for bn, parts in M.build_bodies().items():
         for p in parts:
             if p.kind == "CAT":
@@ -202,8 +247,6 @@ def main():
                 note = "glue the %s to the other half (CA or epoxy); joint at x %.0f" % (
                     "dovetail" if n == 1 else "%d dovetails" % n if n else "dovetail (lightening slot filled locally)", x0)
                 cuts.append(p.name)
-                if p.name.endswith(("_L_CF3", "_CF4")) or p.name.startswith("Rod_"):   # one of each mirrored pair
-                    splits.append((p.name, x0, a, b))
             for suf, s in pieces:
                 fn = STL % (p.name + suf)
                 mesh = MeshPart.meshFromShape(Shape=s, LinearDeflection=0.02, AngularDeflection=0.2)
@@ -216,6 +259,7 @@ def main():
                 rows.append([fn, p.name, bn, MATERIAL.get(p.kind, p.kind), "%.0f x %.0f x %.1f" % tuple(d),
                              round(s.Volume / 1000.0, 1), on, "; ".join(others), p.src.replace("custom: ", ""), note])
     rows.sort(key=lambda r: (r[2], r[0]))
+    rows = test_pieces(sd) + rows
     with open(os.path.join(out, "print_list.csv"), "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f, lineterminator="\n")
         w.writerow(["file", "part", "body", "print in", "size_mm", "volume_cm3", TARGET[0], "also fits",
@@ -225,8 +269,7 @@ def main():
     note = "%d STL (%d parts; split for %s: %s), %.0f cm3; off the %s bed: %s" % (
         len(rows), len({r[1] for r in rows}), TARGET[0], ", ".join(cuts) or "none", sum(r[5] for r in rows),
         TARGET[0], ", ".join(unfit) or "none")
-    review(splits, os.path.join(out, REVIEW))
-    params.record("export_print", st, [os.path.join(out, "print_list.csv"), os.path.join(out, REVIEW)], note)
+    params.record("export_print", st, [os.path.join(out, "print_list.csv")], note)
     print("PRINT %s: %s %s -> %s" % (M.VARIANT, st, note, out))
     return 1 if unfit else 0
 
