@@ -44,8 +44,9 @@ def holes_on_axis(shape, p, n, r_exp, tol=0.01):
     return found
 
 
-def main():
-    bodies = M.build_bodies()
+def main(bodies=None, write=True):
+    """Probe every interface on `bodies` (built fresh when None); `write=False` skips interfaces.json (tests)."""
+    bodies = bodies if bodies is not None else M.build_bodies()
     parts = {(bn, p.name): p for bn, ps in bodies.items() for p in ps}
     report, ok_all = [], True
     def probe(I, sk, side, part_name, pts, n, body=None):
@@ -78,10 +79,12 @@ def main():
         if "spacer" in I:                          # one spacer per station, each probed at its own station
             for i, pt in enumerate(pts):
                 ok_all &= probe(I, "spacer", I["spacer"], "%s%d" % (I["spacer"]["part_prefix"], i), [pt], n)
-    out = os.path.join(CAD, "out", VARIANT)
-    os.makedirs(out, exist_ok=True)
-    json.dump(dict(variant=VARIANT, ok=ok_all, report=report), open(os.path.join(out, "interfaces.json"), "w"), indent=1)
+    if write:
+        out = os.path.join(CAD, "out", VARIANT)
+        os.makedirs(out, exist_ok=True)
+        json.dump(dict(variant=VARIANT, ok=ok_all, report=report), open(os.path.join(out, "interfaces.json"), "w"), indent=1)
     print("INTERFACES %s: %s" % (VARIANT, "PASS" if ok_all else "FAIL"))
+    main.report = report
     return 0 if ok_all else 1
 
 

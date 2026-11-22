@@ -1,14 +1,5 @@
 {
- "findings": [
-  {
-   "kind": "dead-def",
-   "path": "fusion/fix_purchased_mass.py",
-   "line": 70,
-   "name": "export_batch",
-   "detail": "function `export_batch` is never referenced",
-   "id": "dead-def:fusion/fix_purchased_mass.py:export_batch"
-  }
- ],
+ "findings": [],
  "kept": [
   {
    "kind": "dead-def",
@@ -20,6 +11,15 @@
    "kept": "used only by frozen/release code: cad/export_fab.py, cad/fea/run_fea.py, cad/render/export_render.py"
   },
   {
+   "kind": "dead-def",
+   "path": "fusion/fix_purchased_mass.py",
+   "line": 70,
+   "name": "export_batch",
+   "detail": "function `export_batch` is never referenced",
+   "id": "dead-def:fusion/fix_purchased_mass.py:export_batch",
+   "kept": "entry point called by name from a Fusion MCP script, never from Python in the repo"
+  },
+  {
    "kind": "duplicate",
    "path": "cad/fea/run_fea_fourbar.py",
    "line": 20,
@@ -28,48 +28,12 @@
    "id": "duplicate:cad/fea/run_fea_fourbar.py:ef88d93b96",
    "other": "cad/fea/run_fea_jaw.py",
    "kept": "standalone freecadcmd FEA scripts share a 7-line sys.path / FEA_LIB bootstrap; a shared module would need the same bootstrap to be found"
-  },
-  {
-   "kind": "out-unindexed",
-   "path": "cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
-   "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
-   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
-   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_drive_link.FCStd:cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
-   "kept": "git-ignored solver/tool output (regenerable, never committed)"
-  },
-  {
-   "kind": "out-unindexed",
-   "path": "cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
-   "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
-   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
-   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd:cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
-   "kept": "git-ignored solver/tool output (regenerable, never committed)"
-  },
-  {
-   "kind": "out-unindexed",
-   "path": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
-   "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
-   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
-   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_palm.FCStd:cad/out/fourbar/fea/FEA_fb_palm.FCStd",
-   "kept": "git-ignored solver/tool output (regenerable, never committed)"
-  },
-  {
-   "kind": "out-unindexed",
-   "path": "cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
-   "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
-   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
-   "id": "out-unindexed:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
-   "kept": "git-ignored solver/tool output (regenerable, never committed)"
   }
  ],
  "counts": {
   "unused-import": 0,
   "unused-variable": 0,
-  "dead-def": 1,
+  "dead-def": 0,
   "duplicate": 0,
   "orphan-param": 0,
   "orphan-catalogue": 0,
@@ -78,14 +42,15 @@
   "out-unindexed": 0,
   "scratch": 0
  },
- "scanned": 72,
+ "scanned": 76,
  "stale_keep": [],
- "notes": [],
- "new": [
-  "dead-def:fusion/fix_purchased_mass.py:export_batch"
+ "notes": [
+  "fourbar/map_parts.md is older than the model inputs (rerun tools/make_map.py)",
+  "fourbar_direct/map_parts.md is older than the model inputs (rerun tools/make_map.py)"
  ],
+ "new": [],
  "resolved": [
-  "scratch:cad/out/fourbar/ARC_Arm_Fourbar.20261120-045651.FCBak:cad/out/fourbar/ARC_Arm_Fourbar.20261120-045651.FCBak"
+  "dead-def:fusion/fix_purchased_mass.py:export_batch"
  ],
  "keep_file": "cad/tools/bloat_keep.toml"
 }

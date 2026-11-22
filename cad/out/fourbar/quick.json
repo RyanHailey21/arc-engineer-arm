@@ -694,7 +694,7 @@
    "check": "envelopes",
    "ok": true,
    "note": "10 pose checks",
-   "s": 1.0
+   "s": 0.9
   },
   {
    "check": "interfaces",
@@ -706,7 +706,7 @@
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 4.8
+   "s": 5.2
   },
   {
    "check": "mass/torque",
@@ -736,13 +736,13 @@
    "check": "bloat",
    "ok": null,
    "note": "0 findings (none), 3 kept",
-   "s": 1.4
+   "s": 1.5
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 28.3
+   "s": 28.4
   },
   {
    "check": "holes/eng",
@@ -751,5 +751,5 @@
    "s": 0.0
   }
  ],
- "elapsed_s": 71.5
+ "elapsed_s": 77.5
 }

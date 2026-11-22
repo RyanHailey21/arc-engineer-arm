@@ -5,13 +5,13 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "bloat",
   "status": "pass",
-  "reason": "WARN: BLOAT 1 findings (dead-def 1), 6 kept",
-  "scope": "BLOAT 1 findings (dead-def 1), 6 kept",
+  "reason": "PASS: BLOAT 0 findings (none), 3 kept",
+  "scope": "BLOAT 0 findings (none), 3 kept",
   "versions": {
    "python": "3.14.10",
    "platform": "Windows"
   },
-  "implementation_sha256": "bb1dc2e64aca31a5e6828079ac545db85773086c927b089e7d95031a6bfc2e9f",
+  "implementation_sha256": "8f80e1365b89a34a875a2a39c3518abf756e93ce41f384fee2d7afd7c9829cb5",
   "inputs": [
    {
     "id": "design-inputs",
@@ -22,7 +22,7 @@
   "artifacts": [],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-21T22:26:20",
+   "time": "2026-11-22T06:13:29",
    "inputs_hash": "9cf67eeedebaa998",
    "external_copies": [
     "out/bloat_report.md",

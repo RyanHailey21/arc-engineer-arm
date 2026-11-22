@@ -69,8 +69,8 @@ replaces a workaround here.
 ## Phase B: CAD tooling
 Run `python -I cad/tools/bloat_report.py` (read `cad/out/bloat_report.md`) and `cad/tools/quick_check.py`, noting
 each step's time. Choose ONE target, the highest on this list you can finish and verify in this run:
-1. An `open` TI item fixable in code (TI-005 is an example: the quick tier misses hole-wall and thread-engagement
-   defects). Skip items that need the user, a settings change or a plugin (TI-007, TI-014).
+1. An `open` TI item in `cad/docs/tooling_issues.md` fixable in code in this repo. Skip items whose status says
+   they need the user, a settings change, a plugin or another repo (read the status column; don't trust IDs named here).
 2. A check gap: a check in `cad/tools/` with no negative test in `cad/tests/` (a test that breaks the geometry in
    memory and proves the check flags it), or a defect class nothing checks.
 3. Speed: `quick_check` keeps its documented budget; make a slow step faster with identical results.
