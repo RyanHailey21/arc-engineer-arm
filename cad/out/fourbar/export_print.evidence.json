@@ -5,14 +5,14 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "export_print",
   "status": "pass",
-  "reason": "PASS: 76 STL (74 parts, 2 split), 1123 cm3; no bed fits: none",
-  "scope": "76 STL (74 parts, 2 split), 1123 cm3; no bed fits: none",
+  "reason": "PASS: 81 STL (74 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4), 1124 cm3; off the Ender-3 S1 Pro bed: none",
+  "scope": "81 STL (74 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4), 1124 cm3; off the Ender-3 S1 Pro bed: none",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "0d764a183f8f9ee980c7e0dec477187585106bc51333c26035eadbba2c39beab",
+  "implementation_sha256": "e6e55eb2700129df6d24e332257430356b2386005736d8dd9b61cf369a1f2c68",
   "inputs": [
    {
     "id": "design-inputs",
@@ -24,12 +24,17 @@
    {
     "id": "print_list.csv",
     "path": "print/print_list.csv",
-    "sha256": "27072231e856a212f050bbe815965a06a11243b3d9d281d8c86bf8143d10211e"
+    "sha256": "1ce80d312ea83ed3814b60a911df6cf3d10c872bedd2deba9aa9cfedfce2553b"
+   },
+   {
+    "id": "split_joints.png",
+    "path": "print/split_joints.png",
+    "sha256": "5756b885d9434b5ac1224a7383070fe3f2de5e29fae456c3fff512528618ba60"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-22T11:19:22",
+   "time": "2026-11-22T12:04:37",
    "inputs_hash": "9cf67eeedebaa998",
    "external_copies": []
   }
