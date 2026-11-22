@@ -6,9 +6,9 @@
    "out/bloat_report.json"
   ],
   "inputs_hash": "9cf67eeedebaa998",
-  "note": "BLOAT 0 findings (none), 3 kept",
-  "status": "PASS",
-  "time": "2026-11-22T06:13:29"
+  "note": "BLOAT 1 findings (duplicate 1), 7 kept",
+  "status": "WARN",
+  "time": "2026-11-22T11:19:33"
  },
  "bom": {
   "evidence": "bom.evidence.json",
@@ -31,6 +31,16 @@
   "note": "Thread engagement: 18 tapped holes, 18 with screws -> 0 FAIL (screw past thread), 0 WARN (< 0.8D)",
   "status": "PASS",
   "time": "2026-11-19T20:49:20"
+ },
+ "export_print": {
+  "evidence": "export_print.evidence.json",
+  "files": [
+   "print/print_list.csv"
+  ],
+  "inputs_hash": "9cf67eeedebaa998",
+  "note": "76 STL (74 parts, 2 split), 1123 cm3; no bed fits: none",
+  "status": "PASS",
+  "time": "2026-11-22T11:19:22"
  },
  "fea_fourbar": {
   "evidence": "fea_fourbar.evidence.json",

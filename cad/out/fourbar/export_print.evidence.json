@@ -1,0 +1,37 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "export_print",
+  "status": "pass",
+  "reason": "PASS: 76 STL (74 parts, 2 split), 1123 cm3; no bed fits: none",
+  "scope": "76 STL (74 parts, 2 split), 1123 cm3; no bed fits: none",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "0d764a183f8f9ee980c7e0dec477187585106bc51333c26035eadbba2c39beab",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/export_print.inputs.json",
+    "sha256": "e1ad103b8917b8c78d8f60ee1a45ca4cccff6d0e57c753d697f059b401bd55c4"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "print_list.csv",
+    "path": "print/print_list.csv",
+    "sha256": "27072231e856a212f050bbe815965a06a11243b3d9d281d8c86bf8143d10211e"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-22T11:19:22",
+   "inputs_hash": "9cf67eeedebaa998",
+   "external_copies": []
+  }
+ }
+}

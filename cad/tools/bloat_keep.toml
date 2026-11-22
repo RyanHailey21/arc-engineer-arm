@@ -71,3 +71,9 @@ kind = "dead-def"
 name = "export_batch"
 path = "fusion/fix_purchased_mass.py"
 reason = "entry point called by name from a Fusion MCP script, never from Python in the repo"
+
+[[item]]
+kind = "duplicate"
+name = "*"
+path = "cad/tools/amazon_buy_list.py"
+reason = "data table: one row per purchased line (section, item, ASIN, packs, price), alike by design, not copied code"
