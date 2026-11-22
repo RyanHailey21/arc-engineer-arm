@@ -1,3 +1,6 @@
+# Text files are LF in the repo and on disk (overrides core.autocrlf; agents write LF). The -text rules below win.
+* text=auto eol=lf
+
 # CAD / mesh / document formats: never convert line endings
 *.step -text
 *.stp -text
