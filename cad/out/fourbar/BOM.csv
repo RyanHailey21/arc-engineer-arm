@@ -5,8 +5,7 @@ purchased,6804ZZ,2,38.0,Thin-section bearing 6804ZZ 20x32x7 (J1/J2 hub journals 
 purchased,6805ZZ,1,18.0,Thin-section bearing 6805ZZ 25x37x7 (roll support),VXB Kit7501 [VERIFIED],,GRIPPER
 purchased,9271K56,1,3.5,"Torsion spring 90 deg right-hand wound, 0.499 in OD, 0.059 in wire, 4.5 in*lbf max (0.508 N*m), 2 in legs (trim to fit), music wire - opens the four-bar jaws unpowered",McMaster 9271K56,bench-test against the STS3215 unpowered back-drive torque; alternate 9271K52 (3.509 in*lbf) if lighter preload suffices,HEAD
 purchased,BHCS,63,63.0,ISO 7380 button head screw,"McMaster-Carr 92095A182 [VERIFIED] (+3 sizes, see fab/procurement.csv)",,FOREARM GRIPPER GROUND HEAD JAW_L JAW_R UPPER
-purchased,C610,1,15.0,DJI RoboMaster C610 ESC for M2006 (vendor STEP),robomaster.com product 1277 STEP,,GROUND
-purchased,CLIP,3,3.0,Adhesive cable-tie mount 10x10 + 2.5 mm cable tie,"McMaster-Carr 7582K151 [VERIFIED] (+2 sizes, see fab/procurement.csv)",,GROUND
+purchased,CLIP,2,2.0,Adhesive cable-tie mount 10x10 + 2.5 mm cable tie,"McMaster-Carr 7582K151 [VERIFIED] (+2 sizes, see fab/procurement.csv)",,GROUND
 purchased,COLLAR10,2,50.0,"One-piece clamp collar D10 x D24 x 9, steel, M3x10 clamp screw included (Stafford 1LM010)",Stafford 1LM010 [VERIFIED],,FOREARM
 purchased,CSK,8,8.0,ISO 10642 countersunk screw,McMaster-Carr 92125A126 [VERIFIED],,GRIPPER LEVEL
 purchased,ECLIP,3,0.9,DIN 6799 retaining washer,Wurth / Fabory 0490100 / 36200.070.001 [VERIFIED],,FOREARM GRIPPER
@@ -25,7 +24,7 @@ purchased,SHCS,7,7.0,ISO 4762 socket head cap screw,"McMaster-Carr 91290A148 [VE
 purchased,STS3215,5,300.0,"Feetech STS3215 serial-bus servo, 12 V version: 10 kg*cm rated / 30 kg*cm stall at 12 V, 0.222 s/60 deg, magnetic encoder 360 deg, steel gears (all joints and the four-bar gripper: J1/J2 through a 3:1 printed spur stage, J3/J4 direct)",Amazon ASIN B0FKY4Z15R (Stemedu ST3215 12 V) / B0FMXVR77Y (Feetech 2-pack); Feetech STS3215 datasheet,weigh on receipt (sources list 55-69 g); confirm 12 V / 1:345 variant and 25T spline; bench-test unpowered back-drive torque,GRIPPER GROUND HEAD LEVEL
 purchased,WASHER,3,0.9,ISO 7089 washer / shim,"McMaster-Carr 93475A230 [VERIFIED] (+3 sizes, see fab/procurement.csv)",,CRANK UPPER
 purchased,WASHER-D4,2,0.6,D4 thrust washers either side of the palm ground layer,"DIN 988 shim ring 4 x 8 x 0.5, stainless - standard part, any supplier",,LK_LD LK_RD
-custom,Base_Plate_AL5,1,1041.0,"5 mm 6061, waterjet + tap",make (AL),,GROUND
+custom,Base_Plate_AL5,1,269.5,"5 mm 6061, waterjet + tap",make (AL),,GROUND
 custom,Tower_L_CF3,1,68.8,3 mm CF plate (DXF),make (CF),,GROUND
 custom,Drive_Frame_L,1,81.0,"PETG-CF print, 3x M3 heat-set inserts",make (PRINT),,GROUND
 custom,Pinion_m2_18T_J1,1,4.6,"PA12 / PETG-CF print, m2 18T, 4x M3 cbore",make (PRINT),,GROUND
@@ -74,7 +73,7 @@ custom,Clevis_L_CF3,1,18.0,"3 mm CF plate (DXF), D-bore, 4x csk",make (CF),,GRIP
 custom,Clevis_R_CF3,1,18.1,"3 mm CF plate (DXF), D-bore",make (CF),,GRIPPER
 custom,Roll_Housing,1,35.0,"PETG-CF print, M3 inserts",make (PRINT),,GRIPPER
 custom,Roll_Hub,1,11.5,"6061 turned, D25 journal in 6805",make (AL),,HEAD
-custom,Gripper_Palm,1,62.8,PETG-CF print (concept),make (PRINT),,HEAD
+custom,Gripper_Palm,1,66.0,PETG-CF print (concept),make (PRINT),,HEAD
 custom,Jaw_Block_L,1,30.7,PETG-CF print (concept),make (PRINT),,JAW_L
 custom,Finger_L_bot_CF3,1,6.9,3 mm CF plate (concept),make (CF),,JAW_L
 custom,Pad_L_TPU,1,19.6,"TPU 95A print, R50 arc + 90 deg V",make (TPU),,JAW_L

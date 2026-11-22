@@ -5,14 +5,14 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
   "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 3 kept; fingerprint MATCH; holes/eng no changed parts",
-  "scope": "envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 3 kept; fingerprint MATCH; holes/eng no changed parts",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 7 kept; fingerprint MATCH; holes/eng no changed parts",
+  "scope": "envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 7 kept; fingerprint MATCH; holes/eng no changed parts",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "b06059dedd8b9f2ffdb149687bd091e092237a743cccb43ee5976752bd8fa8d0",
+  "implementation_sha256": "d0fcbd65e36c31d5ea60abef6880bea572fb2577de0940c96ce72dcf03ecfffd",
   "inputs": [
    {
     "id": "design-inputs",
@@ -24,12 +24,12 @@
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "cc5f92e648c6415d3e8043c9652940002dbc1b773c4003bba3e276501ea7f535"
+    "sha256": "20580438b242a0e14ee94bc7edb61324c0145fff90a63691e4dca731d4ad8dcc"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-22T06:28:28",
+   "time": "2026-11-22T08:48:14",
    "inputs_hash": "9cf67eeedebaa998",
    "external_copies": []
   }

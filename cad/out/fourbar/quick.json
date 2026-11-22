@@ -706,7 +706,7 @@
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 5.2
+   "s": 5.0
   },
   {
    "check": "mass/torque",
@@ -730,19 +730,19 @@
    "check": "seating",
    "ok": true,
    "note": "119 fasteners, 0 FAIL",
-   "s": 3.4
+   "s": 3.3
   },
   {
    "check": "bloat",
    "ok": null,
-   "note": "0 findings (none), 3 kept",
-   "s": 1.5
+   "note": "0 findings (none), 7 kept",
+   "s": 1.7
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 28.4
+   "s": 28.6
   },
   {
    "check": "holes/eng",
@@ -751,5 +751,5 @@
    "s": 0.0
   }
  ],
- "elapsed_s": 77.5
+ "elapsed_s": 80.0
 }

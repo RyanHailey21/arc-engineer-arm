@@ -5,37 +5,37 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "bom",
   "status": "pass",
-  "reason": "PASS: 26 purchased items, unsourced: none",
-  "scope": "26 purchased items, unsourced: none",
+  "reason": "PASS: 25 purchased items, unsourced: none",
+  "scope": "25 purchased items, unsourced: none",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "041005672e7966e2f53d8bf80ef8914cfc0852dd0029c94300e54c2ebdc9c7aa",
+  "implementation_sha256": "eedf7246f07eb2fe30307d9fe06fa906a2de3e626393a2f91fb67a8fa0479632",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/bom.inputs.json",
-    "sha256": "de9dc09a046104fc92b22e253308f1f57c8923dafd6db747ea214c5827aa7e6f"
+    "sha256": "e1ad103b8917b8c78d8f60ee1a45ca4cccff6d0e57c753d697f059b401bd55c4"
    }
   ],
   "artifacts": [
    {
     "id": "BOM.csv",
     "path": "BOM.csv",
-    "sha256": "34bdae2aae23c3c0913dc7d5234885bde3de202133c8a261925aef950b96ef91"
+    "sha256": "8f6e8c7bf06196d7800bbda923bb27a33e9d1dedfd7ca77efe1d1e557e0e43d4"
    },
    {
     "id": "BOM.md",
     "path": "BOM.md",
-    "sha256": "0323acdc4bf7d590add150fe4e21687ac0ddfc6c19c02f642a993e1d5a7e9145"
+    "sha256": "635ccb427803962952226d506efaaa8b1a14e796ef01df6b7fda3e4fb94cd68f"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-19T20:50:11",
-   "inputs_hash": "583f149273fa8325",
+   "time": "2026-11-22T10:22:51",
+   "inputs_hash": "9cf67eeedebaa998",
    "external_copies": []
   }
  }
