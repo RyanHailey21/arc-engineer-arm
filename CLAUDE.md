@@ -21,7 +21,7 @@ Start with `cad/MAP.md` (generated). It lists every module, parameter file, inte
 
 ## Workflow
 1. Change a TOML value or a builder.
-2. Run `tools/quick_check.py` (about 90 s with the model build). It covers envelopes, interfaces, gripper self-interference, mass/torque, fastener seating (every screw, pin and washer in its hole and bearing on a part) and the fingerprint, and shows FRESH/STALE evidence.
+2. Run `tools/quick_check.py` (about 90 s with the model build). It covers envelopes, interfaces, gripper self-interference, mass/torque, fastener seating (every screw, pin and washer in its hole and bearing on a part), the fingerprint, and hole walls and thread engagement on the parts the fingerprint says changed, and shows FRESH/STALE evidence.
 3. Refactors: `tools/fingerprint.py` must report MATCH for `GRIP=FOURBAR`, and for `BASE_DRIVE=DIRECT` (fingerprint `fourbar_direct`) when the base or a shared module changed. After an *intended* geometry change, re-record it (`FP_MODE=record`) and say which parts changed.
 4. Milestones: run `check_interference.py` (about 4 min, ground truth). FEA and renders only on request.
 5. Documentation is one PDF, `cad/docs/ARC_S2_Engineer_Arm.pdf`: an arXiv-style product summary with the requirements verification, rebuilt from the check results by `cad/docs/paper/make_paper.py` (needs `pdflatex`, e.g. MiKTeX). Change `cad/docs/paper/paper.tex` for wording; numbers come from `numbers.tex`, which is generated. There are no drawings: they are not required. Don't add parallel docs: README.md points to the PDF (design, evidence, open items), fusion/README.md (Fusion workflow) and sim/README.md; anything else is generated output.

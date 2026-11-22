@@ -141,29 +141,44 @@ def ligament(shape, g):
     return best
 
 
+def scan_part(p):
+    """(rows, holes, broken, fail, warn) for one made part; rows as in hole_report.txt.  quick_check.py runs this
+    on the parts the fingerprint says changed (TI-005)."""
+    rows, nb, nf, nw, nh = [], 0, 0, 0, 0
+    for g in hole_groups(p.vis).values():
+        c, d = g["centre"], 2 * g["r"]
+        where = "(%.1f, %.1f, %.1f)" % (c.x, c.y, c.z)
+        if g["span"] < 359.0:
+            if breaks_out(p.vis, g):
+                rows.append("BROKEN %-28s D%.1f at %s  breaks out (%.0f deg of rim left)" % (p.name, d, where, g["span"]))
+                nb += 1
+            continue
+        nh += 1
+        lig = ligament(p.vis, g)
+        if lig < MIN_ABS:
+            rows.append("FAIL   %-28s D%.1f at %s  wall %.2f mm" % (p.name, d, where, lig))
+            nf += 1
+        elif lig < max(WARN_ABS, WARN_D * d):
+            rows.append("WARN   %-28s D%.1f at %s  wall %.2f mm" % (p.name, d, where, lig))
+            nw += 1
+    return rows, nh, nb, nf, nw
+
+
+def judged(p):
+    """Made parts only: purchased (CAT) parts are the vendor's responsibility."""
+    return p.kind != "CAT" and not p.vis.isNull()
+
+
 def main():
     bodies = M.build_bodies()
     rows, nb, nf, nw, nh = [], 0, 0, 0, 0
     for bname, parts in bodies.items():
         for p in parts:
-            if p.kind == "CAT" or p.vis.isNull():
+            if not judged(p):
                 continue
-            for g in hole_groups(p.vis).values():
-                c, d = g["centre"], 2 * g["r"]
-                where = "(%.1f, %.1f, %.1f)" % (c.x, c.y, c.z)
-                if g["span"] < 359.0:
-                    if breaks_out(p.vis, g):
-                        rows.append("BROKEN %-28s D%.1f at %s  breaks out (%.0f deg of rim left)" % (p.name, d, where, g["span"]))
-                        nb += 1
-                    continue
-                nh += 1
-                lig = ligament(p.vis, g)
-                if lig < MIN_ABS:
-                    rows.append("FAIL   %-28s D%.1f at %s  wall %.2f mm" % (p.name, d, where, lig))
-                    nf += 1
-                elif lig < max(WARN_ABS, WARN_D * d):
-                    rows.append("WARN   %-28s D%.1f at %s  wall %.2f mm" % (p.name, d, where, lig))
-                    nw += 1
+            r_, h_, b_, f_, w_ = scan_part(p)
+            rows += r_
+            nh, nb, nf, nw = nh + h_, nb + b_, nf + f_, nw + w_
     head = ["Hole edge-distance check (custom parts): %d holes -> %d broken-out, %d fail (wall < %.1f mm), "
             "%d warn (wall < max(%.1f mm, %.1f d))" % (nh, nb, nf, MIN_ABS, nw, WARN_ABS, WARN_D)]
     txt = "\n".join(head + sorted(rows))
@@ -174,4 +189,5 @@ def main():
     params.record("holes", "FAIL" if nb or nf else ("WARN" if nw else "PASS"), [rep], head[0])
 
 
-main()
+if not os.environ.get("QC_IMPORT"):          # tools/quick_check.py imports scan_part without running the check
+    main()

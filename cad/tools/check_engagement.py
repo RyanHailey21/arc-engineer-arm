@@ -53,28 +53,29 @@ def holes(shape):
     return list(out.values())
 
 
-def main():
-    bodies = M.build_bodies()
-    q, jaw = M.pose_q("STOW")
-    placed = list(M.placed(bodies, *q, jaw=jaw, which="vis"))
-    screws = [(p, s) for (_b, p, s) in placed if is_screw(p)]
+def scan(placed, only=None):
+    """(rows, tapped holes, FAIL, WARN) over `placed` = [(body, part, shape)] at STOW.  With `only`, a set of
+    (body, part name), a hole is judged when its part or a screw near it is in the set: quick_check.py passes the
+    parts the fingerprint says changed (TI-005)."""
+    screws = [(b, p, s) for (b, p, s) in placed if is_screw(p)]
     rows, nf, nw, n = [], 0, 0, 0
-    for (_b, p, s) in placed:
+    for (b, p, s) in placed:
         if p.kind not in ("AL", "BRASS") or s.isNull():
             continue
         for h in holes(s):
-            n += 1
             c, ax, r = h["c"], h["ax"], h["r"]
             L_h = h["t1"] - h["t0"]
+            probe = Part.makeCylinder(r + 0.3, L_h, c + ax * h["t0"], ax)
+            near = [(sb, sp, ss) for (sb, sp, ss) in screws if ss.BoundBox.intersect(probe.BoundBox)]
+            if only is not None and (b, p.name) not in only and not any((sb, sp.name) in only for sb, sp, _ss in near):
+                continue
+            n += 1
             e0, e1 = c + ax * (h["t0"] - 0.3), c + ax * (h["t1"] + 0.3)
             o0, o1 = not s.isInside(e0, 1e-4, True), not s.isInside(e1, 1e-4, True)
             thru = o0 and o1
             thread = L_h if thru else max(L_h - RUNOUT, 0.0)
-            probe = Part.makeCylinder(r + 0.3, L_h, c + ax * h["t0"], ax)
             best = None
-            for (sp, ss) in screws:
-                if not ss.BoundBox.intersect(probe.BoundBox):
-                    continue
+            for (_sb, sp, ss) in near:
                 cm = ss.common(probe)
                 if cm.Volume < 1e-3:
                     continue
@@ -92,6 +93,13 @@ def main():
                 st, nw = "WARN", nw + 1
             rows.append("%-4s %-28s M%d %s drill %.1f thread %.1f  screw %-28s engages %.1f" % (
                 st, p.name, D, "THRU" if thru else "blind", L_h, thread, best[0], best[1]))
+    return rows, n, nf, nw
+
+
+def main():
+    bodies = M.build_bodies()
+    q, jaw = M.pose_q("STOW")
+    rows, n, nf, nw = scan(list(M.placed(bodies, *q, jaw=jaw, which="vis")))
     head = "Thread engagement: %d tapped holes, %d with screws -> %d FAIL (screw past thread), %d WARN (< 0.8D)" % (
         n, len(rows), nf, nw)
     txt = "\n".join([head] + sorted(rows))

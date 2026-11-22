@@ -21,6 +21,10 @@ Checks, in fail-fast order of usefulness:
   8. bloat       - informational: counts from tools/bloat_report.py (dead code, orphan params/catalogue keys,
                    scratch files); never fails the check.  The full report: python -I cad/tools/bloat_report.py
   9. fingerprint - geometry vs cad/tests/fingerprints/<variant>.json (CHANGED is expected after a real edit)
+ 10. holes/eng   - the parts the fingerprint says changed (new, or chk/vis/kind differ) get the hole-wall check
+                   (tools/check_holes.py) and the thread-engagement check (tools/check_engagement.py, holes in
+                   a changed part or under a changed screw), so those defects surface before the full run
+                   (TI-005).  It writes no holes/engagement evidence: that stays with the full checks.
 -> cad/out/<variant>/quick.json, a manifest entry, one summary line per check, and the FRESH/STALE status of
    every recorded check (full interference, holes, engagement ...) against the current design inputs.
 """
@@ -40,6 +44,8 @@ import FreeCAD as App      # noqa: E402
 import Part                # noqa: E402
 import arm_model as M      # noqa: E402
 import catalogue_mass      # noqa: E402
+import check_engagement    # noqa: E402
+import check_holes         # noqa: E402
 import check_interfaces    # noqa: E402
 import check_level_keeping  # noqa: E402
 os.environ["QC_IMPORT"] = "1"   # import the seating check without running its main()
@@ -169,6 +175,34 @@ def mass_torque(bodies):
                     rated_utilisation=util, poses=rows)
 
 
+def changed_parts(base, fp):
+    """{(body, part)} whose fingerprint entry is new or differs from the baseline (masses aside)."""
+    out = set()
+    for k, v in fp["parts"].items():
+        b = base.get("parts", {}).get(k)
+        if b is None or fingerprint.diff({x: b.get(x) for x in ("kind", "chk", "vis")},
+                                         {x: v.get(x) for x in ("kind", "chk", "vis")}):
+            out.add(tuple(k.split("/", 1)))
+    return out
+
+
+def changed_holes(bodies, changed):
+    """Hole-wall and thread-engagement checks on the changed parts only.  -> (ok, rows, note)"""
+    rows, nh, bad = [], 0, 0
+    for bn, ps in bodies.items():
+        for p in ps:
+            if (bn, p.name) in changed and check_holes.judged(p):
+                r_, h_, b_, f_, _w = check_holes.scan_part(p)
+                rows += [x for x in r_ if not x.startswith("WARN")]
+                nh, bad = nh + h_, bad + b_ + f_
+    q, jaw = M.pose_q("STOW")
+    er, ne, nf, _nw = check_engagement.scan(list(M.placed(bodies, *q, jaw=jaw, which="vis")), only=changed)
+    rows += [x for x in er if x.startswith("FAIL")]
+    made = sum(1 for bn, ps in bodies.items() for p in ps if (bn, p.name) in changed and check_holes.judged(p))
+    return not (bad or nf), rows, "%d changed parts (%d made): %d holes, %d tapped holes; %d FAIL" % (
+        len(changed), made, nh, ne, bad + nf)
+
+
 def main():
     bodies = M.build_bodies()
     t_build = time.time() - T0
@@ -224,8 +258,16 @@ def main():
     fp = fingerprint.build()
     base = fingerprint.BASE
     if os.path.exists(base):
-        d = fingerprint.diff(json.load(open(base)), fp)
+        base_fp = json.load(open(base))
+        d = fingerprint.diff(base_fp, fp)
         summary.append(("fingerprint", None, "MATCH" if not d else "CHANGED (%d differences; re-record if intended)" % len(d), time.time() - t))
+        t = time.time()
+        changed = changed_parts(base_fp, fp) if d else set()
+        ok, rows, note = changed_holes(bodies, changed) if changed else (True, [], "no changed parts")
+        for r in rows[:8]:
+            print("  HOLES %s" % r)
+        data["holes_changed"] = dict(parts=sorted("/".join(k) for k in changed), fails=rows)
+        summary.append(("holes/eng", ok, note, time.time() - t))
     else:
         summary.append(("fingerprint", None, "no baseline", time.time() - t))
     out = os.path.join(CAD, "out", VARIANT)

@@ -11,7 +11,7 @@ against its `tool_use` (142 errors in 19,040 lines up to 2026-11-17 04:30Z).
 | TI-002 | 2026-11-16 | Patching Python through heredocs / `s.replace` / `sed` fails or misses silently | fixed |
 | TI-003 | 2026-11-16 | `print()` crashes on cp1252 console (UnicodeEncodeError) | fixed 2026-11-21: `PYTHONUTF8=1` in `.claude/settings.json` `env` |
 | TI-004 | 2026-11-16 | Auto-mode classifier can't review commands that start with `cd`; `sleep N; cat` blocked | fixed 2026-11-21: CLAUDE.md line |
-| TI-005 | 2026-11-16 | Quick tier misses hole-wall and thread-engagement defects (found only in the full run) | open: plan |
+| TI-005 | 2026-11-16 | Quick tier misses hole-wall and thread-engagement defects (found only in the full run) | fixed 2026-11-21: quick_check `holes/eng` step on the changed parts + test |
 | TI-006 | 2026-11-16 | Status tools (`get_rpc_status`, `get_async_status`) hang when FreeCAD is stuck | open: plan |
 | TI-007 | 2026-11-16 | Eval case YAML frontmatter colon bug | open: needs a check in the plugin |
 | TI-008 | 2026-11-16 | `claude` CLI too old for `plugin eval` | fixed (2.1.326) |
@@ -128,7 +128,7 @@ working directory has changed since. Foreground `sleep` is disallowed by design.
 long jobs with `run_in_background` or Monitor, never `sleep`." With TI-001 fixed, MCP jobs are polled through
 `job_status`.
 
-## TI-005: quick tier misses hole walls and thread engagement  (open: plan)
+## TI-005: quick tier misses hole walls and thread engagement  (fixed 2026-11-21)
 
 **What happened** (main-session report). Hole-wall and thread-engagement defects appeared only in the full run.
 `quick_check.py` lists `holes` and `engagement` evidence as FRESH/STALE but doesn't run them. `check_holes.py`
@@ -141,6 +141,19 @@ takes about 2–3 minutes for all made parts.
 
 Acceptance: a seeded thin wall in one gripper part FAILs in the quick tier in under 40 s total, on both variants.
 This needs the per-part diff API in `fingerprint.py` (my area) and a call from `quick_check.py`. Next item.
+
+**Fix (upkeep 2026-11-21).** `quick_check.py` step 10 `holes/eng`: `changed_parts()` takes the parts whose
+fingerprint entry (kind, chk, vis) is new or differs from the baseline; `changed_holes()` runs
+`check_holes.scan_part()` on the changed made parts and `check_engagement.scan(only=...)` on tapped holes in a
+changed part or under a changed screw. FAIL/BROKEN and screw-past-thread fail the quick check; WARN rows are left to
+the full run. Both checks were split into those functions with full-mode results identical to the committed reports
+(43 hole rows, 18 engagement rows), and `check_holes.py` no longer runs on import. Deviation from the plan: the step
+writes no `holes`/`engagement` evidence (a partial pass must not mark the full check FRESH); its result is
+`holes_changed` in `quick.json`. Cost: 0 s when the fingerprint matches; about 1 s per changed part.
+Negative test `tests/test_quick_holes_changed.py`: a hole drilled 0.5 mm beside a Jaw_Block_L hole and the screw of
+the first blind tapped hole pushed 1 mm past its thread both FAIL on both variants, and both parts pass before the
+edit. The plan's < 40 s total is not
+reachable here: the model build alone is about 31 s and the whole quick check about 72 s on this machine.
 
 ## TI-006: status tools hang when FreeCAD is stuck  (open: plan)
 
@@ -539,3 +552,4 @@ Phase A is the agent harness against the latest docs; phase B is one CAD-tooling
 | Date | CLI | Docs pages read | Phase A (harness) | Phase B (CAD tooling) | Suggested | Gates |
 |---|---|---|---|---|---|---|
 | 2026-11-21 | 2.1.326 | code.claude.com/docs: skills, sub-agents, hooks, settings, permissions, memory, mcp, scheduled-tasks, desktop-scheduled-tasks, routines, plugins, worktrees, checkpointing, sandboxing; platform.claude.com/docs/mcp; developers.openai.com/learn/docs-mcp; github.com/anthropics/skills | docs MCPs `claude-platform-docs` and `openai-docs` (user scope); `PYTHONUTF8` env (TI-003); release-guard hook (TI-028); skills `verify`, `fusion-change`, `codex-fusion`, `tooling-audit`; `test_agent_config.py` (TI-029); CLAUDE.md agent section (TI-004); tooling-agent prompt (TI-027); daily upkeep task | none (manual session; repo cleanup landed: 77cd101) | task permission mode (TI-026) | tests, validate_data, bloat 0 |
+| 2026-11-21 (scheduled) | 2.1.326 | code.claude.com/docs: changelog, hooks (Monitor matchers, v2.1.314), skills, settings, sub-agents, permissions, desktop-scheduled-tasks, worktrees; platform.claude.com/docs/en/models/overview; learn.chatgpt.com/docs/developer-commands, developers.openai.com/learn/docs-mcp; github.com/anthropics/skills commits (Office/MCP-builder skills only) | no change: same CLI as the morning row, nothing new for this repo (docs features past 2.1.326, e.g. v2.1.328/330, not adopted); release guard left Edit/Write-only as designed (TI-028) | TI-005 fixed: quick_check step 10 `holes/eng` runs check_holes/check_engagement on the parts the fingerprint says changed (0 s on MATCH); check_holes `scan_part`, check_engagement `scan(only=)`, results identical to the full reports (43/18 rows); test_quick_holes_changed (both variants) | none | validate_data, agent_config, no_checkout_paths, bloat 0 -> 0, all 21 tests incl. DIRECT, quick_check PASS + MATCH both variants (71.5 / 72.7 s), interference 0 overlaps (376 s) |

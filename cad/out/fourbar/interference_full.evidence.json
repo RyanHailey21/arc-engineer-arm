@@ -12,25 +12,25 @@
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "bf6b3d503e2da1091d0ef10feabb73a30df3697c0ee340dbf0374518faf1c82b",
+  "implementation_sha256": "4a68da6fa15b45ea43917ef3d3d074955686085c0c8f73830f49f0843b958ddc",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/interference_full.inputs.json",
-    "sha256": "d5831362eb7307e8a3975543215e3b994daf3ee5588820d919452ac4568c985b"
+    "sha256": "e1ad103b8917b8c78d8f60ee1a45ca4cccff6d0e57c753d697f059b401bd55c4"
    }
   ],
   "artifacts": [
    {
     "id": "interference_report.txt",
     "path": "interference_report.txt",
-    "sha256": "cd8c390be848dcbc324d7fa50cd2311ffc9b5c5d28584900b11be68a021a6c78"
+    "sha256": "2fed06b485856d81c7aa1a91aeee4f2ae7067ace84ac002a35073aa7eacfe1cb"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-21T11:10:12",
-   "inputs_hash": "478409e3dd83afc9",
+   "time": "2026-11-21T23:11:30",
+   "inputs_hash": "9cf67eeedebaa998",
    "external_copies": []
   }
  }

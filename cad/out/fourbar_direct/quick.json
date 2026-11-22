@@ -1034,39 +1034,43 @@
  "bloat": {
   "unused-import": 0,
   "unused-variable": 0,
-  "dead-def": 1,
+  "dead-def": 0,
   "duplicate": 0,
   "orphan-param": 0,
   "orphan-catalogue": 0,
   "orphan-interface": 0,
   "orphan-envelope": 0,
   "out-unindexed": 0,
-  "scratch": 1
+  "scratch": 0
+ },
+ "holes_changed": {
+  "parts": [],
+  "fails": []
  },
  "summary": [
   {
    "check": "envelopes",
    "ok": true,
    "note": "10 pose checks",
-   "s": 1.8
+   "s": 0.8
   },
   {
    "check": "interfaces",
    "ok": true,
    "note": "16 sides",
-   "s": 0.2
+   "s": 0.1
   },
   {
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 10.3
+   "s": 4.6
   },
   {
    "check": "mass/torque",
    "ok": true,
    "note": "past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m",
-   "s": 3.6
+   "s": 1.5
   },
   {
    "check": "catalogue",
@@ -1078,26 +1082,32 @@
    "check": "level-keep",
    "ok": true,
    "note": "closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits",
-   "s": 0.3
+   "s": 0.2
   },
   {
    "check": "seating",
    "ok": true,
    "note": "127 fasteners, 0 FAIL",
-   "s": 6.0
+   "s": 3.0
   },
   {
    "check": "bloat",
    "ok": null,
-   "note": "2 findings (dead-def 1, scratch 1), 14 kept",
-   "s": 3.0
+   "note": "0 findings (none), 3 kept",
+   "s": 1.4
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 81.5
+   "s": 36.6
+  },
+  {
+   "check": "holes/eng",
+   "ok": true,
+   "note": "no changed parts",
+   "s": 0.0
   }
  ],
- "elapsed_s": 157.8
+ "elapsed_s": 72.7
 }
