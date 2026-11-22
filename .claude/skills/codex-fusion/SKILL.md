@@ -1,6 +1,6 @@
 ---
 name: codex-fusion
-description: Hand Fusion placement or assembly work to the Codex session (gpt-6.2-astra) that has the Fusion MCP, or ask it how to do something in Fusion. Use when a Fusion edit fails through the API from here (occurrence moves revert, nested placements, configured designs) or the user asks to delegate to Codex.
+description: Hand Fusion placement or assembly work to the long-lived Codex session that has the Fusion MCP (model and thread id in run_codex_visible.ps1), or ask it how to do something in Fusion. Use when a Fusion edit fails through the API from here (occurrence moves revert, nested placements, configured designs) or the user asks to delegate to Codex.
 ---
 
 # Delegate Fusion work to Codex

@@ -1,6 +1,7 @@
 ---
 name: repo-upkeep
 description: Daily upkeep of this repo's tooling in two phases. (A) Audit the agent harness (CLAUDE.md, .claude/ skills, agents, hooks and settings, MCP servers, scheduled agents, the Codex hand-off) against the latest Claude Code, Claude platform and OpenAI docs. (B) Land one CAD-tooling improvement (open tooling issues, check gaps, check speed, real dead code). Use for the scheduled daily run, or when asked to bring the tooling up to date.
+disable-model-invocation: true
 ---
 
 # Repo upkeep (daily)
@@ -32,6 +33,18 @@ the direct-drive base (fingerprint `fourbar_direct`).
 `~/.claude/scheduled-tasks/*/SKILL.md` and their recent runs (a run that ended after a few turns with "Request
 interrupted ... for tool use" was stopped by a permission prompt); the Codex hand-off
 (`.claude/skills/codex-fusion/SKILL.md`, `C:\Users\ryanh\tools\_agent\codex-fusion\`).
+
+**Check the standing best practices, every run, not only what changed.** A repo can fall behind without anything
+new being published.
+- Re-read `/en/best-practices` in the `claude-code-docs` MCP and check the repo against it: CLAUDE.md holds only
+  what Claude can't find in the repo (exact check commands, decisions, gotchas; no layout tours); procedures are in
+  skills, and skills with side effects have `disable-model-invocation: true`; rules with zero exceptions are hooks or
+  deny rules rather than CLAUDE.md lines; rules for one area are path-scoped in `.claude/rules/`; the unattended run
+  answers the five questions under "Let Claude run without you" (done, self-check, what it may touch, what stops
+  it, who signs off).
+- Run the instruction audit headless, read-only:
+  `MSYS_NO_PATHCONV=1 claude -p "/doctor prompt-audit" --permission-mode plan` (without the variable, Git Bash
+  rewrites the leading `/` into a path). Check each finding against the files before acting on it.
 
 **Read what is new, primary sources only, citing the page for every finding.**
 - `claude-code-docs` MCP: the changelog, and the pages for skills, sub-agents, hooks, settings, permissions,
@@ -95,7 +108,7 @@ version, docs pages read, phase A result, phase B result (category, what changed
 with numbers), suggestions, gate results. Add or update a TI row for any issue fixed or found.
 
 ## 3. Publish
-Commit with `GIT_NO_AUTOPUSH=1`, message ending `Co-Authored-By: Claude <noreply@anthropic.com>`. Then
+Commit with `GIT_NO_AUTOPUSH=1`, message ending with the attribution line the session gives (else `Co-Authored-By: Claude <noreply@anthropic.com>`). Then
 fast-forward main: `git push origin upkeep/<date>:main` (never force, never rewrite history). If a gate failed or
 it is not a fast-forward, leave the branch and worktree and record the run as "blocked" with the reason.
 Otherwise remove the worktree and the local branch.
