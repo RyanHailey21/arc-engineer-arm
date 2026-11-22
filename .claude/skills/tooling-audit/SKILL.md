@@ -1,6 +1,6 @@
 ---
 name: tooling-audit
-description: Audit this repo's agent tooling (CLAUDE.md, .claude/ skills, agents, hooks and settings, MCP servers, scheduled agents, the Codex hand-off) against the latest Claude Code, Claude platform and OpenAI documentation, then land the safe improvements and list the rest as suggestions. Use weekly (scheduled) or when asked to bring the agent tooling up to date.
+description: Audit this repo's agent tooling (CLAUDE.md, .claude/ skills, agents, hooks and settings, MCP servers, scheduled agents, the Codex hand-off) against the latest Claude Code, Claude platform and OpenAI documentation, then land the safe improvements and list the rest as suggestions. Use daily (scheduled) or when asked to bring the agent tooling up to date.
 ---
 
 # Agent tooling audit
@@ -10,7 +10,7 @@ would make agent work here faster, safer or more reliable, land the ones that ar
 user. One run lands at most a few related changes; nothing trivial (see "Meaningfulness").
 
 The twice-daily tooling agent (`~/.claude/scheduled-tasks/arm-weekly-bloat-cleanup`) owns the CAD checks in
-`cad/tools/` and `cad/tests/`. This audit owns the agent harness. Don't take its work.
+`cad/tools/` and `cad/tests/`. This audit owns the agent harness. Don't take its work. It runs daily, so most runs find nothing new: then record "no change" with the pages checked and stop, without forcing a change.
 
 ## 1. Read the current state
 - `CLAUDE.md`, `.claude/settings.json`, `.claude/skills/*/SKILL.md`, `.claude/agents/` (if any), `cad/tools/hooks/`.
