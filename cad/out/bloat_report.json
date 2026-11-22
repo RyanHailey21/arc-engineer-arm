@@ -110,8 +110,6 @@
  "stale_keep": [],
  "notes": [],
  "new": [],
- "resolved": [
-  "dead-def:fusion/update_references.py:run_docs"
- ],
+ "resolved": [],
  "keep_file": "cad/tools/bloat_keep.toml"
 }

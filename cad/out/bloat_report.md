@@ -5,8 +5,6 @@ Keep-list: `cad/tools/bloat_keep.toml`. Ids are stable (`kind:path:name`); `bloa
 
 **BLOAT 0 findings (none), 10 kept**
 
-Since the last run: 0 new, 1 resolved.
-
 Before deleting a `dead-def`, grep for names built at run time; before removing an `orphan-param`, check for code that iterates its table. Never touch anything under **Kept**.
 
 ## Kept (10)

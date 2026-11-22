@@ -22,7 +22,7 @@
   "artifacts": [],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-22T15:18:19",
+   "time": "2026-11-22T15:36:25",
    "inputs_hash": "9cf67eeedebaa998",
    "external_copies": [
     "out/bloat_report.md",

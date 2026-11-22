@@ -8,7 +8,7 @@
   "inputs_hash": "9cf67eeedebaa998",
   "note": "BLOAT 0 findings (none), 10 kept",
   "status": "PASS",
-  "time": "2026-11-22T15:18:19"
+  "time": "2026-11-22T15:36:25"
  },
  "bom": {
   "evidence": "bom.evidence.json",
