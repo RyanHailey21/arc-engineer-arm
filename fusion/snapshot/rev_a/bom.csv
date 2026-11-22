@@ -2,7 +2,7 @@ component,qty,material,mass_g,source_id,source_version
 "3PIN-1_1",6,"STS3215 (catalogue mass)",0.409,None,None
 "4040V300",2,"DM-J4340-2EC (catalogue mass)",14.832,None,None
 "4310_202409130001",2,"DM-J4340-2EC (catalogue mass)",13.802,None,None
-"4340__3D_20240814_1_2_4",2,"DM-J4340-2EC (catalogue mass)",16.097,None,None
+"4340__3D_20240814_1_2_4",2,"DM-J4340-2EC (catalogue mass)",16.096,None,None
 "6700ZZ",6,"6700ZZ (catalogue mass)",2.000,urn:adsk.wipprod:dm.lineage:_ZNgT1JnSXyAGqzcjyGA-w,3
 "6701ZZ",1,"6701ZZ (catalogue mass)",3.000,urn:adsk.wipprod:dm.lineage:Fkx3lJ7nSkWrQ4nVjmOfjg,3
 "6805ZZ",1,"6805ZZ (catalogue mass)",18.000,urn:adsk.wipprod:dm.lineage:2fK2Oh36RiWw_O2DUTDciQ,3
@@ -31,7 +31,7 @@ component,qty,material,mass_g,source_id,source_version
 "Forearm_L_CF3",1,"CF plate 3K",37.802,urn:adsk.wipprod:dm.lineage:HhxNsBd9QfST1_QGP84bEA,2
 "Forearm_R_CF3",1,"CF plate 3K",37.802,urn:adsk.wipprod:dm.lineage:2501f9_yQA2CFKnAee_UCw,2
 "G43_V1_1_3-230824_4",2,"DM-J4340-2EC (catalogue mass)",10.411,None,None
-"Gripper_Palm",1,"PETG-CF print (effective)",65.976,urn:adsk.wipprod:dm.lineage:wxfNb0iAT2iXjeidN2u2mg,2
+"Gripper_Palm",1,"PETG-CF print (effective)",65.976,urn:adsk.wipprod:dm.lineage:wxfNb0iAT2iXjeidN2u2mg,3
 "INSERT",18,"INSERT (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:Gb7W_OS_Q7Oim2wk-y7I9Q,3
 "J1_Output_Hub",1,"Aluminum 6061",13.024,urn:adsk.wipprod:dm.lineage:15JAW7C5R6Chn9TqLCRHdA,3
 "J2_Output_Hub_Journal",1,"Aluminum 6061",16.466,urn:adsk.wipprod:dm.lineage:lfU8fLgiRSaGSRgz6MKdRw,3
@@ -64,10 +64,10 @@ component,qty,material,mass_g,source_id,source_version
 "PAN-M2x12",8,"PAN-M2x12 (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:KYhiKBSHTKan5gwdf7Tnwg,3
 "PCB-CHAZUO_92_2",3,"STS3215 (catalogue mass)",1.955,None,None
 "PCLIP (placeholder)",2,"PCLIP (catalogue mass)",1.000,urn:adsk.wipprod:dm.lineage:8IivQ1vMQlOrXbUQwjLGsA,2
-"PIN-D4x14",10,"PIN-D4x14 (catalogue mass)",1.400,urn:adsk.wipprod:dm.lineage:9c_18b9_RgiFr_OLkYYsJA,2
-"PIN-D4x20",1,"PIN-D4x20 (catalogue mass)",2.000,urn:adsk.wipprod:dm.lineage:7l8EkxA4SlqkIaIgPERwhg,2
-"PIN-D4x30",1,"PIN-D4x30 (catalogue mass)",3.000,urn:adsk.wipprod:dm.lineage:y9AJF3WPRgS7xW5eNCAZWw,2
-"PIN-D4x8",4,"PIN-D4x8 (catalogue mass)",0.800,urn:adsk.wipprod:dm.lineage:83z5oFJRRuuL-EuhoBaokw,2
+"PIN-D4x14",10,"PIN-D4x14 (catalogue mass)",1.400,urn:adsk.wipprod:dm.lineage:9c_18b9_RgiFr_OLkYYsJA,3
+"PIN-D4x20",1,"PIN-D4x20 (catalogue mass)",2.000,urn:adsk.wipprod:dm.lineage:7l8EkxA4SlqkIaIgPERwhg,3
+"PIN-D4x30",1,"PIN-D4x30 (catalogue mass)",3.000,urn:adsk.wipprod:dm.lineage:y9AJF3WPRgS7xW5eNCAZWw,3
+"PIN-D4x8",4,"PIN-D4x8 (catalogue mass)",0.800,urn:adsk.wipprod:dm.lineage:83z5oFJRRuuL-EuhoBaokw,3
 "Pad_L_TPU",1,"TPU print (effective)",19.620,urn:adsk.wipprod:dm.lineage:4t-y8JeuRpSo2KikloCD0Q,2
 "Pad_R_TPU",1,"TPU print (effective)",19.620,urn:adsk.wipprod:dm.lineage:pO-AYcvMTvmrbhGoA3zcFQ,2
 "Rod_1_CF3",1,"CF plate 3K",17.340,urn:adsk.wipprod:dm.lineage:-9fZ7ryVRFqErvXzhkiShA,2
@@ -81,7 +81,7 @@ component,qty,material,mass_g,source_id,source_version
 "SB5x4",1,"Steel",3.034,urn:adsk.wipprod:dm.lineage:PwuLRF5PTjOhEt6VvplUnA,2
 "SB5x8",3,"Steel",3.409,urn:adsk.wipprod:dm.lineage:sv0F5xT5T66lCJ91memEZw,2
 "SHCS_M3x6",12,"Steel",0.726,urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw,2
-"SHCS_M4x12",4,"Steel",1.931,urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA,2
+"SHCS_M4x12",4,"Steel",1.933,urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA,2
 "SHCS_M4x8",1,"Steel",1.619,urn:adsk.wipprod:dm.lineage:G55wbKMDR_2D433JI0yOFA,2
 "SJ-WK00-0021TOPCABINETCASE_104",3,"STS3215 (catalogue mass)",13.080,None,None
 "SJ-WK00-0022MIDDLECASE_68",3,"STS3215 (catalogue mass)",8.637,None,None
@@ -108,7 +108,7 @@ component,qty,material,mass_g,source_id,source_version
 "UA_Standoff_D8_1",1,"Aluminum 6061",10.739,urn:adsk.wipprod:dm.lineage:a7QwMGnsT-K_gNvL6nFVeg,2
 "Upper_Arm_L_CF3",1,"CF plate 3K",31.976,urn:adsk.wipprod:dm.lineage:GoRgoG4jQ56Ikw8yLCvXug,4
 "Upper_Arm_R_CF3",1,"CF plate 3K",31.447,urn:adsk.wipprod:dm.lineage:3wh6UplhTDiln-CMVxl8Bg,2
-"WASHER-D4",4,"WASHER-D4 (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:IggnPTkGRR2WTcTTrb4epg,2
+"WASHER-D4",4,"WASHER-D4 (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:IggnPTkGRR2WTcTTrb4epg,3
 "WJ-DP00-0002-FK-AP-020_7",3,"STS3215 (catalogue mass)",1.773,None,None
 "Washer_Dv2_head",1,"Shim steel 7.90",0.068,urn:adsk.wipprod:dm.lineage:dOA_Tgn8SPmJeKMa8fVIuQ,2
 "Washer_Ev2_head",1,"Shim steel 7.90",0.068,urn:adsk.wipprod:dm.lineage:5Bi9NFuhRd6BuySu0vBflw,2
