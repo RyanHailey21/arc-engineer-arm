@@ -7,7 +7,7 @@ Start with `cad/MAP.md` (generated): every module, parameter file, interface, ke
 - Design inputs live in `cad/params/*.toml`, `cad/interfaces/*.toml` (mates; both parts build from the file through `cad/iface.py`), `cad/envelopes/*.toml` (field keep-outs) and `cad/data/catalogue.toml` (purchased parts). **Edit these, not literals in code.** New mates or limits go there first; when you move a part, check its mate is in `interfaces/` (a standoff moved through a parameter once left its plate holes behind).
 - `cad/params/variant.toml` sets the gripper (`GRIP`, only `FOURBAR`) and the J1/J2 base drive (`BASE_DRIVE`: `GEARED` = rev B STS3215 + 3:1 spur stage; `DIRECT` = DM-J4340 direct drive, Fusion "Rev A", outputs and fingerprint `fourbar_direct`). Env vars override it.
 - `import arm_model as M` (`cad/arm_model.py`) is the compatibility facade over `cad/arm/`.
-- New gripper: `cad/arm/grippers/<name>.py` with `<name>_bodies()` and `<name>_placements(Hd, jaw)`, registered in `cad/arm/bodies.py` GRIPPERS, mounted on `cad/interfaces/roll_hub__gripper_palm.toml`.
+- New gripper: `cad/arm/grippers/<name>.py` with a bodies function and a `placements(Hd, jaw)` function (names are free: FOURBAR's are `fourbar_bodies`, `fb_placements`), paired in `cad/arm/bodies.py` GRIPPERS, mounted on `cad/interfaces/roll_hub__gripper_palm.toml`.
 - Autodesk Fusion is the design master; the team edits there. Fusion work follows the `fusion-change` skill, one Fusion writer at a time (you or Codex, see `codex-fusion`).
 
 ## Frames
