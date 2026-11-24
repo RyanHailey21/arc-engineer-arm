@@ -20,7 +20,7 @@ git -C "$CLAUDE_PROJECT_DIR" diff --stat HEAD
 |---|---|---|
 | `cad/arm/`, `cad/params/`, `cad/interfaces/`, `cad/envelopes/`, `cad/data/`, `cad/hardware.py`, `cad/iface.py`, `cad/params.py`, `cad/vendor/` | `python -I cad/tools/run.py cad/tools/quick_check.py` (about 90 s; in the background) | `QUICK fourbar: PASS`, fingerprint MATCH |
 | the same, when the base or a shared module changed | the same with `BASE_DRIVE=DIRECT` | `QUICK fourbar_direct: PASS` |
-| an intended geometry change | `FP_MODE=record` fingerprint after the quick check, then name the parts that changed in the commit message | |
+| an intended geometry change | after the quick check, `FP_MODE=record python -I cad/tools/run.py cad/tools/fingerprint.py` (quick_check ignores `FP_MODE`), again with `BASE_DRIVE=DIRECT` if that variant changed; name the parts that changed in the commit message | `FINGERPRINT` recorded, then quick_check MATCH |
 | `fusion/snapshot/` | `SNAP_REV=rev_b python -I cad/tools/run.py fusion/checks/mass_torque.py`, and rev A with `BASE_DRIVE=DIRECT` | the 5 % torque agreement still holds |
 | `cad/docs/paper/` or any check result the paper reads | `python -I cad/docs/paper/make_paper.py` | the PDF rebuilds; look at the pages that changed |
 | `cad/tools/`, `cad/tests/`, `.claude/` | each test in `cad/tests/` that covers the file (its docstring gives the command), `python -I cad/tools/validate_data.py`, `python -I cad/tools/bloat_report.py --counts` | 0 FAIL, no new bloat findings |

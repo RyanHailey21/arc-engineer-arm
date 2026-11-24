@@ -16,7 +16,7 @@ Start with `cad/MAP.md` (generated): every module, parameter file, interface, ke
 - `jaw` = gap between the pad arcs at the TCP: pipe 13.8, donut 100, open 112.
 
 ## Checks (run from the repo root; `cad/tools/run.py` keeps freecadcmd's output and exit code)
-- After a change: `python -I cad/tools/run.py cad/tools/quick_check.py` (about 90 s). PASS and fingerprint MATCH; add `BASE_DRIVE=DIRECT` when the base or a shared module changed. After an *intended* geometry change, re-record with `FP_MODE=record` and say which parts changed. The `verify` skill picks the checks for a given diff.
+- After a change: `python -I cad/tools/run.py cad/tools/quick_check.py` (about 90 s). PASS and fingerprint MATCH; add `BASE_DRIVE=DIRECT` when the base or a shared module changed. After an *intended* geometry change, re-record with `FP_MODE=record python -I cad/tools/run.py cad/tools/fingerprint.py` (quick_check ignores `FP_MODE`; again with `BASE_DRIVE=DIRECT` if that variant changed) and say which parts changed. The `verify` skill picks the checks for a given diff.
 - Milestones: `python -I cad/tools/run.py --timeout 900 cad/check_interference.py` (about 4 min, ground truth). FEA and renders only on request.
 - `cad/out/<variant>/manifest.json` records each check's status and inputs hash (FRESH/STALE).
 - The FreeCAD working document `cad/out/<variant>/ARC_Arm_<Variant>.FCStd` (Git LFS) is rebuilt by `cad/tools/working_doc.py`. A headless rebuild leaves a copy open in the GUI stale: rebuild in the GUI before showing the model, then run `import check_working_doc as W; W.main()` there.
