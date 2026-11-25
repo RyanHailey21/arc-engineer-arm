@@ -10,8 +10,8 @@ Choose checks from what changed. Run nothing that the change cannot affect.
 ## 1. See what changed
 
 ```
-git -C "$CLAUDE_PROJECT_DIR" status --short
-git -C "$CLAUDE_PROJECT_DIR" diff --stat HEAD
+git -C "${CLAUDE_PROJECT_DIR}" status --short
+git -C "${CLAUDE_PROJECT_DIR}" diff --stat HEAD
 ```
 
 ## 2. Run the checks those paths need

@@ -40,4 +40,4 @@ threshold 0.5 mm^3, 5 steps per segment
 
 Modelled arm mass incl. motors and gripper drive: 2049 g
 boolean cache: 1598 hits, 4184 computed
-elapsed 402 s
+elapsed 719 s

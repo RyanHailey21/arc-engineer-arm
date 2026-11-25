@@ -11,7 +11,8 @@ an unknown field is ignored (code.claude.com/docs/en/skills). So this checks, fo
     (code.claude.com/docs/en/tools-reference#bash-deny-rules-also-turn-off-the-powershell-tool);
   - every skill and agent file has a frontmatter block of simple `key: value` lines, a `name` equal to its folder
     (skills) or file (agents), a non-empty description of at most 1,536 characters (the listing cut-off), only
-    documented keys, and a body under 500 lines.
+    documented keys, and a body under 500 lines that names `${CLAUDE_PROJECT_DIR}`-style variables only in the
+    braced form Claude Code substitutes (the bare `$CLAUDE_PROJECT_DIR` is empty in the Bash tool).
 It runs on the real files, then on broken copies in memory to prove each rule fires.
 """
 import json
@@ -30,6 +31,9 @@ AGENT_KEYS = {"name", "description", "tools", "disallowedTools", "model", "permi
 MAX_DESC = 1536
 REQUIRED_DENY = ("Bash(git push --force*)", "Bash(git push -f*)", "Bash(git reset --hard*)", "Bash(git clean *)")
 MAX_LINES = 500
+# code.claude.com/docs/en/skills#available-string-substitutions: ${CLAUDE_PROJECT_DIR} / ${CLAUDE_SKILL_DIR} are
+# filled in in the skill's text; the Bash tool does not export them, so the bare $NAME form expands to "" there
+UNBRACED = re.compile(r"\$(CLAUDE_PROJECT_DIR|CLAUDE_SKILL_DIR|CLAUDE_SESSION_ID|CLAUDE_EFFORT)(?!\w)")
 
 
 def frontmatter(text):
@@ -73,6 +77,9 @@ def check_doc(path, text, expect_name, allowed):
         errs.append("%s: undocumented key %r (ignored by Claude Code)" % (path, k))
     if body.count("\n") > MAX_LINES:
         errs.append("%s: body over %d lines" % (path, MAX_LINES))
+    for v in sorted(set(UNBRACED.findall(body))):
+        errs.append("%s: $%s in the body: only ${%s} is substituted in skill text; the shell leaves it empty"
+                    % (path, v, v))
     return errs
 
 
@@ -130,9 +137,10 @@ def negatives():
         "long description": good.replace("Does a thing.", "a" * (MAX_DESC + 1)),
         "unknown key": good.replace("name: x", "name: x\nallowed_tools: Bash"),
         "long body": good + "line\n" * (MAX_LINES + 1),
+        "unbraced variable": good + 'git -C "$CLAUDE_PROJECT_DIR" status\n',
     }
     missed = [k for k, t in cases.items() if not check_doc("case", t, "x", SKILL_KEYS)]
-    if check_doc("good", good, "x", SKILL_KEYS):
+    if check_doc("good", good + 'git -C "${CLAUDE_PROJECT_DIR}" status\n', "x", SKILL_KEYS):
         missed.append("good case flagged")
     full = {"permissions": {"deny": [r for b in REQUIRED_DENY for r in (b, "PowerShell(" + b[5:])]}}
     if check_settings(json.dumps(full)):
