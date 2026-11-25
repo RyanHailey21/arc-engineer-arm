@@ -18,12 +18,15 @@ briefs and reports).
    - the documents it may save, by name; it stops on anything outside the list;
    - the report file to write, `work\<topic>_report.md`, with the measurements;
    - "Do not launch or kill Fusion; the watchdog does."
-   No double quotes anywhere in the brief: it is passed as one argument.
+   No double quotes anywhere in the brief: it is passed as one argument. Give every file as an absolute path:
+   Codex starts in the project folder (`C:\Users\ryanh\light_weight_arm`, never the home folder), with the
+   codex-fusion folder added as a writable directory, so `work\...` is not relative to its working directory.
 2. Stop any earlier Codex window first: find `powershell.exe` processes whose command line contains
    `run_codex_visible.ps1` (`Get-CimInstance Win32_Process`) and end each with `taskkill /PID <id> /T /F`.
 3. Launch it outside this session's job object, so it survives the turn:
    `Invoke-CimMethod Win32_Process -MethodName Create -Arguments @{CommandLine = 'powershell.exe -NoExit -ExecutionPolicy Bypass -File C:\Users\ryanh\tools\_agent\codex-fusion\run_codex_visible.ps1'}`.
-   The script runs the newest `work\resume_prompt_*.txt`.
+   The script runs the newest `work\resume_prompt_*.txt`, in the project folder (`codex resume ... -C <project>
+   --add-dir <codex-fusion>`). For any other Codex use, start it the same way: `cd C:\Users\ryanh\light_weight_arm; codex`.
 4. Wait for the report file with a background loop (`run_in_background`), not by polling. Typing into the Codex
    window does not work when the laptop lid is closed; to steer it, write a new brief and restart it.
 5. Check its work yourself: re-snapshot and run the checks (the `fusion-change` skill, steps 3 to 7). A report
