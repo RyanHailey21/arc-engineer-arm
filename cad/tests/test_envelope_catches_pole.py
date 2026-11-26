@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Negative test: the envelope check must catch the pole clash the first four-bar head had
-(jaw blocks reaching x 165 above the pads).  Run with freecadcmd; prints TEST PASS / TEST FAIL."""
+(jaw blocks reaching x 165 above the pads).  Run with freecadcmd; prints TEST PASS / TEST FAIL
+and exits 1 on FAIL (TI-039)."""
 import os
 import sys
 CAD = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # this checkout or worktree (TI-022)
@@ -15,3 +16,4 @@ ok, res = Q.envelopes(M.build_bodies())
 hit = [r for r in res if r["envelope"] == "pole_above_fingers" and not r["ok"]]
 print("TEST %s: pole_above_fingers %s" % ("PASS" if hit else "FAIL",
       "flagged " + ", ".join(h["part"] for h in hit[0]["hits"]) if hit else "NOT flagged"))
+sys.exit(0 if hit else 1)

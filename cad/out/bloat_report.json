@@ -1,5 +1,15 @@
 {
- "findings": [],
+ "findings": [
+  {
+   "kind": "duplicate",
+   "path": "cad/tests/test_no_checkout_paths.py",
+   "line": 95,
+   "name": "near-2b7b7527a9",
+   "detail": "8 near-identical (renamed) lines also at cad/tests/test_tests_exit_code.py:60",
+   "id": "duplicate:cad/tests/test_no_checkout_paths.py:near-2b7b7527a9",
+   "other": "cad/tests/test_tests_exit_code.py"
+  }
+ ],
  "kept": [
   {
    "kind": "dead-def",
@@ -50,11 +60,65 @@
   },
   {
    "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/PLATES.md",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/PLATES.md",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/PLATES.md:cad/out/fourbar/print/gcode/PLATES.md",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA.gcode",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA.gcode",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA.gcode:cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate2_gears_crank_rocker_S1Pro_PLA.gcode",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate2_gears_crank_rocker_S1Pro_PLA.gcode",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate2_gears_crank_rocker_S1Pro_PLA.gcode:cad/out/fourbar/print/gcode/plate2_gears_crank_rocker_S1Pro_PLA.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate3_forearmA_rod2_S1Pro_PLA.gcode",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate3_forearmA_rod2_S1Pro_PLA.gcode",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate3_forearmA_rod2_S1Pro_PLA.gcode:cad/out/fourbar/print/gcode/plate3_forearmA_rod2_S1Pro_PLA.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA.gcode",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA.gcode",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA.gcode:cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
    "path": "cad/out/fourbar/print/gcode/test_pieces_S1Pro_PETG.gcode",
    "line": 1,
    "name": "cad/out/fourbar/print/gcode/test_pieces_S1Pro_PETG.gcode",
    "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
    "id": "out-unindexed:cad/out/fourbar/print/gcode/test_pieces_S1Pro_PETG.gcode:cad/out/fourbar/print/gcode/test_pieces_S1Pro_PETG.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/test_pieces_S1Pro_PLA.gcode",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/test_pieces_S1Pro_PLA.gcode",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/test_pieces_S1Pro_PLA.gcode:cad/out/fourbar/print/gcode/test_pieces_S1Pro_PLA.gcode",
    "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
   }
  ],
@@ -62,7 +126,7 @@
   "unused-import": 0,
   "unused-variable": 0,
   "dead-def": 0,
-  "duplicate": 0,
+  "duplicate": 1,
   "orphan-param": 0,
   "orphan-catalogue": 0,
   "orphan-interface": 0,
@@ -70,7 +134,7 @@
   "out-unindexed": 0,
   "scratch": 0
  },
- "scanned": 82,
+ "scanned": 84,
  "stale_keep": [],
  "notes": [
   "fourbar/map_parts.md is older than the model inputs (rerun tools/make_map.py)",

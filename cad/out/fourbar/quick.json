@@ -706,13 +706,13 @@
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 10.8
+   "s": 10.6
   },
   {
    "check": "mass/torque",
    "ok": true,
    "note": "past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m",
-   "s": 4.1
+   "s": 4.0
   },
   {
    "check": "catalogue",
@@ -730,19 +730,19 @@
    "check": "seating",
    "ok": true,
    "note": "119 fasteners, 0 FAIL",
-   "s": 6.7
+   "s": 6.8
   },
   {
    "check": "bloat",
    "ok": null,
-   "note": "0 findings (none), 6 kept",
+   "note": "0 findings (none), 12 kept",
    "s": 3.1
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 55.7
+   "s": 57.2
   },
   {
    "check": "holes/eng",
@@ -751,5 +751,5 @@
    "s": 0.0
   }
  ],
- "elapsed_s": 148.5
+ "elapsed_s": 151.2
 }

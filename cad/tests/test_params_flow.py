@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """Parameter flow test: a value set in params/gripper_fourbar.toml must reach the geometry.  Overrides XMAX at
 the loader (as if the TOML were edited back to the first head's 165) and expects the pole envelope to fire;
-also checks the default variant comes from params/variant.toml.  Run with freecadcmd; prints TEST PASS / FAIL."""
+also checks the default variant comes from params/variant.toml.  Run with freecadcmd; prints TEST PASS / FAIL
+and exits 1 on FAIL (TI-039)."""
 import os
 import sys
 CAD = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # this checkout or worktree (TI-022)
@@ -19,3 +20,4 @@ ok, res = Q.envelopes(M.build_bodies())
 hit = [r for r in res if r["envelope"] == "pole_above_fingers" and not r["ok"]]
 print("TEST %s: variant from file %s (%s); XMAX=165 from params %s" % (
     "PASS" if hit and ok_var else "FAIL", ok_var, M.GRIP, "flagged by the pole envelope" if hit else "NOT flagged"))
+sys.exit(0 if hit and ok_var else 1)

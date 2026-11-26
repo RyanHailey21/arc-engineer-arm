@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
   "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 0 findings (none), 6 kept; fingerprint MATCH; holes/eng no changed parts",
-  "scope": "envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 0 findings (none), 6 kept; fingerprint MATCH; holes/eng no changed parts",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 0 findings (none), 12 kept; fingerprint MATCH; holes/eng no changed parts",
+  "scope": "envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 0 findings (none), 12 kept; fingerprint MATCH; holes/eng no changed parts",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -24,12 +24,12 @@
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "5cd83872854ff2b8407599092d54bd7184ffc8d6c8f5c82ede5b711d3035b700"
+    "sha256": "137767ba185921c558ca7a2089400438bed6655df572f1fa9a71d282e7108a81"
    }
   ],
   "extensions": {
    "variant": "FOURBAR_DIRECT",
-   "time": "2026-11-25T06:48:46",
+   "time": "2026-11-26T06:54:35",
    "inputs_hash": "9cf67eeedebaa998",
    "external_copies": []
   }

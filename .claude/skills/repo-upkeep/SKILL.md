@@ -94,7 +94,8 @@ hints; moving code without changing behaviour. These may only ride along with a 
 
 ## 1. Gates (in the worktree; all must pass)
 Always: `python -I cad/tools/validate_data.py`; `python -I cad/tests/test_agent_config.py`;
-`python -I cad/tests/test_no_checkout_paths.py`; `python -I cad/tools/bloat_report.py --counts` (no new findings).
+`python -I cad/tests/test_no_checkout_paths.py`; `python -I cad/tests/test_tests_exit_code.py`;
+`python -I cad/tools/bloat_report.py --counts` (no new findings).
 If anything outside `.claude/`, `CLAUDE.md`, `cad/docs/` and `cad/tools/hooks/` changed, also:
 - `cad/tools/quick_check.py` as is and with `BASE_DRIVE=DIRECT`: no FAIL, fingerprint MATCH for both (CHANGED
   means you changed geometry: revert it);

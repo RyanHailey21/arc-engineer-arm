@@ -1088,19 +1088,19 @@
    "check": "seating",
    "ok": true,
    "note": "127 fasteners, 0 FAIL",
-   "s": 6.1
+   "s": 6.2
   },
   {
    "check": "bloat",
    "ok": null,
-   "note": "0 findings (none), 6 kept",
-   "s": 3.0
+   "note": "0 findings (none), 12 kept",
+   "s": 3.1
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 76.1
+   "s": 80.4
   },
   {
    "check": "holes/eng",
@@ -1109,5 +1109,5 @@
    "s": 0.0
   }
  ],
- "elapsed_s": 151.7
+ "elapsed_s": 155.7
 }
