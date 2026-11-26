@@ -19,9 +19,8 @@ Each plate's `*_preview/` folder holds the slicer's first-layer, top and isometr
 | `plate6_forearmR_A_S1Pro_PLA.gcode` | `Forearm_R_CF3_A` (266 mm, diagonal) | 15 / 3.0 mm | 1h 27m | 17.3 g | Queued next for `a1` (27 min, 14.2 g) |
 
 ## Bambu Lab Plates (2026-11-26, PLA 220 C / 60-65 C Textured PEI, 3 walls, 25% gyroid)
-- **Printing on `p1s-1`:** `Drive_Frame_L` (bearing wall down, tree auto supports on build plate only, 5h 21m, 106.8 g)
 - **Printing on `p1s-2`:** `Roll_Housing`, `Wrist_Servo_Cradle`, `J2_Output_Hub_Journal`, `Elbow_Shaft_D10x101`, `Wrist_Shaft_D10x70`, `FA_Standoff_D8_0/1`, `UA_Standoff_D8_0/1` (9 parts, tree auto supports, 3h 55m, 112.7 g)
-- **Sliced & queued:** `Drive_Frame_R` (P1S, 5h 20m, 106.6 g), `Base_Plate_AL5` (A1, 2h 01m, 64.4 g), `Tower_L_CF3` (A1, 1h 06m, 37.8 g), `Tower_R_CF3` (A1, 1h 02m, 35.4 g)
+- **Sliced & queued:** `Drive_Frame_L` (P1S, 5h 21m, 106.8 g; stopped on `p1s-1` for another team), `Drive_Frame_R` (P1S, 5h 20m, 106.6 g), `Base_Plate_AL5` (A1, 2h 01m, 64.4 g), `Tower_L_CF3` (A1, 1h 06m, 37.8 g), `Tower_R_CF3` (A1, 1h 02m, 35.4 g)
 
 ## Remaining Un-Sliced Parts
 - Shims, spacers, and PTFE washers (`Shim_A`, `Shim_Ev1`, `Spacer_B`, `Spacer_G1`, `Sleeve_E_outer`, `Washer_*`)
