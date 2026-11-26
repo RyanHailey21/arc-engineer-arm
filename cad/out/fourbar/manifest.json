@@ -38,9 +38,9 @@
    "print/print_list.csv"
   ],
   "inputs_hash": "9cf67eeedebaa998",
-  "note": "84 STL (77 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4), 1163 cm3; off the Ender-3 S1 Pro bed: none",
+  "note": "84 STL (77 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4; socket wall >= 4.50 mm), 1166 cm3; failed: none",
   "status": "PASS",
-  "time": "2026-11-22T12:21:33"
+  "time": "2026-11-26T08:36:34"
  },
  "fea_fourbar": {
   "evidence": "fea_fourbar.evidence.json",

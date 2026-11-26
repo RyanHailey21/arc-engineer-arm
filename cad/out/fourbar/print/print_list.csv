@@ -9,10 +9,10 @@ Shim_A.stl,Shim_A,CRANK,PETG (or PLA); 0.5 mm = 3 layers at 0.16,8 x 8 x 1.5,0.0
 Elbow_Shaft_D10x101.stl,Elbow_Shaft_D10x101,FOREARM,"PETG (or PLA), or cut from the D10 rod",101 x 10 x 10.0,7.9,flat,P1S; K2 Pro; H2D,"cut from McMaster 6112K47 D10 h6 rod, ground e-clip grooves",
 FA_Standoff_D8_0.stl,FA_Standoff_D8_0,FOREARM,PETG (or PLA),33 x 8 x 8.0,1.5,flat,P1S; K2 Pro; H2D,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",
 FA_Standoff_D8_1.stl,FA_Standoff_D8_1,FOREARM,PETG (or PLA),33 x 8 x 8.0,1.5,flat,P1S; K2 Pro; H2D,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",
-Forearm_L_CF3_A.stl,Forearm_L_CF3,FOREARM,PETG (or PLA); print flat,212 x 28 x 3.0,12.2,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the 2 dovetails to the other half (CA or epoxy); joint at x 124
-Forearm_L_CF3_B.stl,Forearm_L_CF3,FOREARM,PETG (or PLA); print flat,245 x 27 x 3.0,12.1,diagonal,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the 2 dovetails to the other half (CA or epoxy); joint at x 124
-Forearm_R_CF3_A.stl,Forearm_R_CF3,FOREARM,PETG (or PLA); print flat,212 x 28 x 3.0,12.2,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the 2 dovetails to the other half (CA or epoxy); joint at x 124
-Forearm_R_CF3_B.stl,Forearm_R_CF3,FOREARM,PETG (or PLA); print flat,245 x 27 x 3.0,12.1,diagonal,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the 2 dovetails to the other half (CA or epoxy); joint at x 124
+Forearm_L_CF3_A.stl,Forearm_L_CF3,FOREARM,PETG (or PLA); print flat,266 x 28 x 3.0,15.2,diagonal,P1S (diagonal); K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail to the other half (CA or epoxy); joint at x 176; socket wall 4.50 mm
+Forearm_L_CF3_B.stl,Forearm_L_CF3,FOREARM,PETG (or PLA); print flat,191 x 26 x 3.0,9.1,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail to the other half (CA or epoxy); joint at x 176; socket wall 4.50 mm
+Forearm_R_CF3_A.stl,Forearm_R_CF3,FOREARM,PETG (or PLA); print flat,266 x 28 x 3.0,15.2,diagonal,P1S (diagonal); K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail to the other half (CA or epoxy); joint at x 176; socket wall 4.50 mm
+Forearm_R_CF3_B.stl,Forearm_R_CF3,FOREARM,PETG (or PLA); print flat,191 x 26 x 3.0,9.1,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail to the other half (CA or epoxy); joint at x 176; socket wall 4.50 mm
 Spacer_B.stl,Spacer_B,FOREARM,PETG (or PLA),9 x 9 x 8.0,0.3,flat,P1S; K2 Pro; H2D,D9/D5.2 x 8 alu,
 Clevis_L_CF3.stl,Clevis_L_CF3,GRIPPER,PETG (or PLA); print flat,70 x 68 x 3.0,11.6,flat,P1S; K2 Pro; H2D,"3 mm CF plate (DXF), D-bore, 4x csk",
 Clevis_R_CF3.stl,Clevis_R_CF3,GRIPPER,PETG (or PLA); print flat,70 x 68 x 3.0,11.7,flat,P1S; K2 Pro; H2D,"3 mm CF plate (DXF), D-bore",
@@ -69,17 +69,17 @@ Sleeve_E_outer.stl,Sleeve_E_outer,ROCKER,PETG (or PLA),13 x 13 x 5.0,0.3,flat,P1
 Washer_Ev2_head.stl,Washer_Ev2_head,ROCKER,PETG (or PLA); 0.5 mm = 3 layers at 0.16,7 x 7 x 0.5,0.0,flat,P1S; K2 Pro; H2D,"301 SS shim stock 0.5, laser cut",
 Washer_PTFE_E.stl,Washer_PTFE_E,ROCKER,PETG (or PLA),13 x 13 x 6.0,0.3,flat,P1S; K2 Pro; H2D,"PTFE rod D13, turned thrust sleeve",
 Washer_PTFE_Ev2.stl,Washer_PTFE_Ev2,ROCKER,PETG (or PLA),9 x 9 x 1.0,0.0,flat,P1S; K2 Pro; H2D,"PTFE sheet 1.0, laser cut",
-Rod_1_CF3_A.stl,Rod_1_CF3,ROD1,PETG (or PLA); print flat,178 x 17 x 3.0,5.8,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail (lightening slot filled locally) to the other half (CA or epoxy); joint at x 170
-Rod_1_CF3_B.stl,Rod_1_CF3,ROD1,PETG (or PLA); print flat,185 x 17 x 3.0,5.9,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail (lightening slot filled locally) to the other half (CA or epoxy); joint at x 170
-Rod_2_CF4_A.stl,Rod_2_CF4,ROD2,PETG (or PLA); print flat,183 x 16 x 4.0,11.1,flat,P1S; K2 Pro; H2D,4 mm CF plate (DXF),glue the dovetail to the other half (CA or epoxy); joint at x 175
-Rod_2_CF4_B.stl,Rod_2_CF4,ROD2,PETG (or PLA); print flat,190 x 16 x 4.0,10.2,flat,P1S; K2 Pro; H2D,4 mm CF plate (DXF),glue the dovetail to the other half (CA or epoxy); joint at x 175
-Rod_AB_CF3_A.stl,Rod_AB_CF3,ROD_AB,PETG (or PLA); print flat,178 x 17 x 3.0,5.8,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail (lightening slot filled locally) to the other half (CA or epoxy); joint at x 170
-Rod_AB_CF3_B.stl,Rod_AB_CF3,ROD_AB,PETG (or PLA); print flat,185 x 17 x 3.0,5.9,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail (lightening slot filled locally) to the other half (CA or epoxy); joint at x 170
+Rod_1_CF3_A.stl,Rod_1_CF3,ROD1,PETG (or PLA); print flat,178 x 17 x 3.0,5.8,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail (lightening slot filled locally) to the other half (CA or epoxy); joint at x 170; socket wall 4.50 mm
+Rod_1_CF3_B.stl,Rod_1_CF3,ROD1,PETG (or PLA); print flat,185 x 17 x 3.0,5.9,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail (lightening slot filled locally) to the other half (CA or epoxy); joint at x 170; socket wall 4.50 mm
+Rod_2_CF4_A.stl,Rod_2_CF4,ROD2,PETG (or PLA); print flat,183 x 16 x 4.0,11.2,flat,P1S; K2 Pro; H2D,4 mm CF plate (DXF),glue the dovetail to the other half (CA or epoxy); joint at x 175; socket wall 5.00 mm
+Rod_2_CF4_B.stl,Rod_2_CF4,ROD2,PETG (or PLA); print flat,189 x 16 x 4.0,10.2,flat,P1S; K2 Pro; H2D,4 mm CF plate (DXF),glue the dovetail to the other half (CA or epoxy); joint at x 175; socket wall 5.00 mm
+Rod_AB_CF3_A.stl,Rod_AB_CF3,ROD_AB,PETG (or PLA); print flat,178 x 17 x 3.0,5.8,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail (lightening slot filled locally) to the other half (CA or epoxy); joint at x 170; socket wall 4.50 mm
+Rod_AB_CF3_B.stl,Rod_AB_CF3,ROD_AB,PETG (or PLA); print flat,185 x 17 x 3.0,5.9,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail (lightening slot filled locally) to the other half (CA or epoxy); joint at x 170; socket wall 4.50 mm
 Drive_Gear_m2_54T_J1.stl,Drive_Gear_m2_54T_J1,UPPER,PETG (or PLA),112 x 112 x 9.0,65.3,flat,P1S; K2 Pro; H2D,"PA12 / PETG-CF print, m2 54T, 19 AF hex bore",
 J1_Output_Hub.stl,J1_Output_Hub,UPPER,PETG (or PLA),39 x 39 x 27.0,12.4,flat,P1S; K2 Pro; H2D,6061 turned + milled hex,
 UA_Standoff_D8_0.stl,UA_Standoff_D8_0,UPPER,PETG (or PLA),88 x 8 x 8.0,4.0,flat,P1S; K2 Pro; H2D,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",D8 x 88 M3 female
 UA_Standoff_D8_1.stl,UA_Standoff_D8_1,UPPER,PETG (or PLA),88 x 8 x 8.0,4.0,flat,P1S; K2 Pro; H2D,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",D8 x 88 M3 female
-Upper_Arm_L_CF3_A.stl,Upper_Arm_L_CF3,UPPER,PETG (or PLA); print flat,180 x 44 x 3.0,12.7,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the 2 dovetails to the other half (CA or epoxy); joint at x 158
-Upper_Arm_L_CF3_B.stl,Upper_Arm_L_CF3,UPPER,PETG (or PLA); print flat,202 x 36 x 3.0,7.9,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the 2 dovetails to the other half (CA or epoxy); joint at x 158
-Upper_Arm_R_CF3_A.stl,Upper_Arm_R_CF3,UPPER,PETG (or PLA); print flat,180 x 44 x 3.0,12.3,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the 2 dovetails to the other half (CA or epoxy); joint at x 158
-Upper_Arm_R_CF3_B.stl,Upper_Arm_R_CF3,UPPER,PETG (or PLA); print flat,202 x 36 x 3.0,7.9,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the 2 dovetails to the other half (CA or epoxy); joint at x 158
+Upper_Arm_L_CF3_A.stl,Upper_Arm_L_CF3,UPPER,PETG (or PLA); print flat,187 x 44 x 3.0,13.5,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail (lightening slot filled locally) to the other half (CA or epoxy); joint at x 166; socket wall 6.00 mm
+Upper_Arm_L_CF3_B.stl,Upper_Arm_L_CF3,UPPER,PETG (or PLA); print flat,196 x 35 x 3.0,8.4,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail (lightening slot filled locally) to the other half (CA or epoxy); joint at x 166; socket wall 6.00 mm
+Upper_Arm_R_CF3_A.stl,Upper_Arm_R_CF3,UPPER,PETG (or PLA); print flat,187 x 44 x 3.0,13.1,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail (lightening slot filled locally) to the other half (CA or epoxy); joint at x 166; socket wall 6.00 mm
+Upper_Arm_R_CF3_B.stl,Upper_Arm_R_CF3,UPPER,PETG (or PLA); print flat,196 x 35 x 3.0,8.4,flat,P1S; K2 Pro; H2D,3 mm CF plate (DXF),glue the dovetail (lightening slot filled locally) to the other half (CA or epoxy); joint at x 166; socket wall 6.00 mm

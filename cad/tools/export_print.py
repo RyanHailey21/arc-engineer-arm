@@ -9,7 +9,9 @@ Every custom part (CF plates, aluminium, steel shafts, shims, PTFE washers and t
 modelled size. Purchased parts (servos, bearings, fasteners, pins, inserts, collars, e-clips, the spring) are bought.
 TARGET is the printer the pack is cut for (the UTA ERB 335 Ender-3 S1 Pros, PLA or PETG). A part that does not fit it,
 flat or diagonally, is split in two with a glued dovetail in the plate's own plane, at the station nearest mid-length
-where the dovetail has WALL mm of solid material all round; both halves must then fit. The outline and every hole stay
+where the dovetail has WALL mm of solid material all round; both halves must then fit. One centred tail is
+preferred (in solid material, else with the plate's lightening slot filled locally); a mirrored pair is the last resort.
+The socket wall each split achieved is measured and listed (print 1, 2026-11-26: 2 mm socket cheeks broke at fitting). The outline and every hole stay
 where the model has them, so nothing new can collide.
 
 cad/out/<variant>/print/
@@ -40,10 +42,11 @@ FIT_SMALL = (("MR105", 10.0), ("6700", 15.0), ("6701", 18.0), ("pin", 4.0), ("",
              ("insert", 4.0), ("M3", 3.3), ("SB5", 5.0), ("D10", 10.0), ("", 10.2))
 FIT_LARGE = (("6804", 32.0), ("6805", 37.0))
 STL = "%s.stl"                                              # file name per part (and _A / _B halves)
-# dovetail sizes (mm) by plate height at the joint; glued, clearance per side
-TAILS = ((24.0, dict(length=8.0, neck=8.0, head=12.0)), (0.0, dict(length=7.0, neck=5.0, head=8.0)))
+# dovetail sizes (mm), largest first; glued, clearance per side. Each split takes the largest that fits with WALL.
+TAILS = (dict(length=8.0, neck=8.0, head=12.0), dict(length=7.0, neck=5.0, head=8.0),
+         dict(length=6.0, neck=4.0, head=6.0))
 CLEAR = 0.15
-WALL = 2.0                                                  # solid material round the dovetail
+WALL = 4.0          # solid material round the socket; 2.0 broke the socket cheeks of the first PLA print
 MATERIAL = {"PRINT": "PETG (or PLA)", "CF": "PETG (or PLA); print flat", "AL": "PETG (or PLA)",
             "STEEL": "PETG (or PLA), or cut from the D10 rod", "SHIM": "PETG (or PLA); 0.5 mm = 3 layers at 0.16",
             "PTFE": "PETG (or PLA)", "TPU": "TPU 95A (PETG if the lab has no TPU: less grip)"}
@@ -83,16 +86,24 @@ def dovetail(x0, y0, y1, tail, c, zs=(0.0,)):
     return out
 
 
-def solid_at(shape, x0, tail, zs):
-    """The dovetail(s) plus WALL lie wholly in material (no hole, pocket or edge within WALL)."""
+def solid_at(shape, x0, tail, zs, wall=WALL):
+    """The dovetail(s) plus wall lie wholly in material (no hole, pocket or edge within wall)."""
     bb = shape.BoundBox
     for z in zs:                                        # one probe per tail, cheapest first
-        pr = dovetail(x0, bb.YMin + 0.01, bb.YMax - 0.01, tail, WALL, (z,))
+        pr = dovetail(x0, bb.YMin + 0.01, bb.YMax - 0.01, tail, wall, (z,))
         pr = pr.common(Part.makeBox(pr.BoundBox.XLength, bb.YLength - 0.02, pr.BoundBox.ZLength,
                                     App.Vector(pr.BoundBox.XMin, bb.YMin + 0.01, pr.BoundBox.ZMin)))
         if abs(shape.common(pr).Volume - pr.Volume) > 1e-3 * pr.Volume:
             return False
     return True
+
+
+def wall_at(shape, x0, tail, zs, step=0.25, top=10.0):
+    """The solid material actually left round the socket (mm, to step): the largest wall solid_at accepts."""
+    w = 0.0
+    while w + step <= top and solid_at(shape, x0, tail, zs, w + step):
+        w += step
+    return w
 
 
 def cut_at(shape, x0, tail, zs, clear=CLEAR):
@@ -129,29 +140,42 @@ def filled(shape, x0, half):
 
 
 def split(shape):
-    """Dovetail split nearest mid-length (x in the body frame) with both halves on TARGET: one centred tail, or a
-    mirrored pair above and below a hole on the centre line."""
+    """Dovetail split nearest mid-length (x in the body frame) with both halves on TARGET: (x0, n, (A, B), wall), n the
+    tail count (0: one tail with the lightening slot filled locally), wall the material measured round the socket.
+    Preference: one centred tail in solid material, then one centred tail with the slot filled, then a mirrored pair
+    above and below a hole on the centre line (the smallest tail)."""
     bb = shape.BoundBox
     mid = (bb.XMin + bb.XMax) / 2
     zc = (bb.ZMin + bb.ZMax) / 2
-    big = next(t for hmin, t in TAILS if bb.ZLength >= hmin)
-    small = TAILS[-1][1]                                # pairs share the web with the hole: the small tail
-    layouts = [(big, (zc,))] + [(small, (zc - d, zc + d)) for d in [x / 2.0 for x in range(8, int(bb.ZLength))]]
-    for k in range(0, int(bb.XLength / 2)):
-        for x0 in (mid + k, mid - k) if k else (mid,):
-            for tail, zs in layouts:
-                r = cut_at(shape, x0, tail, zs)
-                if r and all(fit(dims_of(s), TARGET) for s in r):
-                    return x0, len(zs), r
-    # no solid station (slotted links): fill the slots locally at mid-length and put one centred tail there
-    for k in range(0, int(bb.XLength / 4)):
-        for x0 in (mid + k, mid - k) if k else (mid,):
-            sh = filled(shape, x0 - big["length"] / 2, big["length"] + WALL + 6)
-            for tail in (big, small):
-                r = cut_at(sh, x0, tail, (zc,))
-                if r and all(fit(dims_of(s), TARGET) for s in r):
-                    return x0, 0, r
-    raise RuntimeError("no dovetail station fits %s" % TARGET[0])
+    tails = [t_ for t_ in TAILS if t_["head"] + 2 * (CLEAR + WALL) <= bb.ZLength]
+
+    def stations(frac):
+        for k in range(0, int(bb.XLength * frac)):
+            for x0 in (mid + k, mid - k) if k else (mid,):
+                yield x0
+
+    def ok(sh, x0, tail, zs):
+        r = cut_at(sh, x0, tail, zs)
+        return r if r and all(fit(dims_of(s), TARGET) for s in r) else None
+
+    for x0 in stations(0.5):                            # 1. one centred tail, solid
+        for tail in tails:
+            r = ok(shape, x0, tail, (zc,))
+            if r:
+                return x0, 1, r, wall_at(shape, x0, tail, (zc,))
+    for x0 in stations(0.25):                           # 2. one centred tail, slot filled locally
+        for tail in tails:
+            sh = filled(shape, x0 - tail["length"] / 2, tail["length"] + WALL + 6)
+            r = ok(sh, x0, tail, (zc,))
+            if r:
+                return x0, 0, r, wall_at(sh, x0, tail, (zc,))
+    small = TAILS[-1]                                   # 3. mirrored pair
+    for x0 in stations(0.5):
+        for d in [x / 2.0 for x in range(8, int(bb.ZLength))]:
+            r = ok(shape, x0, small, (zc - d, zc + d))
+            if r:
+                return x0, 2, r, wall_at(shape, x0, small, (zc - d, zc + d))
+    raise RuntimeError("no dovetail station with %g mm wall fits %s" % (WALL, TARGET[0]))
 
 
 def label(shape, text, x, y, z_top, size=3.5, depth=0.5):
@@ -175,9 +199,9 @@ def label(shape, text, x, y, z_top, size=3.5, depth=0.5):
 
 
 def dovetail_test():
-    """Four 30 x 17 x 3 plate pairs, laid flat (z up), the small tail (every split uses it) at DOVETAIL_CLEARS; the
-    clearance is engraved on half A."""
-    tail = TAILS[-1][1]
+    """Four 30 x 17 x 3 plate pairs, laid flat (z up), the middle tail at DOVETAIL_CLEARS; the clearance is engraved
+    on half A. (Its 4.3 mm cheeks are just above WALL; it tests the clearance, which carries to every tail size.)"""
+    tail = TAILS[1]
     pieces = []
     for i, c in enumerate(DOVETAIL_CLEARS):
         blank = Part.makeBox(30, 3, 17, App.Vector(-15, -1.5, -8.5))
@@ -231,7 +255,7 @@ def main():
     for f in os.listdir(sd):
         if f.endswith(".stl"):
             os.remove(os.path.join(sd, f))
-    rows, unfit, cuts = [], [], []
+    rows, unfit, cuts, walls = [], [], [], []
     for bn, parts in M.build_bodies().items():
         for p in parts:
             if p.kind == "CAT":
@@ -240,13 +264,17 @@ def main():
                 pieces, note = [("", p.vis)], p.note
             else:
                 try:
-                    x0, n, (a, b) = split(p.vis)
+                    x0, n, (a, b), wall = split(p.vis)
                 except RuntimeError as e:
                     raise RuntimeError("%s: %s" % (p.name, e))
                 pieces = [("_A", a), ("_B", b)]
                 note = "glue the %s to the other half (CA or epoxy); joint at x %.0f" % (
                     "dovetail" if n == 1 else "%d dovetails" % n if n else "dovetail (lightening slot filled locally)", x0)
+                note += "; socket wall %.2f mm" % wall
                 cuts.append(p.name)
+                walls.append(wall)
+                if wall < WALL:
+                    unfit.append("%s (socket wall %.2f < %g mm)" % (p.name, wall, WALL))
             for suf, s in pieces:
                 fn = STL % (p.name + suf)
                 mesh = MeshPart.meshFromShape(Shape=s, LinearDeflection=0.02, AngularDeflection=0.2)
@@ -266,9 +294,9 @@ def main():
                     "production part", "note"])
         w.writerows(rows)
     st = "FAIL" if unfit else "PASS"
-    note = "%d STL (%d parts; split for %s: %s), %.0f cm3; off the %s bed: %s" % (
-        len(rows), len({r[1] for r in rows}), TARGET[0], ", ".join(cuts) or "none", sum(r[5] for r in rows),
-        TARGET[0], ", ".join(unfit) or "none")
+    note = "%d STL (%d parts; split for %s: %s; socket wall >= %.2f mm), %.0f cm3; failed: %s" % (
+        len(rows), len({r[1] for r in rows}), TARGET[0], ", ".join(cuts) or "none", min(walls or [0]),
+        sum(r[5] for r in rows), ", ".join(unfit) or "none")
     params.record("export_print", st, [os.path.join(out, "print_list.csv")], note)
     print("PRINT %s: %s %s -> %s" % (M.VARIANT, st, note, out))
     return 1 if unfit else 0

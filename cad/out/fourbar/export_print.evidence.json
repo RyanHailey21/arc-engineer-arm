@@ -5,14 +5,14 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "export_print",
   "status": "pass",
-  "reason": "PASS: 84 STL (77 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4), 1163 cm3; off the Ender-3 S1 Pro bed: none",
-  "scope": "84 STL (77 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4), 1163 cm3; off the Ender-3 S1 Pro bed: none",
+  "reason": "PASS: 84 STL (77 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4; socket wall >= 4.50 mm), 1166 cm3; failed: none",
+  "scope": "84 STL (77 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4; socket wall >= 4.50 mm), 1166 cm3; failed: none",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "9c62064776e38b9bb57d6d837c93d05fbbb6145f9f0b3efef65989b1b62c1ede",
+  "implementation_sha256": "7e91cf6c52e15d66b1a45ef32d4a54d0fcdfe7ee815b6e4adbef8efd0b14bcc9",
   "inputs": [
    {
     "id": "design-inputs",
@@ -24,12 +24,12 @@
    {
     "id": "print_list.csv",
     "path": "print/print_list.csv",
-    "sha256": "5a49ebbebf572f9c3c821e2d6974cf1505175992f38b551108cde4fdf780b2d9"
+    "sha256": "6b88a910dbfe849d0a5bbbbb4038b377858a72119378c9079bbac4389572f252"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-22T12:21:33",
+   "time": "2026-11-26T08:36:34",
    "inputs_hash": "9cf67eeedebaa998",
    "external_copies": []
   }
