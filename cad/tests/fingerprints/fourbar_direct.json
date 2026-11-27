@@ -7795,16 +7795,16 @@
 ],
 "com": [
 -0.0,
--33.3388,
+-33.344,
 -0.0
 ],
-"edges": 42,
-"faces": 20,
-"fdig": "12ea1531dc68",
-"vol": 1138.638
+"edges": 48,
+"faces": 24,
+"fdig": "e72c69c46f28",
+"vol": 1144.217
 },
 "kind": "AL",
-"mass_g": 3.074,
+"mass_g": 3.089,
 "src": "custom: 6061 turned hub, hex key af19, 6700 seat",
 "vis": {
 "bb": [
@@ -7817,13 +7817,13 @@
 ],
 "com": [
 -0.0,
--33.3388,
+-33.344,
 -0.0
 ],
-"edges": 42,
-"faces": 20,
-"fdig": "12ea1531dc68",
-"vol": 1138.638
+"edges": 48,
+"faces": 24,
+"fdig": "e72c69c46f28",
+"vol": 1144.217
 }
 },
 "LEVEL/Level_Hub_Wrist_Brg_6700": {
@@ -9085,16 +9085,16 @@
 ],
 "com": [
 -0.0,
--33.3388,
+-33.344,
 -0.0
 ],
-"edges": 42,
-"faces": 20,
-"fdig": "12ea1531dc68",
-"vol": 1138.638
+"edges": 48,
+"faces": 24,
+"fdig": "e72c69c46f28",
+"vol": 1144.217
 },
 "kind": "AL",
-"mass_g": 3.074,
+"mass_g": 3.089,
 "src": "custom: 6061 turned hub, hex key af19, 6700 seat",
 "vis": {
 "bb": [
@@ -9107,13 +9107,13 @@
 ],
 "com": [
 -0.0,
--33.3388,
+-33.344,
 -0.0
 ],
-"edges": 42,
-"faces": 20,
-"fdig": "12ea1531dc68",
-"vol": 1138.638
+"edges": 48,
+"faces": 24,
+"fdig": "e72c69c46f28",
+"vol": 1144.217
 }
 },
 "ROCKER/Level_Hub_Elbow_Brg_6700": {
@@ -12623,7 +12623,7 @@
 }
 },
 "totals": {
-"mass_g": 2214.86,
+"mass_g": 2214.88,
 "n_parts": 259
 },
 "variant": "fourbar_direct"

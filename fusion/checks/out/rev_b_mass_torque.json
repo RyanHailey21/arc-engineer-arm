@@ -3,8 +3,8 @@
  "snapshot": {
   "document": "ARC Arm Rev B",
   "document_id": "urn:adsk.wipprod:dm.lineage:cGWSAxvSQQaYddhXmTl3HA",
-  "document_version": 25,
-  "exported": "2026-11-26T19:48:57",
+  "document_version": 26,
+  "exported": "2026-11-27T12:59:55",
   "joints": 23,
   "motion_links": 0,
   "occurrences": 378,
@@ -63,14 +63,14 @@
    "com_offset_mm": 1.31
   },
   {
-   "body": "JAW_R",
+   "body": "JAW_L",
    "fusion_g": 72.9,
    "code_g": 76.5,
    "diff_pct": -4.8,
    "com_offset_mm": 3.31
   },
   {
-   "body": "JAW_L",
+   "body": "JAW_R",
    "fusion_g": 72.9,
    "code_g": 76.5,
    "diff_pct": -4.8,
@@ -91,14 +91,14 @@
    "com_offset_mm": 4.81
   },
   {
-   "body": "ROD1",
+   "body": "ROD_AB",
    "fusion_g": 19.7,
    "code_g": 19.7,
    "diff_pct": 0.0,
    "com_offset_mm": 0.0
   },
   {
-   "body": "ROD_AB",
+   "body": "ROD1",
    "fusion_g": 19.7,
    "code_g": 19.7,
    "diff_pct": 0.0,
@@ -119,14 +119,14 @@
    "com_offset_mm": 0.89
   },
   {
-   "body": "LK_LI",
+   "body": "LK_RI",
    "fusion_g": 7.3,
    "code_g": 7.3,
    "diff_pct": 0.0,
    "com_offset_mm": 0.0
   },
   {
-   "body": "LK_RI",
+   "body": "LK_LI",
    "fusion_g": 7.3,
    "code_g": 7.3,
    "diff_pct": 0.0,

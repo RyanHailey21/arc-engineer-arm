@@ -277,6 +277,9 @@ def main():
                     unfit.append("%s (socket wall %.2f < %g mm)" % (p.name, wall, WALL))
             for suf, s in pieces:
                 fn = STL % (p.name + suf)
+                n_sh = sum(len(x.Shells) for x in s.Solids)
+                if n_sh != 1:                   # a piece in mid-air prints as string (Level_Hub_*, 2026-11-27)
+                    unfit.append("%s (%d disconnected shells)" % (fn, n_sh))
                 mesh = MeshPart.meshFromShape(Shape=s, LinearDeflection=0.02, AngularDeflection=0.2)
                 mesh.write(os.path.join(sd, fn))
                 d = dims_of(s)

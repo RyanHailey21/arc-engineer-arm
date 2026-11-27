@@ -1,5 +1,14 @@
 {
- "findings": [],
+ "findings": [
+  {
+   "kind": "dead-def",
+   "path": "fusion/level_hub_shoulder.py",
+   "line": 45,
+   "name": "run_hub",
+   "detail": "function `run_hub` is never referenced",
+   "id": "dead-def:fusion/level_hub_shoulder.py:run_hub"
+  }
+ ],
  "kept": [
   {
    "kind": "dead-def",
@@ -56,6 +65,42 @@
    "id": "duplicate:cad/tools/amazon_buy_list.py:near-f98a67ed0b",
    "other": "cad/tools/amazon_buy_list.py",
    "kept": "data table: one row per purchased line (section, item, ASIN, packs, price), alike by design, not copied code"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_drive_link.FCStd:cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd:cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_palm.FCStd:cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
   },
   {
    "kind": "out-unindexed",
@@ -181,6 +226,42 @@
    "name": "cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_top.png",
    "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
    "id": "out-unindexed:cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_top.png:cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_top.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA.gcode",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA.gcode",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA.gcode:cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA_preview/plate4b_hubs_S1Pro_PLA_first_layer.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA_preview/plate4b_hubs_S1Pro_PLA_first_layer.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA_preview/plate4b_hubs_S1Pro_PLA_first_layer.png:cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA_preview/plate4b_hubs_S1Pro_PLA_first_layer.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA_preview/plate4b_hubs_S1Pro_PLA_iso.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA_preview/plate4b_hubs_S1Pro_PLA_iso.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA_preview/plate4b_hubs_S1Pro_PLA_iso.png:cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA_preview/plate4b_hubs_S1Pro_PLA_iso.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA_preview/plate4b_hubs_S1Pro_PLA_top.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA_preview/plate4b_hubs_S1Pro_PLA_top.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA_preview/plate4b_hubs_S1Pro_PLA_top.png:cad/out/fourbar/print/gcode/plate4b_hubs_S1Pro_PLA_preview/plate4b_hubs_S1Pro_PLA_top.png",
    "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
   },
   {
@@ -385,7 +466,7 @@
  "counts": {
   "unused-import": 0,
   "unused-variable": 0,
-  "dead-def": 0,
+  "dead-def": 1,
   "duplicate": 0,
   "orphan-param": 0,
   "orphan-catalogue": 0,
@@ -394,7 +475,7 @@
   "out-unindexed": 0,
   "scratch": 0
  },
- "scanned": 85,
+ "scanned": 87,
  "stale_keep": [],
  "notes": [
   "fourbar/map_parts.md is older than the model inputs (rerun tools/make_map.py)",

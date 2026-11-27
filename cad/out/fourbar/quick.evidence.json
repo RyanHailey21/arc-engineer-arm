@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
   "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 42 kept; fingerprint MATCH; holes/eng no changed parts",
-  "scope": "envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 42 kept; fingerprint MATCH; holes/eng no changed parts",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 46 kept; fingerprint CHANGED (23 differences; re-record if intended); holes/eng 2 changed parts (2 made): 2 holes, 0 tapped holes; 0 FAIL",
+  "scope": "envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 46 kept; fingerprint CHANGED (23 differences; re-record if intended); holes/eng 2 changed parts (2 made): 2 holes, 0 tapped holes; 0 FAIL",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -17,20 +17,20 @@
    {
     "id": "design-inputs",
     "path": "evidence/quick.inputs.json",
-    "sha256": "0fd413a70081f24eaefe813ecbf7c59cc4ec83f972294cae39dd63f9ac68f95a"
+    "sha256": "d155957a7c0bd67e5e94640a477798d1bd7e01130eb03a1294ba3668b4f364f6"
    }
   ],
   "artifacts": [
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "5d339064fd9f1194bc7b4c78aea8639e338abd939fcf8699f2c795759b375676"
+    "sha256": "c939fb7153695750ce0b280cd5f5044cf34576a1328c3bdcab79c22a5798f5dd"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-27T06:43:59",
-   "inputs_hash": "17f83b78b838c56d",
+   "time": "2026-11-27T12:51:57",
+   "inputs_hash": "fa6424802472ad4a",
    "external_copies": []
   }
  }

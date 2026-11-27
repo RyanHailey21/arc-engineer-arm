@@ -8458,59 +8458,6 @@
   },
   {
    "bbox": [
-    -489.0055,
-    -39.01,
-    320.3072,
-    -469.9855,
-    -25.48,
-    342.2665
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC alu",
-     "material": "Aluminum 6061",
-     "name": "Level_Hub_Elbow"
-    },
-    {
-     "appearance": "ARC alu",
-     "material": "Aluminum 6061",
-     "name": "Relieved sleeve"
-    }
-   ],
-   "body_group": "ROCKER:1",
-   "com_mm": [
-    -479.4955,
-    -33.3388,
-    331.2868
-   ],
-   "component": "Level_Hub_Elbow",
-   "mass_g": 3.074,
-   "path": "ROCKER:1+Level_Hub_Elbow:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:mMtJLDI9Qe6XiD81bNAb0w",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -479.495491,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    331.286849,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 1138.638
-  },
-  {
-   "bbox": [
     -487.0055,
     -39.02,
     323.7768,
@@ -9076,6 +9023,54 @@
   },
   {
    "bbox": [
+    -489.0055,
+    -39.01,
+    320.3072,
+    -469.9855,
+    -25.49,
+    342.2665
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC alu",
+     "material": "Aluminum 6061",
+     "name": "Level_Hub_Elbow"
+    }
+   ],
+   "body_group": "ROCKER:1",
+   "com_mm": [
+    -479.4955,
+    -33.344,
+    331.2868
+   ],
+   "component": "Level_Hub_Elbow",
+   "mass_g": 3.089,
+   "path": "ROCKER:1+Level_Hub_Elbow:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:mMtJLDI9Qe6XiD81bNAb0w",
+   "source_version": 3,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -479.495491,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    331.286849,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 1144.217
+  },
+  {
+   "bbox": [
     -556.4758,
     -47.53,
     308.223,
@@ -9086,12 +9081,12 @@
    "bodies": [],
    "body_group": "ROCKER:1",
    "com_mm": [
-    -497.6354,
-    -36.698,
-    339.1432
+    -497.6268,
+    -36.6969,
+    339.1395
    ],
    "component": "ROCKER",
-   "mass_g": 31.626,
+   "mass_g": 31.641,
    "path": "ROCKER:1",
    "source_id": null,
    "source_version": null,
@@ -9114,7 +9109,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 13486.874
+   "volume_mm3": 13492.453
   },
   {
    "bbox": [
@@ -9379,59 +9374,6 @@
    ],
    "visible": true,
    "volume_mm3": 8588.902
-  },
-  {
-   "bbox": [
-    -144.3228,
-    -39.01,
-    381.0841,
-    -125.3028,
-    -25.48,
-    403.0434
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC alu",
-     "material": "Aluminum 6061",
-     "name": "Level_Hub_Wrist"
-    },
-    {
-     "appearance": "ARC alu",
-     "material": "Aluminum 6061",
-     "name": "Relieved sleeve"
-    }
-   ],
-   "body_group": "LEVEL:1",
-   "com_mm": [
-    -134.8128,
-    -33.3388,
-    392.0637
-   ],
-   "component": "Level_Hub_Wrist",
-   "mass_g": 3.074,
-   "path": "LEVEL:1+Level_Hub_Wrist:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:8vqzuBwmS-WNCpyvmqGSvA",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -134.812778,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    392.063711,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 1138.638
   },
   {
    "bbox": [
@@ -11268,22 +11210,70 @@
   },
   {
    "bbox": [
+    -144.3228,
+    -39.01,
+    381.0841,
+    -125.3028,
+    -25.49,
+    403.0434
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC alu",
+     "material": "Aluminum 6061",
+     "name": "Level_Hub_Wrist"
+    }
+   ],
+   "body_group": "LEVEL:1",
+   "com_mm": [
+    -134.8128,
+    -33.344,
+    392.0637
+   ],
+   "component": "Level_Hub_Wrist",
+   "mass_g": 3.089,
+   "path": "LEVEL:1+Level_Hub_Wrist:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:8vqzuBwmS-WNCpyvmqGSvA",
+   "source_version": 3,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -134.812778,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    392.063711,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 1144.217
+  },
+  {
+   "bbox": [
     -182.0319,
     -85.0711,
     368.2924,
     -109.2443,
-    -25.47,
+    -25.48,
     441.6284
    ],
    "bodies": [],
    "body_group": "LEVEL:1",
    "com_mm": [
-    -144.4269,
-    -55.7258,
-    401.8666
+    -144.4255,
+    -55.7227,
+    401.8651
    ],
    "component": "LEVEL",
-   "mass_g": 104.629,
+   "mass_g": 104.644,
    "path": "LEVEL:1",
    "source_id": null,
    "source_version": null,
@@ -11306,7 +11296,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54091.896
+   "volume_mm3": 54097.475
   },
   {
    "bbox": [
@@ -19220,8 +19210,8 @@
  "summary": {
   "document": "ARC Arm Rev B",
   "document_id": "urn:adsk.wipprod:dm.lineage:cGWSAxvSQQaYddhXmTl3HA",
-  "document_version": 25,
-  "exported": "2026-11-26T19:48:57",
+  "document_version": 26,
+  "exported": "2026-11-27T12:59:55",
   "joints": 23,
   "motion_links": 0,
   "occurrences": 378,

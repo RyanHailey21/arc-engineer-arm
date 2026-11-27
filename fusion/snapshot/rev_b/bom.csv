@@ -38,8 +38,8 @@ component,qty,material,mass_g,source_id,source_version
 "Jaw_Block_L",1,"PETG-CF print (effective)",30.742,urn:adsk.wipprod:dm.lineage:9jxUozqyT_qs53a9IWErsw,2
 "Jaw_Block_R",1,"PETG-CF print (effective)",30.742,urn:adsk.wipprod:dm.lineage:-FqalFr9QmueYJfkrbNhSw,2
 "LUOSI-2-25_1_2",20,"STS3215 (catalogue mass)",0.273,None,None
-"Level_Hub_Elbow",1,"Aluminum 6061",3.074,urn:adsk.wipprod:dm.lineage:mMtJLDI9Qe6XiD81bNAb0w,2
-"Level_Hub_Wrist",1,"Aluminum 6061",3.074,urn:adsk.wipprod:dm.lineage:8vqzuBwmS-WNCpyvmqGSvA,2
+"Level_Hub_Elbow",1,"Aluminum 6061",3.089,urn:adsk.wipprod:dm.lineage:mMtJLDI9Qe6XiD81bNAb0w,3
+"Level_Hub_Wrist",1,"Aluminum 6061",3.089,urn:adsk.wipprod:dm.lineage:8vqzuBwmS-WNCpyvmqGSvA,3
 "Level_Rocker_CF3",1,"CF plate 3K",16.000,urn:adsk.wipprod:dm.lineage:pLty1pzxQiGPP1_otYn62Q,2
 "Link_LD_bot_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:KOaJNAXoR7yv7LCGf1s9Cw,2
 "Link_LD_hi_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:0WPNrlNOQ5CiUOIbhsi55A,2

@@ -1,23 +1,22 @@
 [
  {
-  "doc": "ARC Arm Rev A",
-  "version": 24,
+  "doc": "ARC Arm Rev B",
+  "version": 25,
   "stale": [
-   "WASHER-D4 v2 -> v3",
-   "PIN-D4x14 v2 -> v3",
-   "Gripper_Palm v2 -> v3",
-   "PIN-D4x30 v2 -> v3",
-   "PIN-D4x8 v2 -> v3",
-   "PIN-D4x20 v2 -> v3"
+   "Level_Hub_Elbow v2 -> v3",
+   "Level_Hub_Wrist v2 -> v3"
   ],
-  "still_stale": [
-   "WASHER-D4 v2 -> v3",
-   "PIN-D4x14 v2 -> v3",
-   "Gripper_Palm v2 -> v3",
-   "PIN-D4x30 v2 -> v3",
-   "PIN-D4x8 v2 -> v3",
-   "PIN-D4x20 v2 -> v3"
+  "still_stale": [],
+  "saved_as": 25
+ },
+ {
+  "doc": "ARC Arm Rev A",
+  "version": 26,
+  "stale": [
+   "Level_Hub_Elbow v2 -> v3",
+   "Level_Hub_Wrist v2 -> v3"
   ],
-  "saved_as": 24
+  "still_stale": [],
+  "saved_as": 26
  }
 ]

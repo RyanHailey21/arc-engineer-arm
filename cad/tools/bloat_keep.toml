@@ -93,3 +93,9 @@ kind = "dead-def"
 name = "run_frame"
 path = "fusion/drive_frame_spacers.py"
 reason = "entry point called by name from a Fusion MCP script, never from Python in the repo"
+
+[[item]]
+kind = "dead-def"
+name = "run_hub"
+path = "fusion/level_hub_shoulder.py"
+reason = "entry point called by name from a Fusion MCP script, never from Python in the repo"

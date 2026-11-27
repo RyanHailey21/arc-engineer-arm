@@ -2,7 +2,7 @@ component,qty,material,mass_g,source_id,source_version
 "3PIN-1_1",6,"STS3215 (catalogue mass)",0.409,None,None
 "4040V300",2,"DM-J4340-2EC (catalogue mass)",14.832,None,None
 "4310_202409130001",2,"DM-J4340-2EC (catalogue mass)",13.802,None,None
-"4340__3D_20240814_1_2_4",2,"DM-J4340-2EC (catalogue mass)",16.096,None,None
+"4340__3D_20240814_1_2_4",2,"DM-J4340-2EC (catalogue mass)",16.097,None,None
 "6700ZZ",6,"6700ZZ (catalogue mass)",2.000,urn:adsk.wipprod:dm.lineage:_ZNgT1JnSXyAGqzcjyGA-w,3
 "6701ZZ",1,"6701ZZ (catalogue mass)",3.000,urn:adsk.wipprod:dm.lineage:Fkx3lJ7nSkWrQ4nVjmOfjg,3
 "6805ZZ",1,"6805ZZ (catalogue mass)",18.000,urn:adsk.wipprod:dm.lineage:2fK2Oh36RiWw_O2DUTDciQ,3
@@ -38,8 +38,8 @@ component,qty,material,mass_g,source_id,source_version
 "Jaw_Block_L",1,"PETG-CF print (effective)",30.742,urn:adsk.wipprod:dm.lineage:9jxUozqyT_qs53a9IWErsw,2
 "Jaw_Block_R",1,"PETG-CF print (effective)",30.742,urn:adsk.wipprod:dm.lineage:-FqalFr9QmueYJfkrbNhSw,2
 "LUOSI-2-25_1_2",12,"STS3215 (catalogue mass)",0.273,None,None
-"Level_Hub_Elbow",1,"Aluminum 6061",3.074,urn:adsk.wipprod:dm.lineage:mMtJLDI9Qe6XiD81bNAb0w,2
-"Level_Hub_Wrist",1,"Aluminum 6061",3.074,urn:adsk.wipprod:dm.lineage:8vqzuBwmS-WNCpyvmqGSvA,2
+"Level_Hub_Elbow",1,"Aluminum 6061",3.089,urn:adsk.wipprod:dm.lineage:mMtJLDI9Qe6XiD81bNAb0w,3
+"Level_Hub_Wrist",1,"Aluminum 6061",3.089,urn:adsk.wipprod:dm.lineage:8vqzuBwmS-WNCpyvmqGSvA,3
 "Level_Rocker_CF3",1,"CF plate 3K",16.000,urn:adsk.wipprod:dm.lineage:pLty1pzxQiGPP1_otYn62Q,2
 "Link_LD_bot_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:KOaJNAXoR7yv7LCGf1s9Cw,2
 "Link_LD_hi_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:0WPNrlNOQ5CiUOIbhsi55A,2
@@ -81,7 +81,7 @@ component,qty,material,mass_g,source_id,source_version
 "SB5x4",1,"Steel",3.034,urn:adsk.wipprod:dm.lineage:PwuLRF5PTjOhEt6VvplUnA,2
 "SB5x8",3,"Steel",3.409,urn:adsk.wipprod:dm.lineage:sv0F5xT5T66lCJ91memEZw,2
 "SHCS_M3x6",12,"Steel",0.726,urn:adsk.wipprod:dm.lineage:1bjgdqRPQdOOfcnKVAlYMw,2
-"SHCS_M4x12",4,"Steel",1.933,urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA,2
+"SHCS_M4x12",4,"Steel",1.931,urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA,2
 "SHCS_M4x8",1,"Steel",1.619,urn:adsk.wipprod:dm.lineage:G55wbKMDR_2D433JI0yOFA,2
 "SJ-WK00-0021TOPCABINETCASE_104",3,"STS3215 (catalogue mass)",13.080,None,None
 "SJ-WK00-0022MIDDLECASE_68",3,"STS3215 (catalogue mass)",8.637,None,None

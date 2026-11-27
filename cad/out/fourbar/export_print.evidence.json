@@ -12,12 +12,12 @@
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "7e91cf6c52e15d66b1a45ef32d4a54d0fcdfe7ee815b6e4adbef8efd0b14bcc9",
+  "implementation_sha256": "b78533a150b9393a2eabb52cf330bf4dea8bd180928c02bfd3048e49a0d272b1",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/export_print.inputs.json",
-    "sha256": "a5b18b90d886f67979edb2e5b2fa82066f2a6fd8bf4564fc5505199ea6826950"
+    "sha256": "d155957a7c0bd67e5e94640a477798d1bd7e01130eb03a1294ba3668b4f364f6"
    }
   ],
   "artifacts": [
@@ -29,8 +29,8 @@
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-26T19:39:36",
-   "inputs_hash": "6ad5d174dcdf21c5",
+   "time": "2026-11-27T13:00:34",
+   "inputs_hash": "fa6424802472ad4a",
    "external_copies": []
   }
  }

@@ -3,22 +3,29 @@
  "snapshot": {
   "document": "ARC Arm Rev A",
   "document_id": "urn:adsk.wipprod:dm.lineage:tGjaaP6BR9alz_2ZsIQF-g",
-  "document_version": 26,
-  "exported": "2026-11-22T15:31:34",
+  "document_version": 27,
+  "exported": "2026-11-27T13:00:21",
   "joints": 21,
   "motion_links": 0,
   "occurrences": 442,
   "parts": 122,
   "revision": "rev_a",
-  "total_mass_g": 2168.8
+  "total_mass_g": 2168.9
  },
  "bodies": [
   {
    "body": "GROUND",
    "fusion_g": 857.7,
-   "code_g": 783.8,
-   "diff_pct": 9.4,
-   "com_offset_mm": 19.86
+   "code_g": 864.7,
+   "diff_pct": -0.8,
+   "com_offset_mm": 1.67
+  },
+  {
+   "body": "UPPER",
+   "fusion_g": 215.1,
+   "code_g": 221.9,
+   "diff_pct": -3.1,
+   "com_offset_mm": 7.25
   },
   {
    "body": "GRIPPER",
@@ -35,13 +42,6 @@
    "com_offset_mm": 6.34
   },
   {
-   "body": "UPPER",
-   "fusion_g": 215.1,
-   "code_g": 179.6,
-   "diff_pct": 19.8,
-   "com_offset_mm": 23.59
-  },
-  {
    "body": "HEAD",
    "fusion_g": 153.9,
    "code_g": 160.9,
@@ -49,18 +49,18 @@
    "com_offset_mm": 3.82
   },
   {
+   "body": "CRANK",
+   "fusion_g": 135.6,
+   "code_g": 138.2,
+   "diff_pct": -1.9,
+   "com_offset_mm": 0.69
+  },
+  {
    "body": "LEVEL",
    "fusion_g": 104.6,
    "code_g": 106.9,
    "diff_pct": -2.1,
    "com_offset_mm": 1.33
-  },
-  {
-   "body": "CRANK",
-   "fusion_g": 135.6,
-   "code_g": 95.9,
-   "diff_pct": 41.4,
-   "com_offset_mm": 2.34
   },
   {
    "body": "JAW_L",
@@ -119,14 +119,14 @@
    "com_offset_mm": 0.89
   },
   {
-   "body": "LK_LI",
+   "body": "LK_RI",
    "fusion_g": 7.3,
    "code_g": 7.3,
    "diff_pct": 0.0,
    "com_offset_mm": 0.0
   },
   {
-   "body": "LK_RI",
+   "body": "LK_LI",
    "fusion_g": 7.3,
    "code_g": 7.3,
    "diff_pct": 0.0,

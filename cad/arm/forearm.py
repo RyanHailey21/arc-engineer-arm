@@ -14,10 +14,14 @@ from arm.core import _hull2  # noqa: F401
 
 def level_hub(name):
     """Aluminium hub keyed to its plate by a hex (af19), 6700 bearing inside: the old GT2 pulley's axial stack
-    (y -39 .. -25.5) without the teeth, slimmed to D14 where rod 2 sweeps past (y -35 .. -31)."""
+    (y -39 .. -25.5) without the teeth, slimmed to D14 where rod 2 sweeps past (y -35 .. -31).
+    The D15.2 shoulder (y -35 .. -34.4) stops the bearing's outer race and joins the D14 neck to the seat: without it
+    the D15 seat reached the neck's face and the hub was two solids (the printed necks strung in mid-air, 2026-11-27).
+    It clears rod 2 by 2.4 mm at every task pose; a 0.3 mm D12.6 relief keeps it off the inner race."""
     hexk = H._hexprism(19, -39.0, -36.0)
     hub = hexk.fuse(ycyl(0, 0, -36.0, -35.0, 9.5)).fuse(ycyl(0, 0, -35.0, -25.5, 7.0))
-    hub = hub.cut(ycyl(0, 0, -39.1, -35.0, 7.5)).cut(ycyl(0, 0, -43, -20, 5.3))
+    hub = hub.fuse(ycyl(0, 0, -35.0, -34.4, 7.6))
+    hub = hub.cut(ycyl(0, 0, -39.1, -35.0, 7.5)).cut(ycyl(0, 0, -35.1, -34.7, 6.3)).cut(ycyl(0, 0, -43, -20, 5.3))
     return [Part_(name, hub, hub, "AL", "custom: 6061 turned hub, hex key af19, 6700 seat", "alu"),
             P(name + "_Brg_6700", H.bearing(10, 15, 4, -39.0, 1), "CAT", "6700ZZ", "alu")]
 

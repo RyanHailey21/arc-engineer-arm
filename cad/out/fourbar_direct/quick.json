@@ -988,7 +988,7 @@
     "pose": "PIPE_LIFT",
     "payload_g": 165.0,
     "tau": [
-     -2.14,
+     -2.15,
      2.04,
      0.68,
      0.03
@@ -1044,7 +1044,10 @@
   "scratch": 0
  },
  "holes_changed": {
-  "parts": [],
+  "parts": [
+   "LEVEL/Level_Hub_Wrist",
+   "ROCKER/Level_Hub_Elbow"
+  ],
   "fails": []
  },
  "summary": [
@@ -1064,13 +1067,13 @@
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 4.4
+   "s": 4.7
   },
   {
    "check": "mass/torque",
    "ok": true,
    "note": "past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m",
-   "s": 1.4
+   "s": 1.5
   },
   {
    "check": "catalogue",
@@ -1088,26 +1091,26 @@
    "check": "seating",
    "ok": true,
    "note": "127 fasteners, 0 FAIL",
-   "s": 2.7
+   "s": 3.0
   },
   {
    "check": "bloat",
    "ok": null,
-   "note": "0 findings (none), 42 kept",
-   "s": 1.5
+   "note": "0 findings (none), 46 kept",
+   "s": 1.6
   },
   {
    "check": "fingerprint",
    "ok": null,
-   "note": "MATCH",
-   "s": 34.6
+   "note": "CHANGED (23 differences; re-record if intended)",
+   "s": 35.9
   },
   {
    "check": "holes/eng",
    "ok": true,
-   "note": "no changed parts",
-   "s": 0.0
+   "note": "2 changed parts (2 made): 2 holes, 0 tapped holes; 0 FAIL",
+   "s": 1.3
   }
  ],
- "elapsed_s": 68.5
+ "elapsed_s": 72.7
 }

@@ -437,12 +437,12 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -159.9996,
+    -160.0007,
     -55.3331,
-    215.0022
+    215.0017
    ],
    "component": "4340__3D_20240814_1_2_4",
-   "mass_g": 16.096,
+   "mass_g": 16.097,
    "path": "GROUND:1+Stator:1+4340__3D_20240814_1_2_4:1",
    "source_id": null,
    "source_version": null,
@@ -465,7 +465,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 5707.534
+   "volume_mm3": 5707.884
   },
   {
    "bbox": [
@@ -534,7 +534,7 @@
    "body_group": "GROUND:1",
    "com_mm": [
     -161.4021,
-    -98.2256,
+    -98.2257,
     215.0413
    ],
    "component": "G43_V1_1_3-230824_4",
@@ -561,7 +561,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 3691.695
+   "volume_mm3": 3691.731
   },
   {
    "bbox": [
@@ -630,8 +630,8 @@
    "body_group": "GROUND:1",
    "com_mm": [
     -186.499,
-    -57.3156,
-    214.9994
+    -57.3144,
+    215.0
    ],
    "component": "M2_5-800",
    "mass_g": 0.154,
@@ -657,7 +657,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54.505
+   "volume_mm3": 54.44
   },
   {
    "bbox": [
@@ -677,9 +677,9 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -173.249,
-    -57.3156,
-    192.0509
+    -173.2495,
+    -57.3144,
+    192.0512
    ],
    "component": "M2_5-800",
    "mass_g": 0.154,
@@ -705,7 +705,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54.505
+   "volume_mm3": 54.44
   },
   {
    "bbox": [
@@ -725,9 +725,9 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -146.75,
-    -57.3156,
-    192.0515
+    -146.7505,
+    -57.3144,
+    192.0512
    ],
    "component": "M2_5-800",
    "mass_g": 0.154,
@@ -753,7 +753,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54.505
+   "volume_mm3": 54.44
   },
   {
    "bbox": [
@@ -774,8 +774,8 @@
    "body_group": "GROUND:1",
    "com_mm": [
     -133.501,
-    -57.3156,
-    215.0006
+    -57.3144,
+    215.0
    ],
    "component": "M2_5-800",
    "mass_g": 0.154,
@@ -801,7 +801,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54.505
+   "volume_mm3": 54.44
   },
   {
    "bbox": [
@@ -821,9 +821,9 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -146.751,
-    -57.3156,
-    237.9491
+    -146.7505,
+    -57.3144,
+    237.9488
    ],
    "component": "M2_5-800",
    "mass_g": 0.154,
@@ -849,7 +849,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54.505
+   "volume_mm3": 54.44
   },
   {
    "bbox": [
@@ -869,9 +869,9 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -173.25,
-    -57.3156,
-    237.9485
+    -173.2495,
+    -57.3144,
+    237.9488
    ],
    "component": "M2_5-800",
    "mass_g": 0.154,
@@ -897,7 +897,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54.505
+   "volume_mm3": 54.44
   },
   {
    "bbox": [
@@ -1446,8 +1446,8 @@
    "body_group": "GROUND:1",
    "com_mm": [
     -178.0299,
-    -100.7155,
-    233.0318
+    -100.7149,
+    233.0307
    ],
    "component": "_M2_5-100001",
    "mass_g": 0.141,
@@ -1473,7 +1473,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 49.867
+   "volume_mm3": 49.907
   },
   {
    "bbox": [
@@ -1493,8 +1493,8 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -178.0318,
-    -100.7155,
+    -178.0308,
+    -100.7149,
     196.9701
    ],
    "component": "_M2_5-100001",
@@ -1521,7 +1521,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 49.867
+   "volume_mm3": 49.907
   },
   {
    "bbox": [
@@ -1542,8 +1542,8 @@
    "body_group": "GROUND:1",
    "com_mm": [
     -141.9701,
-    -100.7155,
-    196.9682
+    -100.7149,
+    196.9693
    ],
    "component": "_M2_5-100001",
    "mass_g": 0.141,
@@ -1569,7 +1569,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 49.867
+   "volume_mm3": 49.907
   },
   {
    "bbox": [
@@ -1589,8 +1589,8 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -141.9682,
-    -100.7155,
+    -141.9693,
+    -100.7149,
     233.0299
    ],
    "component": "_M2_5-100001",
@@ -1617,7 +1617,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 49.867
+   "volume_mm3": 49.907
   },
   {
    "bbox": [
@@ -1721,7 +1721,7 @@
    "bodies": [],
    "body_group": "GROUND:1",
    "com_mm": [
-    -159.9371,
+    -159.9372,
     -78.0162,
     215.0238
    ],
@@ -1749,7 +1749,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 111263.203
+   "volume_mm3": 111263.356
   },
   {
    "bbox": [
@@ -2302,9 +2302,9 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -204.9995,
-    -64.4999,
-    126.7417
+    -205.0002,
+    -64.4955,
+    126.7412
    ],
    "component": "BHCS_M3x8",
    "mass_g": 0.566,
@@ -2330,7 +2330,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 72.132
+   "volume_mm3": 72.155
   },
   {
    "bbox": [
@@ -2499,9 +2499,9 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -114.9995,
-    -64.4999,
-    126.7417
+    -115.0002,
+    -64.4955,
+    126.7412
    ],
    "component": "BHCS_M3x8",
    "mass_g": 0.566,
@@ -2527,7 +2527,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 72.132
+   "volume_mm3": 72.155
   },
   {
    "bbox": [
@@ -2637,12 +2637,12 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -160.0004,
+    -159.9993,
     55.3331,
-    215.0022
+    215.0017
    ],
    "component": "4340__3D_20240814_1_2_4",
-   "mass_g": 16.096,
+   "mass_g": 16.097,
    "path": "GROUND:1+Stator:2+4340__3D_20240814_1_2_4:1",
    "source_id": null,
    "source_version": null,
@@ -2665,7 +2665,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 5707.534
+   "volume_mm3": 5707.884
   },
   {
    "bbox": [
@@ -2734,7 +2734,7 @@
    "body_group": "GROUND:1",
    "com_mm": [
     -158.5979,
-    98.2256,
+    98.2257,
     215.0413
    ],
    "component": "G43_V1_1_3-230824_4",
@@ -2761,7 +2761,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 3691.695
+   "volume_mm3": 3691.731
   },
   {
    "bbox": [
@@ -2830,8 +2830,8 @@
    "body_group": "GROUND:1",
    "com_mm": [
     -133.501,
-    57.3156,
-    214.9994
+    57.3144,
+    215.0
    ],
    "component": "M2_5-800",
    "mass_g": 0.154,
@@ -2857,7 +2857,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54.505
+   "volume_mm3": 54.44
   },
   {
    "bbox": [
@@ -2877,9 +2877,9 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -146.751,
-    57.3156,
-    192.0509
+    -146.7505,
+    57.3144,
+    192.0512
    ],
    "component": "M2_5-800",
    "mass_g": 0.154,
@@ -2905,7 +2905,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54.505
+   "volume_mm3": 54.44
   },
   {
    "bbox": [
@@ -2925,9 +2925,9 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -173.25,
-    57.3156,
-    192.0515
+    -173.2495,
+    57.3144,
+    192.0512
    ],
    "component": "M2_5-800",
    "mass_g": 0.154,
@@ -2953,7 +2953,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54.505
+   "volume_mm3": 54.44
   },
   {
    "bbox": [
@@ -2974,8 +2974,8 @@
    "body_group": "GROUND:1",
    "com_mm": [
     -186.499,
-    57.3156,
-    215.0006
+    57.3144,
+    215.0
    ],
    "component": "M2_5-800",
    "mass_g": 0.154,
@@ -3001,7 +3001,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54.505
+   "volume_mm3": 54.44
   },
   {
    "bbox": [
@@ -3021,9 +3021,9 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -173.249,
-    57.3156,
-    237.9491
+    -173.2495,
+    57.3144,
+    237.9488
    ],
    "component": "M2_5-800",
    "mass_g": 0.154,
@@ -3049,7 +3049,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54.505
+   "volume_mm3": 54.44
   },
   {
    "bbox": [
@@ -3069,9 +3069,9 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -146.75,
-    57.3156,
-    237.9485
+    -146.7505,
+    57.3144,
+    237.9488
    ],
    "component": "M2_5-800",
    "mass_g": 0.154,
@@ -3097,7 +3097,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54.505
+   "volume_mm3": 54.44
   },
   {
    "bbox": [
@@ -3646,8 +3646,8 @@
    "body_group": "GROUND:1",
    "com_mm": [
     -141.9701,
-    100.7155,
-    233.0318
+    100.7149,
+    233.0307
    ],
    "component": "_M2_5-100001",
    "mass_g": 0.141,
@@ -3673,7 +3673,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 49.867
+   "volume_mm3": 49.907
   },
   {
    "bbox": [
@@ -3693,8 +3693,8 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -141.9682,
-    100.7155,
+    -141.9692,
+    100.7149,
     196.9701
    ],
    "component": "_M2_5-100001",
@@ -3721,7 +3721,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 49.867
+   "volume_mm3": 49.907
   },
   {
    "bbox": [
@@ -3742,8 +3742,8 @@
    "body_group": "GROUND:1",
    "com_mm": [
     -178.0299,
-    100.7155,
-    196.9682
+    100.7149,
+    196.9693
    ],
    "component": "_M2_5-100001",
    "mass_g": 0.141,
@@ -3769,7 +3769,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 49.867
+   "volume_mm3": 49.907
   },
   {
    "bbox": [
@@ -3789,8 +3789,8 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -178.0318,
-    100.7155,
+    -178.0307,
+    100.7149,
     233.0299
    ],
    "component": "_M2_5-100001",
@@ -3817,7 +3817,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 49.867
+   "volume_mm3": 49.907
   },
   {
    "bbox": [
@@ -3921,7 +3921,7 @@
    "bodies": [],
    "body_group": "GROUND:1",
    "com_mm": [
-    -160.0629,
+    -160.0628,
     78.0162,
     215.0238
    ],
@@ -3949,7 +3949,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 111263.203
+   "volume_mm3": 111263.356
   },
   {
    "bbox": [
@@ -4502,9 +4502,9 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -204.9995,
-    64.5001,
-    126.7417
+    -205.0002,
+    64.5045,
+    126.7412
    ],
    "component": "BHCS_M3x8",
    "mass_g": 0.566,
@@ -4530,7 +4530,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 72.132
+   "volume_mm3": 72.155
   },
   {
    "bbox": [
@@ -4699,9 +4699,9 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -114.9995,
-    64.5001,
-    126.7417
+    -115.0002,
+    64.5045,
+    126.7412
    ],
    "component": "BHCS_M3x8",
    "mass_g": 0.566,
@@ -4727,7 +4727,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 72.132
+   "volume_mm3": 72.155
   },
   {
    "bbox": [
@@ -4901,12 +4901,12 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -228.0007,
-    -70.0017,
-    123.0783
+    -228.0006,
+    -70.0005,
+    123.0837
    ],
    "component": "SHCS_M4x12",
-   "mass_g": 1.933,
+   "mass_g": 1.931,
    "path": "GROUND:1+SHCS_M4x12:5",
    "source_id": "urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA",
    "source_version": 2,
@@ -4929,7 +4929,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 246.2
+   "volume_mm3": 245.951
   },
   {
    "bbox": [
@@ -4949,12 +4949,12 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -228.0007,
-    69.9983,
-    123.0783
+    -228.0006,
+    69.9995,
+    123.0837
    ],
    "component": "SHCS_M4x12",
-   "mass_g": 1.933,
+   "mass_g": 1.931,
    "path": "GROUND:1+SHCS_M4x12:6",
    "source_id": "urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA",
    "source_version": 2,
@@ -4977,7 +4977,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 246.2
+   "volume_mm3": 245.951
   },
   {
    "bbox": [
@@ -4997,12 +4997,12 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -92.0007,
-    -70.0017,
-    123.0783
+    -92.0006,
+    -70.0005,
+    123.0837
    ],
    "component": "SHCS_M4x12",
-   "mass_g": 1.933,
+   "mass_g": 1.931,
    "path": "GROUND:1+SHCS_M4x12:7",
    "source_id": "urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA",
    "source_version": 2,
@@ -5025,7 +5025,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 246.2
+   "volume_mm3": 245.951
   },
   {
    "bbox": [
@@ -5045,12 +5045,12 @@
    ],
    "body_group": "GROUND:1",
    "com_mm": [
-    -92.0007,
-    69.9983,
-    123.0783
+    -92.0006,
+    69.9995,
+    123.0837
    ],
    "component": "SHCS_M4x12",
-   "mass_g": 1.933,
+   "mass_g": 1.931,
    "path": "GROUND:1+SHCS_M4x12:8",
    "source_id": "urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA",
    "source_version": 2,
@@ -5073,7 +5073,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 246.2
+   "volume_mm3": 245.951
   },
   {
    "bbox": [
@@ -5185,10 +5185,10 @@
    "com_mm": [
     -161.1581,
     -0.931,
-    179.3382
+    179.3388
    ],
    "component": "GROUND",
-   "mass_g": 857.692,
+   "mass_g": 857.686,
    "path": "GROUND:1",
    "source_id": null,
    "source_version": null,
@@ -5211,7 +5211,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 393460.151
+   "volume_mm3": 393459.551
   },
   {
    "bbox": [
@@ -7640,9 +7640,9 @@
    ],
    "body_group": "UPPER:1",
    "com_mm": [
-    -239.8744,
-    -45.5417,
-    244.0718
+    -239.8752,
+    -45.5412,
+    244.0674
    ],
    "component": "BHCS_M3x8",
    "mass_g": 0.566,
@@ -7668,7 +7668,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 72.132
+   "volume_mm3": 72.155
   },
   {
    "bbox": [
@@ -7837,9 +7837,9 @@
    ],
    "body_group": "UPPER:1",
    "com_mm": [
-    -300.9544,
-    -45.5417,
-    266.3031
+    -300.9552,
+    -45.5412,
+    266.2987
    ],
    "component": "BHCS_M3x8",
    "mass_g": 0.566,
@@ -7865,7 +7865,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 72.132
+   "volume_mm3": 72.155
   },
   {
    "bbox": [
@@ -7927,7 +7927,7 @@
    "bodies": [],
    "body_group": "UPPER:1",
    "com_mm": [
-    -217.0871,
+    -217.0872,
     -30.2248,
     235.7008
    ],
@@ -7955,7 +7955,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 61902.65
+   "volume_mm3": 61902.695
   },
   {
    "bbox": [
@@ -11544,59 +11544,6 @@
   },
   {
    "bbox": [
-    -489.0055,
-    -39.01,
-    320.3072,
-    -469.9855,
-    -25.48,
-    342.2665
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC alu",
-     "material": "Aluminum 6061",
-     "name": "Level_Hub_Elbow"
-    },
-    {
-     "appearance": "ARC alu",
-     "material": "Aluminum 6061",
-     "name": "Relieved sleeve"
-    }
-   ],
-   "body_group": "ROCKER:1",
-   "com_mm": [
-    -479.4955,
-    -33.3388,
-    331.2868
-   ],
-   "component": "Level_Hub_Elbow",
-   "mass_g": 3.074,
-   "path": "ROCKER:1+Level_Hub_Elbow:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:mMtJLDI9Qe6XiD81bNAb0w",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -479.495491,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    331.286849,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 1138.638
-  },
-  {
-   "bbox": [
     -487.0055,
     -39.02,
     323.7768,
@@ -12162,6 +12109,54 @@
   },
   {
    "bbox": [
+    -489.0055,
+    -39.01,
+    320.3072,
+    -469.9855,
+    -25.49,
+    342.2665
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC alu",
+     "material": "Aluminum 6061",
+     "name": "Level_Hub_Elbow"
+    }
+   ],
+   "body_group": "ROCKER:1",
+   "com_mm": [
+    -479.4955,
+    -33.344,
+    331.2868
+   ],
+   "component": "Level_Hub_Elbow",
+   "mass_g": 3.089,
+   "path": "ROCKER:1+Level_Hub_Elbow:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:mMtJLDI9Qe6XiD81bNAb0w",
+   "source_version": 3,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -479.495491,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    331.286849,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 1144.217
+  },
+  {
+   "bbox": [
     -556.4758,
     -47.53,
     308.223,
@@ -12172,12 +12167,12 @@
    "bodies": [],
    "body_group": "ROCKER:1",
    "com_mm": [
-    -497.6354,
-    -36.698,
-    339.1432
+    -497.6268,
+    -36.6969,
+    339.1395
    ],
    "component": "ROCKER",
-   "mass_g": 31.626,
+   "mass_g": 31.641,
    "path": "ROCKER:1",
    "source_id": null,
    "source_version": null,
@@ -12200,7 +12195,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 13486.874
+   "volume_mm3": 13492.453
   },
   {
    "bbox": [
@@ -12249,59 +12244,6 @@
    ],
    "visible": true,
    "volume_mm3": 8588.902
-  },
-  {
-   "bbox": [
-    -144.3228,
-    -39.01,
-    381.0841,
-    -125.3028,
-    -25.48,
-    403.0434
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC alu",
-     "material": "Aluminum 6061",
-     "name": "Level_Hub_Wrist"
-    },
-    {
-     "appearance": "ARC alu",
-     "material": "Aluminum 6061",
-     "name": "Relieved sleeve"
-    }
-   ],
-   "body_group": "LEVEL:1",
-   "com_mm": [
-    -134.8128,
-    -33.3388,
-    392.0637
-   ],
-   "component": "Level_Hub_Wrist",
-   "mass_g": 3.074,
-   "path": "LEVEL:1+Level_Hub_Wrist:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:8vqzuBwmS-WNCpyvmqGSvA",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -134.812778,
-    0.0,
-    1.0,
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0,
-    392.063711,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 1138.638
   },
   {
    "bbox": [
@@ -14138,22 +14080,70 @@
   },
   {
    "bbox": [
+    -144.3228,
+    -39.01,
+    381.0841,
+    -125.3028,
+    -25.49,
+    403.0434
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC alu",
+     "material": "Aluminum 6061",
+     "name": "Level_Hub_Wrist"
+    }
+   ],
+   "body_group": "LEVEL:1",
+   "com_mm": [
+    -134.8128,
+    -33.344,
+    392.0637
+   ],
+   "component": "Level_Hub_Wrist",
+   "mass_g": 3.089,
+   "path": "LEVEL:1+Level_Hub_Wrist:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:8vqzuBwmS-WNCpyvmqGSvA",
+   "source_version": 3,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -134.812778,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    392.063711,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 1144.217
+  },
+  {
+   "bbox": [
     -182.0319,
     -85.0711,
     368.2924,
     -109.2443,
-    -25.47,
+    -25.48,
     441.6284
    ],
    "bodies": [],
    "body_group": "LEVEL:1",
    "com_mm": [
-    -144.4269,
-    -55.7258,
-    401.8666
+    -144.4255,
+    -55.7227,
+    401.8651
    ],
    "component": "LEVEL",
-   "mass_g": 104.629,
+   "mass_g": 104.644,
    "path": "LEVEL:1",
    "source_id": null,
    "source_version": null,
@@ -14176,7 +14166,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 54091.896
+   "volume_mm3": 54097.475
   },
   {
    "bbox": [
@@ -17118,9 +17108,9 @@
    ],
    "body_group": "ARC Four-Bar Gripper:1",
    "com_mm": [
-    -68.0711,
-    15.2505,
-    387.0638
+    -68.0716,
+    15.2498,
+    387.0682
    ],
    "component": "BHCS_M3x8",
    "mass_g": 0.566,
@@ -17146,7 +17136,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 72.132
+   "volume_mm3": 72.155
   },
   {
    "bbox": [
@@ -17166,9 +17156,9 @@
    ],
    "body_group": "ARC Four-Bar Gripper:1",
    "com_mm": [
-    -68.0711,
-    -15.2495,
-    387.0638
+    -68.0716,
+    -15.2502,
+    387.0682
    ],
    "component": "BHCS_M3x8",
    "mass_g": 0.566,
@@ -17194,7 +17184,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 72.132
+   "volume_mm3": 72.155
   },
   {
    "bbox": [
@@ -17214,9 +17204,9 @@
    ],
    "body_group": "ARC Four-Bar Gripper:1",
    "com_mm": [
-    -68.0711,
-    -10.7828,
-    376.2804
+    -68.0716,
+    -10.7836,
+    376.2848
    ],
    "component": "BHCS_M3x8",
    "mass_g": 0.566,
@@ -17242,7 +17232,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 72.132
+   "volume_mm3": 72.155
   },
   {
    "bbox": [
@@ -17262,9 +17252,9 @@
    ],
    "body_group": "ARC Four-Bar Gripper:1",
    "com_mm": [
-    -68.0711,
-    10.7839,
-    376.2804
+    -68.0716,
+    10.7832,
+    376.2848
    ],
    "component": "BHCS_M3x8",
    "mass_g": 0.566,
@@ -17290,7 +17280,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 72.132
+   "volume_mm3": 72.155
   },
   {
    "bbox": [
@@ -18678,8 +18668,8 @@
    "bodies": [],
    "body_group": "ARC Four-Bar Gripper:1",
    "com_mm": [
-    -56.5713,
-    24.3384,
+    -56.5714,
+    24.3383,
     397.3036
    ],
    "component": "HEAD",
@@ -18706,7 +18696,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 113817.911
+   "volume_mm3": 113818.002
   },
   {
    "bbox": [
@@ -20210,7 +20200,7 @@
    "com_mm": [
     15.4423,
     -34.7846,
-    393.5646
+    393.5645
    ],
    "component": "Jaw_Block_R",
    "mass_g": 30.742,
@@ -20236,7 +20226,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 40989.709
+   "volume_mm3": 40989.717
   },
   {
    "bbox": [
@@ -20614,7 +20604,7 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 70646.778
+   "volume_mm3": 70646.786
   },
   {
    "bbox": [
@@ -21708,7 +21698,7 @@
    "bodies": [],
    "body_group": "ARC Four-Bar Gripper:1",
    "com_mm": [
-    -23.4718,
+    -23.4719,
     11.2657,
     395.0837
    ],
@@ -21736,19 +21726,19 @@
     1.0
    ],
    "visible": true,
-   "volume_mm3": 283996.813
+   "volume_mm3": 283996.912
   }
  ],
  "summary": {
   "document": "ARC Arm Rev A",
   "document_id": "urn:adsk.wipprod:dm.lineage:tGjaaP6BR9alz_2ZsIQF-g",
-  "document_version": 26,
-  "exported": "2026-11-22T15:31:34",
+  "document_version": 27,
+  "exported": "2026-11-27T13:00:21",
   "joints": 21,
   "motion_links": 0,
   "occurrences": 442,
   "parts": 122,
   "revision": "rev_a",
-  "total_mass_g": 2168.8
+  "total_mass_g": 2168.9
  }
 }
