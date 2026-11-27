@@ -19276,54 +19276,6 @@
   },
   {
    "bbox": [
-    -2.7993,
-    11.3492,
-    366.0537,
-    44.2086,
-    31.01,
-    412.0737
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC pad",
-     "material": "TPU print (effective)",
-     "name": "Pad_L_TPU"
-    }
-   ],
-   "body_group": "ARC Four-Bar Gripper:1",
-   "com_mm": [
-    20.4013,
-    22.7044,
-    389.0637
-   ],
-   "component": "Pad_L_TPU",
-   "mass_g": 19.62,
-   "path": "ARC Four-Bar Gripper:1+JAW_L:1+Pad_L_TPU:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:4t-y8JeuRpSo2KikloCD0Q",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -131.525397,
-    0.0,
-    1.0,
-    0.0,
-    8.120249,
-    0.0,
-    0.0,
-    1.0,
-    392.063711,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 21800.057
-  },
-  {
-   "bbox": [
     -9.8033,
     22.99,
     415.4537,
@@ -19612,6 +19564,102 @@
   },
   {
    "bbox": [
+    -2.7993,
+    12.8327,
+    366.0537,
+    44.2086,
+    31.01,
+    412.0737
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC pla",
+     "material": "PETG-CF print (effective)",
+     "name": "Pad_L"
+    }
+   ],
+   "body_group": "ARC Four-Bar Gripper:1",
+   "com_mm": [
+    20.5921,
+    23.3875,
+    389.0637
+   ],
+   "component": "Pad_L",
+   "mass_g": 13.559,
+   "path": "ARC Four-Bar Gripper:1+JAW_L:1+Pad_L:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:4t-y8JeuRpSo2KikloCD0Q",
+   "source_version": 3,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -131.525397,
+    0.0,
+    1.0,
+    0.0,
+    8.120249,
+    0.0,
+    0.0,
+    1.0,
+    392.063711,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 18079.095
+  },
+  {
+   "bbox": [
+    0.1349,
+    11.3492,
+    366.0537,
+    38.8143,
+    29.2727,
+    412.0737
+   ],
+   "bodies": [
+    {
+     "appearance": "Rubber - Soft",
+     "material": "Neoprene, adhesive-backed (1.30 g per cm3)",
+     "name": "Grip_Rubber_L"
+    }
+   ],
+   "body_group": "ARC Four-Bar Gripper:1",
+   "com_mm": [
+    19.4746,
+    19.3854,
+    389.0637
+   ],
+   "component": "Grip_Rubber_L",
+   "mass_g": 4.837,
+   "path": "ARC Four-Bar Gripper:1+JAW_L:1+Grip_Rubber_L:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:2SSduT2KRcuWvQ02UhaSgA",
+   "source_version": 1,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -131.525397,
+    0.0,
+    1.0,
+    0.0,
+    8.120249,
+    0.0,
+    0.0,
+    1.0,
+    392.063711,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 3720.962
+  },
+  {
+   "bbox": [
     -13.8133,
     9.3926,
     361.3937,
@@ -19622,12 +19670,12 @@
    "bodies": [],
    "body_group": "ARC Four-Bar Gripper:1",
    "com_mm": [
-    15.3395,
-    30.0132,
-    388.4517
+    15.2266,
+    30.0432,
+    388.4413
    ],
    "component": "JAW_L",
-   "mass_g": 72.884,
+   "mass_g": 71.661,
    "path": "ARC Four-Bar Gripper:1+JAW_L:1",
    "source_id": null,
    "source_version": null,
@@ -20230,54 +20278,6 @@
   },
   {
    "bbox": [
-    -2.7993,
-    -31.01,
-    366.0537,
-    44.2086,
-    -11.3492,
-    412.0737
-   ],
-   "bodies": [
-    {
-     "appearance": "ARC pad",
-     "material": "TPU print (effective)",
-     "name": "Pad_R_TPU"
-    }
-   ],
-   "body_group": "ARC Four-Bar Gripper:1",
-   "com_mm": [
-    20.4013,
-    -22.7044,
-    389.0637
-   ],
-   "component": "Pad_R_TPU",
-   "mass_g": 19.62,
-   "path": "ARC Four-Bar Gripper:1+JAW_R:1+Pad_R_TPU:1",
-   "source_id": "urn:adsk.wipprod:dm.lineage:pO-AYcvMTvmrbhGoA3zcFQ",
-   "source_version": 2,
-   "transform": [
-    1.0,
-    0.0,
-    0.0,
-    -131.525397,
-    0.0,
-    1.0,
-    0.0,
-    -8.120249,
-    0.0,
-    0.0,
-    1.0,
-    392.063711,
-    0.0,
-    0.0,
-    0.0,
-    1.0
-   ],
-   "visible": true,
-   "volume_mm3": 21800.057
-  },
-  {
-   "bbox": [
     -9.8033,
     -27.01,
     415.4537,
@@ -20566,6 +20566,102 @@
   },
   {
    "bbox": [
+    -2.7993,
+    -31.01,
+    366.0537,
+    44.2086,
+    -12.8327,
+    412.0737
+   ],
+   "bodies": [
+    {
+     "appearance": "ARC pla",
+     "material": "PETG-CF print (effective)",
+     "name": "Pad_R"
+    }
+   ],
+   "body_group": "ARC Four-Bar Gripper:1",
+   "com_mm": [
+    20.5921,
+    -23.3875,
+    389.0637
+   ],
+   "component": "Pad_R",
+   "mass_g": 13.559,
+   "path": "ARC Four-Bar Gripper:1+JAW_R:1+Pad_R:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:pO-AYcvMTvmrbhGoA3zcFQ",
+   "source_version": 3,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -131.525397,
+    0.0,
+    1.0,
+    0.0,
+    -8.120249,
+    0.0,
+    0.0,
+    1.0,
+    392.063711,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 18079.095
+  },
+  {
+   "bbox": [
+    0.1349,
+    -29.2727,
+    366.0537,
+    38.8143,
+    -11.3492,
+    412.0737
+   ],
+   "bodies": [
+    {
+     "appearance": "Rubber - Soft",
+     "material": "Neoprene, adhesive-backed (1.30 g per cm3)",
+     "name": "Grip_Rubber_R"
+    }
+   ],
+   "body_group": "ARC Four-Bar Gripper:1",
+   "com_mm": [
+    19.4746,
+    -19.3854,
+    389.0637
+   ],
+   "component": "Grip_Rubber_R",
+   "mass_g": 4.837,
+   "path": "ARC Four-Bar Gripper:1+JAW_R:1+Grip_Rubber_R:1",
+   "source_id": "urn:adsk.wipprod:dm.lineage:op6EtJkQT227BJwocqFP0Q",
+   "source_version": 1,
+   "transform": [
+    1.0,
+    0.0,
+    0.0,
+    -131.525397,
+    0.0,
+    1.0,
+    0.0,
+    -8.120249,
+    0.0,
+    0.0,
+    1.0,
+    392.063711,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "visible": true,
+   "volume_mm3": 3720.962
+  },
+  {
+   "bbox": [
     -13.8133,
     -47.02,
     361.3937,
@@ -20576,12 +20672,12 @@
    "bodies": [],
    "body_group": "ARC Four-Bar Gripper:1",
    "com_mm": [
-    15.3395,
-    -30.0131,
-    388.4517
+    15.2266,
+    -30.0431,
+    388.4412
    ],
    "component": "JAW_R",
-   "mass_g": 72.884,
+   "mass_g": 71.661,
    "path": "ARC Four-Bar Gripper:1+JAW_R:1",
    "source_id": null,
    "source_version": null,
@@ -21698,15 +21794,15 @@
    "bodies": [],
    "body_group": "ARC Four-Bar Gripper:1",
    "com_mm": [
-    -23.4719,
-    11.2657,
-    395.0837
+    -23.8018,
+    11.3475,
+    395.1274
    ],
    "component": "ARC Four-Bar Gripper",
-   "mass_g": 339.346,
+   "mass_g": 336.899,
    "path": "ARC Four-Bar Gripper:1",
    "source_id": "urn:adsk.wipprod:dm.lineage:tMIPrFzzQv6FUw6DusQ6Lw",
-   "source_version": 3,
+   "source_version": 4,
    "transform": [
     1.0,
     0.0,
@@ -21732,13 +21828,13 @@
  "summary": {
   "document": "ARC Arm Rev A",
   "document_id": "urn:adsk.wipprod:dm.lineage:tGjaaP6BR9alz_2ZsIQF-g",
-  "document_version": 27,
-  "exported": "2026-11-27T13:00:21",
+  "document_version": 28,
+  "exported": "2026-11-27T14:40:22",
   "joints": 21,
   "motion_links": 0,
-  "occurrences": 442,
-  "parts": 122,
+  "occurrences": 444,
+  "parts": 124,
   "revision": "rev_a",
-  "total_mass_g": 2168.9
+  "total_mass_g": 2166.4
  }
 }

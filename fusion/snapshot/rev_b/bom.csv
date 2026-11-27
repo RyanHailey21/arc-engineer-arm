@@ -31,6 +31,8 @@ component,qty,material,mass_g,source_id,source_version
 "Finger_R_bot_CF3",1,"CF plate 3K",6.898,urn:adsk.wipprod:dm.lineage:1txF1MguRp2QlZd6FzP_cw,2
 "Forearm_L_CF3",1,"CF plate 3K",37.802,urn:adsk.wipprod:dm.lineage:HhxNsBd9QfST1_QGP84bEA,2
 "Forearm_R_CF3",1,"CF plate 3K",37.802,urn:adsk.wipprod:dm.lineage:2501f9_yQA2CFKnAee_UCw,2
+"Grip_Rubber_L",1,"Neoprene, adhesive-backed (1.30 g per cm3)",4.837,urn:adsk.wipprod:dm.lineage:2SSduT2KRcuWvQ02UhaSgA,1
+"Grip_Rubber_R",1,"Neoprene, adhesive-backed (1.30 g per cm3)",4.837,urn:adsk.wipprod:dm.lineage:op6EtJkQT227BJwocqFP0Q,1
 "Gripper_Palm",1,"PETG-CF print (effective)",65.976,urn:adsk.wipprod:dm.lineage:wxfNb0iAT2iXjeidN2u2mg,3
 "INSERT",18,"INSERT (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:Gb7W_OS_Q7Oim2wk-y7I9Q,3
 "J1_Output_Hub",1,"Aluminum 6061",33.607,urn:adsk.wipprod:dm.lineage:I8ZvIK3SRYquDsug7Hr2OQ,2
@@ -65,8 +67,8 @@ component,qty,material,mass_g,source_id,source_version
 "PIN-D4x20",1,"PIN-D4x20 (catalogue mass)",2.000,urn:adsk.wipprod:dm.lineage:7l8EkxA4SlqkIaIgPERwhg,3
 "PIN-D4x30",1,"PIN-D4x30 (catalogue mass)",3.000,urn:adsk.wipprod:dm.lineage:y9AJF3WPRgS7xW5eNCAZWw,3
 "PIN-D4x8",4,"PIN-D4x8 (catalogue mass)",0.800,urn:adsk.wipprod:dm.lineage:83z5oFJRRuuL-EuhoBaokw,3
-"Pad_L_TPU",1,"TPU print (effective)",19.620,urn:adsk.wipprod:dm.lineage:4t-y8JeuRpSo2KikloCD0Q,2
-"Pad_R_TPU",1,"TPU print (effective)",19.620,urn:adsk.wipprod:dm.lineage:pO-AYcvMTvmrbhGoA3zcFQ,2
+"Pad_L",1,"PETG-CF print (effective)",13.559,urn:adsk.wipprod:dm.lineage:4t-y8JeuRpSo2KikloCD0Q,3
+"Pad_R",1,"PETG-CF print (effective)",13.559,urn:adsk.wipprod:dm.lineage:pO-AYcvMTvmrbhGoA3zcFQ,3
 "Pinion_m2_18T_J1",1,"PA12 print (effective)",6.251,urn:adsk.wipprod:dm.lineage:-FhjP215R1yQ80quRV2rdA,2
 "Pinion_m2_18T_J2",1,"PA12 print (effective)",6.251,urn:adsk.wipprod:dm.lineage:yV5SCrPoTsq8ON8n9Ov6gQ,3
 "Rod_1_CF3",1,"CF plate 3K",17.340,urn:adsk.wipprod:dm.lineage:-9fZ7ryVRFqErvXzhkiShA,2
