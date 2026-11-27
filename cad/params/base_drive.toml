@@ -17,4 +17,4 @@ lightening = [6, 9.0, 31.0]   # big gear: 6 windows of radius 9 on radius 31 (be
 lip = 2.0             # outboard lip, bore D27, retains the bearing's outer race
 lip_d = 27.0
 boss_r = 22.0         # wall around the bearing seat
-leg_d = 10.0          # legs from the tower face to the wall, M3 heat-set insert in each
+leg_d = 10.0          # D of the wall's lobes round the three spacer stations (the spacers themselves: interfaces/drive_frame__tower.toml)

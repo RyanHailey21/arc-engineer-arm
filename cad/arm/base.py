@@ -24,8 +24,9 @@ def _y_seat():
 
 
 def drive_frame(sgn):
-    """Printed drive frame (PETG-CF): bearing wall around S (6804 seat + outboard lip), the STS3215 pocket that runs
-    through the wall plane, and three legs to the tower with M3 heat-set inserts."""
+    """Printed drive frame (PETG-CF): bearing wall around S (6804 seat + outboard lip) and the STS3215 pocket that runs
+    through the wall plane.  The inboard face is flat (it prints face down, no supports): three separate printed
+    spacers carry it off the tower, with M3 through-bolts (interfaces/drive_frame__tower.toml)."""
     S, pc, legs = drive_layout()
     B, SR = IF_HUB_DRIVE["bearing"], IF_STS["pocket"]
     w0, w1 = B["y"]
@@ -43,13 +44,10 @@ def drive_frame(sgn):
                 w + SR["clearance"])
     wall = wall.cut(sts_place(inner, sgn * ys, sgn, ang, *pc))
     fr = wall.fuse(sts_place(sts_pocket(top_c), sgn * ys, sgn, ang, *pc))
-    # bearing lip (outboard) and legs with insert bores
+    # bearing lip (outboard) and the M3 clearance holes through the wall at the spacer stations
     fr = fr.fuse(ring(S[0], S[1], sgn * w1, sgn * (w1 + DFRAME["lip"]), DFRAME["boss_r"] - 4, DFRAME["lip_d"] / 2))
-    y_tw = abs(Y["TW"]) + T / 2
-    ins = IF_DRIVE_TOWER["side_b"]
     for (x, z) in legs:
-        fr = fr.fuse(ycyl(x, z, sgn * y_tw, sgn * w0, DFRAME["leg_d"] / 2))
-        fr = fr.cut(ycyl(x, z, sgn * (y_tw - 1), sgn * (y_tw + ins["drill_depth"]), ins["drill_d"] / 2))
+        fr = fr.cut(ycyl(x, z, sgn * (w0 - 1), sgn * (w1 + 1), IF_DRIVE_TOWER["side_b"]["clearance_d"] / 2))
     return fr.removeSplitter()
 
 
@@ -131,14 +129,17 @@ def _geared_tower_side(side, sgn):
     jn = 1 if sgn < 0 else 2
     out.append(_tower(side, sgn, [(x, z, 7) for (x, z) in legs], [(x, z, LT["side_a"]["clearance_d"] / 2) for (x, z) in legs]))
     fr = drive_frame(sgn)
-    out.append(Part_("Drive_Frame_%s" % side, fr, fr, "PRINT", "custom: PETG-CF print, 3x M3 heat-set inserts", "pla",
+    out.append(Part_("Drive_Frame_%s" % side, fr, fr, "PRINT", "custom: PETG-CF print, flat back (prints face down, no supports), 3x M3 through holes", "pla",
                      "J%d bearing wall + STS3215 cradle" % jn))
+    f, sp, w0, w1 = LT["fastener"], LT["spacer"], B["y"][0], B["y"][1]
     for i, (x, z) in enumerate(legs):
-        out.append(P("Insert_M3_frame_%s%d" % (side, i), at((ring(0, 0, sgn * y_tw_out, sgn * (y_tw_out + 3.8), 2.0, 1.25),) * 2, x, z),
-                     "CAT", "INSERT", "brass"))
-        f = LT["fastener"]
+        s = ring(x, z, sgn * y_tw_out, sgn * w0, sp["od"] / 2, sp["clearance_d"] / 2)
+        out.append(Part_("Spacer_DF_%s%d" % (side, i), s, s, "PRINT",
+                         "custom: printed tube D%g x %.1f, M3 clearance" % (sp["od"], w0 - y_tw_out), "pla",
+                         "drive frame %s off the tower" % side))
         out.append(P("BHCS_M3x%d_frame_%s%d" % (f["length"], side, i),
                      at(H.screw("BHCS", 3, f["length"], sgn * y_tw_in, sgn), x, z), "CAT", "BHCS", "steel"))
+        out.append(P("Nyloc_M3_frame_%s%d" % (side, i), at(H.nyloc(3, sgn * w1, sgn), x, z), "CAT", "NYLOC", "steel"))
     # 6804 bearing in the frame wall (outer race static; the hub's journal turns in it)
     out.append(P("Brg_6804_J%d" % jn, at(H.bearing(B["d"], B["D"], B["B"], sgn * B["y"][0], sgn), sx, sz), "CAT", "6804ZZ", "alu"))
     # servo, its horn, the pinion and the screws (the servo turns its pinion; modelled static at the STOW clocking)

@@ -1,11 +1,13 @@
-# Interface: printed J1/J2 drive frame <-> CF motor tower (both sides).
+# Interface: printed J1/J2 drive frame <-> CF motor tower (both sides), through three printed spacers.
+# 2026-11-26: the frame's integral leg standoffs became separate spacers so the frame prints flat on its inboard
+# face with no supports (the legs held the wall 12 mm off the bed on tree supports: 6 h, 108 g).
 # Frame: GROUND (x forward, y left, z up), origin on the shoulder axis S. mm.  Angles atan2(z, x); the pattern is
 # the same on both towers (the sides mirror in y only).
 # Both mating parts build from this file (cad/arm/base.py); cad/tools/check_interfaces.py probes both sides.
 
 [interface]
 name = "drive_frame__tower"
-summary = "Drive frame legs bolt to the tower's outboard face: 3x M3 BHCS from inside the tower into heat-set inserts in the legs"
+summary = "Drive frame bolts to the tower's outboard face over 3 printed D10 spacers: M3x30 BHCS from inside the tower, through spacer and frame wall, nyloc on the wall's outboard face"
 owner = "base (J1/J2 drives)"
 base_drive = "GEARED"
 
@@ -14,7 +16,7 @@ origin = [-160.0, 0.0, 215.0]          # shoulder axis S = arm.toml K.SX, K.SZ (
 normal = [0.0, 1.0, 0.0]
 
 [pattern]
-radius = 64.0                          # legs (D10) clear the 54T gear tip (R56) by 3 mm
+radius = 64.0                          # spacers (D10) clear the 54T gear tip (R56) by 3 mm
 angles_deg = [60.0, 150.0, -105.0]     # clear of the pinion (-30 deg, r72) and of the G1 ground pivot (192 deg, r70)
 
 [side_a]                               # motor towers (3 mm CF)
@@ -22,14 +24,20 @@ parts = [["GROUND", "Tower_L_CF3"], ["GROUND", "Tower_R_CF3"]]
 hole = "clearance"
 clearance_d = 3.3
 
-[side_b]                               # drive frame legs (PETG-CF): bore for the M3 x 3.8 heat-set insert
+[side_b]                               # drive frame wall (printed): M3 clearance through the 7 mm wall
 parts = [["GROUND", "Drive_Frame_L"], ["GROUND", "Drive_Frame_R"]]
-hole = "tapped"
-thread = "M3x0.5"
-drill_d = 4.0
-drill_depth = 4.5
+hole = "clearance"
+clearance_d = 3.3
+
+[spacer]                               # one printed tube per station, tower outboard face -> frame wall inboard face
+body = "GROUND"
+part_prefix = "Spacer_DF_L"            # Spacer_DF_L<i> / Spacer_DF_R<i>; the probe checks the L set (same axes)
+hole = "clearance"
+clearance_d = 3.3
+od = 10.0                              # length = frame wall |y| (base_hub__drive bearing y0) - tower outboard face
 
 [fastener]                             # head on the tower's inboard face (0.85 mm clear of the upper-arm plate)
 kind = "BHCS"
 size = "M3"
-length = 6.0
+length = 30.0                          # 3 tower + 12 spacer + 7 wall = 22 to the nyloc; 4 mm nyloc + 4 mm protrusion
+nut = "NYLOC"                          # on the frame wall's outboard face

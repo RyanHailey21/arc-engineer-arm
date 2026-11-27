@@ -1,15 +1,5 @@
 {
- "findings": [
-  {
-   "kind": "duplicate",
-   "path": "cad/tests/test_no_checkout_paths.py",
-   "line": 95,
-   "name": "near-2b7b7527a9",
-   "detail": "8 near-identical (renamed) lines also at cad/tests/test_tests_exit_code.py:60",
-   "id": "duplicate:cad/tests/test_no_checkout_paths.py:near-2b7b7527a9",
-   "other": "cad/tests/test_tests_exit_code.py"
-  }
- ],
+ "findings": [],
  "kept": [
   {
    "kind": "dead-def",
@@ -19,6 +9,15 @@
    "detail": "function `use_release_variant` is never referenced",
    "id": "dead-def:cad/params.py:use_release_variant",
    "kept": "used only by frozen/release code: cad/export_fab.py, cad/fea/run_fea.py, cad/render/export_render.py"
+  },
+  {
+   "kind": "dead-def",
+   "path": "fusion/drive_frame_spacers.py",
+   "line": 23,
+   "name": "run_frame",
+   "detail": "function `run_frame` is never referenced",
+   "id": "dead-def:fusion/drive_frame_spacers.py:run_frame",
+   "kept": "entry point called by name from a Fusion MCP script, never from Python in the repo"
   },
   {
    "kind": "dead-def",
@@ -52,11 +51,47 @@
    "kind": "duplicate",
    "path": "cad/tools/amazon_buy_list.py",
    "line": 18,
-   "name": "near-9e7b413bdc",
-   "detail": "43 near-identical (renamed) lines also at cad/tools/amazon_buy_list.py:26",
-   "id": "duplicate:cad/tools/amazon_buy_list.py:near-9e7b413bdc",
+   "name": "near-f98a67ed0b",
+   "detail": "44 near-identical (renamed) lines also at cad/tools/amazon_buy_list.py:26",
+   "id": "duplicate:cad/tools/amazon_buy_list.py:near-f98a67ed0b",
    "other": "cad/tools/amazon_buy_list.py",
    "kept": "data table: one row per purchased line (section, item, ASIN, packs, price), alike by design, not copied code"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_drive_link.FCStd:cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd:cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_palm.FCStd:cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
   },
   {
    "kind": "out-unindexed",
@@ -78,6 +113,33 @@
   },
   {
    "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA_preview/plate1_upper_rods_S1Pro_PLA_first_layer.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA_preview/plate1_upper_rods_S1Pro_PLA_first_layer.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA_preview/plate1_upper_rods_S1Pro_PLA_first_layer.png:cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA_preview/plate1_upper_rods_S1Pro_PLA_first_layer.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA_preview/plate1_upper_rods_S1Pro_PLA_iso.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA_preview/plate1_upper_rods_S1Pro_PLA_iso.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA_preview/plate1_upper_rods_S1Pro_PLA_iso.png:cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA_preview/plate1_upper_rods_S1Pro_PLA_iso.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA_preview/plate1_upper_rods_S1Pro_PLA_top.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA_preview/plate1_upper_rods_S1Pro_PLA_top.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA_preview/plate1_upper_rods_S1Pro_PLA_top.png:cad/out/fourbar/print/gcode/plate1_upper_rods_S1Pro_PLA_preview/plate1_upper_rods_S1Pro_PLA_top.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
    "path": "cad/out/fourbar/print/gcode/plate2_gears_crank_rocker_S1Pro_PLA.gcode",
    "line": 1,
    "name": "cad/out/fourbar/print/gcode/plate2_gears_crank_rocker_S1Pro_PLA.gcode",
@@ -87,11 +149,38 @@
   },
   {
    "kind": "out-unindexed",
-   "path": "cad/out/fourbar/print/gcode/plate3_forearmA_rod2_S1Pro_PLA.gcode",
+   "path": "cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA.gcode",
    "line": 1,
-   "name": "cad/out/fourbar/print/gcode/plate3_forearmA_rod2_S1Pro_PLA.gcode",
+   "name": "cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA.gcode",
    "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
-   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate3_forearmA_rod2_S1Pro_PLA.gcode:cad/out/fourbar/print/gcode/plate3_forearmA_rod2_S1Pro_PLA.gcode",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA.gcode:cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA_preview/plate3_forearmB_rod2_S1Pro_PLA_first_layer.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA_preview/plate3_forearmB_rod2_S1Pro_PLA_first_layer.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA_preview/plate3_forearmB_rod2_S1Pro_PLA_first_layer.png:cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA_preview/plate3_forearmB_rod2_S1Pro_PLA_first_layer.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA_preview/plate3_forearmB_rod2_S1Pro_PLA_iso.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA_preview/plate3_forearmB_rod2_S1Pro_PLA_iso.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA_preview/plate3_forearmB_rod2_S1Pro_PLA_iso.png:cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA_preview/plate3_forearmB_rod2_S1Pro_PLA_iso.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA_preview/plate3_forearmB_rod2_S1Pro_PLA_top.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA_preview/plate3_forearmB_rod2_S1Pro_PLA_top.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA_preview/plate3_forearmB_rod2_S1Pro_PLA_top.png:cad/out/fourbar/print/gcode/plate3_forearmB_rod2_S1Pro_PLA_preview/plate3_forearmB_rod2_S1Pro_PLA_top.png",
    "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
   },
   {
@@ -101,6 +190,141 @@
    "name": "cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA.gcode",
    "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
    "id": "out-unindexed:cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA.gcode:cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_first_layer.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_first_layer.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_first_layer.png:cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_first_layer.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_iso.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_iso.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_iso.png:cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_iso.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_top.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_top.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_top.png:cad/out/fourbar/print/gcode/plate4_hubs_clevises_rodab_S1Pro_PLA_preview/plate4_hubs_clevises_rodab_S1Pro_PLA_top.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA.gcode",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA.gcode",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA.gcode:cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA_preview/plate5_forearmL_A_S1Pro_PLA_first_layer.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA_preview/plate5_forearmL_A_S1Pro_PLA_first_layer.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA_preview/plate5_forearmL_A_S1Pro_PLA_first_layer.png:cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA_preview/plate5_forearmL_A_S1Pro_PLA_first_layer.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA_preview/plate5_forearmL_A_S1Pro_PLA_iso.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA_preview/plate5_forearmL_A_S1Pro_PLA_iso.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA_preview/plate5_forearmL_A_S1Pro_PLA_iso.png:cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA_preview/plate5_forearmL_A_S1Pro_PLA_iso.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA_preview/plate5_forearmL_A_S1Pro_PLA_top.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA_preview/plate5_forearmL_A_S1Pro_PLA_top.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA_preview/plate5_forearmL_A_S1Pro_PLA_top.png:cad/out/fourbar/print/gcode/plate5_forearmL_A_S1Pro_PLA_preview/plate5_forearmL_A_S1Pro_PLA_top.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA.gcode",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA.gcode",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA.gcode:cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA_preview/plate6_forearmR_A_S1Pro_PLA_first_layer.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA_preview/plate6_forearmR_A_S1Pro_PLA_first_layer.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA_preview/plate6_forearmR_A_S1Pro_PLA_first_layer.png:cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA_preview/plate6_forearmR_A_S1Pro_PLA_first_layer.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA_preview/plate6_forearmR_A_S1Pro_PLA_iso.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA_preview/plate6_forearmR_A_S1Pro_PLA_iso.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA_preview/plate6_forearmR_A_S1Pro_PLA_iso.png:cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA_preview/plate6_forearmR_A_S1Pro_PLA_iso.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA_preview/plate6_forearmR_A_S1Pro_PLA_top.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA_preview/plate6_forearmR_A_S1Pro_PLA_top.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA_preview/plate6_forearmR_A_S1Pro_PLA_top.png:cad/out/fourbar/print/gcode/plate6_forearmR_A_S1Pro_PLA_preview/plate6_forearmR_A_S1Pro_PLA_top.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA.gcode",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA.gcode",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA.gcode:cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA_preview/plate7_gripper_links_K1SE_PLA_first_layer.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA_preview/plate7_gripper_links_K1SE_PLA_first_layer.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA_preview/plate7_gripper_links_K1SE_PLA_first_layer.png:cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA_preview/plate7_gripper_links_K1SE_PLA_first_layer.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA_preview/plate7_gripper_links_K1SE_PLA_iso.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA_preview/plate7_gripper_links_K1SE_PLA_iso.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA_preview/plate7_gripper_links_K1SE_PLA_iso.png:cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA_preview/plate7_gripper_links_K1SE_PLA_iso.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA_preview/plate7_gripper_links_K1SE_PLA_top.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA_preview/plate7_gripper_links_K1SE_PLA_top.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA_preview/plate7_gripper_links_K1SE_PLA_top.png:cad/out/fourbar/print/gcode/plate7_gripper_links_K1SE_PLA_preview/plate7_gripper_links_K1SE_PLA_top.png",
    "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
   },
   {
@@ -126,7 +350,7 @@
   "unused-import": 0,
   "unused-variable": 0,
   "dead-def": 0,
-  "duplicate": 1,
+  "duplicate": 0,
   "orphan-param": 0,
   "orphan-catalogue": 0,
   "orphan-interface": 0,
@@ -134,13 +358,15 @@
   "out-unindexed": 0,
   "scratch": 0
  },
- "scanned": 84,
+ "scanned": 85,
  "stale_keep": [],
  "notes": [
   "fourbar/map_parts.md is older than the model inputs (rerun tools/make_map.py)",
   "fourbar_direct/map_parts.md is older than the model inputs (rerun tools/make_map.py)"
  ],
  "new": [],
- "resolved": [],
+ "resolved": [
+  "duplicate:cad/tests/test_no_checkout_paths.py:near-2b7b7527a9"
+ ],
  "keep_file": "cad/tools/bloat_keep.toml"
 }

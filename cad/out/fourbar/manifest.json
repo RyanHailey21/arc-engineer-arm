@@ -5,10 +5,10 @@
    "out/bloat_report.md",
    "out/bloat_report.json"
   ],
-  "inputs_hash": "9cf67eeedebaa998",
-  "note": "BLOAT 1 findings (duplicate 1), 12 kept",
-  "status": "WARN",
-  "time": "2026-11-26T06:15:41"
+  "inputs_hash": "17f83b78b838c56d",
+  "note": "BLOAT 0 findings (none), 38 kept",
+  "status": "PASS",
+  "time": "2026-11-26T19:44:48"
  },
  "bom": {
   "evidence": "bom.evidence.json",
@@ -37,10 +37,10 @@
   "files": [
    "print/print_list.csv"
   ],
-  "inputs_hash": "9cf67eeedebaa998",
-  "note": "84 STL (77 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4; socket wall >= 4.50 mm), 1166 cm3; failed: none",
+  "inputs_hash": "6ad5d174dcdf21c5",
+  "note": "90 STL (83 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4; socket wall >= 4.50 mm), 1165 cm3; failed: none",
   "status": "PASS",
-  "time": "2026-11-26T08:36:34"
+  "time": "2026-11-26T19:39:36"
  },
  "fea_fourbar": {
   "evidence": "fea_fourbar.evidence.json",
@@ -111,10 +111,10 @@
   "files": [
    "quick.json"
   ],
-  "inputs_hash": "9cf67eeedebaa998",
-  "note": "envelopes 10 pose checks; interfaces 12 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 12 kept; fingerprint MATCH; holes/eng no changed parts",
+  "inputs_hash": "17f83b78b838c56d",
+  "note": "envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 1 findings (dead-def 1), 37 kept; fingerprint CHANGED (12 differences; re-record if intended); holes/eng 6 changed parts (0 made): 0 holes, 0 tapped holes; 0 FAIL",
   "status": "PASS",
-  "time": "2026-11-26T06:51:58"
+  "time": "2026-11-26T19:42:57"
  },
  "seated": {
   "evidence": "seated.evidence.json",

@@ -82,7 +82,7 @@
    "interface": "drive_frame__tower",
    "side": "side_b",
    "part": "Drive_Frame_L",
-   "expected_r": 2.0,
+   "expected_r": 1.65,
    "status": "PASS",
    "holes": [
     {
@@ -91,8 +91,7 @@
      "z": 270.426,
      "radii": [
       6.0,
-      5.0,
-      2.0
+      1.65
      ],
      "ok": true
     },
@@ -102,8 +101,7 @@
      "z": 247.0,
      "radii": [
       6.0,
-      5.0,
-      2.0
+      1.65
      ],
      "ok": true
     },
@@ -113,8 +111,7 @@
      "z": 153.181,
      "radii": [
       6.0,
-      5.0,
-      2.0
+      1.65
      ],
      "ok": true
     }
@@ -124,7 +121,7 @@
    "interface": "drive_frame__tower",
    "side": "side_b",
    "part": "Drive_Frame_R",
-   "expected_r": 2.0,
+   "expected_r": 1.65,
    "status": "PASS",
    "holes": [
     {
@@ -133,8 +130,7 @@
      "z": 270.426,
      "radii": [
       6.0,
-      5.0,
-      2.0
+      1.65
      ],
      "ok": true
     },
@@ -144,8 +140,7 @@
      "z": 247.0,
      "radii": [
       6.0,
-      5.0,
-      2.0
+      1.65
      ],
      "ok": true
     },
@@ -155,8 +150,64 @@
      "z": 153.181,
      "radii": [
       6.0,
+      1.65
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "drive_frame__tower",
+   "side": "spacer",
+   "part": "Spacer_DF_L0",
+   "expected_r": 1.65,
+   "status": "PASS",
+   "holes": [
+    {
+     "x": -128.0,
+     "y": 0.0,
+     "z": 270.426,
+     "radii": [
       5.0,
-      2.0
+      1.65
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "drive_frame__tower",
+   "side": "spacer",
+   "part": "Spacer_DF_L1",
+   "expected_r": 1.65,
+   "status": "PASS",
+   "holes": [
+    {
+     "x": -215.426,
+     "y": 0.0,
+     "z": 247.0,
+     "radii": [
+      5.0,
+      1.65
+     ],
+     "ok": true
+    }
+   ]
+  },
+  {
+   "interface": "drive_frame__tower",
+   "side": "spacer",
+   "part": "Spacer_DF_L2",
+   "expected_r": 1.65,
+   "status": "PASS",
+   "holes": [
+    {
+     "x": -176.564,
+     "y": 0.0,
+     "z": 153.181,
+     "radii": [
+      5.0,
+      1.65
      ],
      "ok": true
     }

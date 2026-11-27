@@ -20,10 +20,16 @@ Roll_Housing.stl,Roll_Housing,GRIPPER,PETG (or PLA),62 x 52 x 44.0,46.7,flat,P1S
 Wrist_Shaft_Coupler.stl,Wrist_Shaft_Coupler,GRIPPER,PETG (or PLA),24 x 24 x 2.0,0.8,flat,P1S; K2 Pro; H2D,"6061, D6 D-bore on the shaft step, 4x M3 clearance (horn)",
 Wrist_Shaft_D10x70.stl,Wrist_Shaft_D10x70,GRIPPER,"PETG (or PLA), or cut from the D10 rod",70 x 10 x 10.0,5.2,flat,P1S; K2 Pro; H2D,"cut from McMaster 6112K47 D10 h6 rod, D6x4 ground step, D-flats, e-clip groove",
 Base_Plate_AL5.stl,Base_Plate_AL5,GROUND,PETG (or PLA),160 x 150 x 5.0,99.8,flat,P1S; K2 Pro; H2D,"5 mm 6061, waterjet + tap",4x M4 to chassis; M3 tapped for the tower brackets
-Drive_Frame_L.stl,Drive_Frame_L,GROUND,PETG (or PLA),165 x 130 x 50.9,108.0,flat,P1S; K2 Pro; H2D,"PETG-CF print, 3x M3 heat-set inserts",J1 bearing wall + STS3215 cradle
-Drive_Frame_R.stl,Drive_Frame_R,GROUND,PETG (or PLA),165 x 130 x 51.0,108.0,flat,P1S; K2 Pro; H2D,"PETG-CF print, 3x M3 heat-set inserts",J2 bearing wall + STS3215 cradle
+Drive_Frame_L.stl,Drive_Frame_L,GROUND,PETG (or PLA),165 x 130 x 38.9,105.1,flat,P1S; K2 Pro; H2D,"PETG-CF print, flat back (prints face down, no supports), 3x M3 through holes",J1 bearing wall + STS3215 cradle
+Drive_Frame_R.stl,Drive_Frame_R,GROUND,PETG (or PLA),165 x 130 x 39.0,105.1,flat,P1S; K2 Pro; H2D,"PETG-CF print, flat back (prints face down, no supports), 3x M3 through holes",J2 bearing wall + STS3215 cradle
 Pinion_m2_18T_J1.stl,Pinion_m2_18T_J1,GROUND,PETG (or PLA),40 x 40 x 9.0,8.3,flat,P1S; K2 Pro; H2D,"PA12 / PETG-CF print, m2 18T, 4x M3 cbore",
 Pinion_m2_18T_J2.stl,Pinion_m2_18T_J2,GROUND,PETG (or PLA),40 x 40 x 9.0,8.3,flat,P1S; K2 Pro; H2D,"PA12 / PETG-CF print, m2 18T, 4x M3 cbore",
+Spacer_DF_L0.stl,Spacer_DF_L0,GROUND,PETG (or PLA),12 x 10 x 10.0,0.8,flat,P1S; K2 Pro; H2D,"printed tube D10 x 12.0, M3 clearance",drive frame L off the tower
+Spacer_DF_L1.stl,Spacer_DF_L1,GROUND,PETG (or PLA),12 x 10 x 10.0,0.8,flat,P1S; K2 Pro; H2D,"printed tube D10 x 12.0, M3 clearance",drive frame L off the tower
+Spacer_DF_L2.stl,Spacer_DF_L2,GROUND,PETG (or PLA),12 x 10 x 10.0,0.8,flat,P1S; K2 Pro; H2D,"printed tube D10 x 12.0, M3 clearance",drive frame L off the tower
+Spacer_DF_R0.stl,Spacer_DF_R0,GROUND,PETG (or PLA),12 x 10 x 10.0,0.8,flat,P1S; K2 Pro; H2D,"printed tube D10 x 12.0, M3 clearance",drive frame R off the tower
+Spacer_DF_R1.stl,Spacer_DF_R1,GROUND,PETG (or PLA),12 x 10 x 10.0,0.8,flat,P1S; K2 Pro; H2D,"printed tube D10 x 12.0, M3 clearance",drive frame R off the tower
+Spacer_DF_R2.stl,Spacer_DF_R2,GROUND,PETG (or PLA),12 x 10 x 10.0,0.8,flat,P1S; K2 Pro; H2D,"printed tube D10 x 12.0, M3 clearance",drive frame R off the tower
 Spacer_G1.stl,Spacer_G1,GROUND,PETG (or PLA),9 x 9 x 6.0,0.3,flat,P1S; K2 Pro; H2D,D9/D5.2 x 6 alu,
 Tower_Bracket_L0.stl,Tower_Bracket_L0,GROUND,PETG (or PLA),20 x 20 x 16.0,2.2,flat,P1S; K2 Pro; H2D,PETG-CF print,
 Tower_Bracket_L1.stl,Tower_Bracket_L1,GROUND,PETG (or PLA),20 x 20 x 16.0,2.2,flat,P1S; K2 Pro; H2D,PETG-CF print,
