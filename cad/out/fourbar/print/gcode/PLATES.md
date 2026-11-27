@@ -17,6 +17,7 @@ Each plate's `*_preview/` folder holds the slicer's first-layer, top and isometr
 | `plate4_hubs_clevises_rodab_S1Pro_PLA.gcode` | `Rod_AB_CF3_A/B`, `Wrist_Level_Member_CF3`, `Clevis_L/R_CF3`, `J1_Output_Hub`, `Level_Hub_Elbow/Wrist`, `Wrist_Shaft_Coupler`, `Tower_Bracket_L0/L1/R0/R1` (13) | 135 / 27.0 mm | 6h 33m | 70.1 g | **Printing** on `steve` (re-sliced 11-26) |
 | `plate5_forearmL_A_S1Pro_PLA.gcode` | `Forearm_L_CF3_A` (266 mm, diagonal) | 15 / 3.0 mm | 1h 27m | 17.3 g | **Printing** on `a1` (27 min, 14.2 g, no brim) |
 | `plate6_forearmR_A_S1Pro_PLA.gcode` | `Forearm_R_CF3_A` (266 mm, diagonal) | 15 / 3.0 mm | 1h 27m | 17.3 g | Queued next for `a1` (27 min, 14.2 g) |
+| `plate7_gripper_links_K1SE_PLA.gcode` | `Link_LD/LI/RD/RI_bot/hi/lo_CF3` (12), `Finger_L/R_bot_CF3`, `Sector_m1_77T_L/R` (16) | 25 / 5.0 mm | 1h 29m | 39.8 g | **Printing** on `k1se-home` (home K1 SE, Generic PLA @K1 SE-all 220/60 C, textured PEI; started 11-26) |
 
 ## Bambu Lab Plates (2026-11-26, PLA 220 C / 60-65 C Textured PEI, 3 walls, 25% gyroid)
 - **Printing on `p1s-2`:** `Roll_Housing`, `Wrist_Servo_Cradle`, `J2_Output_Hub_Journal`, `Elbow_Shaft_D10x101`, `Wrist_Shaft_D10x70`, `FA_Standoff_D8_0/1`, `UA_Standoff_D8_0/1` (9 parts, tree auto supports, 3h 55m, 112.7 g)
@@ -24,4 +25,4 @@ Each plate's `*_preview/` folder holds the slicer's first-layer, top and isometr
 
 ## Remaining Un-Sliced Parts
 - Shims, spacers, and PTFE washers (`Shim_A`, `Shim_Ev1`, `Spacer_B`, `Spacer_G1`, `Sleeve_E_outer`, `Washer_*`)
-- Gripper sub-assembly (`Gripper_Palm`, `Roll_Hub`, `Jaw_Block_L/R`, `Finger_L/R_bot`, `Pad_L/R_TPU`, `Link_*`, `Sector_m1_77T_L/R`, `Standoff_D6_*`)
+- Gripper sub-assembly (`Gripper_Palm`, `Roll_Hub`, `Jaw_Block_L/R`, `Pad_L/R_TPU`, `Standoff_D6_*`); links, fingers and sectors are plate 7
