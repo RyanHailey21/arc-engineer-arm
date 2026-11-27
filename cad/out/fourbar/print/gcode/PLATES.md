@@ -29,9 +29,9 @@ Each plate's `*_preview/` folder holds the slicer's first-layer, top and isometr
 - **Printing on `a1` (11-27):** `a1_plate7_drive_frame_R_spacers_PLA.gcode.3mf` (`Drive_Frame_R` reworked + `Spacer_DF_L0-2` + `Spacer_DF_R0-2`, tree(auto) supports, 3h 03m, 79.7 g)
 - **Printing on `p1s-1` (11-27):** `p1s_plateC_gripper_rigid_PLA.gcode.3mf` (`Gripper_Palm`, `Jaw_Block_L`, `Jaw_Block_R`, `Roll_Hub`, `Standoff_D6_L0/L1/R0/R1`, 8 parts, full tree(auto) supports, 4h 46m, 131.0 g)
 - **Printing on `p1s-2` (11-27):** `p1s_plateD_base_plate_PLA.gcode.3mf` (`Base_Plate_AL5`, 1h 58m, 64.4 g)
-- **Queued next:** `Forearm_R_CF3_A` (27 min, 14.2 g on `a1`/`p1s-2`; failed on `kate` 11-27 with no brim), `Pad_L_TPU` + `Pad_R_TPU` (`p1s-1` TPU-AMS), and the 9 small shims/spacers/washers (0.16 mm PLA, ~10 min)
+- **Queued next:** `Forearm_R_CF3_A` (27 min, 14.2 g on `a1`/`p1s-2`; failed on `kate` 11-27 with no brim), `Pad_L` + `Pad_R` (rigid PLA/PETG since 11-27; re-exported with faces 1.6 mm back for the neoprene, so not the old `Pad_*_TPU.stl`), and the 9 small shims/spacers/washers (0.16 mm PLA, ~10 min)
 
 ## Remaining Un-Sliced Parts (12 of 90 STLs)
 - `Forearm_R_CF3_A` (re-queued for `a1`/`p1s-2`)
-- Gripper TPU jaw pads: `Pad_L_TPU`, `Pad_R_TPU` (for `p1s-1` `TPU-AMS`)
+- Gripper jaw pads: `Pad_L`, `Pad_R` (PLA/PETG, any printer; bond 1.6 mm (1/16 in) solid neoprene (3M 300LSE transfer tape or CA) on the R50 arc and both V flanks after printing: `Grip_Rubber_L/R` in the BOM)
 - Shims, spacers, and PTFE washers (0.16 mm PLA): `Shim_A`, `Shim_Ev1`, `Spacer_B`, `Spacer_G1`, `Sleeve_E_outer`, `Washer_Dv2_head`, `Washer_Ev2_head`, `Washer_PTFE_Dv2`, `Washer_PTFE_E`

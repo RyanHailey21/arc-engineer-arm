@@ -19,7 +19,7 @@ ZL0 = [23.5, 26.5]    # lower link layer z
 ZL1 = [33.5, 36.5]    # upper link layer z
 ZG = [27.0, 33.0]     # palm ground-pivot layer z (between the link layers)
 ZSEC = [37.0, 42.0]   # sector gear layer z (above the upper links, clear of the roll housing)
-ZPAD = [-26.0, 20.0]  # TPU pad z
+ZPAD = [-26.0, 20.0]  # pad z (printed pad + rubber)
 ZFT = [20.0, 23.0]    # top finger (printed jaw block) z
 ZFB = [-29.0, -26.0]  # bottom CF finger z (>= -29: 3.5 mm over the pole base plate at the donut pick)
 # C-frame jaw (2026-11-18): a printed rear wall, integral with the jaw block, fills the finger outline behind the pad

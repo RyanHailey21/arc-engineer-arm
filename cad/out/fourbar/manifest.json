@@ -37,10 +37,10 @@
   "files": [
    "print/print_list.csv"
   ],
-  "inputs_hash": "fa6424802472ad4a",
-  "note": "90 STL (83 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4; socket wall >= 4.50 mm), 1165 cm3; failed: none",
+  "inputs_hash": "0b2d1747b16335e9",
+  "note": "90 STL (83 parts; split for Ender-3 S1 Pro: Upper_Arm_L_CF3, Upper_Arm_R_CF3, Rod_AB_CF3, Rod_1_CF3, Forearm_L_CF3, Forearm_R_CF3, Rod_2_CF4; socket wall >= 4.50 mm), 1158 cm3; failed: none",
   "status": "PASS",
-  "time": "2026-11-27T13:00:34"
+  "time": "2026-11-27T14:31:35"
  },
  "fea_fourbar": {
   "evidence": "fea_fourbar.evidence.json",
@@ -111,10 +111,10 @@
   "files": [
    "quick.json"
   ],
-  "inputs_hash": "fa6424802472ad4a",
-  "note": "envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 46 kept; fingerprint CHANGED (23 differences; re-record if intended); holes/eng 2 changed parts (2 made): 2 holes, 0 tapped holes; 0 FAIL",
+  "inputs_hash": "fa3abe552e4eef7c",
+  "note": "envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 51 kept; fingerprint CHANGED (8 differences; re-record if intended); holes/eng 4 changed parts (4 made): 4 holes, 0 tapped holes; 0 FAIL",
   "status": "PASS",
-  "time": "2026-11-27T12:51:57"
+  "time": "2026-11-27T14:22:44"
  },
  "seated": {
   "evidence": "seated.evidence.json",

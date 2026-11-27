@@ -54,7 +54,7 @@ powered off (\S3.2.4.5). This note summarises the design and the evidence that i
   \render{render_donut_lift.jpg}{0.32\linewidth}\hfill
   \render{render_pipe_chute.jpg}{0.32\linewidth}
   \caption{The arm at STOW, lifting the donut, and driving the pipe into the chute (rev~B). Black: 3\,mm carbon-fibre
-  plates; orange: PETG-CF prints; silver: 6061 aluminium; blue: TPU pads.}
+  plates; orange: PETG-CF prints; silver: 6061 aluminium; blue: rubber grip faces.}
   \label{fig:renders}
 \end{figure}
 
@@ -66,7 +66,7 @@ J4 then orient the gripper (Fig.~\ref{fig:renders}).
 \paragraph{Gripper.} A parallel four-bar moves each jaw; meshed acetal sector gears synchronise the two jaws, so the
 pads stay parallel and centred. Each jaw is a C-frame held by link layers at its top and bottom, so a grip load low
 on the pad does not tilt it. One STS3215 closes the jaws. A torsion spring opens them when the servo is unpowered.
-Each TPU pad has a V-notch for the pipe and an R50 arc for the donut.
+Each printed pad has a V-notch for the pipe and an R50 arc for the donut, faced with 1.6\,mm neoprene sheet.
 
 \paragraph{Actuators and revisions.} Table~\ref{tab:specs} lists the main figures. Revision~B drives J1 and J2 with
 an STS3215 through a printed m2 18T/54T stage. Revision~A is identical except for the base: a DM-J4340 is bolted
@@ -208,7 +208,7 @@ servo model.
   \item Measure the STS3215's unpowered back-drive torque, time the power-off release with each object, and choose
   the gripper spring (R8, R2).
   \item Hold the pipe horizontal for 30\,s and log the gripper servo's temperature.
-  \item Measure the TPU pad friction on PVC and on a printed donut (the margins assume 0.5).
+  \item Measure the rubber pad friction on PVC and on a printed donut (the margins assume 0.5).
   \item Bench-test the printed 18T/54T stage for backlash and wear, and log the J1/J2 temperature (rev.~B).
   \item Update the zig-zag pole when its drawing is published (the manual marks it TBA). The donut path is generated
   from a placeholder S-curve, so re-run the interference check.

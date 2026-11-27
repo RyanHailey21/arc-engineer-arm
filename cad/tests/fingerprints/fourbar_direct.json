@@ -6106,6 +6106,49 @@
 "vol": 4450.319
 }
 },
+"JAW_L/Grip_Rubber_L": {
+"chk": {
+"bb": [
+131.6703,
+3.2389,
+-26.0,
+170.3297,
+21.1425,
+20.0
+],
+"com": [
+151.0,
+11.2652,
+-3.0
+],
+"edges": 30,
+"faces": 12,
+"fdig": "881f5a5c8704",
+"vol": 3720.962
+},
+"kind": "RUBBER",
+"mass_g": 4.837,
+"src": "custom: 1.6 mm solid neoprene sheet (40-60A), bonded (transfer tape or CA), strips on the R50 arc and both V flanks",
+"vis": {
+"bb": [
+131.6703,
+3.2389,
+-26.0,
+170.3297,
+21.1425,
+20.0
+],
+"com": [
+151.0,
+11.2652,
+-3.0
+],
+"edges": 30,
+"faces": 12,
+"fdig": "881f5a5c8704",
+"vol": 3720.962
+}
+},
 "JAW_L/Insert_M3_wall_L0": {
 "chk": {
 "bb": [
@@ -6278,47 +6321,47 @@
 "vol": 40989.613
 }
 },
-"JAW_L/Pad_L_TPU": {
+"JAW_L/Pad_L": {
 "chk": {
 "bb": [
 128.7361,
-3.2389,
+4.7224,
 -26.0,
 175.724,
 22.8798,
 20.0
 ],
 "com": [
-151.9267,
-14.5842,
+152.1175,
+15.2673,
 -3.0
 ],
 "edges": 33,
 "faces": 13,
-"fdig": "64c3812ba1a6",
-"vol": 21800.057
+"fdig": "ac896c5be10f",
+"vol": 18079.095
 },
-"kind": "TPU",
-"mass_g": 19.62,
-"src": "custom: TPU 95A print, R50 arc + 90 deg V",
+"kind": "PRINT",
+"mass_g": 13.559,
+"src": "custom: PLA/PETG print, R50 arc + 90 deg V, faces 1.6 mm under the rubber",
 "vis": {
 "bb": [
 128.7361,
-3.2389,
+4.7224,
 -26.0,
 175.724,
 22.8798,
 20.0
 ],
 "com": [
-151.9267,
-14.5842,
+152.1175,
+15.2673,
 -3.0
 ],
 "edges": 33,
 "faces": 13,
-"fdig": "64c3812ba1a6",
-"vol": 21800.057
+"fdig": "ac896c5be10f",
+"vol": 18079.095
 }
 },
 "JAW_L/Pin_D4x14_coupler_L0": {
@@ -6923,6 +6966,49 @@
 "vol": 4450.319
 }
 },
+"JAW_R/Grip_Rubber_R": {
+"chk": {
+"bb": [
+131.6703,
+-21.1425,
+-26.0,
+170.3297,
+-3.2389,
+20.0
+],
+"com": [
+151.0,
+-11.2652,
+-3.0
+],
+"edges": 30,
+"faces": 12,
+"fdig": "7a8073128bfd",
+"vol": 3720.962
+},
+"kind": "RUBBER",
+"mass_g": 4.837,
+"src": "custom: 1.6 mm solid neoprene sheet (40-60A), bonded (transfer tape or CA), strips on the R50 arc and both V flanks",
+"vis": {
+"bb": [
+131.6703,
+-21.1425,
+-26.0,
+170.3297,
+-3.2389,
+20.0
+],
+"com": [
+151.0,
+-11.2652,
+-3.0
+],
+"edges": 30,
+"faces": 12,
+"fdig": "7a8073128bfd",
+"vol": 3720.962
+}
+},
 "JAW_R/Insert_M3_wall_R0": {
 "chk": {
 "bb": [
@@ -7095,47 +7181,47 @@
 "vol": 40989.613
 }
 },
-"JAW_R/Pad_R_TPU": {
+"JAW_R/Pad_R": {
 "chk": {
 "bb": [
 128.7361,
 -22.8798,
 -26.0,
 175.724,
--3.2389,
+-4.7224,
 20.0
 ],
 "com": [
-151.9267,
--14.5842,
+152.1175,
+-15.2673,
 -3.0
 ],
 "edges": 33,
 "faces": 13,
-"fdig": "06cb2c0d1f1b",
-"vol": 21800.057
+"fdig": "a2b57803763c",
+"vol": 18079.095
 },
-"kind": "TPU",
-"mass_g": 19.62,
-"src": "custom: TPU 95A print, R50 arc + 90 deg V",
+"kind": "PRINT",
+"mass_g": 13.559,
+"src": "custom: PLA/PETG print, R50 arc + 90 deg V, faces 1.6 mm under the rubber",
 "vis": {
 "bb": [
 128.7361,
 -22.8798,
 -26.0,
 175.724,
--3.2389,
+-4.7224,
 20.0
 ],
 "com": [
-151.9267,
--14.5842,
+152.1175,
+-15.2673,
 -3.0
 ],
 "edges": 33,
 "faces": 13,
-"fdig": "06cb2c0d1f1b",
-"vol": 21800.057
+"fdig": "a2b57803763c",
+"vol": 18079.095
 }
 },
 "JAW_R/Pin_D4x14_coupler_R0": {
@@ -12623,8 +12709,8 @@
 }
 },
 "totals": {
-"mass_g": 2214.88,
-"n_parts": 259
+"mass_g": 2212.44,
+"n_parts": 261
 },
 "variant": "fourbar_direct"
 }

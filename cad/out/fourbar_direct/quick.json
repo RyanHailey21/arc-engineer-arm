@@ -858,19 +858,19 @@
  },
  "self_hit": [],
  "mass_torque": {
-  "arm_g": 1350.2,
-  "past_wrist_g": 567.0,
-  "head_g": 355.7,
+  "arm_g": 1347.7,
+  "past_wrist_g": 564.5,
+  "head_g": 353.2,
   "worst_static_Nm": {
    "J1": 3.4,
-   "J2": 2.92,
+   "J2": 2.91,
    "J3": 0.88,
    "J4": 0.04
   },
   "rated_utilisation": {
-   "J1": 0.378,
-   "J2": 0.324,
-   "J3": 0.599,
+   "J1": 0.377,
+   "J2": 0.323,
+   "J3": 0.596,
    "J4": 0.029
   },
   "poses": [
@@ -878,8 +878,8 @@
     "pose": "STOW",
     "payload_g": 0.0,
     "tau": [
-     -3.18,
-     2.45,
+     -3.17,
+     2.44,
      0.44,
      0.03
     ]
@@ -888,8 +888,8 @@
     "pose": "DONUT_APPROACH",
     "payload_g": 0.0,
     "tau": [
-     -1.47,
-     2.03,
+     -1.46,
+     2.02,
      0.43,
      0.03
     ]
@@ -900,7 +900,7 @@
     "tau": [
      -0.33,
      1.22,
-     0.44,
+     0.43,
      0.03
     ]
    },
@@ -908,8 +908,8 @@
     "pose": "DONUT_LIFT",
     "payload_g": 300.0,
     "tau": [
-     -1.78,
-     2.78,
+     -1.77,
+     2.77,
      0.88,
      0.03
     ]
@@ -918,8 +918,8 @@
     "pose": "DONUT_LIFT_ROLL+",
     "payload_g": 300.0,
     "tau": [
-     -1.78,
-     2.78,
+     -1.77,
+     2.77,
      0.88,
      0.04
     ]
@@ -928,8 +928,8 @@
     "pose": "DONUT_LIFT_ROLL-",
     "payload_g": 300.0,
     "tau": [
-     -1.78,
-     2.78,
+     -1.77,
+     2.77,
      0.88,
      0.02
     ]
@@ -948,8 +948,8 @@
     "pose": "PIPE_APPROACH",
     "payload_g": 0.0,
     "tau": [
-     -3.26,
-     2.18,
+     -3.25,
+     2.17,
      0.44,
      0.03
     ]
@@ -959,7 +959,7 @@
     "payload_g": 0.0,
     "tau": [
      -2.89,
-     2.41,
+     2.4,
      0.43,
      0.03
     ]
@@ -969,7 +969,7 @@
     "payload_g": 0.0,
     "tau": [
      -2.89,
-     2.41,
+     2.4,
      0.43,
      0.02
     ]
@@ -979,7 +979,7 @@
     "payload_g": 0.0,
     "tau": [
      -2.89,
-     2.41,
+     2.4,
      0.43,
      0.04
     ]
@@ -988,9 +988,9 @@
     "pose": "PIPE_LIFT",
     "payload_g": 165.0,
     "tau": [
-     -2.15,
+     -2.14,
      2.04,
-     0.68,
+     0.67,
      0.03
     ]
    },
@@ -999,7 +999,7 @@
     "payload_g": 165.0,
     "tau": [
      -0.51,
-     2.92,
+     2.91,
      0.35,
      0.0
     ]
@@ -1009,7 +1009,7 @@
     "payload_g": 165.0,
     "tau": [
      -0.51,
-     2.92,
+     2.91,
      -0.02,
      0.0
     ]
@@ -1045,8 +1045,10 @@
  },
  "holes_changed": {
   "parts": [
-   "LEVEL/Level_Hub_Wrist",
-   "ROCKER/Level_Hub_Elbow"
+   "JAW_L/Grip_Rubber_L",
+   "JAW_L/Pad_L",
+   "JAW_R/Grip_Rubber_R",
+   "JAW_R/Pad_R"
   ],
   "fails": []
  },
@@ -1055,7 +1057,7 @@
    "check": "envelopes",
    "ok": true,
    "note": "10 pose checks",
-   "s": 0.8
+   "s": 0.9
   },
   {
    "check": "interfaces",
@@ -1067,13 +1069,13 @@
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 4.7
+   "s": 8.2
   },
   {
    "check": "mass/torque",
    "ok": true,
-   "note": "past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m",
-   "s": 1.5
+   "note": "past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m",
+   "s": 2.1
   },
   {
    "check": "catalogue",
@@ -1085,32 +1087,32 @@
    "check": "level-keep",
    "ok": true,
    "note": "closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits",
-   "s": 0.2
+   "s": 0.3
   },
   {
    "check": "seating",
    "ok": true,
    "note": "127 fasteners, 0 FAIL",
-   "s": 3.0
+   "s": 4.2
   },
   {
    "check": "bloat",
    "ok": null,
-   "note": "0 findings (none), 46 kept",
-   "s": 1.6
+   "note": "0 findings (none), 51 kept",
+   "s": 4.2
   },
   {
    "check": "fingerprint",
    "ok": null,
-   "note": "CHANGED (23 differences; re-record if intended)",
-   "s": 35.9
+   "note": "CHANGED (8 differences; re-record if intended)",
+   "s": 51.5
   },
   {
    "check": "holes/eng",
    "ok": true,
-   "note": "2 changed parts (2 made): 2 holes, 0 tapped holes; 0 FAIL",
-   "s": 1.3
+   "note": "4 changed parts (4 made): 4 holes, 0 tapped holes; 0 FAIL",
+   "s": 2.0
   }
  ],
- "elapsed_s": 72.7
+ "elapsed_s": 106.5
 }

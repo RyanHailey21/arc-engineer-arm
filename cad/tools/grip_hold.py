@@ -19,7 +19,7 @@ resists the slide that would wedge the jaws open). The jaws are gear-locked to e
     Fy  across the jaws                                               -> 2
     Fz  axial slip: friction on 4 lines, total normal 2*sqrt2*F       -> 2*sqrt2*MU
     My  tilt in the pad plane (gravity once the pipe is horizontal): end flank loads, linear pressure on the
-        compliant TPU -> clamp 1.5*r*M/LC per jaw                     -> LC / (1.5*r)
+        compliant rubber -> clamp 1.5*r*M/LC per jaw                     -> LC / (1.5*r)
     Mx  tilt across the jaws: unloads one end of each pad at F*LC/6 per jaw -> LC / 3
     Mz  twist about its axis: friction at the pipe radius             -> 2*sqrt2*MU*r_pipe
   donut (lying flat, axis along z, held on its OD by the R50 arcs from the notch edge to WRAP, mean angle a_m)
@@ -53,7 +53,7 @@ P = params.load("gripper_fourbar")
 FB, SP = P["FB"], P["SPRING"]
 SV = params.load("actuators")["STS3215"]          # the jaw servo
 PAD = params.load("pads")
-MU_DESIGN = 0.5          # TPU 95A on PVC / PLA, dry: published 0.5-0.8; 0.5 for design, 0.3 as the low case
+MU_DESIGN = 0.5          # neoprene sheet on PVC / PLA, dry: published 0.6-0.9; 0.5 for design, 0.3 as the low case
 SF_RATED, SF_STALL = 1.5, 2.0
 LC = FB["ZPAD"][1] - FB["ZPAD"][0]                 # pad height = contact line length on the pipe (46 mm)
 R_PIPE = PAD["PIPE_OD"] / 2

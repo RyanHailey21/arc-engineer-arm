@@ -22,6 +22,7 @@ Y = dict(_ARM["Y"])
 # ---- jaw pads (shared by every gripper variant): R50 donut arc + 90 deg pipe V-notch; 'jaw' = pad-arc gap at the TCP
 _PADS = params.load("pads")          # params/pads.toml: shared by every gripper variant
 PAD_R, NOTCH, WRAP = _PADS["PAD_R"], _PADS["NOTCH"], _PADS["WRAP"]
+RUBBER_T = _PADS["RUBBER_T"]         # grip rubber on the pad faces; the pad body sits RUBBER_T behind them
 PIPE_R = _PADS["PIPE_OD"] / 2
 O_PIPE = PIPE_R * math.sqrt(2) - NOTCH  # pad-face half gap when the V-notches hold the pipe
 O_REF = O_PIPE         # jaw half-opening at which jaw bodies are modelled (pipe grip)

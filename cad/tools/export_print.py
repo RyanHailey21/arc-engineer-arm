@@ -49,7 +49,7 @@ CLEAR = 0.15
 WALL = 4.0          # solid material round the socket; 2.0 broke the socket cheeks of the first PLA print
 MATERIAL = {"PRINT": "PETG (or PLA)", "CF": "PETG (or PLA); print flat", "AL": "PETG (or PLA)",
             "STEEL": "PETG (or PLA), or cut from the D10 rod", "SHIM": "PETG (or PLA); 0.5 mm = 3 layers at 0.16",
-            "PTFE": "PETG (or PLA)", "TPU": "TPU 95A (PETG if the lab has no TPU: less grip)"}
+            "PTFE": "PETG (or PLA)", "TPU": "TPU 95A"}
 
 
 def fit(dims, bed):
@@ -258,7 +258,7 @@ def main():
     rows, unfit, cuts, walls = [], [], [], []
     for bn, parts in M.build_bodies().items():
         for p in parts:
-            if p.kind == "CAT":
+            if p.kind in ("CAT", "RUBBER"):      # bought / cut from sheet, not printed
                 continue
             if fit(dims_of(p.vis), TARGET):
                 pieces, note = [("", p.vis)], p.note

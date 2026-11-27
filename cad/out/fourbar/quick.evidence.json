@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
   "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 46 kept; fingerprint CHANGED (23 differences; re-record if intended); holes/eng 2 changed parts (2 made): 2 holes, 0 tapped holes; 0 FAIL",
-  "scope": "envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 46 kept; fingerprint CHANGED (23 differences; re-record if intended); holes/eng 2 changed parts (2 made): 2 holes, 0 tapped holes; 0 FAIL",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 51 kept; fingerprint CHANGED (8 differences; re-record if intended); holes/eng 4 changed parts (4 made): 4 holes, 0 tapped holes; 0 FAIL",
+  "scope": "envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 51 kept; fingerprint CHANGED (8 differences; re-record if intended); holes/eng 4 changed parts (4 made): 4 holes, 0 tapped holes; 0 FAIL",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -17,20 +17,20 @@
    {
     "id": "design-inputs",
     "path": "evidence/quick.inputs.json",
-    "sha256": "d155957a7c0bd67e5e94640a477798d1bd7e01130eb03a1294ba3668b4f364f6"
+    "sha256": "9b3680fd6122f049822f587fb1e95fba22b87ae345a8c0186d8d6f5e3fb86c5e"
    }
   ],
   "artifacts": [
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "c939fb7153695750ce0b280cd5f5044cf34576a1328c3bdcab79c22a5798f5dd"
+    "sha256": "29c89725c10c79f9a036bd232cf548749f75a5324021c9749f7d1abdd190cefa"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-27T12:51:57",
-   "inputs_hash": "fa6424802472ad4a",
+   "time": "2026-11-27T14:22:44",
+   "inputs_hash": "fa3abe552e4eef7c",
    "external_copies": []
   }
  }

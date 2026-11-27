@@ -32,7 +32,8 @@ import arm_model as M   # noqa: E402
 ALL = bool(os.environ.get("EXPORT_ALL"))
 POSES = ("STOW", "DONUT_LIFT", "PIPE_CHUTE_ROLL90") if ALL else ("STOW",)
 MATERIAL = {"CF": "carbon-fibre plate (3K, epoxy)", "AL": "6061-T6 aluminium", "PRINT": "PETG-CF print (gears: PA12 or PETG-CF)",
-            "STEEL": "steel", "TPU": "TPU 95A print", "BRASS": "brass", "SHIM": "301 stainless shim stock", "PTFE": "PTFE"}
+            "STEEL": "steel", "TPU": "TPU 95A print", "BRASS": "brass", "SHIM": "301 stainless shim stock", "PTFE": "PTFE",
+            "RUBBER": "neoprene sheet, bonded"}
 HW_PREFIX = ("SHCS_", "BHCS_", "CSK_", "Nyloc_", "Dowel_", "SB5x", "Insert_", "Washer_", "Eclip_", "SetScrew_",
              "Collar_", "Cable_Clip_", "PAN_", "Pin_")
 

@@ -203,14 +203,17 @@ def body_fb_link(s, drive):
     return out
 
 
-def _pad_shape(o, z0, z1):
+def _pad_shape(o, z0, z1, t=0.0):
+    """Pad outline: R PAD_R arc (inner face) to R PAD_R+16 (back) inside the wrap wedge, 90 deg V-notch NOTCH deep.
+    t > 0 offsets both contact faces back by t (arc to R PAD_R+t, notch apex t*sqrt2 deeper): the printed body
+    under a t-thick rubber sheet."""
     XT = K["GRIP"]
     cen = V(XT, o - PAD_R, z0)
-    ann = Part.makeCylinder(PAD_R + 16.0, z1 - z0, cen).cut(Part.makeCylinder(PAD_R, z1 - z0, cen))
+    ann = Part.makeCylinder(PAD_R + 16.0, z1 - z0, cen).cut(Part.makeCylinder(PAD_R + t, z1 - z0, cen))
     w = math.radians(WRAP)
     L_ = 120.0
     wp = [(XT, o - PAD_R), (XT - L_ * math.sin(w), o - PAD_R + L_ * math.cos(w)), (XT + L_ * math.sin(w), o - PAD_R + L_ * math.cos(w))]
-    return ann.common(zprism(wp, z0 - 1, z1 + 1)).cut(_vprism(XT, o + NOTCH, z0 - 1, z1 + 1))
+    return ann.common(zprism(wp, z0 - 1, z1 + 1)).cut(_vprism(XT, o + NOTCH + t * math.sqrt(2), z0 - 1, z1 + 1))
 
 
 def _pad_zone(o, z0, z1, gap):
@@ -226,7 +229,7 @@ def _pad_zone(o, z0, z1, gap):
 
 def body_fb_jaw(s):
     """Jaw (left built, mirrored for s=-1) at the pipe grip: printed jaw block (coupler-pin layer between the
-    link layers, riser beyond the link ends, top finger), CF bottom finger, TPU pad (R50 arc + 90 deg V),
+    link layers, riser beyond the link ends, top finger), CF bottom finger, printed pad (R50 arc + 90 deg V) faced with adhesive rubber,
     D6 standoffs through the pad, two coupler pins."""
     XT = K["GRIP"]
     o = O_REF
@@ -316,11 +319,18 @@ def body_fb_jaw(s):
         out.append(P("Insert_M3_wall_%s%d" % (nm, i), to_z((ring(0, 0, 0, 4, 2.0, 1.25),) * 2, x, y, FB["ZFB"][1]),
                      "CAT", "INSERT", "brass"))
         out.append(P("BHCS_M3x6_wall_%s%d" % (nm, i), to_z(H.screw("BHCS", 3, 6, 0, 1), x, y, FB["ZFB"][0]), "CAT", "BHCS", "steel"))
-    pad = _pad_shape(o, *FB["ZPAD"])
+    # rigid printed pad (PLA/PETG), its faces RUBBER_T behind the contact faces; the rubber sheet stuck on them
+    # (arc and both V flanks) brings the grip surface back to PAD_R / NOTCH, so 'jaw' and the grip checks hold
+    pad = _pad_shape(o, *FB["ZPAD"], t=RUBBER_T)
     pad = pad.cut(zc(cd[0], cd[1], -60, 60, r_ear + FB["WALL_GAP"]))       # back-corner notch round the drive-pin ear
     for (x, y) in pad_holes:
         pad = pad.cut(zc(x, y, -40, 40, 3.1))
-    out.append(Part_("Pad_%s_TPU" % nm, pad, pad, "TPU", "custom: TPU 95A print, R50 arc + 90 deg V", "pad"))
+    out.append(Part_("Pad_%s" % nm, pad, pad, "PRINT",
+                     "custom: PLA/PETG print, R50 arc + 90 deg V, faces %g mm under the rubber" % RUBBER_T, "pla"))
+    skin = _pad_shape(o, *FB["ZPAD"]).cut(_pad_shape(o, FB["ZPAD"][0] - 1, FB["ZPAD"][1] + 1, t=RUBBER_T))
+    out.append(Part_("Grip_Rubber_%s" % nm, skin, skin, "RUBBER",
+                     "custom: %g mm solid neoprene sheet (40-60A), bonded (transfer tape or CA), strips on the R50 arc and both V flanks"
+                     % RUBBER_T, "pad"))
     for i, (x, y) in enumerate(pad_holes + post):
         st = zc(x, y, FB["ZPAD"][0], FB["ZPAD"][1], 3.0).cut(zc(x, y, -40, 40, 1.26))
         out.append(Part_("Standoff_D6_%s%d" % (nm, i), st, st, "AL", "custom: 6061 D6 standoff, M3 both ends", "alu"))

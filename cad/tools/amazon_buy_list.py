@@ -66,7 +66,7 @@ R = [
 ("Stock: misc", "SS shim 0.5 mm (3 shims)", "1", "304 SS sheet 0.5 mm, 12 x 6 in, 2 pcs", "B0GJRDWP66", 1, 6.99, "304 instead of 301 spring temper: fine for spacers"),
 ("Stock: misc", "SS 1.5 mm (Shim_A)", "1", "304 SS plate 1.5 x 100 x 100 mm", "B0DDLC781F", 1, 12.99, ""),
 ("Print", "PETG-CF (frames, cradle, housing, palm, jaws, gears)", "about 0.6 kg", "ELEGOO PETG-CF 1.75 mm 1 kg", "B0F37YCK6K", 1, 17.99, "the 54T/18T spur and 77T sector gears are specified in PA12/POM; PETG-CF is the build-as-is choice, swap if they wear"),
-("Print", "TPU 95A (pads)", "about 40 g", "SUNLU TPU 95A 1.75 mm 1 kg", "B0BXNWK6NS", 1, 19.94, ""),
+("Stock: misc", "Neoprene 1/16 in (grip faces on the printed pads)", "4 strips", "Neoprene rubber sheet 1/16 x 12 x 12 in", "B0BKQRN7S6", 1, 6.89, "solid, not sponge (sponge compresses and moves the contact); no adhesive back: bond with 3M 300LSE transfer tape or CA"),
 ]
 out = os.path.join(CAD, "out", "fourbar", "amazon_buy_list.csv")
 tot = 0.0
