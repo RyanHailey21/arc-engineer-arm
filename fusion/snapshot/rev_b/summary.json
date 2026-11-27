@@ -1,13 +1,13 @@
 {
  "document": "ARC Arm Rev B",
  "document_id": "urn:adsk.wipprod:dm.lineage:cGWSAxvSQQaYddhXmTl3HA",
- "document_version": 24,
- "exported": "2026-11-22T15:32:19",
+ "document_version": 25,
+ "exported": "2026-11-26T19:48:57",
  "joints": 23,
  "motion_links": 0,
- "occurrences": 372,
- "parts": 118,
+ "occurrences": 378,
+ "parts": 120,
  "revision": "rev_b",
- "seconds": 37.9,
- "total_mass_g": 2024.3
+ "seconds": 37.1,
+ "total_mass_g": 2028.9
 }

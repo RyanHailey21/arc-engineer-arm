@@ -6,8 +6,9 @@ component,qty,material,mass_g,source_id,source_version
 "6805ZZ",1,"6805ZZ (catalogue mass)",18.000,urn:adsk.wipprod:dm.lineage:2fK2Oh36RiWw_O2DUTDciQ,3
 "9271K56",1,"Steel",3.475,urn:adsk.wipprod:dm.lineage:h08mwmOoRdaO7r2gxqi4LQ,2
 "BHCS_M3x10",4,"Steel",0.655,urn:adsk.wipprod:dm.lineage:IK31fZhGTTiAAPHkmPJ9Qg,2
+"BHCS_M3x30",6,"Steel - BHCS catalogue mass",1.000,urn:adsk.wipprod:dm.lineage:4DybHi97TwGOORXC8dHdHQ,1
 "BHCS_M3x5",8,"Steel",0.433,urn:adsk.wipprod:dm.lineage:YLDfdSSpRsmUxi4FYQJ7_A,2
-"BHCS_M3x6",33,"Steel",0.477,urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q,2
+"BHCS_M3x6",27,"Steel",0.477,urn:adsk.wipprod:dm.lineage:1vAec9r2TCWitG5dejkY-Q,2
 "BHCS_M3x8",18,"Steel",0.566,urn:adsk.wipprod:dm.lineage:hq_K47V3RsGK3ml0Jlp9NA,2
 "Base_Plate_AL5",1,"Aluminum 6061",269.539,urn:adsk.wipprod:dm.lineage:_5l7s_6pRv2j5WC-l0Yslg,3
 "CHOUCHENGMR106_3",10,"STS3215 (catalogue mass)",0.358,None,None
@@ -17,8 +18,8 @@ component,qty,material,mass_g,source_id,source_version
 "Clevis_L_CF3",1,"CF plate 3K",18.029,urn:adsk.wipprod:dm.lineage:apV3WtJXQzGm42u8JNvZNA,2
 "Clevis_R_CF3",1,"CF plate 3K",18.104,urn:adsk.wipprod:dm.lineage:BSumk09mSdyNm_HNWyDLbw,2
 "Crank_CF3",1,"CF plate 3K",7.628,urn:adsk.wipprod:dm.lineage:7CHGS6VTS_SBmQ6dtH8Gaw,2
-"Drive_Frame_L",1,"PETG-CF print (effective)",80.966,urn:adsk.wipprod:dm.lineage:bdVHsxilSuCqq-mmtyTgJQ,2
-"Drive_Frame_R",1,"PETG-CF print (effective)",80.966,urn:adsk.wipprod:dm.lineage:VOWT5u8ES7eDkASYcVVM7g,2
+"Drive_Frame_L",1,"PETG-CF print (effective)",78.838,urn:adsk.wipprod:dm.lineage:bdVHsxilSuCqq-mmtyTgJQ,3
+"Drive_Frame_R",1,"PETG-CF print (effective)",78.838,urn:adsk.wipprod:dm.lineage:VOWT5u8ES7eDkASYcVVM7g,3
 "Drive_Gear_m2_54T_J1",1,"PA12 print (effective)",49.007,urn:adsk.wipprod:dm.lineage:YYaXD_PhSYuKai5g2VsPlg,2
 "Drive_Gear_m2_54T_J2",1,"PA12 print (effective)",49.007,urn:adsk.wipprod:dm.lineage:3S8yaur4QmG9W8i_Qld0xA,2
 "ECLIP",3,"ECLIP (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:EaHeYLbYRbaQyxS6jQM3bQ,3
@@ -31,7 +32,7 @@ component,qty,material,mass_g,source_id,source_version
 "Forearm_L_CF3",1,"CF plate 3K",37.802,urn:adsk.wipprod:dm.lineage:HhxNsBd9QfST1_QGP84bEA,2
 "Forearm_R_CF3",1,"CF plate 3K",37.802,urn:adsk.wipprod:dm.lineage:2501f9_yQA2CFKnAee_UCw,2
 "Gripper_Palm",1,"PETG-CF print (effective)",65.976,urn:adsk.wipprod:dm.lineage:wxfNb0iAT2iXjeidN2u2mg,3
-"INSERT",24,"INSERT (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:Gb7W_OS_Q7Oim2wk-y7I9Q,3
+"INSERT",18,"INSERT (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:Gb7W_OS_Q7Oim2wk-y7I9Q,3
 "J1_Output_Hub",1,"Aluminum 6061",33.607,urn:adsk.wipprod:dm.lineage:I8ZvIK3SRYquDsug7Hr2OQ,2
 "J2_Output_Hub_Journal",1,"Aluminum 6061",37.049,urn:adsk.wipprod:dm.lineage:hRJJLmMYQ1ine1DUHbnzTQ,2
 "Jaw_Block_L",1,"PETG-CF print (effective)",30.742,urn:adsk.wipprod:dm.lineage:9jxUozqyT_qs53a9IWErsw,2
@@ -54,7 +55,7 @@ component,qty,material,mass_g,source_id,source_version
 "Link_RI_lo_CF3",1,"CF plate 3K",2.428,urn:adsk.wipprod:dm.lineage:3LqWuCq6Ttaf9WDV40DQLA,2
 "MOTOR-1723_3_1",5,"STS3215 (catalogue mass)",16.198,None,None
 "MR105ZZ",6,"MR105ZZ (catalogue mass)",1.200,urn:adsk.wipprod:dm.lineage:ZiVZQUtYSQ-dYlhNg8SS6w,3
-"Nyloc_M3",4,"Steel",0.622,urn:adsk.wipprod:dm.lineage:UzPCxPnVQzOnQ3X-MZpGKw,2
+"Nyloc_M3",10,"Steel",0.622,urn:adsk.wipprod:dm.lineage:UzPCxPnVQzOnQ3X-MZpGKw,2
 "Nyloc_M4",6,"Steel",1.212,urn:adsk.wipprod:dm.lineage:_4zPGOeHRGuYkHYYEt12Fg,2
 "OUTPUTGEAR_20",5,"STS3215 (catalogue mass)",2.475,None,None
 "PAN-M2x12",16,"PAN-M2x12 (catalogue mass)",0.300,urn:adsk.wipprod:dm.lineage:KYhiKBSHTKan5gwdf7Tnwg,3
@@ -77,7 +78,7 @@ component,qty,material,mass_g,source_id,source_version
 "SB5x12",1,"Steel",4.323,urn:adsk.wipprod:dm.lineage:99nuskZpSKK3EtyBmoF1IA,2
 "SB5x4",1,"Steel",3.034,urn:adsk.wipprod:dm.lineage:PwuLRF5PTjOhEt6VvplUnA,2
 "SB5x8",3,"Steel",3.409,urn:adsk.wipprod:dm.lineage:sv0F5xT5T66lCJ91memEZw,2
-"SHCS_M4x12",4,"Steel",1.933,urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA,2
+"SHCS_M4x12",4,"Steel",1.931,urn:adsk.wipprod:dm.lineage:zApgDWEbQqe_0wJTuLSAJA,2
 "SHCS_M4x8",1,"Steel",1.619,urn:adsk.wipprod:dm.lineage:G55wbKMDR_2D433JI0yOFA,2
 "SHCS_M5x10",2,"Steel",2.980,urn:adsk.wipprod:dm.lineage:TmuW55cnT3iK-t4Mh7nrIg,2
 "SJ-WK00-0021TOPCABINETCASE_104",5,"STS3215 (catalogue mass)",13.080,None,None
@@ -89,6 +90,7 @@ component,qty,material,mass_g,source_id,source_version
 "Shim_Ev1",1,"Shim steel 7.90",0.118,urn:adsk.wipprod:dm.lineage:J3TN1AW3RxmQDQGW5Tjsvg,2
 "Sleeve_E_outer",1,"Aluminum 6061",0.710,urn:adsk.wipprod:dm.lineage:enhJZSq2Rxqam4HvVVJvcw,2
 "Spacer_B",1,"Aluminum 6061",0.915,urn:adsk.wipprod:dm.lineage:yxXJTcXERkW0kFV-DDWOEA,2
+"Spacer_DF",6,"PETG-CF print (effective)",0.630,urn:adsk.wipprod:dm.lineage:31FAH9fhRIqqaEGd2EW9nQ,1
 "Spacer_G1",1,"Aluminum 6061",0.687,urn:adsk.wipprod:dm.lineage:2VUvTviWQ4izdOj8ndVoXA,2
 "Standoff_D6_L0",1,"Aluminum 6061",2.892,urn:adsk.wipprod:dm.lineage:ZQLkTeOwSAy4Jq_U2PyNIg,2
 "Standoff_D6_L1",1,"Aluminum 6061",2.892,urn:adsk.wipprod:dm.lineage:YjIfC7RwSKSnKaKWot9ccQ,2
