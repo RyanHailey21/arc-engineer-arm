@@ -128,6 +128,11 @@
         },
         "head_face_x": {
           "type": "number"
+        },
+        "nut": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]*$",
+          "description": "catalogue key of the nut on the far side (e.g. NYLOC)"
         }
       }
     },
@@ -161,7 +166,7 @@
         "hole"
       ],
       "additionalProperties": false,
-      "description": "One spacer/standoff per station, named <part_prefix><station index>; probed at its own station.",
+      "description": "One spacer/standoff per [stations] point or [pattern] hole, named <part_prefix><index>; probed at its own point.",
       "properties": {
         "body": {
           "type": "string",
@@ -189,6 +194,10 @@
         "clearance_d": {
           "type": "number",
           "exclusiveMinimum": 0
+        },
+        "od": {
+          "type": "number",
+          "exclusiveMinimum": 0
         }
       }
     },
@@ -208,7 +217,9 @@
       "side_b"
     ],
     "spacer": [
-      "stations"
+      "frame",
+      "side_a",
+      "side_b"
     ]
   },
   "$defs": {

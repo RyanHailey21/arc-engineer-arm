@@ -17,20 +17,20 @@
    {
     "id": "design-inputs",
     "path": "evidence/interference_full.inputs.json",
-    "sha256": "e1ad103b8917b8c78d8f60ee1a45ca4cccff6d0e57c753d697f059b401bd55c4"
+    "sha256": "0fd413a70081f24eaefe813ecbf7c59cc4ec83f972294cae39dd63f9ac68f95a"
    }
   ],
   "artifacts": [
    {
     "id": "interference_report.txt",
     "path": "interference_report.txt",
-    "sha256": "ab7c7b0c8fc50f0f7adb071585f1114b84d1f57c7a059193e4ff438c537f7f40"
+    "sha256": "361bc91b4a8785a2dd9d6b6553bbc14c5a8352b77d330cc0d13884b307ba6171"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-26T06:32:33",
-   "inputs_hash": "9cf67eeedebaa998",
+   "time": "2026-11-27T06:31:48",
+   "inputs_hash": "17f83b78b838c56d",
    "external_copies": []
   }
  }

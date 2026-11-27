@@ -59,42 +59,6 @@
   },
   {
    "kind": "out-unindexed",
-   "path": "cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
-   "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
-   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
-   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_drive_link.FCStd:cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
-   "kept": "git-ignored solver/tool output (regenerable, never committed)"
-  },
-  {
-   "kind": "out-unindexed",
-   "path": "cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
-   "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
-   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
-   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd:cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
-   "kept": "git-ignored solver/tool output (regenerable, never committed)"
-  },
-  {
-   "kind": "out-unindexed",
-   "path": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
-   "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
-   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
-   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_palm.FCStd:cad/out/fourbar/fea/FEA_fb_palm.FCStd",
-   "kept": "git-ignored solver/tool output (regenerable, never committed)"
-  },
-  {
-   "kind": "out-unindexed",
-   "path": "cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
-   "line": 1,
-   "name": "cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
-   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
-   "id": "out-unindexed:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
-   "kept": "git-ignored solver/tool output (regenerable, never committed)"
-  },
-  {
-   "kind": "out-unindexed",
    "path": "cad/out/fourbar/print/gcode/PLATES.md",
    "line": 1,
    "name": "cad/out/fourbar/print/gcode/PLATES.md",
@@ -329,6 +293,78 @@
   },
   {
    "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG.gcode",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG.gcode",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG.gcode:cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG_preview/plate8_drive_frame_L_spacers_K2_PETG_first_layer.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG_preview/plate8_drive_frame_L_spacers_K2_PETG_first_layer.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG_preview/plate8_drive_frame_L_spacers_K2_PETG_first_layer.png:cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG_preview/plate8_drive_frame_L_spacers_K2_PETG_first_layer.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG_preview/plate8_drive_frame_L_spacers_K2_PETG_iso.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG_preview/plate8_drive_frame_L_spacers_K2_PETG_iso.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG_preview/plate8_drive_frame_L_spacers_K2_PETG_iso.png:cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG_preview/plate8_drive_frame_L_spacers_K2_PETG_iso.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG_preview/plate8_drive_frame_L_spacers_K2_PETG_top.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG_preview/plate8_drive_frame_L_spacers_K2_PETG_top.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG_preview/plate8_drive_frame_L_spacers_K2_PETG_top.png:cad/out/fourbar/print/gcode/plate8_drive_frame_L_spacers_K2_PETG_preview/plate8_drive_frame_L_spacers_K2_PETG_top.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG.gcode",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG.gcode",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG.gcode:cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG.gcode",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG_preview/plate9_drive_frame_R_K2_PETG_first_layer.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG_preview/plate9_drive_frame_R_K2_PETG_first_layer.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG_preview/plate9_drive_frame_R_K2_PETG_first_layer.png:cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG_preview/plate9_drive_frame_R_K2_PETG_first_layer.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG_preview/plate9_drive_frame_R_K2_PETG_iso.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG_preview/plate9_drive_frame_R_K2_PETG_iso.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG_preview/plate9_drive_frame_R_K2_PETG_iso.png:cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG_preview/plate9_drive_frame_R_K2_PETG_iso.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG_preview/plate9_drive_frame_R_K2_PETG_top.png",
+   "line": 1,
+   "name": "cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG_preview/plate9_drive_frame_R_K2_PETG_top.png",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG_preview/plate9_drive_frame_R_K2_PETG_top.png:cad/out/fourbar/print/gcode/plate9_drive_frame_R_K2_PETG_preview/plate9_drive_frame_R_K2_PETG_top.png",
+   "kept": "sliced G-code for the team's printers, written by the creality-slicer MCP (not a repo tool); kept for the team to print from"
+  },
+  {
+   "kind": "out-unindexed",
    "path": "cad/out/fourbar/print/gcode/test_pieces_S1Pro_PETG.gcode",
    "line": 1,
    "name": "cad/out/fourbar/print/gcode/test_pieces_S1Pro_PETG.gcode",
@@ -365,8 +401,6 @@
   "fourbar_direct/map_parts.md is older than the model inputs (rerun tools/make_map.py)"
  ],
  "new": [],
- "resolved": [
-  "duplicate:cad/tests/test_no_checkout_paths.py:near-2b7b7527a9"
- ],
+ "resolved": [],
  "keep_file": "cad/tools/bloat_keep.toml"
 }

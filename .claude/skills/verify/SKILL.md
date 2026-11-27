@@ -18,7 +18,7 @@ git -C "${CLAUDE_PROJECT_DIR}" diff --stat HEAD
 
 | Changed paths | Run | Pass means |
 |---|---|---|
-| `cad/arm/`, `cad/params/`, `cad/interfaces/`, `cad/envelopes/`, `cad/data/`, `cad/hardware.py`, `cad/iface.py`, `cad/params.py`, `cad/vendor/` | `python -I cad/tools/run.py cad/tools/quick_check.py` (about 90 s; in the background) | `QUICK fourbar: PASS`, fingerprint MATCH |
+| `cad/arm/`, `cad/params/`, `cad/interfaces/`, `cad/envelopes/`, `cad/data/`, `cad/hardware.py`, `cad/iface.py`, `cad/params.py`, `cad/vendor/` | `python -I cad/tools/validate_data.py` (1 s; quick_check does not run it), then `python -I cad/tools/run.py cad/tools/quick_check.py` (about 90 s; in the background) | `VALIDATE: ... 0 error(s)`, `QUICK fourbar: PASS`, fingerprint MATCH |
 | the same, when the base or a shared module changed | the same with `BASE_DRIVE=DIRECT` | `QUICK fourbar_direct: PASS` |
 | an intended geometry change | after the quick check, `FP_MODE=record python -I cad/tools/run.py cad/tools/fingerprint.py` (quick_check ignores `FP_MODE`), again with `BASE_DRIVE=DIRECT` if that variant changed; name the parts that changed in the commit message | `FINGERPRINT` recorded, then quick_check MATCH |
 | `fusion/snapshot/` | `SNAP_REV=rev_b python -I cad/tools/run.py fusion/checks/mass_torque.py`, and rev A with `BASE_DRIVE=DIRECT` | the 5 % torque agreement still holds |

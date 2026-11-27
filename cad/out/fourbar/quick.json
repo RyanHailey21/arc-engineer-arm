@@ -727,7 +727,7 @@
  "bloat": {
   "unused-import": 0,
   "unused-variable": 0,
-  "dead-def": 1,
+  "dead-def": 0,
   "duplicate": 0,
   "orphan-param": 0,
   "orphan-catalogue": 0,
@@ -737,14 +737,7 @@
   "scratch": 0
  },
  "holes_changed": {
-  "parts": [
-   "GROUND/BHCS_M3x30_frame_L0",
-   "GROUND/BHCS_M3x30_frame_L1",
-   "GROUND/BHCS_M3x30_frame_L2",
-   "GROUND/BHCS_M3x30_frame_R0",
-   "GROUND/BHCS_M3x30_frame_R1",
-   "GROUND/BHCS_M3x30_frame_R2"
-  ],
+  "parts": [],
   "fails": []
  },
  "summary": [
@@ -752,7 +745,7 @@
    "check": "envelopes",
    "ok": true,
    "note": "10 pose checks",
-   "s": 1.5
+   "s": 0.9
   },
   {
    "check": "interfaces",
@@ -764,13 +757,13 @@
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 7.4
+   "s": 4.7
   },
   {
    "check": "mass/torque",
    "ok": true,
    "note": "past wrist 567 g (head 356 g); worst static J1 3.40 J2 2.92 J3 0.88 N*m",
-   "s": 2.6
+   "s": 1.5
   },
   {
    "check": "catalogue",
@@ -782,32 +775,32 @@
    "check": "level-keep",
    "ok": true,
    "note": "closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits",
-   "s": 0.3
+   "s": 0.2
   },
   {
    "check": "seating",
    "ok": true,
    "note": "119 fasteners, 0 FAIL",
-   "s": 5.1
+   "s": 3.1
   },
   {
    "check": "bloat",
    "ok": null,
-   "note": "1 findings (dead-def 1), 37 kept",
-   "s": 2.2
+   "note": "0 findings (none), 42 kept",
+   "s": 1.5
   },
   {
    "check": "fingerprint",
    "ok": null,
-   "note": "CHANGED (12 differences; re-record if intended)",
-   "s": 45.2
+   "note": "MATCH",
+   "s": 26.4
   },
   {
    "check": "holes/eng",
    "ok": true,
-   "note": "6 changed parts (0 made): 0 holes, 0 tapped holes; 0 FAIL",
-   "s": 1.4
+   "note": "no changed parts",
+   "s": 0.0
   }
  ],
- "elapsed_s": 102.0
+ "elapsed_s": 70.8
 }

@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "bloat",
   "status": "pass",
-  "reason": "PASS: BLOAT 0 findings (none), 38 kept",
-  "scope": "BLOAT 0 findings (none), 38 kept",
+  "reason": "PASS: BLOAT 0 findings (none), 42 kept",
+  "scope": "BLOAT 0 findings (none), 42 kept",
   "versions": {
    "python": "3.14.10",
    "platform": "Windows"
@@ -22,7 +22,7 @@
   "artifacts": [],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-26T19:44:48",
+   "time": "2026-11-27T06:13:22",
    "inputs_hash": "17f83b78b838c56d",
    "external_copies": [
     "out/bloat_report.md",
