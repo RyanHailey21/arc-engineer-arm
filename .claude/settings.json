@@ -33,7 +33,8 @@
   },
   "env": {
     "PYTHONUTF8": "1",
-    "CLAUDE_CODE_ENABLE_REFRESH_MCP_TOOLS": "1"
+    "CLAUDE_CODE_ENABLE_REFRESH_MCP_TOOLS": "1",
+    "ARM_SYNC_REPOS": "C:/Users/ryanh/tools/creality-slicer"
   },
   "hooks": {
     "SessionStart": [
@@ -44,6 +45,17 @@
             "type": "command",
             "command": "python -I \"$CLAUDE_PROJECT_DIR/cad/tools/sync_on_open.py\"",
             "timeout": 60
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python -I \"$CLAUDE_PROJECT_DIR/cad/tools/sync_on_open.py\" --prompt",
+            "timeout": 30
           }
         ]
       }
