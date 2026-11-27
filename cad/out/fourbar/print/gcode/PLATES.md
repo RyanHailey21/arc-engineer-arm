@@ -11,18 +11,19 @@ Each plate's `*_preview/` folder holds the slicer's first-layer, top and isometr
 | File | Parts | Layers / Max Z | Time | Filament | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `test_pieces_S1Pro_PLA.gcode` | `Test_Dovetail`, `Test_Fit_Large`, `Test_Fit_Small` | 35 / 7.0 mm | 3h 45m | 34.5 g | **Printed** on `saed` (fits verified; dovetail 0.15 mm unchanged) |
-| `plate1_upper_rods_S1Pro_PLA.gcode` | `Upper_Arm_L_CF3_A/B`, `Upper_Arm_R_CF3_A/B`, `Rod_1_CF3_A/B` (6) | 15 / 3.0 mm | 5h 35m | 62.6 g | **Printing** on `kate` (re-sliced 11-26, 4 mm sockets) |
+| `plate1_upper_rods_S1Pro_PLA.gcode` | `Upper_Arm_L_CF3_A/B`, `Upper_Arm_R_CF3_A/B`, `Rod_1_CF3_A/B` (6) | 15 / 3.0 mm | 5h 35m | 62.6 g | **Printed** on `kate` 11-26 (re-sliced, 4 mm sockets) |
 | `plate2_gears_crank_rocker_S1Pro_PLA.gcode` | `Drive_Gear_m2_54T_J1/J2`, `Pinion_m2_18T_J1/J2`, `Crank_CF3`, `Level_Rocker_CF3` (6) | 45 / 9.0 mm | 14h 37m | 122.4 g | **Printed** on `kate` (unchanged) |
-| `plate3_forearmB_rod2_S1Pro_PLA.gcode` | `Forearm_L_CF3_B`, `Forearm_R_CF3_B`, `Rod_2_CF4_A/B` (4) | 20 / 4.0 mm | 3h 42m | 41.3 g | **Printed** on `a1` (1h 13m, 34.7 g) |
-| `plate4_hubs_clevises_rodab_S1Pro_PLA.gcode` | `Rod_AB_CF3_A/B`, `Wrist_Level_Member_CF3`, `Clevis_L/R_CF3`, `J1_Output_Hub`, `Level_Hub_Elbow/Wrist`, `Wrist_Shaft_Coupler`, `Tower_Bracket_L0/L1/R0/R1` (13) | 135 / 27.0 mm | 6h 33m | 70.1 g | **Printing** on `steve` (re-sliced 11-26) |
-| `plate5_forearmL_A_S1Pro_PLA.gcode` | `Forearm_L_CF3_A` (266 mm, diagonal) | 15 / 3.0 mm | 1h 27m | 17.3 g | **Printing** on `a1` (27 min, 14.2 g, no brim) |
+| `plate3_forearmB_rod2_S1Pro_PLA.gcode` | `Forearm_L_CF3_B`, `Forearm_R_CF3_B`, `Rod_2_CF4_A/B` (4) | 20 / 4.0 mm | 3h 42m | 41.3 g | **Printed** on `a1` 11-26 (1h 13m, 34.7 g) |
+| `plate4_hubs_clevises_rodab_S1Pro_PLA.gcode` | `Rod_AB_CF3_A/B`, `Wrist_Level_Member_CF3`, `Clevis_L/R_CF3`, `J1_Output_Hub`, `Level_Hub_Elbow/Wrist`, `Wrist_Shaft_Coupler`, `Tower_Bracket_L0/L1/R0/R1` (13) | 135 / 27.0 mm | 6h 33m | 70.1 g | **Partial (10/13)** on `steve` 11-26; 3 failed: `Level_Hub_Elbow` & `Level_Hub_Wrist` (CAD floating shell: D14 OD inside D15 bore) and `J1_Output_Hub` (D39 flange overhang, needs supports) |
+| `plate5_forearmL_A_S1Pro_PLA.gcode` | `Forearm_L_CF3_A` (266 mm, diagonal) | 15 / 3.0 mm | 1h 27m | 17.3 g | **Printed** on `a1` 11-26 (27 min, 14.2 g, no brim) |
 | `plate6_forearmR_A_S1Pro_PLA.gcode` | `Forearm_R_CF3_A` (266 mm, diagonal) | 15 / 3.0 mm | 1h 27m | 17.3 g | Queued next for `a1` (27 min, 14.2 g) |
 | `plate7_gripper_links_K1SE_PLA.gcode` | `Link_LD/LI/RD/RI_bot/hi/lo_CF3` (12), `Finger_L/R_bot_CF3`, `Sector_m1_77T_L/R` (16) | 25 / 5.0 mm | 1h 33m | 41.2 g | **Printed** on `k1se-home` 11-27 (second run, with a 5 mm outer brim and glue on the textured PEI; the first run lifted off the bed at 35%; Generic PLA @K1 SE-all 220/60 C) |
 | `plate8_drive_frame_L_spacers_K2_PETG.gcode` | `Drive_Frame_L` (reworked 11-26: no legs, prints face down), `Spacer_DF_L0-2`, `Spacer_DF_R0-2` (7) | 195 / 39.0 mm | 3h 03m | 87.2 g | **Printed** on `k2-home` 11-27 (home K2, Generic PETG @K2-all 250/70 C, auto-orient, auto-brim, no supports) |
 | `plate9_drive_frame_R_K2_PETG.gcode` | `Drive_Frame_R` (reworked) | 195 / 39.0 mm | 3h 07m | 87.9 g | Queued next on `k2-home`. Re-sliced 11-27 with tree(auto) supports (16 % of the filament): plate 8's bare servo-pocket roof and bearing lip strung. Supports fill the servo pocket and sit under the bearing lip; both come out through the open inboard face |
 
 ## Bambu Lab Plates (2026-11-26, PLA 220 C / 60-65 C Textured PEI, 3 walls, 25% gyroid)
-- **Printing on `p1s-2`:** `Roll_Housing`, `Wrist_Servo_Cradle`, `J2_Output_Hub_Journal`, `Elbow_Shaft_D10x101`, `Wrist_Shaft_D10x70`, `FA_Standoff_D8_0/1`, `UA_Standoff_D8_0/1` (9 parts, tree auto supports, 3h 55m, 112.7 g)
+- **Printed on `p1s-2` (11-26):** `Roll_Housing`, `Wrist_Servo_Cradle`, `J2_Output_Hub_Journal`, `Elbow_Shaft_D10x101`, `Wrist_Shaft_D10x70`, `FA_Standoff_D8_0/1`, `UA_Standoff_D8_0/1` (9 parts, tree auto supports, 3h 55m, 112.7 g)
+- **Reprint needed (pending CAD fix/supports):** `Level_Hub_Elbow`, `Level_Hub_Wrist`, `J1_Output_Hub` (and verify `J2_Output_Hub_Journal` underside)
 - **Sliced & queued:** ~~`Drive_Frame_L/R` (P1S)~~ obsolete: the frames were reworked on 11-26 (no legs, separate spacers) and are plates 8 and 9 on the home K2, `Base_Plate_AL5` (A1, 2h 01m, 64.4 g), `Tower_L_CF3` (A1, 1h 06m, 37.8 g), `Tower_R_CF3` (A1, 1h 02m, 35.4 g)
 
 ## Remaining Un-Sliced Parts
