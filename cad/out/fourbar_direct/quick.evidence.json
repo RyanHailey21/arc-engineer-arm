@@ -5,8 +5,8 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "quick",
   "status": "pass",
-  "reason": "PASS: envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 0 findings (none), 51 kept; fingerprint CHANGED (8 differences; re-record if intended); holes/eng 4 changed parts (4 made): 4 holes, 0 tapped holes; 0 FAIL",
-  "scope": "envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 0 findings (none), 51 kept; fingerprint CHANGED (8 differences; re-record if intended); holes/eng 4 changed parts (4 made): 4 holes, 0 tapped holes; 0 FAIL",
+  "reason": "PASS: envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 0 findings (none), 51 kept; fingerprint MATCH; holes/eng no changed parts",
+  "scope": "envelopes 10 pose checks; interfaces 16 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m; catalogue 26 keys, 189 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 127 fasteners, 0 FAIL; bloat 0 findings (none), 51 kept; fingerprint MATCH; holes/eng no changed parts",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
@@ -24,12 +24,12 @@
    {
     "id": "quick.json",
     "path": "quick.json",
-    "sha256": "55d66e2115de3af0304424c93cf0ec176a8b7e78441ae97e719f3e1a5797f47b"
+    "sha256": "58891e4f8abd95ddf5540e08862161d07e3cd017fa8dfa813055704bb99d083e"
    }
   ],
   "extensions": {
    "variant": "FOURBAR_DIRECT",
-   "time": "2026-11-27T14:26:56",
+   "time": "2026-11-28T06:47:08",
    "inputs_hash": "0b2d1747b16335e9",
    "external_copies": []
   }

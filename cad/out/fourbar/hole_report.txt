@@ -1,4 +1,4 @@
-Hole edge-distance check (custom parts): 225 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 43 warn (wall < max(1.5 mm, 0.5 d))
+Hole edge-distance check (custom parts): 231 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 43 warn (wall < max(1.5 mm, 0.5 d))
 WARN   Drive_Frame_L                D2.4 at (-64.2, -104.4, 171.5)  wall 1.14 mm
 WARN   Drive_Frame_L                D2.4 at (-74.4, -104.4, 153.7)  wall 1.14 mm
 WARN   Drive_Frame_L                D2.4 at (-85.3, -104.4, 183.7)  wall 1.14 mm
@@ -9,12 +9,12 @@ WARN   Drive_Frame_R                D2.4 at (-85.3, 104.4, 183.7)  wall 1.14 mm
 WARN   Drive_Frame_R                D2.4 at (-95.6, 104.4, 166.0)  wall 1.14 mm
 WARN   Jaw_Block_L                  D3.3 at (139.0, 15.9, 19.0)  wall 1.35 mm
 WARN   Jaw_Block_R                  D3.3 at (139.0, -15.9, 19.0)  wall 1.35 mm
-WARN   Level_Hub_Elbow              D10.6 at (0.0, -43.0, 0.0)  wall 4.32 mm
-WARN   Level_Hub_Wrist              D10.6 at (0.0, -43.0, 0.0)  wall 4.32 mm
-WARN   Pad_L_TPU                    D6.2 at (139.0, 15.9, -40.0)  wall 2.69 mm
-WARN   Pad_L_TPU                    D6.2 at (163.0, 15.9, -40.0)  wall 2.69 mm
-WARN   Pad_R_TPU                    D6.2 at (139.0, -15.9, -40.0)  wall 2.69 mm
-WARN   Pad_R_TPU                    D6.2 at (163.0, -15.9, -40.0)  wall 2.69 mm
+WARN   Level_Hub_Elbow              D10.6 at (0.0, -43.0, 0.0)  wall 4.40 mm
+WARN   Level_Hub_Wrist              D10.6 at (0.0, -43.0, 0.0)  wall 4.40 mm
+WARN   Pad_L                        D6.2 at (139.0, 15.9, -40.0)  wall 1.66 mm
+WARN   Pad_L                        D6.2 at (163.0, 15.9, -40.0)  wall 1.66 mm
+WARN   Pad_R                        D6.2 at (139.0, -15.9, -40.0)  wall 1.66 mm
+WARN   Pad_R                        D6.2 at (163.0, -15.9, -40.0)  wall 1.66 mm
 WARN   Pinion_m2_18T_J1             D4.0 at (-97.6, -83.0, 179.0)  wall 2.00 mm
 WARN   Pinion_m2_18T_J1             D6.0 at (-104.4, -57.0, 177.2)  wall 2.00 mm
 WARN   Pinion_m2_18T_J1             D6.0 at (-90.9, -57.0, 180.8)  wall 2.00 mm

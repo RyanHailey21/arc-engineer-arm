@@ -59,8 +59,37 @@ def hole_groups(shape):
         key = tuple(round(x, 2) for x in (ax.x, ax.y, ax.z, foot.x, foot.y, foot.z, s.Radius))
         g = groups.setdefault(key, dict(faces=[], centre=c, axis=ax, r=s.Radius, span=0.0))
         g["faces"].append(f)
-        g["span"] += math.degrees(u1 - u0)
+    for g in groups.values():
+        g["span"] = rim_left(g)
     return groups
+
+
+def rim_left(g):
+    """Rim left, deg: the least, along the hole, of the angle its faces cover at that depth (union, 1 deg bins).
+    Summing the faces' angles counted a hole made of two coaxial faces (two solids in the part, or a bore split by
+    a pocket) twice, so one that broke out still read >= 360 deg and its breakout went unreported (TI-043)."""
+    ax, c = g["axis"], g["centre"]
+    e1 = ax.cross(App.Vector(0, 0, 1) if abs(ax.z) < 0.9 else App.Vector(1, 0, 0)).normalize()
+    e2 = ax.cross(e1)
+    full = set(range(360))
+    spans = []
+    for f in g["faces"]:
+        u0, u1, v0, v1 = f.ParameterRange
+        t0, t1 = sorted((f.valueAt((u0 + u1) / 2, v) - c).dot(ax) for v in (v0, v1))
+        deg = math.degrees(u1 - u0)
+        if deg >= 359.999:
+            bins = full
+        else:                                    # 2 samples per degree: every 1 deg bin the face spans gets one
+            n, vm, bins = max(1, int(math.ceil(deg * 2))), (v0 + v1) / 2, set()
+            for k in range(n):
+                q = f.valueAt(u0 + (k + 0.5) * (u1 - u0) / n, vm) - c
+                bins.add(int(math.floor(math.degrees(math.atan2(q.dot(e2), q.dot(e1))))) % 360)
+        spans.append((t0, t1, bins))
+    cuts = sorted({t for s in spans for t in s[:2]})
+    rim = [len(set().union(*[s[2] for s in spans if s[0] < (a + b) / 2 < s[1]]))
+           for a, b in zip(cuts, cuts[1:]) if b - a > 1e-3]
+    rim = [x for x in rim if x]                  # depths no face covers: a pocket the bore crosses
+    return float(min(rim)) if rim else float(len(set().union(*[s[2] for s in spans])))
 
 
 def _is_d_flat(nb, pm, g, shape):

@@ -5,10 +5,10 @@
    "out/bloat_report.md",
    "out/bloat_report.json"
   ],
-  "inputs_hash": "fa6424802472ad4a",
-  "note": "BLOAT 1 findings (dead-def 1), 50 kept",
-  "status": "WARN",
-  "time": "2026-11-27T13:04:36"
+  "inputs_hash": "0b2d1747b16335e9",
+  "note": "BLOAT 0 findings (none), 51 kept",
+  "status": "PASS",
+  "time": "2026-11-28T06:13:46"
  },
  "bom": {
   "evidence": "bom.evidence.json",
@@ -81,20 +81,20 @@
   "files": [
    "hole_report.txt"
   ],
-  "inputs_hash": "583f149273fa8325",
-  "note": "Hole edge-distance check (custom parts): 225 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 43 warn (wall < max(1.5 mm, 0.5 d))",
+  "inputs_hash": "0b2d1747b16335e9",
+  "note": "Hole edge-distance check (custom parts): 231 holes -> 0 broken-out, 0 fail (wall < 1.0 mm), 43 warn (wall < max(1.5 mm, 0.5 d))",
   "status": "WARN",
-  "time": "2026-11-19T20:48:26"
+  "time": "2026-11-28T06:21:44"
  },
  "interference_full": {
   "evidence": "interference_full.evidence.json",
   "files": [
    "interference_report.txt"
   ],
-  "inputs_hash": "17f83b78b838c56d",
+  "inputs_hash": "0b2d1747b16335e9",
   "note": "static, 14 task poses, field clearance, donut lift",
   "status": "PASS",
-  "time": "2026-11-27T06:31:48"
+  "time": "2026-11-28T06:31:41"
  },
  "level_keeping": {
   "evidence": "level_keeping.evidence.json",
@@ -111,10 +111,10 @@
   "files": [
    "quick.json"
   ],
-  "inputs_hash": "fa3abe552e4eef7c",
-  "note": "envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 51 kept; fingerprint CHANGED (8 differences; re-record if intended); holes/eng 4 changed parts (4 made): 4 holes, 0 tapped holes; 0 FAIL",
+  "inputs_hash": "0b2d1747b16335e9",
+  "note": "envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 51 kept; fingerprint MATCH; holes/eng no changed parts",
   "status": "PASS",
-  "time": "2026-11-27T14:22:44"
+  "time": "2026-11-28T06:45:55"
  },
  "seated": {
   "evidence": "seated.evidence.json",

@@ -1044,12 +1044,7 @@
   "scratch": 0
  },
  "holes_changed": {
-  "parts": [
-   "JAW_L/Grip_Rubber_L",
-   "JAW_L/Pad_L",
-   "JAW_R/Grip_Rubber_R",
-   "JAW_R/Pad_R"
-  ],
+  "parts": [],
   "fails": []
  },
  "summary": [
@@ -1057,7 +1052,7 @@
    "check": "envelopes",
    "ok": true,
    "note": "10 pose checks",
-   "s": 0.9
+   "s": 0.8
   },
   {
    "check": "interfaces",
@@ -1069,13 +1064,13 @@
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 8.2
+   "s": 4.7
   },
   {
    "check": "mass/torque",
    "ok": true,
    "note": "past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m",
-   "s": 2.1
+   "s": 1.5
   },
   {
    "check": "catalogue",
@@ -1087,32 +1082,32 @@
    "check": "level-keep",
    "ok": true,
    "note": "closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits",
-   "s": 0.3
+   "s": 0.2
   },
   {
    "check": "seating",
    "ok": true,
    "note": "127 fasteners, 0 FAIL",
-   "s": 4.2
+   "s": 2.9
   },
   {
    "check": "bloat",
    "ok": null,
    "note": "0 findings (none), 51 kept",
-   "s": 4.2
+   "s": 1.6
   },
   {
    "check": "fingerprint",
    "ok": null,
-   "note": "CHANGED (8 differences; re-record if intended)",
-   "s": 51.5
+   "note": "MATCH",
+   "s": 36.0
   },
   {
    "check": "holes/eng",
    "ok": true,
-   "note": "4 changed parts (4 made): 4 holes, 0 tapped holes; 0 FAIL",
-   "s": 2.0
+   "note": "no changed parts",
+   "s": 0.0
   }
  ],
- "elapsed_s": 106.5
+ "elapsed_s": 72.9
 }
