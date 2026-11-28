@@ -1,0 +1,130 @@
+type,item,qty,body,prototype material,print files,production part,note
+printed,Base_Plate_AL5,1,GROUND,PETG (or PLA),Base_Plate_AL5.stl,"5 mm 6061, waterjet + tap",printed in place of the production part
+printed,Tower_L_CF3,1,GROUND,PETG (or PLA); print flat,Tower_L_CF3.stl,3 mm CF plate (DXF),printed in place of the production part
+printed,Drive_Frame_L,1,GROUND,PETG (or PLA),Drive_Frame_L.stl,"PETG-CF print, flat back (prints face down, no supports), 3x M3 through holes",
+printed,Spacer_DF_L0,1,GROUND,PETG (or PLA),Spacer_DF_L0.stl,"printed tube D10 x 12.0, M3 clearance",
+printed,Spacer_DF_L1,1,GROUND,PETG (or PLA),Spacer_DF_L1.stl,"printed tube D10 x 12.0, M3 clearance",
+printed,Spacer_DF_L2,1,GROUND,PETG (or PLA),Spacer_DF_L2.stl,"printed tube D10 x 12.0, M3 clearance",
+printed,Pinion_m2_18T_J1,1,GROUND,PETG (or PLA),Pinion_m2_18T_J1.stl,"PA12 / PETG-CF print, m2 18T, 4x M3 cbore",
+printed,Tower_Bracket_L0,1,GROUND,PETG (or PLA),Tower_Bracket_L0.stl,PETG-CF print,
+printed,Tower_Bracket_L1,1,GROUND,PETG (or PLA),Tower_Bracket_L1.stl,PETG-CF print,
+printed,Tower_R_CF3,1,GROUND,PETG (or PLA); print flat,Tower_R_CF3.stl,3 mm CF plate (DXF),printed in place of the production part
+printed,Drive_Frame_R,1,GROUND,PETG (or PLA),Drive_Frame_R.stl,"PETG-CF print, flat back (prints face down, no supports), 3x M3 through holes",
+printed,Spacer_DF_R0,1,GROUND,PETG (or PLA),Spacer_DF_R0.stl,"printed tube D10 x 12.0, M3 clearance",
+printed,Spacer_DF_R1,1,GROUND,PETG (or PLA),Spacer_DF_R1.stl,"printed tube D10 x 12.0, M3 clearance",
+printed,Spacer_DF_R2,1,GROUND,PETG (or PLA),Spacer_DF_R2.stl,"printed tube D10 x 12.0, M3 clearance",
+printed,Pinion_m2_18T_J2,1,GROUND,PETG (or PLA),Pinion_m2_18T_J2.stl,"PA12 / PETG-CF print, m2 18T, 4x M3 cbore",
+printed,Tower_Bracket_R0,1,GROUND,PETG (or PLA),Tower_Bracket_R0.stl,PETG-CF print,
+printed,Tower_Bracket_R1,1,GROUND,PETG (or PLA),Tower_Bracket_R1.stl,PETG-CF print,
+printed,Spacer_G1,1,GROUND,PETG (or PLA),Spacer_G1.stl,D9/D5.2 x 6 alu,printed in place of the production part
+printed,Upper_Arm_L_CF3,1,UPPER,PETG (or PLA); print flat,Upper_Arm_L_CF3_A.stl + Upper_Arm_L_CF3_B.stl,3 mm CF plate (DXF),printed in place of the production part
+printed,Upper_Arm_R_CF3,1,UPPER,PETG (or PLA); print flat,Upper_Arm_R_CF3_A.stl + Upper_Arm_R_CF3_B.stl,3 mm CF plate (DXF),printed in place of the production part
+printed,J1_Output_Hub,1,UPPER,PETG (or PLA),J1_Output_Hub.stl,6061 turned + milled hex,printed in place of the production part
+printed,Drive_Gear_m2_54T_J1,1,UPPER,PETG (or PLA),Drive_Gear_m2_54T_J1.stl,"PA12 / PETG-CF print, m2 54T, 19 AF hex bore",
+printed,UA_Standoff_D8_0,1,UPPER,PETG (or PLA),UA_Standoff_D8_0.stl,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",printed in place of the production part
+printed,UA_Standoff_D8_1,1,UPPER,PETG (or PLA),UA_Standoff_D8_1.stl,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",printed in place of the production part
+printed,Crank_CF3,1,CRANK,PETG (or PLA); print flat,Crank_CF3.stl,"3 mm CF plate (DXF), D-bore on journal flat",printed in place of the production part
+printed,J2_Output_Hub_Journal,1,CRANK,PETG (or PLA),J2_Output_Hub_Journal.stl,6061 turned + milled hex,printed in place of the production part
+printed,Drive_Gear_m2_54T_J2,1,CRANK,PETG (or PLA),Drive_Gear_m2_54T_J2.stl,"PA12 / PETG-CF print, m2 54T, 19 AF hex bore",
+printed,Shim_A,1,CRANK,PETG (or PLA); 0.5 mm = 3 layers at 0.16,Shim_A.stl,"301 SS shim stock 1.5, laser cut",printed in place of the production part
+printed,Rod_AB_CF3,1,ROD_AB,PETG (or PLA); print flat,Rod_AB_CF3_A.stl + Rod_AB_CF3_B.stl,3 mm CF plate (DXF),printed in place of the production part
+printed,Rod_1_CF3,1,ROD1,PETG (or PLA); print flat,Rod_1_CF3_A.stl + Rod_1_CF3_B.stl,3 mm CF plate (DXF),printed in place of the production part
+printed,Forearm_L_CF3,1,FOREARM,PETG (or PLA); print flat,Forearm_L_CF3_A.stl + Forearm_L_CF3_B.stl,3 mm CF plate (DXF),printed in place of the production part
+printed,Forearm_R_CF3,1,FOREARM,PETG (or PLA); print flat,Forearm_R_CF3_A.stl + Forearm_R_CF3_B.stl,3 mm CF plate (DXF),printed in place of the production part
+printed,Elbow_Shaft_D10x101,1,FOREARM,"PETG (or PLA), or cut from the D10 rod",Elbow_Shaft_D10x101.stl,"cut from McMaster 6112K47 D10 h6 rod, ground e-clip grooves",printed in place of the production part
+printed,FA_Standoff_D8_0,1,FOREARM,PETG (or PLA),FA_Standoff_D8_0.stl,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",printed in place of the production part
+printed,FA_Standoff_D8_1,1,FOREARM,PETG (or PLA),FA_Standoff_D8_1.stl,"6061 D8/D6 rod, cut to length, D2.5 thru, M3 tapped both ends (spacer)",printed in place of the production part
+printed,Spacer_B,1,FOREARM,PETG (or PLA),Spacer_B.stl,D9/D5.2 x 8 alu,printed in place of the production part
+printed,Level_Rocker_CF3,1,ROCKER,PETG (or PLA); print flat,Level_Rocker_CF3.stl,"3 mm CF plate (DXF), hex af19",printed in place of the production part
+printed,Level_Hub_Elbow,1,ROCKER,PETG (or PLA),Level_Hub_Elbow.stl,"6061 turned hub, hex key af19, 6700 seat",printed in place of the production part
+printed,Washer_Ev2_head,1,ROCKER,PETG (or PLA); 0.5 mm = 3 layers at 0.16,Washer_Ev2_head.stl,"301 SS shim stock 0.5, laser cut",printed in place of the production part
+printed,Washer_PTFE_Ev2,1,ROCKER,PETG (or PLA),Washer_PTFE_Ev2.stl,"PTFE sheet 1.0, laser cut",printed in place of the production part
+printed,Sleeve_E_outer,1,ROCKER,PETG (or PLA),Sleeve_E_outer.stl,D13/D10 sleeve,printed in place of the production part
+printed,Washer_PTFE_E,1,ROCKER,PETG (or PLA),Washer_PTFE_E.stl,"PTFE rod D13, turned thrust sleeve",printed in place of the production part
+printed,Shim_Ev1,1,ROCKER,PETG (or PLA); 0.5 mm = 3 layers at 0.16,Shim_Ev1.stl,"301 SS shim stock 0.5, laser cut",printed in place of the production part
+printed,Rod_2_CF4,1,ROD2,PETG (or PLA); print flat,Rod_2_CF4_A.stl + Rod_2_CF4_B.stl,4 mm CF plate (DXF),printed in place of the production part
+printed,Wrist_Level_Member_CF3,1,LEVEL,PETG (or PLA); print flat,Wrist_Level_Member_CF3.stl,"3 mm CF plate (DXF), hex af19",printed in place of the production part
+printed,Level_Hub_Wrist,1,LEVEL,PETG (or PLA),Level_Hub_Wrist.stl,"6061 turned hub, hex key af19, 6700 seat",printed in place of the production part
+printed,Washer_Dv2_head,1,LEVEL,PETG (or PLA); 0.5 mm = 3 layers at 0.16,Washer_Dv2_head.stl,"301 SS shim stock 0.5, laser cut",printed in place of the production part
+printed,Washer_PTFE_Dv2,1,LEVEL,PETG (or PLA),Washer_PTFE_Dv2.stl,"PTFE sheet 1.0, laser cut",printed in place of the production part
+printed,Wrist_Servo_Cradle,1,LEVEL,PETG (or PLA),Wrist_Servo_Cradle.stl,"PETG-CF print, 4x M3 heat-set inserts",
+printed,Wrist_Shaft_D10x70,1,GRIPPER,"PETG (or PLA), or cut from the D10 rod",Wrist_Shaft_D10x70.stl,"cut from McMaster 6112K47 D10 h6 rod, D6x4 ground step, D-flats, e-clip groove",printed in place of the production part
+printed,Wrist_Shaft_Coupler,1,GRIPPER,PETG (or PLA),Wrist_Shaft_Coupler.stl,"6061, D6 D-bore on the shaft step, 4x M3 clearance (horn)",printed in place of the production part
+printed,Clevis_L_CF3,1,GRIPPER,PETG (or PLA); print flat,Clevis_L_CF3.stl,"3 mm CF plate (DXF), D-bore, 4x csk",printed in place of the production part
+printed,Clevis_R_CF3,1,GRIPPER,PETG (or PLA); print flat,Clevis_R_CF3.stl,"3 mm CF plate (DXF), D-bore",printed in place of the production part
+printed,Roll_Housing,1,GRIPPER,PETG (or PLA),Roll_Housing.stl,"PETG-CF print, M3 inserts",
+printed,Roll_Hub,1,HEAD,PETG (or PLA),Roll_Hub.stl,"6061 turned, D25 journal in 6805",printed in place of the production part
+printed,Gripper_Palm,1,HEAD,PETG (or PLA),Gripper_Palm.stl,PETG-CF print (concept),
+printed,Jaw_Block_L,1,JAW_L,PETG (or PLA),Jaw_Block_L.stl,PETG-CF print (concept),
+printed,Finger_L_bot_CF3,1,JAW_L,PETG (or PLA); print flat,Finger_L_bot_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Pad_L,1,JAW_L,PETG (or PLA),Pad_L.stl,"PLA/PETG print, R50 arc + 90 deg V, faces 1.6 mm under the rubber",
+cut,Grip_Rubber_L,1,JAW_L,neoprene 1/16 in,,"1.6 mm solid neoprene sheet (40-60A), bonded (transfer tape or CA), strips on the R50 arc and both V flanks",
+printed,Standoff_D6_L0,1,JAW_L,PETG (or PLA),Standoff_D6_L0.stl,"6061 D6 standoff, M3 both ends",printed in place of the production part
+printed,Standoff_D6_L1,1,JAW_L,PETG (or PLA),Standoff_D6_L1.stl,"6061 D6 standoff, M3 both ends",printed in place of the production part
+printed,Jaw_Block_R,1,JAW_R,PETG (or PLA),Jaw_Block_R.stl,PETG-CF print (concept),
+printed,Finger_R_bot_CF3,1,JAW_R,PETG (or PLA); print flat,Finger_R_bot_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Pad_R,1,JAW_R,PETG (or PLA),Pad_R.stl,"PLA/PETG print, R50 arc + 90 deg V, faces 1.6 mm under the rubber",
+cut,Grip_Rubber_R,1,JAW_R,neoprene 1/16 in,,"1.6 mm solid neoprene sheet (40-60A), bonded (transfer tape or CA), strips on the R50 arc and both V flanks",
+printed,Standoff_D6_R0,1,JAW_R,PETG (or PLA),Standoff_D6_R0.stl,"6061 D6 standoff, M3 both ends",printed in place of the production part
+printed,Standoff_D6_R1,1,JAW_R,PETG (or PLA),Standoff_D6_R1.stl,"6061 D6 standoff, M3 both ends",printed in place of the production part
+printed,Link_LD_lo_CF3,1,LK_LD,PETG (or PLA); print flat,Link_LD_lo_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Link_LD_hi_CF3,1,LK_LD,PETG (or PLA); print flat,Link_LD_hi_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Link_LD_bot_CF3,1,LK_LD,PETG (or PLA); print flat,Link_LD_bot_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Sector_m1_77T_L,1,LK_LD,PETG (or PLA),Sector_m1_77T_L.stl,"POM/PA12 sector gear m1 77T, 5 thick (concept)",
+printed,Link_LI_lo_CF3,1,LK_LI,PETG (or PLA); print flat,Link_LI_lo_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Link_LI_hi_CF3,1,LK_LI,PETG (or PLA); print flat,Link_LI_hi_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Link_LI_bot_CF3,1,LK_LI,PETG (or PLA); print flat,Link_LI_bot_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Link_RD_lo_CF3,1,LK_RD,PETG (or PLA); print flat,Link_RD_lo_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Link_RD_hi_CF3,1,LK_RD,PETG (or PLA); print flat,Link_RD_hi_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Link_RD_bot_CF3,1,LK_RD,PETG (or PLA); print flat,Link_RD_bot_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Sector_m1_77T_R,1,LK_RD,PETG (or PLA),Sector_m1_77T_R.stl,"POM/PA12 sector gear m1 77T, 5 thick (concept)",
+printed,Link_RI_lo_CF3,1,LK_RI,PETG (or PLA); print flat,Link_RI_lo_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Link_RI_hi_CF3,1,LK_RI,PETG (or PLA); print flat,Link_RI_hi_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+printed,Link_RI_bot_CF3,1,LK_RI,PETG (or PLA); print flat,Link_RI_bot_CF3.stl,3 mm CF plate (concept),printed in place of the production part
+purchased,6700ZZ,6,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,6701ZZ,1,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,6804ZZ,2,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,6805ZZ,1,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,9271K56,1,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,BHCS M3x10,4,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,BHCS M3x30,6,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,BHCS M3x5,8,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,BHCS M3x6,27,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,BHCS M3x8,18,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,CLIP,2,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,COLLAR10,2,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,CSK M3x6,8,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,ECLIP,3,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,HORN-25T,5,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,Insert M3,18,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,MR105ZZ,6,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,Nyloc M3,10,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,Nyloc M4,6,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,PAN-M2x12,16,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,PCLIP,2,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,PIN-D4x14,10,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,PIN-D4x20,1,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,PIN-D4x30,1,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,PIN-D4x8,4,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,SHCS M4x12,4,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,SHCS M4x8,1,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,SHCS M5x10,2,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,STS3215,5,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,Shoulder screw SB5x10,1,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,Shoulder screw SB5x12,1,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,Shoulder screw SB5x4,1,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,Shoulder screw SB5x8,3,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,WASHER-D4,2,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,Washer M4,1,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+purchased,Washer M5,2,,,,same as BOM.csv,see amazon_buy_list.csv (prototype column)
+consumable,CA glue (medium) or 5-minute epoxy,1,,,,prototype only,"dovetail halves of the upper arm, forearm and rod plates"
+consumable,3M 300LSE transfer tape (or CA),1 roll,,,,prototype only,bonds the neoprene to the pads
+consumable,Medium threadlocker (blue),1,,,,prototype only,metal screws into the aluminium servo horns
+consumable,Dry PTFE lubricant,1,,,,prototype only,"printed gear meshes (18T/54T, sector gears)"
+tool,"M3, M4 and M5 hand taps with a tap wrench",1 set,,,,prototype only,threads in the printed parts that the production parts have tapped
+tool,4.0 and 4.1 mm drills (or a 4 mm H8 reamer),1 each,,,,prototype only,"D4 pin bores, to the size the Test_Fit_Small piece chose"
+tool,Soldering iron with an M3 heat-set insert tip,1,,,,prototype only,M3 inserts
+tool,"Hex keys 1.5, 2, 2.5, 3, 4 mm; 5.5 and 7 mm wrenches",1 set,,,,prototype only,"button heads (2), M3 cap (2.5), M4 (3), M5 (4); M3 / M4 nylocs"
+tool,Bench vice with soft jaws (or a hand arbor press),1,,,,prototype only,bearings and pins
+tool,E-clip pliers (or a flat screwdriver),1,,,,prototype only,DIN 6799 size 7 on the D10 shafts
+tool,PC with the Feetech FD software and the FE-URT-1 adapter,1,,,,prototype only,"servo IDs, mode and calibration"

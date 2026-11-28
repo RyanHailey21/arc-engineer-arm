@@ -5,10 +5,10 @@
    "out/bloat_report.md",
    "out/bloat_report.json"
   ],
-  "inputs_hash": "0b2d1747b16335e9",
-  "note": "BLOAT 0 findings (none), 51 kept",
-  "status": "PASS",
-  "time": "2026-11-28T06:13:46"
+  "inputs_hash": "c2a315f4d5eb8713",
+  "note": "BLOAT 1 findings (orphan-param 1), 56 kept",
+  "status": "WARN",
+  "time": "2026-11-28T07:14:40"
  },
  "bom": {
   "evidence": "bom.evidence.json",
@@ -20,6 +20,18 @@
   "note": "25 purchased items, unsourced: none",
   "status": "PASS",
   "time": "2026-11-22T10:22:51"
+ },
+ "build_guide": {
+  "evidence": "build_guide.evidence.json",
+  "files": [
+   "print/BOM_prototype.csv",
+   "build/steps.json",
+   "docs/paper/build/steps.tex"
+  ],
+  "inputs_hash": "c2a315f4d5eb8713",
+  "note": "16 steps; 0 problems",
+  "status": "PASS",
+  "time": "2026-11-28T07:21:44"
  },
  "engagement": {
   "evidence": "engagement.evidence.json",
@@ -111,10 +123,10 @@
   "files": [
    "quick.json"
   ],
-  "inputs_hash": "0b2d1747b16335e9",
-  "note": "envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 0 findings (none), 51 kept; fingerprint MATCH; holes/eng no changed parts",
+  "inputs_hash": "c2a315f4d5eb8713",
+  "note": "envelopes 10 pose checks; interfaces 15 sides; self-hit 0 overlaps over the jaw stroke; mass/torque past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m; catalogue 25 keys, 191 purchased units match catalogue mass; level-keep closure 3e-13 mm over 47 samples; dead-point margin 24.7 deg (DONUT_PLACE), 21.3 at elbow limits; seating 119 fasteners, 0 FAIL; bloat 1 findings (orphan-param 1), 56 kept; fingerprint MATCH; holes/eng no changed parts",
   "status": "PASS",
-  "time": "2026-11-28T06:45:55"
+  "time": "2026-11-28T07:14:19"
  },
  "seated": {
   "evidence": "seated.evidence.json",

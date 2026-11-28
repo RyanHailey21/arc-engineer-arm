@@ -1,0 +1,44 @@
+{
+ "status": "pass",
+ "evidence": {
+  "schema": "cad-evidence/1",
+  "producer": "light_weight_arm/cad/tools",
+  "operation": "build_guide",
+  "status": "pass",
+  "reason": "PASS: 16 steps; 0 problems",
+  "scope": "16 steps; 0 problems",
+  "versions": {
+   "python": "3.11.14",
+   "platform": "Windows",
+   "freecad": "1.1.4"
+  },
+  "implementation_sha256": "904f4967e0672e577719cdc52f6e3acd2dc61655dae0f94d49028e6e2e38c2f1",
+  "inputs": [
+   {
+    "id": "design-inputs",
+    "path": "evidence/build_guide.inputs.json",
+    "sha256": "f5cc959e1c997541aeed967d7d8198928ad37e90f30a3b99c50c95114eca0832"
+   }
+  ],
+  "artifacts": [
+   {
+    "id": "BOM_prototype.csv",
+    "path": "print/BOM_prototype.csv",
+    "sha256": "e1bb7f53f1a0e3d9dbca25e42f592579ca87f9f95bbea880e93405e8863e4a2d"
+   },
+   {
+    "id": "steps.json",
+    "path": "build/steps.json",
+    "sha256": "cf967c8688955ed4ba24a6a586394ec8f5e3b6ceae6846dcb0a381be25a8dd61"
+   }
+  ],
+  "extensions": {
+   "variant": "FOURBAR",
+   "time": "2026-11-28T07:21:44",
+   "inputs_hash": "c2a315f4d5eb8713",
+   "external_copies": [
+    "docs/paper/build/steps.tex"
+   ]
+  }
+ }
+}

@@ -1093,14 +1093,14 @@
   {
    "check": "bloat",
    "ok": null,
-   "note": "0 findings (none), 51 kept",
+   "note": "0 findings (none), 56 kept",
    "s": 1.6
   },
   {
    "check": "fingerprint",
    "ok": null,
    "note": "MATCH",
-   "s": 36.0
+   "s": 35.9
   },
   {
    "check": "holes/eng",
@@ -1109,5 +1109,5 @@
    "s": 0.0
   }
  ],
- "elapsed_s": 72.9
+ "elapsed_s": 71.2
 }

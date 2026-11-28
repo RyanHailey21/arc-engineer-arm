@@ -1,6 +1,24 @@
 {
- "findings": [],
+ "findings": [
+  {
+   "kind": "orphan-param",
+   "path": "cad/params/actuators.toml",
+   "line": 22,
+   "name": "BUS.baud",
+   "detail": "params/actuators.toml key `BUS.baud` is read by no code",
+   "id": "orphan-param:cad/params/actuators.toml:BUS.baud"
+  }
+ ],
  "kept": [
+  {
+   "kind": "unused-import",
+   "path": "cad/render/build_steps.py",
+   "line": 12,
+   "name": "math",
+   "detail": "`math` imported, never used",
+   "id": "unused-import:cad/render/build_steps.py:math",
+   "kept": "rev A renders and the render generators (render/export_render.py is a release generator)"
+  },
   {
    "kind": "dead-def",
    "path": "cad/params.py",
@@ -65,6 +83,42 @@
    "id": "duplicate:cad/tools/amazon_buy_list.py:near-6d0522208b",
    "other": "cad/tools/amazon_buy_list.py",
    "kept": "data table: one row per purchased line (section, item, ASIN, packs, price), alike by design, not copied code"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_drive_link.FCStd:cad/out/fourbar/fea/FEA_fb_drive_link.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd:cad/out/fourbar/fea/FEA_fb_jaw_block.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_fb_palm.FCStd:cad/out/fourbar/fea/FEA_fb_palm.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
+  },
+  {
+   "kind": "out-unindexed",
+   "path": "cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
+   "line": 1,
+   "name": "cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
+   "detail": "not in fourbar/manifest.json and no tool writes a file of this name",
+   "id": "out-unindexed:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd:cad/out/fourbar/fea/FEA_jaw_stiffness_final.FCStd",
+   "kept": "git-ignored solver/tool output (regenerable, never committed)"
   },
   {
    "kind": "out-unindexed",
@@ -468,22 +522,20 @@
   "unused-variable": 0,
   "dead-def": 0,
   "duplicate": 0,
-  "orphan-param": 0,
+  "orphan-param": 1,
   "orphan-catalogue": 0,
   "orphan-interface": 0,
   "orphan-envelope": 0,
   "out-unindexed": 0,
   "scratch": 0
  },
- "scanned": 87,
+ "scanned": 90,
  "stale_keep": [],
  "notes": [
   "fourbar/map_parts.md is older than the model inputs (rerun tools/make_map.py)",
   "fourbar_direct/map_parts.md is older than the model inputs (rerun tools/make_map.py)"
  ],
  "new": [],
- "resolved": [
-  "dead-def:fusion/level_hub_shoulder.py:run_hub"
- ],
+ "resolved": [],
  "keep_file": "cad/tools/bloat_keep.toml"
 }

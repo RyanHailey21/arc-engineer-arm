@@ -729,7 +729,7 @@
   "unused-variable": 0,
   "dead-def": 0,
   "duplicate": 0,
-  "orphan-param": 0,
+  "orphan-param": 1,
   "orphan-catalogue": 0,
   "orphan-interface": 0,
   "orphan-envelope": 0,
@@ -745,7 +745,7 @@
    "check": "envelopes",
    "ok": true,
    "note": "10 pose checks",
-   "s": 1.1
+   "s": 0.9
   },
   {
    "check": "interfaces",
@@ -757,13 +757,13 @@
    "check": "self-hit",
    "ok": true,
    "note": "0 overlaps over the jaw stroke",
-   "s": 6.4
+   "s": 4.6
   },
   {
    "check": "mass/torque",
    "ok": true,
    "note": "past wrist 564 g (head 353 g); worst static J1 3.40 J2 2.91 J3 0.88 N*m",
-   "s": 2.3
+   "s": 1.6
   },
   {
    "check": "catalogue",
@@ -781,12 +781,12 @@
    "check": "seating",
    "ok": true,
    "note": "119 fasteners, 0 FAIL",
-   "s": 4.0
+   "s": 3.1
   },
   {
    "check": "bloat",
    "ok": null,
-   "note": "0 findings (none), 51 kept",
+   "note": "1 findings (orphan-param 1), 56 kept",
    "s": 1.6
   },
   {
@@ -802,5 +802,5 @@
    "s": 0.0
   }
  ],
- "elapsed_s": 81.3
+ "elapsed_s": 74.0
 }

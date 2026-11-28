@@ -17,3 +17,11 @@ peak_Nm = 27.0            # peak output torque, Damiao spec
 hold_frac = 1.0           # a geared BLDC joint motor holds at its continuous rating (the 50 %-of-stall rule is for hobby servos)
 rotor_share = 0.30        # share of the catalogue mass modelled in the output-flange (rotor) part, which turns with the hub;
                           # the stator part carries the rest (estimate; the joint torque barely depends on it: the rotor is on the axis)
+
+[BUS]                     # one Feetech TTL bus for all five STS3215 (2026-11-28; the build guide's servo setup reads it)
+baud = 1000000            # factory default; keep it
+J1 = 1                    # shoulder (left drive frame, 3:1)
+J2 = 2                    # elbow (right drive frame, 3:1)
+J3 = 3                    # wrist pitch (cradle on the level member)
+J4 = 4                    # wrist roll (roll housing)
+GRIP = 5                  # four-bar gripper (palm)

@@ -1,7 +1,8 @@
 % ARC S2 Engineer arm: product summary. Build: python -I cad/docs/paper/make_paper.py
 % Every number is a macro from numbers.tex, which make_paper.py writes from the check results.
 % Pictures: fig/render_*.png from cad/render (blender -b -P cad/render/blender_render.py -- --stills);
-%           fig/sim_*.png from cad/sim/tasks.py --snap.
+%           fig/sim_*.png from cad/sim/tasks.py --snap;
+%           fig/build_*.png from cad/render/build_steps.py (after cad/tools/build_guide.py, which also writes build/*.tex).
 \documentclass[10pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{lmodern}
@@ -17,6 +18,8 @@
 \captionsetup{font=small,labelfont=bf}
 \renewcommand{\topfraction}{0.9}\renewcommand{\bottomfraction}{0.8}\renewcommand{\textfraction}{0.07}\renewcommand{\floatpagefraction}{0.8}
 \input{numbers}
+\input{build/steps}
+\input{build/proto_bom}
 \newcommand{\pass}{\textsc{pass}}
 \newcommand{\open}{\textsc{open}}
 \newcommand{\Nm}{\,N\,m}
@@ -219,9 +222,209 @@ servo model.
   \item Add a soft landing stop or gas spring: the arm falls when the robot is defeated (this is allowed by the rules).
   \item Design the chassis interface. The arm assumes a deck at 120\,mm, the shoulder 160\,mm behind the bumper, and
   4$\times$M4 into the 150$\times$160\,mm base plate.
+  \item Through the 3:1 stage the J1 and J2 task ranges need more than one servo turn (Appendix~\ref{sec:servo}). Test the
+  STS3215 multi-turn mode on the bench, or trim the task poses to one turn.
+  \item The model has no screws that fix the gripper servo's disc horn to the lower drive link, and none that hold the
+  gripper servo in its palm pocket. Add them to the model and the BOM, or confirm on the prototype that nothing is needed.
 \end{enumerate}
 
 \paragraph{Reproducibility.} The CAD model, checks, FEA and simulation are in the project repository. This document
 is rebuilt from their latest results with \texttt{python -I cad/docs/paper/make\_paper.py}.
+
+\clearpage
+\appendix
+\section{Build guide: printed prototype, rev.~B (servo-driven)}\label{sec:build}
+This appendix takes the printed parts and the purchased hardware to a working arm in \BuildSteps{} steps. The part list,
+the picture and the stack order along each joint of every step come from the CAD model
+(\texttt{cad/tools/build\_guide.py}). Every one of the model's parts is assigned to exactly one step, so nothing is left
+over. In the pictures, orange is what the step adds, blue is a sub-assembly built earlier on the bench, and grey is what
+is already on the arm. Stacks list each part with its position along the axis at STOW, in mm.
+
+\paragraph{Names and sides.} Parts carry the model's names (\texttt{\_L} and \texttt{\_R}). The \texttt{\_L} parts sit
+at $-y$: the J1 shoulder drive, the level-keeping rods and the J3 pitch servo are all on that side.
+
+\subsection{Prototype bill of materials}
+The prototype differs from the production BOM, so it has its own: \texttt{cad/out/fourbar/print/BOM\_prototype.csv}.
+\ProtoPrinted{} parts are printed. \ProtoSubst{} of them replace carbon-fibre, aluminium, steel, PTFE or shim parts,
+and \ProtoHalves{} are printed in two halves and glued. The neoprene grip faces are cut from sheet. The
+\ProtoBought{} purchased pieces (\ProtoBoughtLines{} kinds) are the production ones; \texttt{amazon\_buy\_list.csv}
+(column \emph{prototype}) is the order. The prototype adds the consumables and tools below.
+\ProtoExtras
+
+\subsection{Prepare the parts}
+\begin{enumerate}\itemsep0pt
+  \item \textbf{Fits.} Use what the printed \texttt{Test\_Fit\_Small} and \texttt{Test\_Fit\_Large} pieces showed. Drill or
+  ream each D4 pin bore to the size that held a pin. The pins press into one part and run freely in the other, as the
+  catalogue notes for each pin say.
+  \item \textbf{Glue the halves.} Dry-fit each dovetail pair (upper arms, forearms, rods). Glue it flat on glass with CA
+  or epoxy, and check the end holes against the mating plate before the glue sets.
+  \item \textbf{Inserts.} Set every M3 heat-set insert square and flush before assembly: the roll housing, the jaw blocks
+  and the J3 cradle (see the parts table of each step).
+  \item \textbf{Threads.} The production standoffs, base plate, hubs and roll hub are tapped. In the printed parts, cut
+  those threads with a hand tap (M3; the M4 end of the J2 journal; the M5 ends of the J1 and J2 hubs). Don't let the
+  screws form them.
+  \item \textbf{Bearings.} Press each bearing square into its seat with a vice, pushing on the outer race. The steps say
+  which bearing goes where. A seat that is loose in PLA takes a drop of CA on the outer race only.
+  \item \textbf{Printed shafts.} The printed D10 elbow and wrist shafts carry the e-clip grooves. If a printed groove
+  doesn't hold its clip, cut the shaft from the D10 steel rod (the optional buy-list line).
+  \item \textbf{Shims.} Measure the printed 0.5\,mm washers and shims. Sand or reprint any that are thicker than 0.55\,mm.
+  \item \textbf{Grip faces.} Cut the neoprene into strips for the R50 arc and both V flanks of each pad, and bond them with
+  transfer tape. Their outer face is the grip surface (\texttt{Grip\_Rubber\_L/R}).
+\end{enumerate}
+
+\subsection{Servo setup}\label{sec:servo}
+Set up each STS3215 alone on the bench before any horn goes on. Connect it to the FE-URT-1 adapter and the 12\,V
+supply, and use Feetech's FD software. Give it its ID from the table, and leave the baud rate at the factory
+\BusBaud. Then label the servo with its ID.
+\BusTable
+\noindent The horns and pinions can go on at any angle: the calibration below sets each servo's centre electronically.
+
+\paragraph{J1 and J2 need more than one servo turn.} Through the 3:1 stage, one servo turn moves the joint 120$^\circ$.
+The task poses span more than that (table). In the default position mode a servo moves within one turn, so centre J1 at
+\MidJOne$^\circ$ and J2 at \MidJTwo$^\circ$, the middle of their task ranges. The poses the table lists are then out of
+reach. The STS3215 also has a multi-turn mode (angle limits set to 0, about $\pm$7 turns). It doesn't keep the turn count
+through a power cycle, so the arm would have to start every session at a known pose. Test that mode on the bench before
+relying on it (open item).
+
+\paragraph{Calibration, after assembly.} Move each joint to its reference angle. Then use FD's middle-position
+calibration, which makes the present position read 2048, the centre.
+\begin{itemize}\itemsep0pt
+  \item J1 at \MidJOne$^\circ$ and J2 at \MidJTwo$^\circ$, measured with an inclinometer on the plates. J1 is the upper
+  arm's angle from forward-horizontal. J2 is the forearm's absolute angle from forward-horizontal.
+  \item J3 with the gripper level, and J4 with the palm level.
+  \item The gripper with the jaws closed on the pipe (joint 0, the 13.8\,mm pipe grip).
+\end{itemize}
+Lower the torque limit in FD for the first motion tests.
+
+\newcommand{\step}[2]{\subsection{#1}\def\steplater{\buildstep{#2}}}
+\step{Base frame}{base}
+Screw the four tower brackets to the base plate (tap its holes first). Then bolt the towers to the brackets with the
+nyloc nuts outboard. The towers must stand square to the plate and parallel, with their hub bores in line: a D10 rod
+through both bores should turn freely. Stick the two cable-tie mounts on the base plate.
+\steplater
+
+\step{Drive frames with the J1 and J2 servos (bench)}{drive_frames}
+Press each 6804 into its drive-frame wall, lip outboard. Put the servo with ID~1 into the frame with the 6804 for J1, and
+the servo with ID~2 into the J2 frame. Fix each servo through the cradle floor with four M2 self-tapping screws into its
+own bottom-cap screw holes. Take the servo's original screws out of those holes first, and tighten the new ones only until
+snug. Press the horn onto the spline and fit its centre screw. Then screw the 18T pinion to the horn with threadlocker.
+\steplater
+
+\step{Upper arm (bench)}{upper_arm}
+Press a 6700 into each plate's elbow bore and the 6701 into the \texttt{\_R} plate's shoulder bore. Join the plates with the
+two standoffs. Use the longer screws on the \texttt{\_L} side, where a P-clip sits under each head for the harness.
+\steplater
+
+\step{Shoulder: upper arm, J1 hub, J2 journal and crank}{shoulder}
+Stand the upper arm between the towers with its shoulder bores in line with the tower bores. The hub flanges pass
+through the tower bores.
+\begin{itemize}\itemsep0pt
+  \item \textbf{J1.} From outside the \texttt{\_L} tower, push the J1 hub in until its pilot enters the \texttt{\_L} plate.
+  Fix it with three M3 screws from inside the upper arm.
+  \item \textbf{J2.} From outside the \texttt{\_R} tower, push the J2 journal through the 6701. Inside, fit the crank on
+  the journal's flat. Clamp it with the M4 screw and washer in the journal end.
+\end{itemize}
+Both hubs now turn by hand.
+\steplater
+
+\step{Base drive: gears, drive frames and end screws}{base_drive}
+Slide each 54T gear onto its hub's hex until it stops on the collar. Offer each drive
+frame over its hub so the journal enters the 6804 and the pinion meshes with the 54T gear. Then fit the three spacers
+between frame and tower, with the M3$\times$30 screws through from the tower side and nylocs outboard. Fit the M5 screw and
+washer in each hub end: they clamp the inner race against the hex shoulder. The upper arm and the crank now move only
+through their servos. In the next steps, turn them with FD at a low torque limit to line up a pivot.
+\steplater
+
+\step{Forearm (bench)}{forearm}
+Press a 6700 into each plate's wrist bore and join the plates with the two standoffs.
+\steplater
+
+\step{Rods (bench)}{rods}
+Press an MR105 into each end of rod AB, rod 1 and rod 2.
+\steplater
+
+\step{Elbow: shaft, forearm and level rocker}{elbow}
+Hold the forearm between the upper-arm plates, and put the rocker (hub with its 6700, keyed into the rocker's hex) on
+the \texttt{\_L} side. Slide the elbow shaft in from the \texttt{\_L} side in the stack order below, and fit an e-clip
+at each end. Tighten the two clamp collars against the inner faces of the forearm plates, so the forearm turns with the
+shaft. Then check that the forearm swings freely in the upper-arm bearings, and that the rocker turns freely on the shaft.
+\steplater
+
+\step{Crank rod and level-keeping rods}{linkage}
+Fit the rods in the stack orders below.
+\begin{itemize}\itemsep0pt
+  \item \textbf{Rod AB} joins the crank (pivot A) to the forearm (pivot B).
+  \item \textbf{Rod 1} joins the \texttt{\_L} tower (G1) to the rocker (Ev1).
+  \item \textbf{Rod 2} starts at the rocker (Ev2). Its far end waits for the wrist step.
+\end{itemize}
+Each shoulder screw's step carries a bearing's inner race, and the nyloc clamps the stack. Tighten until the stack is
+firm, and check that the rod still turns freely. If the buy list's note applies (no 4\,mm shoulder screw), fit Ev1 with
+the 5\,mm screw and 1.0\,mm of 5$\times$9 shims under the nut.
+\steplater
+
+\step{Clevises, roll housing and the J4 roll servo (bench)}{roll_housing}
+Fix the \texttt{\_L} clevis to the roll housing with the countersunk screws, and the \texttt{\_R} clevis with button
+heads. Both go into the housing's inserts. Press the 6805 into the housing. Then fix the J4 servo (ID~4) in the housing
+with four M2 self-tapping screws.
+\steplater
+
+\step{Wrist level member and the J3 pitch servo (bench)}{level_member}
+Press the 6700 into the wrist level hub, and key the hub into the level member's hex. Fix the J3 servo (ID~3) in its
+cradle with four M2 self-tapping screws, and press its horn on. Screw the wrist-shaft coupler to the horn with the four
+M3$\times$5 screws, with threadlocker. Then fix the cradle to the level member with the countersunk screws into the
+cradle's inserts.
+\steplater
+
+\step{Wrist: shaft, pitch drive and rod 2}{wrist}
+Set the roll housing over the forearm tip, with a clevis outside each forearm plate. Set the level member outside the
+\texttt{\_L} clevis. Slide the wrist shaft in from the \texttt{\_R} side, D6 step first. It passes the \texttt{\_R}
+clevis, both forearm bearings, the \texttt{\_L} clevis and the level-hub bearing, and its D6 step ends in the coupler.
+Fit the e-clip outside the \texttt{\_R} clevis. Then connect rod 2 to the level member (Dv2).
+
+Check the level keeping by hand: as the upper arm and forearm move, the level member must stay level. If it doesn't,
+a rod is on the wrong hole or a hex is a flat out.
+\steplater
+
+\step{Jaws and pads (bench)}{jaws}
+For each jaw, set the pad (with its neoprene) on the bottom finger plate. Thread the two D6 standoffs through the
+pad. Screw the finger plate to the jaw block's wall (three screws into the wall's inserts) and to the bottom of the
+standoffs; the top screws fix the standoffs to the block's top. Press the coupler pins
+into the jaw block. They run in the links.
+\steplater
+
+\step{Gripper head: palm, servo, links, spring (bench)}{head}
+\begin{enumerate}\itemsep0pt
+  \item \textbf{Servo.} Seat the gripper servo (ID~5) in its palm pocket, and press the disc horn onto its spline.
+  \item \textbf{Links.} Build the four link stacks with the jaws, using the ground pins in the stack orders below. The
+  D4$\times$8 pins press into the palm from below. Fit the thrust washers either side of the ground layer.
+  \item \textbf{Horn.} Screw the disc horn to the lower drive link. The model has no screws for this (open item): use
+  four M3 button heads from the M3 kit, at a length that doesn't bottom in the horn.
+  \item \textbf{Spring.} Fit the torsion spring on the right drive pivot, and bend and trim its legs so it opens the jaws.
+\end{enumerate}
+Then check by hand: the two jaws move together through the sector gears and stay parallel, the spring opens them fully,
+and the servo stays in its pocket. If it lifts, hold it with a cable tie until the model gains screws.
+\steplater
+
+\step{Roll: hub and gripper head}{roll}
+Slide the roll hub into the 6805 from the rear. Screw it to the J4 horn with the four M3$\times$5 screws, with
+threadlocker. Then screw the gripper head's palm to the hub's front flange.
+\steplater
+
+\step{Mounting on the chassis}{chassis}
+Bolt the base plate to the chassis deck with the four M4 screws.
+\steplater
+
+\subsection{Wiring and first motion}
+\begin{enumerate}\itemsep0pt
+  \item \textbf{Harness.} Daisy-chain the five servos on the TTL bus. Run the J3, J4 and gripper cables through the
+  P-clips on the upper arm and down to the base clips. Leave a service loop at the elbow and the wrist that covers each
+  joint's whole range.
+  \item \textbf{Calibrate.} Power up, then calibrate each joint as in Section~\ref{sec:servo}.
+  \item \textbf{One joint at a time.} Move each joint alone, slowly and at a low torque limit, from STOW through its task
+  range. Watch for rubbing, the cables, and the gears skipping.
+  \item \textbf{Bench tests.} Then run the open-item tests: the power-off release and the spring choice, the gear-stage
+  backlash and temperature, and the J1/J2 multi-turn mode.
+\end{enumerate}
+Mark up this guide with whatever didn't go as written, so the next build gets it right.
 
 \end{document}
