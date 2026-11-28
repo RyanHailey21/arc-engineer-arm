@@ -5,32 +5,32 @@
   "producer": "light_weight_arm/cad/tools",
   "operation": "working_doc",
   "status": "pass",
-  "reason": "PASS: ARC_Arm_Fourbar.FCStd: 267 parts in 17 body groups at STOW, coloured (10.0 MB)",
-  "scope": "ARC_Arm_Fourbar.FCStd: 267 parts in 17 body groups at STOW, coloured (10.0 MB)",
+  "reason": "PASS: ARC_Arm_Fourbar.FCStd: 273 parts in 17 body groups at STOW, coloured (11.1 MB)",
+  "scope": "ARC_Arm_Fourbar.FCStd: 273 parts in 17 body groups at STOW, coloured (11.1 MB)",
   "versions": {
    "python": "3.11.14",
    "platform": "Windows",
    "freecad": "1.1.4"
   },
-  "implementation_sha256": "15ed7b32713555b30300c4efbb012a0d20bab2e75842c4b2670ffcda59b040b5",
+  "implementation_sha256": "unknown",
   "inputs": [
    {
     "id": "design-inputs",
     "path": "evidence/working_doc.inputs.json",
-    "sha256": "de9dc09a046104fc92b22e253308f1f57c8923dafd6db747ea214c5827aa7e6f"
+    "sha256": "f5cc959e1c997541aeed967d7d8198928ad37e90f30a3b99c50c95114eca0832"
    }
   ],
   "artifacts": [
    {
     "id": "ARC_Arm_Fourbar.FCStd",
     "path": "ARC_Arm_Fourbar.FCStd",
-    "sha256": "78fa9c77bb71d268e40f2f2e16d2c4a5d00cefa19b23aff0c6625fd1526c4798"
+    "sha256": "0cdcc68ac3f03db69c31ddb53bcfd5ab8a2261da292c25cbced1dc909f7eb415"
    }
   ],
   "extensions": {
    "variant": "FOURBAR",
-   "time": "2026-11-20T04:56:53",
-   "inputs_hash": "583f149273fa8325",
+   "time": "2026-11-28T07:27:06",
+   "inputs_hash": "c2a315f4d5eb8713",
    "external_copies": []
   }
  }

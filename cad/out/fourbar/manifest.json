@@ -31,7 +31,7 @@
   "inputs_hash": "c2a315f4d5eb8713",
   "note": "16 steps; 0 problems",
   "status": "PASS",
-  "time": "2026-11-28T07:21:44"
+  "time": "2026-11-28T07:25:57"
  },
  "engagement": {
   "evidence": "engagement.evidence.json",
@@ -143,10 +143,10 @@
   "files": [
    "ARC_Arm_Fourbar.FCStd"
   ],
-  "inputs_hash": "583f149273fa8325",
-  "note": "ARC_Arm_Fourbar.FCStd: 267 parts in 17 body groups at STOW, coloured (10.0 MB)",
+  "inputs_hash": "c2a315f4d5eb8713",
+  "note": "ARC_Arm_Fourbar.FCStd: 273 parts in 17 body groups at STOW, coloured (11.1 MB)",
   "status": "PASS",
-  "time": "2026-11-20T04:56:53"
+  "time": "2026-11-28T07:27:06"
  },
  "working_doc_sync": {
   "evidence": "working_doc_sync.evidence.json",

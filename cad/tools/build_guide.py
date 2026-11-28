@@ -3,7 +3,7 @@
 Build guide for the printed prototype of the ACTIVE variant (the servo-driven FOURBAR arm), generated from the model:
 
     python -I cad/tools/run.py cad/tools/build_guide.py                         (freecadcmd, about 2 min)
-    tools/blender-5.3.0-windows-x64/blender.exe -b -P cad/render/build_steps.py   (step pictures, about 1 min)
+    in the FreeCAD GUI: exec(open(r"<repo>/cad/render/build_steps.py").read())  (step pictures: views, not renders)
     python -I cad/docs/paper/make_paper.py                                       (the PDF; the guide is its appendix)
 
 Every part of the model is assigned to exactly one build step (STEPS); a part left over, or matched twice, fails the
@@ -11,13 +11,13 @@ run, so the guide cannot forget a screw. For each step it writes:
   - the parts and how many, with what each is made of in the prototype (printed / bought / cut);
   - the stack along each joint axis the step closes: every part within the probe radius of the axis, in order along
     it, from the model at STOW (so washers, shims, bearings and spacers are listed in the order they go on);
-  - meshes for the step picture: the step's new parts, the sub-assemblies mounted in it, and what is already built.
+  - for the step picture: the part names of the step's new parts, the sub-assemblies mounted in it, and what is already built.
 Outputs:
   cad/docs/paper/build/steps.tex          one subsection body per step (\\input by paper.tex, wording stays there)
   cad/docs/paper/build/proto_bom.tex      the prototype BOM summary table
   cad/out/<variant>/print/BOM_prototype.csv   the prototype bill of materials (differs from BOM.csv: custom parts
                                           are printed, the pads get neoprene, plus glue, taps and tools)
-  cad/out/<variant>/build/steps.json + meshes/*.obj   input of cad/render/build_steps.py
+  cad/out/<variant>/build/steps.json       input of cad/render/build_steps.py (FreeCAD GUI views of the working document)
 """
 import csv
 import json
@@ -30,14 +30,12 @@ CAD = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) if "__file__" 
 sys.path.insert(0, CAD)
 import FreeCAD as App   # noqa: E402
 import Part             # noqa: E402
-import MeshPart         # noqa: E402
 import params           # noqa: E402
 import arm_model as M   # noqa: E402
 
 V = App.Vector
 PAPER = os.path.join(CAD, "docs", "paper", "build")
 OUT = params.out_dir("build")
-MESH = os.path.join(OUT, "meshes")
 POSE = "STOW"
 FASTENERS = {"BHCS", "SHCS", "CSK", "PAN-M2x12", "INSERT", "NYLOC", "WASHER"}
 
@@ -227,9 +225,8 @@ def main():
                 out.append((round(mn, 1), round(mx, 1), n))
         return sorted(out)
 
-    # ---- per-step tables, stacks and meshes
+    # ---- per-step tables, stacks and picture lists
     os.makedirs(PAPER, exist_ok=True)
-    os.makedirs(MESH, exist_ok=True)
     installed = []          # names built into the arm so far
     jsteps, tex = [], []
     for idx, s in enumerate(STEPS, 1):
@@ -243,19 +240,10 @@ def main():
         context = [] if s.get("bench") else list(installed)
         if not s.get("bench"):
             installed += mount + new
-        # meshes
-        files = {}
-        for role, names in (("new", new), ("mount", mount), ("context", context)):
-            if not names:
-                continue
-            comp = Part.makeCompound([world[n] for n in names])
-            f = os.path.join(MESH, "%02d_%s_%s.obj" % (idx, s["key"], role))
-            MeshPart.meshFromShape(Shape=comp, LinearDeflection=0.25, AngularDeflection=0.5, Relative=False).write(f)
-            files[role] = os.path.relpath(f, OUT).replace("\\", "/")
-        fb = Part.makeCompound([world[n] for n in new + mount]).BoundBox
-        jsteps.append(dict(idx=idx, key=s["key"], title=s["title"], view=s["view"], files=files,
-                           frame=[fb.XMin, fb.YMin, fb.ZMin, fb.XMax, fb.YMax, fb.ZMax],
-                           png="build_%02d_%s.jpg" % (idx, s["key"])))
+        # the picture: part names per colour role; cad/render/build_steps.py shows them in the FreeCAD working document
+        jsteps.append(dict(idx=idx, key=s["key"], title=s["title"], view=s["view"],
+                           parts=dict(new=new, mount=mount, context=context),
+                           png="build_%02d_%s.png" % (idx, s["key"])))
         # parts table: group by what the builder picks up
         groups = {}
         for n in new:

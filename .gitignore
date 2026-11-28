@@ -54,4 +54,3 @@ fusion/checks/out/*.progress
 cad/render/out/detail_*.png
 cad/render/out/overview_*.png
 
-cad/out/*/build/meshes/
