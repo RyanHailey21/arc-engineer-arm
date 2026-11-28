@@ -4,7 +4,7 @@
 
     python -I cad/tools/amazon_buy_list.py      -> cad/out/fourbar/amazon_buy_list.csv
 
-Looked up 2026-11-22 with the Amazon MCP (search_products / get_product); quantities from cad/out/fourbar/BOM.csv
+Looked up 2026-11-22 (M3 / M4 kits 2026-11-27) with the Amazon MCP (search_products / get_product); quantities from cad/out/fourbar/BOM.csv
 (cad/tools/bom.py). Column `prototype`: needed for the fully printed fit-and-motion build (cad/tools/export_print.py).
 Re-check prices and stock before ordering; update R when the BOM changes.
 """
@@ -24,14 +24,10 @@ R = [
 ("Bearings", "6804ZZ 20x32x7", "2", "uxcell 6804ZZ ABEC3, 2 pcs", "B08H1RQQSV", 1, 6.74, ""),
 ("Bearings", "6805ZZ 25x37x7", "1", "uxcell 6805ZZ, 2 pcs", "B07TJFL7N8", 1, 7.29, ""),
 ("Bearings", "MR105ZZ 5x10x4", "6", "Apex RC MR105ZZ, 10 pcs", "B00XQ9212C", 1, 8.99, ""),
-("Fasteners", "BHCS M3x5", "8", "M3x5 button head, 304 SS, 100 pcs", "B09HQLC89R", 1, 7.00, ""),
-("Fasteners", "BHCS M3x6", "27", "M3x6 button head, 304 SS, 100 pcs", "B0DKXNXQNJ", 1, 6.19, ""),
-("Fasteners", "BHCS M3x8", "18", "M3x8 button head, 100 pcs", "B083HD61FV", 1, 8.49, ""),
-("Fasteners", "BHCS M3x10", "4", "M3x10 button head, 304 SS, 100 pcs", "B0GH67N6D6", 1, 7.69, ""),
-("Fasteners", "BHCS M3x30", "6", "M3x30 button head, 304 SS, 50 pcs", "B09HQL6RY9", 1, 6.99, "drive frames: tower, 12 mm spacer and frame wall, nyloc outboard"),
+("Fasteners", "BHCS M3x6 / x8 / x10 / x30 (kit)", "27 / 18 / 4 / 6", "QOOSIKICC 1050 pc M3 button head kit, SS: M3x4-35 (4/6/8/10/12/16/20/25/30/35), nuts, washers", "B0DFWYBJJJ", 1, 13.98, "one kit for every M3 button head except x5 (horn screws, own pack); count the M3x6 on arrival (need 27, buy a 100-pack B0DKXNXQNJ if short)"),
+("Fasteners", "BHCS M3x5", "8", "M3x5 button head, 304 SS, 100 pcs", "B09HQLC89R", 1, 7.00, "horn screws: the kit has no x5"),
 ("Fasteners", "CSK M3x6", "8", "M3x6 flat head DIN 7991, 304 SS, 80 pcs", "B0DKY3G1CS", 1, 6.29, ""),
-("Fasteners", "SHCS M4x12", "4", "M4x12 socket head, 304 SS, 120 pcs", "B0DYMS1VVC", 1, 8.09, ""),
-("Fasteners", "SHCS M4x8", "1", "M4x8 socket head DIN 912, 304 SS, 100 pcs", "B07CK36QF4", 1, 8.99, ""),
+("Fasteners", "SHCS M4x8 / M4x12 + Washer M4 (kit)", "1 / 4 + 1 washer", "SVLING M4 socket head kit, 304 SS: 25x M4x8, 20x M4x12, 129 flat washers 4x9, nuts", "B0GHMMCZKM", 1, 7.99, "replaces the separate M4x8, M4x12 and M4 washer packs (stage 1 standardisation, 2026-11-27); nylocs still from the Nyloc M4 line"),
 ("Fasteners", "SHCS M5x10", "2", "M5x10 socket head, 304 SS, 50 pcs", "B0GCSYGVNN", 1, 7.99, ""),
 ("Fasteners", "SB5x8 shoulder screw (d5, M4)", "3", "uxcell shoulder bolt 5 dia x 8 L, M4, 5 pcs", "B077GWC559", 1, 9.99, ""),
 ("Fasteners", "SB5x10 shoulder screw", "1", "uxcell 5 dia x 10 L, M4, 6 pcs", "B0DP7173LB", 1, 6.89, "confirm the listing is a shoulder bolt"),
@@ -39,7 +35,6 @@ R = [
 ("Fasteners", "SB5x4 shoulder screw (Ev1)", "1", "uxcell shoulder bolt 5 dia x 5 L, M4, 10 pcs", "B077GWXJHB", 1, 13.49, "no 4 mm shoulder on Amazon: use the 5 mm one with 1.0 mm of 5x9 shims (shim kit) so the nyloc still clamps"),
 ("Fasteners", "Nyloc M3", "10", "M3 nylock nuts with washers, 304 SS", "B0HC671TFL", 1, 9.99, ""),
 ("Fasteners", "Nyloc M4", "6", "M4 nylock nuts, SS, 150 pcs", "B0DPKSD7MV", 1, 6.99, ""),
-("Fasteners", "Washer M4 (ISO 7089)", "1", "M4 washer 4x9x0.8, 304 SS, 300 pcs", "B07WZ7BQYM", 1, 12.99, ""),
 ("Fasteners", "Washer M5 (ISO 7089)", "2", "M5 washer 5x10x1, 304 SS, 250 pcs", "B07WZ5WQCG", 1, 12.99, ""),
 ("Fasteners", "WASHER-D4 4x8x0.5 (+ SB5x4 shims)", "2", "Shim washer kit 3x6 to 10x16, 0.1-0.5 mm", "B0GQ3JGHPZ", 1, 16.99, "also has the 5x9 shims for SB5x4"),
 ("Fasteners", "PAN-M2x12 self-tapping", "16", "M2x12 pan head self-tapping, 316 SS, 50 pcs", "B0FJD4G1P6", 1, 6.19, "into the servo bottom-cap holes; snug only"),
